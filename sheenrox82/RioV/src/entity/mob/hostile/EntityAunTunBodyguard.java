@@ -23,7 +23,10 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sound;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
+import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
+import sheenrox82.RioV.src.entity.mob.passive.EntityNizonian;
+import sheenrox82.RioV.src.entity.mob.passive.EntityOrc;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
 
 public class EntityAunTunBodyguard extends EntityMobDeadBody
@@ -55,6 +58,10 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityOrc.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkElf.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityNizonian.class, 0, true));
 		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.auntunHelmet));
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.auntunChestplate));
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.auntunLeggings));

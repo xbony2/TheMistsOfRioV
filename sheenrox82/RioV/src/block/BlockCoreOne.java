@@ -1,13 +1,19 @@
 package sheenrox82.RioV.src.block;
 
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.util.IIcon;
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.util.MethodUtil;
+import sheenrox82.RioV.src.util.Util;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCoreOne extends Block
 {
-
+	public IIcon blockIcon;
+	
 	public BlockCoreOne()
 	{
 		super(Material.field_151566_D);
@@ -79,18 +85,19 @@ public class BlockCoreOne extends Block
 
 		return blockID;
 	}
-
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+**/
+	@Override
+	public IIcon func_149691_a(int par1, int par2)
 	{
-		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + this.getName());
-	} 
-
-	public String getName()
-	{
-		return this.unlocalizedName;
+		return this.blockIcon;
 	}
-
+	
+	@SideOnly(Side.CLIENT)
+	public void func_149651_a(IIconRegister par1IconRegister)
+	{
+		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.func_149739_a()));
+	} 
+/**
 	@Override
 	public int quantityDropped(Random par1Random)
 	{

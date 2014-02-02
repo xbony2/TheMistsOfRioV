@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.util.MethodUtil;
@@ -20,6 +21,7 @@ public class BlockPlantCore extends BlockFlower
 	public BlockPlantCore()
 	{
 		super(0);
+		this.func_149647_a(null);
 	}
 
 	@Override

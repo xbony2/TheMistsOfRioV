@@ -86,7 +86,7 @@ public class RioVItems
 	public static RioVArmor amethystBoots = (RioVArmor)new RioVArmor(AmethystArmorMaterial, render, 3, "amethyst", false).setUnlocalizedName("amethystBoots");
 	public static RioVArmor infusedOnyxHelmet = (RioVArmor)new RioVArmor(InfusedOnyxArmorMaterial, render, 0, "onyx", true).setUnlocalizedName("infusedOnyxHelmet");
 	public static RioVArmor infusedOnyxChestplate = (RioVArmor)new RioVArmor(InfusedOnyxArmorMaterial, render, 1, "onyx", true).setUnlocalizedName("infusedOnyxChestplate");
-	public static RioVArmor infusedOnyxLeggings = (RioVArmor)new RioVArmor(InfusedOnyxArmorMaterial, render, 2, "onyx", true).setUnlocalizedName("infusedOonyxLeggings");
+	public static RioVArmor infusedOnyxLeggings = (RioVArmor)new RioVArmor(InfusedOnyxArmorMaterial, render, 2, "onyx", true).setUnlocalizedName("infusedOnyxLeggings");
 	public static RioVArmor infusedOnyxBoots = (RioVArmor)new RioVArmor(InfusedOnyxArmorMaterial, render, 3, "onyx", true).setUnlocalizedName("infusedOnyxBoots");
 	public static RioVArmor infusedAmethystHelmet = (RioVArmor)new RioVArmor(InfusedAmethystArmorMaterial, render, 0, "amethyst", true).setUnlocalizedName("infusedAmethystHelmet");
 	public static RioVArmor infusedAmethystChestplate = (RioVArmor)new RioVArmor(InfusedAmethystArmorMaterial, render, 1, "amethyst", true).setUnlocalizedName("infusedAmethystChestplate");

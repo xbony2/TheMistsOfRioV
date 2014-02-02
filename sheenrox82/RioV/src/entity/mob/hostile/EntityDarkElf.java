@@ -24,11 +24,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import sheenrox82.RioV.expansion.bosses.EntityChickenBoss;
+import sheenrox82.RioV.expansion.bosses.EntityCowBoss;
+import sheenrox82.RioV.expansion.bosses.EntityPigBoss;
+import sheenrox82.RioV.expansion.bosses.EntitySheepBoss;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sound;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
+import sheenrox82.RioV.src.entity.mob.passive.EntityOrc;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -43,6 +48,17 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityMage.class, 0, true));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityOrc.class, 0, true));
+
+		if(TheMistsOfRioV.getInstance().bosses)
+		{
+			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntitySheepBoss.class, 0, true));
+			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPigBoss.class, 0, true));
+			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCowBoss.class, 0, true));
+			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChickenBoss.class, 0, true));
+		}
+		
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		isImmuneToFire = false;
@@ -164,10 +180,10 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 
 	@Override
 	protected void addRandomArmor()
-    {
-        super.addRandomArmor();
-        this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
-    }
+	{
+		super.addRandomArmor();
+		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+	}
 
 	@Override
 	public IEntityLivingData onSpawnWithEgg(IEntityLivingData par1EntityLivingData)
@@ -261,7 +277,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 		{
 			return Sound.exhale;
 		}
-		
+
 		return null;
 	}
 
