@@ -1,5 +1,8 @@
 package sheenrox82.RioV.src.event;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -11,17 +14,67 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.handler.UpdateHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
+import sheenrox82.RioV.src.util.Color;
+import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
+import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Events
 {
+	public boolean hasSeen;
+
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void clientLoggedIn(EntityJoinWorldEvent e) 
+	{			
+		if (e.entity instanceof EntityPlayer) 
+		{
+			EntityPlayer p = (EntityPlayer) e.entity;
+			if (p.worldObj.isRemote) 
+			{
+				try
+				{
+					if (UpdateHandler.isUpdateAvailable()) 
+					{
+						if(!hasSeen)
+						{
+							p.func_145747_a(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! An update is available for " + Util.MOD_NAME + ". Check http://goo.gl/Wf3zCW for more info. - sheenrox82"));
+							hasSeen = true;
+						}
+					}
+
+					if (!UpdateHandler.isUpdateAvailable()) 
+					{
+						if(!hasSeen)
+						{
+							p.func_145747_a(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+							hasSeen = true;
+						}	
+					}
+				} 
+				catch (MalformedURLException mal) 
+				{
+					mal.printStackTrace();
+				}
+				catch (IOException io)
+				{
+					io.printStackTrace();
+				}
+			}
+		} 
+	}
+
 	@SubscribeEvent
 	public void onEntityConstructing(EntityConstructing event)
 	{

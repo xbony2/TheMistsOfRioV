@@ -17,6 +17,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.Util;
 import sheenrox82.RioV.src.world.teleporter.TeleporterFlamonor;
@@ -30,6 +31,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 	public BlockFlamonorPortal()
 	{
 		super(Util.MOD_ID + ":" + "flamonorPortal", Material.field_151567_E, false);
+		this.func_149647_a(TheMistsOfRioV.tab);
 	}
 
 	@Override

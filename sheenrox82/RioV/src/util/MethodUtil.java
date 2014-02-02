@@ -8,16 +8,16 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.DimensionManager;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.entity.projectile.EntityCustomArrow;
 import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameData;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class MethodUtil 
 {
@@ -86,5 +86,12 @@ public class MethodUtil
 		}
 
 		return maxDamageFactor;
+	}
+	
+	public static ChatComponentTranslation addChatMessage(EnumChatFormatting color, String str, Object... args)
+	{
+		ChatComponentTranslation ret = new ChatComponentTranslation(str, args);
+		ret.func_150256_b().func_150238_a(color);
+		return ret;
 	}
 }

@@ -151,7 +151,7 @@ public class BlockRioVLadder extends BlockLadder
         if (!flag)
         {
             this.func_149697_b(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, l, 0);
-            p_149695_1_.func_147468_f(p_149695_2_, p_149695_3_, p_149695_4_);
+
         }
 
         super.func_149695_a(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);

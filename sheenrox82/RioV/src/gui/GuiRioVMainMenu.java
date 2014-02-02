@@ -643,7 +643,7 @@ public class GuiRioVMainMenu extends GuiMainMenu
             }
         }
         ForgeHooksClient.renderMainMenu(this, field_146289_q, field_146294_l, field_146295_m);
-        String s1 = "Copyright Mojang AB. Do not distribute!";
+        String s1 = "PENIS";
         this.drawString(this.field_146289_q, s1, this.field_146294_l - this.field_146289_q.getStringWidth(s1) - 2, this.field_146295_m - 10, -1);
 
         if (this.field_92025_p != null && this.field_92025_p.length() > 0)
