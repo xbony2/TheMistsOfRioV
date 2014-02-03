@@ -3,12 +3,13 @@ package sheenrox82.RioV.src.proxy;
 import java.util.Arrays;
 import java.util.List;
 
+import com.jadarstudios.developercapes.DevCapes;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.MinecraftForge;
 import sheenrox82.RioV.expansion.bosses.EntityChickenBoss;
 import sheenrox82.RioV.expansion.bosses.EntityCowBoss;
 import sheenrox82.RioV.expansion.bosses.EntityPigBoss;
@@ -54,7 +55,6 @@ import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
-import sheenrox82.RioV.src.handler.HudHandler;
 import sheenrox82.RioV.src.lib.EntityResourceLocation;
 import sheenrox82.RioV.src.model.ModelDemonAngel;
 import sheenrox82.RioV.src.model.ModelDragonWings;
@@ -152,7 +152,6 @@ public class ClientProxy extends CommonProxy
 			RenderingRegistry.registerEntityRenderingHandler(EntityCowBoss.class, new RenderCowBoss());
 		}
 
-		MinecraftForge.EVENT_BUS.register(new HudHandler());
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunMinion.class, new RenderBipedCore(EntityResourceLocation.auntun));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(EntityResourceLocation.blood_ghoul));
@@ -185,7 +184,7 @@ public class ClientProxy extends CommonProxy
 	{
 		if(!TheMistsOfRioV.getInstance().optifine)
 		{
-			//DevCapesUtil.addFileUrl("https://dl.dropbox.com/u/126631367/Capes.txt");
+			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
 		}
 	}
 
@@ -206,6 +205,6 @@ public class ClientProxy extends CommonProxy
 		default:
 			break;
 		}
-		return dragonWings; //default, if whenever you should have passed on a wrong id
+		return dragonWings;
 	}
 }

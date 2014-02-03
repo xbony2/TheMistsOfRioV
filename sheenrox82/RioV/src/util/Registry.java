@@ -17,7 +17,6 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.event.Events;
 import sheenrox82.RioV.src.gui.GuiEosBar;
 import sheenrox82.RioV.src.handler.FuelHandler;
-import sheenrox82.RioV.src.handler.HudHandler;
 import sheenrox82.RioV.src.handler.SoundHandler;
 import sheenrox82.RioV.src.recipe.AnvilCraftingManager;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
@@ -70,7 +69,6 @@ public class Registry
 				"This is The Mists of RioV.";
 		Config.initialize(initEvent);
 		MinecraftForge.EVENT_BUS.register(new Events());
-		MinecraftForge.EVENT_BUS.register(new HudHandler());
 		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		RioVItems.add();
 		RioVBlocks.add();

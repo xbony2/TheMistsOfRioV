@@ -3,6 +3,10 @@ package sheenrox82.RioV.src.event;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -15,10 +19,12 @@ import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.handler.UpdateHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
@@ -182,5 +188,45 @@ public class Events
 		{
 			((BlockRioVSapling)RioVBlocks.skywoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}**/
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void renderGameOverlayEvent(RenderGameOverlayEvent evt)
+	{
+		//I dont why this shit won't work.
+		/**Minecraft minecraft = FMLClientHandler.instance().getClient();
+
+		if(minecraft.currentScreen instanceof GuiMainMenu)
+		{
+			minecraft.func_147108_a(new GuiRioVMainMenu());
+		}
+		if(minecraft.currentScreen instanceof GuiDownloadTerrain)
+		{
+			WavHandler.stopSound();			
+		}
+		if(minecraft.currentScreen == null)
+		{
+			WavHandler.stopSound();			
+		}**/
+
+		//This works, fuck yeah.
+		if(Config.HUD)
+		{
+			Minecraft mc = Minecraft.getMinecraft();
+
+			FontRenderer fontrenderer = mc.fontRenderer;
+
+			if (!mc.gameSettings.showDebugInfo)
+			{
+				if(mc.currentScreen == null)
+				{
+					mc.mcProfiler.startSection("debug");
+					GL11.glPushMatrix();
+					fontrenderer.drawStringWithShadow(Config.color + Util.MOD_NAME + " - " + Util.VERSION, Config.posX, Config.posY, 16777215);
+					GL11.glPopMatrix();
+				}
+			}
+		}
 	}
 }
