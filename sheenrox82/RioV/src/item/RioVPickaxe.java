@@ -18,7 +18,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class RioVPickaxe extends ItemPickaxe
 {
 	public boolean isInfused;
-
 	public RioVPickaxe(ToolMaterial par2EnumToolMaterial, boolean par2)
 	{
 		super(par2EnumToolMaterial);
@@ -59,6 +58,66 @@ public class RioVPickaxe extends ItemPickaxe
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		if(this == RioVItems.onyxPickaxe || this == RioVItems.infusedOnyxPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "onyxPickaxe");
+		}
+		if(this == RioVItems.amethystPickaxe || this == RioVItems.infusedAmethystPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "amethystPickaxe");
+		}
+		if(this == RioVItems.agonitePickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "agonitePickaxe");
+		}
+		if(this == RioVItems.dragonPickaxe || this == RioVItems.infusedDragonPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "dragonPickaxe");
+		}
+		if(this == RioVItems.glimmerwoodPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodPickaxe");
+		}
+		if(this == RioVItems.vravinitePickaxe || this == RioVItems.infusedVravinitePickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "vravinitePickaxe");
+		}
+		if(this == RioVItems.blindonitePickaxe || this == RioVItems.infusedBlindonitePickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "blindonitePickaxe");
+		}
+		if(this == RioVItems.cherryBlossomPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "cherryBlossomPickaxe");
+		}
+		if(this == RioVItems.bloodPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "bloodPickaxe");
+		}
+		if(this == RioVItems.skywoodPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "skywoodPickaxe");
+		}
+		if(this == RioVItems.sanctuaryStonePickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "sanctuaryStonePickaxe");
+		}
+		if(this == RioVItems.alerisPickaxe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "alerisPickaxe");
+		}
+		if(TheMistsOfRioV.getInstance().natura)
+		{
+			if(this == RioVItems.infusedBloodwoodPickaxe || this == RioVItems.infusedGhostwoodPickaxe || this == RioVItems.infusedDarkwoodPickaxe || this == RioVItems.infusedFusewoodPickaxe || this == RioVItems.infusedNetherquartzPickaxe)
+				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
+		}
+
+		if(TheMistsOfRioV.getInstance().aether)
+		{
+			if(this == RioVItems.infusedSkyrootPickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Skyroot Pickaxe");
+			if(this == RioVItems.infusedHolystonePickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Holystone Pickaxe");
+			if(this == RioVItems.infusedZanitePickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Zanite Pickaxe");
+			if(this == RioVItems.infusedGravititePickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Gravitite Pickaxe");
+		}
 	}
 }

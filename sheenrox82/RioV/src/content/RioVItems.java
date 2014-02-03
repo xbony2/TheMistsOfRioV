@@ -154,7 +154,7 @@ public class RioVItems
 	public static Item horseMeat = new RioVConsumable(1, 0, false).setUnlocalizedName("horseMeat");
 	public static Item blackDurii = new RioVConsumable(4, 0, false).setUnlocalizedName("blackDurii");
 	public static Item baseCrystal = new RioVItem().setUnlocalizedName("baseCrystal");
-	public static Item terronCrystal = new RioVSummoners().setUnlocalizedName("terronCrystalCrystal");
+	public static Item terronCrystal = new RioVSummoners().setUnlocalizedName("terronCrystal");
 	public static Item demonAngelCrystal = new RioVSummoners().setUnlocalizedName("demonAngelCrystal");
 	public static Item auntunSummoner = new RioVSummoners().setUnlocalizedName("auntunSummoner");
 	public static Item khuulisScythe = new RioVWeapon(Onyx, false).setUnlocalizedName("khuulisScythe");
@@ -273,7 +273,7 @@ public class RioVItems
 	public static Item alerisLeggings = (new RioVArmor(AlerisArmorMaterial, render, 2, "aleris", false)).setUnlocalizedName("alerisLeggings");
 	public static Item alerisBoots = (new RioVArmor(AlerisArmorMaterial, render, 3, "aleris", false)).setUnlocalizedName("alerisBoots");
 	public static Item alerisPickaxe = (new RioVPickaxe(Aleris, false)).setUnlocalizedName("alerisPickaxe");
-	public static Item alerisAxe = (new RioVAxe(Aleris, false)).setUnlocalizedName("alerisStoneAxe");
+	public static Item alerisAxe = (new RioVAxe(Aleris, false)).setUnlocalizedName("alerisAxe");
 	public static Item alerisShovel = (new RioVSpade(Aleris, false)).setUnlocalizedName("alerisShovel");
 	public static Item alerisSword = (new RioVWeapon(Aleris, false)).setUnlocalizedName("alerisSword");
 	public static Item infusedVraviniteHelmet = (new RioVArmor(InfusedVraviniteArmorMaterial, render, 0, "vravinite", true)).setUnlocalizedName("infusedVraviniteHelmet");

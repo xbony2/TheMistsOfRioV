@@ -220,11 +220,103 @@ public class RioVWeapon extends ItemSword
 
 		return EnumRarity.common;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		if(this == RioVItems.amethystSword || this == RioVItems.infusedAmethystSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "amethystSword");
+		}
+		if(this == RioVItems.onyxSword || this == RioVItems.infusedOnyxSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "onyxSword");
+		}
+		if(this == RioVItems.daetoriSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "daetoriSword");
+		}
+		if(this == RioVItems.tasaravSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "tasaravSword");
+		}
+		if(this == RioVItems.sorrowSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "sorrowSword");
+		}
+		if(this == RioVItems.axeOfAunTun || this == RioVItems.ultraAxeOfAunTun)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "axeOfAunTun");
+		}
+		if(this == RioVItems.dragonSword || this == RioVItems.infusedDragonSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "dragonSword");
+		}
+		if(this == RioVItems.unfusedAxeOfAunTun || this == RioVItems.halfFusedAxeOfAunTun)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "UnfusedaxeOfAunTun");
+		}
+		if(this == RioVItems.khuulisScythe)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "khuulisScythe");
+		}
+		if(this == RioVItems.galokinSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "galokinSword");
+		}
+		if(this == RioVItems.swordOfFlame)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "swordOfFlame");
+		}
+		if(this == RioVItems.blindoniteSword || this == RioVItems.infusedBlindoniteSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "blindoniteSword");
+		}
+		if(this == RioVItems.glimmerwoodSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodSword");
+		}
+		if(this == RioVItems.vraviniteSword || this == RioVItems.infusedVraviniteSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "vraviniteSword");
+		}
+		if(this == RioVItems.cherryBlossomSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "cherryBlossomSword");
+		}
+		if(this == RioVItems.bloodSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "bloodSword");
+		}
+		if(this == RioVItems.skywoodSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "skywoodSword");
+		}
+		if(this == RioVItems.sanctuaryStoneSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "sanctuaryStoneSword");
+		}
+		if(this == RioVItems.alerisSword)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "alerisSword");
+		}
+		if(this == RioVItems.paladinLongsword) 
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "paladinLongsword");
+		}
+		if(TheMistsOfRioV.getInstance().natura)
+		{
+			if(this == RioVItems.infusedBloodwoodSword || this == RioVItems.infusedGhostwoodSword || this == RioVItems.infusedDarkwoodSword || this == RioVItems.infusedFusewoodSword || this == RioVItems.infusedNetherquartzSword)
+				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
+		}
+
+		if(TheMistsOfRioV.getInstance().aether)
+		{
+			if(this == RioVItems.infusedSkyrootSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Skyroot Sword");	
+			if(this == RioVItems.infusedHolystoneSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Holystone Sword");	
+			if(this == RioVItems.infusedZaniteSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Zanite Sword");	
+			if(this == RioVItems.infusedGravititeSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Gravitite Sword");	
+		}
 	}
 }
