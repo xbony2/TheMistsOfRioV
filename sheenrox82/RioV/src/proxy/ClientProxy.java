@@ -1,5 +1,7 @@
 package sheenrox82.RioV.src.proxy;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
@@ -106,7 +108,6 @@ public class ClientProxy extends CommonProxy
 	private static final ModelDragonWings dragonWings = new ModelDragonWings(1.0F);
 	private static final ModelTasaravHelmet tasHelm = new ModelTasaravHelmet(1.0F);
 	private static final ModelTasaravChestplate tasChest = new ModelTasaravChestplate(1.0F);
-	public static List<String> bannedList = Arrays.asList(new String[] {"sheenrox82"});
 
 	@Override
 	public void init() 
@@ -160,11 +161,6 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkywoodChest.class, new RenderTileEntitySkywoodChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBloodChest.class, new RenderTileEntityBloodChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new RenderTileEntityFlag());
-
-		if(bannedList.contains(Minecraft.getMinecraft().getSession().getUsername()))
-		{
-			TheMistsOfRioV.getInstance().isBanned = true;
-		}
 	}
 
 	@Override
@@ -182,10 +178,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void cape()
 	{
-		if(!TheMistsOfRioV.getInstance().optifine)
-		{
-			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
-		}
+		//DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
 	}
 
 	public static int addArmor(String armorName)

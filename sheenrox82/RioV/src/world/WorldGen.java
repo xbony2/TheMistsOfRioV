@@ -77,13 +77,13 @@ public class WorldGen implements IWorldGenerator
 			(new WorldGenMinable(RioVBlocks.slate, 8)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
 		}
 
-		for(int var5 = 0; var5 < 1; ++var5)
+		/**for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = blockZ + rand.nextInt(16);
 
-			/**new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.tomatoPlant).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.grapePlant).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.pepperPlant).generate(world, rand, var6, var7, var8);
@@ -91,8 +91,8 @@ public class WorldGen implements IWorldGenerator
 			new WorldGenBalance(RioVBlocks.blueBerryBush).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.blackBerryBush).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.raspBerryBush).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);**/
-		}
+			new WorldGenBalance(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);
+		}**/
 
 		if((biome instanceof BiomeGenForest)) 
 		{

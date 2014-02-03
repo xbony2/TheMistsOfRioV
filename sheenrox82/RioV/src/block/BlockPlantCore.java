@@ -53,20 +53,26 @@ public class BlockPlantCore extends BlockFlower
 
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
-	
+
 	@Override
 	public void func_149651_a(IIconRegister par1IconRegister)
 	{
 		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.func_149739_a()));
 	}
 
+	@SideOnly(Side.CLIENT)
+	public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)
+	{
+		return blockIcon;
+	}
+	
 	protected boolean func_149854_a(Block par1)
 	{		
 		if(par1 == RioVBlocks.bloodFlower)
 		{
 			return par1 == RioVBlocks.bloodGrass;
 		}
-		
+
 		return par1 == Blocks.grass || par1 == Blocks.dirt || par1 == Blocks.farmland;
 	}
 }

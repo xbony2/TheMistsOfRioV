@@ -24,7 +24,7 @@ public class BlockAnvil extends Block
 	public BlockAnvil()
 	{
 		super(Material.field_151574_g);
-		this.func_149647_a(TheMistsOfRioV.tab);
+		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
 		this.func_149676_a(0.0F, 0.0F, 0.0F, 1.0F, 0.80F, 1.0F);
 	}
 

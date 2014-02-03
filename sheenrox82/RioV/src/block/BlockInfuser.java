@@ -35,7 +35,7 @@ public class BlockInfuser extends BlockContainer
     {
         super(Material.field_151576_e);
         this.isActive = par3;
-        this.func_149647_a(TheMistsOfRioV.tab);
+        this.func_149647_a(TheMistsOfRioV.getInstance().tab);
     }
     
     @Override

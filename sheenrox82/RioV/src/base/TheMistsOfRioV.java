@@ -1,5 +1,6 @@
 package sheenrox82.RioV.src.base;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import sheenrox82.RioV.src.content.RioVBlocks;
@@ -25,8 +26,7 @@ public class TheMistsOfRioV
 	@SidedProxy(clientSide="sheenrox82.RioV.src.proxy.ClientProxy", serverSide="sheenrox82.RioV.src.proxy.CommonProxy")
 	public static CommonProxy commonProxy;
 
-	 public static CreativeTabs tab = new CreativeTabs(Util.MOD_ID)
-     {public Item getTabIconItem() {return RioVItems.onyxHelmet;}};
+	public CreativeTabs tab = new CreativeTabs(Util.MOD_ID) {public Item getTabIconItem() {return Item.func_150898_a(RioVBlocks.infuser);}};
 	public GuiHandler guiHandler = new GuiHandler();
 	public boolean riovValis;
 	public boolean bosses;

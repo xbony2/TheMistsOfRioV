@@ -17,7 +17,7 @@ public class BlockCoreOne extends Block
 	public BlockCoreOne()
 	{
 		super(Material.field_151566_D);
-		this.func_149647_a(TheMistsOfRioV.tab);
+		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
 	}
 	
 	/**@Override

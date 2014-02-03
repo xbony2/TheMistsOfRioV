@@ -30,7 +30,7 @@ public class BlockBlindOasisPortal extends BlockBreakable
 	public BlockBlindOasisPortal()
 	{
 		super(Util.MOD_ID + ":" + "blindOasisPortal", Material.field_151567_E, false);
-		this.func_149647_a(TheMistsOfRioV.tab);
+		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override

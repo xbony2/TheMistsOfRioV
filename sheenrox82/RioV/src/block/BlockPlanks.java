@@ -24,7 +24,7 @@ public class BlockPlanks extends Block
     public BlockPlanks()
     {
         super(Material.field_151575_d);
-        this.func_149647_a(TheMistsOfRioV.tab);
+        this.func_149647_a(TheMistsOfRioV.getInstance().tab);
     }
 
     @SideOnly(Side.CLIENT)

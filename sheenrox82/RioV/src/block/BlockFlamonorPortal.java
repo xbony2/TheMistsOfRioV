@@ -31,7 +31,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 	public BlockFlamonorPortal()
 	{
 		super(Util.MOD_ID + ":" + "flamonorPortal", Material.field_151567_E, false);
-		this.func_149647_a(TheMistsOfRioV.tab);
+		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override
