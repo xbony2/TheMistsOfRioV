@@ -178,7 +178,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void cape()
 	{
-		//DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
+		DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
 	}
 
 	public static int addArmor(String armorName)

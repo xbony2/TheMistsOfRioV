@@ -3,8 +3,6 @@ package sheenrox82.RioV.src.event;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.boss.EntityDragon;
@@ -24,7 +22,13 @@ import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.BonemealEvent;
+
+import org.lwjgl.opengl.GL11;
+
 import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.block.BlockRioVSapling;
+import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.handler.UpdateHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
@@ -166,10 +170,10 @@ public class Events
 	}
 
 	@SubscribeEvent
-	public void bonemealUsed(net.minecraftforge.event.entity.player.BonemealEvent event)
+	public void bonemealUsed(BonemealEvent event)
 	{
 		//May need to rewrite
-		/**if(event.world.func_147439_a(event.x, event.y, event.z) == RioVBlocks.glimmerwoodSapling)
+		if(event.world.func_147439_a(event.x, event.y, event.z) == RioVBlocks.glimmerwoodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.glimmerwoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}
@@ -187,7 +191,7 @@ public class Events
 		if(event.world.func_147439_a(event.x, event.y, event.z) == RioVBlocks.skywoodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.skywoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
-		}**/
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)

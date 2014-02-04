@@ -1,12 +1,15 @@
 package sheenrox82.RioV.src.block;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
@@ -21,7 +24,7 @@ public class BlockPlantCore extends BlockFlower
 	public BlockPlantCore()
 	{
 		super(0);
-		this.func_149647_a(null);
+		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override
@@ -51,6 +54,12 @@ public class BlockPlantCore extends BlockFlower
 		return Item.func_150898_a(this);
 	}
 
+	@SideOnly(Side.CLIENT)
+	public void func_149666_a(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+	{
+		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
+	}
+	
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
 

@@ -76,7 +76,7 @@ public class RioVBlocks
 	public static Block cherryPlanks = new BlockCoreOne().func_149663_c("cherryPlanks");
 	public static Block skywoodPlanks = new BlockCoreOne().func_149663_c("skywoodPlanks");
 	public static Block bloodPlanks = new BlockCoreOne().func_149663_c("bloodPlanks");
-	public static Block pepperPlant = new BlockCoreOne().func_149663_c("pepperPlant");
+	public static Block pepperPlant = new BlockPlantCore().func_149663_c("pepperPlant");
 	public static Block amethystOre = new BlockCoreOne().func_149663_c("amethystOre");
 	public static Block lamp = new BlockCoreOne().func_149715_a(0.7F).func_149663_c("lamp");
 	public static Block blackQuartz = new BlockCoreOne().func_149663_c("blackQuartz");
