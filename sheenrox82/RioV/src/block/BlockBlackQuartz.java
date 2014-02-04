@@ -107,7 +107,6 @@ public class BlockBlackQuartz extends Block
         return 39;
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
     public void func_149666_a(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
     {

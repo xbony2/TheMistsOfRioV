@@ -17,6 +17,7 @@ import net.minecraft.util.Direction;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.Util;
 import sheenrox82.RioV.src.world.teleporter.TeleporterFlamonor;
@@ -28,6 +29,7 @@ public class BlockVaerynPortal extends BlockBreakable
 	public BlockVaerynPortal()
 	{
 		super(Util.MOD_ID + ":" + "vaerynPortal", Material.field_151567_E, false);
+		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
 	}
 	
 	@Override

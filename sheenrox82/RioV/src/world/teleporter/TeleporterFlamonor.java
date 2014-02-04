@@ -1,10 +1,14 @@
 package sheenrox82.RioV.src.world.teleporter;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.util.MathHelper;
@@ -12,18 +16,25 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.teleporter.position.PortalPositionFlamonor;
 
 public class TeleporterFlamonor extends Teleporter
 {
     private final WorldServer worldServerInstance;
-    /** A private Random() function in Teleporter */
-
+    /**
+     * A private Random() function in Teleporter
+     */
     private final Random random;
-    /** Stores successful portal placement locations for rapid lookup. */
-
+    /**
+     * Stores successful portal placement locations for rapid lookup.
+     */
     private final LongHashMap destinationCoordinateCache = new LongHashMap();
-  
+    /**
+     * A list of valid keys for the destinationCoordainteCache. These are based on the X & Z of the players initial
+     * location.
+     */
+    private final List destinationCoordinateKeys = new ArrayList();
+    private static final String __OBFID = "CL_00000153";
+
     public TeleporterFlamonor(WorldServer par1WorldServer)
     {
     	super(par1WorldServer);
@@ -34,7 +45,6 @@ public class TeleporterFlamonor extends Teleporter
     /**
      * Place an entity in a nearby portal, creating one if necessary.
      */
-
     public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
     {
         if (this.worldServerInstance.provider.dimensionId != 1)
@@ -76,7 +86,6 @@ public class TeleporterFlamonor extends Teleporter
     /**
      * Place an entity in a nearby portal which already exists.
      */
-
     public boolean placeInExistingPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
     {
         short short1 = 128;
@@ -93,12 +102,12 @@ public class TeleporterFlamonor extends Teleporter
 
         if (this.destinationCoordinateCache.containsItem(j1))
         {
-        	PortalPositionFlamonor portalposition = (PortalPositionFlamonor)this.destinationCoordinateCache.getValueByKey(j1);
+            TeleporterFlamonor.PortalPosition portalposition = (TeleporterFlamonor.PortalPosition)this.destinationCoordinateCache.getValueByKey(j1);
             d3 = 0.0D;
             i = portalposition.posX;
             j = portalposition.posY;
             k = portalposition.posZ;
-            portalposition.field_85087_d = this.worldServerInstance.getTotalWorldTime();
+            portalposition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
             flag = false;
         }
         else
@@ -140,7 +149,8 @@ public class TeleporterFlamonor extends Teleporter
         {
             if (flag)
             {
-                this.destinationCoordinateCache.add(j1, new PortalPositionFlamonor(this, i, j, k, this.worldServerInstance.getTotalWorldTime()));
+                this.destinationCoordinateCache.add(j1, new TeleporterFlamonor.PortalPosition(i, j, k, this.worldServerInstance.getTotalWorldTime()));
+                this.destinationCoordinateKeys.add(Long.valueOf(j1));
             }
 
             double d11 = (double)i + 0.5D;
@@ -487,10 +497,39 @@ public class TeleporterFlamonor extends Teleporter
      * called periodically to remove out-of-date portal locations from the cache list. Argument par1 is a
      * WorldServer.getTotalWorldTime() value.
      */
-
     public void removeStalePortalLocations(long par1)
     {
-    	super.removeStalePortalLocations(par1);
-       
+        if (par1 % 100L == 0L)
+        {
+            Iterator iterator = this.destinationCoordinateKeys.iterator();
+            long j = par1 - 600L;
+
+            while (iterator.hasNext())
+            {
+                Long olong = (Long)iterator.next();
+                TeleporterFlamonor.PortalPosition portalposition = (TeleporterFlamonor.PortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
+
+                if (portalposition == null || portalposition.lastUpdateTime < j)
+                {
+                    iterator.remove();
+                    this.destinationCoordinateCache.remove(olong.longValue());
+                }
+            }
+        }
+    }
+
+    public class PortalPosition extends ChunkCoordinates
+    {
+        /**
+         * The worldtime at which this PortalPosition was last verified
+         */
+        public long lastUpdateTime;
+        private static final String __OBFID = "CL_00000154";
+
+        public PortalPosition(int par2, int par3, int par4, long par5)
+        {
+            super(par2, par3, par4);
+            this.lastUpdateTime = par5;
+        }
     }
 }

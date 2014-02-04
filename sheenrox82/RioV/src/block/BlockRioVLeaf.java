@@ -25,7 +25,7 @@ import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockRioVLeaf extends BlockLeavesBase implements IShearable
+public class BlockRioVLeaf extends BlockLeavesBase
 {
     protected int field_150127_b;
 
@@ -37,7 +37,7 @@ public class BlockRioVLeaf extends BlockLeavesBase implements IShearable
 
 	public BlockRioVLeaf()
 	{
-		super(Material.field_151584_j, false);
+		super(Material.field_151584_j, true); //wow... I had it to false the whole time, and I was wondering why the leaves were fucking up...
 		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
 	    this.func_149672_a(field_149779_h);
 	}
@@ -315,20 +315,6 @@ public class BlockRioVLeaf extends BlockLeavesBase implements IShearable
     protected ItemStack func_149644_j(int p_149644_1_)
     {
         return new ItemStack(Item.func_150898_a(this), 1, p_149644_1_ & 3);
-    }
-
-    @Override
-    public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z)
-    {
-        return true;
-    }
-
-    @Override
-    public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
-    {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z) & 3));
-        return ret;
     }
 
     @Override

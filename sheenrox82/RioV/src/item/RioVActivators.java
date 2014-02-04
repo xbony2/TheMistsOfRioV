@@ -26,7 +26,7 @@ public class RioVActivators extends Item
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
 	{
-		if(par1ItemStack.getItem().equals(RioVItems.blindOasisActivator))
+		if(this ==  RioVItems.blindOasisActivator)
 		{
 			if (par7 == 0)
 	        {
@@ -75,7 +75,7 @@ public class RioVActivators extends Item
 	        }
 		}
 
-		if(par1ItemStack.getItem().equals(RioVItems.vaerynActivator))
+		if(this == RioVItems.vaerynActivator)
 		{
 			if (par7 == 0)
 	        {
@@ -123,7 +123,7 @@ public class RioVActivators extends Item
 	            return true;
 	        }
 		}
-		if(par1ItemStack.getItem().equals(RioVItems.flamonorActivator))
+		if(this == RioVItems.flamonorActivator)
 		{
 			if (par7 == 0)
 	        {
@@ -172,7 +172,7 @@ public class RioVActivators extends Item
 	        }
 		}
 
-		if(par1ItemStack.getItem().equals(RioVItems.sanctuatiteActivator))
+		if(this == RioVItems.sanctuatiteActivator)
 		{
 			if (par7 == 0)
 	        {

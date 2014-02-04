@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -22,13 +23,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.util.Util;
 
 import com.google.common.collect.Maps;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockWhiteFire extends Block
+public class BlockWhiteFire extends BlockFire
 {
     @Deprecated
     private int[] field_149849_a = new int[4096];
@@ -39,7 +41,7 @@ public class BlockWhiteFire extends Block
 
     public BlockWhiteFire()
     {
-        super(Material.field_151581_o);
+        super();
         this.func_149675_a(true);
     }
 
@@ -408,7 +410,7 @@ public class BlockWhiteFire extends Block
     @SideOnly(Side.CLIENT)
     public void func_149651_a(IIconRegister p_149651_1_)
     {
-        this.field_149850_M = new IIcon[] {p_149651_1_.registerIcon(this.func_149641_N() + "_layer_0"), p_149651_1_.registerIcon(this.func_149641_N() + "_layer_1")};
+        this.field_149850_M = new IIcon[] {p_149651_1_.registerIcon(Util.MOD_ID + ":" + "whiteFire_layer_0"), p_149651_1_.registerIcon(Util.MOD_ID + ":" + "whiteFire_layer_1")};
     }
 
     @SideOnly(Side.CLIENT)

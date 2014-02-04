@@ -21,84 +21,10 @@ public class WorldProviderVaeryn extends WorldProvider
 		this.hasNoSky = false;
 	}
 
-	public IChunkProvider createChunkGenerator()
-	{
-		return new ChunkProviderVaeryn(this.worldObj, this.worldObj.getSeed(), true);
-	}
-
-	public int getAverageGroundLevel()
-	{
-		return 0;
-	}
-
-	
-	@SideOnly(Side.CLIENT)
-	public boolean doesXZShowFog(int par1, int par2)
-	{
-		return false;
-	}
-
-	public String getDimensionName()
-	{
-		return "Vaeryn";
-	}
-
-	public boolean renderStars()
-	{
-		return true;
-	}
-
-	public float getStarBrightness(World world, float f)
-	{
-		return 10.0F;
-	}
-
-	public boolean renderClouds()
-	{
-		return true;
-	}
-
-	public boolean renderVoidFog()
-	{
-		return false;
-	}
-
-	public boolean renderEndSky()
-	{
-		return true;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public boolean isSkyColored()
-	{
-		return false;
-	}
-
-	public boolean canRespawnHere()
-	{
-		return false;
-	}
-
-	public boolean isSurfaceWorld()
-	{
-		return false;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public float getCloudHeight()
-	{
-		return 128.0F;
-	}
-
-	public boolean canCoordinateBeSpawn(int par1, int par2)
-	{
-		return false;
-	}
-
-	public ChunkCoordinates getEntrancePortalLocation()
-	{
-		return new ChunkCoordinates(50, 5, 0);
-	}
+    public String getDimensionName()
+    {
+        return "Overworld";
+    }
 
 	@SideOnly(Side.CLIENT)
 	public String getWelcomeMessage()

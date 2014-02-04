@@ -8,6 +8,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.SpawnerAnimals;
@@ -72,73 +73,65 @@ public class ChunkProviderFlamonor implements IChunkProvider
 
 	public void func_28071_a(int var1, int var2, Block[] var3)
 	{
-		byte var4 = 2;
-		int var5 = var4 + 1;
-		byte var6 = 33;
-		int var7 = var4 + 1;
-		this.noiseArray = this.initializeNoiseField(this.noiseArray, var1 * var4, 0, var2 * var4, var5, var6, var7);
+		double var4 = 0.03125D;
+		this.field_28079_r = this.noiseGenerator4.generateNoiseOctaves(this.field_28079_r, var1 * 16, var2 * 16, 0, 16, 16, 1, var4, var4, 1.0D);
+		this.field_28078_s = this.noiseGenerator4.generateNoiseOctaves(this.field_28078_s, var1 * 16, 109, var2 * 16, 16, 1, 16, var4, 1.0D, var4);
+		this.field_28077_t = this.noiseGenerator5.generateNoiseOctaves(this.field_28077_t, var1 * 16, var2 * 16, 0, 16, 16, 1, var4 * 2.0D, var4 * 2.0D, var4 * 2.0D);
 
-		for (int var8 = 0; var8 < var4; ++var8)
+		for (int var6 = 0; var6 < 16; ++var6)
 		{
-			for (int var9 = 0; var9 < var4; ++var9)
+			for (int var7 = 0; var7 < 16; ++var7)
 			{
-				for (int var10 = 0; var10 < 32; ++var10)
+				int var8 = (int)(this.field_28077_t[var6 + var7 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int var9 = -1;
+				this.topBlock = RioVBlocks.bloodGrass;
+				this.fillerBlock = RioVBlocks.bloodDirt;
+				Block var10 = this.topBlock;
+				Block var11 = this.fillerBlock;
+				Block var12 = RioVBlocks.flamonorRock;
+
+				for (int var13 = 127; var13 >= 0; --var13)
 				{
-					double var11 = 0.25D;
-					double var13 = this.noiseArray[((var8 + 0) * var7 + var9 + 0) * var6 + var10 + 0];
-					double var15 = this.noiseArray[((var8 + 0) * var7 + var9 + 1) * var6 + var10 + 0];
-					double var17 = this.noiseArray[((var8 + 1) * var7 + var9 + 0) * var6 + var10 + 0];
-					double var19 = this.noiseArray[((var8 + 1) * var7 + var9 + 1) * var6 + var10 + 0];
-					double var21 = (this.noiseArray[((var8 + 0) * var7 + var9 + 0) * var6 + var10 + 1] - var13) * var11;
-					double var23 = (this.noiseArray[((var8 + 0) * var7 + var9 + 1) * var6 + var10 + 1] - var15) * var11;
-					double var25 = (this.noiseArray[((var8 + 1) * var7 + var9 + 0) * var6 + var10 + 1] - var17) * var11;
-					double var27 = (this.noiseArray[((var8 + 1) * var7 + var9 + 1) * var6 + var10 + 1] - var19) * var11;
+					int var14 = (var7 * 16 + var6) * 128 + var13;
+					Block var15 = var3[var14];
 
-					for (int var29 = 0; var29 < 4; ++var29)
+					if (var15 == Blocks.air)
 					{
-						double var30 = 0.125D;
-						double var32 = var13;
-						double var34 = var15;
-						double var36 = (var17 - var13) * var30;
-						double var38 = (var19 - var15) * var30;
-
-						for (int var40 = 0; var40 < 8; ++var40)
+						var9 = -1;
+					}
+					else if (var15 == var12)
+					{
+						if (var9 == -1)
 						{
-							int var41 = var40 + var8 * 8 << 11 | 0 + var9 * 8 << 7 | var10 * 4 + var29;
-							short var42 = 128;
-							double var43 = 0.125D;
-							double var45 = var32;
-							double var47 = (var34 - var32) * var43;
-
-							for (int var49 = 0; var49 < 8; ++var49)
+							if (var8 <= 0)
 							{
-								Block block = null;
-
-								if (var45 > 0.0D)
-								{
-									block = RioVBlocks.flamonorRock;
-								}
-
-								var3[var41] = block;
-								var41 += var42;
-								var45 += var47;
+								var10 = Blocks.air;
+								var11 = var12;
 							}
 
-							var32 += var36;
-							var34 += var38;
-						}
+							var9 = var8;
 
-						var13 += var21;
-						var15 += var23;
-						var17 += var25;
-						var19 += var27;
+							if (var13 >= 0)
+							{
+								var3[var14] = var10;
+							}
+							else
+							{
+								var3[var14] = var11;
+							}
+						}
+						else if (var9 > 0)
+						{
+							--var9;
+							var3[var14] = var11;
+						}
 					}
 				}
 			}
 		}
 	}
 
-	public void func_28072_a(int var1, int var2, byte[] var3)
+	public void func_28072_a(int var1, int var2, Block[] var3)
 	{
 		double var4 = 0.03125D;
 		this.field_28079_r = this.noiseGenerator4.generateNoiseOctaves(this.field_28079_r, var1 * 16, var2 * 16, 0, 16, 16, 1, var4, var4, 1.0D);
@@ -153,21 +146,45 @@ public class ChunkProviderFlamonor implements IChunkProvider
 				int var9 = -1;
 				this.topBlock = RioVBlocks.bloodGrass;
 				this.fillerBlock = RioVBlocks.bloodDirt;
+				Block var10 = this.topBlock;
+				Block var11 = this.fillerBlock;
+				Block var12 = RioVBlocks.flamonorRock;
 
 				for (int var13 = 127; var13 >= 0; --var13)
 				{
-					if (var9 == -1)
-					{
-						if (var8 <= 0)
-						{
-						}
+					int var14 = (var7 * 16 + var6) * 128 + var13;
+					Block var15 = var3[var14];
 
-						var9 = var8;
-					}
-					else if (var9 > 0)
+					if (var15 == Blocks.air)
 					{
-						--var9;
-						
+						var9 = -1;
+					}
+					else if (var15 == var12)
+					{
+						if (var9 == -1)
+						{
+							if (var8 <= 0)
+							{
+								var10 = Blocks.air;
+								var11 = var12;
+							}
+
+							var9 = var8;
+
+							if (var13 >= 0)
+							{
+								var3[var14] = var10;
+							}
+							else
+							{
+								var3[var14] = var11;
+							}
+						}
+						else if (var9 > 0)
+						{
+							--var9;
+							var3[var14] = var11;
+						}
 					}
 				}
 			}
@@ -192,13 +209,14 @@ public class ChunkProviderFlamonor implements IChunkProvider
 	public Chunk provideChunk(int var1, int var2)
 	{
 		this.rand.setSeed((long)var1 * 341873128712L + (long)var2 * 132897987541L);
-		Block[] ablock = new Block[65536];
-		this.func_28071_a(var1, var2, ablock);
-		Chunk var4 = new Chunk(this.worldObj, var1, var2);
+		Block[] var3 = new Block[32768];
+		this.func_28071_a(var1, var2, var3);
+		this.func_28072_a(var1, var2, var3);
+		Chunk var4 = new Chunk(this.worldObj, var3, var1, var2);
 		var4.generateSkylightMap();
 		if (this.mapFeaturesEnabled)
 		{
-			this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, var1, var2, ablock);
+			this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, var1, var2, var3);
 		}
 		return var4;
 	}
@@ -341,11 +359,10 @@ public class ChunkProviderFlamonor implements IChunkProvider
 			int var6 = k + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = l + rand.nextInt(16);
-			new WorldGenBalance(RioVBlocks.bloodBerryBush).generate(worldObj, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodFlower).generate(worldObj, rand, var6, var7, var8);
+			//new WorldGenBalance(RioVBlocks.bloodBerryBush).generate(worldObj, rand, var6, var7, var8);
+			//new WorldGenBalance(RioVBlocks.bloodFlower).generate(worldObj, rand, var6, var7, var8);
 		}
 
-		biomegenbase.decorate(this.worldObj, this.rand, k, l);
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
 
 		BlockSand.field_149832_M = false;
