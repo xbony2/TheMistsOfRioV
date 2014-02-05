@@ -78,9 +78,9 @@ public class GuiMediumBag extends GuiContainer
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(iconLocation);
-		int k = (this.width - this.xSize) / 2;
-		int l = (this.height - this.ySize) / 2;
-		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+        int k = (this.field_146294_l - this.field_146999_f) / 2;
+        int l = (this.field_146295_m - this.field_147000_g) / 2;
+        this.drawTexturedModalRect(k, l, 0, 0, this.field_146999_f, this.field_147000_g + 120);
 		drawPlayerModel(k + 51, l + 75, 30, (float)(k + 51) - this.xSize_lo, (float)(l + 75 - 50) - this.ySize_lo, Minecraft.getMinecraft().thePlayer);
 		
 	}

@@ -2,6 +2,7 @@ package sheenrox82.RioV.src.recipe;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,6 +12,9 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.RecipeFireworks;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
@@ -22,15 +26,15 @@ public class AnvilCraftingManager
 	public String[] shovel = new String[] {"X", "!", "!", "!"};
 	public String[] axe = new String[] {"XX", "X!", " !", " !"};
 	public String[] dagger = new String[] {"X", "!"};
-	
+
 	public String[] helmet = new String[] {"XXX", "X X"};
 	public String[] chestplate = new String[] {"X X", "XXX", "XXX"};
 	public String[] leggings = new String[] {"XXX", "X X", "X X"};
 	public String[] boots = new String[] {"X X", "X X"};
 	public String[] shield = { "X X", "XXX", " X " };
-	
+
 	public static final int WILDCARD_VALUE = Short.MAX_VALUE;
-	public static AnvilCraftingManager instance;
+	public static AnvilCraftingManager instance = new AnvilCraftingManager();
 	public static List recipes = new ArrayList();
 
 	public static final AnvilCraftingManager getInstance()
@@ -41,7 +45,7 @@ public class AnvilCraftingManager
 	public AnvilCraftingManager()
 	{
 		recipes = new ArrayList();
-
+		
 		this.addRecipe(new ItemStack(RioVItems.amethystPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
 		this.addRecipe(new ItemStack(RioVItems.amethystSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
 		this.addRecipe(new ItemStack(RioVItems.amethystShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
@@ -136,168 +140,176 @@ public class AnvilCraftingManager
 		this.addRecipe(new ItemStack(RioVItems.alerisChestplate, 1), new Object[] { chestplate, Character.valueOf('X'), RioVItems.aleris});
 		this.addRecipe(new ItemStack(RioVItems.alerisLeggings, 1), new Object[] { leggings, Character.valueOf('X'), RioVItems.aleris});
 		this.addRecipe(new ItemStack(RioVItems.alerisBoots, 1), new Object[] { boots, Character.valueOf('X'), RioVItems.aleris});
-		
-		Collections.sort(this.recipes, new AnvilRecipeSorter(this));
-		System.out.println(this.recipes.size() + " recipes");
+		Collections.sort(this.recipes, new Comparator()
+		{
+			public int compare(IRecipe par1IRecipe, IRecipe par2IRecipe)
+			{
+				return par1IRecipe instanceof AnvilShapelessRecipes && par2IRecipe instanceof AnvilShapedRecipes ? 1 : (par2IRecipe instanceof AnvilShapelessRecipes && par1IRecipe instanceof AnvilShapedRecipes ? -1 : (par2IRecipe.getRecipeSize() < par1IRecipe.getRecipeSize() ? -1 : (par2IRecipe.getRecipeSize() > par1IRecipe.getRecipeSize() ? 1 : 0)));
+			}
+			public int compare(Object par1Obj, Object par2Obj)
+			{
+				return this.compare((IRecipe)par1Obj, (IRecipe)par2Obj);
+			}
+		});
 	}
 
 	public AnvilShapedRecipes addRecipe(ItemStack par1ItemStack, Object ... par2ArrayOfObj)
 	{
-		String var3 = "";
-		int var4 = 0;
-		int var5 = 0;
-		int var6 = 0;
+		String s = "";
+		int i = 0;
+		int j = 0;
+		int k = 0;
 
-		if (par2ArrayOfObj[var4] instanceof String[])
+		if (par2ArrayOfObj[i] instanceof String[])
 		{
-			String[] var7 = (String[])((String[])par2ArrayOfObj[var4++]);
+			String[] astring = (String[])((String[])par2ArrayOfObj[i++]);
 
-			for (int var8 = 0; var8 < var7.length; ++var8)
+			for (int l = 0; l < astring.length; ++l)
 			{
-				String var9 = var7[var8];
-				++var6;
-				var5 = var9.length();
-				var3 = var3 + var9;
+				String s1 = astring[l];
+				++k;
+				j = s1.length();
+				s = s + s1;
 			}
 		}
 		else
 		{
-			while (par2ArrayOfObj[var4] instanceof String)
+			while (par2ArrayOfObj[i] instanceof String)
 			{
-				String var11 = (String)par2ArrayOfObj[var4++];
-				++var6;
-				var5 = var11.length();
-				var3 = var3 + var11;
+				String s2 = (String)par2ArrayOfObj[i++];
+				++k;
+				j = s2.length();
+				s = s + s2;
 			}
 		}
 
-		HashMap var12;
+		HashMap hashmap;
 
-		for (var12 = new HashMap(); var4 < par2ArrayOfObj.length; var4 += 2)
+		for (hashmap = new HashMap(); i < par2ArrayOfObj.length; i += 2)
 		{
-			Character var13 = (Character)par2ArrayOfObj[var4];
-			ItemStack var14 = null;
+			Character character = (Character)par2ArrayOfObj[i];
+			ItemStack itemstack1 = null;
 
-			if (par2ArrayOfObj[var4 + 1] instanceof Item)
+			if (par2ArrayOfObj[i + 1] instanceof Item)
 			{
-				var14 = new ItemStack((Item)par2ArrayOfObj[var4 + 1]);
+				itemstack1 = new ItemStack((Item)par2ArrayOfObj[i + 1]);
 			}
-			else if (par2ArrayOfObj[var4 + 1] instanceof Block)
+			else if (par2ArrayOfObj[i + 1] instanceof Block)
 			{
-				var14 = new ItemStack((Block)par2ArrayOfObj[var4 + 1], 1, -1);
+				itemstack1 = new ItemStack((Block)par2ArrayOfObj[i + 1], 1, 32767);
 			}
-			else if (par2ArrayOfObj[var4 + 1] instanceof ItemStack)
+			else if (par2ArrayOfObj[i + 1] instanceof ItemStack)
 			{
-				var14 = (ItemStack)par2ArrayOfObj[var4 + 1];
+				itemstack1 = (ItemStack)par2ArrayOfObj[i + 1];
 			}
 
-			var12.put(var13, var14);
+			hashmap.put(character, itemstack1);
 		}
 
-		ItemStack[] var15 = new ItemStack[var5 * var6];
+		ItemStack[] aitemstack = new ItemStack[j * k];
 
-		for (int var16 = 0; var16 < var5 * var6; ++var16)
+		for (int i1 = 0; i1 < j * k; ++i1)
 		{
-			char var10 = var3.charAt(var16);
+			char c0 = s.charAt(i1);
 
-			if (var12.containsKey(Character.valueOf(var10)))
+			if (hashmap.containsKey(Character.valueOf(c0)))
 			{
-				//var15[var16] = ((ItemStack)var12.get(Character.valueOf(var10))).copy();
+				aitemstack[i1] = ((ItemStack)hashmap.get(Character.valueOf(c0))).copy();
 			}
 			else
 			{
-				var15[var16] = null;
+				aitemstack[i1] = null;
 			}
 		}
 
-		AnvilShapedRecipes var17 = new AnvilShapedRecipes(var5, var6, var15, par1ItemStack);
-		this.recipes.add(var17);
-		return var17;
+		AnvilShapedRecipes shapedrecipes = new AnvilShapedRecipes(j, k, aitemstack, par1ItemStack);
+		this.recipes.add(shapedrecipes);
+		return shapedrecipes;
 	}
 
 	public void addShapelessRecipe(ItemStack par1ItemStack, Object ... par2ArrayOfObj)
 	{
-		ArrayList var3 = new ArrayList();
-		Object[] var4 = par2ArrayOfObj;
-		int var5 = par2ArrayOfObj.length;
+		ArrayList arraylist = new ArrayList();
+		Object[] aobject = par2ArrayOfObj;
+		int i = par2ArrayOfObj.length;
 
-		for (int var6 = 0; var6 < var5; ++var6)
+		for (int j = 0; j < i; ++j)
 		{
-			Object var7 = var4[var6];
+			Object object1 = aobject[j];
 
-			if (var7 instanceof ItemStack)
+			if (object1 instanceof ItemStack)
 			{
-				var3.add(((ItemStack)var7).copy());
+				arraylist.add(((ItemStack)object1).copy());
 			}
-			else if (var7 instanceof Item)
+			else if (object1 instanceof Item)
 			{
-				var3.add(new ItemStack((Item)var7));
+				arraylist.add(new ItemStack((Item)object1));
 			}
 			else
 			{
-				if (!(var7 instanceof Block))
+				if (!(object1 instanceof Block))
 				{
-					throw new RuntimeException("Invalid shapeless recipe!");
+					throw new RuntimeException("Invalid shapeless recipy!");
 				}
 
-				var3.add(new ItemStack((Block)var7));
+				arraylist.add(new ItemStack((Block)object1));
 			}
 		}
 
-		this.recipes.add(new AnvilShapelessRecipes(par1ItemStack, var3));
+		this.recipes.add(new AnvilShapelessRecipes(par1ItemStack, arraylist));
 	}
 
 	public ItemStack findMatchingRecipe(InventoryCrafting par1InventoryCrafting, World par2World)
 	{
-		int var3 = 0;
-		ItemStack var4 = null;
-		ItemStack var5 = null;
-		int var6;
+		int i = 0;
+		ItemStack itemstack = null;
+		ItemStack itemstack1 = null;
+		int j;
 
-		for (var6 = 0; var6 < par1InventoryCrafting.getSizeInventory(); ++var6)
+		for (j = 0; j < par1InventoryCrafting.getSizeInventory(); ++j)
 		{
-			ItemStack var7 = par1InventoryCrafting.getStackInSlot(var6);
+			ItemStack itemstack2 = par1InventoryCrafting.getStackInSlot(j);
 
-			if (var7 != null)
+			if (itemstack2 != null)
 			{
-				if (var3 == 0)
+				if (i == 0)
 				{
-					var4 = var7;
+					itemstack = itemstack2;
 				}
 
-				if (var3 == 1)
+				if (i == 1)
 				{
-					var5 = var7;
+					itemstack1 = itemstack2;
 				}
 
-				++var3;
+				++i;
 			}
 		}
 
-		if (var3 == 2 && var4.getItem() == var5.getItem() && var4.stackSize == 1 && var5.stackSize == 1 && var4.getItem().isRepairable())
+		if (i == 2 && itemstack.getItem() == itemstack1.getItem() && itemstack.stackSize == 1 && itemstack1.stackSize == 1 && itemstack.getItem().isRepairable())
 		{
-			Item var11 = var4.getItem();
-			int var13 = var11.getMaxDamage() - var4.getItemDamageForDisplay();
-			int var8 = var11.getMaxDamage() - var5.getItemDamageForDisplay();
-			int var9 = var13 + var8 + var11.getMaxDamage() * 5 / 100;
-			int var10 = var11.getMaxDamage() - var9;
+			Item item = itemstack.getItem();
+			int j1 = item.getMaxDamage() - itemstack.getItemDamageForDisplay();
+			int k = item.getMaxDamage() - itemstack1.getItemDamageForDisplay();
+			int l = j1 + k + item.getMaxDamage() * 5 / 100;
+			int i1 = item.getMaxDamage() - l;
 
-			if (var10 < 0)
+			if (i1 < 0)
 			{
-				var10 = 0;
+				i1 = 0;
 			}
 
-			return new ItemStack(var4.getItem(), 1, var10);
+			return new ItemStack(itemstack.getItem(), 1, i1);
 		}
 		else
 		{
-			for (var6 = 0; var6 < this.recipes.size(); ++var6)
+			for (j = 0; j < this.recipes.size(); ++j)
 			{
-				IRecipe var12 = (IRecipe)this.recipes.get(var6);
+				IRecipe irecipe = (IRecipe)this.recipes.get(j);
 
-				if (var12.matches(par1InventoryCrafting, par2World))
+				if (irecipe.matches(par1InventoryCrafting, par2World))
 				{
-					return var12.getCraftingResult(par1InventoryCrafting);
+					return irecipe.getCraftingResult(par1InventoryCrafting);
 				}
 			}
 

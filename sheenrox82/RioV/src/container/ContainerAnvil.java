@@ -33,27 +33,28 @@ public class ContainerAnvil extends Container
 		posZ = z;
 		this.addSlotToContainer(new SlotCrafting(inventoryplayer.player, craftMatrix, craftResult, 0, 129, 44));
 
-		for (int i = 0; i < 4; i++)
+		for(int l = 0; l < 4; l++)
 		{
-			for (int j = 0; j < 3; j++)
+			for(int k1 = 0; k1 < 3; k1++)
 			{
-				addSlotToContainer(new Slot(craftMatrix, j + i * 5, 42 + j * 18, 17 + i * 18));
+				this.addSlotToContainer(new Slot(craftMatrix, k1 + l * 5, 44 + k1 * 18, 8 + l * 18));
+			}
+
+		}
+
+		for(int i1 = 0; i1 < 3; i1++)
+		{
+			for(int l1 = 0; l1 < 9; l1++)
+			{
+				this.addSlotToContainer(new Slot(inventoryplayer, l1 + i1 * 9 + 9, 8 + l1 * 18, 97 + i1 * 18));
 			}
 		}
 
-		for (int i = 0; i < 3; i++)
+		for(int j1 = 0; j1 < 9; j1++)
 		{
-			for (int j = 0; j < 9; j++)
-			{
-				addSlotToContainer(new Slot(inventoryplayer, j + i * 9 + 9, 8 + j * 18, 102 + i * 18));
-			}
+			this.addSlotToContainer(new Slot(inventoryplayer, j1, 8 + j1 * 18, 155));
 		}
 
-		for (int i = 0; i < 9; i++)
-		{
-			addSlotToContainer(new Slot(inventoryplayer, i, 8 + i * 18, 160));
-		}
-		
 		onCraftMatrixChanged(craftMatrix);
 	}
 
@@ -65,73 +66,73 @@ public class ContainerAnvil extends Container
 	public void onContainerClosed(EntityPlayer entityplayer)
 	{
 		super.onContainerClosed(entityplayer);
-		if(worldObj.isRemote)
+
+		if (!this.worldObj.isRemote)
 		{
-			return;
-		}
-		for(int i = 0; i < 12; i++)
-		{
-			ItemStack itemstack = craftMatrix.getStackInSlot(i);
-			if(itemstack != null)
+			for (int i = 0; i < 12; ++i)
 			{
-				entityplayer.dropPlayerItemWithRandomChoice(itemstack, false);
+				ItemStack itemstack = this.craftMatrix.getStackInSlotOnClosing(i);
+
+				if (itemstack != null)
+				{
+					entityplayer.dropPlayerItemWithRandomChoice(itemstack, false);
+				}
 			}
 		}
 
 	}
 
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
-    {
-        return this.worldObj.func_147439_a(this.posX, this.posY, this.posZ) != RioVBlocks.anvil ? false : par1EntityPlayer.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
-    }
+	{    
+		return true;
+	}
 
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	{
+		super.transferStackInSlot(par1EntityPlayer, par2);
 		ItemStack itemstack = null;
 		Slot slot = (Slot)inventorySlots.get(par2);
-		if(slot != null && slot.getHasStack())
+
+		ItemStack itemstack1 = slot.getStack();
+		itemstack = itemstack1.copy();
+		if(par2 == 0)
 		{
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
-			if(par2 == 0)
+			if(!mergeItemStack(itemstack1, 10, 46, true))
 			{
-				if(!mergeItemStack(itemstack1, 10, 46, true))
+				return null;
+			}
+		} else
+			if(par2 >= 10 && par2 < 37)
+			{
+				if(!mergeItemStack(itemstack1, 37, 46, false))
 				{
 					return null;
 				}
 			} else
-				if(par2 >= 10 && par2 < 37)
+				if(par2 >= 37 && par2 < 46)
 				{
-					if(!mergeItemStack(itemstack1, 37, 46, false))
+					if(!mergeItemStack(itemstack1, 10, 37, false))
 					{
 						return null;
 					}
 				} else
-					if(par2 >= 37 && par2 < 46)
+					if(!mergeItemStack(itemstack1, 10, 46, false))
 					{
-						if(!mergeItemStack(itemstack1, 10, 37, false))
-						{
-							return null;
-						}
-					} else
-						if(!mergeItemStack(itemstack1, 10, 46, false))
-						{
-							return null;
-						}
-			if(itemstack1.stackSize == 0)
-			{
-				slot.putStack(null);
-			} else
-			{
-				slot.onSlotChanged();
-			}
-			if(itemstack1.stackSize != itemstack.stackSize)
-			{
-				slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
-			} else
-			{
-				return null;
-			}
+						return null;
+					}
+		if(itemstack1.stackSize == 0)
+		{
+			slot.putStack(null);
+		} else
+		{
+			slot.onSlotChanged();
+		}
+		if(itemstack1.stackSize != itemstack.stackSize)
+		{
+			slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
+		} else
+		{
+			return null;
 		}
 		return itemstack;
 	}
