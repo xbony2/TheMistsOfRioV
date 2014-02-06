@@ -59,7 +59,7 @@ public class Events
 					{
 						if(!hasSeen)
 						{
-							p.func_145747_a(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! An update is available for " + Util.MOD_NAME + ". Check http://goo.gl/Wf3zCW for more info. - sheenrox82"));
+							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! An update is available for " + Util.MOD_NAME + ". Check http://goo.gl/Wf3zCW for more info. - sheenrox82"));
 							hasSeen = true;
 						}
 					}
@@ -68,7 +68,7 @@ public class Events
 					{
 						if(!hasSeen)
 						{
-							p.func_145747_a(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 							hasSeen = true;
 						}	
 					}
@@ -128,35 +128,35 @@ public class Events
 		{
 			if (event.entityLiving instanceof EntityBlaze) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 1);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 1);
 			}
 			if (event.entityLiving instanceof EntityDragon) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 40);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 40);
 			}
 			if (event.entityLiving instanceof EntityEnderman) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 1);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 1);
 			}
 			if (event.entityLiving instanceof EntityCreeper) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 1);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 1);
 			}
 			if (event.entityLiving instanceof EntityGhast) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 3);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 3);
 			}
 			if (event.entityLiving instanceof EntityPigZombie) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 2);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 2);
 			}
 			if (event.entityLiving instanceof EntityWitch) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 2);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 2);
 			}
 			if (event.entityLiving instanceof EntityWither) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.vaiziCurrency, 5);
+				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 5);
 			}
 		}
 
@@ -164,7 +164,7 @@ public class Events
 		{
 			if (event.entityLiving instanceof EntityHorse) 
 			{
-				event.entityLiving.func_145779_a(RioVItems.horseMeat, 2);
+				event.entityLiving.dropItem(RioVItems.horseMeat, 2);
 			}
 		}
 	}
@@ -173,22 +173,22 @@ public class Events
 	public void bonemealUsed(BonemealEvent event)
 	{
 		//May need to rewrite
-		if(event.world.func_147439_a(event.x, event.y, event.z) == RioVBlocks.glimmerwoodSapling)
+		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.glimmerwoodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.glimmerwoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 
-		if(event.world.func_147439_a(event.x, event.y, event.z) == RioVBlocks.cherryBlossomSapling)
+		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.cherryBlossomSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.cherryBlossomSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 
-		if(event.world.func_147439_a(event.x, event.y, event.z) == RioVBlocks.bloodSapling)
+		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.bloodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.bloodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 
-		if(event.world.func_147439_a(event.x, event.y, event.z) == RioVBlocks.skywoodSapling)
+		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.skywoodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.skywoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
 		}

@@ -20,8 +20,8 @@ public class BlockVoidStill extends BlockStaticLiquid
 	
 	public BlockVoidStill() 
 	{
-		super(Material.field_151586_h);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		super(Material.water);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@SideOnly(Side.CLIENT)

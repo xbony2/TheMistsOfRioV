@@ -38,12 +38,6 @@ public class RioVAxe extends ItemAxe
 
 		return par1ItemStack.isItemEnchanted();
 	}
-
-	@Override
-	public float func_150893_a(ItemStack p_150893_1_, Block p_150893_2_)
-    {
-        return p_150893_2_.func_149688_o() != Material.field_151575_d && p_150893_2_.func_149688_o() != Material.field_151585_k && p_150893_2_.func_149688_o() != Material.field_151582_l ? super.func_150893_a(p_150893_1_, p_150893_2_) : this.efficiencyOnProperMaterial;
-    }
 	
 	@Override
 	@SideOnly(Side.CLIENT)

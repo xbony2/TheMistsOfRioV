@@ -24,11 +24,11 @@ public class BlockPlantCore extends BlockFlower
 	public BlockPlantCore()
 	{
 		super(0);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override
-	public Item func_149650_a(int par1, Random par2Random, int par3)
+	public Item getItemDropped(int par1, Random par2Random, int par3)
 	{
 		if(this == RioVBlocks.blackDuriiPlant)
 		{
@@ -51,7 +51,7 @@ public class BlockPlantCore extends BlockFlower
 			return RioVItems.heart;
 		}
 
-		return Item.func_150898_a(this);
+		return Item.getItemFromBlock(this);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -64,9 +64,9 @@ public class BlockPlantCore extends BlockFlower
 	public IIcon blockIcon;
 
 	@Override
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.func_149739_a()));
+		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	}
 
 	@SideOnly(Side.CLIENT)

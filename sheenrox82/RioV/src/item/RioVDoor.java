@@ -59,7 +59,7 @@ public class RioVDoor extends Item
 
 			if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
 			{
-				if (!block.func_149742_c(par3World, par4, par5, par6))
+				if (!block.canPlaceBlockAt(par3World, par4, par5, par6))
                 {
                     return false;
                 }
@@ -103,10 +103,10 @@ public class RioVDoor extends Item
 			b0 = 1;
 		}
 
-		int i1 = (p_150924_0_.func_147439_a(p_150924_1_ - b0, p_150924_2_, p_150924_3_ - b1).func_149721_r() ? 1 : 0) + (p_150924_0_.func_147439_a(p_150924_1_ - b0, p_150924_2_ + 1, p_150924_3_ - b1).func_149721_r() ? 1 : 0);
-		int j1 = (p_150924_0_.func_147439_a(p_150924_1_ + b0, p_150924_2_, p_150924_3_ + b1).func_149721_r() ? 1 : 0) + (p_150924_0_.func_147439_a(p_150924_1_ + b0, p_150924_2_ + 1, p_150924_3_ + b1).func_149721_r() ? 1 : 0);
-		boolean flag = p_150924_0_.func_147439_a(p_150924_1_ - b0, p_150924_2_, p_150924_3_ - b1) == p_150924_5_ || p_150924_0_.func_147439_a(p_150924_1_ - b0, p_150924_2_ + 1, p_150924_3_ - b1) == p_150924_5_;
-		boolean flag1 = p_150924_0_.func_147439_a(p_150924_1_ + b0, p_150924_2_, p_150924_3_ + b1) == p_150924_5_ || p_150924_0_.func_147439_a(p_150924_1_ + b0, p_150924_2_ + 1, p_150924_3_ + b1) == p_150924_5_;
+		int i1 = (p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_, p_150924_3_ - b1).isNormalCube() ? 1 : 0) + (p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_ + 1, p_150924_3_ - b1).isNormalCube() ? 1 : 0);
+		int j1 = (p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_, p_150924_3_ + b1).isNormalCube() ? 1 : 0) + (p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_ + 1, p_150924_3_ + b1).isNormalCube() ? 1 : 0);
+		boolean flag = p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_, p_150924_3_ - b1) == p_150924_5_ || p_150924_0_.getBlock(p_150924_1_ - b0, p_150924_2_ + 1, p_150924_3_ - b1) == p_150924_5_;
+		boolean flag1 = p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_, p_150924_3_ + b1) == p_150924_5_ || p_150924_0_.getBlock(p_150924_1_ + b0, p_150924_2_ + 1, p_150924_3_ + b1) == p_150924_5_;
 		boolean flag2 = false;
 
 		if (flag && !flag1)
@@ -118,10 +118,10 @@ public class RioVDoor extends Item
 			flag2 = true;
 		}
 
-		p_150924_0_.func_147465_d(p_150924_1_, p_150924_2_, p_150924_3_, p_150924_5_, p_150924_4_, 2);
-		p_150924_0_.func_147465_d(p_150924_1_, p_150924_2_ + 1, p_150924_3_, p_150924_5_, 8 | (flag2 ? 1 : 0), 2);
-		p_150924_0_.func_147459_d(p_150924_1_, p_150924_2_, p_150924_3_, p_150924_5_);
-		p_150924_0_.func_147459_d(p_150924_1_, p_150924_2_ + 1, p_150924_3_, p_150924_5_);
+		p_150924_0_.setBlock(p_150924_1_, p_150924_2_, p_150924_3_, p_150924_5_, p_150924_4_, 2);
+		p_150924_0_.setBlock(p_150924_1_, p_150924_2_ + 1, p_150924_3_, p_150924_5_, 8 | (flag2 ? 1 : 0), 2);
+		p_150924_0_.notifyBlocksOfNeighborChange(p_150924_1_, p_150924_2_, p_150924_3_, p_150924_5_);
+		p_150924_0_.notifyBlocksOfNeighborChange(p_150924_1_, p_150924_2_ + 1, p_150924_3_, p_150924_5_);
 	}
 
 	@Override

@@ -2,7 +2,9 @@ package sheenrox82.RioV.src.gui;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +39,7 @@ import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.client.ForgeHooksClient;
 
+import org.apache.commons.io.Charsets;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
@@ -54,24 +57,27 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class GuiRioVMainMenu extends GuiMainMenu
 {
     private static final AtomicInteger field_146973_f = new AtomicInteger(0);
-    private static final Logger field_146974_g = LogManager.getLogger();
-    /** The RNG used by the Main Menu Screen. */
-
+    private static final Logger logger = LogManager.getLogger();
+    /**
+     * The RNG used by the Main Menu Screen.
+     */
     private static final Random rand = new Random();
-    /** Counts the number of screen updates. */
-
+    /**
+     * Counts the number of screen updates.
+     */
     private float updateCounter;
-    /** The splash message. */
-
+    /**
+     * The splash message.
+     */
     private String splashText;
     private GuiButton buttonResetDemo;
-    /** Timer used to rotate the panorama, increases every tick. */
-
+    /**
+     * Timer used to rotate the panorama, increases every tick.
+     */
     private int panoramaTimer;
     /**
      * Texture allocated for the current viewport of the main menu's panorama background.
      */
-
     private DynamicTexture viewportTexture;
     private boolean field_96141_q = true;
     private static boolean field_96140_r;
@@ -80,9 +86,11 @@ public class GuiRioVMainMenu extends GuiMainMenu
     private String field_92025_p;
     private String field_146972_A;
     private String field_104024_v;
+    private static final ResourceLocation splashTexts = new ResourceLocation("texts/splashes.txt");
     private static final ResourceLocation minecraftTitleTextures = new ResourceLocation("textures/gui/title/minecraft.png");
-    /** An array of all the paths to the panorama pictures. */
-
+    /**
+     * An array of all the paths to the panorama pictures.
+     */
     private static final ResourceLocation[] titlePanoramaPaths = new ResourceLocation[] {new ResourceLocation("textures/gui/title/background/panorama_0.png"), new ResourceLocation("textures/gui/title/background/panorama_1.png"), new ResourceLocation("textures/gui/title/background/panorama_2.png"), new ResourceLocation("textures/gui/title/background/panorama_3.png"), new ResourceLocation("textures/gui/title/background/panorama_4.png"), new ResourceLocation("textures/gui/title/background/panorama_5.png")};
     public static final String field_96138_a = "Please click " + EnumChatFormatting.UNDERLINE + "here" + EnumChatFormatting.RESET + " for more information.";
     private int field_92024_r;
@@ -93,16 +101,20 @@ public class GuiRioVMainMenu extends GuiMainMenu
     private int field_92019_w;
     private ResourceLocation field_110351_G;
     private GuiButton minecraftRealmsButton;
+    private static final String __OBFID = "CL_00001154";
+
     private GuiButton fmlModButton = null;
-    public BufferedReader bufferedreader = null;
 
     public GuiRioVMainMenu()
     {
         this.field_146972_A = field_96138_a;
         this.splashText = "missingno";
+        BufferedReader bufferedreader = null;
 
         try
         {
+            ArrayList arraylist = new ArrayList();
+            bufferedreader = new BufferedReader(new InputStreamReader(Minecraft.getMinecraft().getResourceManager().getResource(splashTexts).getInputStream(), Charsets.UTF_8));
             String s;
 
             while ((s = bufferedreader.readLine()) != null)
@@ -111,7 +123,17 @@ public class GuiRioVMainMenu extends GuiMainMenu
 
                 if (!s.isEmpty())
                 {
+                    arraylist.add(s);
                 }
+            }
+
+            if (!arraylist.isEmpty())
+            {
+                do
+                {
+                    this.splashText = (String)arraylist.get(rand.nextInt(arraylist.size()));
+                }
+                while (this.splashText.hashCode() == 125780783);
             }
         }
         catch (IOException ioexception1)
@@ -136,7 +158,7 @@ public class GuiRioVMainMenu extends GuiMainMenu
         this.updateCounter = rand.nextFloat();
         this.field_92025_p = "";
 
-        if (!OpenGlHelper.field_148827_a)
+        if (!OpenGlHelper.openGL21)
         {
             this.field_92025_p = "Old graphics card detected; this may prevent you from";
             this.field_146972_A = "playing in the far future as OpenGL 2.1 will be required.";
@@ -147,7 +169,6 @@ public class GuiRioVMainMenu extends GuiMainMenu
     /**
      * Called from the main game loop to update the screen.
      */
-
     public void updateScreen()
     {
         ++this.panoramaTimer;
@@ -156,7 +177,6 @@ public class GuiRioVMainMenu extends GuiMainMenu
     /**
      * Returns true if this GUI should pause the game when it is displayed in single-player
      */
-
     public boolean doesGuiPauseGame()
     {
         return false;
@@ -165,24 +185,43 @@ public class GuiRioVMainMenu extends GuiMainMenu
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-
     protected void keyTyped(char par1, int par2) {}
 
     /**
      * Adds the buttons (and other controls) to the screen in question.
      */
-
-	public void initGui()
+    public void initGui()
     {
         this.viewportTexture = new DynamicTexture(256, 256);
-        this.field_110351_G = this.field_146297_k.getTextureManager().getDynamicTextureLocation("background", this.viewportTexture);
+        this.field_110351_G = this.mc.getTextureManager().getDynamicTextureLocation("background", this.viewportTexture);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
 
-        
-        int i = this.field_146295_m / 4 + 48;
+        if (calendar.get(2) + 1 == 11 && calendar.get(5) == 9)
+        {
+            this.splashText = "Happy birthday, ez!";
+        }
+        else if (calendar.get(2) + 1 == 6 && calendar.get(5) == 1)
+        {
+            this.splashText = "Happy birthday, Notch!";
+        }
+        else if (calendar.get(2) + 1 == 12 && calendar.get(5) == 24)
+        {
+            this.splashText = "Merry X-mas!";
+        }
+        else if (calendar.get(2) + 1 == 1 && calendar.get(5) == 1)
+        {
+            this.splashText = "Happy new year!";
+        }
+        else if (calendar.get(2) + 1 == 10 && calendar.get(5) == 31)
+        {
+            this.splashText = "OOoooOOOoooo! Spooky!";
+        }
 
-        if (this.field_146297_k.isDemo())
+        boolean flag = true;
+        int i = this.height / 4 + 48;
+
+        if (this.mc.isDemo())
         {
             this.addDemoButtons(i, 24);
         }
@@ -192,17 +231,18 @@ public class GuiRioVMainMenu extends GuiMainMenu
         }
 
         this.func_130020_g();
-        this.field_146292_n.add(new GuiButton(0, this.field_146294_l / 2 - 100, i + 72 + 12, 98, 20, I18n.getStringParams("menu.options", new Object[0])));
-        this.field_146292_n.add(new GuiButton(4, this.field_146294_l / 2 + 2, i + 72 + 12, 98, 20, I18n.getStringParams("menu.quit", new Object[0])));
-        this.field_146292_n.add(new GuiButtonLanguage(5, this.field_146294_l / 2 - 124, i + 72 + 12));
-        
+        this.buttonList.add(new GuiButton(0, this.width / 2 - 100, i + 72 + 12, 98, 20, I18n.format("menu.options", new Object[0])));
+        this.buttonList.add(new GuiButton(4, this.width / 2 + 2, i + 72 + 12, 98, 20, I18n.format("menu.quit", new Object[0])));
+        this.buttonList.add(new GuiButtonLanguage(5, this.width / 2 - 124, i + 72 + 12));
+        Object object = this.field_104025_t;
+
         synchronized (this.field_104025_t)
         {
-            this.field_92023_s = this.field_146289_q.getStringWidth(this.field_92025_p);
-            this.field_92024_r = this.field_146289_q.getStringWidth(this.field_146972_A);
+            this.field_92023_s = this.fontRendererObj.getStringWidth(this.field_92025_p);
+            this.field_92024_r = this.fontRendererObj.getStringWidth(this.field_146972_A);
             int j = Math.max(this.field_92023_s, this.field_92024_r);
-            this.field_92022_t = (this.field_146294_l - j) / 2;
-            this.field_92021_u = ((GuiButton)this.field_146292_n.get(0)).field_146129_i - 24;
+            this.field_92022_t = (this.width - j) / 2;
+            this.field_92021_u = ((GuiButton)this.buttonList.get(0)).yPosition - 24;
             this.field_92020_v = this.field_92022_t + j;
             this.field_92019_w = this.field_92021_u + 24;
         }
@@ -217,10 +257,10 @@ public class GuiRioVMainMenu extends GuiMainMenu
                 field_96140_r = true;
                 (new Thread("MCO Availability Checker #" + field_146973_f.incrementAndGet())
                 {
-
-                	public void run()
+                    private static final String __OBFID = "CL_00001155";
+                    public void run()
                     {
-                        Session session = GuiRioVMainMenu.this.field_146297_k.getSession();
+                        Session session = GuiRioVMainMenu.this.mc.getSession();
                         McoClient mcoclient = new McoClient(session.getSessionID(), session.getUsername(), "1.7.2", Minecraft.getMinecraft().getProxy());
                         boolean flag = false;
 
@@ -243,11 +283,11 @@ public class GuiRioVMainMenu extends GuiMainMenu
                             }
                             catch (ExceptionMcoService exceptionmcoservice)
                             {
-                                GuiRioVMainMenu.field_146974_g.error("Couldn\'t connect to Realms");
+                                GuiRioVMainMenu.logger.error("Couldn\'t connect to Realms");
                             }
                             catch (IOException ioexception)
                             {
-                                GuiRioVMainMenu.field_146974_g.error("Couldn\'t parse response connecting to Realms");
+                                GuiRioVMainMenu.logger.error("Couldn\'t parse response connecting to Realms");
                             }
 
                             if (!flag)
@@ -276,136 +316,137 @@ public class GuiRioVMainMenu extends GuiMainMenu
 
     private void func_130022_h()
     {
-        this.minecraftRealmsButton.field_146125_m = true;
-        fmlModButton.field_146127_k = 98;
-        fmlModButton.field_146127_k = this.field_146294_l / 2 + 2;
+    	int fml = fmlModButton.getButtonWidth();
+        this.minecraftRealmsButton.visible = true;
+        fml = 98;
+        fmlModButton.xPosition = this.width / 2 + 2;
     }
 
     /**
      * Adds Singleplayer and Multiplayer buttons on Main Menu for players who have bought the game.
      */
-
-	private void addSingleplayerMultiplayerButtons(int par1, int par2)
+    private void addSingleplayerMultiplayerButtons(int par1, int par2)
     {
-        this.field_146292_n.add(new GuiButton(1, this.field_146294_l / 2 - 100, par1, I18n.getStringParams("menu.singleplayer", new Object[0])));
-        this.field_146292_n.add(new GuiButton(2, this.field_146294_l / 2 - 100, par1 + par2 * 1, I18n.getStringParams("menu.multiplayer", new Object[0])));
+        this.buttonList.add(new GuiButton(1, this.width / 2 - 100, par1, I18n.format("menu.singleplayer", new Object[0])));
+        this.buttonList.add(new GuiButton(2, this.width / 2 - 100, par1 + par2 * 1, I18n.format("menu.multiplayer", new Object[0])));
         //If Minecraft Realms is enabled, halve the size of both buttons and set them next to eachother.
-        fmlModButton = new GuiButton(6, this.field_146294_l / 2 - 100, par1 + par2 * 2, "Mods");
-        this.field_146292_n.add(fmlModButton);
+        fmlModButton = new GuiButton(6, this.width / 2 - 100, par1 + par2 * 2, "Mods");
+        this.buttonList.add(fmlModButton);
 
-        minecraftRealmsButton = new GuiButton(14, this.field_146294_l / 2 - 100, par1 + par2 * 2, I18n.getStringParams("menu.online"));
-        minecraftRealmsButton.field_146127_k = 98;
-        minecraftRealmsButton.field_146127_k = this.field_146294_l / 2 - 100;
-        this.field_146292_n.add(minecraftRealmsButton);
-        this.minecraftRealmsButton.field_146125_m = false;
+
+        minecraftRealmsButton = new GuiButton(14, this.width / 2 - 100, par1 + par2 * 2, I18n.format("menu.online"));
+        int mcr = minecraftRealmsButton.getButtonWidth();
+        mcr = 98;
+        minecraftRealmsButton.xPosition = this.width / 2 - 100;
+        this.buttonList.add(minecraftRealmsButton);
+        this.minecraftRealmsButton.visible = false;
     }
 
     /**
      * Adds Demo buttons on Main Menu for players who are playing Demo.
      */
-
-	private void addDemoButtons(int par1, int par2)
+    private void addDemoButtons(int par1, int par2)
     {
-        this.field_146292_n.add(new GuiButton(11, this.field_146294_l / 2 - 100, par1, I18n.getStringParams("menu.playdemo", new Object[0])));
-        this.field_146292_n.add(this.buttonResetDemo = new GuiButton(12, this.field_146294_l / 2 - 100, par1 + par2 * 1, I18n.getStringParams("menu.resetdemo", new Object[0])));
-        ISaveFormat isaveformat = this.field_146297_k.getSaveLoader();
+        this.buttonList.add(new GuiButton(11, this.width / 2 - 100, par1, I18n.format("menu.playdemo", new Object[0])));
+        this.buttonList.add(this.buttonResetDemo = new GuiButton(12, this.width / 2 - 100, par1 + par2 * 1, I18n.format("menu.resetdemo", new Object[0])));
+        ISaveFormat isaveformat = this.mc.getSaveLoader();
         WorldInfo worldinfo = isaveformat.getWorldInfo("Demo_World");
 
         if (worldinfo == null)
         {
-            this.buttonResetDemo.field_146124_l = false;
+            this.buttonResetDemo.enabled = false;
         }
     }
 
-    protected void func_146284_a(GuiButton p_146284_1_)
+    protected void actionPerformed(GuiButton p_146284_1_)
     {
-        if (p_146284_1_.field_146127_k == 0)
+        if (p_146284_1_.id == 0)
         {
-            this.field_146297_k.func_147108_a(new GuiOptions(this, this.field_146297_k.gameSettings));
+            this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
         }
 
-        if (p_146284_1_.field_146127_k == 5)
+        if (p_146284_1_.id == 5)
         {
-            this.field_146297_k.func_147108_a(new GuiLanguage(this, this.field_146297_k.gameSettings, this.field_146297_k.getLanguageManager()));
+            this.mc.displayGuiScreen(new GuiLanguage(this, this.mc.gameSettings, this.mc.getLanguageManager()));
         }
 
-        if (p_146284_1_.field_146127_k == 1)
+        if (p_146284_1_.id == 1)
         {
-            this.field_146297_k.func_147108_a(new GuiSelectWorld(this));
+            this.mc.displayGuiScreen(new GuiSelectWorld(this));
         }
 
-        if (p_146284_1_.field_146127_k == 2)
+        if (p_146284_1_.id == 2)
         {
-            this.field_146297_k.func_147108_a(new GuiMultiplayer(this));
+            this.mc.displayGuiScreen(new GuiMultiplayer(this));
         }
 
-        if (p_146284_1_.field_146127_k == 14 && this.minecraftRealmsButton.field_146125_m)
+        if (p_146284_1_.id == 14 && this.minecraftRealmsButton.visible)
         {
             this.func_140005_i();
         }
 
-        if (p_146284_1_.field_146127_k == 4)
+        if (p_146284_1_.id == 4)
         {
-            this.field_146297_k.shutdown();
+            this.mc.shutdown();
         }
 
-        if (p_146284_1_.field_146127_k == 6)
+        if (p_146284_1_.id == 6)
         {
-            this.field_146297_k.func_147108_a(new GuiModList(this));
+            this.mc.displayGuiScreen(new GuiModList(this));
         }
 
-        if (p_146284_1_.field_146127_k == 11)
+        if (p_146284_1_.id == 11)
         {
-            this.field_146297_k.launchIntegratedServer("Demo_World", "Demo_World", DemoWorldServer.demoWorldSettings);
+            this.mc.launchIntegratedServer("Demo_World", "Demo_World", DemoWorldServer.demoWorldSettings);
         }
 
-        if (p_146284_1_.field_146127_k == 12)
+        if (p_146284_1_.id == 12)
         {
-            ISaveFormat isaveformat = this.field_146297_k.getSaveLoader();
+            ISaveFormat isaveformat = this.mc.getSaveLoader();
             WorldInfo worldinfo = isaveformat.getWorldInfo("Demo_World");
 
             if (worldinfo != null)
             {
                 GuiYesNo guiyesno = GuiSelectWorld.func_146623_a(this, worldinfo.getWorldName(), 12);
-                this.field_146297_k.func_147108_a(guiyesno);
+                this.mc.displayGuiScreen(guiyesno);
             }
         }
     }
 
     private void func_140005_i()
     {
-        Session session = this.field_146297_k.getSession();
+        Session session = this.mc.getSession();
         McoClient mcoclient = new McoClient(session.getSessionID(), session.getUsername(), "1.7.2", Minecraft.getMinecraft().getProxy());
 
         try
         {
             if (mcoclient.func_148695_c().booleanValue())
             {
-                this.field_146297_k.func_147108_a(new GuiScreenClientOutdated(this));
+                this.mc.displayGuiScreen(new GuiScreenClientOutdated(this));
             }
             else
             {
-                this.field_146297_k.func_147108_a(new GuiScreenOnlineServers(this));
+                this.mc.displayGuiScreen(new GuiScreenOnlineServers(this));
             }
         }
         catch (ExceptionMcoService exceptionmcoservice)
         {
-            field_146974_g.error("Couldn\'t connect to realms");
+            logger.error("Couldn\'t connect to realms");
         }
         catch (IOException ioexception)
         {
-            field_146974_g.error("Couldn\'t connect to realms");
+            logger.error("Couldn\'t connect to realms");
         }
     }
 
-	public void confirmClicked(boolean par1, int par2)
+    public void confirmClicked(boolean par1, int par2)
     {
         if (par1 && par2 == 12)
         {
-            ISaveFormat isaveformat = this.field_146297_k.getSaveLoader();
+            ISaveFormat isaveformat = this.mc.getSaveLoader();
             isaveformat.flushCache();
             isaveformat.deleteWorldDirectory("Demo_World");
-            this.field_146297_k.func_147108_a(this);
+            this.mc.displayGuiScreen(this);
         }
         else if (par2 == 13)
         {
@@ -419,18 +460,17 @@ public class GuiRioVMainMenu extends GuiMainMenu
                 }
                 catch (Throwable throwable)
                 {
-                    field_146974_g.error("Couldn\'t open link", throwable);
+                    logger.error("Couldn\'t open link", throwable);
                 }
             }
 
-            this.field_146297_k.func_147108_a(this);
+            this.mc.displayGuiScreen(this);
         }
     }
 
     /**
      * Draws the main menu panorama
      */
-
     private void drawPanorama(int par1, int par2, float par3)
     {
         Tessellator tessellator = Tessellator.instance;
@@ -448,7 +488,7 @@ public class GuiRioVMainMenu extends GuiMainMenu
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glDisable(GL11.GL_CULL_FACE);
         GL11.glDepthMask(false);
-        OpenGlHelper.func_148821_a(770, 771, 1, 0);
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
         byte b0 = 8;
 
         for (int k = 0; k < b0 * b0; ++k)
@@ -490,7 +530,7 @@ public class GuiRioVMainMenu extends GuiMainMenu
                     GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
                 }
 
-                this.field_146297_k.getTextureManager().bindTexture(titlePanoramaPaths[l]);
+                this.mc.getTextureManager().bindTexture(titlePanoramaPaths[l]);
                 tessellator.startDrawingQuads();
                 tessellator.setColorRGBA_I(16777215, 255 / (k + 1));
                 float f4 = 0.0F;
@@ -520,15 +560,14 @@ public class GuiRioVMainMenu extends GuiMainMenu
     /**
      * Rotate and blurs the skybox view in the main menu
      */
-
     private void rotateAndBlurSkybox(float par1)
     {
-        this.field_146297_k.getTextureManager().bindTexture(this.field_110351_G);
+        this.mc.getTextureManager().bindTexture(this.field_110351_G);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MIN_FILTER, GL11.GL_LINEAR);
         GL11.glTexParameteri(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_LINEAR);
         GL11.glCopyTexSubImage2D(GL11.GL_TEXTURE_2D, 0, 0, 0, 0, 0, 256, 256);
         GL11.glEnable(GL11.GL_BLEND);
-        OpenGlHelper.func_148821_a(770, 771, 1, 0);
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
         GL11.glColorMask(true, true, true, false);
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
@@ -538,8 +577,8 @@ public class GuiRioVMainMenu extends GuiMainMenu
         for (int i = 0; i < b0; ++i)
         {
             tessellator.setColorRGBA_F(1.0F, 1.0F, 1.0F, 1.0F / (float)(i + 1));
-            int j = this.field_146294_l;
-            int k = this.field_146295_m;
+            int j = this.width;
+            int k = this.height;
             float f1 = (float)(i - b0 / 2) / 256.0F;
             tessellator.addVertexWithUV((double)j, (double)k, (double)this.zLevel, (double)(0.0F + f1), 1.0D);
             tessellator.addVertexWithUV((double)j, 0.0D, (double)this.zLevel, (double)(1.0F + f1), 1.0D);
@@ -555,10 +594,9 @@ public class GuiRioVMainMenu extends GuiMainMenu
     /**
      * Renders the skybox in the main menu
      */
-
     private void renderSkybox(int par1, int par2, float par3)
     {
-        this.field_146297_k.func_147110_a().func_147609_e();
+        this.mc.getFramebuffer().unbindFramebuffer();
         GL11.glViewport(0, 0, 256, 256);
         this.drawPanorama(par1, par2, par3);
         this.rotateAndBlurSkybox(par3);
@@ -568,16 +606,16 @@ public class GuiRioVMainMenu extends GuiMainMenu
         this.rotateAndBlurSkybox(par3);
         this.rotateAndBlurSkybox(par3);
         this.rotateAndBlurSkybox(par3);
-        this.field_146297_k.func_147110_a().func_147610_a(true);
-        GL11.glViewport(0, 0, this.field_146297_k.displayWidth, this.field_146297_k.displayHeight);
+        this.mc.getFramebuffer().bindFramebuffer(true);
+        GL11.glViewport(0, 0, this.mc.displayWidth, this.mc.displayHeight);
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
-        float f1 = this.field_146294_l > this.field_146295_m ? 120.0F / (float)this.field_146294_l : 120.0F / (float)this.field_146295_m;
-        float f2 = (float)this.field_146295_m * f1 / 256.0F;
-        float f3 = (float)this.field_146294_l * f1 / 256.0F;
+        float f1 = this.width > this.height ? 120.0F / (float)this.width : 120.0F / (float)this.height;
+        float f2 = (float)this.height * f1 / 256.0F;
+        float f3 = (float)this.width * f1 / 256.0F;
         tessellator.setColorRGBA_F(1.0F, 1.0F, 1.0F, 1.0F);
-        int k = this.field_146294_l;
-        int l = this.field_146295_m;
+        int k = this.width;
+        int l = this.height;
         tessellator.addVertexWithUV(0.0D, (double)l, (double)this.zLevel, (double)(0.5F - f2), (double)(0.5F + f3));
         tessellator.addVertexWithUV((double)k, (double)l, (double)this.zLevel, (double)(0.5F - f2), (double)(0.5F - f3));
         tessellator.addVertexWithUV((double)k, 0.0D, (double)this.zLevel, (double)(0.5F + f2), (double)(0.5F - f3));
@@ -588,7 +626,6 @@ public class GuiRioVMainMenu extends GuiMainMenu
     /**
      * Draws the screen and all the components in it.
      */
-
     public void drawScreen(int par1, int par2, float par3)
     {
         GL11.glDisable(GL11.GL_ALPHA_TEST);
@@ -596,11 +633,11 @@ public class GuiRioVMainMenu extends GuiMainMenu
         GL11.glEnable(GL11.GL_ALPHA_TEST);
         Tessellator tessellator = Tessellator.instance;
         short short1 = 274;
-        int k = this.field_146294_l / 2 - short1 / 2;
+        int k = this.width / 2 - short1 / 2;
         byte b0 = 30;
-        this.drawGradientRect(0, 0, this.field_146294_l, this.field_146295_m, -2130706433, 16777215);
-        this.drawGradientRect(0, 0, this.field_146294_l, this.field_146295_m, 0, Integer.MIN_VALUE);
-        this.field_146297_k.getTextureManager().bindTexture(minecraftTitleTextures);
+        this.drawGradientRect(0, 0, this.width, this.height, -2130706433, 16777215);
+        this.drawGradientRect(0, 0, this.width, this.height, 0, Integer.MIN_VALUE);
+        this.mc.getTextureManager().bindTexture(minecraftTitleTextures);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
         if ((double)this.updateCounter < 1.0E-4D)
@@ -619,16 +656,16 @@ public class GuiRioVMainMenu extends GuiMainMenu
 
         tessellator.setColorOpaque_I(-1);
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)(this.field_146294_l / 2 + 90), 70.0F, 0.0F);
+        GL11.glTranslatef((float)(this.width / 2 + 90), 70.0F, 0.0F);
         GL11.glRotatef(-20.0F, 0.0F, 0.0F, 1.0F);
         float f1 = 1.8F - MathHelper.abs(MathHelper.sin((float)(Minecraft.getSystemTime() % 1000L) / 1000.0F * (float)Math.PI * 2.0F) * 0.1F);
-        f1 = f1 * 100.0F / (float)(this.field_146289_q.getStringWidth(this.splashText) + 32);
+        f1 = f1 * 100.0F / (float)(this.fontRendererObj.getStringWidth(this.splashText) + 32);
         GL11.glScalef(f1, f1, f1);
-        this.drawCenteredString(this.field_146289_q, this.splashText, 0, -8, -256);
+        this.drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
         GL11.glPopMatrix();
         String s = "Minecraft 1.7.2";
 
-        if (this.field_146297_k.isDemo())
+        if (this.mc.isDemo())
         {
             s = s + " Demo";
         }
@@ -639,18 +676,18 @@ public class GuiRioVMainMenu extends GuiMainMenu
             String brd = brandings.get(i);
             if (!Strings.isNullOrEmpty(brd))
             {
-                this.drawString(this.field_146289_q, brd, 2, this.field_146295_m - ( 10 + i * (this.field_146289_q.FONT_HEIGHT + 1)), 16777215);
+                this.drawString(this.fontRendererObj, brd, 2, this.height - ( 10 + i * (this.fontRendererObj.FONT_HEIGHT + 1)), 16777215);
             }
         }
-        ForgeHooksClient.renderMainMenu(this, field_146289_q, field_146294_l, field_146295_m);
-        String s1 = "PENIS";
-        this.drawString(this.field_146289_q, s1, this.field_146294_l - this.field_146289_q.getStringWidth(s1) - 2, this.field_146295_m - 10, -1);
+        ForgeHooksClient.renderMainMenu(this, fontRendererObj, width, height);
+        String s1 = "Copyright Mojang AB. Do not distribute!";
+        this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
 
         if (this.field_92025_p != null && this.field_92025_p.length() > 0)
         {
             drawRect(this.field_92022_t - 2, this.field_92021_u - 2, this.field_92020_v + 2, this.field_92019_w - 1, 1428160512);
-            this.drawString(this.field_146289_q, this.field_92025_p, this.field_92022_t, this.field_92021_u, -1);
-            this.drawString(this.field_146289_q, this.field_146972_A, (this.field_146294_l - this.field_92024_r) / 2, ((GuiButton)this.field_146292_n.get(0)).field_146129_i - 12, -1);
+            this.drawString(this.fontRendererObj, this.field_92025_p, this.field_92022_t, this.field_92021_u, -1);
+            this.drawString(this.fontRendererObj, this.field_146972_A, (this.width - this.field_92024_r) / 2, ((GuiButton)this.buttonList.get(0)).yPosition - 12, -1);
         }
 
         super.drawScreen(par1, par2, par3);
@@ -659,18 +696,18 @@ public class GuiRioVMainMenu extends GuiMainMenu
     /**
      * Called when the mouse is clicked.
      */
-
     protected void mouseClicked(int par1, int par2, int par3)
     {
         super.mouseClicked(par1, par2, par3);
-        
+        Object object = this.field_104025_t;
+
         synchronized (this.field_104025_t)
         {
             if (this.field_92025_p.length() > 0 && par1 >= this.field_92022_t && par1 <= this.field_92020_v && par2 >= this.field_92021_u && par2 <= this.field_92019_w)
             {
                 GuiConfirmOpenLink guiconfirmopenlink = new GuiConfirmOpenLink(this, this.field_104024_v, 13, true);
                 guiconfirmopenlink.func_146358_g();
-                this.field_146297_k.func_147108_a(guiconfirmopenlink);
+                this.mc.displayGuiScreen(guiconfirmopenlink);
             }
         }
     }

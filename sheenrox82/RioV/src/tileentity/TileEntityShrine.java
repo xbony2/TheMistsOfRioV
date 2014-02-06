@@ -8,16 +8,16 @@ public class TileEntityShrine extends TileEntity
 	public boolean isTasaravSpawned;
 	public boolean isTasaravDead;
 
-    public void func_145839_a(NBTTagCompound nbt)
+    public void readFromNBT(NBTTagCompound nbt)
     {
-        super.func_145839_a(nbt);
+        super.readFromNBT(nbt);
         isTasaravSpawned = nbt.getBoolean("Tasarav");
         isTasaravDead = nbt.getBoolean("TasaravDead");
     }
 
-    public void func_145841_b(NBTTagCompound nbt)
+    public void writeToNBT(NBTTagCompound nbt)
     {
-        super.func_145841_b(nbt);
+        super.writeToNBT(nbt);
         nbt.setBoolean("Tasarav", isTasaravSpawned);
         nbt.setBoolean("TasaravDead", isTasaravDead);
     }

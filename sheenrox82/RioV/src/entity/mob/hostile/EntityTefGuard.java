@@ -95,9 +95,9 @@ public class EntityTefGuard extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(18.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(18.0D);
 	}
 	
 	public boolean isAIEnabled()
@@ -111,15 +111,15 @@ public class EntityTefGuard extends EntityMobDeadBody
 
 		if (var1 == 0)
 		{
-			this.func_145779_a(RioVItems.darkMatter, 2);
+			this.dropItem(RioVItems.darkMatter, 2);
 		}
 		if (var1 == 1)
 		{
-			this.func_145779_a(RioVItems.onyxSword, 1);
+			this.dropItem(RioVItems.onyxSword, 1);
 		}
 		if (var1 == 2)
 		{
-			this.func_145779_a(RioVItems.darknessArrow, 1);
+			this.dropItem(RioVItems.darknessArrow, 1);
 		}
 		if (var1 == 3)
 		{

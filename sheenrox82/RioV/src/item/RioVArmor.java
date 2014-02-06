@@ -70,10 +70,10 @@ public class RioVArmor extends ItemArmor
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack)
 	{
-		ItemStack boots = player.getCurrentItemOrArmor(1);
-		ItemStack leggings = player.getCurrentItemOrArmor(2);
-		ItemStack chestplate = player.getCurrentItemOrArmor(3);
-		ItemStack helmet = player.getCurrentItemOrArmor(4);
+		ItemStack boots = player.getEquipmentInSlot(1);
+		ItemStack leggings = player.getEquipmentInSlot(2);
+		ItemStack chestplate = player.getEquipmentInSlot(3);
+		ItemStack helmet = player.getEquipmentInSlot(4);
 
 		if(boots != null) 
 		{

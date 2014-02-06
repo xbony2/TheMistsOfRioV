@@ -67,9 +67,9 @@ public class EntityHellhound extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(5.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5.0D);
 	}
 
 	@Override
@@ -81,13 +81,13 @@ public class EntityHellhound extends EntityMobDeadBody
             {
                 byte b0 = 0;
 
-                if (this.worldObj.difficultySetting.func_151525_a() > 1)
+                if (this.worldObj.difficultySetting.getDifficultyId() > 1)
                 {
-                    if (this.worldObj.difficultySetting.func_151525_a() == 2)
+                    if (this.worldObj.difficultySetting.getDifficultyId() == 2)
                     {
                         b0 = 7;
                     }
-                    else if (this.worldObj.difficultySetting.func_151525_a() == 3)
+                    else if (this.worldObj.difficultySetting.getDifficultyId() == 3)
                     {
                         b0 = 15;
                     }

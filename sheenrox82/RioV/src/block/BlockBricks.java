@@ -40,7 +40,6 @@ public class BlockBricks extends Block
         return p_149692_1_;
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
     @Override
     public void func_149666_a(Item par1, CreativeTabs par2CreativeTabs, List par3List)

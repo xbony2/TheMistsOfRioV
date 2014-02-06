@@ -6,7 +6,6 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityFurnace;
 import sheenrox82.RioV.src.recipe.InfuserRecipes;
 import sheenrox82.RioV.src.slot.SlotInfuser;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
@@ -139,7 +138,7 @@ public class ContainerInfuser extends Container
                         return null;
                     }
                 }
-                else if (TileEntityFurnace.func_145954_b(itemstack1))
+                else if (TileEntityInfuser.isItemFuel(itemstack1))
                 {
                     if (!this.mergeItemStack(itemstack1, 1, 2, false))
                     {

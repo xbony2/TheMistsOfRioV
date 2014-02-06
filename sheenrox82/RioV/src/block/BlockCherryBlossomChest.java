@@ -38,57 +38,69 @@ public class BlockCherryBlossomChest extends BlockChest
 	public BlockCherryBlossomChest()
 	{
 		super(1);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
-		this.func_149676_a(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 	}
 
-	public boolean func_149662_c()
+	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
-	public boolean func_149686_d()
+	/**
+	 * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+	 */
+	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
 
-	public int func_149645_b()
+	/**
+	 * The type of render function that is called for this block
+	 */
+	public int getRenderType()
 	{
 		return 22;
 	}
 
-	public void func_149719_a(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
+	/**
+	 * Updates the blocks bounds based on its current state. Args: world, x, y, z
+	 */
+	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
 	{
-		if (p_149719_1_.func_147439_a(p_149719_2_, p_149719_3_, p_149719_4_ - 1) == this)
+		if (p_149719_1_.getBlock(p_149719_2_, p_149719_3_, p_149719_4_ - 1) == this)
 		{
-			this.func_149676_a(0.0625F, 0.0F, 0.0F, 0.9375F, 0.875F, 0.9375F);
+			this.setBlockBounds(0.0625F, 0.0F, 0.0F, 0.9375F, 0.875F, 0.9375F);
 		}
-		else if (p_149719_1_.func_147439_a(p_149719_2_, p_149719_3_, p_149719_4_ + 1) == this)
+		else if (p_149719_1_.getBlock(p_149719_2_, p_149719_3_, p_149719_4_ + 1) == this)
 		{
-			this.func_149676_a(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 1.0F);
+			this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 1.0F);
 		}
-		else if (p_149719_1_.func_147439_a(p_149719_2_ - 1, p_149719_3_, p_149719_4_) == this)
+		else if (p_149719_1_.getBlock(p_149719_2_ - 1, p_149719_3_, p_149719_4_) == this)
 		{
-			this.func_149676_a(0.0F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+			this.setBlockBounds(0.0F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 		}
-		else if (p_149719_1_.func_147439_a(p_149719_2_ + 1, p_149719_3_, p_149719_4_) == this)
+		else if (p_149719_1_.getBlock(p_149719_2_ + 1, p_149719_3_, p_149719_4_) == this)
 		{
-			this.func_149676_a(0.0625F, 0.0F, 0.0625F, 1.0F, 0.875F, 0.9375F);
+			this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 1.0F, 0.875F, 0.9375F);
 		}
 		else
 		{
-			this.func_149676_a(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
+			this.setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 		}
 	}
 
-	public void func_149726_b(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
+	/**
+	 * Called whenever the block is added into the world. Args: world, x, y, z
+	 */
+	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
 	{
-		super.func_149726_b(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+		super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
 		this.func_149954_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-		Block block = p_149726_1_.func_147439_a(p_149726_2_, p_149726_3_, p_149726_4_ - 1);
-		Block block1 = p_149726_1_.func_147439_a(p_149726_2_, p_149726_3_, p_149726_4_ + 1);
-		Block block2 = p_149726_1_.func_147439_a(p_149726_2_ - 1, p_149726_3_, p_149726_4_);
-		Block block3 = p_149726_1_.func_147439_a(p_149726_2_ + 1, p_149726_3_, p_149726_4_);
+		Block block = p_149726_1_.getBlock(p_149726_2_, p_149726_3_, p_149726_4_ - 1);
+		Block block1 = p_149726_1_.getBlock(p_149726_2_, p_149726_3_, p_149726_4_ + 1);
+		Block block2 = p_149726_1_.getBlock(p_149726_2_ - 1, p_149726_3_, p_149726_4_);
+		Block block3 = p_149726_1_.getBlock(p_149726_2_ + 1, p_149726_3_, p_149726_4_);
 
 		if (block == this)
 		{
@@ -111,12 +123,15 @@ public class BlockCherryBlossomChest extends BlockChest
 		}
 	}
 
-	public void func_149689_a(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_)
+	/**
+	 * Called when the block is placed in the world.
+	 */
+	public void onBlockPlacedBy(World p_149689_1_, int p_149689_2_, int p_149689_3_, int p_149689_4_, EntityLivingBase p_149689_5_, ItemStack p_149689_6_)
 	{
-		Block block = p_149689_1_.func_147439_a(p_149689_2_, p_149689_3_, p_149689_4_ - 1);
-		Block block1 = p_149689_1_.func_147439_a(p_149689_2_, p_149689_3_, p_149689_4_ + 1);
-		Block block2 = p_149689_1_.func_147439_a(p_149689_2_ - 1, p_149689_3_, p_149689_4_);
-		Block block3 = p_149689_1_.func_147439_a(p_149689_2_ + 1, p_149689_3_, p_149689_4_);
+		Block block = p_149689_1_.getBlock(p_149689_2_, p_149689_3_, p_149689_4_ - 1);
+		Block block1 = p_149689_1_.getBlock(p_149689_2_, p_149689_3_, p_149689_4_ + 1);
+		Block block2 = p_149689_1_.getBlock(p_149689_2_ - 1, p_149689_3_, p_149689_4_);
+		Block block3 = p_149689_1_.getBlock(p_149689_2_ + 1, p_149689_3_, p_149689_4_);
 		byte b0 = 0;
 		int l = MathHelper.floor_double((double)(p_149689_5_.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
@@ -177,7 +192,7 @@ public class BlockCherryBlossomChest extends BlockChest
 
 		if (p_149689_6_.hasDisplayName())
 		{
-			((TileEntityCherryBlossomChest)p_149689_1_.func_147438_o(p_149689_2_, p_149689_3_, p_149689_4_)).func_145976_a(p_149689_6_.getDisplayName());
+			((TileEntityCherryBlossomChest)p_149689_1_.getTileEntity(p_149689_2_, p_149689_3_, p_149689_4_)).func_145976_a(p_149689_6_.getDisplayName());
 		}
 	}
 
@@ -185,14 +200,16 @@ public class BlockCherryBlossomChest extends BlockChest
 	{
 		if (!p_149954_1_.isRemote)
 		{
-			Block block = p_149954_1_.func_147439_a(p_149954_2_, p_149954_3_, p_149954_4_ - 1);
-			Block block1 = p_149954_1_.func_147439_a(p_149954_2_, p_149954_3_, p_149954_4_ + 1);
-			Block block2 = p_149954_1_.func_147439_a(p_149954_2_ - 1, p_149954_3_, p_149954_4_);
-			Block block3 = p_149954_1_.func_147439_a(p_149954_2_ + 1, p_149954_3_, p_149954_4_);
+			Block block = p_149954_1_.getBlock(p_149954_2_, p_149954_3_, p_149954_4_ - 1);
+			Block block1 = p_149954_1_.getBlock(p_149954_2_, p_149954_3_, p_149954_4_ + 1);
+			Block block2 = p_149954_1_.getBlock(p_149954_2_ - 1, p_149954_3_, p_149954_4_);
+			Block block3 = p_149954_1_.getBlock(p_149954_2_ + 1, p_149954_3_, p_149954_4_);
+			boolean flag = true;
 			int l;
 			Block block4;
 			int i1;
 			Block block5;
+			boolean flag1;
 			byte b0;
 			int j1;
 
@@ -225,10 +242,12 @@ public class BlockCherryBlossomChest extends BlockChest
 				else
 				{
 					l = block2 == this ? p_149954_2_ - 1 : p_149954_2_ + 1;
-					block4 = p_149954_1_.func_147439_a(l, p_149954_3_, p_149954_4_ - 1);
+					block4 = p_149954_1_.getBlock(l, p_149954_3_, p_149954_4_ - 1);
 					i1 = block2 == this ? p_149954_2_ - 1 : p_149954_2_ + 1;
-					block5 = p_149954_1_.func_147439_a(i1, p_149954_3_, p_149954_4_ + 1);
+					block5 = p_149954_1_.getBlock(i1, p_149954_3_, p_149954_4_ + 1);
 					b0 = 3;
+					flag1 = true;
+
 					if (block2 == this)
 					{
 						j1 = p_149954_1_.getBlockMetadata(p_149954_2_ - 1, p_149954_3_, p_149954_4_);
@@ -257,10 +276,12 @@ public class BlockCherryBlossomChest extends BlockChest
 			else
 			{
 				l = block == this ? p_149954_4_ - 1 : p_149954_4_ + 1;
-				block4 = p_149954_1_.func_147439_a(p_149954_2_ - 1, p_149954_3_, l);
+				block4 = p_149954_1_.getBlock(p_149954_2_ - 1, p_149954_3_, l);
 				i1 = block == this ? p_149954_4_ - 1 : p_149954_4_ + 1;
-				block5 = p_149954_1_.func_147439_a(p_149954_2_ + 1, p_149954_3_, i1);
+				block5 = p_149954_1_.getBlock(p_149954_2_ + 1, p_149954_3_, i1);
 				b0 = 5;
+				flag1 = true;
+
 				if (block == this)
 				{
 					j1 = p_149954_1_.getBlockMetadata(p_149954_2_, p_149954_3_, p_149954_4_ - 1);
@@ -290,26 +311,29 @@ public class BlockCherryBlossomChest extends BlockChest
 		}
 	}
 
-	public boolean func_149742_c(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
+	/**
+	 * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
+	 */
+	 public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
 	{
 		int l = 0;
 
-		if (p_149742_1_.func_147439_a(p_149742_2_ - 1, p_149742_3_, p_149742_4_) == this)
+		if (p_149742_1_.getBlock(p_149742_2_ - 1, p_149742_3_, p_149742_4_) == this)
 		{
 			++l;
 		}
 
-		if (p_149742_1_.func_147439_a(p_149742_2_ + 1, p_149742_3_, p_149742_4_) == this)
+		if (p_149742_1_.getBlock(p_149742_2_ + 1, p_149742_3_, p_149742_4_) == this)
 		{
 			++l;
 		}
 
-		if (p_149742_1_.func_147439_a(p_149742_2_, p_149742_3_, p_149742_4_ - 1) == this)
+		if (p_149742_1_.getBlock(p_149742_2_, p_149742_3_, p_149742_4_ - 1) == this)
 		{
 			++l;
 		}
 
-		if (p_149742_1_.func_147439_a(p_149742_2_, p_149742_3_, p_149742_4_ + 1) == this)
+		if (p_149742_1_.getBlock(p_149742_2_, p_149742_3_, p_149742_4_ + 1) == this)
 		{
 			++l;
 		}
@@ -319,23 +343,27 @@ public class BlockCherryBlossomChest extends BlockChest
 
 	private boolean func_149952_n(World p_149952_1_, int p_149952_2_, int p_149952_3_, int p_149952_4_)
 	{
-		return p_149952_1_.func_147439_a(p_149952_2_, p_149952_3_, p_149952_4_) != this ? false : (p_149952_1_.func_147439_a(p_149952_2_ - 1, p_149952_3_, p_149952_4_) == this ? true : (p_149952_1_.func_147439_a(p_149952_2_ + 1, p_149952_3_, p_149952_4_) == this ? true : (p_149952_1_.func_147439_a(p_149952_2_, p_149952_3_, p_149952_4_ - 1) == this ? true : p_149952_1_.func_147439_a(p_149952_2_, p_149952_3_, p_149952_4_ + 1) == this)));
+		return p_149952_1_.getBlock(p_149952_2_, p_149952_3_, p_149952_4_) != this ? false : (p_149952_1_.getBlock(p_149952_2_ - 1, p_149952_3_, p_149952_4_) == this ? true : (p_149952_1_.getBlock(p_149952_2_ + 1, p_149952_3_, p_149952_4_) == this ? true : (p_149952_1_.getBlock(p_149952_2_, p_149952_3_, p_149952_4_ - 1) == this ? true : p_149952_1_.getBlock(p_149952_2_, p_149952_3_, p_149952_4_ + 1) == this)));
 	}
 
-	public void func_149695_a(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
+	/**
+	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
+	 * their own) Args: x, y, z, neighbor Block
+	 */
+	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
 	{
-		super.func_149695_a(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
-		TileEntityCherryBlossomChest tileentitychest = (TileEntityCherryBlossomChest)p_149695_1_.func_147438_o(p_149695_2_, p_149695_3_, p_149695_4_);
+		super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
+		TileEntityCherryBlossomChest tileentitychest = (TileEntityCherryBlossomChest)p_149695_1_.getTileEntity(p_149695_2_, p_149695_3_, p_149695_4_);
 
 		if (tileentitychest != null)
 		{
-			tileentitychest.func_145836_u();
+			tileentitychest.updateContainingBlockInfo();
 		}
 	}
 
-	public void func_149749_a(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
+	public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
 	{
-		TileEntityCherryBlossomChest tileentitychest = (TileEntityCherryBlossomChest)p_149749_1_.func_147438_o(p_149749_2_, p_149749_3_, p_149749_4_);
+		TileEntityCherryBlossomChest tileentitychest = (TileEntityCherryBlossomChest)p_149749_1_.getTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
 
 		if (tileentitychest != null)
 		{
@@ -376,10 +404,13 @@ public class BlockCherryBlossomChest extends BlockChest
 			p_149749_1_.func_147453_f(p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_);
 		}
 
-		super.func_149749_a(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
+		super.breakBlock(p_149749_1_, p_149749_2_, p_149749_3_, p_149749_4_, p_149749_5_, p_149749_6_);
 	}
 
-	public boolean func_149727_a(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
+	/**
+	 * Called upon block activation (right click on the block.)
+	 */
+	 public boolean onBlockActivated(World p_149727_1_, int p_149727_2_, int p_149727_3_, int p_149727_4_, EntityPlayer p_149727_5_, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
 	{
 		if (p_149727_1_.isRemote)
 		{
@@ -398,126 +429,141 @@ public class BlockCherryBlossomChest extends BlockChest
 		}
 	}
 
-	public IInventory func_149951_m(World p_149951_1_, int p_149951_2_, int p_149951_3_, int p_149951_4_)
-	{
-		Object object = (TileEntityCherryBlossomChest)p_149951_1_.func_147438_o(p_149951_2_, p_149951_3_, p_149951_4_);
+	 public IInventory func_149951_m(World p_149951_1_, int p_149951_2_, int p_149951_3_, int p_149951_4_)
+	 {
+		 Object object = (TileEntityCherryBlossomChest)p_149951_1_.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_);
 
-		if (object == null)
-		{
-			return null;
-		}
-		else if (p_149951_1_.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_, DOWN))
-		{
-			return null;
-		}
-		else if (func_149953_o(p_149951_1_, p_149951_2_, p_149951_3_, p_149951_4_))
-		{
-			return null;
-		}
-		else if (p_149951_1_.func_147439_a(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this && (p_149951_1_.isSideSolid(p_149951_2_ - 1, p_149951_3_ + 1, p_149951_4_, DOWN) || func_149953_o(p_149951_1_, p_149951_2_ - 1, p_149951_3_, p_149951_4_)))
-		{
-			return null;
-		}
-		else if (p_149951_1_.func_147439_a(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this && (p_149951_1_.isSideSolid(p_149951_2_ + 1, p_149951_3_ + 1, p_149951_4_, DOWN) || func_149953_o(p_149951_1_, p_149951_2_ + 1, p_149951_3_, p_149951_4_)))
-		{
-			return null;
-		}
-		else if (p_149951_1_.func_147439_a(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this && (p_149951_1_.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ - 1, DOWN) || func_149953_o(p_149951_1_, p_149951_2_, p_149951_3_, p_149951_4_ - 1)))
-		{
-			return null;
-		}
-		else if (p_149951_1_.func_147439_a(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this && (p_149951_1_.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ + 1, DOWN) || func_149953_o(p_149951_1_, p_149951_2_, p_149951_3_, p_149951_4_ + 1)))
-		{
-			return null;
-		}
-		else
-		{
-			if (p_149951_1_.func_147439_a(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this)
-			{
-				object = new InventoryLargeChest("container.chestDouble", (TileEntityCherryBlossomChest)p_149951_1_.func_147438_o(p_149951_2_ - 1, p_149951_3_, p_149951_4_), (IInventory)object);
-			}
+		 if (object == null)
+		 {
+			 return null;
+		 }
+		 else if (p_149951_1_.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_, DOWN))
+		 {
+			 return null;
+		 }
+		 else if (func_149953_o(p_149951_1_, p_149951_2_, p_149951_3_, p_149951_4_))
+		 {
+			 return null;
+		 }
+		 else if (p_149951_1_.getBlock(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this && (p_149951_1_.isSideSolid(p_149951_2_ - 1, p_149951_3_ + 1, p_149951_4_, DOWN) || func_149953_o(p_149951_1_, p_149951_2_ - 1, p_149951_3_, p_149951_4_)))
+		 {
+			 return null;
+		 }
+		 else if (p_149951_1_.getBlock(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this && (p_149951_1_.isSideSolid(p_149951_2_ + 1, p_149951_3_ + 1, p_149951_4_, DOWN) || func_149953_o(p_149951_1_, p_149951_2_ + 1, p_149951_3_, p_149951_4_)))
+		 {
+			 return null;
+		 }
+		 else if (p_149951_1_.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this && (p_149951_1_.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ - 1, DOWN) || func_149953_o(p_149951_1_, p_149951_2_, p_149951_3_, p_149951_4_ - 1)))
+		 {
+			 return null;
+		 }
+		 else if (p_149951_1_.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this && (p_149951_1_.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ + 1, DOWN) || func_149953_o(p_149951_1_, p_149951_2_, p_149951_3_, p_149951_4_ + 1)))
+		 {
+			 return null;
+		 }
+		 else
+		 {
+			 if (p_149951_1_.getBlock(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this)
+			 {
+				 object = new InventoryLargeChest("container.chestDouble", (TileEntityCherryBlossomChest)p_149951_1_.getTileEntity(p_149951_2_ - 1, p_149951_3_, p_149951_4_), (IInventory)object);
+			 }
 
-			if (p_149951_1_.func_147439_a(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this)
-			{
-				object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityCherryBlossomChest)p_149951_1_.func_147438_o(p_149951_2_ + 1, p_149951_3_, p_149951_4_));
-			}
+			 if (p_149951_1_.getBlock(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this)
+			 {
+				 object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityCherryBlossomChest)p_149951_1_.getTileEntity(p_149951_2_ + 1, p_149951_3_, p_149951_4_));
+			 }
 
-			if (p_149951_1_.func_147439_a(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this)
-			{
-				object = new InventoryLargeChest("container.chestDouble", (TileEntityCherryBlossomChest)p_149951_1_.func_147438_o(p_149951_2_, p_149951_3_, p_149951_4_ - 1), (IInventory)object);
-			}
+			 if (p_149951_1_.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this)
+			 {
+				 object = new InventoryLargeChest("container.chestDouble", (TileEntityCherryBlossomChest)p_149951_1_.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_ - 1), (IInventory)object);
+			 }
 
-			if (p_149951_1_.func_147439_a(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this)
-			{
-				object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityCherryBlossomChest)p_149951_1_.func_147438_o(p_149951_2_, p_149951_3_, p_149951_4_ + 1));
-			}
+			 if (p_149951_1_.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this)
+			 {
+				 object = new InventoryLargeChest("container.chestDouble", (IInventory)object, (TileEntityCherryBlossomChest)p_149951_1_.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_ + 1));
+			 }
 
-			return (IInventory)object;
-		}
-	}
+			 return (IInventory)object;
+		 }
+	 }
 
-	public TileEntity func_149915_a(World p_149915_1_, int p_149915_2_)
-	{
-		TileEntityCherryBlossomChest tileentitychest = new TileEntityCherryBlossomChest();
-		return tileentitychest;
-	}
+	 /**
+	  * Returns a new instance of a block's tile entity class. Called on placing the block.
+	  */
+	 public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
+	 {
+		 TileEntityCherryBlossomChest tileentitychest = new TileEntityCherryBlossomChest();
+		 return tileentitychest;
+	 }
 
-	public boolean func_149744_f()
-	{
-		return this.field_149956_a == 1;
-	}
+	 /**
+	  * Can this block provide power. Only wire currently seems to have this change based on its state.
+	  */
+	 public boolean canProvidePower()
+	 {
+		 return this.field_149956_a == 1;
+	 }
 
-	public int func_149709_b(IBlockAccess p_149709_1_, int p_149709_2_, int p_149709_3_, int p_149709_4_, int p_149709_5_)
-	{
-		if (!this.func_149744_f())
-		{
-			return 0;
-		}
-		else
-		{
-			int i1 = ((TileEntityCherryBlossomChest)p_149709_1_.func_147438_o(p_149709_2_, p_149709_3_, p_149709_4_)).field_145987_o;
-			return MathHelper.clamp_int(i1, 0, 15);
-		}
-	}
+	 public int isProvidingWeakPower(IBlockAccess p_149709_1_, int p_149709_2_, int p_149709_3_, int p_149709_4_, int p_149709_5_)
+	 {
+		 if (!this.canProvidePower())
+		 {
+			 return 0;
+		 }
+		 else
+		 {
+			 int i1 = ((TileEntityCherryBlossomChest)p_149709_1_.getTileEntity(p_149709_2_, p_149709_3_, p_149709_4_)).numPlayersUsing;
+			 return MathHelper.clamp_int(i1, 0, 15);
+		 }
+	 }
 
-	public int func_149748_c(IBlockAccess p_149748_1_, int p_149748_2_, int p_149748_3_, int p_149748_4_, int p_149748_5_)
-	{
-		return p_149748_5_ == 1 ? this.func_149709_b(p_149748_1_, p_149748_2_, p_149748_3_, p_149748_4_, p_149748_5_) : 0;
-	}
+	 public int isProvidingStrongPower(IBlockAccess p_149748_1_, int p_149748_2_, int p_149748_3_, int p_149748_4_, int p_149748_5_)
+	 {
+		 return p_149748_5_ == 1 ? this.isProvidingWeakPower(p_149748_1_, p_149748_2_, p_149748_3_, p_149748_4_, p_149748_5_) : 0;
+	 }
 
-	private static boolean func_149953_o(World p_149953_0_, int p_149953_1_, int p_149953_2_, int p_149953_3_)
-	{
-		Iterator<?> iterator = p_149953_0_.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB((double)p_149953_1_, (double)(p_149953_2_ + 1), (double)p_149953_3_, (double)(p_149953_1_ + 1), (double)(p_149953_2_ + 2), (double)(p_149953_3_ + 1))).iterator();
-		EntityOcelot entityocelot1;
+	 private static boolean func_149953_o(World p_149953_0_, int p_149953_1_, int p_149953_2_, int p_149953_3_)
+	 {
+		 Iterator iterator = p_149953_0_.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB((double)p_149953_1_, (double)(p_149953_2_ + 1), (double)p_149953_3_, (double)(p_149953_1_ + 1), (double)(p_149953_2_ + 2), (double)(p_149953_3_ + 1))).iterator();
+		 EntityOcelot entityocelot1;
 
-		do
-		{
-			if (!iterator.hasNext())
-			{
-				return false;
-			}
+		 do
+		 {
+			 if (!iterator.hasNext())
+			 {
+				 return false;
+			 }
 
-			EntityOcelot entityocelot = (EntityOcelot)iterator.next();
-			entityocelot1 = (EntityOcelot)entityocelot;
-		}
-		while (!entityocelot1.isSitting());
+			 EntityOcelot entityocelot = (EntityOcelot)iterator.next();
+			 entityocelot1 = (EntityOcelot)entityocelot;
+		 }
+		 while (!entityocelot1.isSitting());
 
-		return true;
-	}
+		 return true;
+	 }
 
-	public boolean func_149740_M()
-	{
-		return true;
-	}
+	 /**
+	  * If this returns true, then comparators facing away from this block will use the value from
+	  * getComparatorInputOverride instead of the actual redstone signal strength.
+	  */
+	 public boolean hasComparatorInputOverride()
+	 {
+		 return true;
+	 }
 
-	public int func_149736_g(World p_149736_1_, int p_149736_2_, int p_149736_3_, int p_149736_4_, int p_149736_5_)
-	{
-		return Container.calcRedstoneFromInventory(this.func_149951_m(p_149736_1_, p_149736_2_, p_149736_3_, p_149736_4_));
-	}
+	 /**
+	  * If hasComparatorInputOverride returns true, the return value from this is used instead of the redstone signal
+	  * strength when this block inputs to a comparator.
+	  */
+	 public int getComparatorInputOverride(World p_149736_1_, int p_149736_2_, int p_149736_3_, int p_149736_4_, int p_149736_5_)
+	 {
+		 return Container.calcRedstoneFromInventory(this.func_149951_m(p_149736_1_, p_149736_2_, p_149736_3_, p_149736_4_));
+	 }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister par1IconRegister)
+
+	 @Override
+	 @SideOnly(Side.CLIENT)
+	 public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "bloodPlanks");
 	}

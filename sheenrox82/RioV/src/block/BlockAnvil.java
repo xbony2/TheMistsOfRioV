@@ -23,12 +23,12 @@ public class BlockAnvil extends Block
 	
 	public BlockAnvil()
 	{
-		super(Material.field_151574_g);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
-		this.func_149676_a(0.0F, 0.0F, 0.0F, 1.0F, 0.80F, 1.0F);
+		super(Material.anvil);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.80F, 1.0F);
 	}
 
-	/**@Override
+	@Override
 	public boolean isOpaqueCube()
 	{
 		return false;
@@ -38,17 +38,17 @@ public class BlockAnvil extends Block
 	public boolean renderAsNormalBlock()
 	{
 		return false;
-	}**/
+	}
 
 	@Override
-	public IIcon func_149691_a(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
 	{
 		return par1 == 0 ? this.field_94460_b : (par1 == 1 ? this.field_94461_a : this.anvilSide);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		this.anvilSide = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "anvil_side");
 		this.field_94461_a = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "anvil_top");
@@ -56,7 +56,7 @@ public class BlockAnvil extends Block
 	}
 
 	@Override
-	public boolean func_149727_a(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
 	{
 		if(!par5EntityPlayer.isSneaking())
 		{

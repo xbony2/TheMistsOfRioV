@@ -48,8 +48,8 @@ public class EntityChickenBoss extends EntityMob implements IBossDisplayData
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(104.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(104.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
     }
 
     public void onLivingUpdate()
@@ -86,7 +86,7 @@ public class EntityChickenBoss extends EntityMob implements IBossDisplayData
         if (!this.isChild() && !this.worldObj.isRemote && --this.timeUntilNextEgg <= 0)
         {
             this.playSound("mob.chicken.plop", 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-            this.func_145779_a(Items.egg, 1);
+            this.dropItem(Items.egg, 1);
             this.timeUntilNextEgg = this.rand.nextInt(6000) + 6000;
         }
     }
@@ -133,16 +133,16 @@ public class EntityChickenBoss extends EntityMob implements IBossDisplayData
 
         for (int k = 0; k < j; ++k)
         {
-            this.func_145779_a(Items.feather, 1);
+            this.dropItem(Items.feather, 1);
         }
 
         if (this.isBurning())
         {
-            this.func_145779_a(Items.cooked_chicken, 1);
+            this.dropItem(Items.cooked_chicken, 1);
         }
         else
         {
-            this.func_145779_a(Items.chicken, 1);
+            this.dropItem(Items.chicken, 1);
         }
     }
 }

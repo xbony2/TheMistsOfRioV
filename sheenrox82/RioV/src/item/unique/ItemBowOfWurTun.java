@@ -54,7 +54,7 @@ public class ItemBowOfWurTun extends ItemBow
 
 		boolean flag = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
-		if (flag || par3EntityPlayer.inventory.func_146028_b(RioVItems.darknessArrow))
+		if (flag || par3EntityPlayer.inventory.hasItem(RioVItems.darknessArrow))
 		{
 			float f = (float)j / 20.0F;
 			f = (f * f + f * 2.0F) / 3.0F;
@@ -109,7 +109,7 @@ public class ItemBowOfWurTun extends ItemBow
 			}
 			else
 			{
-				par3EntityPlayer.inventory.func_146026_a(RioVItems.darknessArrow);
+				par3EntityPlayer.inventory.consumeInventoryItem(RioVItems.darknessArrow);
 			}
 
 			if (!par2World.isRemote)
@@ -152,7 +152,7 @@ public class ItemBowOfWurTun extends ItemBow
 			return event.result;
 		}
 
-		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.func_146028_b(RioVItems.darknessArrow))
+		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(RioVItems.darknessArrow))
 		{
 			par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		}

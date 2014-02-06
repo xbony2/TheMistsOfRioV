@@ -30,35 +30,35 @@ public class RenderTileEntityBloodChest extends TileEntityChestRenderer
 	}
 
 	@Override
-	public void func_147500_a(TileEntity p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_)
+	public void renderTileEntityAt(TileEntity p_147500_1_, double p_147500_2_, double p_147500_4_, double p_147500_6_, float p_147500_8_)
     {
-        this.func_147500_a((TileEntityChest)p_147500_1_, p_147500_2_, p_147500_4_, p_147500_6_, p_147500_8_);
+        this.renderTileEntityAt((TileEntityBloodChest)p_147500_1_, p_147500_2_, p_147500_4_, p_147500_6_, p_147500_8_);
     }
 
-	public void func_147500_a(TileEntityBloodChest tile, double x, double y, double z, float f)
+	public void renderTileEntityAt(TileEntityBloodChest tile, double x, double y, double z, float f)
 	{
 		int rotation = 0;
-		if (!tile.func_145830_o())
+		if (!tile.hasWorldObj())
         {
-			rotation = tile.func_145832_p();
+			rotation = 0;
 		}
 
-		if (tile.field_145992_i == null && tile.field_145991_k == null)
+		if (tile.adjacentChestZNeg == null && tile.adjacentChestXNeg == null)
 		{
 			ModelChest modelchest;
 
-			if (tile.field_145990_j == null && tile.field_145988_l == null)
+			if (tile.adjacentChestXPos == null && tile.adjacentChestZPos == null)
 			{
 				modelchest = this.chestModel;
 
-				this.func_147499_a(TileEntityResourceLocation.blood_singleChest);
+				this.bindTexture(TileEntityResourceLocation.blood_singleChest);
 
 			}
 			else
 			{
 				modelchest = this.largeChestModel;
 
-				this.func_147499_a(TileEntityResourceLocation.blood_doubleChest);
+				this.bindTexture(TileEntityResourceLocation.blood_doubleChest);
 
 			}
 			GL11.glPushMatrix();
@@ -89,24 +89,24 @@ public class RenderTileEntityBloodChest extends TileEntityChestRenderer
                 short1 = -90;
             }
 
-            if (rotation == 2 && tile.field_145990_j != null)
+            if (rotation == 2 && tile.adjacentChestXPos != null)
             {
                 GL11.glTranslatef(1.0F, 0.0F, 0.0F);
             }
 
-            if (rotation == 5 && tile.field_145988_l != null)
+            if (rotation == 5 && tile.adjacentChestZPos != null)
             {
                 GL11.glTranslatef(0.0F, 0.0F, -1.0F);
             }
 
             GL11.glRotatef((float)short1, 0.0F, 1.0F, 0.0F);
             GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-            float f1 = tile.field_145986_n + (tile.field_145989_m - tile.field_145986_n) * f;
+            float f1 = tile.prevLidAngle + (tile.lidAngle - tile.prevLidAngle) * f;
             float f2;
 
-            if (tile.field_145992_i != null)
+            if (tile.adjacentChestZNeg != null)
             {
-                f2 = tile.field_145992_i.field_145986_n + (tile.field_145992_i.field_145989_m - tile.field_145992_i.field_145986_n) * f;
+            	f2 = tile.adjacentChestZNeg.prevLidAngle + (tile.adjacentChestZNeg.lidAngle - tile.adjacentChestZNeg.prevLidAngle) * f;
 
                 if (f2 > f1)
                 {
@@ -114,9 +114,9 @@ public class RenderTileEntityBloodChest extends TileEntityChestRenderer
                 }
             }
 
-            if (tile.field_145991_k != null)
+            if (tile.adjacentChestXNeg != null)
             {
-            	f2 = tile.field_145991_k.field_145986_n + (tile.field_145991_k.field_145989_m - tile.field_145991_k.field_145986_n) * f;
+            	f2 = tile.adjacentChestXNeg.prevLidAngle + (tile.adjacentChestXNeg.lidAngle - tile.adjacentChestXNeg.prevLidAngle) * f;
                 
             	if (f2 > f1)
                 {

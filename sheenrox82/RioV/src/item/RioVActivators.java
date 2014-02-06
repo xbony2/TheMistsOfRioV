@@ -64,10 +64,10 @@ public class RioVActivators extends Item
 	        }
 	        else
 	        {
-	            if (par3World.func_147437_c(par4, par5, par6))
+	            if (par3World.isAirBlock(par4, par5, par6))
 	            {
 	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.func_147449_b(par4, par5, par6, RioVBlocks.blackFire);
+	                par3World.setBlock(par4, par5, par6, RioVBlocks.blackFire);
 	            }
 
 	            par1ItemStack.damageItem(1, par2EntityPlayer);
@@ -113,16 +113,17 @@ public class RioVActivators extends Item
 	        }
 	        else
 	        {
-	            if (par3World.func_147437_c(par4, par5, par6))
+	        	if (par3World.isAirBlock(par4, par5, par6))
 	            {
 	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.func_147449_b(par4, par5, par6, RioVBlocks.whiteFire);
+	                par3World.setBlock(par4, par5, par6, RioVBlocks.whiteFire);
 	            }
 
 	            par1ItemStack.damageItem(1, par2EntityPlayer);
 	            return true;
 	        }
 		}
+		
 		if(this == RioVItems.flamonorActivator)
 		{
 			if (par7 == 0)
@@ -161,10 +162,10 @@ public class RioVActivators extends Item
 	        }
 	        else
 	        {
-	            if (par3World.func_147437_c(par4, par5, par6))
+	        	if (par3World.isAirBlock(par4, par5, par6))
 	            {
 	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.func_147449_b(par4, par5, par6, RioVBlocks.redFire);
+	                par3World.setBlock(par4, par5, par6, RioVBlocks.redFire);
 	            }
 
 	            par1ItemStack.damageItem(1, par2EntityPlayer);
@@ -210,10 +211,10 @@ public class RioVActivators extends Item
 	        }
 	        else
 	        {
-	            if (par3World.func_147437_c(par4, par5, par6))
+	        	if (par3World.isAirBlock(par4, par5, par6))
 	            {
 	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.func_147449_b(par4, par5, par6, RioVBlocks.sanctuatiteFire);
+	                par3World.setBlock(par4, par5, par6, RioVBlocks.sanctuatiteFire);
 	            }
 
 	            par1ItemStack.damageItem(1, par2EntityPlayer);
@@ -221,7 +222,7 @@ public class RioVActivators extends Item
 	        }
 		}
 	
-		return false;
+		return true;
 	}
 
 	@Override

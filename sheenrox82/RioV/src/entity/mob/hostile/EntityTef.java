@@ -107,9 +107,9 @@ public class EntityTef extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(400.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(60.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(400.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(60.0D);
 	}
 
 	@Override
@@ -121,8 +121,8 @@ public class EntityTef extends EntityBossCore
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.func_145779_a(RioVItems.darkMatter, 2);
-		this.func_145779_a(RioVItems.ambrosia, 1);
+		this.dropItem(RioVItems.darkMatter, 2);
+		this.dropItem(RioVItems.ambrosia, 1);
 	}
 
 	@Override
@@ -134,13 +134,13 @@ public class EntityTef extends EntityBossCore
             {
                 byte b0 = 0;
 
-                if (this.worldObj.difficultySetting.func_151525_a() > 1)
+                if (this.worldObj.difficultySetting.getDifficultyId() > 1)
                 {
-                    if (this.worldObj.difficultySetting.func_151525_a() == 2)
+                    if (this.worldObj.difficultySetting.getDifficultyId() == 2)
                     {
                         b0 = 7;
                     }
-                    else if (this.worldObj.difficultySetting.func_151525_a() == 3)
+                    else if (this.worldObj.difficultySetting.getDifficultyId() == 3)
                     {
                         b0 = 15;
                     }

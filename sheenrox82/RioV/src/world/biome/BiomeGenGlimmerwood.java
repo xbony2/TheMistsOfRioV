@@ -14,8 +14,7 @@ public class BiomeGenGlimmerwood extends BiomeGenBase
 	public BiomeGenGlimmerwood(int par1)
 	{
 		super(par1);
-		this.minHeight = 0.4F;
-		this.maxHeight = 2.0F;
+		this.rootHeight = 0.4F;
 		this.topBlock = RioVBlocks.glimmerGrass;
 		this.fillerBlock = RioVBlocks.glimmerDirt;
 		this.setBiomeName("Vaeryn");

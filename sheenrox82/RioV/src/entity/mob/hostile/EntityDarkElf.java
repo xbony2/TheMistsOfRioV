@@ -116,7 +116,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 
 			if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
 			{
-				ItemStack itemstack = this.getCurrentItemOrArmor(4);
+				ItemStack itemstack = this.getEquipmentInSlot(4);
 
 				if (itemstack != null)
 				{
@@ -150,15 +150,15 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 
 		if (var1 == 0)
 		{
-			this.func_145779_a(Items.bow, 1);
+			this.dropItem(Items.bow, 1);
 		}
 		if (var1 == 1)
 		{
-			this.func_145779_a(RioVItems.ambrosia, 1);
+			this.dropItem(RioVItems.ambrosia, 1);
 		}
 		if (var1 == 2)
 		{
-			this.func_145779_a(Items.arrow, 1);
+			this.dropItem(Items.arrow, 1);
 		}
 		if (var1 == 3)
 		{
@@ -196,7 +196,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 
 		this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * this.worldObj.func_147462_b(this.posX, this.posY, this.posZ));
 
-		if (this.getCurrentItemOrArmor(4) == null)
+		if (this.getEquipmentInSlot(4) == null)
 		{
 			Calendar calendar = this.worldObj.getCurrentDate();
 
@@ -240,10 +240,10 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2)
 	{
-		EntityArrow entityarrow = new EntityArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.func_151525_a() * 4));
+		EntityArrow entityarrow = new EntityArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
 		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
 		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
-		entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting.func_151525_a() * 0.11F));
+		entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting.getDifficultyId() * 0.11F));
 
 		if (i > 0)
 		{
@@ -264,9 +264,9 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 	}
 
 	@Override

@@ -23,14 +23,14 @@ public class GuiWorkbench extends GuiContainer
 	}
 
 	@Override
-	protected void func_146979_b(int i, int j)
+	protected void drawGuiContainerForegroundLayer(int i, int j)
 	{
-		field_146289_q.drawString(StatCollector.translateToLocal("container.crafting"), 28, 6, 0x4A4A4A);
-		field_146289_q.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 94, 0x4A4A4A);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.crafting"), 28, 6, 0x4A4A4A);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 6, ySize - 94, 0x4A4A4A);
 	}
 
 	@Override
-	protected void func_146976_a(float f, int i, int j)
+	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.workbench);
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);

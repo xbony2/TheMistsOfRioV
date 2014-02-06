@@ -68,7 +68,7 @@ public class ItemDragonChestplate extends ItemArmor
 					armorModel.isSneak = entityLiving.isSneaking();
 					armorModel.isRiding = entityLiving.isRiding();
 					armorModel.isChild = entityLiving.isChild();
-					armorModel.heldItemRight = entityLiving.getCurrentItemOrArmor(0) != null ? 1 :0;
+					armorModel.heldItemRight = entityLiving.getEquipmentInSlot(0) != null ? 1 :0;
 
 					if(entityLiving instanceof EntityPlayer)
 					{

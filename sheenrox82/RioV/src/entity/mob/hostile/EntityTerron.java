@@ -74,9 +74,9 @@ public class EntityTerron extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(900.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(14.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(900.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
 	}
 
 	@Override
@@ -93,7 +93,7 @@ public class EntityTerron extends EntityBossCore
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.func_145779_a(RioVItems.agonite, 3);
+		this.dropItem(RioVItems.agonite, 3);
 	}
 
 	@Override

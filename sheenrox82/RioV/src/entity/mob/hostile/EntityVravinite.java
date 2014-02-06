@@ -84,9 +84,9 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 	}
 	
 	@Override
@@ -115,15 +115,15 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 
 		if (var1 == 0)
 		{	
-			this.func_145779_a(RioVItems.vraviniteArrow, 7);
+			this.dropItem(RioVItems.vraviniteArrow, 7);
 		}
 		if (var1 == 1)
 		{
-			this.func_145779_a(RioVItems.blueMagicApple, 1);
+			this.dropItem(RioVItems.blueMagicApple, 1);
 		}
 		if (var1 == 2)
 		{
-			this.func_145779_a(RioVItems.vraviniteBow, 1);
+			this.dropItem(RioVItems.vraviniteBow, 1);
 		}
 		if (var1 == 3)
 		{
@@ -143,7 +143,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		}
 		if (var1 == 7)
 		{
-			this.func_145779_a(RioVItems.vraviniteArrow, 8);
+			this.dropItem(RioVItems.vraviniteArrow, 8);
 		}
 	}
 
@@ -166,7 +166,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2) 
 	{
-		EntityVraviniteArrow entityarrow = new EntityVraviniteArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.func_151525_a() * 4));
+		EntityVraviniteArrow entityarrow = new EntityVraviniteArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
 		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
 		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
 		entityarrow.setDamage(3F);

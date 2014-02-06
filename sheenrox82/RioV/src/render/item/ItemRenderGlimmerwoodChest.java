@@ -32,7 +32,7 @@ public class ItemRenderGlimmerwoodChest implements IItemRenderer
 
     	GL11.glPushMatrix();
         GL11.glScalef(1.0F, 1.0F, 1.0F);        
-        TileEntityRendererDispatcher.field_147556_a.func_147549_a(chest, 0.0D, 0.0D, 0.0D, 0.0F);
+        TileEntityRendererDispatcher.instance.renderTileEntityAt(chest, 0.0D, 0.0D, 0.0D, 0.0F);
         GL11.glPopMatrix();
     }
 

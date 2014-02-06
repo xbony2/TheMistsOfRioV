@@ -12,8 +12,8 @@ public class BlockVoidFlowing extends BlockDynamicLiquid
 
 	public BlockVoidFlowing() 
 	{
-		super(Material.field_151586_h);
-		this.func_149647_a(null);
+		super(Material.water);
+		this.setCreativeTab(null);
 	}
 
 	public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)

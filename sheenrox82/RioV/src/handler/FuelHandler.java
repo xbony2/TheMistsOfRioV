@@ -12,7 +12,7 @@ public class FuelHandler implements IFuelHandler
 	{
 		Item var1 = fuel.getItem();
 		
-		if(var1 == Item.func_150898_a(RioVBlocks.steamingBloodDeposit))
+		if(var1 == Item.getItemFromBlock(RioVBlocks.steamingBloodDeposit))
 		{
 			return 6400;
 		}

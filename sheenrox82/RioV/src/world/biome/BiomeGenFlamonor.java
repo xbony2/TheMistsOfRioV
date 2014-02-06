@@ -13,8 +13,7 @@ public class BiomeGenFlamonor extends BiomeGenBase
 	public BiomeGenFlamonor(int par1)
 	{
 		super(par1);
-		this.minHeight = 0.5F;
-		this.maxHeight = 0.9F;
+		this.rootHeight = 0.5F;
 		this.topBlock = RioVBlocks.bloodGrass;
 		this.fillerBlock = RioVBlocks.bloodDirt;
 		this.setBiomeName("Flamonor");

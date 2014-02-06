@@ -35,7 +35,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 	public BlockRioVWorkbench()
 	{
 		super();
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -43,7 +43,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 	/**
 	 * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
 	 */
-	public IIcon func_149691_a(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
 	{
 		if(this == RioVBlocks.cherryWorkbench)
 		{
@@ -74,7 +74,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 	 * When this method is called, your block should register all the icons it needs with the given IconRegister. This
 	 * is the only chance you get to register icons.
 	 */
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		if(this == RioVBlocks.bloodWorkbench)
 		{

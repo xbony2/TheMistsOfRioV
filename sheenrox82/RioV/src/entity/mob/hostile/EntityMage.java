@@ -105,19 +105,19 @@ public class EntityMage extends EntityMobDeadBody
 
 		if (var1 == 0)
 		{
-			this.func_145779_a(RioVItems.orb, 1);
+			this.dropItem(RioVItems.orb, 1);
 		}
 		if (var1 == 1)
 		{
-			this.func_145779_a(RioVItems.orb, 2);
+			this.dropItem(RioVItems.orb, 2);
 		}
 		if (var1 == 2)
 		{
-			this.func_145779_a(RioVItems.baseCrystal, 1);
+			this.dropItem(RioVItems.baseCrystal, 1);
 		}
 		if (var1 == 3)
 		{
-			this.func_145779_a(RioVItems.eosPotion, 1);
+			this.dropItem(RioVItems.eosPotion, 1);
 		}
 		if (var1 == 4)
 		{
@@ -132,7 +132,7 @@ public class EntityMage extends EntityMobDeadBody
 		}
 		if (var1 == 7)
 		{
-			this.func_145779_a(RioVItems.mythrilIngot, 1);
+			this.dropItem(RioVItems.mythrilIngot, 1);
 		}
 	}
 
@@ -144,7 +144,7 @@ public class EntityMage extends EntityMobDeadBody
 
 		if(random == 0)
 		{
-			this.func_145779_a(RioVItems.fireballWand, 1);
+			this.dropItem(RioVItems.fireballWand, 1);
 		}
 		
 		if(random == 1)
@@ -154,7 +154,7 @@ public class EntityMage extends EntityMobDeadBody
 		
 		if(random == 2)
 		{
-			this.func_145779_a(RioVItems.graviWand, 1);
+			this.dropItem(RioVItems.graviWand, 1);
 		}
 	}
 
@@ -162,9 +162,9 @@ public class EntityMage extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(6.0D);
 	}
 
 	@Override

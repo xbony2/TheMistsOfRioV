@@ -22,19 +22,19 @@ public class BlockBush extends BlockFlower
 {	
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
-	
+
 	public BlockBush()
 	{
 		super(0);
-		this.func_149647_a(null);
-		func_149711_c(0.3F);
+		this.setCreativeTab(null);
+		this.setHardness(0.3F);
 		float f = 0.375F;
 		float f1 = f / 2.0F;
-		this.func_149676_a(0.5F - f1, 0.0F, 0.5F - f1, 0.5F + f1, f, 0.5F + f1);
+		this.setBlockBounds(0.5F - f1, 0.0F, 0.5F - f1, 0.5F + f1, f, 0.5F + f1);
 	}
 
 	@Override
-	public Item func_149650_a(int par1, Random par2Random, int par3)
+	public Item getItemDropped(int par1, Random par2Random, int par3)
 	{
 		if(this == RioVBlocks.blueBerryBush)
 		{
@@ -60,12 +60,12 @@ public class BlockBush extends BlockFlower
 		{
 			return RioVItems.strawberry;
 		}
-		
-		return Item.func_150898_a(this);
+
+		return Item.getItemFromBlock(this);
 	}
 
 	@Override
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		if(this == RioVBlocks.paleBush)
 		{
@@ -73,64 +73,63 @@ public class BlockBush extends BlockFlower
 		}
 		else
 		{
-			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.func_149739_a()));
+			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 		}
 	}
 
-	@Override
-	public boolean func_149662_c()
-    {
-        return false;
-    }
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
 
-    public boolean func_149686_d()
-    {
-        return false;
-    }
 
-	@Override
-	public int func_149645_b()
+	public boolean renderAsNormalBlock()
+	{
+		return false;
+	}
+
+	public int getRenderType()
 	{
 		return 0;
 	}
 
 	@Override
-	public void func_149664_b(World world, int x, int y, int z, int meta)
+	public void onBlockDestroyedByPlayer(World world, int x, int y, int z, int meta)
 	{
 		if(this == RioVBlocks.bush)
 		{
-			world.func_147439_a(x, y, z);
+			world.setBlockToAir(x, y, z);
 		}
 		if(this == RioVBlocks.bloodBerryBush)
 		{
-			world.func_147446_b(x, y, z, RioVBlocks.paleBush, meta, meta);
+			world.setBlock(x, y, z, RioVBlocks.paleBush, meta, meta);
 		}
 		if(this == RioVBlocks.blueBerryBush)
 		{
-			world.func_147446_b(x, y, z, RioVBlocks.bush, meta, meta);
+			world.setBlock(x, y, z, RioVBlocks.bush, meta, meta);
 		}
 		if(this == RioVBlocks.blackBerryBush)
 		{
-			world.func_147446_b(x, y, z, RioVBlocks.bush, meta, meta);
+			world.setBlock(x, y, z, RioVBlocks.bush, meta, meta);
 		}
 		if(this == RioVBlocks.raspBerryBush)
 		{
-			world.func_147446_b(x, y, z, RioVBlocks.bush, meta, meta);
+			world.setBlock(x, y, z, RioVBlocks.bush, meta, meta);
 		}
 		if(this == RioVBlocks.strawberryBush)
 		{
-			world.func_147446_b(x, y, z, RioVBlocks.bush, meta, meta);
+			world.setBlock(x, y, z, RioVBlocks.bush, meta, meta);
 		}
 	}
 
 	@Override
-	public AxisAlignedBB func_149633_g(World par1World, int par2, int par3, int par4)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
 	{
 		return null;
 	}
 
 	@Override
-	protected boolean func_149854_a(Block block)
+	protected boolean canPlaceBlockOn(Block block)
 	{
 		if(block == RioVBlocks.bloodBerryBush || block == RioVBlocks.paleBush)
 		{

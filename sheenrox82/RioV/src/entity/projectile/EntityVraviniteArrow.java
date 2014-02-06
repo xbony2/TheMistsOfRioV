@@ -192,12 +192,12 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
             this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f) * 180.0D / Math.PI);
         }
 
-        Block block = this.worldObj.func_147439_a(this.field_145791_d, this.field_145792_e, this.field_145789_f);
+        Block block = this.worldObj.getBlock(this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
-        if (block.func_149688_o() != Material.field_151579_a)
-        {
-            block.func_149719_a(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
-            AxisAlignedBB axisalignedbb = block.func_149668_a(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
+        if (block.getMaterial() != Material.air)
+		{
+			block.setBlockBoundsBasedOnState(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
+            AxisAlignedBB axisalignedbb = block.getCollisionBoundingBoxFromPool(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
             if (axisalignedbb != null && axisalignedbb.isVecInside(this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ)))
             {
@@ -321,7 +321,7 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
 
                             if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
                             {
-                                ((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.func_147359_a(new S2BPacketChangeGameState(6, 0.0F));
+                                ((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
                             }
                         }
 
@@ -361,9 +361,9 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
                     this.arrowShake = 7;
                     this.setIsCritical(false);
 
-                    if (this.field_145790_g.func_149688_o() != Material.field_151579_a)
-                    {
-                        this.field_145790_g.func_149670_a(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
+                    if (this.field_145790_g.getMaterial() != Material.air)
+					{
+						this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
                     }
                 }
             }
@@ -439,7 +439,7 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
         par1NBTTagCompound.setShort("yTile", (short)this.field_145792_e);
         par1NBTTagCompound.setShort("zTile", (short)this.field_145789_f);
         par1NBTTagCompound.setShort("life", (short)this.ticksInGround);
-        par1NBTTagCompound.setByte("inTile", (byte)Block.func_149682_b(this.field_145790_g));
+        par1NBTTagCompound.setByte("inTile", (byte)Block.getIdFromBlock(this.field_145790_g));
         par1NBTTagCompound.setByte("inData", (byte)this.inData);
         par1NBTTagCompound.setByte("shake", (byte)this.arrowShake);
         par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
@@ -457,21 +457,21 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
         this.field_145792_e = par1NBTTagCompound.getShort("yTile");
         this.field_145789_f = par1NBTTagCompound.getShort("zTile");
         this.ticksInGround = par1NBTTagCompound.getShort("life");
-        this.field_145790_g = Block.func_149729_e(par1NBTTagCompound.getByte("inTile") & 255);
+        this.field_145790_g = Block.getBlockById(par1NBTTagCompound.getByte("inTile") & 255);
         this.inData = par1NBTTagCompound.getByte("inData") & 255;
         this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
         this.inGround = par1NBTTagCompound.getByte("inGround") == 1;
 
-        if (par1NBTTagCompound.func_150297_b("damage", 99))
+        if (par1NBTTagCompound.hasKey("damage", 99))
         {
             this.damage = par1NBTTagCompound.getDouble("damage");
         }
 
-        if (par1NBTTagCompound.func_150297_b("pickup", 99))
+        if (par1NBTTagCompound.hasKey("pickup", 99))
         {
             this.canBePickedUp = par1NBTTagCompound.getByte("pickup");
         }
-        else if (par1NBTTagCompound.func_150297_b("player", 99))
+        else if (par1NBTTagCompound.hasKey("player", 99))
         {
             this.canBePickedUp = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
         }

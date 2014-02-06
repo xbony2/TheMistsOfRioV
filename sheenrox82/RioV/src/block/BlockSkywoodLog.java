@@ -20,8 +20,8 @@ public class BlockSkywoodLog extends Block
 	
 	public BlockSkywoodLog()
 	{
-		super(Material.field_151575_d);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		super(Material.wood);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override

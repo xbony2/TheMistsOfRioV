@@ -24,26 +24,25 @@ public class BlockStainedGlass extends Block
     public BlockStainedGlass()
     {
         super(Materials.customMaterial);
-        this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+        this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public IIcon func_149691_a(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return this.iconArray[par2];
     }
 
     @Override
-    public int func_149692_a(int par1)
+    public int damageDropped(int par1)
     {
         return par1;
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
 	@SideOnly(Side.CLIENT)
     @Override
-    public void func_149666_a(Item par1, CreativeTabs par2CreativeTabs, List par3List)
+    public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List)
     {
     	 for(int i = 0; i < brickList.length; i++)
          {
@@ -53,7 +52,7 @@ public class BlockStainedGlass extends Block
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void func_149651_a(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
         this.iconArray = new IIcon[brickList.length];
 

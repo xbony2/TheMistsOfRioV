@@ -39,13 +39,13 @@ public class GuiSmallBag extends GuiContainer
 		this.ySize_lo = (float)par2;
 	}
 
-	protected void func_146976_a(float par1, int par2, int par3)
+	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(iconLocation);
-        int k = (this.field_146294_l - this.field_146999_f) / 2;
-        int l = (this.field_146295_m - this.field_147000_g) / 2;
-        this.drawTexturedModalRect(k, l, 0, 0, this.field_146999_f, this.field_147000_g + 120);
+        int k = (this.width - this.xSize) / 2;
+        int l = (this.height - this.ySize) / 2;
+        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);
 		drawPlayerModel(k + 51, l + 75, 30, (float)(k + 51) - this.xSize_lo, (float)(l + 75 - 50) - this.ySize_lo, Minecraft.getMinecraft().thePlayer);
 	}
 
@@ -72,7 +72,7 @@ public class GuiSmallBag extends GuiContainer
 		par5EntityLivingBase.prevRotationYawHead = par5EntityLivingBase.rotationYaw;
 		GL11.glTranslatef(0.0F, par5EntityLivingBase.yOffset, 0.0F);
 		RenderManager.instance.playerViewY = 180.0F;
-		RenderManager.instance.func_147940_a(par5EntityLivingBase, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
+		RenderManager.instance.renderEntityWithPosYaw(par5EntityLivingBase, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F);
 		par5EntityLivingBase.renderYawOffset = f2;
 		par5EntityLivingBase.rotationYaw = f3;
 		par5EntityLivingBase.rotationPitch = f4;

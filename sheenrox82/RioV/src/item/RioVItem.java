@@ -58,7 +58,7 @@ public class RioVItem extends Item
 		if(par1ItemStack.getItem().equals(RioVItems.heart))
 		{
 			par3EntityPlayer.heal(2);			
-			par3EntityPlayer.inventory.func_146026_a(RioVItems.heart);
+			par3EntityPlayer.inventory.consumeInventoryItem(RioVItems.heart);
 		}
 		
 		return par1ItemStack;

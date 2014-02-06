@@ -52,12 +52,4 @@ public class ItemGuide extends Item
 		setMaxStackSize(1);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
-	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void func_150895_a(Item p_150895_1_, CreativeTabs p_150895_2_, List p_150895_3_)
-	{
-		p_150895_3_.add(reading);
-	}
 }

@@ -126,23 +126,23 @@ public class EntityAunTun extends EntityBossCore
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.func_145779_a(RioVItems.aleris, 64);
-		this.func_145779_a(RioVItems.darkMatter, 64);
-		this.func_145779_a(RioVItems.dragonSoul, 64);
-		this.func_145779_a(RioVItems.aleris, 64);
-		this.func_145779_a(RioVItems.supremeAunTunHelmet, 1);
-		this.func_145779_a(RioVItems.supremeAunTunChestplate, 1);
-		this.func_145779_a(RioVItems.supremeAunTunLeggings, 1);
-		this.func_145779_a(RioVItems.supremeAunTunBoots, 1);
-		this.func_145779_a(RioVItems.ultraAxeOfAunTun, 1);
+		this.dropItem(RioVItems.aleris, 64);
+		this.dropItem(RioVItems.darkMatter, 64);
+		this.dropItem(RioVItems.dragonSoul, 64);
+		this.dropItem(RioVItems.aleris, 64);
+		this.dropItem(RioVItems.supremeAunTunHelmet, 1);
+		this.dropItem(RioVItems.supremeAunTunChestplate, 1);
+		this.dropItem(RioVItems.supremeAunTunLeggings, 1);
+		this.dropItem(RioVItems.supremeAunTunBoots, 1);
+		this.dropItem(RioVItems.ultraAxeOfAunTun, 1);
 	}
 
 	@Override
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(6000.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(28.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(6000.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(28.0D);
 	}
 }

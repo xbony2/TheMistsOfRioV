@@ -23,27 +23,26 @@ public class BlockPlanks extends Block
 
     public BlockPlanks()
     {
-        super(Material.field_151575_d);
-        this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+        super(Material.wood);
+        this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
-    public IIcon func_149691_a(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return this.iconArray[par2];
     }
 
     @Override
-    public int func_149692_a(int p_149692_1_)
+    public int damageDropped(int p_149692_1_)
     {
         return p_149692_1_;
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
     @Override
-    public void func_149666_a(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+    public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
     {
     	 for(int i = 0; i < woodType.length; i++)
          {
@@ -53,7 +52,7 @@ public class BlockPlanks extends Block
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void func_149651_a(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
         this.iconArray = new IIcon[woodType.length];
 

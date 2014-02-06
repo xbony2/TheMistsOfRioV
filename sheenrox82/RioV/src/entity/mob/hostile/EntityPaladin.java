@@ -97,9 +97,9 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.56D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.56D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
 	}
 	
 	@Override
@@ -116,7 +116,7 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.func_145779_a(RioVItems.paladinLongsword, 1);
+		this.dropItem(RioVItems.paladinLongsword, 1);
 	}
 
 	@Override

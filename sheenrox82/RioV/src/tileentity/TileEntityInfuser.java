@@ -120,15 +120,15 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         this.field_145958_o = p_145951_1_;
     }
 
-    public void func_145839_a(NBTTagCompound p_145839_1_)
+    public void readFromNBT(NBTTagCompound p_145839_1_)
     {
-        super.func_145839_a(p_145839_1_);
-        NBTTagList nbttaglist = p_145839_1_.func_150295_c("Items", 10);
+        super.readFromNBT(p_145839_1_);
+        NBTTagList nbttaglist = p_145839_1_.getTagList("Items", 10);
         this.infuserStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
-            NBTTagCompound nbttagcompound1 = nbttaglist.func_150305_b(i);
+            NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
             byte b0 = nbttagcompound1.getByte("Slot");
 
             if (b0 >= 0 && b0 < this.infuserStacks.length)
@@ -139,17 +139,17 @@ public class TileEntityInfuser extends TileEntity implements IInventory
 
         this.altarBurnTime = p_145839_1_.getShort("BurnTime");
         this.altarCookTime = p_145839_1_.getShort("CookTime");
-        this.currentItemBurnTime = func_145952_a(this.infuserStacks[1]);
+        this.currentItemBurnTime = getItemBurnTime(this.infuserStacks[1]);
 
-        if (p_145839_1_.func_150297_b("CustomName", 8))
+        if (p_145839_1_.hasKey("CustomName", 8))
         {
             this.field_145958_o = p_145839_1_.getString("CustomName");
         }
     }
 
-    public void func_145841_b(NBTTagCompound p_145841_1_)
+    public void writeToNBT(NBTTagCompound p_145841_1_)
     {
-        super.func_145841_b(p_145841_1_);
+        super.writeToNBT(p_145841_1_);
         p_145841_1_.setShort("BurnTime", (short)this.altarBurnTime);
         p_145841_1_.setShort("CookTime", (short)this.altarCookTime);
         NBTTagList nbttaglist = new NBTTagList();
@@ -204,7 +204,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         return this.altarBurnTime > 0;
     }
 
-    public void func_145845_h()
+    public void updateEntity()
     {
     	boolean var1 = this.altarBurnTime > 0;
         boolean var2 = false;
@@ -214,11 +214,11 @@ public class TileEntityInfuser extends TileEntity implements IInventory
             --this.altarBurnTime;
         }
 
-        if (!this.field_145850_b.isRemote)
+        if (!this.worldObj.isRemote)
         {
-            if (this.altarBurnTime == 0 && this.func_145948_k())
+            if (this.altarBurnTime == 0 && this.canSmelt())
             {
-                this.currentItemBurnTime = this.altarBurnTime = func_145952_a(this.infuserStacks[1]);
+                this.currentItemBurnTime = this.altarBurnTime = getItemBurnTime(this.infuserStacks[1]);
 
                 if (this.altarBurnTime > 0)
                 {
@@ -236,14 +236,14 @@ public class TileEntityInfuser extends TileEntity implements IInventory
                 }
             }
 
-            if (this.func_145950_i() && this.func_145948_k())
+            if (this.func_145950_i() && this.canSmelt())
             {
                 ++this.altarCookTime;
 
                 if (this.altarCookTime == 2)
                 {
                     this.altarCookTime = 0;
-                    this.func_145949_j();
+                    this.smeltItem();
                     var2 = true;
                 }
             }
@@ -255,12 +255,12 @@ public class TileEntityInfuser extends TileEntity implements IInventory
 
         if (var2)
         {
-            this.onInventoryChanged();
+            this.markDirty();
         }
 
     }
 
-    private boolean func_145948_k()
+    private boolean canSmelt()
     {
         if (this.infuserStacks[0] == null)
         {
@@ -277,9 +277,9 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
     }
 
-    public void func_145949_j()
+    public void smeltItem()
     {
-        if (this.func_145948_k())
+        if (this.canSmelt())
         {
             ItemStack itemstack = InfuserRecipes.getInfuser().getResult(this.infuserStacks[0]);
 
@@ -301,7 +301,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
     }
 
-    public static int func_145952_a(ItemStack p_145952_0_)
+    public static int getItemBurnTime(ItemStack p_145952_0_)
     {
         if (p_145952_0_ == null)
         {
@@ -311,7 +311,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         {
             Item item = p_145952_0_.getItem();
 
-            if (item instanceof ItemBlock && Block.func_149634_a(item) != Blocks.air)
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
             {
                
             }
@@ -321,9 +321,9 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
     }
 
-    public static boolean func_145954_b(ItemStack p_145954_0_)
+    public static boolean isItemFuel(ItemStack p_145954_0_)
     {
-        return func_145952_a(p_145954_0_) > 0;
+        return getItemBurnTime(p_145954_0_) > 0;
     }
 
     /**
@@ -331,23 +331,40 @@ public class TileEntityInfuser extends TileEntity implements IInventory
      */
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer)
     {
-        return this.field_145850_b.func_147438_o(this.field_145851_c, this.field_145848_d, this.field_145849_e) != this ? false : par1EntityPlayer.getDistanceSq((double)this.field_145851_c + 0.5D, (double)this.field_145848_d + 0.5D, (double)this.field_145849_e + 0.5D) <= 64.0D;
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
-    public void openChest() {}
-
-    public void closeChest() {}
-
-    /**
-     * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot.
-     */
     public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
     {
-        return par1 == 2 ? false : (par1 == 1 ? func_145954_b(par2ItemStack) : true);
+        return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
     }
 
     public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
     {
         return this.isItemValidForSlot(par1, par2ItemStack);
     }
+
+	@Override
+	public String getInventoryName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void openInventory() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory() {
+		// TODO Auto-generated method stub
+		
+	}
 }

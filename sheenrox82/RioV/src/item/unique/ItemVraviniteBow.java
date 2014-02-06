@@ -53,7 +53,7 @@ public class ItemVraviniteBow extends ItemBow
 
 		boolean flag = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
-		if (flag || par3EntityPlayer.inventory.func_146028_b(RioVItems.vraviniteArrow))
+		if (flag || par3EntityPlayer.inventory.hasItem(RioVItems.vraviniteArrow))
 		{
 			float f = (float)j / 20.0F;
 			f = (f * f + f * 2.0F) / 3.0F;
@@ -108,7 +108,7 @@ public class ItemVraviniteBow extends ItemBow
 			}
 			else
 			{
-				par3EntityPlayer.inventory.func_146026_a(RioVItems.vraviniteArrow);
+				par3EntityPlayer.inventory.consumeInventoryItem(RioVItems.vraviniteArrow);
 			}
 
 			if (!par2World.isRemote)
@@ -151,7 +151,7 @@ public class ItemVraviniteBow extends ItemBow
 			return event.result;
 		}
 
-		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.func_146028_b(RioVItems.vraviniteArrow))
+		if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(RioVItems.vraviniteArrow))
 		{
 			par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 		}

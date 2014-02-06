@@ -91,7 +91,7 @@ public class MethodUtil
 	public static ChatComponentTranslation addChatMessage(EnumChatFormatting color, String str, Object... args)
 	{
 		ChatComponentTranslation ret = new ChatComponentTranslation(str, args);
-		ret.func_150256_b().func_150238_a(color);
+		ret.getChatStyle().setColor(color);
 		return ret;
 	}
 }

@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.play.server.S3FPacketCustomPayload;
+import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.proxy.CommonProxy;
@@ -72,12 +72,12 @@ public class PlayerNBT implements IExtendedEntityProperties
 			ex.printStackTrace();
 		}
 
-		S3FPacketCustomPayload packet = new S3FPacketCustomPayload("riovchannel", bos.toByteArray());
+		C17PacketCustomPayload packet = new C17PacketCustomPayload("riovchannel", bos.toByteArray());
 
 		if (FMLCommonHandler.instance().getEffectiveSide().isServer()) 
 		{
 			EntityPlayerMP player1 = (EntityPlayerMP) player;
-			player1.playerNetServerHandler.func_147359_a(packet);
+			player1.playerNetServerHandler.processVanilla250Packet(packet);
 		}
 	}
 

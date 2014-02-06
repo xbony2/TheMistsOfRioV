@@ -23,20 +23,20 @@ public class GuiInfuser extends GuiContainer
 	}
 
 	@Override
-	protected void func_146979_b(int i, int j){
+	protected void drawGuiContainerForegroundLayer(int i, int j){
 
-		field_146289_q.drawString("Infuser", 6, 6, 0x4A4A4A);
-		field_146289_q.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.field_147000_g - 96 + 2, 0x4A4A4A);
+		this.fontRendererObj.drawString("Infuser", 6, 6, 0x4A4A4A);
+		this.fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 0x4A4A4A);
 	}
 
 	@Override
 	//drawGuiContainerBackgroundLayer
-	protected void func_146976_a(float f, int i, int j)
+	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.infuser);
-        int k = (this.field_146294_l - this.field_146999_f) / 2;
-        int l = (this.field_146295_m - this.field_147000_g) / 2;
-        this.drawTexturedModalRect(k, l, 0, 0, this.field_146999_f, this.field_147000_g);
+        int k = (this.width - this.xSize) / 2;
+        int l = (this.height - this.ySize) / 2;
+        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
 	}
 }

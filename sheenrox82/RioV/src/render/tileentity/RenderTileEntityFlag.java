@@ -20,9 +20,9 @@ public class RenderTileEntityFlag extends TileEntitySpecialRenderer
 	}
 
 	@Override
-	public void func_147500_a(TileEntity tileentity, double par2, double par4, double par6, float par8) 
+	public void renderTileEntityAt(TileEntity tileentity, double par2, double par4, double par6, float par8) 
 	{
-		int metadata = tileentity.func_145832_p();
+		int metadata = tileentity.getBlockMetadata();
 		int rotationAngle = 0;
 		if(metadata%4 == 0)
 		{
@@ -47,7 +47,7 @@ public class RenderTileEntityFlag extends TileEntitySpecialRenderer
 		GL11.glTranslatef(0.0F, -1.5F, 0.0F);
 		GL11.glScalef(2.0F, 2.0F, 2.0F);
 		ResourceLocation textures = (new ResourceLocation(Util.MOD_ID + ":" + "textures/blocks/RioVFlag.png")); 
-		this.func_147499_a(textures);
+		this.bindTexture(textures);
 		this.model.renderAll();
 		GL11.glPopMatrix();	
 	}

@@ -90,7 +90,6 @@ public class InventoryBagLarge implements IInventory
 		return 64;
 	}
 
-	@Override
 	public void onInventoryChanged()
 	{
 		for (int i = 0; i < this.getSizeInventory(); ++i)
@@ -107,10 +106,10 @@ public class InventoryBagLarge implements IInventory
 	}
 
 	@Override
-	public void openChest() {}
+    public void openInventory() {}
 
 	@Override
-	public void closeChest() {}
+    public void closeInventory() {}
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
@@ -120,11 +119,11 @@ public class InventoryBagLarge implements IInventory
 
 	public void readFromNBT(NBTTagCompound tagcompound)
 	{
-		NBTTagList nbttaglist = tagcompound.func_150295_c("ItemInventory", 10);
+		NBTTagList nbttaglist = tagcompound.getTagList("ItemInventory", 10);
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.func_150305_b(i);
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
 			int b0 = nbttagcompound1.getInteger("Slot");
 
 			if (b0 >= 0 && b0 < this.getSizeInventory())
@@ -153,14 +152,20 @@ public class InventoryBagLarge implements IInventory
 	}
 
 	@Override
-	public String func_145825_b() {
+	public String getInventoryName() {
 		// TODO Auto-generated method stub
-		return name;
+		return null;
 	}
 
 	@Override
-	public boolean func_145818_k_() {
+	public boolean hasCustomInventoryName() {
 		// TODO Auto-generated method stub
-		return name.length() > 0;
+		return false;
+	}
+
+	@Override
+	public void markDirty() {
+		// TODO Auto-generated method stub
+		
 	}
 }

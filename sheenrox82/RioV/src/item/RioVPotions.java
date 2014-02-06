@@ -87,12 +87,12 @@ public class RioVPotions extends ItemBucket
 	                        return par1ItemStack;
 	                    }
 
-	                    Material material = par2World.func_147439_a(i, j, k).func_149688_o();
+	                    Material material = par2World.getBlock(i, j, k).getMaterial();
 	                    int l = par2World.getBlockMetadata(i, j, k);
 
-	                    if (material == Material.field_151586_h && l == 0)
+	                    if (material == Material.water && l == 0)
 	                    {
-	                        par2World.func_147468_f(i, j, k);
+	                        par2World.setBlockToAir(i, j, k);
 	                        return this.func_150910_a(par1ItemStack, par3EntityPlayer, RioVItems.potionGlassSanctuatite);
 	                    }
 	                }
@@ -178,10 +178,10 @@ public class RioVPotions extends ItemBucket
         }
         else
         {
-            Material material = par1World.func_147439_a(par2, par3, par4).func_149688_o();
+            Material material = par1World.getBlock(par2, par3, par4).getMaterial();
             boolean flag = !material.isSolid();
 
-            if (!par1World.func_147437_c(par2, par3, par4) && !flag)
+            if (!par1World.isAirBlock(par2, par3, par4) && !flag)
             {
                 return false;
             }
@@ -203,7 +203,7 @@ public class RioVPotions extends ItemBucket
                         par1World.func_147480_a(par2, par3, par4, true);
                     }
 
-                    par1World.func_147465_d(par2, par3, par4, this.isFull, 0, 3);
+                    par1World.setBlock(par2, par3, par4, this.isFull, 0, 3);
                 }
 
                 return true;

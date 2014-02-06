@@ -33,12 +33,12 @@ public class BlockBlackQuartz extends Block
     
     public BlockBlackQuartz()
     {
-        super(Material.field_151576_e);
-        this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+        super(Material.rock);
+        this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
 
     @SideOnly(Side.CLIENT)
-    public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
         if (p_149691_2_ != 2 && p_149691_2_ != 3 && p_149691_2_ != 4)
         {
@@ -69,7 +69,10 @@ public class BlockBlackQuartz extends Block
         }
     }
 
-    public int func_149660_a(World p_149660_1_, int p_149660_2_, int p_149660_3_, int p_149660_4_, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_)
+    /**
+     * Called when a block is placed using its ItemBlock. Args: World, X, Y, Z, side, hitX, hitY, hitZ, block metadata
+     */
+    public int onBlockPlaced(World p_149660_1_, int p_149660_2_, int p_149660_3_, int p_149660_4_, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_)
     {
         if (p_149660_9_ == 2)
         {
@@ -92,23 +95,36 @@ public class BlockBlackQuartz extends Block
         return p_149660_9_;
     }
 
-    public int func_149692_a(int p_149692_1_)
+    /**
+     * Determines the damage on the item the block drops. Used in cloth and wood.
+     */
+    public int damageDropped(int p_149692_1_)
     {
         return p_149692_1_ != 3 && p_149692_1_ != 4 ? p_149692_1_ : 2;
     }
 
-    protected ItemStack func_149644_j(int p_149644_1_)
+    /**
+     * Returns an item stack containing a single instance of the current block type. 'i' is the block's subtype/damage
+     * and is ignored for blocks which do not support subtypes. Blocks which cannot be harvested should return null.
+     */
+    protected ItemStack createStackedBlock(int p_149644_1_)
     {
-        return p_149644_1_ != 3 && p_149644_1_ != 4 ? super.func_149644_j(p_149644_1_) : new ItemStack(Item.func_150898_a(this), 1, 2);
+        return p_149644_1_ != 3 && p_149644_1_ != 4 ? super.createStackedBlock(p_149644_1_) : new ItemStack(Item.getItemFromBlock(this), 1, 2);
     }
 
-    public int func_149645_b()
+    /**
+     * The type of render function that is called for this block
+     */
+    public int getRenderType()
     {
         return 39;
     }
 
-	@SideOnly(Side.CLIENT)
-    public void func_149666_a(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+    /**
+     * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
+     */
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
     {
         p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
         p_149666_3_.add(new ItemStack(p_149666_1_, 1, 1));
@@ -128,7 +144,7 @@ public class BlockBlackQuartz extends Block
             }
             else
             {
-                this.field_150192_M[i] = p_149651_1_.registerIcon(this.func_149641_N() + "_" + field_150189_b[i]);
+                this.field_150192_M[i] = p_149651_1_.registerIcon(this.getTextureName() + "_" + field_150189_b[i]);
             }
         }
 
@@ -138,8 +154,8 @@ public class BlockBlackQuartz extends Block
         this.field_150188_Q = p_149651_1_.registerIcon(Util.MOD_ID + "blackQuartz" + "_" + "bottom");
     }
 
-    public MapColor func_149728_f(int p_149728_1_)
+    public MapColor getMapColor(int p_149728_1_)
     {
-        return MapColor.field_151677_p;
+        return MapColor.quartzColor;
     }
 }

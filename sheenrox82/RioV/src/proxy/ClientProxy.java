@@ -166,10 +166,10 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerItemRenderers()
 	{
-		MinecraftForgeClient.registerItemRenderer(Item.func_150898_a(RioVBlocks.glimmerwoodChest), new ItemRenderGlimmerwoodChest());
-		MinecraftForgeClient.registerItemRenderer(Item.func_150898_a(RioVBlocks.cherryBlossomChest), new ItemRenderCherryBlossomChest());
-		MinecraftForgeClient.registerItemRenderer(Item.func_150898_a(RioVBlocks.bloodChest), new ItemRenderBloodChest());
-		MinecraftForgeClient.registerItemRenderer(Item.func_150898_a(RioVBlocks.skywoodChest), new ItemRenderSkywoodChest());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.glimmerwoodChest), new ItemRenderGlimmerwoodChest());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.cherryBlossomChest), new ItemRenderCherryBlossomChest());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.bloodChest), new ItemRenderBloodChest());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.skywoodChest), new ItemRenderSkywoodChest());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.bowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.enforcedBowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.vraviniteBow, new ItemRenderLongbow());

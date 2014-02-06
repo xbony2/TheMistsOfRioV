@@ -22,34 +22,37 @@ public class BlockFlag extends BlockContainer
 	
 	public BlockFlag() 
 	{
-		super(Material.field_151575_d);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
-		this.func_149676_a(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
+		super(Material.wood);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
 	}
 
 	@Override
-	public TileEntity func_149915_a(World par1World, int var1)
+	public TileEntity createNewTileEntity(World par1World, int var1)
 	{
 		return new TileEntityFlag();
 	}
 
 	@Override
-	public int func_149645_b()
+	public int getRenderType()
 	{
 		return 22;
 	}
 
-	public boolean func_149662_c()
+
+	@Override
+	public boolean isOpaqueCube()
 	{
 		return false;
 	}
 
-	public boolean func_149686_d()
+	@Override
+	public boolean renderAsNormalBlock()
 	{
-		return false;
+		return true;
 	}
 
-	public void func_149651_a(IIconRegister icon) 
+	public void registerBlockIcons(IIconRegister icon) 
 	{
 		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + "flagIcon");
 	}

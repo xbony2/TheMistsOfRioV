@@ -13,8 +13,7 @@ public class BiomeGenSanctuatite extends BiomeGenBase
 	public BiomeGenSanctuatite(int par1)
 	{
 		super(par1);
-		this.minHeight = 0.5F;
-		this.maxHeight = 0.9F;
+		this.rootHeight = 0.5F;
 		this.topBlock = RioVBlocks.sanctuatiteGrass;
 		this.fillerBlock = RioVBlocks.sanctuatiteDirt;
 		this.setBiomeName("Sanctuatite");

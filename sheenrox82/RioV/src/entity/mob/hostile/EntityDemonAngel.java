@@ -154,9 +154,9 @@ public class EntityDemonAngel extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1500.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(17.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(1500.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(17.0D);
 	}
 
 	@Override
@@ -175,13 +175,13 @@ public class EntityDemonAngel extends EntityBossCore
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.func_145779_a(RioVItems.vulron, 2);
+		this.dropItem(RioVItems.vulron, 2);
 	}
 
 	@Override
 	protected void dropRareDrop(int par1)
 	{
-		this.func_145779_a(RioVItems.darkMatter, 1);
+		this.dropItem(RioVItems.darkMatter, 1);
 	}
 
 	@Override

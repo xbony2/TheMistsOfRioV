@@ -50,8 +50,8 @@ public class EntityPigBoss extends EntityMobDeadBody implements IBossDisplayData
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(110.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(110.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10D);
     }
 
     protected void updateAITasks()
@@ -133,17 +133,17 @@ public class EntityPigBoss extends EntityMobDeadBody implements IBossDisplayData
         {
             if (this.isBurning())
             {
-                this.func_145779_a(Items.cooked_porkchop, 1);
+                this.dropItem(Items.cooked_porkchop, 1);
             }
             else
             {
-                this.func_145779_a(Items.porkchop, 1);
+                this.dropItem(Items.porkchop, 1);
             }
         }
 
         if (this.getSaddled())
         {
-            this.func_145779_a(Items.saddle, 1);
+            this.dropItem(Items.saddle, 1);
         }
     }
 

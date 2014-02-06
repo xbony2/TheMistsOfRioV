@@ -24,19 +24,19 @@ public class GuiAnvil extends GuiContainer
     }
 
 	@Override
-    protected void func_146979_b(int par1, int par2)
+    protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
-		field_146289_q.drawString("Anvil", 8, 6, 4210752);
-    	field_146289_q.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 - 3, 4210752);
+		fontRendererObj.drawString("Anvil", 8, 6, 4210752);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 - 3, 4210752);
     }
 
 	@Override
-    protected void func_146976_a(float f, int i, int j)
+    protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.anvil);
-        int k = (this.field_146294_l - this.field_146999_f) / 2;
-        int l = (this.field_146295_m - this.field_147000_g) / 2;
-        this.drawTexturedModalRect(k, l, 0, 0, this.field_146999_f, this.field_147000_g + 120);
+        int k = (this.width - this.xSize) / 2;
+        int l = (this.height - this.ySize) / 2;
+        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);
     }
 }

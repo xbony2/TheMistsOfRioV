@@ -89,9 +89,9 @@ public class EntityDarkEssence extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(2000.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(21.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2000.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(21.0D);
 	}
 
 	@Override
@@ -103,9 +103,9 @@ public class EntityDarkEssence extends EntityBossCore
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.func_145779_a(RioVItems.clothOfMagic, 3);
-		this.func_145779_a(RioVItems.darkMatter, 2);
-		this.func_145779_a(RioVItems.tefCrystal, 1);
+		this.dropItem(RioVItems.clothOfMagic, 3);
+		this.dropItem(RioVItems.darkMatter, 2);
+		this.dropItem(RioVItems.tefCrystal, 1);
 	}
 
 	@Override

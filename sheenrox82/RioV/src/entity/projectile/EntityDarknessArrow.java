@@ -124,7 +124,7 @@ public class EntityDarknessArrow extends EntityCustomArrow implements IProjectil
 	/**
 	 * Similar to setArrowHeading, it's point the throwable entity to a x, y, z direction.
 	 */
-	 public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8)
+	public void setThrowableHeading(double par1, double par3, double par5, float par7, float par8)
 	{
 		float f2 = MathHelper.sqrt_double(par1 * par1 + par3 * par3 + par5 * par5);
 		par1 /= (double)f2;
@@ -145,417 +145,417 @@ public class EntityDarknessArrow extends EntityCustomArrow implements IProjectil
 		this.ticksInGround = 0;
 	}
 
-	 @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 
-	 /**
-	  * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX,
-	  * posY, posZ, yaw, pitch
-	  */
-	 public void setPositionAndRotation2(double par1, double par3, double par5, float par7, float par8, int par9)
-	 {
-		 this.setPosition(par1, par3, par5);
-		 this.setRotation(par7, par8);
-	 }
+	/**
+	 * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX,
+	 * posY, posZ, yaw, pitch
+	 */
+	public void setPositionAndRotation2(double par1, double par3, double par5, float par7, float par8, int par9)
+	{
+		this.setPosition(par1, par3, par5);
+		this.setRotation(par7, par8);
+	}
 
-	 @SideOnly(Side.CLIENT)
+	@SideOnly(Side.CLIENT)
 
-	 /**
-	  * Sets the velocity to the args. Args: x, y, z
-	  */
-	 public void setVelocity(double par1, double par3, double par5)
-	 {
-		 this.motionX = par1;
-		 this.motionY = par3;
-		 this.motionZ = par5;
+	/**
+	 * Sets the velocity to the args. Args: x, y, z
+	 */
+	public void setVelocity(double par1, double par3, double par5)
+	{
+		this.motionX = par1;
+		this.motionY = par3;
+		this.motionZ = par5;
 
-		 if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
-		 {
-			 float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
-			 this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / Math.PI);
-			 this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(par3, (double)f) * 180.0D / Math.PI);
-			 this.prevRotationPitch = this.rotationPitch;
-			 this.prevRotationYaw = this.rotationYaw;
-			 this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
-			 this.ticksInGround = 0;
-		 }
-	 }
+		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
+		{
+			float f = MathHelper.sqrt_double(par1 * par1 + par5 * par5);
+			this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(par1, par5) * 180.0D / Math.PI);
+			this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(par3, (double)f) * 180.0D / Math.PI);
+			this.prevRotationPitch = this.rotationPitch;
+			this.prevRotationYaw = this.rotationYaw;
+			this.setLocationAndAngles(this.posX, this.posY, this.posZ, this.rotationYaw, this.rotationPitch);
+			this.ticksInGround = 0;
+		}
+	}
 
-	 public void onUpdate()
-	 {
-		 super.onUpdate();
+	public void onUpdate()
+	{
+		super.onUpdate();
 
-		 if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
-		 {
-			 float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
-			 this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
-			 this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f) * 180.0D / Math.PI);
-		 }
+		if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F)
+		{
+			float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+			this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
+			this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f) * 180.0D / Math.PI);
+		}
 
-		 Block block = this.worldObj.func_147439_a(this.field_145791_d, this.field_145792_e, this.field_145789_f);
+		Block block = this.worldObj.getBlock(this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
-		 if (block.func_149688_o() != Material.field_151579_a)
-		 {
-			 block.func_149719_a(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
-			 AxisAlignedBB axisalignedbb = block.func_149668_a(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
+		if (block.getMaterial() != Material.air)
+		{
+			block.setBlockBoundsBasedOnState(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
+			AxisAlignedBB axisalignedbb = block.getCollisionBoundingBoxFromPool(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
-			 if (axisalignedbb != null && axisalignedbb.isVecInside(this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ)))
-			 {
-				 this.inGround = true;
-			 }
-		 }
+			if (axisalignedbb != null && axisalignedbb.isVecInside(this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ)))
+			{
+				this.inGround = true;
+			}
+		}
 
-		 if (this.arrowShake > 0)
-		 {
-			 --this.arrowShake;
-		 }
+		if (this.arrowShake > 0)
+		{
+			--this.arrowShake;
+		}
 
-		 if (this.inGround)
-		 {
-			 int j = this.worldObj.getBlockMetadata(this.field_145791_d, this.field_145792_e, this.field_145789_f);
+		if (this.inGround)
+		{
+			int j = this.worldObj.getBlockMetadata(this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
-			 if (block == this.field_145790_g && j == this.inData)
-			 {
-				 ++this.ticksInGround;
+			if (block == this.field_145790_g && j == this.inData)
+			{
+				++this.ticksInGround;
 
-				 if (this.ticksInGround == 1200)
-				 {
-					 this.setDead();
-				 }
-			 }
-			 else
-			 {
-				 this.inGround = false;
-				 this.motionX *= (double)(this.rand.nextFloat() * 0.2F);
-				 this.motionY *= (double)(this.rand.nextFloat() * 0.2F);
-				 this.motionZ *= (double)(this.rand.nextFloat() * 0.2F);
-				 this.ticksInGround = 0;
-			 }
-		 }
-		 else
-		 {
-			 Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
-			 Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
-			 MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec31, vec3, false, true, false);
-			 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
-			 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+				if (this.ticksInGround == 1200)
+				{
+					this.setDead();
+				}
+			}
+			else
+			{
+				this.inGround = false;
+				this.motionX *= (double)(this.rand.nextFloat() * 0.2F);
+				this.motionY *= (double)(this.rand.nextFloat() * 0.2F);
+				this.motionZ *= (double)(this.rand.nextFloat() * 0.2F);
+				this.ticksInGround = 0;
+			}
+		}
+		else
+		{
+			Vec3 vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
+			Vec3 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+			MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec31, vec3, false, true, false);
+			vec31 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX, this.posY, this.posZ);
+			vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
-			 if (movingobjectposition != null)
-			 {
-				 vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
-			 }
+			if (movingobjectposition != null)
+			{
+				vec3 = this.worldObj.getWorldVec3Pool().getVecFromPool(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
+			}
 
-			 int i;
-			 float f1;
+			int i;
+			float f1;
 
-			 if (movingobjectposition != null && movingobjectposition.entityHit != null && movingobjectposition.entityHit instanceof EntityPlayer)
-			 {
-				 EntityPlayer entityplayer = (EntityPlayer)movingobjectposition.entityHit;
+			if (movingobjectposition != null && movingobjectposition.entityHit != null && movingobjectposition.entityHit instanceof EntityPlayer)
+			{
+				EntityPlayer entityplayer = (EntityPlayer)movingobjectposition.entityHit;
 
-				 if (entityplayer.capabilities.disableDamage || this.shootingEntity instanceof EntityPlayer && !((EntityPlayer)this.shootingEntity).canAttackPlayer(entityplayer))
-				 {
-					 movingobjectposition = null;
-				 }
-			 }
+				if (entityplayer.capabilities.disableDamage || this.shootingEntity instanceof EntityPlayer && !((EntityPlayer)this.shootingEntity).canAttackPlayer(entityplayer))
+				{
+					movingobjectposition = null;
+				}
+			}
 
-			 float f2;
-			 float f4;
+			float f2;
+			float f4;
 
-			 if (movingobjectposition != null)
-			 {
-				 if (movingobjectposition.entityHit != null)
-				 {
-					 f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-					 int k = MathHelper.ceiling_double_int((double)f2 * this.damage);
+			if (movingobjectposition != null)
+			{
+				if (movingobjectposition.entityHit != null)
+				{
+					f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+					int k = MathHelper.ceiling_double_int((double)f2 * this.damage);
 
-					 if (this.getIsCritical())
-					 {
-						 k += this.rand.nextInt(k / 2 + 2);
-					 }
+					if (this.getIsCritical())
+					{
+						k += this.rand.nextInt(k / 2 + 2);
+					}
 
-					 DamageSource damagesource = null;
+					DamageSource damagesource = null;
 
-					 if (this.shootingEntity == null)
-					 {
-						 damagesource = MethodUtil.causeArrowDamage(this, this);
-					 }
-					 else
-					 {
-						 damagesource = MethodUtil.causeArrowDamage(this, this.shootingEntity);
-					 }
+					if (this.shootingEntity == null)
+					{
+						damagesource = MethodUtil.causeArrowDamage(this, this);
+					}
+					else
+					{
+						damagesource = MethodUtil.causeArrowDamage(this, this.shootingEntity);
+					}
 
-					 if (this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman))
-					 {
-						 movingobjectposition.entityHit.setFire(5);
-					 }
+					if (this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman))
+					{
+						movingobjectposition.entityHit.setFire(5);
+					}
 
-					 if (movingobjectposition.entityHit.attackEntityFrom(damagesource, (float)k))
-					 {
-						 if (movingobjectposition.entityHit instanceof EntityLivingBase)
-						 {
-							 EntityLivingBase entitylivingbase = (EntityLivingBase)movingobjectposition.entityHit;
+					if (movingobjectposition.entityHit.attackEntityFrom(damagesource, (float)k))
+					{
+						if (movingobjectposition.entityHit instanceof EntityLivingBase)
+						{
+							EntityLivingBase entitylivingbase = (EntityLivingBase)movingobjectposition.entityHit;
 
-							 if (!this.worldObj.isRemote)
-							 {
-								 entitylivingbase.setArrowCountInEntity(entitylivingbase.getArrowCountInEntity() + 1);
-							 }
+							if (!this.worldObj.isRemote)
+							{
+								entitylivingbase.setArrowCountInEntity(entitylivingbase.getArrowCountInEntity() + 1);
+							}
 
-							 if (this.knockbackStrength > 0)
-							 {
-								 f4 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+							if (this.knockbackStrength > 0)
+							{
+								f4 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 
-								 if (f4 > 0.0F)
-								 {
-									 movingobjectposition.entityHit.addVelocity(this.motionX * (double)this.knockbackStrength * 0.6000000238418579D / (double)f4, 0.1D, this.motionZ * (double)this.knockbackStrength * 0.6000000238418579D / (double)f4);
-								 }
-							 }
+								if (f4 > 0.0F)
+								{
+									movingobjectposition.entityHit.addVelocity(this.motionX * (double)this.knockbackStrength * 0.6000000238418579D / (double)f4, 0.1D, this.motionZ * (double)this.knockbackStrength * 0.6000000238418579D / (double)f4);
+								}
+							}
 
-							 if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase)
-							 {
-								 EnchantmentHelper.func_151384_a(entitylivingbase, this.shootingEntity);
-								 EnchantmentHelper.func_151385_b((EntityLivingBase)this.shootingEntity, entitylivingbase);
-							 }
+							if (this.shootingEntity != null && this.shootingEntity instanceof EntityLivingBase)
+							{
+								EnchantmentHelper.func_151384_a(entitylivingbase, this.shootingEntity);
+								EnchantmentHelper.func_151385_b((EntityLivingBase)this.shootingEntity, entitylivingbase);
+							}
 
-							 if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
-							 {
-								 ((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.func_147359_a(new S2BPacketChangeGameState(6, 0.0F));
-							 }
-						 }
+							if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity && movingobjectposition.entityHit instanceof EntityPlayer && this.shootingEntity instanceof EntityPlayerMP)
+							{
+								((EntityPlayerMP)this.shootingEntity).playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0.0F));
+							}
+						}
 
-						 this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+						this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
 
-						 if (!(movingobjectposition.entityHit instanceof EntityEnderman))
-						 {
-							 this.setDead();
-						 }
-					 }
-					 else
-					 {
-						 this.motionX *= -0.10000000149011612D;
-						 this.motionY *= -0.10000000149011612D;
-						 this.motionZ *= -0.10000000149011612D;
-						 this.rotationYaw += 180.0F;
-						 this.prevRotationYaw += 180.0F;
-					 }
-				 }
-				 else
-				 {
-					 this.field_145791_d = movingobjectposition.blockX;
-					 this.field_145792_e = movingobjectposition.blockY;
-					 this.field_145789_f = movingobjectposition.blockZ;
-					 this.field_145790_g = block;
-					 this.inData = this.worldObj.getBlockMetadata(this.field_145791_d, this.field_145792_e, this.field_145789_f);
-					 this.motionX = (double)((float)(movingobjectposition.hitVec.xCoord - this.posX));
-					 this.motionY = (double)((float)(movingobjectposition.hitVec.yCoord - this.posY));
-					 this.motionZ = (double)((float)(movingobjectposition.hitVec.zCoord - this.posZ));
-					 f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
-					 this.posX -= this.motionX / (double)f2 * 0.05000000074505806D;
-					 this.posY -= this.motionY / (double)f2 * 0.05000000074505806D;
-					 this.posZ -= this.motionZ / (double)f2 * 0.05000000074505806D;
-					 this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
-					 this.inGround = true;
-					 this.arrowShake = 7;
-					 this.setIsCritical(false);
+						if (!(movingobjectposition.entityHit instanceof EntityEnderman))
+						{
+							this.setDead();
+						}
+					}
+					else
+					{
+						this.motionX *= -0.10000000149011612D;
+						this.motionY *= -0.10000000149011612D;
+						this.motionZ *= -0.10000000149011612D;
+						this.rotationYaw += 180.0F;
+						this.prevRotationYaw += 180.0F;
+					}
+				}
+				else
+				{
+					this.field_145791_d = movingobjectposition.blockX;
+					this.field_145792_e = movingobjectposition.blockY;
+					this.field_145789_f = movingobjectposition.blockZ;
+					this.field_145790_g = block;
+					this.inData = this.worldObj.getBlockMetadata(this.field_145791_d, this.field_145792_e, this.field_145789_f);
+					this.motionX = (double)((float)(movingobjectposition.hitVec.xCoord - this.posX));
+					this.motionY = (double)((float)(movingobjectposition.hitVec.yCoord - this.posY));
+					this.motionZ = (double)((float)(movingobjectposition.hitVec.zCoord - this.posZ));
+					f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+					this.posX -= this.motionX / (double)f2 * 0.05000000074505806D;
+					this.posY -= this.motionY / (double)f2 * 0.05000000074505806D;
+					this.posZ -= this.motionZ / (double)f2 * 0.05000000074505806D;
+					this.playSound("random.bowhit", 1.0F, 1.2F / (this.rand.nextFloat() * 0.2F + 0.9F));
+					this.inGround = true;
+					this.arrowShake = 7;
+					this.setIsCritical(false);
 
-					 if (this.field_145790_g.func_149688_o() != Material.field_151579_a)
-					 {
-						 this.field_145790_g.func_149670_a(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
-					 }
-				 }
-			 }
+					if (this.field_145790_g.getMaterial() != Material.air)
+					{
+						this.field_145790_g.onEntityCollidedWithBlock(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
+					}
+				}
+			}
 
-			 if (this.getIsCritical())
-			 {
-				 for (i = 0; i < 4; ++i)
-				 {
-					 this.worldObj.spawnParticle("crit", this.posX + this.motionX * (double)i / 4.0D, this.posY + this.motionY * (double)i / 4.0D, this.posZ + this.motionZ * (double)i / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
-				 }
-			 }
+			if (this.getIsCritical())
+			{
+				for (i = 0; i < 4; ++i)
+				{
+					this.worldObj.spawnParticle("crit", this.posX + this.motionX * (double)i / 4.0D, this.posY + this.motionY * (double)i / 4.0D, this.posZ + this.motionZ * (double)i / 4.0D, -this.motionX, -this.motionY + 0.2D, -this.motionZ);
+				}
+			}
 
-			 this.posX += this.motionX;
-			 this.posY += this.motionY;
-			 this.posZ += this.motionZ;
-			 f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
-			 this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
+			this.posX += this.motionX;
+			this.posY += this.motionY;
+			this.posZ += this.motionZ;
+			f2 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+			this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
 
-			 for (this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f2) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F)
-			 {
-				 ;
-			 }
+			for (this.rotationPitch = (float)(Math.atan2(this.motionY, (double)f2) * 180.0D / Math.PI); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F)
+			{
+				;
+			}
 
-			 while (this.rotationPitch - this.prevRotationPitch >= 180.0F)
-			 {
-				 this.prevRotationPitch += 360.0F;
-			 }
+			while (this.rotationPitch - this.prevRotationPitch >= 180.0F)
+			{
+				this.prevRotationPitch += 360.0F;
+			}
 
-			 while (this.rotationYaw - this.prevRotationYaw < -180.0F)
-			 {
-				 this.prevRotationYaw -= 360.0F;
-			 }
+			while (this.rotationYaw - this.prevRotationYaw < -180.0F)
+			{
+				this.prevRotationYaw -= 360.0F;
+			}
 
-			 while (this.rotationYaw - this.prevRotationYaw >= 180.0F)
-			 {
-				 this.prevRotationYaw += 360.0F;
-			 }
+			while (this.rotationYaw - this.prevRotationYaw >= 180.0F)
+			{
+				this.prevRotationYaw += 360.0F;
+			}
 
-			 this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
-			 this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
-			 float f3 = 0.99F;
-			 f1 = 0.05F;
+			this.rotationPitch = this.prevRotationPitch + (this.rotationPitch - this.prevRotationPitch) * 0.2F;
+			this.rotationYaw = this.prevRotationYaw + (this.rotationYaw - this.prevRotationYaw) * 0.2F;
+			float f3 = 0.99F;
+			f1 = 0.05F;
 
-			 if (this.isInWater())
-			 {
-				 for (int l = 0; l < 4; ++l)
-				 {
-					 f4 = 0.25F;
-					 this.worldObj.spawnParticle("bubble", this.posX - this.motionX * (double)f4, this.posY - this.motionY * (double)f4, this.posZ - this.motionZ * (double)f4, this.motionX, this.motionY, this.motionZ);
-				 }
+			if (this.isInWater())
+			{
+				for (int l = 0; l < 4; ++l)
+				{
+					f4 = 0.25F;
+					this.worldObj.spawnParticle("bubble", this.posX - this.motionX * (double)f4, this.posY - this.motionY * (double)f4, this.posZ - this.motionZ * (double)f4, this.motionX, this.motionY, this.motionZ);
+				}
 
-				 f3 = 0.8F;
-			 }
+				f3 = 0.8F;
+			}
 
-			 if (this.isWet())
-			 {
-				 this.extinguish();
-			 }
+			if (this.isWet())
+			{
+				this.extinguish();
+			}
 
-			 this.motionX *= (double)f3;
-			 this.motionY *= (double)f3;
-			 this.motionZ *= (double)f3;
-			 this.motionY -= (double)f1;
-			 this.setPosition(this.posX, this.posY, this.posZ);
-			 this.func_145775_I();
-		 }
-	 }
+			this.motionX *= (double)f3;
+			this.motionY *= (double)f3;
+			this.motionZ *= (double)f3;
+			this.motionY -= (double)f1;
+			this.setPosition(this.posX, this.posY, this.posZ);
+			this.func_145775_I();
+		}
+	}
 
 
-	 public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	 {
-		 par1NBTTagCompound.setShort("xTile", (short)this.field_145791_d);
-		 par1NBTTagCompound.setShort("yTile", (short)this.field_145792_e);
-		 par1NBTTagCompound.setShort("zTile", (short)this.field_145789_f);
-		 par1NBTTagCompound.setShort("life", (short)this.ticksInGround);
-		 par1NBTTagCompound.setByte("inTile", (byte)Block.func_149682_b(this.field_145790_g));
-		 par1NBTTagCompound.setByte("inData", (byte)this.inData);
-		 par1NBTTagCompound.setByte("shake", (byte)this.arrowShake);
-		 par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
-		 par1NBTTagCompound.setByte("pickup", (byte)this.canBePickedUp);
-		 par1NBTTagCompound.setDouble("damage", this.damage);
-	 }
+	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
+	{
+		par1NBTTagCompound.setShort("xTile", (short)this.field_145791_d);
+		par1NBTTagCompound.setShort("yTile", (short)this.field_145792_e);
+		par1NBTTagCompound.setShort("zTile", (short)this.field_145789_f);
+		par1NBTTagCompound.setShort("life", (short)this.ticksInGround);
+		par1NBTTagCompound.setByte("inTile", (byte)Block.getIdFromBlock(this.field_145790_g));
+		par1NBTTagCompound.setByte("inData", (byte)this.inData);
+		par1NBTTagCompound.setByte("shake", (byte)this.arrowShake);
+		par1NBTTagCompound.setByte("inGround", (byte)(this.inGround ? 1 : 0));
+		par1NBTTagCompound.setByte("pickup", (byte)this.canBePickedUp);
+		par1NBTTagCompound.setDouble("damage", this.damage);
+	}
 
-	 /**
-	  * (abstract) Protected helper method to read subclass entity data from NBT.
-	  */
+	/**
+	 * (abstract) Protected helper method to read subclass entity data from NBT.
+	 */
 
-	 public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	 {
-		 this.field_145791_d = par1NBTTagCompound.getShort("xTile");
-		 this.field_145792_e = par1NBTTagCompound.getShort("yTile");
-		 this.field_145789_f = par1NBTTagCompound.getShort("zTile");
-		 this.ticksInGround = par1NBTTagCompound.getShort("life");
-		 this.field_145790_g = Block.func_149729_e(par1NBTTagCompound.getByte("inTile") & 255);
-		 this.inData = par1NBTTagCompound.getByte("inData") & 255;
-		 this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
-		 this.inGround = par1NBTTagCompound.getByte("inGround") == 1;
+	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
+	{
+		this.field_145791_d = par1NBTTagCompound.getShort("xTile");
+		this.field_145792_e = par1NBTTagCompound.getShort("yTile");
+		this.field_145789_f = par1NBTTagCompound.getShort("zTile");
+		this.ticksInGround = par1NBTTagCompound.getShort("life");
+		this.field_145790_g = Block.getBlockById(par1NBTTagCompound.getByte("inTile") & 255);
+		this.inData = par1NBTTagCompound.getByte("inData") & 255;
+		this.arrowShake = par1NBTTagCompound.getByte("shake") & 255;
+		this.inGround = par1NBTTagCompound.getByte("inGround") == 1;
 
-		 if (par1NBTTagCompound.func_150297_b("damage", 99))
-		 {
-			 this.damage = par1NBTTagCompound.getDouble("damage");
-		 }
+		if (par1NBTTagCompound.hasKey("damage", 99))
+		{
+			this.damage = par1NBTTagCompound.getDouble("damage");
+		}
 
-		 if (par1NBTTagCompound.func_150297_b("pickup", 99))
-		 {
-			 this.canBePickedUp = par1NBTTagCompound.getByte("pickup");
-		 }
-		 else if (par1NBTTagCompound.func_150297_b("player", 99))
-		 {
-			 this.canBePickedUp = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
-		 }
-	 }
+		if (par1NBTTagCompound.hasKey("pickup", 99))
+		{
+			this.canBePickedUp = par1NBTTagCompound.getByte("pickup");
+		}
+		else if (par1NBTTagCompound.hasKey("player", 99))
+		{
+			this.canBePickedUp = par1NBTTagCompound.getBoolean("player") ? 1 : 0;
+		}
+	}
 
-	 public void onCollideWithPlayer(EntityPlayer par1EntityPlayer)
-	 {
-		 if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0)
-		 {
-			 boolean flag = this.canBePickedUp == 1 || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
+	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer)
+	{
+		if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0)
+		{
+			boolean flag = this.canBePickedUp == 1 || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
 
-			 if (this.canBePickedUp == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.darknessArrow, 1)))
-			 {
-				 flag = false;
-			 }
+			if (this.canBePickedUp == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.darknessArrow, 1)))
+			{
+				flag = false;
+			}
 
-			 if (flag)
-			 {
-				 this.playSound("random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-				 par1EntityPlayer.onItemPickup(this, 1);
-				 this.setDead();
-			 }
-		 }
-	 }
+			if (flag)
+			{
+				this.playSound("random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+				par1EntityPlayer.onItemPickup(this, 1);
+				this.setDead();
+			}
+		}
+	}
 
-	 /**
-	  * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
-	  * prevent them from trampling crops
-	  */
-	 protected boolean canTriggerWalking()
-	 {
-		 return false;
-	 }
+	/**
+	 * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
+	 * prevent them from trampling crops
+	 */
+	protected boolean canTriggerWalking()
+	{
+		return false;
+	}
 
-	 @SideOnly(Side.CLIENT)
-	 public float getShadowSize()
-	 {
-		 return 0.0F;
-	 }
+	@SideOnly(Side.CLIENT)
+	public float getShadowSize()
+	{
+		return 0.0F;
+	}
 
-	 public void setDamage(double par1)
-	 {
-		 this.damage = par1;
-	 }
+	public void setDamage(double par1)
+	{
+		this.damage = par1;
+	}
 
-	 public double getDamage()
-	 {
-		 return this.damage;
-	 }
+	public double getDamage()
+	{
+		return this.damage;
+	}
 
-	 /**
-	  * Sets the amount of knockback the arrow applies when it hits a mob.
-	  */
-	 public void setKnockbackStrength(int par1)
-	 {
-		 this.knockbackStrength = par1;
-	 }
+	/**
+	 * Sets the amount of knockback the arrow applies when it hits a mob.
+	 */
+	public void setKnockbackStrength(int par1)
+	{
+		this.knockbackStrength = par1;
+	}
 
-	 /**
-	  * If returns false, the item will not inflict any damage against entities.
-	  */
-	 public boolean canAttackWithItem()
-	 {
-		 return false;
-	 }
+	/**
+	 * If returns false, the item will not inflict any damage against entities.
+	 */
+	public boolean canAttackWithItem()
+	{
+		return false;
+	}
 
-	 /**
-	  * Whether the arrow has a stream of critical hit particles flying behind it.
-	  */
-	 public void setIsCritical(boolean par1)
-	 {
-		 byte b0 = this.dataWatcher.getWatchableObjectByte(16);
+	/**
+	 * Whether the arrow has a stream of critical hit particles flying behind it.
+	 */
+	public void setIsCritical(boolean par1)
+	{
+		byte b0 = this.dataWatcher.getWatchableObjectByte(16);
 
-		 if (par1)
-		 {
-			 this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 | 1)));
-		 }
-		 else
-		 {
-			 this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 & -2)));
-		 }
-	 }
+		if (par1)
+		{
+			this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 | 1)));
+		}
+		else
+		{
+			this.dataWatcher.updateObject(16, Byte.valueOf((byte)(b0 & -2)));
+		}
+	}
 
-	 /**
-	  * Whether the arrow has a stream of critical hit particles flying behind it.
-	  */
-	 public boolean getIsCritical()
-	 {
-		 byte b0 = this.dataWatcher.getWatchableObjectByte(16);
-		 return (b0 & 1) != 0;
-	 }
+	/**
+	 * Whether the arrow has a stream of critical hit particles flying behind it.
+	 */
+	public boolean getIsCritical()
+	{
+		byte b0 = this.dataWatcher.getWatchableObjectByte(16);
+		return (b0 & 1) != 0;
+	}
 }

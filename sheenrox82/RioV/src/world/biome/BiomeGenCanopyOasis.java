@@ -12,8 +12,7 @@ public class BiomeGenCanopyOasis extends BiomeGenBase
 	public BiomeGenCanopyOasis(int par1)
 	{
 		super(par1);
-		this.minHeight = 0.1F;
-		this.maxHeight = 1.5F;
+		this.rootHeight = 0.1F;
 		this.topBlock = Blocks.grass;
 		this.fillerBlock = Blocks.dirt;
 		this.setBiomeName("Canopy Oasis");

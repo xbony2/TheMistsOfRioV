@@ -6,5 +6,5 @@ import sheenrox82.RioV.src.material.MaterialCustom;
 
 public class Materials 
 {
-	public static final Material customMaterial = new MaterialCustom(MapColor.field_151657_g);
+	public static final Material customMaterial = new MaterialCustom(MapColor.iceColor);
 }

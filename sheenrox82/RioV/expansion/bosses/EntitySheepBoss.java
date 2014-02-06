@@ -46,8 +46,8 @@ public class EntitySheepBoss extends EntityBossCore implements IBossDisplayData
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(108.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.56D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(108.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.56D);
 	}
 
 	/**
@@ -86,11 +86,11 @@ public class EntitySheepBoss extends EntityBossCore implements IBossDisplayData
 
 	protected Item func_146068_u()
     {
-        return Item.func_150898_a(Blocks.wool);
+        return Item.getItemFromBlock(Blocks.wool);
     }
 
 	protected void dropFewItems(boolean par1, int par2)
     {
-		this.entityDropItem(new ItemStack(Item.func_150898_a(Blocks.wool)), 1F);
+		this.entityDropItem(new ItemStack(Item.getItemFromBlock(Blocks.wool)), 1F);
     }
 }

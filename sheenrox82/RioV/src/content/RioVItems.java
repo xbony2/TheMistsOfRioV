@@ -239,11 +239,11 @@ public class RioVItems
 	public static Item vraviniteAxe = (new RioVAxe(Vravinite, false)).setUnlocalizedName("vraviniteAxe");
 	public static Item vraviniteShovel = (new RioVSpade(Vravinite, false)).setUnlocalizedName("vraviniteShovel");
 	public static Item vraviniteSword = (new RioVWeapon(Vravinite, false)).setUnlocalizedName("vraviniteSword");
-	public static Item glimmerwoodDoorItem = (new RioVDoor(Material.field_151568_F)).setUnlocalizedName("glimmerwoodDoorItem");
+	public static Item glimmerwoodDoorItem = (new RioVDoor(Material.wood)).setUnlocalizedName("glimmerwoodDoorItem");
 	public static Item flamonorActivator = (new RioVActivators()).setUnlocalizedName("flamonorActivator");
 	public static Item drakiuz = (new RioVItem()).setUnlocalizedName("drakiuz");
 	public static Item fireballWand = (new RioVWand(0, 1, 4)).setUnlocalizedName("fireballWand");
-	public static Item cherryBlossomDoorItem = (new RioVDoor(Material.field_151570_A)).setUnlocalizedName("cherryBlossomDoorItem");
+	public static Item cherryBlossomDoorItem = (new RioVDoor(Material.wood)).setUnlocalizedName("cherryBlossomDoorItem");
 	public static Item cherryBlossomSticks = (new RioVItem()).setUnlocalizedName("cherryBlossomSticks");
 	public static Item cherryBlossomPickaxe = (new RioVPickaxe(CherryBlossom, false)).setUnlocalizedName("cherryBlossomPickaxe");
 	public static Item cherryBlossomAxe = (new RioVAxe(CherryBlossom, false)).setUnlocalizedName("cherryBlossomAxe");
@@ -251,8 +251,8 @@ public class RioVItems
 	public static Item cherryBlossomSword = (new RioVWeapon(CherryBlossom, false)).setUnlocalizedName("cherryBlossomSword");
 	public static Item potionGlassSanctuatite = (new RioVPotions(RioVBlocks.sanctuatiteMoving)).setUnlocalizedName("potionGlassSanctuatite");
 	public static Item sanctuatiteActivator = (new RioVActivators()).setUnlocalizedName("sanctuatiteActivator");
-	public static Item skywoodDoorItem = (new RioVDoor(Material.field_151571_B)).setUnlocalizedName("skywoodDoorItem");
-	public static Item bloodDoorItem = (new RioVDoor(Material.field_151577_b)).setUnlocalizedName("bloodDoorItem");
+	public static Item skywoodDoorItem = (new RioVDoor(Material.wood)).setUnlocalizedName("skywoodDoorItem");
+	public static Item bloodDoorItem = (new RioVDoor(Material.wood)).setUnlocalizedName("bloodDoorItem");
 	public static Item skywoodSticks = (new RioVItem()).setUnlocalizedName("skywoodSticks");
 	public static Item skywoodPickaxe = (new RioVPickaxe(ToolMaterial.STONE, false)).setUnlocalizedName("skywoodPickaxe");
 	public static Item skywoodAxe = (new RioVAxe(ToolMaterial.STONE, false)).setUnlocalizedName("skywoodAxe");

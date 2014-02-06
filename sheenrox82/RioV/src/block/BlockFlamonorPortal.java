@@ -30,48 +30,27 @@ public class BlockFlamonorPortal extends BlockBreakable
 
 	public BlockFlamonorPortal()
 	{
-		super(Util.MOD_ID + ":" + "flamonorPortal", Material.field_151567_E, false);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		super(Util.MOD_ID + ":" + "flamonorPortal", Material.portal, false);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
-	@Override
-	public void func_149670_a(World par1World, int par2, int par3, int par4, Entity par5Entity)
+	/**
+	 * Ticks the block if it's been scheduled
+	 */
+	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
 	{
-		if ((par5Entity.ridingEntity == null) && (par5Entity.riddenByEntity == null) && ((par5Entity instanceof EntityPlayerMP)))
-		{
-			EntityPlayerMP thePlayer = (EntityPlayerMP)par5Entity;
-			if (thePlayer.timeUntilPortal > 0)
-			{
-				thePlayer.timeUntilPortal = 10;
-			}
-			else if (thePlayer.dimension != Config.flamonorID)
-			{
-				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, Config.flamonorID, new TeleporterFlamonor(thePlayer.mcServer.worldServerForDimension(Config.flamonorID)));
-			}
-			else 
-			{
-				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterFlamonor(thePlayer.mcServer.worldServerForDimension(0)));
-			}
-		}
-	}
+		super.updateTick(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
 
-
-	public void func_149674_a(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
-	{
-		super.func_149674_a(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
-
-		if (p_149674_1_.provider.isSurfaceWorld() && p_149674_1_.getGameRules().getGameRuleBooleanValue("doMobSpawning") && p_149674_5_.nextInt(2000) < p_149674_1_.difficultySetting.func_151525_a())
+		if (p_149674_1_.provider.isSurfaceWorld() && p_149674_1_.getGameRules().getGameRuleBooleanValue("doMobSpawning") && p_149674_5_.nextInt(2000) < p_149674_1_.difficultySetting.getDifficultyId())
 		{
 			int l;
 
-			for (l = p_149674_3_; !World.func_147466_a(p_149674_1_, p_149674_2_, l, p_149674_4_) && l > 0; --l)
+			for (l = p_149674_3_; !World.doesBlockHaveSolidTopSurface(p_149674_1_, p_149674_2_, l, p_149674_4_) && l > 0; --l)
 			{
 				;
 			}
 
-			if (l > 0 && !p_149674_1_.func_147439_a(p_149674_2_, l + 1, p_149674_4_).func_149721_r())
+			if (l > 0 && !p_149674_1_.getBlock(p_149674_2_, l + 1, p_149674_4_).isNormalCube())
 			{
 				Entity entity = ItemMonsterPlacer.spawnCreature(p_149674_1_, 57, (double)p_149674_2_ + 0.5D, (double)l + 1.1D, (double)p_149674_4_ + 0.5D);
 
@@ -83,18 +62,25 @@ public class BlockFlamonorPortal extends BlockBreakable
 		}
 	}
 
-	public AxisAlignedBB func_149668_a(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
+	/**
+	 * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
+	 * cleared to be reused)
+	 */
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
 	{
 		return null;
 	}
 
-	public void func_149719_a(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
+	/**
+	 * Updates the blocks bounds based on its current state. Args: world, x, y, z
+	 */
+	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
 	{
 		int l = func_149999_b(p_149719_1_.getBlockMetadata(p_149719_2_, p_149719_3_, p_149719_4_));
 
 		if (l == 0)
 		{
-			if (p_149719_1_.func_147439_a(p_149719_2_ - 1, p_149719_3_, p_149719_4_) != this && p_149719_1_.func_147439_a(p_149719_2_ + 1, p_149719_3_, p_149719_4_) != this)
+			if (p_149719_1_.getBlock(p_149719_2_ - 1, p_149719_3_, p_149719_4_) != this && p_149719_1_.getBlock(p_149719_2_ + 1, p_149719_3_, p_149719_4_) != this)
 			{
 				l = 2;
 			}
@@ -122,10 +108,13 @@ public class BlockFlamonorPortal extends BlockBreakable
 			f1 = 0.5F;
 		}
 
-		this.func_149676_a(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
 	}
 
-	public boolean func_149686_d()
+	/**
+	 * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+	 */
+	public boolean renderAsNormalBlock()
 	{
 		return false;
 	}
@@ -151,7 +140,11 @@ public class BlockFlamonorPortal extends BlockBreakable
 		}
 	}
 
-	public void func_149695_a(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
+	/**
+	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
+	 * their own) Args: x, y, z, neighbor Block
+	 */
+	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
 	{
 		int l = func_149999_b(p_149695_1_.getBlockMetadata(p_149695_2_, p_149695_3_, p_149695_4_));
 		BlockFlamonorPortal.Size size = new BlockFlamonorPortal.Size(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, 1);
@@ -159,24 +152,28 @@ public class BlockFlamonorPortal extends BlockBreakable
 
 		if (l == 1 && (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g))
 		{
-			p_149695_1_.func_147449_b(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
+			p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
 		}
 		else if (l == 2 && (!size1.func_150860_b() || size1.field_150864_e < size1.field_150868_h * size1.field_150862_g))
 		{
-			p_149695_1_.func_147449_b(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
+			p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
 		}
 		else if (l == 0 && !size.func_150860_b() && !size1.func_150860_b())
 		{
-			p_149695_1_.func_147449_b(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
+			p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
 		}
 	}
 
+	/**
+	 * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
+	 * coordinates.  Args: blockAccess, x, y, z, side
+	 */
 	@SideOnly(Side.CLIENT)
-	public boolean func_149646_a(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
+	public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
 	{
 		int i1 = 0;
 
-		if (p_149646_1_.func_147439_a(p_149646_2_, p_149646_3_, p_149646_4_) == this)
+		if (p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_) == this)
 		{
 			i1 = func_149999_b(p_149646_1_.getBlockMetadata(p_149646_2_, p_149646_3_, p_149646_4_));
 
@@ -196,28 +193,48 @@ public class BlockFlamonorPortal extends BlockBreakable
 			}
 		}
 
-		boolean flag = p_149646_1_.func_147439_a(p_149646_2_ - 1, p_149646_3_, p_149646_4_) == this && p_149646_1_.func_147439_a(p_149646_2_ - 2, p_149646_3_, p_149646_4_) != this;
-		boolean flag1 = p_149646_1_.func_147439_a(p_149646_2_ + 1, p_149646_3_, p_149646_4_) == this && p_149646_1_.func_147439_a(p_149646_2_ + 2, p_149646_3_, p_149646_4_) != this;
-		boolean flag2 = p_149646_1_.func_147439_a(p_149646_2_, p_149646_3_, p_149646_4_ - 1) == this && p_149646_1_.func_147439_a(p_149646_2_, p_149646_3_, p_149646_4_ - 2) != this;
-		boolean flag3 = p_149646_1_.func_147439_a(p_149646_2_, p_149646_3_, p_149646_4_ + 1) == this && p_149646_1_.func_147439_a(p_149646_2_, p_149646_3_, p_149646_4_ + 2) != this;
+		boolean flag = p_149646_1_.getBlock(p_149646_2_ - 1, p_149646_3_, p_149646_4_) == this && p_149646_1_.getBlock(p_149646_2_ - 2, p_149646_3_, p_149646_4_) != this;
+		boolean flag1 = p_149646_1_.getBlock(p_149646_2_ + 1, p_149646_3_, p_149646_4_) == this && p_149646_1_.getBlock(p_149646_2_ + 2, p_149646_3_, p_149646_4_) != this;
+		boolean flag2 = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ - 1) == this && p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ - 2) != this;
+		boolean flag3 = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ + 1) == this && p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ + 2) != this;
 		boolean flag4 = flag || flag1 || i1 == 1;
 		boolean flag5 = flag2 || flag3 || i1 == 2;
 		return flag4 && p_149646_5_ == 4 ? true : (flag4 && p_149646_5_ == 5 ? true : (flag5 && p_149646_5_ == 2 ? true : flag5 && p_149646_5_ == 3));
 	}
 
-	public int func_149745_a(Random p_149745_1_)
+	/**
+	 * Returns the quantity of items to drop on block destruction.
+	 */
+	public int quantityDropped(Random p_149745_1_)
 	{
 		return 0;
 	}
 
+	/**
+	 * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
+	 */
+	public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity p_149670_5_)
+	{
+		if (p_149670_5_.ridingEntity == null && p_149670_5_.riddenByEntity == null)
+		{
+			p_149670_5_.setInPortal();
+		}
+	}
+
+	/**
+	 * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
+	 */
 	@SideOnly(Side.CLIENT)
-	public int func_149701_w()
+	public int getRenderBlockPass()
 	{
 		return 1;
 	}
 
+	/**
+	 * A randomly called display update to be able to add particles or other items for display
+	 */
 	@SideOnly(Side.CLIENT)
-	public void func_149734_b(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
+	public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
 	{
 		if (p_149734_5_.nextInt(100) == 0)
 		{
@@ -237,7 +254,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 			d4 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
 			d5 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
 
-			if (p_149734_1_.func_147439_a(p_149734_2_ - 1, p_149734_3_, p_149734_4_) != this && p_149734_1_.func_147439_a(p_149734_2_ + 1, p_149734_3_, p_149734_4_) != this)
+			if (p_149734_1_.getBlock(p_149734_2_ - 1, p_149734_3_, p_149734_4_) != this && p_149734_1_.getBlock(p_149734_2_ + 1, p_149734_3_, p_149734_4_) != this)
 			{
 				d0 = (double)p_149734_2_ + 0.5D + 0.25D * (double)i1;
 				d3 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
@@ -257,22 +274,26 @@ public class BlockFlamonorPortal extends BlockBreakable
 		return p_149999_0_ & 3;
 	}
 
+	/**
+	 * Gets an item for the block being called on. Args: world, x, y, z
+	 */
 	@SideOnly(Side.CLIENT)
-	public Item func_149694_d(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
+	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
 	{
-		return Item.func_150899_d(0);
+		return Item.getItemById(0);
 	}
 
 	public static class Size
 	{
-		public final World field_150867_a;
-		public final int field_150865_b;
-		public final int field_150866_c;
-		public final int field_150863_d;
-		public int field_150864_e = 0;
-		public ChunkCoordinates field_150861_f;
-		public int field_150862_g;
-		public int field_150868_h;
+		private final World field_150867_a;
+		private final int field_150865_b;
+		private final int field_150866_c;
+		private final int field_150863_d;
+		private int field_150864_e = 0;
+		private ChunkCoordinates field_150861_f;
+		private int field_150862_g;
+		private int field_150868_h;
+		private static final String __OBFID = "CL_00000285";
 
 		public Size(World p_i45415_1_, int p_i45415_2_, int p_i45415_3_, int p_i45415_4_, int p_i45415_5_)
 		{
@@ -281,7 +302,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 			this.field_150863_d = BlockPortal.field_150001_a[p_i45415_5_][0];
 			this.field_150866_c = BlockPortal.field_150001_a[p_i45415_5_][1];
 
-			for (int i1 = p_i45415_3_; p_i45415_3_ > i1 - 21 && p_i45415_3_ > 0 && this.func_150857_a(p_i45415_1_.func_147439_a(p_i45415_2_, p_i45415_3_ - 1, p_i45415_4_)); --p_i45415_3_)
+			for (int i1 = p_i45415_3_; p_i45415_3_ > i1 - 21 && p_i45415_3_ > 0 && this.func_150857_a(p_i45415_1_.getBlock(p_i45415_2_, p_i45415_3_ - 1, p_i45415_4_)); --p_i45415_3_)
 			{
 				;
 			}
@@ -315,14 +336,14 @@ public class BlockFlamonorPortal extends BlockBreakable
 
 			for (i1 = 0; i1 < 22; ++i1)
 			{
-				block = this.field_150867_a.func_147439_a(p_150853_1_ + j1 * i1, p_150853_2_, p_150853_3_ + k1 * i1);
+				block = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_, p_150853_3_ + k1 * i1);
 
 				if (!this.func_150857_a(block))
 				{
 					break;
 				}
 
-				Block block1 = this.field_150867_a.func_147439_a(p_150853_1_ + j1 * i1, p_150853_2_ - 1, p_150853_3_ + k1 * i1);
+				Block block1 = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_ - 1, p_150853_3_ + k1 * i1);
 
 				if (block1 != RioVBlocks.jaavikBlock)
 				{
@@ -330,7 +351,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 				}
 			}
 
-			block = this.field_150867_a.func_147439_a(p_150853_1_ + j1 * i1, p_150853_2_, p_150853_3_ + k1 * i1);
+			block = this.field_150867_a.getBlock(p_150853_1_ + j1 * i1, p_150853_2_, p_150853_3_ + k1 * i1);
 			return block == RioVBlocks.jaavikBlock ? i1 : 0;
 		}
 
@@ -350,7 +371,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 					{
 						k = this.field_150861_f.posX + j * Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]];
 						l = this.field_150861_f.posZ + j * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
-						Block block = this.field_150867_a.func_147439_a(k, i, l);
+						Block block = this.field_150867_a.getBlock(k, i, l);
 
 						if (!this.func_150857_a(block))
 						{
@@ -364,7 +385,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 
 						if (j == 0)
 						{
-							block = this.field_150867_a.func_147439_a(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][0]]);
+							block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][0]]);
 
 							if (block != RioVBlocks.jaavikBlock)
 							{
@@ -373,7 +394,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 						}
 						else if (j == this.field_150868_h - 1)
 						{
-							block = this.field_150867_a.func_147439_a(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]]);
+							block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockPortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]]);
 
 							if (block != RioVBlocks.jaavikBlock)
 							{
@@ -389,7 +410,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 				k = this.field_150861_f.posY + this.field_150862_g;
 				l = this.field_150861_f.posZ + i * Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]];
 
-				if (this.field_150867_a.func_147439_a(j, k, l) != RioVBlocks.jaavikBlock)
+				if (this.field_150867_a.getBlock(j, k, l) != RioVBlocks.jaavikBlock)
 				{
 					this.field_150862_g = 0;
 					break;
@@ -411,7 +432,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 
 		protected boolean func_150857_a(Block p_150857_1_)
 		{
-			return p_150857_1_ == RioVBlocks.redFire || p_150857_1_ == RioVBlocks.flamonorPortal;
+			return p_150857_1_.getMaterial() == Material.air || p_150857_1_ == RioVBlocks.redFire || p_150857_1_ == RioVBlocks.flamonorPortal;
 		}
 
 		public boolean func_150860_b()
@@ -429,7 +450,7 @@ public class BlockFlamonorPortal extends BlockBreakable
 				for (int l = 0; l < this.field_150862_g; ++l)
 				{
 					int i1 = this.field_150861_f.posY + l;
-					this.field_150867_a.func_147465_d(j, i1, k, RioVBlocks.flamonorPortal, this.field_150865_b, 2);
+					this.field_150867_a.setBlock(j, i1, k, RioVBlocks.flamonorPortal, this.field_150865_b, 2);
 				}
 			}
 		}

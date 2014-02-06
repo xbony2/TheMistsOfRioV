@@ -9,8 +9,7 @@ public class BiomeGenBlindOasis extends BiomeGenBase
 	public BiomeGenBlindOasis(int par1)
 	{
 		super(par1);
-		this.minHeight = 0.1F;
-		this.maxHeight = 0.6F;
+		this.rootHeight = 0.1F;
 		this.topBlock = RioVBlocks.blackRock;
 		this.fillerBlock = RioVBlocks.blackRock;
 		this.setBiomeName("Blind Oasis");

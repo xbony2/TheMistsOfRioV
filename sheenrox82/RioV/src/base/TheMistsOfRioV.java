@@ -26,7 +26,7 @@ public class TheMistsOfRioV
 	@SidedProxy(clientSide="sheenrox82.RioV.src.proxy.ClientProxy", serverSide="sheenrox82.RioV.src.proxy.CommonProxy")
 	public static CommonProxy commonProxy;
 
-	public CreativeTabs tab = new CreativeTabs(Util.MOD_ID) {public Item getTabIconItem() {return Item.func_150898_a(RioVBlocks.infuser);}};
+	public CreativeTabs tab = new CreativeTabs(Util.MOD_ID) {public Item getTabIconItem() {return Item.getItemFromBlock(RioVBlocks.infuser);}};
 	public GuiHandler guiHandler = new GuiHandler();
 	public boolean riovValis;
 	public boolean bosses;

@@ -45,8 +45,8 @@ public class EntityCowBoss extends EntityBossCore
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(110.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.20000000298023224D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(110.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
     }
 
     /**
@@ -108,7 +108,7 @@ public class EntityCowBoss extends EntityBossCore
 
         for (k = 0; k < j; ++k)
         {
-            this.func_145779_a(Items.leather, 1);
+            this.dropItem(Items.leather, 1);
         }
 
         j = this.rand.nextInt(3) + 1 + this.rand.nextInt(1 + par2);
@@ -117,11 +117,11 @@ public class EntityCowBoss extends EntityBossCore
         {
             if (this.isBurning())
             {
-                this.func_145779_a(Items.cooked_beef, 1);
+                this.dropItem(Items.cooked_beef, 1);
             }
             else
             {
-                this.func_145779_a(Items.beef, 1);
+                this.dropItem(Items.beef, 1);
             }
         }
     }
