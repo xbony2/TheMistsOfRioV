@@ -31,12 +31,12 @@ public class BlockShrine extends BlockContainer
 	
 	public BlockShrine()
 	{
-		super(Material.field_151576_e);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		super(Material.rock);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override
-	public boolean func_149727_a(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
 	{
 		TileEntityShrine shrine = new TileEntityShrine();
 		EntityTasaravMallor tasarav = new EntityTasaravMallor(par1World);
@@ -57,7 +57,7 @@ public class BlockShrine extends BlockContainer
 						{
 							tasarav.setPosition(par2, par3 + 1, par4);
 							par1World.spawnEntityInWorld(tasarav);
-							par1World.func_147439_a(par2, par3, par4);
+							par1World.setBlockToAir(par2, par3, par4);
 							tasarav.isTasaravAlive = true;
 							shrine.isTasaravSpawned = true;
 
@@ -65,7 +65,7 @@ public class BlockShrine extends BlockContainer
 							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Give Tasarav some Vaizi so he'll protect you!");
 						}
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 71)
@@ -77,7 +77,7 @@ public class BlockShrine extends BlockContainer
 							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: I'm sorry youngling, but Tasarav Mallor is no more...");
 						}
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 72)
@@ -86,7 +86,7 @@ public class BlockShrine extends BlockContainer
 					{
 						par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vaiziCurrency, random.nextInt(10)));
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 74 && rand < 120)
@@ -148,7 +148,7 @@ public class BlockShrine extends BlockContainer
 							par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.infusedOnyxSword, 1));
 						}
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 121)
@@ -158,11 +158,11 @@ public class BlockShrine extends BlockContainer
 						EntityRabbit rabbit = new EntityRabbit(par1World);
 						rabbit.setPosition(par2, par3 + 1, par4);
 						par1World.spawnEntityInWorld(rabbit);
-						par1World.func_147439_a(par2, par3, par4);
+						par1World.setBlockToAir(par2, par3, par4);
 
 						Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Have a companion! It is a bunny! Tame it with Sanctuatite Potions!");
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 123 && rand < 200)
@@ -171,7 +171,7 @@ public class BlockShrine extends BlockContainer
 					{
 						par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vaiziCurrency, random.nextInt(10)));
 					}	
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 201 && rand < 290)
@@ -188,7 +188,7 @@ public class BlockShrine extends BlockContainer
 							par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vravinite, random.nextInt(7)));
 						}
 					}	
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 291)
@@ -210,7 +210,7 @@ public class BlockShrine extends BlockContainer
 						{
 							tasarav.setPosition(par2, par3 + 1, par4);
 							par1World.spawnEntityInWorld(tasarav);
-							par1World.func_147439_a(par2, par3, par4);
+							par1World.setBlockToAir(par2, par3, par4);
 							tasarav.isTasaravAlive = true;
 							shrine.isTasaravSpawned = true;
 
@@ -218,7 +218,7 @@ public class BlockShrine extends BlockContainer
 							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Give Tasarav some Vaizi so he'll protect you!");
 						}
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 111)
@@ -230,7 +230,7 @@ public class BlockShrine extends BlockContainer
 							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: I'm sorry youngling, but Tasarav Mallor is no more...");
 						}
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 112)
@@ -239,7 +239,7 @@ public class BlockShrine extends BlockContainer
 					{
 						par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vaiziCurrency, 3));
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 113)
@@ -248,7 +248,7 @@ public class BlockShrine extends BlockContainer
 					{
 						par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vaiziCurrency, 10));
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 114 && rand < 220)
@@ -310,7 +310,7 @@ public class BlockShrine extends BlockContainer
 							par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.infusedOnyxSword, 1));
 						}
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 221)
@@ -320,11 +320,11 @@ public class BlockShrine extends BlockContainer
 						EntityRabbit rabbit = new EntityRabbit(par1World);
 						rabbit.setLocationAndAngles((double)par2 + 2D, (double)par3, (double)par4, 0.0F, 0.0F);
 						par1World.spawnEntityInWorld(rabbit);
-						par1World.func_147439_a(par2, par3, par4);
+						par1World.setBlockToAir(par2, par3, par4);
 
 						Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Have a companion! It is a bunny! Tame it with Sanctuatite Potions!");
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand == 222)
@@ -333,7 +333,7 @@ public class BlockShrine extends BlockContainer
 					{
 						par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vravinite, random.nextInt(5)));
 					}
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 223 && rand < 330)
@@ -342,7 +342,7 @@ public class BlockShrine extends BlockContainer
 					{
 						par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vaiziCurrency, random.nextInt(10)));
 					}	
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 330 && rand < 390)
@@ -359,7 +359,7 @@ public class BlockShrine extends BlockContainer
 							par5EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.vravinite, random.nextInt(7)));
 						}
 					}	
-					par1World.func_147439_a(par2, par3, par4);
+					par1World.setBlockToAir(par2, par3, par4);
 				}
 
 				if(rand > 391)
@@ -416,14 +416,14 @@ public class BlockShrine extends BlockContainer
 	}
 
 	@Override
-	public IIcon func_149691_a(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
 	{
 		return par1 == 0 ? this.field_94460_b : (par1 == 1 ? this.field_94461_a : this.blockIcon);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "slateBricks");
 		this.field_94461_a = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "shrine_top");
@@ -431,8 +431,8 @@ public class BlockShrine extends BlockContainer
 	}
 
 	@Override
-	public TileEntity func_149915_a(World var1, int var2) {
+	public TileEntity createNewTileEntity(World var1, int var2) {
 		// TODO Auto-generated method stub
-		return null;
+		return new TileEntityShrine();
 	}
 }

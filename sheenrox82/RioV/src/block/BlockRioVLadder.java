@@ -27,25 +27,31 @@ public class BlockRioVLadder extends BlockLadder
 	public BlockRioVLadder()
 	{
 		super();
-		this.func_149647_a(null);
+		this.setCreativeTab(null);
 	}
 
-	public AxisAlignedBB func_149668_a(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
     {
-        this.func_149719_a(p_149668_1_, p_149668_2_, p_149668_3_, p_149668_4_);
-        return super.func_149668_a(p_149668_1_, p_149668_2_, p_149668_3_, p_149668_4_);
+        this.setBlockBoundsBasedOnState(p_149668_1_, p_149668_2_, p_149668_3_, p_149668_4_);
+        return super.getCollisionBoundingBoxFromPool(p_149668_1_, p_149668_2_, p_149668_3_, p_149668_4_);
     }
 
-    public void func_149719_a(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
+    /**
+     * Updates the blocks bounds based on its current state. Args: world, x, y, z
+     */
+    public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
     {
         this.func_149797_b(p_149719_1_.getBlockMetadata(p_149719_2_, p_149719_3_, p_149719_4_));
     }
 
+    /**
+     * Returns the bounding box of the wired rectangular prism to render.
+     */
     @SideOnly(Side.CLIENT)
-    public AxisAlignedBB func_149633_g(World p_149633_1_, int p_149633_2_, int p_149633_3_, int p_149633_4_)
+    public AxisAlignedBB getSelectedBoundingBoxFromPool(World p_149633_1_, int p_149633_2_, int p_149633_3_, int p_149633_4_)
     {
-        this.func_149719_a(p_149633_1_, p_149633_2_, p_149633_3_, p_149633_4_);
-        return super.func_149633_g(p_149633_1_, p_149633_2_, p_149633_3_, p_149633_4_);
+        this.setBlockBoundsBasedOnState(p_149633_1_, p_149633_2_, p_149633_3_, p_149633_4_);
+        return super.getSelectedBoundingBoxFromPool(p_149633_1_, p_149633_2_, p_149633_3_, p_149633_4_);
     }
 
     public void func_149797_b(int p_149797_1_)
@@ -54,41 +60,54 @@ public class BlockRioVLadder extends BlockLadder
 
         if (p_149797_1_ == 2)
         {
-            this.func_149676_a(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
+            this.setBlockBounds(0.0F, 0.0F, 1.0F - f, 1.0F, 1.0F, 1.0F);
         }
 
         if (p_149797_1_ == 3)
         {
-            this.func_149676_a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
+            this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, f);
         }
 
         if (p_149797_1_ == 4)
         {
-            this.func_149676_a(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+            this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
         }
 
         if (p_149797_1_ == 5)
         {
-            this.func_149676_a(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
+            this.setBlockBounds(0.0F, 0.0F, 0.0F, f, 1.0F, 1.0F);
         }
     }
 
-    public boolean func_149662_c()
+    /**
+     * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
+     * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
+     */
+    public boolean isOpaqueCube()
     {
         return false;
     }
 
-    public boolean func_149686_d()
+    /**
+     * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
+     */
+    public boolean renderAsNormalBlock()
     {
         return false;
     }
 
-    public int func_149645_b()
+    /**
+     * The type of render function that is called for this block
+     */
+    public int getRenderType()
     {
         return 8;
     }
 
-    public boolean func_149742_c(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
+    /**
+     * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
+     */
+    public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
     {
         return p_149742_1_.isSideSolid(p_149742_2_ - 1, p_149742_3_, p_149742_4_, EAST ) ||
                p_149742_1_.isSideSolid(p_149742_2_ + 1, p_149742_3_, p_149742_4_, WEST ) ||
@@ -96,7 +115,10 @@ public class BlockRioVLadder extends BlockLadder
                p_149742_1_.isSideSolid(p_149742_2_, p_149742_3_, p_149742_4_ + 1, NORTH);
     }
 
-    public int func_149660_a(World p_149660_1_, int p_149660_2_, int p_149660_3_, int p_149660_4_, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_)
+    /**
+     * Called when a block is placed using its ItemBlock. Args: World, X, Y, Z, side, hitX, hitY, hitZ, block metadata
+     */
+    public int onBlockPlaced(World p_149660_1_, int p_149660_2_, int p_149660_3_, int p_149660_4_, int p_149660_5_, float p_149660_6_, float p_149660_7_, float p_149660_8_, int p_149660_9_)
     {
         int j1 = p_149660_9_;
 
@@ -123,7 +145,11 @@ public class BlockRioVLadder extends BlockLadder
         return j1;
     }
 
-    public void func_149695_a(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
+    /**
+     * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
+     * their own) Args: x, y, z, neighbor Block
+     */
+    public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
     {
         int l = p_149695_1_.getBlockMetadata(p_149695_2_, p_149695_3_, p_149695_4_);
         boolean flag = false;
@@ -150,14 +176,17 @@ public class BlockRioVLadder extends BlockLadder
 
         if (!flag)
         {
-            this.func_149697_b(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, l, 0);
-
+            this.dropBlockAsItem(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, l, 0);
+            p_149695_1_.setBlockToAir(p_149695_2_, p_149695_3_, p_149695_4_);
         }
 
-        super.func_149695_a(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
+        super.onNeighborBlockChange(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, p_149695_5_);
     }
 
-    public int func_149745_a(Random p_149745_1_)
+    /**
+     * Returns the quantity of items to drop on block destruction.
+     */
+    public int quantityDropped(Random p_149745_1_)
     {
         return 1;
     }
@@ -168,7 +197,7 @@ public class BlockRioVLadder extends BlockLadder
         return true;
     }
 
-	public void func_149651_a(IIconRegister iconRegister)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		if(this == RioVBlocks.glimmerwoodLadder) this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodLadder");
 		if(this == RioVBlocks.cherryBlossomLadder) this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + "cherryBlossomLadder");

@@ -25,7 +25,7 @@ public class BlockSkywoodLog extends Block
 	}
 
 	@Override
-	public void func_149749_a(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
+	public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
     {
         byte b0 = 4;
         int i1 = b0 + 1;
@@ -38,7 +38,7 @@ public class BlockSkywoodLog extends Block
                 {
                     for (int l1 = -b0; l1 <= b0; ++l1)
                     {
-                        Block block = p_149749_1_.func_147439_a(p_149749_2_ + j1, p_149749_3_ + k1, p_149749_4_ + l1);
+                        Block block = p_149749_1_.getBlock(p_149749_2_ + j1, p_149749_3_ + k1, p_149749_4_ + l1);
                         if (block.isLeaves(p_149749_1_, p_149749_2_ + j1, p_149749_3_ + k1, p_149749_4_ + l1))
                         {
                             block.beginLeavesDecay(p_149749_1_, p_149749_2_ + j1, p_149749_3_ + k1, p_149749_4_ + l1);
@@ -50,14 +50,14 @@ public class BlockSkywoodLog extends Block
     }
 
 	@Override
-	public IIcon func_149691_a(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
 	{
 		return par1 == 0 ? iconLogTop : par1 == 1 ? iconLogTop : this.blockIcon;
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "skywoodSide");
 		this.iconLogTop = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "skywoodTop");

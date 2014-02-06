@@ -28,19 +28,19 @@ public class BlockRioVDoor extends BlockDoor
 
 	public BlockRioVDoor()
 	{
-		super(Material.field_151575_d);
+		super(Material.wood);
 		this.glimmerwoodDoorIcon = 0;
 		this.cherryBlossomDoorIcon = 0;
 		this.skywoodDoorIcon = 0;
 		this.bloodDoorIcon = 0;
 		float f = 0.5F;
 		float f1 = 1.0F;
-		this.func_149676_a(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
+		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
 		if(this == RioVBlocks.glimmerwoodDoor)
 		{
@@ -63,7 +63,7 @@ public class BlockRioVDoor extends BlockDoor
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon func_149673_e(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+	public IIcon getIcon(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
 	{
 		if (par5 != 1 && par5 != 0)
 		{
@@ -147,7 +147,7 @@ public class BlockRioVDoor extends BlockDoor
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		if(this == RioVBlocks.cherryBlossomDoor)
 		{
@@ -195,7 +195,7 @@ public class BlockRioVDoor extends BlockDoor
 	}
 	
 	@Override
-	public boolean func_149662_c()
+	public boolean renderAsNormalBlock()
     {
         return false;
     }

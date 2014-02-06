@@ -11,7 +11,6 @@ import java.util.IdentityHashMap;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import sheenrox82.RioV.src.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.block.material.MapColor;
@@ -22,6 +21,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.util.Util;
 
 import com.google.common.collect.Maps;
 
@@ -360,7 +361,7 @@ public class BlockBlackFire extends BlockFire
      */
     public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
     {
-        if (p_149726_1_.provider.dimensionId > 0 || !Blocks.portal.func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
+        if (p_149726_1_.provider.dimensionId > 0 || !((BlockBlindOasisPortal) RioVBlocks.blindOasisPortal).func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
         {
             if (!World.doesBlockHaveSolidTopSurface(p_149726_1_, p_149726_2_, p_149726_3_ - 1, p_149726_4_) && !this.canNeighborBurn(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
             {
@@ -389,9 +390,9 @@ public class BlockBlackFire extends BlockFire
         float f1;
         float f2;
 
-        if (!World.doesBlockHaveSolidTopSurface(p_149734_1_, p_149734_2_, p_149734_3_ - 1, p_149734_4_) && !Blocks.fire.canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_ - 1, p_149734_4_, UP))
+        if (!World.doesBlockHaveSolidTopSurface(p_149734_1_, p_149734_2_, p_149734_3_ - 1, p_149734_4_) && !((BlockBlackFire) RioVBlocks.blackFire).canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_ - 1, p_149734_4_, UP))
         {
-            if (Blocks.fire.canCatchFire(p_149734_1_, p_149734_2_ - 1, p_149734_3_, p_149734_4_, EAST))
+            if (((BlockBlackFire) RioVBlocks.blackFire).canCatchFire(p_149734_1_, p_149734_2_ - 1, p_149734_3_, p_149734_4_, EAST))
             {
                 for (l = 0; l < 2; ++l)
                 {
@@ -402,7 +403,7 @@ public class BlockBlackFire extends BlockFire
                 }
             }
 
-            if (Blocks.fire.canCatchFire(p_149734_1_, p_149734_2_ + 1, p_149734_3_, p_149734_4_, WEST))
+            if (((BlockBlackFire) RioVBlocks.blackFire).canCatchFire(p_149734_1_, p_149734_2_ + 1, p_149734_3_, p_149734_4_, WEST))
             {
                 for (l = 0; l < 2; ++l)
                 {
@@ -413,7 +414,7 @@ public class BlockBlackFire extends BlockFire
                 }
             }
 
-            if (Blocks.fire.canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_, p_149734_4_ - 1, SOUTH))
+            if (((BlockBlackFire) RioVBlocks.blackFire).canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_, p_149734_4_ - 1, SOUTH))
             {
                 for (l = 0; l < 2; ++l)
                 {
@@ -424,7 +425,7 @@ public class BlockBlackFire extends BlockFire
                 }
             }
 
-            if (Blocks.fire.canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_, p_149734_4_ + 1, NORTH))
+            if (((BlockBlackFire) RioVBlocks.blackFire).canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_, p_149734_4_ + 1, NORTH))
             {
                 for (l = 0; l < 2; ++l)
                 {
@@ -435,7 +436,7 @@ public class BlockBlackFire extends BlockFire
                 }
             }
 
-            if (Blocks.fire.canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_ + 1, p_149734_4_, DOWN))
+            if (((BlockBlackFire) RioVBlocks.blackFire).canCatchFire(p_149734_1_, p_149734_2_, p_149734_3_ + 1, p_149734_4_, DOWN))
             {
                 for (l = 0; l < 2; ++l)
                 {

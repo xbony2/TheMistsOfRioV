@@ -214,7 +214,7 @@ public class ChunkProviderBlindOasis implements IChunkProvider
                     {
                         Block block2 = p_147418_3_[l1];
 
-                        if (block2 != null && block2.func_149688_o() != Material.field_151579_a)
+                        if (block2 != null && block2.getMaterial() != Material.air)
                         {
                             if (block2 == RioVBlocks.blackRock)
                             {
@@ -243,7 +243,7 @@ public class ChunkProviderBlindOasis implements IChunkProvider
                                         }
                                     }
 
-                                    if (k1 < b0 && (block == null || block.func_149688_o() == Material.field_151579_a))
+                                    if (k1 < b0 && (block == null || block.getMaterial() == Material.air))
                                     {
                                         block = RioVBlocks.voidStill;
                                     }
@@ -473,7 +473,7 @@ public class ChunkProviderBlindOasis implements IChunkProvider
      */
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
-        BlockFalling.field_149832_M = true;
+        BlockFalling.fallInstantly = true;
 
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, random, par2, par3, false));
     	int var14;
@@ -492,7 +492,7 @@ public class ChunkProviderBlindOasis implements IChunkProvider
 
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, random, par2, par3, false));
 
-        BlockFalling.field_149832_M = false;
+        BlockFalling.fallInstantly = false;
     }
 
     /**

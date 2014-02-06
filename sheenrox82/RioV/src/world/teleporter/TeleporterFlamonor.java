@@ -1,14 +1,10 @@
 package sheenrox82.RioV.src.world.teleporter;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.util.MathHelper;
@@ -16,25 +12,19 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.world.teleporter.position.PortalPositionBlindOasis;
+import sheenrox82.RioV.src.world.teleporter.position.PortalPositionFlamonor;
 
 public class TeleporterFlamonor extends Teleporter
 {
     private final WorldServer worldServerInstance;
-    /**
-     * A private Random() function in Teleporter
-     */
-    private final Random random;
-    /**
-     * Stores successful portal placement locations for rapid lookup.
-     */
-    private final LongHashMap destinationCoordinateCache = new LongHashMap();
-    /**
-     * A list of valid keys for the destinationCoordainteCache. These are based on the X & Z of the players initial
-     * location.
-     */
-    private final List destinationCoordinateKeys = new ArrayList();
-    private static final String __OBFID = "CL_00000153";
+    /** A private Random() function in Teleporter */
 
+    private final Random random;
+    /** Stores successful portal placement locations for rapid lookup. */
+
+    private final LongHashMap destinationCoordinateCache = new LongHashMap();
+  
     public TeleporterFlamonor(WorldServer par1WorldServer)
     {
     	super(par1WorldServer);
@@ -45,6 +35,7 @@ public class TeleporterFlamonor extends Teleporter
     /**
      * Place an entity in a nearby portal, creating one if necessary.
      */
+
     public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
     {
         if (this.worldServerInstance.provider.dimensionId != 1)
@@ -73,7 +64,7 @@ public class TeleporterFlamonor extends Teleporter
                         int l1 = j + j1;
                         int i2 = k + i1 * b1 - l * b0;
                         boolean flag = j1 < 0;
-                        this.worldServerInstance.func_147449_b(k1, l1, i2, flag ? RioVBlocks.jaavikBlock : Blocks.air);
+                        this.worldServerInstance.setBlock(k1, l1, i2, flag ? RioVBlocks.jaavikBlock : Blocks.air);
                     }
                 }
             }
@@ -86,6 +77,7 @@ public class TeleporterFlamonor extends Teleporter
     /**
      * Place an entity in a nearby portal which already exists.
      */
+
     public boolean placeInExistingPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
     {
         short short1 = 128;
@@ -102,12 +94,12 @@ public class TeleporterFlamonor extends Teleporter
 
         if (this.destinationCoordinateCache.containsItem(j1))
         {
-            TeleporterFlamonor.PortalPosition portalposition = (TeleporterFlamonor.PortalPosition)this.destinationCoordinateCache.getValueByKey(j1);
+            PortalPositionBlindOasis portalposition = (PortalPositionBlindOasis)this.destinationCoordinateCache.getValueByKey(j1);
             d3 = 0.0D;
             i = portalposition.posX;
             j = portalposition.posY;
             k = portalposition.posZ;
-            portalposition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
+            portalposition.field_85087_d = this.worldServerInstance.getTotalWorldTime();
             flag = false;
         }
         else
@@ -122,9 +114,9 @@ public class TeleporterFlamonor extends Teleporter
 
                     for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
                     {
-                        if (this.worldServerInstance.func_147439_a(l3, i2, l1) == RioVBlocks.flamonorPortal)
+                        if (this.worldServerInstance.getBlock(l3, i2, l1) == RioVBlocks.flamonorPortal)
                         {
-                            while (this.worldServerInstance.func_147439_a(l3, i2 - 1, l1) == RioVBlocks.flamonorPortal)
+                            while (this.worldServerInstance.getBlock(l3, i2 - 1, l1) == RioVBlocks.flamonorPortal)
                             {
                                 --i2;
                             }
@@ -149,8 +141,7 @@ public class TeleporterFlamonor extends Teleporter
         {
             if (flag)
             {
-                this.destinationCoordinateCache.add(j1, new TeleporterFlamonor.PortalPosition(i, j, k, this.worldServerInstance.getTotalWorldTime()));
-                this.destinationCoordinateKeys.add(Long.valueOf(j1));
+                this.destinationCoordinateCache.add(j1, new PortalPositionFlamonor(this, i, j, k, this.worldServerInstance.getTotalWorldTime()));
             }
 
             double d11 = (double)i + 0.5D;
@@ -158,22 +149,22 @@ public class TeleporterFlamonor extends Teleporter
             d7 = (double)k + 0.5D;
             int i4 = -1;
 
-            if (this.worldServerInstance.func_147439_a(i - 1, j, k) == RioVBlocks.flamonorPortal)
+            if (this.worldServerInstance.getBlock(i - 1, j, k) == RioVBlocks.flamonorPortal)
             {
                 i4 = 2;
             }
 
-            if (this.worldServerInstance.func_147439_a(i + 1, j, k) == RioVBlocks.flamonorPortal)
+            if (this.worldServerInstance.getBlock(i + 1, j, k) == RioVBlocks.flamonorPortal)
             {
                 i4 = 0;
             }
 
-            if (this.worldServerInstance.func_147439_a(i, j, k - 1) == RioVBlocks.flamonorPortal)
+            if (this.worldServerInstance.getBlock(i, j, k - 1) == RioVBlocks.flamonorPortal)
             {
                 i4 = 3;
             }
 
-            if (this.worldServerInstance.func_147439_a(i, j, k + 1) == RioVBlocks.flamonorPortal)
+            if (this.worldServerInstance.getBlock(i, j, k + 1) == RioVBlocks.flamonorPortal)
             {
                 i4 = 1;
             }
@@ -187,8 +178,8 @@ public class TeleporterFlamonor extends Teleporter
                 int i3 = Direction.offsetZ[i4];
                 int j3 = Direction.offsetX[k2];
                 int k3 = Direction.offsetZ[k2];
-                boolean flag1 = !this.worldServerInstance.func_147437_c(i + l2 + j3, j, k + i3 + k3) || !this.worldServerInstance.func_147437_c(i + l2 + j3, j + 1, k + i3 + k3);
-                boolean flag2 = !this.worldServerInstance.func_147437_c(i + l2, j, k + i3) || !this.worldServerInstance.func_147437_c(i + l2, j + 1, k + i3);
+                boolean flag1 = !this.worldServerInstance.isAirBlock(i + l2 + j3, j, k + i3 + k3) || !this.worldServerInstance.isAirBlock(i + l2 + j3, j + 1, k + i3 + k3);
+                boolean flag2 = !this.worldServerInstance.isAirBlock(i + l2, j, k + i3) || !this.worldServerInstance.isAirBlock(i + l2, j + 1, k + i3);
 
                 if (flag1 && flag2)
                 {
@@ -202,8 +193,8 @@ public class TeleporterFlamonor extends Teleporter
                     d11 -= (double)j3;
                     int k1 = k - k3;
                     d7 -= (double)k3;
-                    flag1 = !this.worldServerInstance.func_147437_c(l3 + l2 + j3, j, k1 + i3 + k3) || !this.worldServerInstance.func_147437_c(l3 + l2 + j3, j + 1, k1 + i3 + k3);
-                    flag2 = !this.worldServerInstance.func_147437_c(l3 + l2, j, k1 + i3) || !this.worldServerInstance.func_147437_c(l3 + l2, j + 1, k1 + i3);
+                    flag1 = !this.worldServerInstance.isAirBlock(l3 + l2 + j3, j, k1 + i3 + k3) || !this.worldServerInstance.isAirBlock(l3 + l2 + j3, j + 1, k1 + i3 + k3);
+                    flag2 = !this.worldServerInstance.isAirBlock(l3 + l2, j, k1 + i3) || !this.worldServerInstance.isAirBlock(l3 + l2, j + 1, k1 + i3);
                 }
 
                 float f1 = 0.5F;
@@ -309,9 +300,9 @@ public class TeleporterFlamonor extends Teleporter
 
                 for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3)
                 {
-                    if (this.worldServerInstance.func_147437_c(i2, i3, k2))
+                    if (this.worldServerInstance.isAirBlock(i2, i3, k2))
                     {
-                        while (i3 > 0 && this.worldServerInstance.func_147437_c(i2, i3 - 1, k2))
+                        while (i3 > 0 && this.worldServerInstance.isAirBlock(i2, i3 - 1, k2))
                         {
                             --i3;
                         }
@@ -337,7 +328,7 @@ public class TeleporterFlamonor extends Teleporter
                                         i5 = i3 + k4;
                                         int j5 = k2 + (j4 - 1) * l3 - i4 * k3;
 
-                                        if (k4 < 0 && !this.worldServerInstance.func_147439_a(l4, i5, j5).func_149688_o().isSolid() || k4 >= 0 && !this.worldServerInstance.func_147437_c(l4, i5, j5))
+                                        if (k4 < 0 && !this.worldServerInstance.getBlock(l4, i5, j5).getMaterial().isSolid() || k4 >= 0 && !this.worldServerInstance.isAirBlock(l4, i5, j5))
                                         {
                                             continue label274;
                                         }
@@ -375,9 +366,9 @@ public class TeleporterFlamonor extends Teleporter
 
                     for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3)
                     {
-                        if (this.worldServerInstance.func_147437_c(i2, i3, k2))
+                        if (this.worldServerInstance.isAirBlock(i2, i3, k2))
                         {
-                            while (i3 > 0 && this.worldServerInstance.func_147437_c(i2, i3 - 1, k2))
+                            while (i3 > 0 && this.worldServerInstance.isAirBlock(i2, i3 - 1, k2))
                             {
                                 --i3;
                             }
@@ -395,7 +386,7 @@ public class TeleporterFlamonor extends Teleporter
                                         l4 = i3 + j4;
                                         i5 = k2 + (i4 - 1) * l3;
 
-                                        if (j4 < 0 && !this.worldServerInstance.func_147439_a(k4, l4, i5).func_149688_o().isSolid() || j4 >= 0 && !this.worldServerInstance.func_147437_c(k4, l4, i5))
+                                        if (j4 < 0 && !this.worldServerInstance.getBlock(k4, l4, i5).getMaterial().isSolid() || j4 >= 0 && !this.worldServerInstance.isAirBlock(k4, l4, i5))
                                         {
                                             continue label222;
                                         }
@@ -458,7 +449,7 @@ public class TeleporterFlamonor extends Teleporter
                         i4 = j2 + k3;
                         j4 = k2 + (j3 - 1) * l2 - i3 * l5;
                         flag = k3 < 0;
-                        this.worldServerInstance.func_147449_b(l3, i4, j4, flag ? RioVBlocks.jaavikBlock : Blocks.air);
+                        this.worldServerInstance.setBlock(l3, i4, j4, flag ? RioVBlocks.jaavikBlock : Blocks.air);
                     }
                 }
             }
@@ -474,7 +465,7 @@ public class TeleporterFlamonor extends Teleporter
                     i4 = j2 + k3;
                     j4 = k2 + (j3 - 1) * l2;
                     flag = j3 == 0 || j3 == 3 || k3 == -1 || k3 == 3;
-                    this.worldServerInstance.func_147465_d(l3, i4, j4, (Block)(flag ? RioVBlocks.jaavikBlock : RioVBlocks.flamonorPortal), 0, 2);
+                    this.worldServerInstance.setBlock(l3, i4, j4, (Block)(flag ? RioVBlocks.jaavikBlock : RioVBlocks.flamonorPortal), 0, 2);
                 }
             }
 
@@ -485,7 +476,7 @@ public class TeleporterFlamonor extends Teleporter
                     l3 = k5 + (j3 - 1) * l5;
                     i4 = j2 + k3;
                     j4 = k2 + (j3 - 1) * l2;
-                    this.worldServerInstance.func_147459_d(l3, i4, j4, this.worldServerInstance.func_147439_a(l3, i4, j4));
+                    this.worldServerInstance.notifyBlocksOfNeighborChange(l3, i4, j4, this.worldServerInstance.getBlock(l3, i4, j4));
                 }
             }
         }
@@ -497,39 +488,10 @@ public class TeleporterFlamonor extends Teleporter
      * called periodically to remove out-of-date portal locations from the cache list. Argument par1 is a
      * WorldServer.getTotalWorldTime() value.
      */
+
     public void removeStalePortalLocations(long par1)
     {
-        if (par1 % 100L == 0L)
-        {
-            Iterator iterator = this.destinationCoordinateKeys.iterator();
-            long j = par1 - 600L;
-
-            while (iterator.hasNext())
-            {
-                Long olong = (Long)iterator.next();
-                TeleporterFlamonor.PortalPosition portalposition = (TeleporterFlamonor.PortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
-
-                if (portalposition == null || portalposition.lastUpdateTime < j)
-                {
-                    iterator.remove();
-                    this.destinationCoordinateCache.remove(olong.longValue());
-                }
-            }
-        }
-    }
-
-    public class PortalPosition extends ChunkCoordinates
-    {
-        /**
-         * The worldtime at which this PortalPosition was last verified
-         */
-        public long lastUpdateTime;
-        private static final String __OBFID = "CL_00000154";
-
-        public PortalPosition(int par2, int par3, int par4, long par5)
-        {
-            super(par2, par3, par4);
-            this.lastUpdateTime = par5;
-        }
+    	super.removeStalePortalLocations(par1);
+       
     }
 }

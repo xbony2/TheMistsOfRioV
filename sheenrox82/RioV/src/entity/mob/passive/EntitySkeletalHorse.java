@@ -71,8 +71,8 @@ public class EntitySkeletalHorse extends EntityHorse
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 	}
 
 	@Override
@@ -91,7 +91,7 @@ public class EntitySkeletalHorse extends EntityHorse
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.func_145779_a(RioVItems.blackBone, 1);
+		this.dropItem(RioVItems.blackBone, 1);
 	}
 
 	@Override

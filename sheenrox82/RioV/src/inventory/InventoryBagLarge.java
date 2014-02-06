@@ -55,7 +55,7 @@ public class InventoryBagLarge implements IInventory
 				setInventorySlotContents(slot, null);
 			}
 
-			this.onInventoryChanged();
+			this.markDirty();
 		}
 		return stack;
 	}
@@ -81,7 +81,7 @@ public class InventoryBagLarge implements IInventory
 			itemstack.stackSize = this.getInventoryStackLimit();
 		}
 
-		this.onInventoryChanged();
+		this.markDirty();
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class InventoryBagLarge implements IInventory
 		return 64;
 	}
 
-	public void onInventoryChanged()
+	public void markDirty()
 	{
 		for (int i = 0; i < this.getSizeInventory(); ++i)
 		{
@@ -154,18 +154,12 @@ public class InventoryBagLarge implements IInventory
 	@Override
 	public String getInventoryName() {
 		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public void markDirty() {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -25,15 +25,15 @@ public class BlockGlimmerGrass extends Block
 	
 	public BlockGlimmerGrass()
 	{
-		super(Material.field_151577_b);
-		this.func_149675_a(true);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		super(Material.grass);
+		this.setTickRandomly(true);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int par1, int par2)
 	{
-		return par1 == 1 ? this.iconGrassTop : (par1 == 0 ? RioVBlocks.glimmerDirt.func_149733_h(par1) : this.blockIcon);
+		return par1 == 1 ? this.iconGrassTop : (par1 == 0 ? RioVBlocks.glimmerDirt.getBlockTextureFromSide(par1) : this.blockIcon);
 	}
 
 	public void func_149674_a(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
@@ -42,7 +42,7 @@ public class BlockGlimmerGrass extends Block
         {
             if (p_149674_1_.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) < 4 && p_149674_1_.getBlockLightOpacity(p_149674_2_, p_149674_3_ + 1, p_149674_4_) > 2)
             {
-                p_149674_1_.func_147449_b(p_149674_2_, p_149674_3_, p_149674_4_, RioVBlocks.glimmerDirt);
+                p_149674_1_.setBlock(p_149674_2_, p_149674_3_, p_149674_4_, RioVBlocks.glimmerDirt);
             }
             else if (p_149674_1_.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) >= 9)
             {
@@ -52,9 +52,9 @@ public class BlockGlimmerGrass extends Block
                     int j1 = p_149674_3_ + p_149674_5_.nextInt(5) - 3;
                     int k1 = p_149674_4_ + p_149674_5_.nextInt(3) - 1;
 
-                    if (p_149674_1_.func_147439_a(i1, j1, k1) == RioVBlocks.glimmerGrass && p_149674_1_.getBlockMetadata(i1, j1, k1) == 0 && p_149674_1_.getBlockLightValue(i1, j1 + 1, k1) >= 4 && p_149674_1_.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
+                    if (p_149674_1_.getBlock(i1, j1, k1) == RioVBlocks.glimmerGrass && p_149674_1_.getBlockMetadata(i1, j1, k1) == 0 && p_149674_1_.getBlockLightValue(i1, j1 + 1, k1) >= 4 && p_149674_1_.getBlockLightOpacity(i1, j1 + 1, k1) <= 2)
                     {
-                        p_149674_1_.func_147449_b(i1, j1, k1, RioVBlocks.glimmerGrass);
+                        p_149674_1_.setBlock(i1, j1, k1, RioVBlocks.glimmerGrass);
                     }
                 }
             }
@@ -62,14 +62,14 @@ public class BlockGlimmerGrass extends Block
     }
 
 	@Override
-	public Item func_149650_a(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return RioVBlocks.glimmerDirt.func_149650_a(0, p_149650_2_, p_149650_3_);
+        return RioVBlocks.glimmerDirt.getItemDropped(0, p_149650_2_, p_149650_3_);
     }
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon func_149673_e(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+	public IIcon getIcon(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
 	{
 		if (par5 == 1)
 		{
@@ -77,7 +77,7 @@ public class BlockGlimmerGrass extends Block
 		}
 		else if (par5 == 0)
 		{
-			return RioVBlocks.glimmerDirt.func_149733_h(par2);
+			return RioVBlocks.glimmerDirt.getBlockTextureFromSide(par2);
 		}
 		else
 		{
@@ -88,9 +88,9 @@ public class BlockGlimmerGrass extends Block
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.func_149739_a()) + "Side");
+		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()) + "Side");
 		this.iconGrassTop = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerGrassTop");
 	}
 }

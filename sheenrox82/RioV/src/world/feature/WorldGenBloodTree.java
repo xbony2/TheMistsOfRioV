@@ -68,7 +68,7 @@ public class WorldGenBloodTree extends WorldGenAbstractTree
             }
             else
             {
-                Block block1 = par1World.func_147439_a(par3, par4 - 1, par5);
+                Block block1 = par1World.getBlock(par3, par4 - 1, par5);
 
                 boolean isSoil = block1.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
                 if (isSoil && par4 < 256 - l - 1)
@@ -86,9 +86,9 @@ public class WorldGenBloodTree extends WorldGenAbstractTree
                             {
                                 int l2 = k2 - par5;
 
-                                if ((Math.abs(j3) != i3 || Math.abs(l2) != i3 || i3 <= 0) && !par1World.func_147439_a(j2, i2, k2).canBeReplacedByLeaves(par1World, j2, i2, k2))
+                                if ((Math.abs(j3) != i3 || Math.abs(l2) != i3 || i3 <= 0) && !par1World.getBlock(j2, i2, k2).canBeReplacedByLeaves(par1World, j2, i2, k2))
                                 {
-                                    this.func_150516_a(par1World, j2, i2, k2, RioVBlocks.paleLeaf, 1);
+                                    this.setBlockAndNotifyAdequately(par1World, j2, i2, k2, RioVBlocks.paleLeaf, 1);
                                 }
                             }
                         }
@@ -105,11 +105,11 @@ public class WorldGenBloodTree extends WorldGenAbstractTree
 
                     for (i2 = 0; i2 < l - 1; ++i2)
                     {
-                        Block block2 = par1World.func_147439_a(par3, par4 + i2, par5);
+                        Block block2 = par1World.getBlock(par3, par4 + i2, par5);
 
                         if (block2.isAir(par1World, par3, par4 + i2, par5) || block2.isLeaves(par1World, par3, par4 + i2, par5))
                         {
-                            this.func_150516_a(par1World, par3, par4 + i2, par5, RioVBlocks.bloodLog, 1);
+                            this.setBlockAndNotifyAdequately(par1World, par3, par4 + i2, par5, RioVBlocks.bloodLog, 1);
                         }
                     }
 

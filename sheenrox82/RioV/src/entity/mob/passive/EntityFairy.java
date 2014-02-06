@@ -53,14 +53,14 @@ public class EntityFairy extends EntityFlyingDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 	}
 
 	@Override
     protected void updateEntityActionState()
     {
-        if (!this.worldObj.isRemote && this.worldObj.difficultySetting.func_151525_a() == 0)
+        if (!this.worldObj.isRemote && this.worldObj.difficultySetting.getDifficultyId() == 0)
         {
             this.setDead();
         }
@@ -152,12 +152,6 @@ public class EntityFairy extends EntityFlyingDeadBody
         }
 
         return true;
-    }
-
-	@Override
-	 protected Item func_146068_u()
-    {
-        return RioVItems.orb;
     }
 
 	@Override

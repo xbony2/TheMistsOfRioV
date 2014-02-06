@@ -92,7 +92,7 @@ public class WorldGenGiantTree extends WorldGenAbstractTree
 
     private boolean func_150532_c(World p_150532_1_, Random p_150532_2_, int p_150532_3_, int p_150532_4_, int p_150532_5_)
     {
-        Block block = p_150532_1_.func_147439_a(p_150532_3_, p_150532_4_ - 1, p_150532_5_);
+        Block block = p_150532_1_.getBlock(p_150532_3_, p_150532_4_ - 1, p_150532_5_);
 
         boolean isSoil = block.canSustainPlant(p_150532_1_, p_150532_3_, p_150532_4_ - 1, p_150532_5_, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
         if (isSoil && p_150532_4_ >= 2)
@@ -130,11 +130,11 @@ public class WorldGenGiantTree extends WorldGenAbstractTree
 
                 if (k1 * k1 + i2 * i2 <= i1 || j2 * j2 + k2 * k2 <= i1 || k1 * k1 + k2 * k2 <= i1 || j2 * j2 + i2 * i2 <= i1)
                 {
-                    Block block = p_150535_1_.func_147439_a(j1, p_150535_3_, l1);
+                    Block block = p_150535_1_.getBlock(j1, p_150535_3_, l1);
 
                     if (block.isAir(p_150535_1_, j1, p_150535_3_, l1) || block.isLeaves(p_150535_1_, j1, p_150535_3_, l1))
                     {
-                        this.func_150516_a(p_150535_1_, j1, p_150535_3_, l1, Blocks.leaves, this.leavesMetadata);
+                        this.setBlockAndNotifyAdequately(p_150535_1_, j1, p_150535_3_, l1, Blocks.leaves, this.leavesMetadata);
                     }
                 }
             }
@@ -155,11 +155,11 @@ public class WorldGenGiantTree extends WorldGenAbstractTree
 
                 if (k1 * k1 + i2 * i2 <= i1)
                 {
-                    Block block = p_150534_1_.func_147439_a(j1, p_150534_3_, l1);
+                    Block block = p_150534_1_.getBlock(j1, p_150534_3_, l1);
 
                     if (block.isAir(p_150534_1_, j1, p_150534_3_, l1) || block.isLeaves(p_150534_1_, j1, p_150534_3_, l1))
                     {
-                        this.func_150516_a(p_150534_1_, j1, p_150534_3_, l1, Blocks.leaves, this.leavesMetadata);
+                        this.setBlockAndNotifyAdequately(p_150534_1_, j1, p_150534_3_, l1, Blocks.leaves, this.leavesMetadata);
                     }
                 }
             }
@@ -169,7 +169,7 @@ public class WorldGenGiantTree extends WorldGenAbstractTree
     //Just a helper macro
     private void onPlantGrow(World world, int x, int y, int z, int sourceX, int sourceY, int sourceZ)
     {
-        world.func_147439_a(x, y, z).onPlantGrow(world, x, y, z, sourceX, sourceY, sourceZ);
+        world.getBlock(x, y, z).onPlantGrow(world, x, y, z, sourceX, sourceY, sourceZ);
     }
 
 	@Override

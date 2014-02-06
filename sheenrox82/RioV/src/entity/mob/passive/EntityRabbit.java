@@ -61,7 +61,7 @@ public class EntityRabbit extends EntityTameableDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0D);
 	}
 
 	@Override
@@ -178,11 +178,11 @@ public class EntityRabbit extends EntityTameableDeadBody
 
 		if (par1)
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
 		}
 		else
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0D);
 		}
 	}
 

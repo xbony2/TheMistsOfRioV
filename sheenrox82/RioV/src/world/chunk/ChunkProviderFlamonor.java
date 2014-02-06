@@ -328,7 +328,7 @@ public class ChunkProviderFlamonor implements IChunkProvider
 	@Override
 	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
 	{
-		BlockSand.field_149832_M = true;
+		BlockSand.fallInstantly = true;
 		int k = par2 * 16;
 		int l = par3 * 16;
 		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
@@ -365,7 +365,7 @@ public class ChunkProviderFlamonor implements IChunkProvider
 
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
 
-		BlockSand.field_149832_M = false;
+		BlockSand.fallInstantly = false;
 	}
 
 	/**

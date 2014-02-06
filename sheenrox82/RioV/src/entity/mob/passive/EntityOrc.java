@@ -107,9 +107,9 @@ public class EntityOrc extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
 	}
 
 	@Override
@@ -125,11 +125,11 @@ public class EntityOrc extends EntityMobDeadBody
 
 		if (var1 == 0)
 		{
-			this.func_145779_a(RioVItems.ambrosia, 1);
+			this.dropItem(RioVItems.ambrosia, 1);
 		}
 		if (var1 == 1)
 		{
-			this.func_145779_a(RioVItems.amethystSword, 1);
+			this.dropItem(RioVItems.amethystSword, 1);
 		}
 		if (var1 == 2)
 		{

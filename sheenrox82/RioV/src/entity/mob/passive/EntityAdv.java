@@ -190,26 +190,26 @@ public class EntityAdv extends EntityMobDeadBody
 
 		if (var1 == 0)
 		{
-			this.func_145779_a(RioVItems.ambrosia, 1);
+			this.dropItem(RioVItems.ambrosia, 1);
 		}
 		if (var1 == 1)
 		{
-			this.func_145779_a(RioVItems.amethystSword, 1);
+			this.dropItem(RioVItems.amethystSword, 1);
 		}
 		if (var1 == 2)
 		{
 		}
 		if (var1 == 3)
 		{
-			this.func_145779_a(RioVItems.greenApple, 1);
+			this.dropItem(RioVItems.greenApple, 1);
 		}
 		if (var1 == 4)
 		{
-			this.func_145779_a(RioVItems.greenApple, 1);
+			this.dropItem(RioVItems.greenApple, 1);
 		}
 		if (var1 == 5)
 		{
-			this.func_145779_a(RioVItems.manchet, 1);
+			this.dropItem(RioVItems.manchet, 1);
 		}
 		if (var1 == 6)
 		{
@@ -230,9 +230,9 @@ public class EntityAdv extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
 	}
 
 	/**@Override

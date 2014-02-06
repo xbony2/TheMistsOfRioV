@@ -51,7 +51,7 @@ public class EntityDove extends EntityAmbientCreatureDeadBody
 	{
 		super.updateAITasks();
 
-		if (this.currentFlightTarget != null && (!this.worldObj.func_147437_c(this.currentFlightTarget.posX, this.currentFlightTarget.posY, this.currentFlightTarget.posZ) || this.currentFlightTarget.posY < 1))
+		if (this.currentFlightTarget != null && (!this.worldObj.isAirBlock(this.currentFlightTarget.posX, this.currentFlightTarget.posY, this.currentFlightTarget.posZ) || this.currentFlightTarget.posY < 1))
         {
             this.currentFlightTarget = null;
         }

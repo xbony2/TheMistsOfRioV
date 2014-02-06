@@ -107,7 +107,7 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 		}
 		if (var1 == 1)
 		{
-			this.func_145779_a(RioVItems.onyxSword, 1);
+			this.dropItem(RioVItems.onyxSword, 1);
 		}
 		if (var1 == 2)
 		{	
@@ -140,9 +140,9 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
 	}
 	
 	@Override

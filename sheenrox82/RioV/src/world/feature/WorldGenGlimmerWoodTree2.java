@@ -47,7 +47,7 @@ public class WorldGenGlimmerWoodTree2 extends WorldGenAbstractTree
                     {
                         if (l1 >= 0 && l1 < 256)
                         {
-                            Block block = par1World.func_147439_a(i2, l1, j2);
+                            Block block = par1World.getBlock(i2, l1, j2);
 
                             if (!block.isAir(par1World, i2, l1, j2) && !block.isLeaves(par1World, i2, l1, j2))
                             {
@@ -68,7 +68,7 @@ public class WorldGenGlimmerWoodTree2 extends WorldGenAbstractTree
             }
             else
             {
-                Block block1 = par1World.func_147439_a(par3, par4 - 1, par5);
+                Block block1 = par1World.getBlock(par3, par4 - 1, par5);
 
                 boolean isSoil = block1.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
                 if (isSoil && par4 < 256 - l - 1)
@@ -92,9 +92,9 @@ public class WorldGenGlimmerWoodTree2 extends WorldGenAbstractTree
                             {
                                 int k3 = j3 - par5;
 
-                                if ((Math.abs(i3) != l3 || Math.abs(k3) != l3 || l3 <= 0) && !par1World.func_147439_a(l2, k2, j3).canBeReplacedByLeaves(par1World, l2, k2, j3))
+                                if ((Math.abs(i3) != l3 || Math.abs(k3) != l3 || l3 <= 0) && !par1World.getBlock(l2, k2, j3).canBeReplacedByLeaves(par1World, l2, k2, j3))
                                 {
-                                    this.func_150516_a(par1World, l2, k2, j3, RioVBlocks.glimmerwoodLeaf, 1);
+                                    this.setBlockAndNotifyAdequately(par1World, l2, k2, j3, RioVBlocks.glimmerwoodLeaf, 1);
                                 }
                             }
                         }
@@ -120,11 +120,11 @@ public class WorldGenGlimmerWoodTree2 extends WorldGenAbstractTree
 
                     for (k2 = 0; k2 < l - i4; ++k2)
                     {
-                        Block block2 = par1World.func_147439_a(par3, par4 + k2, par5);
+                        Block block2 = par1World.getBlock(par3, par4 + k2, par5);
 
                         if (block2.isAir(par1World, par3, par4 + k2, par5) || block2.isLeaves(par1World, par3, par4 + k2, par5))
                         {
-                            this.func_150516_a(par1World, par3, par4 + k2, par5, RioVBlocks.glimmerwoodLog, 1);
+                            this.setBlockAndNotifyAdequately(par1World, par3, par4 + k2, par5, RioVBlocks.glimmerwoodLog, 1);
                         }
                     }
 

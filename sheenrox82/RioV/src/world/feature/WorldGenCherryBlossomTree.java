@@ -69,7 +69,7 @@ public class WorldGenCherryBlossomTree extends WorldGenAbstractTree
                     {
                         if (i1 >= 0 && i1 < 256)
                         {
-                            block = par1World.func_147439_a(j1, i1, k1);
+                            block = par1World.getBlock(j1, i1, k1);
 
                             if (!this.isReplaceable(par1World, j1, i1, k1))
                             {
@@ -90,7 +90,7 @@ public class WorldGenCherryBlossomTree extends WorldGenAbstractTree
             }
             else
             {
-                Block block2 = par1World.func_147439_a(par3, par4 - 1, par5);
+                Block block2 = par1World.getBlock(par3, par4 - 1, par5);
 
                 boolean isSoil = block2.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockRioVSapling)RioVBlocks.cherryBlossomSapling);
                 if (isSoil && par4 < 256 - l - 1)
@@ -118,11 +118,11 @@ public class WorldGenCherryBlossomTree extends WorldGenAbstractTree
 
                                 if (Math.abs(j2) != l1 || Math.abs(l2) != l1 || par2Random.nextInt(2) != 0 && i3 != 0)
                                 {
-                                    Block block1 = par1World.func_147439_a(i2, k1, k2);
+                                    Block block1 = par1World.getBlock(i2, k1, k2);
 
                                     if (block1.isAir(par1World, i2, k1, k2) || block1.isLeaves(par1World, i2, k1, k2))
                                     {
-                                        this.func_150516_a(par1World, i2, k1, k2, RioVBlocks.cherryLeaf, this.metaLeaves);
+                                        this.setBlockAndNotifyAdequately(par1World, i2, k1, k2, RioVBlocks.cherryLeaf, this.metaLeaves);
                                     }
                                 }
                             }
@@ -131,11 +131,11 @@ public class WorldGenCherryBlossomTree extends WorldGenAbstractTree
 
                     for (k1 = 0; k1 < l; ++k1)
                     {
-                        block = par1World.func_147439_a(par3, par4 + k1, par5);
+                        block = par1World.getBlock(par3, par4 + k1, par5);
 
                         if (block.isAir(par1World, par3, par4 + k1, par5) || block.isLeaves(par1World, par3, par4 + k1, par5))
                         {
-                            this.func_150516_a(par1World, par3, par4 + k1, par5, RioVBlocks.cherryLog, this.metaWood);
+                            this.setBlockAndNotifyAdequately(par1World, par3, par4 + k1, par5, RioVBlocks.cherryLog, this.metaWood);
                         }
                     }
 
@@ -150,7 +150,7 @@ public class WorldGenCherryBlossomTree extends WorldGenAbstractTree
                             {
                                 for (j2 = par5 - l1; j2 <= par5 + l1; ++j2)
                                 {
-                                    if (par1World.func_147439_a(i2, k1, j2).isLeaves(par1World, i2, k1, j2))
+                                    if (par1World.getBlock(i2, k1, j2).isLeaves(par1World, i2, k1, j2))
                                     {
                                        
                                     }

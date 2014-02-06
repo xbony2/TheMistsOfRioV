@@ -19,13 +19,13 @@ public class BlockSancuatiteStill extends BlockStaticLiquid
 	
 	public BlockSancuatiteStill() 
 	{
-		super(Material.field_151586_h);
-		this.func_149647_a(null);
+		super(Material.water);
+		this.setCreativeTab(null);
 	}
 
 	public void func_149651_a(IIconRegister i)
 	{
-		this.blockIcon = i.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.func_149739_a()));
+		this.blockIcon = i.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	}
 
 	public boolean isOpaqueCube()

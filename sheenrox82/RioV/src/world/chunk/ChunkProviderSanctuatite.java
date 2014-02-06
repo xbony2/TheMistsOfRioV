@@ -322,7 +322,7 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 	@Override
 	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
 	{
-		BlockSand.field_149832_M = true;
+		BlockSand.fallInstantly = true;
 		int k = par2 * 16;
 		int l = par3 * 16;
 		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
@@ -369,7 +369,7 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, false));
 
 
-		BlockSand.field_149832_M = false;
+		BlockSand.fallInstantly = false;
 	}
 
 	/**

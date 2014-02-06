@@ -33,20 +33,20 @@ public class BlockInfuser extends BlockContainer
     
     public BlockInfuser(boolean par3)
     {
-        super(Material.field_151576_e);
+        super(Material.iron);
         this.isActive = par3;
-        this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+        this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
     
     @Override
-    public IIcon func_149691_a(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return par1 == 0 ? this.field_94460_b : (par1 == 1 ? this.field_94461_a : this.blockIcon);
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void func_149651_a(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_side");
         this.field_94461_a = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_top");
@@ -55,9 +55,9 @@ public class BlockInfuser extends BlockContainer
     
     @Override
     @SideOnly(Side.CLIENT)
-    public void func_149734_b(World par1World, int par2, int par3, int par4, Random par5Random)
+    public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        super.func_149734_b(par1World, par2, par3, par4, par5Random);
+        super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
 
         for (int var6 = par2 - 2; var6 <= par2 + 2; ++var6)
         {
@@ -73,7 +73,7 @@ public class BlockInfuser extends BlockContainer
                     for (int var8 = par3; var8 <= par3 + 1; ++var8)
                     {
                         
-                            if (!par1World.func_147437_c((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
+                            if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
                             {
                                 break;
                             }
@@ -81,7 +81,7 @@ public class BlockInfuser extends BlockContainer
                             par1World.spawnParticle("enchantmenttable", (double)par2 + 0.5D, (double)par3 + 2.0D, (double)par4 + 0.5D, (double)((float)(var6 - par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(var8 - par3) - par5Random.nextFloat() - 1.0F), (double)((float)(var7 - par4) + par5Random.nextFloat()) - 0.5D);
                             Particles.spawnParticle("glimmer", (double)par2 + 0.5D, (double)par3 + 1.0D, (double)par4 + 0.5D, (double)((float)(par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(par3) - par5Random.nextFloat() - 1.0F), (double)((float)(par4) + par5Random.nextFloat()) - 0.5D);
                        
-                        	if (!par1World.func_147437_c((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
+                        	if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
                             {
                                 break;
                             }
@@ -94,9 +94,9 @@ public class BlockInfuser extends BlockContainer
         }
     }
     
-    public void func_149726_b(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
+    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
     {
-        super.func_149726_b(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+        super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
         this.func_149930_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
     }
 
@@ -104,10 +104,10 @@ public class BlockInfuser extends BlockContainer
     {
         if (!p_149930_1_.isRemote)
         {
-            Block block = p_149930_1_.func_147439_a(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
-            Block block1 = p_149930_1_.func_147439_a(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
-            Block block2 = p_149930_1_.func_147439_a(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
-            Block block3 = p_149930_1_.func_147439_a(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
+            Block block = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
+            Block block1 = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
+            Block block2 = p_149930_1_.getBlock(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
+            Block block3 = p_149930_1_.getBlock(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
             byte b0 = 3;
 
             if (block.func_149730_j() && !block1.func_149730_j())
@@ -135,11 +135,11 @@ public class BlockInfuser extends BlockContainer
     }
     
     @Override
-    public boolean func_149727_a(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 
 	    if (!world.isRemote)
 	    {
-            TileEntityInfuser tileEntityInfusionAltar = (TileEntityInfuser) world.func_147438_o(x, y, z);
+            TileEntityInfuser tileEntityInfusionAltar = (TileEntityInfuser) world.getTileEntity(x, y, z);
             if(player.isSneaking() || tileEntityInfusionAltar == null)
             {
             	return false;
@@ -156,17 +156,17 @@ public class BlockInfuser extends BlockContainer
 
     
     @Override
-    public TileEntity func_149915_a(World par1World, int var1)
+    public TileEntity createNewTileEntity(World par1World, int var1)
     {
         return new TileEntityInfuser();
     }
 
     @Override
-    public void func_149749_a(World par1World, int par2, int par3, int par4, Block par5, int par6)
+    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
     {
         if (!keepAltarInventory)
         {
-            TileEntityInfuser var7 = (TileEntityInfuser)par1World.func_147438_o(par2, par3, par4);
+            TileEntityInfuser var7 = (TileEntityInfuser)par1World.getTileEntity(par2, par3, par4);
 
             if (var7 != null)
             {
@@ -203,6 +203,6 @@ public class BlockInfuser extends BlockContainer
             }
         }
 
-        super.func_149749_a(par1World, par2, par3, par4, par5, par6);
+        super.breakBlock(par1World, par2, par3, par4, par5, par6);
     }
 }

@@ -23,7 +23,7 @@ public class BlockSkycloud extends Block
 	public BlockSkycloud()
 	{
 		super(Materials.customMaterial);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4)
@@ -76,7 +76,7 @@ public class BlockSkycloud extends Block
 
 	public void func_149651_a(IIconRegister var1)
 	{
-		this.blockIcon = var1.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.func_149739_a()));
+		this.blockIcon = var1.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	}
 
 	/**@Override

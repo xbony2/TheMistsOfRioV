@@ -79,9 +79,9 @@ public class EntityAngel extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class EntityAngel extends EntityMobDeadBody
 
 		for (var4 = 0; var4 < var3; ++var4)
 		{
-			this.func_145779_a(Items.feather, 1);
+			this.dropItem(Items.feather, 1);
 		}
 	}
 	

@@ -101,7 +101,7 @@ public class EntityTasaravMallor extends EntityTameableDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 	}
 
 	@Override
@@ -225,11 +225,11 @@ public class EntityTasaravMallor extends EntityTameableDeadBody
 
 		if (par1)
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(200.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(200.0D);
 		}
 		else
 		{
-			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(100.0D);
+			this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		}
 	}
 

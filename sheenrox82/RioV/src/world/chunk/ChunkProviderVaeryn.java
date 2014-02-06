@@ -237,7 +237,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
             for (int l = 0; l < 16; ++l)
             {
                 BiomeGenBase biomegenbase = p_147422_5_[l + k * 16];
-                biomegenbase.func_150573_a(this.worldObj, this.rand, p_147422_3_, p_147422_4_, p_147422_1_ * 16 + k, p_147422_2_ * 16 + l, this.stoneNoise[l + k * 16]);
+                biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, p_147422_1_ * 16 + k, p_147422_2_ * 16 + l, this.stoneNoise[l + k * 16]);
             }
         }
     }
@@ -316,10 +316,10 @@ public class ChunkProviderVaeryn implements IChunkProvider
                     for (int i2 = -b0; i2 <= b0; ++i2)
                     {
                         BiomeGenBase biomegenbase1 = this.biomesForGeneration[j1 + l1 + 2 + (k1 + i2 + 2) * 10];
-                        float f3 = biomegenbase1.minHeight;
-                        float f4 = biomegenbase1.maxHeight;
+                        float f3 = biomegenbase1.rootHeight;
+                        float f4 = biomegenbase1.heightVariation;
 
-                        if (this.field_147435_p == WorldType.field_151360_e && f3 > 0.0F)
+                        if (this.field_147435_p == WorldType.AMPLIFIED && f3 > 0.0F)
                         {
                             f3 = 1.0F + f3 * 2.0F;
                             f4 = 1.0F + f4 * 4.0F;
@@ -327,7 +327,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
 
                         float f5 = this.field_147433_r[l1 + 2 + (i2 + 2) * 5] / (f3 + 2.0F);
 
-                        if (biomegenbase1.minHeight > biomegenbase.minHeight)
+                        if (biomegenbase1.rootHeight > biomegenbase.rootHeight)
                         {
                             f5 /= 2.0F;
                         }
@@ -392,7 +392,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
                     double d7 = this.field_147428_e[l] / 512.0D;
                     double d8 = this.field_147425_f[l] / 512.0D;
                     double d9 = (this.field_147427_d[l] / 10.0D + 1.0D) / 2.0D;
-                    double d10 = MathHelper.func_151238_b(d7, d8, d9) - d6;
+                    double d10 = MathHelper.denormalizeClamp(d7, d8, d9) - d6;
 
                     if (j2 > 29)
                     {
@@ -420,7 +420,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
      */
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
-        BlockFalling.field_149832_M = true;
+        BlockFalling.fallInstantly = true;
 
 		int k = par2 * 16;
 		int l = par3 * 16;
@@ -451,7 +451,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, flag));
 		
-        BlockFalling.field_149832_M = false;
+        BlockFalling.fallInstantly = false;
     }
 
     /**

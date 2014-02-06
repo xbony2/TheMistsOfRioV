@@ -61,9 +61,9 @@ public class EntityGalokin extends EntityMobDeadBody
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(17.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(17.0D);
 	}
 	
 	@Override
@@ -91,7 +91,7 @@ public class EntityGalokin extends EntityMobDeadBody
 
 		for (var4 = 0; var4 < var3; ++var4)
 		{
-			this.func_145779_a(RioVItems.galokinCrystal, 1);
+			this.dropItem(RioVItems.galokinCrystal, 1);
 		}
 	}
 	

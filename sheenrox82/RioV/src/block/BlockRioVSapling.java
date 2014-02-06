@@ -32,15 +32,15 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	{
 		super();
 		float f = 0.4F;
-		this.func_149676_a(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-		this.func_149647_a(TheMistsOfRioV.getInstance().tab);
+		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
-	public void func_149674_a(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
 	{
 		if (!p_149674_1_.isRemote)
 		{
-			super.func_149674_a(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
+			super.updateTick(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
 
 			if (p_149674_1_.getBlockLightValue(p_149674_2_, p_149674_3_ + 1, p_149674_4_) >= 9 && p_149674_5_.nextInt(7) == 0)
 			{
@@ -50,90 +50,27 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)
-	{
-		return this.blockIcon;
-	}
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    {
+        return blockIcon;
+    }
 
-	public void func_149879_c(World p_149879_1_, int p_149879_2_, int p_149879_3_, int p_149879_4_, Random p_149879_5_)
-	{
-		int l = p_149879_1_.getBlockMetadata(p_149879_2_, p_149879_3_, p_149879_4_);
+    public void func_149879_c(World p_149879_1_, int p_149879_2_, int p_149879_3_, int p_149879_4_, Random p_149879_5_)
+    {
+        int l = p_149879_1_.getBlockMetadata(p_149879_2_, p_149879_3_, p_149879_4_);
 
-		if ((l & 8) == 0)
-		{
-			p_149879_1_.setBlockMetadataWithNotify(p_149879_2_, p_149879_3_, p_149879_4_, l | 8, 4);
-		}
-		else
-		{
-			this.func_149878_d(p_149879_1_, p_149879_2_, p_149879_3_, p_149879_4_, p_149879_5_);
-		}
-	}
+        if ((l & 8) == 0)
+        {
+            p_149879_1_.setBlockMetadataWithNotify(p_149879_2_, p_149879_3_, p_149879_4_, l | 8, 4);
+        }
+        else
+        {
+            this.func_149878_d(p_149879_1_, p_149879_2_, p_149879_3_, p_149879_4_, p_149879_5_);
+        }
+    }
 
 	public void growTree(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
-		/**if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(p_149878_1_, p_149878_5_, p_149878_2_, p_149878_3_, p_149878_4_)) return;
-		int l = p_149878_1_.getBlockMetadata(p_149878_2_, p_149878_3_, p_149878_4_) & 7;
-		Object object = null;
-		int i1 = 0;
-		int j1 = 0;
-		boolean flag = false;
-
-		if(this == RioVBlocks.cherryBlossomSapling)
-		{
-			if(object == null)
-			object = new WorldGenCherryBlossomTree(false, 7, 0, 0, p_149878_5_.nextBoolean());
-		}
-		if(this == RioVBlocks.glimmerwoodSapling)
-		{
-			if(object == null)
-			object = new WorldGenGlimmerWoodTree(true, 7, 0, 0, false);
-		}
-		if(this == RioVBlocks.bloodSapling)
-		{
-			if(object == null)
-			object = new WorldGenBloodTree(false);
-		}
-		if(this == RioVBlocks.skywoodSapling)
-		{
-			if(object == null)
-			object = new WorldGenSanctuatiteTree(false);
-		}
-
-		if (!flag)
-		{
-			return;
-		}
-
-		Block block = Blocks.air;
-
-		if (flag)
-		{
-			p_149878_1_.func_147465_d(p_149878_2_ + i1, p_149878_3_, p_149878_4_ + j1, block, 0, 4);
-			p_149878_1_.func_147465_d(p_149878_2_ + i1 + 1, p_149878_3_, p_149878_4_ + j1, block, 0, 4);
-			p_149878_1_.func_147465_d(p_149878_2_ + i1, p_149878_3_, p_149878_4_ + j1 + 1, block, 0, 4);
-			p_149878_1_.func_147465_d(p_149878_2_ + i1 + 1, p_149878_3_, p_149878_4_ + j1 + 1, block, 0, 4);
-		}
-		else
-		{
-			p_149878_1_.func_147465_d(p_149878_2_, p_149878_3_, p_149878_4_, block, 0, 4);
-		}
-
-		if (!((WorldGenerator)object).generate(p_149878_1_, p_149878_5_, p_149878_2_ + i1, p_149878_3_, p_149878_4_ + j1))
-		{
-			if (flag)
-			{
-				p_149878_1_.func_147465_d(p_149878_2_ + i1, p_149878_3_, p_149878_4_ + j1, this, l, 4);
-				p_149878_1_.func_147465_d(p_149878_2_ + i1 + 1, p_149878_3_, p_149878_4_ + j1, this, l, 4);
-				p_149878_1_.func_147465_d(p_149878_2_ + i1, p_149878_3_, p_149878_4_ + j1 + 1, this, l, 4);
-				p_149878_1_.func_147465_d(p_149878_2_ + i1 + 1, p_149878_3_, p_149878_4_ + j1 + 1, this, l, 4);
-			}
-			else
-			{
-				p_149878_1_.func_147465_d(p_149878_2_, p_149878_3_, p_149878_4_, this, l, 4);
-			}
-		}**/
-
-
 		if(this == RioVBlocks.glimmerwoodSapling)
 		{
 			if (!TerrainGen.saplingGrowTree(par1World, par5Random, par2, par3, par4)) return;
@@ -179,27 +116,27 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 
 			if (flag)
 			{
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
 			}
 			else
 			{
-				par1World.func_147465_d(par2, par3, par4, block, 0, 4);
+				par1World.setBlock(par2, par3, par4, block, 0, 4);
 			}
 			if (!((WorldGenerator)object).generate(par1World, par5Random, par2 + i1, par3, par4 + j1))
 			{
 				if (flag)
 				{
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
 				}
 				else
 				{
-					par1World.func_147465_d(par2, par3, par4, this, l, 4);
+					par1World.setBlock(par2, par3, par4, this, l, 4);
 				}
 			}
 		}
@@ -249,27 +186,27 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 
 			if (flag)
 			{
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
 			}
 			else
 			{
-				par1World.func_147465_d(par2, par3, par4, block, 0, 4);
+				par1World.setBlock(par2, par3, par4, block, 0, 4);
 			}
 			if (!((WorldGenerator)object).generate(par1World, par5Random, par2 + i1, par3, par4 + j1))
 			{
 				if (flag)
 				{
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
 				}
 				else
 				{
-					par1World.func_147465_d(par2, par3, par4, this, l, 4);
+					par1World.setBlock(par2, par3, par4, this, l, 4);
 				}
 			}
 		}
@@ -319,27 +256,27 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 
 			if (flag)
 			{
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
 			}
 			else
 			{
-				par1World.func_147465_d(par2, par3, par4, block, 0, 4);
+				par1World.setBlock(par2, par3, par4, block, 0, 4);
 			}
 			if (!((WorldGenerator)object).generate(par1World, par5Random, par2 + i1, par3, par4 + j1))
 			{
 				if (flag)
 				{
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
 				}
 				else
 				{
-					par1World.func_147465_d(par2, par3, par4, this, l, 4);
+					par1World.setBlock(par2, par3, par4, this, l, 4);
 				}
 			}
 		}
@@ -389,27 +326,27 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 
 			if (flag)
 			{
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
-				par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, block, 0, 4);
+				par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, block, 0, 4);
+				par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, block, 0, 4);
 			}
 			else
 			{
-				par1World.func_147465_d(par2, par3, par4, block, 0, 4);
+				par1World.setBlock(par2, par3, par4, block, 0, 4);
 			}
 			if (!((WorldGenerator)object).generate(par1World, par5Random, par2 + i1, par3, par4 + j1))
 			{
 				if (flag)
 				{
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
-					par1World.func_147465_d(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
-					par1World.func_147465_d(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1, this, l, 4);
+					par1World.setBlock(par2 + i1, par3, par4 + j1 + 1, this, l, 4);
+					par1World.setBlock(par2 + i1 + 1, par3, par4 + j1 + 1, this, l, 4);
 				}
 				else
 				{
-					par1World.func_147465_d(par2, par3, par4, this, l, 4);
+					par1World.setBlock(par2, par3, par4, this, l, 4);
 				}
 			}
 		}
@@ -417,7 +354,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 
 	public boolean func_149880_a(World p_149880_1_, int p_149880_2_, int p_149880_3_, int p_149880_4_, int p_149880_5_)
 	{
-		return p_149880_1_.func_147439_a(p_149880_2_, p_149880_3_, p_149880_4_) == this && (p_149880_1_.getBlockMetadata(p_149880_2_, p_149880_3_, p_149880_4_) & 7) == p_149880_5_;
+		return p_149880_1_.getBlock(p_149880_2_, p_149880_3_, p_149880_4_) == this && (p_149880_1_.getBlockMetadata(p_149880_2_, p_149880_3_, p_149880_4_) & 7) == p_149880_5_;
 	}
 
 	public int func_149692_a(int p_149692_1_)
@@ -426,7 +363,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void func_149666_a(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
 	{
 		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
 	}

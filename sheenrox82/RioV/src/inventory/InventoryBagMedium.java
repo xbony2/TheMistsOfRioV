@@ -55,7 +55,7 @@ public class InventoryBagMedium implements IInventory
 				setInventorySlotContents(slot, null);
 			}
 
-			this.onInventoryChanged();
+			this.markDirty();
 		}
 		return stack;
 	}
@@ -81,7 +81,7 @@ public class InventoryBagMedium implements IInventory
 			itemstack.stackSize = this.getInventoryStackLimit();
 		}
 
-		this.onInventoryChanged();
+		this.markDirty();
 	}
 
 	@Override
@@ -91,7 +91,7 @@ public class InventoryBagMedium implements IInventory
 	}
 
 	@Override
-	public void onInventoryChanged()
+	public void markDirty()
 	{
 		for (int i = 0; i < this.getSizeInventory(); ++i)
 		{
@@ -107,12 +107,6 @@ public class InventoryBagMedium implements IInventory
 	}
 
 	@Override
-	public void openChest() {}
-
-	@Override
-	public void closeChest() {}
-
-	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack itemstack)
 	{
 		return !(itemstack.getItem() instanceof RioVBag);
@@ -120,11 +114,11 @@ public class InventoryBagMedium implements IInventory
 
 	public void readFromNBT(NBTTagCompound tagcompound)
 	{
-		NBTTagList nbttaglist = tagcompound.func_150295_c("ItemInventory", 10);
+		NBTTagList nbttaglist = tagcompound.getTagList("ItemInventory", 10);
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i)
 		{
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.func_150305_b(i);
+			NBTTagCompound nbttagcompound1 = (NBTTagCompound)nbttaglist.getCompoundTagAt(i);
 			int b0 = nbttagcompound1.getInteger("Slot");
 
 			if (b0 >= 0 && b0 < this.getSizeInventory())
@@ -153,14 +147,22 @@ public class InventoryBagMedium implements IInventory
 	}
 
 	@Override
-	public String func_145825_b() {
-		// TODO Auto-generated method stub
+	public String getInventoryName() {
 		return name;
 	}
 
 	@Override
-	public boolean func_145818_k_() {
-		// TODO Auto-generated method stub
-		return name.length() > 0;
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
+
+	@Override
+	public void openInventory() {
+		
+	}
+
+	@Override
+	public void closeInventory() {
+		
 	}
 }
