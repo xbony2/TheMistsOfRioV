@@ -13,10 +13,6 @@ import sheenrox82.RioV.src.lib.GuiResourceLocation;
 
 public class GuiWorkbench extends GuiContainer
 {
-	int xSize = 176;
-	int ySize = 184;
-	int width, height;
-
 	public GuiWorkbench(InventoryPlayer player_inventory, World par2World, int par3, int par4, int par5)
 	{
 		super(new ContainerRioVWorkbench(player_inventory, par2World, par3, par4, par5));
@@ -34,8 +30,8 @@ public class GuiWorkbench extends GuiContainer
 	{
 		Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.workbench);
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		int x = (width - xSize) / 2;
-		int y = (height - ySize) / 2;
-		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+        int k = (this.width - this.xSize) / 2;
+        int l = (this.height - this.ySize) / 2;
+        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);
 	}
 }

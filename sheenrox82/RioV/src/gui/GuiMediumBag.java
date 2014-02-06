@@ -18,9 +18,6 @@ public class GuiMediumBag extends GuiContainer
 {
 	private float xSize_lo;
 	private float ySize_lo;
-	int xSize = 176;
-	int ySize = 184;
-	int width, height;
 	
 	private static final ResourceLocation iconLocation = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "mediumBag.png");
 
@@ -35,7 +32,7 @@ public class GuiMediumBag extends GuiContainer
 		this.xSize_lo = (float)par1;
 		this.ySize_lo = (float)par2;
 	}
-
+	
 	public static void drawPlayerModel(int par0, int par1, int par2, float par3, float par4, EntityLivingBase par5EntityLivingBase)
 	{
 		GL11.glEnable(GL11.GL_COLOR_MATERIAL);

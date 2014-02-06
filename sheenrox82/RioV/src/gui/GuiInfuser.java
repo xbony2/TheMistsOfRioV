@@ -13,10 +13,6 @@ import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 
 public class GuiInfuser extends GuiContainer
 {
-	int xSize = 176;
-	int ySize = 184;
-	int width, height;
-	
 	public GuiInfuser(InventoryPlayer player_inventory, TileEntityInfuser tile_entity)
 	{
 		super(new ContainerInfuser(player_inventory, tile_entity));
@@ -37,6 +33,6 @@ public class GuiInfuser extends GuiContainer
 		Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.infuser);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);
 	}
 }

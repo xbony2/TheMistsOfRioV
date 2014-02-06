@@ -18,9 +18,6 @@ public class GuiLargeBag extends GuiContainer
 {
 	private float xSize_lo;
 	private float ySize_lo;
-	int xSize = 176;
-	int ySize = 184;
-	int width, height;
 	
 	private static final ResourceLocation iconLocation = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "largeBag.png");
 
@@ -29,14 +26,13 @@ public class GuiLargeBag extends GuiContainer
 		super(containerItem);
 	}
 
-	@Override
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		super.drawScreen(par1, par2, par3);
 		this.xSize_lo = (float)par1;
 		this.ySize_lo = (float)par2;
 	}
-
+	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{

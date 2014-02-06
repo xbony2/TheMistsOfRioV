@@ -19,10 +19,7 @@ public class GuiSmallBag extends GuiContainer
 {
 	private float xSize_lo;
 	private float ySize_lo;
-	int xSize = 176;
-	int ySize = 184;
-	int width, height;
-	
+
 	private static final ResourceLocation iconLocation = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "smallBag.png");
 	public InventoryBagSmall inventory;
 

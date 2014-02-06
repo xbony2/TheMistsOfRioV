@@ -13,10 +13,6 @@ import sheenrox82.RioV.src.lib.GuiResourceLocation;
 
 public class GuiAnvil extends GuiContainer
 {	
-	int xSize = 176;
-	int ySize = 184;
-	int width, height;
-	
 	public GuiAnvil(InventoryPlayer inventoryplayer, World world, int i, int j, int k)
     {
         super(new ContainerAnvil(inventoryplayer, world, i, j, k));
@@ -27,7 +23,7 @@ public class GuiAnvil extends GuiContainer
     protected void drawGuiContainerForegroundLayer(int par1, int par2)
     {
 		fontRendererObj.drawString("Anvil", 8, 6, 4210752);
-		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 - 3, 4210752);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 80, 4210752);
     }
 
 	@Override

@@ -24,7 +24,6 @@ public class BlockPlantCore extends BlockFlower
 	public BlockPlantCore()
 	{
 		super(0);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class BlockPlantCore extends BlockFlower
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void func_149666_a(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
 	{
 		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
 	}
@@ -70,12 +69,12 @@ public class BlockPlantCore extends BlockFlower
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
 		return blockIcon;
 	}
 	
-	protected boolean func_149854_a(Block par1)
+	protected boolean canPlaceBlockOn(Block par1)
 	{		
 		if(par1 == RioVBlocks.bloodFlower)
 		{

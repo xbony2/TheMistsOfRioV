@@ -26,7 +26,6 @@ public class BlockBush extends BlockFlower
 	public BlockBush()
 	{
 		super(0);
-		this.setCreativeTab(null);
 		this.setHardness(0.3F);
 		float f = 0.375F;
 		float f1 = f / 2.0F;
@@ -63,7 +62,13 @@ public class BlockBush extends BlockFlower
 
 		return Item.getItemFromBlock(this);
 	}
-
+	
+	@Override
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+    {
+		return this.blockIcon;
+	}
+	
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{

@@ -18,6 +18,8 @@ import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.util.MethodUtil;
+import sheenrox82.RioV.src.util.Util;
 import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenCherryBlossomTree;
 import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree;
@@ -33,7 +35,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 		super();
 		float f = 0.4F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
@@ -371,7 +372,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	@SideOnly(Side.CLIENT)
 	public void func_149651_a(IIconRegister p_149651_1_)
 	{
-
+		blockIcon = p_149651_1_.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	}
 
 	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
