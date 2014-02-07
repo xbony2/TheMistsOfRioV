@@ -22,6 +22,7 @@ import sheenrox82.RioV.expansion.bosses.RenderChickenBoss;
 import sheenrox82.RioV.expansion.bosses.RenderCowBoss;
 import sheenrox82.RioV.expansion.bosses.RenderPigBoss;
 import sheenrox82.RioV.expansion.bosses.RenderSheepBoss;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
@@ -178,7 +179,14 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void cape()
 	{
-		DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
+		if(Config.runCapes)
+		{
+			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
+		}
+		else
+		{
+			
+		}
 	}
 
 	public static int addArmor(String armorName)

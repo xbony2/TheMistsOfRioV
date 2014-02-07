@@ -38,6 +38,7 @@ public class Config
 	public static boolean mainMenu;
 	public static boolean allowBossSpawning;
 	public static boolean deadBodies;
+	public static boolean runCapes;
 
 	public static void initialize(FMLPreInitializationEvent event)
 	{
@@ -64,6 +65,7 @@ public class Config
 		posY = config.get("HUD", "Position Y of the 'The Mists of RioV - vX.X.X'", 2).getInt(posY);
 		allowBossSpawning = config.get("Misc", "Allow Pig, Cow, Chicken, and Sheep Boss Spawning?", true).getBoolean(allowBossSpawning);
 		deadBodies = config.get("Misc", "Allow Dead Bodies for mobs?", true).getBoolean(deadBodies);
+		runCapes = config.get("Misc", "(Mainly for people running Optifine that have capes) Allow RioV Capes to initialize?", true).getBoolean(runCapes);
 
 		config.load();
 	}
