@@ -34,7 +34,6 @@ public class TheMistsOfRioV
 	public boolean aether;
 	public boolean thaumcraft;
 	public boolean optifine;
-	public boolean isBanned;
 
 	public static TheMistsOfRioV getInstance()
 	{
