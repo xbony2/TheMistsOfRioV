@@ -24,6 +24,7 @@ public class BlockPlantCore extends BlockFlower
 	public BlockPlantCore()
 	{
 		super(0);
+		this.setCreativeTab(null);
 	}
 
 	@Override

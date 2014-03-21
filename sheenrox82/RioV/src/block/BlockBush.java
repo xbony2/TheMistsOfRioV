@@ -26,6 +26,7 @@ public class BlockBush extends BlockFlower
 	public BlockBush()
 	{
 		super(0);
+		this.setCreativeTab(null);
 		this.setHardness(0.3F);
 		float f = 0.375F;
 		float f1 = f / 2.0F;

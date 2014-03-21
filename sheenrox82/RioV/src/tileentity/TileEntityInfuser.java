@@ -105,12 +105,12 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
     }
 
-    public String func_145825_b()
+    public String getInventoryName()
     {
-        return this.func_145818_k_() ? this.field_145958_o : "container.furnace";
+        return this.hasCustomInventoryName() ? this.field_145958_o : "container.furnace";
     }
 
-    public boolean func_145818_k_()
+    public boolean hasCustomInventoryName()
     {
         return this.field_145958_o != null && this.field_145958_o.length() > 0;
     }
@@ -167,7 +167,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
 
         p_145841_1_.setTag("Items", nbttaglist);
 
-        if (this.func_145818_k_())
+        if (this.hasCustomInventoryName())
         {
             p_145841_1_.setString("CustomName", this.field_145958_o);
         }
@@ -183,13 +183,13 @@ public class TileEntityInfuser extends TileEntity implements IInventory
     }
 
     @SideOnly(Side.CLIENT)
-    public int func_145953_d()
+    public int getCookProgressScaled(int p_145953_1_)
     {
         return this.altarCookTime;
     }
 
     @SideOnly(Side.CLIENT)
-    public int func_145955_e(int p_145955_1_)
+    public int getBurnTimeRemainingScaled(int p_145955_1_)
     {
         if (this.currentItemBurnTime == 0)
         {
@@ -199,7 +199,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         return this.altarBurnTime * p_145955_1_ / this.currentItemBurnTime;
     }
 
-    public boolean func_145950_i()
+    public boolean isBurning()
     {
         return this.altarBurnTime > 0;
     }
@@ -236,7 +236,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
                 }
             }
 
-            if (this.func_145950_i() && this.canSmelt())
+            if (this.isBurning() && this.canSmelt())
             {
                 ++this.altarCookTime;
 
@@ -345,26 +345,12 @@ public class TileEntityInfuser extends TileEntity implements IInventory
     }
 
 	@Override
-	public String getInventoryName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public void openInventory() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void closeInventory() {
-		// TODO Auto-generated method stub
 		
 	}
 }
