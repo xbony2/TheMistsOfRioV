@@ -33,6 +33,7 @@ public class BlockRioVTrapDoor extends Block
         float f1 = 1.0F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
         this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+        this.setStepSound(this.soundTypeWood);
     }
 
     public boolean isOpaqueCube()
@@ -316,7 +317,14 @@ public class BlockRioVTrapDoor extends Block
     @SideOnly(Side.CLIENT)
     public IIcon blockIcon;
     
-	public void registerIcons(IIconRegister iconRegister)
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return this.blockIcon;
+	}
+	
+	@Override
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		if(this == RioVBlocks.glimmerwoodTrapdoor) this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodTrapDoor");
 		if(this == RioVBlocks.cherryBlossomTrapdoor) this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + "cherryBlossomTrapDoor");

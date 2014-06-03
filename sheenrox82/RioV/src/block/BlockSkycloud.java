@@ -74,7 +74,14 @@ public class BlockSkycloud extends Block
 		}
 	}
 
-	public void func_149651_a(IIconRegister var1)
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return this.blockIcon;
+	}
+	
+	@Override
+	public void registerBlockIcons(IIconRegister var1)
 	{
 		this.blockIcon = var1.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	}

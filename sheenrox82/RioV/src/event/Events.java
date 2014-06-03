@@ -59,7 +59,7 @@ public class Events
 					{
 						if(!hasSeen)
 						{
-							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! An update is available for " + Util.MOD_NAME + ". Check http://goo.gl/Wf3zCW for more info. - sheenrox82"));
+							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! An update is available for " + Util.MOD_NAME + ". Check http://goo.gl/Wf3zCW for more info. - sheenrox82"));
 							hasSeen = true;
 						}
 					}
@@ -203,7 +203,7 @@ public class Events
 
 		if(minecraft.currentScreen instanceof GuiMainMenu)
 		{
-			minecraft.func_147108_a(new GuiRioVMainMenu());
+			minecraft.displayGuiScreen(new GuiRioVMainMenu());
 		}
 		if(minecraft.currentScreen instanceof GuiDownloadTerrain)
 		{

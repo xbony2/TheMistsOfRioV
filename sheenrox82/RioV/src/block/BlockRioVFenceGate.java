@@ -32,7 +32,8 @@ public class BlockRioVFenceGate extends BlockFenceGate
 	/**
 	 * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
 	 */
-	public IIcon func_149691_a(int par1, int par2)
+	@Override
+	public IIcon getIcon(int par1, int par2)
 	{
 		return this.blockIcon;
 	}
@@ -181,7 +182,7 @@ public class BlockRioVFenceGate extends BlockFenceGate
     }
 
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister par1IconRegister) 
+	public void registerBlockIcons(IIconRegister par1IconRegister) 
 	{
 		if(this == RioVBlocks.glimmerwoodFenceGate) blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodPlanks");
 		if(this == RioVBlocks.cherryBlossomFenceGate) blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "cherryPlanks");

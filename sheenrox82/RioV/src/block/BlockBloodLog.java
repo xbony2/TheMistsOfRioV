@@ -22,6 +22,7 @@ public class BlockBloodLog extends Block
 	{
 		super(Material.wood);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setStepSound(this.soundTypeWood);
 	}
 
 	@Override

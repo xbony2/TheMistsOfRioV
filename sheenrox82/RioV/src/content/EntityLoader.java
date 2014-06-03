@@ -90,6 +90,10 @@ public class EntityLoader
 			MethodUtil.registerEntity(EntityChickenBoss.class, "Chicken - Boss");
 			MethodUtil.registerEntity(EntityPigBoss.class, "Pig - Boss");
 			MethodUtil.registerEntity(EntityCowBoss.class, "Cow - Boss");
+			MethodUtil.registerEgg(EntityChickenBoss.class);
+			MethodUtil.registerEgg(EntityPigBoss.class);
+			MethodUtil.registerEgg(EntitySheepBoss.class);
+			MethodUtil.registerEgg(EntityCowBoss.class);
 		}
 
 		MethodUtil.registerEgg(EntityAdv.class);
@@ -113,16 +117,12 @@ public class EntityLoader
 		MethodUtil.registerEgg(EntityAngel.class);
 		MethodUtil.registerEgg(EntityRabbit.class);
 		MethodUtil.registerEgg(EntitySoverianOfficer.class);
-		MethodUtil.registerEgg(EntityChickenBoss.class);
-		MethodUtil.registerEgg(EntityPigBoss.class);
 		MethodUtil.registerEgg(EntityWoodElf.class);
 		MethodUtil.registerEgg(EntityTerron.class);
 		MethodUtil.registerEgg(EntityDemonAngel.class);
 		MethodUtil.registerEgg(EntityDarkEssence.class);
-		MethodUtil.registerEgg(EntityCowBoss.class);
 		MethodUtil.registerEgg(EntityAunTun.class);
 		MethodUtil.registerEgg(EntityPaladin.class);
-		MethodUtil.registerEgg(EntitySheepBoss.class);
 	}
 
 	public static void addOverworldSpawning()

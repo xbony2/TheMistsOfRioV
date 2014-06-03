@@ -1,12 +1,12 @@
 package sheenrox82.RioV.src.item.metadata;
 
-import sheenrox82.RioV.src.block.BlockPlanks;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class ItemPlanksColored extends ItemBlock
 {
-	public ItemPlanksColored(BlockPlanks block)
+	public ItemPlanksColored(Block block)
 	{
 		super(block);
 		setHasSubtypes(true);

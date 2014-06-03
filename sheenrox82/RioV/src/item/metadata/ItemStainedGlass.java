@@ -1,12 +1,16 @@
 package sheenrox82.RioV.src.item.metadata;
 
-import sheenrox82.RioV.src.block.BlockStainedGlass;
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemStainedGlass extends ItemBlock
 {
-	public ItemStainedGlass(BlockStainedGlass par1)
+	public ItemStainedGlass(Block par1)
 	{
 		super(par1);
 		setHasSubtypes(true);

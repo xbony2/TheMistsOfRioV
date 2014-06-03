@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
@@ -16,6 +17,7 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.passive.EntityRabbit;
 import sheenrox82.RioV.src.entity.mob.passive.EntityTasaravMallor;
 import sheenrox82.RioV.src.tileentity.TileEntityShrine;
+import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -61,8 +63,8 @@ public class BlockShrine extends BlockContainer
 							tasarav.isTasaravAlive = true;
 							shrine.isTasaravSpawned = true;
 
-							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Have a companion! His name is Tasarav Mallor.");
-							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Give Tasarav some Vaizi so he'll protect you!");
+							par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: Have a companion! His name is Tasarav Mallor."));
+							par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: Give Tasarav some Vaizi so he'll protect you!"));
 						}
 					}
 					par1World.setBlockToAir(par2, par3, par4);
@@ -74,7 +76,7 @@ public class BlockShrine extends BlockContainer
 					{
 						if(!par1World.isRemote)
 						{
-							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: I'm sorry youngling, but Tasarav Mallor is no more...");
+							par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: I'm sorry youngling, but Tasarav Mallor is no more..."));
 						}
 					}
 					par1World.setBlockToAir(par2, par3, par4);
@@ -160,7 +162,7 @@ public class BlockShrine extends BlockContainer
 						par1World.spawnEntityInWorld(rabbit);
 						par1World.setBlockToAir(par2, par3, par4);
 
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Have a companion! It is a bunny! Tame it with Sanctuatite Potions!");
+						par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: Have a companion! It is a bunny! Tame it with Sanctuatite Potions!"));
 					}
 					par1World.setBlockToAir(par2, par3, par4);
 				}
@@ -195,7 +197,7 @@ public class BlockShrine extends BlockContainer
 				{
 					if(!par1World.isRemote)
 					{
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A7oTi'Tun doesn't respond to your prayer...");
+						par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A7oTi'Tun doesn't respond to your prayer..."));
 					}
 				}
 			}
@@ -214,8 +216,8 @@ public class BlockShrine extends BlockContainer
 							tasarav.isTasaravAlive = true;
 							shrine.isTasaravSpawned = true;
 
-							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Have a companion! His name is Tasarav Mallor.");
-							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Give Tasarav some Vaizi so he'll protect you!");
+							par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: Have a companion! His name is Tasarav Mallor."));
+							par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: Give Tasarav some Vaizi so he'll protect you!"));
 						}
 					}
 					par1World.setBlockToAir(par2, par3, par4);
@@ -227,7 +229,7 @@ public class BlockShrine extends BlockContainer
 					{
 						if(!par1World.isRemote)
 						{
-							Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: I'm sorry youngling, but Tasarav Mallor is no more...");
+							par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: I'm sorry youngling, but Tasarav Mallor is no more..."));
 						}
 					}
 					par1World.setBlockToAir(par2, par3, par4);
@@ -322,7 +324,7 @@ public class BlockShrine extends BlockContainer
 						par1World.spawnEntityInWorld(rabbit);
 						par1World.setBlockToAir(par2, par3, par4);
 
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("Ti'Tun: Have a companion! It is a bunny! Tame it with Sanctuatite Potions!");
+						par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Ti'Tun: Have a companion! It is a bunny! Tame it with Sanctuatite Potions!"));
 					}
 					par1World.setBlockToAir(par2, par3, par4);
 				}
@@ -366,7 +368,7 @@ public class BlockShrine extends BlockContainer
 				{
 					if(!par1World.isRemote)
 					{
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A7oTi'Tun doesn't respond to your prayer...");
+						par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A7oTi'Tun doesn't respond to your prayer..."));
 					}
 				}
 			}
@@ -375,13 +377,13 @@ public class BlockShrine extends BlockContainer
 			{
 				if(!par1World.isRemote)
 				{
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A76Current Possibilities");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A74Tasarav Mallor: < 12%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A73Weapons/Armor: > 33%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A7bVravinite: > 19%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A72Vaizi: < 42%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A78Onyx: < 31%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A79Nothing: > 76%");
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A76Current Possibilities"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A74Tasarav Mallor: < 12%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A73Weapons/Armor: > 33%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A7bVravinite: > 19%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A72Vaizi: < 42%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A78Onyx: < 31%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A79Nothing: > 76%"));
 				}
 			}
 
@@ -389,13 +391,13 @@ public class BlockShrine extends BlockContainer
 			{
 				if(!par1World.isRemote)
 				{
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A76Current Possibilities");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A74Tasarav Mallor: < 25%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A73Weapons/Armor: > 42%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A7bVravinite: > 26%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A72Vaizi: < 47%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A78Onyx: < 43%");
-					Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A79Nothing: > 83%");
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A76Current Possibilities"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A74Tasarav Mallor: < 25%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A73Weapons/Armor: > 42%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A7bVravinite: > 26%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A72Vaizi: < 47%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A78Onyx: < 43%"));
+					par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A79Nothing: > 83%"));
 				}
 			}
 		}
@@ -404,7 +406,7 @@ public class BlockShrine extends BlockContainer
 		{
 			if(!par1World.isRemote)
 			{
-				Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A7oAun'Tun seems to be ignoring you...");
+				par5EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "\u00A7oAun'Tun seems to be ignoring you..."));
 			}
 		}
 		return true;

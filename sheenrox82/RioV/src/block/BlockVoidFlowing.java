@@ -16,12 +16,14 @@ public class BlockVoidFlowing extends BlockDynamicLiquid
 		this.setCreativeTab(null);
 	}
 
-	public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)
+	@Override
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
 		return blockIcon;
 	}
 
-	public void func_149651_a(IIconRegister i)
+	@Override
+	public void registerBlockIcons(IIconRegister i)
 	{
 		this.blockIcon = i.registerIcon(Util.MOD_ID + ":" + "voidMoving");
 	}

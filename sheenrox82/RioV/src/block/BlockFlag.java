@@ -36,10 +36,9 @@ public class BlockFlag extends BlockContainer
 	@Override
 	public int getRenderType()
 	{
-		return 22;
+		return 50;
 	}
-
-
+	
 	@Override
 	public boolean isOpaqueCube()
 	{
@@ -52,6 +51,12 @@ public class BlockFlag extends BlockContainer
 		return true;
 	}
 
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return this.blockIcon;
+	}
+	
 	public void registerBlockIcons(IIconRegister icon) 
 	{
 		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + "flagIcon");

@@ -175,6 +175,12 @@ public class BlockRioVFence extends BlockFence
 
     public IIcon blockIcon;
     
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return this.blockIcon;
+	}
+	
     @SideOnly(Side.CLIENT)
 	@Override
     public void registerBlockIcons(IIconRegister par1IconRegister)

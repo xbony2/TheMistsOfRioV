@@ -24,7 +24,6 @@ import sheenrox82.RioV.src.item.RioVWand;
 import sheenrox82.RioV.src.item.RioVWeapon;
 import sheenrox82.RioV.src.item.unique.ItemBowOfWurTun;
 import sheenrox82.RioV.src.item.unique.ItemEnforcedBowOfWurTun;
-import sheenrox82.RioV.src.item.unique.ItemGuide;
 import sheenrox82.RioV.src.item.unique.ItemTasaravChestplate;
 import sheenrox82.RioV.src.item.unique.ItemTasaravHelmet;
 import sheenrox82.RioV.src.item.unique.ItemVraviniteBow;
@@ -315,11 +314,9 @@ public class RioVItems
 	public static Item paladinLongsword = (new RioVWeapon(InfusedOnyx, false)).setUnlocalizedName("paladinLongsword");
 	public static Item graviWand = (new RioVWand(0, 1, 3)).setUnlocalizedName("graviWand");
 	public static Item eosPotion = (new RioVDrinkable(0, 0, true)).setAlwaysEdible().setUnlocalizedName("eosPotion");
-	public static Item guide = (new ItemGuide()).setUnlocalizedName("guide");
 
 	public static void add()
 	{		
-		MethodUtil.registerItem(guide, "Guide");
 		MethodUtil.registerItem(eosPotion, "Eos Potion");
 		MethodUtil.registerItem(graviWand, "Gravi Wand");
 		MethodUtil.registerItem(paladinHelmet, "Paladin Helmet");

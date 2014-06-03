@@ -117,13 +117,13 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntitySkeletalHorse.class, new RenderSkeletalHorse());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunBodyguard.class, new RenderBipedCore(EntityResourceLocation.auntun));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAdv.class, new RenderBipedCore(EntityResourceLocation.adventurer));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTerron.class, new RenderBossCore(new ModelTerron(), 0.5F, 1.2F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTerron.class, new RenderBossCore(new ModelTerron(), 0.5F, 1.8F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemonAngel.class, new RenderBossCore(new ModelDemonAngel(), 0.5F, 2F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarkElf.class, new RenderBipedCore(EntityResourceLocation.dark_elf));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTun.class, new RenderAunTun());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAltruEssence.class, new RenderEssence());
-		RenderingRegistry.registerEntityRenderingHandler(EntityNizonian.class, new RenderLivingCore(new ModelTerron(), 0.5F, 0.9F, 0.9F, 0.9F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityNizonian.class, new RenderLivingCore(new ModelTerron(), 0.5F, 1.5F, 1.5F, 1.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGalokin.class, new RenderBipedCore(EntityResourceLocation.galokin));
 		RenderingRegistry.registerEntityRenderingHandler(EntityOrc.class, new RenderOrc());
 		RenderingRegistry.registerEntityRenderingHandler(EntityFairy.class, new RenderFairy());
@@ -138,9 +138,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityAngel.class, new RenderAngel());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRabbit.class, new RenderRabbit());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySoverianOfficer.class, new RenderBipedCore(EntityResourceLocation.officer));
-		RenderingRegistry.registerEntityRenderingHandler(EntityPigBoss.class, new RenderPigBoss());
-		RenderingRegistry.registerEntityRenderingHandler(EntityCowBoss.class, new RenderCowBoss());
-		RenderingRegistry.registerEntityRenderingHandler(EntityChickenBoss.class, new RenderChickenBoss(new ResourceLocation(Util.MOD_ID + ":" + "textures/entity/ChickenBoss.png")));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTasaravMallor.class, new RenderTasaravMallor());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPaladin.class, new RenderPaladin());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPinkEssence.class, new RenderPinkEssence(new ResourceLocation(Util.MOD_ID + ":" + "pinkEssence.png")));
@@ -151,7 +148,7 @@ public class ClientProxy extends CommonProxy
 			RenderingRegistry.registerEntityRenderingHandler(EntityCowBoss.class, new RenderCowBoss());
 			RenderingRegistry.registerEntityRenderingHandler(EntitySheepBoss.class, new RenderSheepBoss(new ModelSheep2(), new ModelSheep1()));
 			RenderingRegistry.registerEntityRenderingHandler(EntityPigBoss.class, new RenderPigBoss());
-			RenderingRegistry.registerEntityRenderingHandler(EntityCowBoss.class, new RenderCowBoss());
+			RenderingRegistry.registerEntityRenderingHandler(EntityChickenBoss.class, new RenderChickenBoss(new ResourceLocation(Util.MOD_ID + ":" + "textures/entity/ChickenBoss.png")));
 		}
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow());

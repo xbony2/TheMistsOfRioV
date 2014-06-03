@@ -21,21 +21,22 @@ public class BlockVoidStill extends BlockStaticLiquid
 	public BlockVoidStill() 
 	{
 		super(Material.water);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(null);
 	}
 
 	@SideOnly(Side.CLIENT)
-    public IIcon func_149691_a(int p_149691_1_, int p_149691_2_)
+    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
         return blockIcon;
     }
 	
-	public void func_149651_a(IIconRegister i)
+	@Override
+	public void registerBlockIcons(IIconRegister i)
 	{
 		this.blockIcon = i.registerIcon(Util.MOD_ID + ":" + "voidStill");
 	}
     
-    public void func_149670_a(World par1World, int par2, int par3, int par4, Entity par5Entity)
+    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
 	{
     	if (par5Entity instanceof EntityLivingBase)
     	{

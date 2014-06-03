@@ -1,12 +1,12 @@
 package sheenrox82.RioV.src.item.metadata;
 
-import sheenrox82.RioV.src.block.BlockBricks;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class ItemBricks extends ItemBlock
 {
-	public ItemBricks(BlockBricks block)
+	public ItemBricks(Block block)
 	{
 		super(block);
 		setHasSubtypes(true);
@@ -17,51 +17,43 @@ public class ItemBricks extends ItemBlock
 		String name = "";
 		switch(itemstack.getItemDamage())
 		{
-		case 0:
-		{
-			name = "sapphire"; break;
-		}
 		case 1:
-		{
-			name = "topaz"; break;
-		}
-		case 2:
 		{
 			name = "amethyst"; break;
 		}
-		case 3:
+		case 2:
 		{
 			name = "onyx"; break;
 		}
-		case 4:
+		case 3:
 		{
 			name = "blindonite"; break;
 		}
-		case 5:
+		case 4:
 		{
 			name = "dragon"; break;
 		}
-		case 6:
+		case 5:
 		{
 			name = "vravinite"; break;
 		}
-		case 7:
+		case 6:
 		{
 			name = "aleris"; break;
 		}
-		case 8:
+		case 7:
 		{
 			name = "jaavik"; break;
 		}
-		case 9:
+		case 8:
 		{
 			name = "nironite"; break;
 		}
-		case 10:
+		case 9:
 		{
 			name = "garnet"; break;
 		}
-		case 11:
+		case 10:
 		{
 			name = "drakiuz"; break;
 		}

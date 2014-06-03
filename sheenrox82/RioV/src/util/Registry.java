@@ -20,7 +20,6 @@ import sheenrox82.RioV.src.handler.FuelHandler;
 import sheenrox82.RioV.src.handler.SoundHandler;
 import sheenrox82.RioV.src.recipe.AnvilCraftingManager;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
-import sheenrox82.RioV.src.registries.LangRegistry;
 import sheenrox82.RioV.src.tileentity.TileEntityBloodChest;
 import sheenrox82.RioV.src.tileentity.TileEntityCherryBlossomChest;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
@@ -74,7 +73,6 @@ public class Registry
 		Crafting.add();
 		Biomes.add();
 		Enchantments.add();
-		LangRegistry.addNames();
 		HarvestLevelRegistry.addHarvestLevels();
 		GameRegistry.registerFuelHandler(new FuelHandler());
 		GameRegistry.registerTileEntity(TileEntityInfuser.class, "Infuser");

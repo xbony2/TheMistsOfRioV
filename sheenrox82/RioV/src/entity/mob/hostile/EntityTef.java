@@ -28,10 +28,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
+import sheenrox82.RioV.src.util.MethodUtil;
 
 public class EntityTef extends EntityBossCore
 {
@@ -87,7 +89,7 @@ public class EntityTef extends EntityBossCore
 			}
 		}
 		if(this.worldObj.isRemote)
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("Tef was killed!");
+			MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Tef was killed!");
 	}
 
 	@Override

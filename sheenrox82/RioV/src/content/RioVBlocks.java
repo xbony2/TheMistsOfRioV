@@ -3,6 +3,7 @@ package sheenrox82.RioV.src.content;
 import net.minecraft.block.Block;
 import sheenrox82.RioV.src.block.BlockAnvil;
 import sheenrox82.RioV.src.block.BlockBlackFire;
+import sheenrox82.RioV.src.block.BlockBlackQuartz;
 import sheenrox82.RioV.src.block.BlockBlindOasisPortal;
 import sheenrox82.RioV.src.block.BlockBloodChest;
 import sheenrox82.RioV.src.block.BlockBloodGrass;
@@ -45,7 +46,6 @@ import sheenrox82.RioV.src.block.BlockVaerynPortal;
 import sheenrox82.RioV.src.block.BlockVoidFlowing;
 import sheenrox82.RioV.src.block.BlockVoidStill;
 import sheenrox82.RioV.src.block.BlockWhiteFire;
-import sheenrox82.RioV.src.item.metadata.ItemBlackQuartzBlock;
 import sheenrox82.RioV.src.item.metadata.ItemBricks;
 import sheenrox82.RioV.src.item.metadata.ItemPlanksColored;
 import sheenrox82.RioV.src.item.metadata.ItemStainedGlass;
@@ -79,7 +79,7 @@ public class RioVBlocks
 	public static Block pepperPlant = new BlockPlantCore().setBlockName("pepperPlant");
 	public static Block amethystOre = new BlockCoreOne().setBlockName("amethystOre");
 	public static Block lamp = new BlockCoreOne().setLightLevel(0.7F).setBlockName("lamp");
-	public static Block blackQuartz = new BlockCoreOne().setBlockName("blackQuartz");
+	public static Block blackQuartz = new BlockBlackQuartz().setBlockName("blackQuartz");
 	public static Block blueFlower = new BlockPlantCore().setBlockName("blueFlower");
 	public static Block blindOasisPortal = new BlockBlindOasisPortal().setBlockName("blindOasisPortal");
 	public static Block blackFire = new BlockBlackFire().setBlockName("blackFire");
@@ -176,11 +176,12 @@ public class RioVBlocks
 
 	public static void add()
 	{	
+		
 		MethodUtil.registerBlock(flag, "Flag");
-		//GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, Util.MOD_ID + (stainedGlass.func_149739_a().substring(5)));	
-		//GameRegistry.registerBlock(blackQuartz, ItemBlackQuartzBlock.class, Util.MOD_ID + (blackQuartz.func_149739_a().substring(5)));		
-		//GameRegistry.registerBlock(bricks, ItemBricks.class, Util.MOD_ID + (bricks.func_149739_a().substring(5)));		
-		//GameRegistry.registerBlock(plankColored, ItemPlanksColored.class, Util.MOD_ID + (plankColored.func_149739_a().substring(5)));		
+		MethodUtil.registerBlock(blackQuartz, "Black Quartz");
+		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, Util.MOD_ID + ":" + MethodUtil.getName(stainedGlass.getUnlocalizedName()));	
+		GameRegistry.registerBlock(bricks, ItemBricks.class, Util.MOD_ID + ":" + MethodUtil.getName(bricks.getUnlocalizedName()));		
+		GameRegistry.registerBlock(plankColored, ItemPlanksColored.class, Util.MOD_ID + ":" + MethodUtil.getName(plankColored.getUnlocalizedName()));		
 		MethodUtil.registerBlock(steamingBloodDeposit, "Steaming Blood Deposit");
 		MethodUtil.registerBlock(bloodBerryBush, "Blood Berry Bush");
 		MethodUtil.registerBlock(bloodFlower, "Blood Flower");

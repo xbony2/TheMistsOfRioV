@@ -32,6 +32,7 @@ public class BlockRioVCake extends Block
 		super(Material.cake);
         this.setTickRandomly(true);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setStepSound(soundTypeCloth);
 	}
 
 	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
@@ -79,14 +80,15 @@ public class BlockRioVCake extends Block
         return AxisAlignedBB.getAABBPool().getAABB((double)((float)p_149633_2_ + f1), (double)p_149633_3_, (double)((float)p_149633_4_ + f), (double)((float)(p_149633_2_ + 1) - f), (double)((float)p_149633_3_ + f2), (double)((float)(p_149633_4_ + 1) - f));
     }
 
-
-	public IIcon func_149691_a(int par1, int par2)
+    @Override
+	public IIcon getIcon(int par1, int par2)
 	{
 		return par1 == 1 ? this.cakeTopIcon : (par1 == 0 ? this.cakeBottomIcon : (par2 > 0 && par1 == 4 ? this.cakeInner : this.blockIcon));
 	}
 
+    @Override
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "chocolateCake_side");
 		this.cakeInner = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "chocolateCake_inner");

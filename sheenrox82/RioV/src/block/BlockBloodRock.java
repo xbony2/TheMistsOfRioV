@@ -20,7 +20,7 @@ public class BlockBloodRock extends Block
 	public Random rand = new Random();
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
-	
+
 	public BlockBloodRock()
 	{
 		super(Material.rock);
@@ -50,6 +50,12 @@ public class BlockBloodRock extends Block
 	{
 		float f = 0.0625F;
 		return AxisAlignedBB.getAABBPool().getAABB((double)((float)par2 + f), (double)par3, (double)((float)par4 + f), (double)((float)(par2 + 1) - f), (double)((float)(par3 + 1) - f), (double)((float)(par4 + 1) - f));
+	}
+
+	@Override
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
+	{
+		return blockIcon;
 	}
 
 	@SideOnly(Side.CLIENT)
