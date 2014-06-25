@@ -78,7 +78,7 @@ public class WorldGen implements IWorldGenerator
 			(new WorldGenMinable(RioVBlocks.slate, 8)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
 		}
 
-		/**for(int var5 = 0; var5 < 1; ++var5)
+		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = world.getHeightValue(blockX, blockZ);
@@ -93,7 +93,7 @@ public class WorldGen implements IWorldGenerator
 			new WorldGenFlowers(RioVBlocks.blackBerryBush).generate(world, rand, var6, var7, var8);
 			new WorldGenFlowers(RioVBlocks.raspBerryBush).generate(world, rand, var6, var7, var8);
 			new WorldGenFlowers(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);
-		}**/
+		}
 
 		if((biome instanceof BiomeGenForest)) 
 		{
