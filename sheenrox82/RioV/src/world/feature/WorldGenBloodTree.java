@@ -3,11 +3,10 @@ package sheenrox82.RioV.src.world.feature;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSapling;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
+import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 
 public class WorldGenBloodTree extends WorldGenAbstractTree
@@ -70,7 +69,7 @@ public class WorldGenBloodTree extends WorldGenAbstractTree
             {
                 Block block1 = par1World.getBlock(par3, par4 - 1, par5);
 
-                boolean isSoil = block1.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockSapling)Blocks.sapling);
+                boolean isSoil = block1.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockRioVSapling)RioVBlocks.bloodSapling);
                 if (isSoil && par4 < 256 - l - 1)
                 {
                     block1.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);

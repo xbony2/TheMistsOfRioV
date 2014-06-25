@@ -26,7 +26,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
 
 public class EntityTerron extends EntityBossCore
@@ -117,6 +117,6 @@ public class EntityTerron extends EntityBossCore
 	@Override
 	protected String getLivingSound()
 	{
-		return Sound.growl;
+		return Sounds.growl.getPrefixedName();
 	}
 }

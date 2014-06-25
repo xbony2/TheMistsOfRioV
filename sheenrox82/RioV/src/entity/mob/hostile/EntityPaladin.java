@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
@@ -125,7 +125,7 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 	{
 		if(Config.allowBreathing)
 		{
-			return Sound.exhale;
+			return Sounds.exhale.getPrefixedName();
 		}
 		
 		return null;

@@ -1,11 +1,11 @@
 package sheenrox82.RioV.src.item;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
@@ -126,7 +126,7 @@ public class RioVWand extends Item
 		if(player.getCurrentEos() == 0)
 		{
 			if(!world.isRemote)
-				Minecraft.getMinecraft().thePlayer.sendChatMessage("You do not have enough Eos!");
+				entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 		}
 		return itemstack;
 	}

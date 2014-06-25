@@ -26,7 +26,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityTameableDeadBody;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
@@ -373,7 +373,7 @@ public class EntityTasaravMallor extends EntityTameableDeadBody
 	{
 		if(Config.allowBreathing)
 		{
-			return Sound.exhale;
+			return Sounds.exhale.getPrefixedName();
 		}
 
 		return null;

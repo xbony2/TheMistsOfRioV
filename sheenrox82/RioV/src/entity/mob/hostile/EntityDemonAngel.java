@@ -12,7 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
 
 public class EntityDemonAngel extends EntityBossCore
@@ -187,7 +187,7 @@ public class EntityDemonAngel extends EntityBossCore
 	@Override
 	protected String getLivingSound()
 	{
-		return Sound.demon;
+		return Sounds.demon.getPrefixedName();
 	}
 
 }

@@ -17,43 +17,43 @@ public class ItemBricks extends ItemBlock
 		String name = "";
 		switch(itemstack.getItemDamage())
 		{
-		case 1:
+		case 0:
 		{
 			name = "amethyst"; break;
 		}
-		case 2:
+		case 1:
 		{
 			name = "onyx"; break;
 		}
-		case 3:
+		case 2:
 		{
 			name = "blindonite"; break;
 		}
-		case 4:
+		case 3:
 		{
 			name = "dragon"; break;
 		}
-		case 5:
+		case 4:
 		{
 			name = "vravinite"; break;
 		}
-		case 6:
+		case 5:
 		{
 			name = "aleris"; break;
 		}
-		case 7:
+		case 6:
 		{
 			name = "jaavik"; break;
 		}
-		case 8:
+		case 7:
 		{
 			name = "nironite"; break;
 		}
-		case 9:
+		case 8:
 		{
 			name = "garnet"; break;
 		}
-		case 10:
+		case 9:
 		{
 			name = "drakiuz"; break;
 		}

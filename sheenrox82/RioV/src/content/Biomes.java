@@ -3,6 +3,7 @@ package sheenrox82.RioV.src.content;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
+import net.minecraftforge.common.BiomeManager;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.world.biome.BiomeGenBlindOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenCanopyOasis;
@@ -25,12 +26,11 @@ public class Biomes
 
 	public static void add()
 	{
-		//GameRegistry.addBiome(snowyMountains);
-		//GameRegistry.addBiome(savannah);
-		//GameRegistry.addBiome(canopyOasis);
-		
-		//BiomeDictionary.registerBiomeType(Biomes.snowyMountains, Type.FROZEN, Type.MOUNTAIN);
-		//BiomeDictionary.registerBiomeType(Biomes.savannah, Type.DESERT, Type.PLAINS);
-		//BiomeDictionary.registerBiomeType(Biomes.canopyOasis, Type.FOREST, Type.MOUNTAIN);
+		 BiomeDictionary.registerBiomeType(snowyMountains, Type.FROZEN);
+         BiomeManager.addSpawnBiome(snowyMountains);
+         BiomeDictionary.registerBiomeType(savannah, Type.DESERT);
+         BiomeManager.addSpawnBiome(savannah);
+         BiomeDictionary.registerBiomeType(canopyOasis, Type.FOREST);
+         BiomeManager.addSpawnBiome(canopyOasis);
 	}
 }

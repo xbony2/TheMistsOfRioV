@@ -18,7 +18,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
@@ -109,6 +109,6 @@ public class EntityShadow extends EntityMobDeadBody
 	@Override
 	protected String getLivingSound()
 	{
-		return Sound.exhale;
+		return Sounds.exhale.getPrefixedName();
 	}
 }

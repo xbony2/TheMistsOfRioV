@@ -21,7 +21,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
@@ -159,6 +159,6 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 	@Override
 	protected String getLivingSound()
 	{
-		return Sound.auntun;
+		return Sounds.auntun.getPrefixedName();
 	}
 }

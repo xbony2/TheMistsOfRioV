@@ -15,13 +15,15 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
@@ -34,6 +36,7 @@ import sheenrox82.RioV.src.entity.mob.hostile.EntityMage;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityPaladin;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityTerron;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityVravinite;
+import sheenrox82.RioV.src.util.MethodUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -235,15 +238,15 @@ public class EntityAdv extends EntityMobDeadBody
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
 	}
 
-	/**@Override
+	@Override
 	public boolean interact(EntityPlayer par1EntityPlayer)
-	{
-		par1EntityPlayer.playSound(Sound.hello, 1, 1);
-
+    {
+		par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
+		
 		if(!this.worldObj.isRemote)
-			par1EntityPlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Hello to you too, " + par1EntityPlayer.username + "!"));
+			par1EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		return true;
-	}**/
+    }
 	
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -251,7 +254,7 @@ public class EntityAdv extends EntityMobDeadBody
 	{
 		if(Config.allowBreathing)
 		{
-			return Sound.exhale;
+			return Sounds.exhale.getPrefixedName();
 		}
 		
 		return null;

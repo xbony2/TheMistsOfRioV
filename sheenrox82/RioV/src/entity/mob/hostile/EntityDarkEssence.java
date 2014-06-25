@@ -10,7 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
 
 public class EntityDarkEssence extends EntityBossCore
@@ -111,6 +111,6 @@ public class EntityDarkEssence extends EntityBossCore
 	@Override
 	protected String getLivingSound()
 	{
-		return Sound.darkness;
+		return Sounds.darkness.getPrefixedName();
 	}
 }

@@ -11,7 +11,7 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 
 public class EntityMage extends EntityMobDeadBody
@@ -170,6 +170,6 @@ public class EntityMage extends EntityMobDeadBody
 	@Override
 	protected String getHurtSound()
 	{
-		return Sound.pain;
+		return Sounds.pain.getPrefixedName();
 	}
 }

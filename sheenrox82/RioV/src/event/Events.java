@@ -96,15 +96,17 @@ public class Events
 	}
 
 	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
 	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
-			NBTTagCompound playerData = CommonProxy.getEntityData(((EntityPlayer) event.entity).getCommandSenderName() + PlayerNBT.EXT_PROP_NAME);
+			NBTTagCompound playerData = CommonProxy.getEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME);
 			if (playerData != null) 
 			{
 				((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).loadNBTData(playerData);
 			}
+			
 			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).sync();
 		}
 	}
@@ -116,7 +118,7 @@ public class Events
 		{
 			NBTTagCompound playerData = new NBTTagCompound();
 			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).saveNBTData(playerData);
-			CommonProxy.storeEntityData(((EntityPlayer) event.entity).getCommandSenderName() + PlayerNBT.EXT_PROP_NAME, playerData);
+			CommonProxy.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
 			PlayerNBT.saveProxyData((EntityPlayer) event.entity);
 		}
 	}
@@ -172,7 +174,6 @@ public class Events
 	@SubscribeEvent
 	public void bonemealUsed(BonemealEvent event)
 	{
-		//May need to rewrite
 		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.glimmerwoodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.glimmerwoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
@@ -191,46 +192,6 @@ public class Events
 		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.skywoodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.skywoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
-		}
-	}
-	
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public void renderGameOverlayEvent(RenderGameOverlayEvent evt)
-	{
-		//I dont why this shit won't work.
-		/**Minecraft minecraft = FMLClientHandler.instance().getClient();
-
-		if(minecraft.currentScreen instanceof GuiMainMenu)
-		{
-			minecraft.displayGuiScreen(new GuiRioVMainMenu());
-		}
-		if(minecraft.currentScreen instanceof GuiDownloadTerrain)
-		{
-			WavHandler.stopSound();			
-		}
-		if(minecraft.currentScreen == null)
-		{
-			WavHandler.stopSound();			
-		}**/
-
-		//This works, fuck yeah.
-		if(Config.HUD)
-		{
-			Minecraft mc = Minecraft.getMinecraft();
-
-			FontRenderer fontrenderer = mc.fontRenderer;
-
-			if (!mc.gameSettings.showDebugInfo)
-			{
-				if(mc.currentScreen == null)
-				{
-					mc.mcProfiler.startSection("debug");
-					GL11.glPushMatrix();
-					fontrenderer.drawStringWithShadow(Config.color + Util.MOD_NAME + " - " + Util.VERSION, Config.posX, Config.posY, 16777215);
-					GL11.glPopMatrix();
-				}
-			}
 		}
 	}
 }

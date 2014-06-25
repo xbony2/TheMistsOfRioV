@@ -15,7 +15,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.Enchantments;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
@@ -101,7 +101,7 @@ public class ItemBowOfWurTun extends ItemBow
 			}
 			
 			par1ItemStack.damageItem(1, par3EntityPlayer);
-			par2World.playSoundAtEntity(par3EntityPlayer, Sound.bow, 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+			par2World.playSoundAtEntity(par3EntityPlayer, Sounds.bow.getPrefixedName(), 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
 			if (flag)
 			{

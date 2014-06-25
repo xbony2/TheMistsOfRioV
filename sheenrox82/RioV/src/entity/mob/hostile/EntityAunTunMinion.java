@@ -24,7 +24,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
@@ -148,7 +148,7 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 	@Override
 	protected String getLivingSound()
 	{
-		return Sound.auntun;
+		return Sounds.auntun.getPrefixedName();
 	}
 	
 	@Override

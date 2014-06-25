@@ -22,7 +22,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.content.Sound;
+import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
@@ -116,7 +116,7 @@ public class EntityHellhound extends EntityMobDeadBody
 	@Override
 	protected String getLivingSound()
 	{
-		return Sound.hellhound;
+		return Sounds.hellhound.getPrefixedName();
 	}
 	
 }

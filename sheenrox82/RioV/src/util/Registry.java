@@ -17,7 +17,8 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.event.Events;
 import sheenrox82.RioV.src.gui.GuiEosBar;
 import sheenrox82.RioV.src.handler.FuelHandler;
-import sheenrox82.RioV.src.handler.SoundHandler;
+import sheenrox82.RioV.src.handler.packet.PacketHandler;
+import sheenrox82.RioV.src.handler.packet.PacketPipeline;
 import sheenrox82.RioV.src.recipe.AnvilCraftingManager;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
 import sheenrox82.RioV.src.tileentity.TileEntityBloodChest;
@@ -44,6 +45,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Registry 
 {
 	public static int render = 3;
+	public static final PacketPipeline packetPipeline = new PacketPipeline();
 
 	public static void preInit(FMLPreInitializationEvent initEvent)
 	{		
@@ -66,8 +68,8 @@ public class Registry
 				"Soverian Overlord will destroy the land of RioV and leave it in ashes. " +
 				"This is The Mists of RioV.";
 		Config.initialize(initEvent);
+		SoundGenerator.registerSounds();
 		MinecraftForge.EVENT_BUS.register(new Events());
-		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		RioVItems.add();
 		RioVBlocks.add();
 		Crafting.add();
@@ -106,6 +108,8 @@ public class Registry
 		BiomeGenBase.forest.theBiomeDecorator.treesPerChunk = 46;
 		BiomeGenBase.plains.theBiomeDecorator.bigMushroomsPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 30;
+		packetPipeline.initialise();
+		packetPipeline.registerPacket(PacketHandler.class);
 	}
 
 	public static void postInit(FMLPostInitializationEvent postInit)
@@ -117,6 +121,7 @@ public class Registry
 		}
 
 		BiomeDictionary.registerAllBiomes();
+		packetPipeline.postInitialise();
 		Config.initPost();
 		FMLLog.info("[" + Util.MOD_NAME + "] Loaded! Have fun!");
 	}

@@ -22,7 +22,7 @@ public class WorldProviderFlamonor extends WorldProvider
 
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderFlamonor(this.worldObj, this.worldObj.getSeed(), true);
+		return new ChunkProviderFlamonor(this.worldObj, this.worldObj.getSeed());
 	}
 
 	public int getAverageGroundLevel()

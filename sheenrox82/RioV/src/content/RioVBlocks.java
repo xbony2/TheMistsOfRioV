@@ -160,7 +160,7 @@ public class RioVBlocks
 	public static Block bush = new BlockBush().setBlockName("bush");
 	public static Block bloodBerryBush = new BlockBush().setBlockName("bloodBerryBush");
 	public static Block jaavikOre = new BlockCoreOne().setBlockName("jaavikOre");
-	public static Block jaavikBlock = new BlockRioVLadder().setBlockName("jaavikBlock");
+	public static Block jaavikBlock = new BlockCoreOne().setBlockName("jaavikBlock");
 	public static Block steamingBloodDeposit = new BlockBloodRock().setBlockName("steamingBloodDeposit");
 	public static Block alerisBlock = new BlockCoreOne().setBlockName("alerisBlock");
 	public static Block drakiuzBlock = new BlockCoreOne().setBlockName("drakiuzBlock");
