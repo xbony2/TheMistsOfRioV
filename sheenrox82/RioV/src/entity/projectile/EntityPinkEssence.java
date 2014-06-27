@@ -1,6 +1,6 @@
 package sheenrox82.RioV.src.entity.projectile;
 
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;
@@ -32,7 +32,7 @@ public class EntityPinkEssence extends EntityThrowable
 	@Override
 	protected void onImpact(MovingObjectPosition var1)
 	{
-		if(var1.entityHit instanceof EntityLiving)
+		if(var1.entityHit instanceof Entity)
 		{
 			var1.entityHit.addVelocity(0, 1, 0);
 		}

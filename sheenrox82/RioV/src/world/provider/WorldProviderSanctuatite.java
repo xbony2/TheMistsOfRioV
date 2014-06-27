@@ -22,7 +22,7 @@ public class WorldProviderSanctuatite extends WorldProvider
 
 	public IChunkProvider createChunkGenerator()
 	{
-		return new ChunkProviderSanctuatite(this.worldObj, this.worldObj.getSeed(), true);
+		return new ChunkProviderSanctuatite(this.worldObj, this.worldObj.getSeed());
 	}
 
 	public int getAverageGroundLevel()

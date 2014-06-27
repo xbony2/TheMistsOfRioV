@@ -1,8 +1,7 @@
 package sheenrox82.RioV.src.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -12,6 +11,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class PlayerNBT implements IExtendedEntityProperties
 {
@@ -58,21 +59,21 @@ public class PlayerNBT implements IExtendedEntityProperties
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
 	}
 
+	@SideOnly(Side.CLIENT)
 	public final void sync()
 	{
-		ByteArrayOutputStream bos = new ByteArrayOutputStream(8);
-		DataOutputStream outputStream = new DataOutputStream(bos);
-
+		ByteBuf data = Unpooled.buffer(5);
+        
 		try 
 		{
-			outputStream.writeInt(this.maxEos);
+			data.writeInt(this.maxEos);
 		} 
 		catch (Exception ex) 
 		{
 			ex.printStackTrace();
 		}
 
-		C17PacketCustomPayload packet = new C17PacketCustomPayload("riovchannel", bos.toByteArray());
+		C17PacketCustomPayload packet = new C17PacketCustomPayload("riovchannel", data);
 
 		if (FMLCommonHandler.instance().getEffectiveSide().isServer()) 
 		{

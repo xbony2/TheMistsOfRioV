@@ -16,14 +16,14 @@ public class WorldProviderVaeryn extends WorldProvider
 
 	public void registerWorldChunkManager()
 	{
-		this.worldChunkMgr = new WorldChunkManagerHell(Biomes.glimmerwood, 0.5F);
+		this.worldChunkMgr = new WorldChunkManagerHell(Biomes.glimmerwood, 1F);
 		this.dimensionId = Config.vaerynID;
 		this.hasNoSky = false;
 	}
 
     public String getDimensionName()
     {
-        return "Overworld";
+        return "Vaeryn";
     }
 
 	@SideOnly(Side.CLIENT)

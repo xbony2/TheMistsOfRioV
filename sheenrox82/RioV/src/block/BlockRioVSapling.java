@@ -30,9 +30,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockRioVSapling extends BlockSapling implements IPlantable
 {    
 	public IIcon blockIcon;
+	
 	public BlockRioVSapling()
 	{
 		super();
+		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setStepSound(Block.soundTypeGrass);
+        this.setHardness(0.2F);
+        this.setLightOpacity(1);
 		float f = 0.4F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
 	}
@@ -370,7 +375,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void func_149651_a(IIconRegister p_149651_1_)
+	public void registerBlockIcons(IIconRegister p_149651_1_)
 	{
 		blockIcon = p_149651_1_.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	}

@@ -51,6 +51,7 @@ public class Events
 		if (e.entity instanceof EntityPlayer) 
 		{
 			EntityPlayer p = (EntityPlayer) e.entity;
+			
 			if (p.worldObj.isRemote) 
 			{
 				try

@@ -30,6 +30,7 @@ import sheenrox82.RioV.src.block.BlockRioVFenceGate;
 import sheenrox82.RioV.src.block.BlockRioVLadder;
 import sheenrox82.RioV.src.block.BlockRioVLeaf;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
+import sheenrox82.RioV.src.block.BlockRioVTallGrass;
 import sheenrox82.RioV.src.block.BlockRioVTrapDoor;
 import sheenrox82.RioV.src.block.BlockRioVWorkbench;
 import sheenrox82.RioV.src.block.BlockSanctuatiteFire;
@@ -129,12 +130,12 @@ public class RioVBlocks
 	public static Block sanctuatitePortal = new BlockSanctuatitePortal().setBlockName("sanctuatitePortal");
 	public static Block sanctuatiteFire = new BlockSanctuatiteFire().setBlockName("sanctuatiteFire");
 	public static Block sanctuatiteGrass = new BlockSanctuatiteGrass().setBlockName("sanctuatiteGrass");
-	public static Block sanctuatiteDirt = new BlockRioVLadder().setBlockName("sanctuatiteDirt");
-	public static Block sanctuatiteTallGrass = new BlockRioVLadder().setBlockName("sanctuatiteTallGrass");
-	public static Block sanctuaryStone = new BlockRioVLadder().setBlockName("sanctuaryStone");
+	public static Block sanctuatiteDirt = new BlockCoreOne().setBlockName("sanctuatiteDirt");
+	public static Block sanctuatiteTallGrass = new BlockRioVTallGrass().setBlockName("sanctuatiteTallGrass");
+	public static Block sanctuaryStone = new BlockCoreOne().setBlockName("sanctuaryStone");
 	public static Block skycloud = new BlockSkycloud().setBlockName("skycloud");
 	public static Block skywoodLog = new BlockSkywoodLog().setBlockName("skywoodLog");
-	public static Block skywoodSapling = new BlockRioVSapling().setBlockName("skywoodSapling");
+	public static Block skywoodSapling = new BlockRioVSapling().setBlockName("sanctuaryTreeSapling");
 	public static Block bloodWorkbench = new BlockRioVWorkbench().setBlockName("bloodWorkbench");
 	public static Block bloodFence = new BlockRioVFence("bloodPlanks").setBlockName("bloodFence");
 	public static Block bloodFenceGate = new BlockRioVFenceGate().setBlockName("bloodFenceGate");
@@ -178,7 +179,7 @@ public class RioVBlocks
 	{	
 		
 		MethodUtil.registerBlock(flag, "Flag");
-		MethodUtil.registerBlock(blackQuartz, "Black Quartz");
+		MethodUtil.registerBlock(blackQuartz, "Black Quartz Block");
 		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, Util.MOD_ID + ":" + MethodUtil.getName(stainedGlass.getUnlocalizedName()));	
 		GameRegistry.registerBlock(bricks, ItemBricks.class, Util.MOD_ID + ":" + MethodUtil.getName(bricks.getUnlocalizedName()));		
 		GameRegistry.registerBlock(plankColored, ItemPlanksColored.class, Util.MOD_ID + ":" + MethodUtil.getName(plankColored.getUnlocalizedName()));		

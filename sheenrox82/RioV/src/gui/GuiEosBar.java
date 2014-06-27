@@ -50,13 +50,11 @@ public class GuiEosBar extends Gui
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
-				GL11.glPushMatrix();
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				Minecraft.getMinecraft().renderEngine.bindTexture(icons);
 				float magicka = (int)(((float) props.getCurrentEos() / props.maxEos) * 80);
 				this.drawTexturedModalRect(20, height - 20, 0, 49, 102, 14);
 				this.drawTexturedModalRect(31, height - 16, 11, 64, (int)magicka, 6);
-				GL11.glPopMatrix();
 			}
 		}
 
