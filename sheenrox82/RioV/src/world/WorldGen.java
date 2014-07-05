@@ -9,10 +9,16 @@ import net.minecraft.world.biome.BiomeGenPlains;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.world.biome.BiomeGenFlamonor;
+import sheenrox82.RioV.src.world.biome.BiomeGenGlimmerwood;
+import sheenrox82.RioV.src.world.biome.BiomeGenSanctuatite;
+import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenCherryBlossomTree;
-import sheenrox82.RioV.src.world.feature.WorldGenShrine;
-import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
+import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree;
+import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree2;
+import sheenrox82.RioV.src.world.feature.WorldGenSanctuatiteTree;
 import sheenrox82.RioV.src.world.mineable.WorldGenEndMineable;
 import sheenrox82.RioV.src.world.mineable.WorldGenNetherMineable;
 import cpw.mods.fml.common.IWorldGenerator;
@@ -33,14 +39,87 @@ public class WorldGen implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{
-		switch (world.provider.dimensionId)
+		if(world.provider.dimensionId == 1)
 		{
-		case 1:
-			generateEnd(world, random, chunkX * 16, chunkZ * 16);
-		case 0:
+			generateEnd(world, random, chunkX * 16, chunkZ * 16);	
+		}
+		
+		if(world.provider.dimensionId == 0)
+		{
 			generateSurface(world, random, chunkX * 16, chunkZ * 16);
-		case -1:
+		}
+		
+		if(world.provider.dimensionId == -1)
+		{
 			generateNether(world, random, chunkX * 16, chunkZ * 16);
+		}
+		
+		if(world.provider.dimensionId == Config.vaerynID)
+		{
+			generateVaeryn(world, random, chunkX * 16, chunkZ * 16);
+		}
+		
+		if(world.provider.dimensionId == Config.flamonorID)
+		{
+			generateFlamonor(world, random, chunkX * 16, chunkZ * 16);
+		}
+		
+		if(world.provider.dimensionId == Config.sanctuatiteID)
+		{
+			generateSanctuatite(world, random, chunkX * 16, chunkZ * 16);
+		}
+	}
+
+	private void generateSanctuatite(World world, Random rand, int blockX, int blockZ) 
+	{
+		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
+		WorldGenSanctuatiteTree tree = new WorldGenSanctuatiteTree(false);
+
+		if((biome instanceof BiomeGenSanctuatite)) 
+		{
+			for(int x = 0; x < 8; x++)
+			{
+				int i = blockX + rand.nextInt(16);
+				int k = blockZ + rand.nextInt(16);
+				int j = world.getHeightValue(i, k);
+				tree.generate(world, rand, i, j, k);
+			}
+		}
+	}
+
+	private void generateFlamonor(World world, Random rand, int blockX, int blockZ) 
+	{
+		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
+		WorldGenBloodTree tree = new WorldGenBloodTree(false);
+
+		if((biome instanceof BiomeGenFlamonor)) 
+		{
+			for(int x = 0; x < 8; x++)
+			{
+				int i = blockX + rand.nextInt(16);
+				int k = blockZ + rand.nextInt(16);
+				int j = world.getHeightValue(i, k);
+				tree.generate(world, rand, i, j, k);
+			}
+		}
+	}
+
+	private void generateVaeryn(World world, Random rand, int blockX, int blockZ) 
+	{
+		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
+		WorldGenGlimmerWoodTree tree = new WorldGenGlimmerWoodTree(false);
+		WorldGenGlimmerWoodTree2 tree2 = new WorldGenGlimmerWoodTree2(false);
+
+		if((biome instanceof BiomeGenGlimmerwood)) 
+		{
+			for(int x = 0; x < 8; x++)
+			{
+				int i = blockX + rand.nextInt(16);
+				int k = blockZ + rand.nextInt(16);
+				int j = world.getHeightValue(i, k);
+				tree.generate(world, rand, i, j, k);
+				tree2.generate(world, rand, i, j, k);
+			}
 		}
 	}
 
@@ -60,7 +139,6 @@ public class WorldGen implements IWorldGenerator
 		int d, y;
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		WorldGenCherryBlossomTree tree = new WorldGenCherryBlossomTree(false);
-		WorldGenShrine shrine = new WorldGenShrine();
 
 		for (int i = 0; i < 8; i++) 
 		{
@@ -114,17 +192,6 @@ public class WorldGen implements IWorldGenerator
 				int k = blockZ + rand.nextInt(16);
 				int j = world.getHeightValue(i, k);
 				tree.generate(world, rand, i, j, k);
-			}
-		}
-
-		if((biome instanceof BiomeGenForest)) 
-		{
-			for(int x = 0; x < 1; x++)
-			{
-				int i = blockX + rand.nextInt(16);
-				int k = blockZ + rand.nextInt(16);
-				int j = world.getHeightValue(i, k);
-				//shrine.generate(world, rand, i, j, k);
 			}
 		}
 	}

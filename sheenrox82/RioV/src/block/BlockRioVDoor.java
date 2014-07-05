@@ -1,5 +1,6 @@
 package sheenrox82.RioV.src.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.IconFlipped;
@@ -29,6 +30,7 @@ public class BlockRioVDoor extends BlockDoor
 	public BlockRioVDoor()
 	{
 		super(Material.wood);
+		this.setStepSound(Block.soundTypeWood);
 		this.glimmerwoodDoorIcon = 0;
 		this.cherryBlossomDoorIcon = 0;
 		this.skywoodDoorIcon = 0;

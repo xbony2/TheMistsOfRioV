@@ -5,10 +5,14 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.MethodUtil;
@@ -27,6 +31,7 @@ public class BlockGlimmerGrass extends Block
 	{
 		super(Material.grass);
 		this.setTickRandomly(true);
+		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
@@ -36,7 +41,7 @@ public class BlockGlimmerGrass extends Block
 		return par1 == 1 ? this.iconGrassTop : (par1 == 0 ? RioVBlocks.glimmerDirt.getBlockTextureFromSide(par1) : this.blockIcon);
 	}
 
-	public void func_149674_a(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
         if (!p_149674_1_.isRemote)
         {
@@ -93,4 +98,17 @@ public class BlockGlimmerGrass extends Block
 		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()) + "Side");
 		this.iconGrassTop = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerGrassTop");
 	}
+	
+	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
+    {
+        Block plant = plantable.getPlant(world, x, y + 1, z);
+        EnumPlantType plantType = plantable.getPlantType(world, x, y + 1, z);
+
+        if (plant == RioVBlocks.glimmerwoodSapling)
+        {
+            return true;
+        }
+
+		return false;
+    }
 }

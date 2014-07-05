@@ -24,6 +24,7 @@ public class BlockStainedGlass extends Block
 	public BlockStainedGlass()
 	{
 		super(Materials.customMaterial);
+		this.setStepSound(this.soundTypeGlass);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 

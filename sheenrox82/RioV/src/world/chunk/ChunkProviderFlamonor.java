@@ -18,11 +18,10 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
+import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
 import sheenrox82.RioV.src.world.mineable.WorldGenFlamonorMineable;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
@@ -316,50 +315,47 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 	}
 
 	@Override
-	public void populate(IChunkProvider ichunkprovider, int i, int j) {
-		BlockFalling.fallInstantly = true;
-		int var4 = i * 16;
-		int var5 = j * 16;
-		BiomeGenBase var6 = this.worldObj.getWorldChunkManager().getBiomeGenAt(var4 + 16, var5 + 16);
+	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
+	{
+		BlockSand.fallInstantly = true;
+		int k = par2 * 16;
+		int l = par3 * 16;
+		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
+		long i1 = this.rand.nextLong() / 2L * 2L + 1L;
+		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
+		this.rand.setSeed((long)par2 * i1 + (long)par3 * j1 ^ this.worldObj.getSeed());
+		boolean flag = false;
 		int var13;
 		int var14;
 		int var15;
 		int var16;
+		int d, y;
 
-		for (var13 = 0; var13 < 19; ++var13) {
-			var14 = var4 + this.rand.nextInt(16);
-			var15 = this.rand.nextInt(200);
-			var16 = var5 + this.rand.nextInt(16);
-			(new WorldGenFlamonorMineable(RioVBlocks.steamingBloodDeposit, 11, RioVBlocks.flamonorRock)).generate(this.worldObj, this.rand, var14, var15, var16);
-			(new WorldGenFlamonorMineable(RioVBlocks.drakiuzOre, 8, RioVBlocks.flamonorRock)).generate(this.worldObj, this.rand, var14, var15, var16);
+		for(int x =0; x < 8; x++)
+		{
+			var14 = k + this.rand.nextInt(16);
+			var15 = this.rand.nextInt(128);
+			var16 = l + this.rand.nextInt(16);
+			(new WorldGenFlamonorMineable(RioVBlocks.drakiuzOre, 4)).generate(this.worldObj, this.rand, var14, var15, var16);
+			(new WorldGenFlamonorMineable(RioVBlocks.steamingBloodDeposit, 5)).generate(this.worldObj, this.rand, var14, var15, var16);
 		}
 
-		WorldGenBloodTree var17 = new WorldGenBloodTree(true);
-		int var19;
-		int var18;
-		int var21;
-		int var20;
-
-		for (var18 = 0; var18 < 7; ++var18) {
-			var19 = var4 + this.rand.nextInt(16);
-			var20 = var5 + this.rand.nextInt(16);
-			var21 = this.worldObj.getHeightValue(var19, var20);
-			var17.generate(this.worldObj, this.rand, var19, var21, var20);
+		for(int var5 = 0; var5 < 2; ++var5)
+		{
+			int var6 = k + rand.nextInt(16);
+			int var7 = rand.nextInt(128);
+			int var8 = l + rand.nextInt(16);
+			new WorldGenBalance(RioVBlocks.bloodBerryBush).generate(worldObj, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodFlower).generate(worldObj, rand, var6, var7, var8);
 		}
 
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
-
-		for (var21 = var4 + 8; var21 < var4 + 8 + 16; ++var21) {
-			for (var20 = var5 + 8; var20 < var5 + 8 + 16; ++var20) {
-				int var10000 = var21 - (var4 + 8);
-				var10000 = var20 - (var5 + 8);
-			}
-		}
+		biomegenbase.decorate(this.worldObj, this.rand, k, l);
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
 
 		BlockSand.fallInstantly = false;
 	}
-
+	
 	@Override
 	public boolean saveChunks(boolean flag, IProgressUpdate iprogressupdate) {
 		return true;

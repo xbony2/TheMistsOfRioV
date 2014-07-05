@@ -14,8 +14,6 @@ import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 
 public class EntityAngel extends EntityMobDeadBody
 {
-	public static final ItemStack defaultHeldItem;
-
 	public EntityAngel(World par1World) 
 	{
 
@@ -63,18 +61,7 @@ public class EntityAngel extends EntityMobDeadBody
 	{
 		return true;
 	}
-
 	
-	public ItemStack getHeldItem()
-	{
-		return defaultHeldItem;
-	}
-
-	static
-	{
-		defaultHeldItem = new ItemStack(RioVItems.skywoodSword);
-	}
-
 	@Override
 	protected void applyEntityAttributes()
 	{

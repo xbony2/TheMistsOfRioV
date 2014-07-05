@@ -27,6 +27,7 @@ public class BlockRioVLadder extends BlockLadder
 	public BlockRioVLadder()
 	{
 		super();
+		this.setStepSound(Block.soundTypeLadder);
 		this.setCreativeTab(null);
 	}
 
@@ -197,6 +198,13 @@ public class BlockRioVLadder extends BlockLadder
         return true;
     }
 
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return this.blockIcon;
+	}
+	
+    @SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		if(this == RioVBlocks.glimmerwoodLadder) this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodLadder");

@@ -24,6 +24,7 @@ public class BlockPlantCore extends BlockFlower
 	public BlockPlantCore()
 	{
 		super(0);
+		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(null);
 	}
 
@@ -77,7 +78,7 @@ public class BlockPlantCore extends BlockFlower
 	
 	protected boolean canPlaceBlockOn(Block par1)
 	{		
-		if(par1 == RioVBlocks.bloodFlower)
+		if(this == RioVBlocks.bloodFlower)
 		{
 			return par1 == RioVBlocks.bloodGrass;
 		}

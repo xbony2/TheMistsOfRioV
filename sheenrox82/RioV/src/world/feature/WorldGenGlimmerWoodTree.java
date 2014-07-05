@@ -139,26 +139,6 @@ public class WorldGenGlimmerWoodTree extends WorldGenAbstractTree
                         }
                     }
 
-                    if (this.vinesGrow)
-                    {
-                        for (k1 = par4 - 3 + l; k1 <= par4 + l; ++k1)
-                        {
-                            i3 = k1 - (par4 + l);
-                            l1 = 2 - i3 / 2;
-
-                            for (i2 = par3 - l1; i2 <= par3 + l1; ++i2)
-                            {
-                                for (j2 = par5 - l1; j2 <= par5 + l1; ++j2)
-                                {
-                                    if (par1World.getBlock(i2, k1, j2).isLeaves(par1World, i2, k1, j2))
-                                    {
-                                       
-                                    }
-                                }
-                            }
-                        }
-                    }
-
                     return true;
                 }
                 else

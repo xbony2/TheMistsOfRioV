@@ -1,15 +1,6 @@
 package sheenrox82.RioV.src.proxy;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-
-import com.jadarstudios.developercapes.DevCapes;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import sheenrox82.RioV.expansion.bosses.EntityChickenBoss;
@@ -24,7 +15,6 @@ import sheenrox82.RioV.expansion.bosses.RenderPigBoss;
 import sheenrox82.RioV.expansion.bosses.RenderSheepBoss;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
@@ -52,7 +42,6 @@ import sheenrox82.RioV.src.entity.mob.passive.EntityOrc;
 import sheenrox82.RioV.src.entity.mob.passive.EntityRabbit;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySoverianOfficer;
-import sheenrox82.RioV.src.entity.mob.passive.EntityTasaravMallor;
 import sheenrox82.RioV.src.entity.mob.passive.EntityWoodElf;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
@@ -78,29 +67,19 @@ import sheenrox82.RioV.src.render.RenderOrc;
 import sheenrox82.RioV.src.render.RenderPaladin;
 import sheenrox82.RioV.src.render.RenderRabbit;
 import sheenrox82.RioV.src.render.RenderSkeletalHorse;
-import sheenrox82.RioV.src.render.RenderTasaravMallor;
 import sheenrox82.RioV.src.render.RenderTef;
-import sheenrox82.RioV.src.render.item.ItemRenderBloodChest;
 import sheenrox82.RioV.src.render.item.ItemRenderBow;
-import sheenrox82.RioV.src.render.item.ItemRenderCherryBlossomChest;
-import sheenrox82.RioV.src.render.item.ItemRenderGlimmerwoodChest;
 import sheenrox82.RioV.src.render.item.ItemRenderLongbow;
-import sheenrox82.RioV.src.render.item.ItemRenderSkywoodChest;
 import sheenrox82.RioV.src.render.projectile.RenderDarkMatter;
 import sheenrox82.RioV.src.render.projectile.RenderDarknessArrow;
 import sheenrox82.RioV.src.render.projectile.RenderPinkEssence;
 import sheenrox82.RioV.src.render.projectile.RenderVraviniteArrow;
-import sheenrox82.RioV.src.render.tileentity.RenderTileEntityBloodChest;
-import sheenrox82.RioV.src.render.tileentity.RenderTileEntityCherryBlossomChest;
 import sheenrox82.RioV.src.render.tileentity.RenderTileEntityFlag;
-import sheenrox82.RioV.src.render.tileentity.RenderTileEntityGlimmerwoodChest;
-import sheenrox82.RioV.src.render.tileentity.RenderTileEntitySkywoodChest;
-import sheenrox82.RioV.src.tileentity.TileEntityBloodChest;
-import sheenrox82.RioV.src.tileentity.TileEntityCherryBlossomChest;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
-import sheenrox82.RioV.src.tileentity.TileEntityGlimmerwoodChest;
-import sheenrox82.RioV.src.tileentity.TileEntitySkywoodChest;
 import sheenrox82.RioV.src.util.Util;
+
+import com.jadarstudios.developercapes.DevCapes;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -138,7 +117,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityAngel.class, new RenderAngel());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRabbit.class, new RenderRabbit());
 		RenderingRegistry.registerEntityRenderingHandler(EntitySoverianOfficer.class, new RenderBipedCore(EntityResourceLocation.officer));
-		RenderingRegistry.registerEntityRenderingHandler(EntityTasaravMallor.class, new RenderTasaravMallor());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPaladin.class, new RenderPaladin());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPinkEssence.class, new RenderPinkEssence(new ResourceLocation(Util.MOD_ID + ":" + "pinkEssence.png")));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":" + "darkMatter.png")));
@@ -154,20 +132,12 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunMinion.class, new RenderBipedCore(EntityResourceLocation.auntun));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(EntityResourceLocation.blood_ghoul));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGlimmerwoodChest.class, new RenderTileEntityGlimmerwoodChest());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCherryBlossomChest.class, new RenderTileEntityCherryBlossomChest());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkywoodChest.class, new RenderTileEntitySkywoodChest());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBloodChest.class, new RenderTileEntityBloodChest());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new RenderTileEntityFlag());
 	}
 
 	@Override
 	public void registerItemRenderers()
 	{
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.glimmerwoodChest), new ItemRenderGlimmerwoodChest());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.cherryBlossomChest), new ItemRenderCherryBlossomChest());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.bloodChest), new ItemRenderBloodChest());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.skywoodChest), new ItemRenderSkywoodChest());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.bowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.enforcedBowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.vraviniteBow, new ItemRenderLongbow());

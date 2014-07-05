@@ -23,11 +23,13 @@ import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
+import sheenrox82.RioV.src.util.MethodUtil;
 
 public class EntityTerron extends EntityBossCore
 {
@@ -84,12 +86,12 @@ public class EntityTerron extends EntityBossCore
 	{
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
-		Minecraft.getMinecraft().thePlayer.sendChatMessage("Terron: *Grroowwwwwwwwwlllll*");
-		
-		if(this.worldObj.isRemote)
-		Minecraft.getMinecraft().thePlayer.sendChatMessage("Terron was killed!");
+		{
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Terron: *Grroowwwwwwwwwlllll*");
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Terron was killed!");
+		}
 	}
-	
+
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
@@ -101,19 +103,19 @@ public class EntityTerron extends EntityBossCore
 	{
 		super.writeEntityToNBT(par1NBTTagCompound);
 	}
-	
+
 	@Override
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readEntityFromNBT(par1NBTTagCompound);
 	}
-	
+
 	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
 	}
-	
+
 	@Override
 	protected String getLivingSound()
 	{

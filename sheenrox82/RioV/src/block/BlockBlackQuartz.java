@@ -27,6 +27,7 @@ public class BlockBlackQuartz extends Block
     public BlockBlackQuartz()
     {
         super(Material.rock);
+		this.setStepSound(this.soundTypeStone);
         this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
 

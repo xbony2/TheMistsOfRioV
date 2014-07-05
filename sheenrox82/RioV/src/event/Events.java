@@ -177,22 +177,22 @@ public class Events
 	{
 		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.glimmerwoodSapling)
 		{
-			((BlockRioVSapling)RioVBlocks.glimmerwoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
+			((BlockRioVSapling)RioVBlocks.glimmerwoodSapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 
 		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.cherryBlossomSapling)
 		{
-			((BlockRioVSapling)RioVBlocks.cherryBlossomSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
+			((BlockRioVSapling)RioVBlocks.cherryBlossomSapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 
 		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.bloodSapling)
 		{
-			((BlockRioVSapling)RioVBlocks.bloodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
+			((BlockRioVSapling)RioVBlocks.bloodSapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 
 		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.skywoodSapling)
 		{
-			((BlockRioVSapling)RioVBlocks.skywoodSapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
+			((BlockRioVSapling)RioVBlocks.skywoodSapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
 		}
 	}
 }

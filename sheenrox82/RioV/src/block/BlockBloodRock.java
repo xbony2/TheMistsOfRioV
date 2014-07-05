@@ -24,6 +24,7 @@ public class BlockBloodRock extends Block
 	public BlockBloodRock()
 	{
 		super(Material.rock);
+		this.setStepSound(this.soundTypeStone);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
@@ -49,7 +50,7 @@ public class BlockBloodRock extends Block
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
 	{
 		float f = 0.0625F;
-		return AxisAlignedBB.getAABBPool().getAABB((double)((float)par2 + f), (double)par3, (double)((float)par4 + f), (double)((float)(par2 + 1) - f), (double)((float)(par3 + 1) - f), (double)((float)(par4 + 1) - f));
+		return AxisAlignedBB.getBoundingBox((double)((float)par2 + f), (double)par3, (double)((float)par4 + f), (double)((float)(par2 + 1) - f), (double)((float)(par3 + 1) - f), (double)((float)(par4 + 1) - f));
 	}
 
 	@Override

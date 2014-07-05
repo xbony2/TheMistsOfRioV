@@ -3,6 +3,7 @@ package sheenrox82.RioV.src.world.feature;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -11,44 +12,48 @@ import sheenrox82.RioV.src.content.RioVBlocks;
 
 public class WorldGenBloodTree extends WorldGenAbstractTree
 {
-    public WorldGenBloodTree(boolean par1)
+    private static final String __OBFID = "CL_00000435";
+
+    public WorldGenBloodTree(boolean p_i2025_1_)
     {
-        super(par1);
+        super(p_i2025_1_);
     }
 
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    public boolean generate(World p_76484_1_, Random p_76484_2_, int p_76484_3_, int p_76484_4_, int p_76484_5_)
     {
-        int l = par2Random.nextInt(5) + 7;
-        int i1 = l - par2Random.nextInt(2) - 3;
+        int l = p_76484_2_.nextInt(4) + 6;
+        int i1 = 1 + p_76484_2_.nextInt(2);
         int j1 = l - i1;
-        int k1 = 1 + par2Random.nextInt(j1 + 1);
+        int k1 = 2 + p_76484_2_.nextInt(2);
         boolean flag = true;
 
-        if (par4 >= 1 && par4 + l + 1 <= 256)
+        if (p_76484_4_ >= 1 && p_76484_4_ + l + 1 <= 256)
         {
             int i2;
-            int j2;
-            int i3;
+            int l3;
 
-            for (int l1 = par4; l1 <= par4 + 1 + l && flag; ++l1)
+            for (int l1 = p_76484_4_; l1 <= p_76484_4_ + 1 + l && flag; ++l1)
             {
-                if (l1 - par4 < i1)
+                boolean flag1 = true;
+
+                if (l1 - p_76484_4_ < i1)
                 {
-                    i3 = 0;
+                    l3 = 0;
                 }
                 else
                 {
-                    i3 = k1;
+                    l3 = k1;
                 }
 
-                for (i2 = par3 - i3; i2 <= par3 + i3 && flag; ++i2)
+                for (i2 = p_76484_3_ - l3; i2 <= p_76484_3_ + l3 && flag; ++i2)
                 {
-                    for (j2 = par5 - i3; j2 <= par5 + i3 && flag; ++j2)
+                    for (int j2 = p_76484_5_ - l3; j2 <= p_76484_5_ + l3 && flag; ++j2)
                     {
                         if (l1 >= 0 && l1 < 256)
                         {
+                            Block block = p_76484_1_.getBlock(i2, l1, j2);
 
-                            if (!this.isReplaceable(par1World, i2, l1, j2))
+                            if (!block.isAir(p_76484_1_, i2, l1, j2) && !block.isLeaves(p_76484_1_, i2, l1, j2))
                             {
                                 flag = false;
                             }
@@ -67,48 +72,63 @@ public class WorldGenBloodTree extends WorldGenAbstractTree
             }
             else
             {
-                Block block1 = par1World.getBlock(par3, par4 - 1, par5);
+                Block block1 = p_76484_1_.getBlock(p_76484_3_, p_76484_4_ - 1, p_76484_5_);
 
-                boolean isSoil = block1.canSustainPlant(par1World, par3, par4 - 1, par5, ForgeDirection.UP, (BlockRioVSapling)RioVBlocks.bloodSapling);
-                if (isSoil && par4 < 256 - l - 1)
+                boolean isSoil = block1.canSustainPlant(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, ForgeDirection.UP, (BlockRioVSapling)RioVBlocks.bloodSapling);
+                if (isSoil && p_76484_4_ < 256 - l - 1)
                 {
-                    block1.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);
-                    i3 = 0;
+                    block1.onPlantGrow(p_76484_1_, p_76484_3_, p_76484_4_ - 1, p_76484_5_, p_76484_3_, p_76484_4_, p_76484_5_);
+                    l3 = p_76484_2_.nextInt(2);
+                    i2 = 1;
+                    byte b0 = 0;
+                    int k2;
+                    int i4;
 
-                    for (i2 = par4 + l; i2 >= par4 + i1; --i2)
+                    for (i4 = 0; i4 <= j1; ++i4)
                     {
-                        for (j2 = par3 - i3; j2 <= par3 + i3; ++j2)
+                        k2 = p_76484_4_ + l - i4;
+
+                        for (int l2 = p_76484_3_ - l3; l2 <= p_76484_3_ + l3; ++l2)
                         {
-                            int j3 = j2 - par3;
+                            int i3 = l2 - p_76484_3_;
 
-                            for (int k2 = par5 - i3; k2 <= par5 + i3; ++k2)
+                            for (int j3 = p_76484_5_ - l3; j3 <= p_76484_5_ + l3; ++j3)
                             {
-                                int l2 = k2 - par5;
+                                int k3 = j3 - p_76484_5_;
 
-                                if ((Math.abs(j3) != i3 || Math.abs(l2) != i3 || i3 <= 0) && !par1World.getBlock(j2, i2, k2).canBeReplacedByLeaves(par1World, j2, i2, k2))
+                                if ((Math.abs(i3) != l3 || Math.abs(k3) != l3 || l3 <= 0) && p_76484_1_.getBlock(l2, k2, j3).canBeReplacedByLeaves(p_76484_1_, l2, k2, j3))
                                 {
-                                    this.setBlockAndNotifyAdequately(par1World, j2, i2, k2, RioVBlocks.paleLeaf, 1);
+                                    this.setBlockAndNotifyAdequately(p_76484_1_, l2, k2, j3, RioVBlocks.paleLeaf, 1);
                                 }
                             }
                         }
 
-                        if (i3 >= 1 && i2 == par4 + i1 + 1)
+                        if (l3 >= i2)
                         {
-                            --i3;
+                            l3 = b0;
+                            b0 = 1;
+                            ++i2;
+
+                            if (i2 > k1)
+                            {
+                                i2 = k1;
+                            }
                         }
-                        else if (i3 < k1)
+                        else
                         {
-                            ++i3;
+                            ++l3;
                         }
                     }
 
-                    for (i2 = 0; i2 < l - 1; ++i2)
-                    {
-                        Block block2 = par1World.getBlock(par3, par4 + i2, par5);
+                    i4 = p_76484_2_.nextInt(3);
 
-                        if (block2.isAir(par1World, par3, par4 + i2, par5) || block2.isLeaves(par1World, par3, par4 + i2, par5))
+                    for (k2 = 0; k2 < l - i4; ++k2)
+                    {
+                        Block block2 = p_76484_1_.getBlock(p_76484_3_, p_76484_4_ + k2, p_76484_5_);
+
+                        if (block2.isAir(p_76484_1_, p_76484_3_, p_76484_4_ + k2, p_76484_5_) || block2.isLeaves(p_76484_1_, p_76484_3_, p_76484_4_ + k2, p_76484_5_))
                         {
-                            this.setBlockAndNotifyAdequately(par1World, par3, par4 + i2, par5, RioVBlocks.bloodLog, 1);
+                            this.setBlockAndNotifyAdequately(p_76484_1_, p_76484_3_, p_76484_4_ + k2, p_76484_5_, RioVBlocks.bloodLog, 1);
                         }
                     }
 

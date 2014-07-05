@@ -23,9 +23,4 @@ public class BiomeGenFlamonor extends BiomeGenBase
 		this.spawnableCaveCreatureList.clear();
 		this.theBiomeDecorator.treesPerChunk = 5;
 	}
-	
-    public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
-    {
-        return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenBloodTree(false) : new WorldGenBloodTree(false));
-    }
 }

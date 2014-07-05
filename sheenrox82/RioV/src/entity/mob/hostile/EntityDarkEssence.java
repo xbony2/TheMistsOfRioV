@@ -1,5 +1,7 @@
 package sheenrox82.RioV.src.entity.mob.hostile;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -8,10 +10,12 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
+import sheenrox82.RioV.src.util.MethodUtil;
 
 public class EntityDarkEssence extends EntityBossCore
 {
@@ -30,36 +34,37 @@ public class EntityDarkEssence extends EntityBossCore
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
-		Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A70The Darkness\u00A7f: *Screeeech*");
-		
-		if(this.worldObj.isRemote)
-		Minecraft.getMinecraft().thePlayer.sendChatMessage("The Darkness has vanished!");
+		{
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "The Darkness: *Screeeech*");
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "The Darkness has vanished!");
+		}
 	}
-	
+
 	@Override
 	protected void entityInit()
 	{
 		super.entityInit();
 		this.dataWatcher.addObject(16, new Integer(100));
 	}
-	
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.writeEntityToNBT(par1NBTTagCompound);
 	}
-	
+
 	@Override
 	public void onLivingUpdate()
 	{
 		if (!this.worldObj.isRemote)
 		{
 		}
-		
+
 		if (this.rand.nextInt(24) == 0)
 		{
 		}
@@ -77,14 +82,14 @@ public class EntityDarkEssence extends EntityBossCore
 		}
 		super.onLivingUpdate();
 	}
-	
+
 	@Override
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readEntityFromNBT(par1NBTTagCompound);
 
 	}
-	
+
 	@Override
 	protected void applyEntityAttributes()
 	{

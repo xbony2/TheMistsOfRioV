@@ -23,6 +23,7 @@ public class BlockSkycloud extends Block
 	public BlockSkycloud()
 	{
 		super(Materials.customMaterial);
+		this.setStepSound(this.soundTypeCloth);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 

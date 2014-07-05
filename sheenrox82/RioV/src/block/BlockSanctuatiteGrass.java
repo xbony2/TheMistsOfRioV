@@ -27,6 +27,7 @@ public class BlockSanctuatiteGrass extends Block
 	{
 		super(Material.grass);
 		this.setTickRandomly(true);
+		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 

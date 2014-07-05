@@ -27,6 +27,7 @@ public class BlockBush extends BlockFlower
 	{
 		super(0);
 		this.setCreativeTab(null);
+		this.setStepSound(Block.soundTypeGrass);
 		this.setHardness(0.3F);
 		float f = 0.375F;
 		float f1 = f / 2.0F;
@@ -137,7 +138,7 @@ public class BlockBush extends BlockFlower
 	@Override
 	protected boolean canPlaceBlockOn(Block block)
 	{
-		if(block == RioVBlocks.bloodBerryBush || block == RioVBlocks.paleBush)
+		if(this == RioVBlocks.bloodBerryBush || this == RioVBlocks.paleBush)
 		{
 			return block == RioVBlocks.bloodDirt || block == RioVBlocks.bloodGrass;
 		}

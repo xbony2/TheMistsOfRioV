@@ -27,6 +27,7 @@ public class BlockRioVFence extends BlockFence
     {
         super(par2Str, Material.wood);
         this.field_94464_a = par2Str;
+		this.setStepSound(Block.soundTypeWood);
         this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
 

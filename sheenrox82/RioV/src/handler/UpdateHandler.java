@@ -17,7 +17,7 @@ public class UpdateHandler
 
 		versionFile.close();
 
-		if (!curVersion.contains(Util.VERSION))
+		if (!curVersion.equals(Util.VERSION))
 		{
 			return true;
 		}

@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.MethodUtil;
@@ -16,16 +17,17 @@ public class BlockRioVTallGrass extends BlockFlower
 {
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
-	
+
 	public BlockRioVTallGrass()
 	{
 		super(0);
+		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(null);
 	}
 
 	@Override
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
+	{
 		return this.blockIcon;
 	}
 
@@ -40,4 +42,9 @@ public class BlockRioVTallGrass extends BlockFlower
 		return -1;
 	}
 
+	@Override
+	protected boolean canPlaceBlockOn(Block block)
+	{
+		return block == RioVBlocks.sanctuatiteTallGrass;
+	}
 }

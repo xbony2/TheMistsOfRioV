@@ -25,9 +25,4 @@ public class BiomeGenGlimmerwood extends BiomeGenBase
 		this.spawnableCaveCreatureList.clear();
 		this.theBiomeDecorator.treesPerChunk = 8;
 	}
-
-	public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
-	{
-		return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenGlimmerWoodTree(false) : new WorldGenGlimmerWoodTree2(false));
-	}
 }

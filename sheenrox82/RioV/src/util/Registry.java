@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.MinecraftForge;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.Crafting;
@@ -21,13 +20,8 @@ import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.handler.packet.PacketPipeline;
 import sheenrox82.RioV.src.recipe.AnvilCraftingManager;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
-import sheenrox82.RioV.src.tileentity.TileEntityBloodChest;
-import sheenrox82.RioV.src.tileentity.TileEntityCherryBlossomChest;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
-import sheenrox82.RioV.src.tileentity.TileEntityGlimmerwoodChest;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
-import sheenrox82.RioV.src.tileentity.TileEntityShrine;
-import sheenrox82.RioV.src.tileentity.TileEntitySkywoodChest;
 import sheenrox82.RioV.src.world.WorldGen;
 import sheenrox82.RioV.src.world.provider.WorldProviderBlindOasis;
 import sheenrox82.RioV.src.world.provider.WorldProviderFlamonor;
@@ -78,11 +72,6 @@ public class Registry
 		HarvestLevelRegistry.addHarvestLevels();
 		GameRegistry.registerFuelHandler(new FuelHandler());
 		GameRegistry.registerTileEntity(TileEntityInfuser.class, "Infuser");
-		GameRegistry.registerTileEntity(TileEntityGlimmerwoodChest.class, "GlimmerwoodChest");
-		GameRegistry.registerTileEntity(TileEntityCherryBlossomChest.class, "CherryBlossomChest");
-		GameRegistry.registerTileEntity(TileEntityBloodChest.class, "BloodChest");
-		GameRegistry.registerTileEntity(TileEntitySkywoodChest.class, "SkywoodChest");
-		GameRegistry.registerTileEntity(TileEntityShrine.class, "Shrine");
 		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
@@ -115,13 +104,13 @@ public class Registry
 	public static void postInit(FMLPostInitializationEvent postInit)
 	{
 		FMLLog.info("[" + Util.MOD_NAME + "] Loading...");
+		packetPipeline.postInitialise();
+
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
 		{
 			MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
 		}
 
-		BiomeDictionary.registerAllBiomes();
-		packetPipeline.postInitialise();
 		Config.initPost();
 		FMLLog.info("[" + Util.MOD_NAME + "] Loaded! Have fun!");
 	}

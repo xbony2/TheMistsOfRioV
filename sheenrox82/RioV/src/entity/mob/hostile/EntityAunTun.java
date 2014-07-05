@@ -19,12 +19,16 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
+import sheenrox82.RioV.src.util.MethodUtil;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityAunTun extends EntityBossCore
 {
@@ -63,24 +67,25 @@ public class EntityAunTun extends EntityBossCore
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.supremeAunTunChestplate));
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.supremeAunTunLeggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.supremeAunTunBoots));
-		
+
 		if(TheMistsOfRioV.getInstance().riovValis)
 		{
 			isImmuneToFire = true;
 		}
 	}
-	
+
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
-		Minecraft.getMinecraft().thePlayer.sendChatMessage("Aun'Tun: *Rupture");
-		
-		if(this.worldObj.isRemote)
-		Minecraft.getMinecraft().thePlayer.sendChatMessage("Aun'Tun was destroyed!");
+		{
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Aun'Tun: *Rupture");
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Aun'Tun was destroyed!");
+		}
 	}
-	
+
 	@Override
 	public void onLivingUpdate()
 	{
@@ -102,16 +107,16 @@ public class EntityAunTun extends EntityBossCore
 		{
 			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 		}
-		
+
 		super.onLivingUpdate();
 	}
-	
+
 	@Override
 	public boolean isAIEnabled()
 	{
 		return true;
 	}
-	
+
 	@Override
 	public ItemStack getHeldItem()
 	{
@@ -122,7 +127,7 @@ public class EntityAunTun extends EntityBossCore
 	{
 		defaultHeldItem = new ItemStack(RioVItems.ultraAxeOfAunTun);
 	}
-	
+
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
@@ -141,7 +146,7 @@ public class EntityAunTun extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(6000.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(3000.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(28.0D);
 	}

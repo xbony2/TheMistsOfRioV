@@ -38,7 +38,6 @@ import sheenrox82.RioV.src.entity.mob.passive.EntityOrc;
 import sheenrox82.RioV.src.entity.mob.passive.EntityRabbit;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySoverianOfficer;
-import sheenrox82.RioV.src.entity.mob.passive.EntityTasaravMallor;
 import sheenrox82.RioV.src.entity.mob.passive.EntityWoodElf;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
@@ -79,7 +78,6 @@ public class EntityLoader
 		MethodUtil.registerEntity(EntityRabbit.class, "Rabbit");
 		MethodUtil.registerEntity(EntitySoverianOfficer.class, "Soverian Officer");
 		MethodUtil.registerEntity(EntityWoodElf.class, "Dark Wood Elf Assassin");
-		MethodUtil.registerEntity(EntityTasaravMallor.class, "Tasarav Mallor");
 		MethodUtil.registerEntity(EntityDarkMatter.class, "Dark Matter");
 		MethodUtil.registerEntity(EntityPaladin.class, "Paladin");
 		MethodUtil.registerEntity(EntityPinkEssence.class, "Pink Essence");

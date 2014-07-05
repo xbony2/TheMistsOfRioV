@@ -165,7 +165,7 @@ public class WorldProviderBlindOasis extends WorldProvider
         f3 = 0.9F * f2;
         f4 = 0.75F * f2;
         f5 = 0.6F * f2;
-        return this.worldObj.getWorldVec3Pool().getVecFromPool((double)f3, (double)f4, (double)f5);
+        return Vec3.createVectorHelper((double)f3, (double)f4, (double)f5);
     }
     
     @Override

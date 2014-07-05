@@ -23,7 +23,7 @@ public class BlockFlag extends BlockContainer
 	public BlockFlag() 
 	{
 		super(Material.wood);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+//		/this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
 	}
 

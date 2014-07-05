@@ -20,7 +20,6 @@ public class GuiEosBar extends Gui
 {
 	public Minecraft mc;
 
-	@SideOnly(Side.CLIENT)
 	public GuiEosBar(Minecraft mc)
 	{
 		super();
@@ -36,10 +35,9 @@ public class GuiEosBar extends Gui
 			return;
 		}
 
+		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/eos_bar.png");
 		PlayerNBT props = PlayerNBT.get(mc.thePlayer);
 		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
-		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/eos_bar.png");
-		int height = event.resolution.getScaledHeight();
 
 		if (props == null || props.maxEos == 0)
 		{
@@ -50,11 +48,14 @@ public class GuiEosBar extends Gui
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
-				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+				GL11.glPushMatrix();
 				Minecraft.getMinecraft().renderEngine.bindTexture(icons);
-				float magicka = (int)(((float) props.getCurrentEos() / props.maxEos) * 80);
+				int height = event.resolution.getScaledHeight();
+				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+				float magicka = (((float) props.getCurrentEos() / props.maxEos) * 80);
 				this.drawTexturedModalRect(20, height - 20, 0, 49, 102, 14);
 				this.drawTexturedModalRect(31, height - 16, 11, 64, (int)magicka, 6);
+				GL11.glPopMatrix();
 			}
 		}
 
@@ -62,6 +63,7 @@ public class GuiEosBar extends Gui
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
+				int height = event.resolution.getScaledHeight();
 				GL11.glPushMatrix();
 				fontrenderer.drawStringWithShadow("Eos: " + props.getCurrentEos() + "/" + props.maxEos, 32, height - 18, 16777215);
 				GL11.glPopMatrix();

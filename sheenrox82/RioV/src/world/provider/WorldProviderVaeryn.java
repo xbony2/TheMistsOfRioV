@@ -7,6 +7,7 @@ import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.Biomes;
+import sheenrox82.RioV.src.world.chunk.ChunkProviderFlamonor;
 import sheenrox82.RioV.src.world.chunk.ChunkProviderVaeryn;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -21,6 +22,11 @@ public class WorldProviderVaeryn extends WorldProvider
 		this.hasNoSky = false;
 	}
 
+	public IChunkProvider createChunkGenerator()
+	{
+		return new ChunkProviderVaeryn(this.worldObj, this.worldObj.getSeed());
+	}
+	
     public String getDimensionName()
     {
         return "Vaeryn";

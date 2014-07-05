@@ -1,5 +1,7 @@
 package sheenrox82.RioV.src.block;
  
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -23,7 +25,7 @@ public class BlockVaerynPortal extends BlockPortal
     {
         super();
         setBlockName(Util.MOD_ID + ":" + "vaerynPortal");
-        setCreativeTab(TheMistsOfRioV.getInstance().tab);
+      //  setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
  
     @Override
@@ -189,4 +191,10 @@ public class BlockVaerynPortal extends BlockPortal
 	{
 		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	} 
+	
+	@SideOnly(Side.CLIENT)
+    public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
+    {
+
+    }
 }

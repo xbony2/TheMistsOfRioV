@@ -3,6 +3,7 @@ package sheenrox82.RioV.src.block;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockWorkbench;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,6 +36,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 	public BlockRioVWorkbench()
 	{
 		super();
+		this.setStepSound(Block.soundTypeWood);
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 

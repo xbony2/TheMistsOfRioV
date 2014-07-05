@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
@@ -20,15 +19,16 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenLakes;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenScatteredFeature;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import sheenrox82.RioV.src.content.Biomes;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
-import sheenrox82.RioV.src.world.mineable.WorldGenFlamonorMineable;
+import sheenrox82.RioV.src.world.mineable.WorldGenSanctuatiteMineable;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderSanctuatite implements IChunkProvider{
@@ -54,12 +54,12 @@ public class ChunkProviderSanctuatite implements IChunkProvider{
 	double[] noise6;
 	int[][] field_914_i = new int[32][32];
 	private double[] generatedTemperatures;
-    private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
+	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 
-    {
-        scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);	
-    }
-    
+	{
+		scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);	
+	}
+
 	public ChunkProviderSanctuatite(World var1, long var2){
 		this.worldObj = var1;
 		this.rand = new Random(var2);
@@ -146,7 +146,7 @@ public class ChunkProviderSanctuatite implements IChunkProvider{
 		this.replaceBlocksForBiome(par1, par2, ablock, this.biomesForGeneration);
 		Chunk chunk = new Chunk(this.worldObj, ablock, par1, par2);
 		byte[] abyte = chunk.getBiomeArray();
-        this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, par1, par2, ablock);
+		this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, par1, par2, ablock);
 
 		for (int k = 0; k < abyte.length; ++k) {
 			abyte[k] = (byte)this.biomesForGeneration[k].biomeID;
@@ -327,34 +327,57 @@ public class ChunkProviderSanctuatite implements IChunkProvider{
 	}
 
 	@Override
-	public void populate(IChunkProvider ichunkprovider, int i, int j) {
-		BlockFalling.fallInstantly = true;
-		int var4 = i * 16;
-		int var5 = j * 16;
-		BiomeGenBase var6 = this.worldObj.getWorldChunkManager().getBiomeGenAt(var4 + 16, var5 + 16);
+	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
+	{
+		BlockSand.fallInstantly = true;
+		int k = par2 * 16;
+		int l = par3 * 16;
+		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
+		long i1 = this.rand.nextLong() / 2L * 2L + 1L;
+		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
+		this.rand.setSeed((long)par2 * i1 + (long)par3 * j1 ^ this.worldObj.getSeed());
+		boolean flag = false;
 		int var13;
 		int var14;
 		int var15;
 		int var16;
+		int d, y;
 
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(ichunkprovider, worldObj, rand, i, j, false));
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, false));
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(worldObj, rand, k, l));
 
-		for (var13 = 0; var13 < 19; ++var13) 
+		this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
+
+		for(int x =0; x < 8; x++)
 		{
-			var14 = var4 + this.rand.nextInt(16);
-			var15 = this.rand.nextInt(200);
-			var16 = var5 + this.rand.nextInt(16);
-			(new WorldGenFlamonorMineable(RioVBlocks.steamingBloodDeposit, 11, RioVBlocks.flamonorRock)).generate(this.worldObj, this.rand, var14, var15, var16);
-			(new WorldGenFlamonorMineable(RioVBlocks.drakiuzOre, 8, RioVBlocks.flamonorRock)).generate(this.worldObj, this.rand, var14, var15, var16);
+			var14 = k + this.rand.nextInt(16);
+			var15 = this.rand.nextInt(128);
+			var16 = l + this.rand.nextInt(16);
+			(new WorldGenSanctuatiteMineable(RioVBlocks.alerisOre, 3)).generate(this.worldObj, this.rand, var14, var15, var16);
 		}
 
-		this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, i, j);
+		byte var22 = 4;
+		byte var21 = 3;
+		int var17;
+		WorldGenerator var18;
 
-		SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
+		for (int var0 = 0; var0 < var22; ++var0)
+		{
+			int Xcoord = k + rand.nextInt(16);
+			int Zcoord = l + rand.nextInt(16) + 8;
+			var18 = biomegenbase.getRandomWorldGenForGrass(this.rand);
+			var18.setScale(1.0D, 1.0D, 1.0D);
+			var18.generate(this.worldObj, this.rand, Xcoord, this.worldObj.getHeightValue(Xcoord, Zcoord), Zcoord);
+		}
 
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(ichunkprovider, worldObj, rand, i, j, false));
-		
+		biomegenbase.decorate(this.worldObj, this.rand, k, l);
+		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
+
+		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(worldObj, rand, k, l));
+		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, false));
+
+
 		BlockSand.fallInstantly = false;
 	}
 

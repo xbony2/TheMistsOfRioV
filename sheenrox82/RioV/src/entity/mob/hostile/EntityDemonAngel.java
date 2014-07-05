@@ -9,11 +9,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
+import sheenrox82.RioV.src.util.MethodUtil;
 
 public class EntityDemonAngel extends EntityBossCore
 {
@@ -37,10 +39,10 @@ public class EntityDemonAngel extends EntityBossCore
 	{
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("\u00A74Demon Angel\u00A7f: Aarrrrrrgghhhhhhhh!");
-
-		if(this.worldObj.isRemote)
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("Demon Angel was killed!");
+		{
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Demon Angel: Aarrrrrrgghhhhhhhh!");
+			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Demon Angel was killed!");
+		}
 	}
 
 	@Override
@@ -154,7 +156,7 @@ public class EntityDemonAngel extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(1500.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(1.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(17.0D);
 	}

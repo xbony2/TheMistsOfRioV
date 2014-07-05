@@ -61,21 +61,66 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
         return blockIcon;
     }
 
-    public void func_149879_c(World p_149879_1_, int p_149879_2_, int p_149879_3_, int p_149879_4_, Random p_149879_5_)
+    public void func_149879_c(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        int l = p_149879_1_.getBlockMetadata(p_149879_2_, p_149879_3_, p_149879_4_);
+    	if(this == RioVBlocks.glimmerwoodSapling)
+		{
+			int l = par1World.getBlockMetadata(par2, par2, par3);
+			/** change this block to your custom grass block **/
+			if ((l & 8) == 0)
+			{
+				par1World.setBlockMetadataWithNotify(par2, par2, par3, l | 8, 4);
+			}
+			else
+			{
+				this.func_149878_d(par1World, par2, par3, par4, par5Random);
+			}
+		}
 
-        if ((l & 8) == 0)
-        {
-            p_149879_1_.setBlockMetadataWithNotify(p_149879_2_, p_149879_3_, p_149879_4_, l | 8, 4);
-        }
-        else
-        {
-            this.func_149878_d(p_149879_1_, p_149879_2_, p_149879_3_, p_149879_4_, p_149879_5_);
-        }
+		if(this == RioVBlocks.cherryBlossomSapling)
+		{
+			int l = par1World.getBlockMetadata(par2, par3, par4);
+			/** change this block to your custom grass block **/
+			if ((l & 8) == 0)
+			{
+				par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
+			}
+			else
+			{
+				this.func_149878_d(par1World, par2, par3, par4, par5Random);
+			}
+		}
+
+		if(this == RioVBlocks.bloodSapling)
+		{
+			int l = par1World.getBlockMetadata(par2, par3, par4);
+			/** change this block to your custom grass block **/
+			if ((l & 8) == 0)
+			{
+				par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
+			}
+			else
+			{
+				this.func_149878_d(par1World, par2, par3, par4, par5Random);
+			}
+		}
+
+		if(this == RioVBlocks.skywoodSapling)
+		{
+			int l = par1World.getBlockMetadata(par2, par3, par4);
+			/** change this block to your custom grass block **/
+			if ((l & 8) == 0)
+			{
+				par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
+			}
+			else
+			{
+				this.func_149878_d(par1World, par2, par3, par4, par5Random);
+			}
+		}
     }
 
-	public void growTree(World par1World, int par2, int par3, int par4, Random par5Random)
+	public void func_149878_d(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
 		if(this == RioVBlocks.glimmerwoodSapling)
 		{
@@ -358,16 +403,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 		}
 	}
 
-	public boolean func_149880_a(World p_149880_1_, int p_149880_2_, int p_149880_3_, int p_149880_4_, int p_149880_5_)
-	{
-		return p_149880_1_.getBlock(p_149880_2_, p_149880_3_, p_149880_4_) == this && (p_149880_1_.getBlockMetadata(p_149880_2_, p_149880_3_, p_149880_4_) & 7) == p_149880_5_;
-	}
-
-	public int func_149692_a(int p_149692_1_)
-	{
-		return MathHelper.clamp_int(p_149692_1_ & 7, 0, 5);
-	}
-
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
 	{
@@ -380,18 +415,21 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 		blockIcon = p_149651_1_.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 	}
 
-	public boolean func_149851_a(World p_149851_1_, int p_149851_2_, int p_149851_3_, int p_149851_4_, boolean p_149851_5_)
+	protected boolean canPlaceBlockOn(Block block)
 	{
-		return true;
-	}
-
-	public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_)
-	{
-		return (double)p_149852_1_.rand.nextFloat() < 0.45D;
-	}
-
-	public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_)
-	{
-		this.func_149879_c(p_149853_1_, p_149853_3_, p_149853_4_, p_149853_5_, p_149853_2_);
+		if(this == RioVBlocks.glimmerwoodSapling)
+		{
+			return block == RioVBlocks.glimmerGrass;
+		}
+		if(this == RioVBlocks.skywoodSapling)
+		{
+			return block == RioVBlocks.sanctuatiteGrass;
+		}
+		if(this == RioVBlocks.bloodSapling)
+		{
+			return block == RioVBlocks.bloodGrass;
+		}
+		
+		return block == Blocks.grass;
 	}
 }

@@ -72,7 +72,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.glimmerwoodTrapdoor, 2), "XXX", "XXX", Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.glimmerwoodLadder, 3), "X X", "XXX", "X X", Character.valueOf('X'), RioVItems.glimmerwoodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.flamonorActivator, 1), "  *", " X ", "*  ", Character.valueOf('*'), RioVItems.onyx, Character.valueOf('X'), RioVBlocks.bloodRock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.glimmerwoodChest, 1), "XXX", "X X", "XXX", Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.slateBricks, 4), "XX", "XX", Character.valueOf('X'), RioVBlocks.slate);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.slate, 1), "XXX", "XXX", "XXX", Character.valueOf('X'), RioVItems.slateFragment);
 		GameRegistry.addSmelting(RioVBlocks.slateCobble, new ItemStack(RioVBlocks.slate, 1), 1F);
@@ -84,7 +83,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.cherryBlossomLadder, 3), "X X", "XXX", "X X", Character.valueOf('X'), RioVItems.cherryBlossomSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.cherryBlossomFenceGate, 1), "XOX", "XOX", Character.valueOf('O'), RioVBlocks.cherryPlanks,  Character.valueOf('X'), RioVItems.cherryBlossomSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.cherryBlossomSticks, 4), "X", "X", Character.valueOf('X'), RioVBlocks.cherryPlanks);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.cherryBlossomChest, 1), "XXX", "X X", "XXX", Character.valueOf('X'), RioVBlocks.cherryPlanks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.cherryBlossomFence, 2), "XXX", "XXX", Character.valueOf('X'), RioVItems.cherryBlossomSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.sanctuatiteActivator, 1), "  *", " X ", "*  ", Character.valueOf('*'), RioVItems.drakiuz, Character.valueOf('X'), RioVBlocks.blindoniteBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.skywoodPlanks, 4), "X", Character.valueOf('X'), RioVBlocks.skywoodLog);
@@ -94,7 +92,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.skywoodLadder, 3), "X X", "XXX", "X X", Character.valueOf('X'), RioVItems.skywoodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.skywoodFenceGate, 1), "XOX", "XOX", Character.valueOf('O'), RioVBlocks.skywoodPlanks,  Character.valueOf('X'), RioVItems.skywoodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.skywoodSticks, 4), "X", "X", Character.valueOf('X'), RioVBlocks.skywoodPlanks);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.skywoodChest, 1), "XXX", "X X", "XXX", Character.valueOf('X'), RioVBlocks.skywoodPlanks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.skywoodFence, 2), "XXX", "XXX", Character.valueOf('X'), RioVItems.skywoodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodPlanks, 4), "X", Character.valueOf('X'), RioVBlocks.bloodLog);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodWorkbench, 1), "XX", "XX", Character.valueOf('X'), RioVBlocks.bloodPlanks);
@@ -103,7 +100,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodLadder, 3), "X X", "XXX", "X X", Character.valueOf('X'), RioVItems.bloodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodFenceGate, 1), "XOX", "XOX", Character.valueOf('O'), RioVBlocks.bloodPlanks,  Character.valueOf('X'), RioVItems.bloodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.bloodSticks, 4), "X", "X", Character.valueOf('X'), RioVBlocks.bloodPlanks);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodChest, 1), "XXX", "X X", "XXX", Character.valueOf('X'), RioVBlocks.bloodPlanks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodFence, 2), "XXX", "XXX", Character.valueOf('X'), RioVItems.bloodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.anvil, 1), "XOX", "XXX", Character.valueOf('X'), RioVBlocks.slateBricks, Character.valueOf('O'), new ItemStack(Blocks.wool, 1, 14));
 		GameRegistry.addRecipe(new ItemStack(RioVItems.voidHolder, 1), "X X", " X ", Character.valueOf('X'), RioVItems.onyx);

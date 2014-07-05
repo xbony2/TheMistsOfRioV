@@ -29,199 +29,199 @@ public class RioVActivators extends Item
 		if(this ==  RioVItems.blindOasisActivator)
 		{
 			if (par7 == 0)
-	        {
-	            --par5;
-	        }
+			{
+				--par5;
+			}
 
-	        if (par7 == 1)
-	        {
-	            ++par5;
-	        }
+			if (par7 == 1)
+			{
+				++par5;
+			}
 
-	        if (par7 == 2)
-	        {
-	            --par6;
-	        }
+			if (par7 == 2)
+			{
+				--par6;
+			}
 
-	        if (par7 == 3)
-	        {
-	            ++par6;
-	        }
+			if (par7 == 3)
+			{
+				++par6;
+			}
 
-	        if (par7 == 4)
-	        {
-	            --par4;
-	        }
+			if (par7 == 4)
+			{
+				--par4;
+			}
 
-	        if (par7 == 5)
-	        {
-	            ++par4;
-	        }
+			if (par7 == 5)
+			{
+				++par4;
+			}
 
-	        if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
-	        {
-	            return false;
-	        }
-	        else
-	        {
-	            if (par3World.isAirBlock(par4, par5, par6))
-	            {
-	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.setBlock(par4, par5, par6, RioVBlocks.blackFire);
-	            }
+			if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+			{
+				return false;
+			}
+			else
+			{
+				if (par3World.isAirBlock(par4, par5, par6))
+				{
+					par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+					par3World.setBlock(par4, par5, par6, RioVBlocks.blackFire);
+				}
 
-	            par1ItemStack.damageItem(1, par2EntityPlayer);
-	            return true;
-	        }
+				par1ItemStack.damageItem(1, par2EntityPlayer);
+				return true;
+			}
 		}
 
 		if(this == RioVItems.vaerynActivator)
 		{
 			if (par7 == 0)
-	        {
-	            --par5;
-	        }
+			{
+				--par5;
+			}
 
-	        if (par7 == 1)
-	        {
-	            ++par5;
-	        }
+			if (par7 == 1)
+			{
+				++par5;
+			}
 
-	        if (par7 == 2)
-	        {
-	            --par6;
-	        }
+			if (par7 == 2)
+			{
+				--par6;
+			}
 
-	        if (par7 == 3)
-	        {
-	            ++par6;
-	        }
+			if (par7 == 3)
+			{
+				++par6;
+			}
 
-	        if (par7 == 4)
-	        {
-	            --par4;
-	        }
+			if (par7 == 4)
+			{
+				--par4;
+			}
 
-	        if (par7 == 5)
-	        {
-	            ++par4;
-	        }
+			if (par7 == 5)
+			{
+				++par4;
+			}
 
-	        if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
-	        {
-	            return false;
-	        }
-	        else
-	        {
-	        	if (par3World.isAirBlock(par4, par5, par6))
-	            {
-	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.setBlock(par4, par5, par6, RioVBlocks.whiteFire);
-	            }
+			if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+			{
+				return false;
+			}
+			else
+			{
+				if (par3World.isAirBlock(par4, par5, par6))
+				{
+					par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+					par3World.setBlock(par4, par5, par6, RioVBlocks.whiteFire);
+				}
 
-	            par1ItemStack.damageItem(1, par2EntityPlayer);
-	            return true;
-	        }
+				par1ItemStack.damageItem(1, par2EntityPlayer);
+				return true;
+			}
 		}
-		
+
 		if(this == RioVItems.flamonorActivator)
 		{
 			if (par7 == 0)
-	        {
-	            --par5;
-	        }
+			{
+				--par5;
+			}
 
-	        if (par7 == 1)
-	        {
-	            ++par5;
-	        }
+			if (par7 == 1)
+			{
+				++par5;
+			}
 
-	        if (par7 == 2)
-	        {
-	            --par6;
-	        }
+			if (par7 == 2)
+			{
+				--par6;
+			}
 
-	        if (par7 == 3)
-	        {
-	            ++par6;
-	        }
+			if (par7 == 3)
+			{
+				++par6;
+			}
 
-	        if (par7 == 4)
-	        {
-	            --par4;
-	        }
+			if (par7 == 4)
+			{
+				--par4;
+			}
 
-	        if (par7 == 5)
-	        {
-	            ++par4;
-	        }
+			if (par7 == 5)
+			{
+				++par4;
+			}
 
-	        if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
-	        {
-	            return false;
-	        }
-	        else
-	        {
-	        	if (par3World.isAirBlock(par4, par5, par6))
-	            {
-	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.setBlock(par4, par5, par6, RioVBlocks.redFire);
-	            }
+			if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+			{
+				return false;
+			}
+			else
+			{
+				if (par3World.isAirBlock(par4, par5, par6))
+				{
+					par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+					par3World.setBlock(par4, par5, par6, RioVBlocks.redFire);
+				}
 
-	            par1ItemStack.damageItem(1, par2EntityPlayer);
-	            return true;
-	        }
+				par1ItemStack.damageItem(1, par2EntityPlayer);
+				return true;
+			}
 		}
 
 		if(this == RioVItems.sanctuatiteActivator)
 		{
 			if (par7 == 0)
-	        {
-	            --par5;
-	        }
+			{
+				--par5;
+			}
 
-	        if (par7 == 1)
-	        {
-	            ++par5;
-	        }
+			if (par7 == 1)
+			{
+				++par5;
+			}
 
-	        if (par7 == 2)
-	        {
-	            --par6;
-	        }
+			if (par7 == 2)
+			{
+				--par6;
+			}
 
-	        if (par7 == 3)
-	        {
-	            ++par6;
-	        }
+			if (par7 == 3)
+			{
+				++par6;
+			}
 
-	        if (par7 == 4)
-	        {
-	            --par4;
-	        }
+			if (par7 == 4)
+			{
+				--par4;
+			}
 
-	        if (par7 == 5)
-	        {
-	            ++par4;
-	        }
+			if (par7 == 5)
+			{
+				++par4;
+			}
 
-	        if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
-	        {
-	            return false;
-	        }
-	        else
-	        {
-	        	if (par3World.isAirBlock(par4, par5, par6))
-	            {
-	                par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-	                par3World.setBlock(par4, par5, par6, RioVBlocks.sanctuatiteFire);
-	            }
+			if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+			{
+				return false;
+			}
+			else
+			{
+				if (par3World.isAirBlock(par4, par5, par6))
+				{
+					par3World.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+					par3World.setBlock(par4, par5, par6, RioVBlocks.sanctuatiteFire);
+				}
 
-	            par1ItemStack.damageItem(1, par2EntityPlayer);
-	            return true;
-	        }
+				par1ItemStack.damageItem(1, par2EntityPlayer);
+				return true;
+			}
 		}
-	
+
 		return true;
 	}
 

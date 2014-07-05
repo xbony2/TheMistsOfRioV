@@ -218,7 +218,7 @@ public class EntityRabbit extends EntityTameableDeadBody
 				}
 			}
 
-			if (par1EntityPlayer.getCommandSenderName().equalsIgnoreCase(this.getOwnerName()) && !this.worldObj.isRemote)
+			if (par1EntityPlayer.getCommandSenderName().equalsIgnoreCase(this.getOwner().getUniqueID().toString()) && !this.worldObj.isRemote)
 			{
 				this.aiSit.setSitting(!this.isSitting());
 				this.isJumping = false;
@@ -249,7 +249,7 @@ public class EntityRabbit extends EntityTameableDeadBody
 					this.setAttackTarget((EntityLivingBase)null);
 					this.aiSit.setSitting(true);
 					this.setHealth(20.0F);
-					this.setOwner(par1EntityPlayer.getCommandSenderName());
+					this.func_152115_b(par1EntityPlayer.getUniqueID().toString());
 					this.playTameEffect(true);
 					this.worldObj.setEntityState(this, (byte)7);
 				}
@@ -278,20 +278,6 @@ public class EntityRabbit extends EntityTameableDeadBody
 		{
 			super.handleHealthUpdate(par1);
 		}
-	}
-
-	public EntityRabbit spawnBabyAnimal(EntityAgeable par1EntityAgeable)
-	{
-		EntityRabbit entitywolf = new EntityRabbit(this.worldObj);
-		String s = this.getOwnerName();
-
-		if (s != null && s.trim().length() > 0)
-		{
-			entitywolf.setOwner(s);
-			entitywolf.setTamed(true);
-		}
-
-		return entitywolf;
 	}
 
 	public void func_70918_i(boolean par1)
@@ -364,6 +350,6 @@ public class EntityRabbit extends EntityTameableDeadBody
 	@Override
 	public EntityAgeable createChild(EntityAgeable par1EntityAgeable)
 	{
-		return this.spawnBabyAnimal(par1EntityAgeable);
+		return null;
 	}
 }

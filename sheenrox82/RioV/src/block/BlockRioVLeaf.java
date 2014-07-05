@@ -17,6 +17,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
@@ -248,6 +249,19 @@ public class BlockRioVLeaf extends BlockLeavesBase
 
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
+    	if(this == RioVBlocks.glimmerwoodLeaf)
+    	{
+            return Item.getItemFromBlock(RioVBlocks.glimmerwoodSapling);
+    	}
+    	if(this == RioVBlocks.paleLeaf)
+    	{
+            return Item.getItemFromBlock(RioVBlocks.bloodSapling);
+    	}
+    	if(this == RioVBlocks.cherryLeaf)
+    	{
+            return Item.getItemFromBlock(RioVBlocks.cherryBlossomSapling);
+    	}
+    	
         return Item.getItemFromBlock(Blocks.sapling);
     }
 
