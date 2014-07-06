@@ -26,6 +26,7 @@ public class Biomes
 
 	public static void add()
 	{
+		//OH SHIT I FORGOT TO ACTUALLY ADD THESE
 		 BiomeDictionary.registerBiomeType(snowyMountains, Type.FROZEN);
          BiomeManager.addSpawnBiome(snowyMountains);
          BiomeDictionary.registerBiomeType(savannah, Type.DESERT);

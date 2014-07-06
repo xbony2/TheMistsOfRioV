@@ -403,6 +403,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		return true;
 	}
 
+	//does anyone actually know what this does?
 	@Override
 	public String makeString() {
 		return "Vaeryn";
