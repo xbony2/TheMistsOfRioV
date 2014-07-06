@@ -405,7 +405,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
 
 	@Override
 	public String makeString() {
-		return "Iceika";
+		return "Vaeryn";
 	}
 
 	@Override
