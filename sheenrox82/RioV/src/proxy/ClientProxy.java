@@ -3,18 +3,7 @@ package sheenrox82.RioV.src.proxy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
-import sheenrox82.RioV.expansion.bosses.EntityChickenBoss;
-import sheenrox82.RioV.expansion.bosses.EntityCowBoss;
-import sheenrox82.RioV.expansion.bosses.EntityPigBoss;
-import sheenrox82.RioV.expansion.bosses.EntitySheepBoss;
-import sheenrox82.RioV.expansion.bosses.ModelSheep1;
-import sheenrox82.RioV.expansion.bosses.ModelSheep2;
-import sheenrox82.RioV.expansion.bosses.RenderChickenBoss;
-import sheenrox82.RioV.expansion.bosses.RenderCowBoss;
-import sheenrox82.RioV.expansion.bosses.RenderPigBoss;
-import sheenrox82.RioV.expansion.bosses.RenderSheepBoss;
 import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
@@ -120,15 +109,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityPaladin.class, new RenderPaladin());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPinkEssence.class, new RenderPinkEssence(new ResourceLocation(Util.MOD_ID + ":" + "pinkEssence.png")));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":" + "darkMatter.png")));
-
-		if(TheMistsOfRioV.getInstance().bosses)
-		{
-			RenderingRegistry.registerEntityRenderingHandler(EntityCowBoss.class, new RenderCowBoss());
-			RenderingRegistry.registerEntityRenderingHandler(EntitySheepBoss.class, new RenderSheepBoss(new ModelSheep2(), new ModelSheep1()));
-			RenderingRegistry.registerEntityRenderingHandler(EntityPigBoss.class, new RenderPigBoss());
-			RenderingRegistry.registerEntityRenderingHandler(EntityChickenBoss.class, new RenderChickenBoss(new ResourceLocation(Util.MOD_ID + ":" + "textures/entity/ChickenBoss.png")));
-		}
-
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunMinion.class, new RenderBipedCore(EntityResourceLocation.auntun));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(EntityResourceLocation.blood_ghoul));

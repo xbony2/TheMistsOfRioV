@@ -48,12 +48,6 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		isImmuneToFire = false;
-		
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
-
 		if (par1World != null && !par1World.isRemote)
 		{
 			this.setCombatTask();

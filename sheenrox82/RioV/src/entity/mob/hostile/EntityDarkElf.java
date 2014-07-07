@@ -25,10 +25,6 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import sheenrox82.RioV.expansion.bosses.EntityChickenBoss;
-import sheenrox82.RioV.expansion.bosses.EntityCowBoss;
-import sheenrox82.RioV.expansion.bosses.EntityPigBoss;
-import sheenrox82.RioV.expansion.bosses.EntitySheepBoss;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
@@ -52,24 +48,10 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityMage.class, 0, true));
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityOrc.class, 0, true));
-
-		if(TheMistsOfRioV.getInstance().bosses)
-		{
-			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntitySheepBoss.class, 0, true));
-			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPigBoss.class, 0, true));
-			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityCowBoss.class, 0, true));
-			this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityChickenBoss.class, 0, true));
-		}
 		
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		isImmuneToFire = false;
-
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
-
 		if (par1World != null && !par1World.isRemote)
 		{
 			this.setCombatTask();

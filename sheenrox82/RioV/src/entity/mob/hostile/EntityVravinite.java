@@ -54,12 +54,6 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.vraviniteChestplate));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.vraviniteBoots));
 		this.setCurrentItemOrArmor(0, new ItemStack(RioVItems.vraviniteBow));
-		
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
-
 		if (par1World != null && !par1World.isRemote)
 		{
 			this.setCombatTask();

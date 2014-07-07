@@ -19,12 +19,6 @@ public class BiomeGenCanopyOasis extends BiomeGenBase
 		this.spawnableMonsterList.clear();
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
-		this.theBiomeDecorator.treesPerChunk = 10;
 		this.theBiomeDecorator.grassPerChunk = 40;
 	}
-	
-    public WorldGenerator getRandomWorldGenForTrees(Random par1Random)
-    {
-        return (WorldGenerator)(par1Random.nextInt(3) == 0 ? new WorldGenGiantTree(false, 100, 0, 0, 0) : new WorldGenGiantTree(false, 100, 0, 0, 0));
-    }
 }

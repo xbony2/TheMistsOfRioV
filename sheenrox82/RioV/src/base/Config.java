@@ -28,15 +28,9 @@ public class Config
 	public static int sanctuatiteBiomeID;
 	public static int canopyOasisBiomeID;
 	public static int bambooFieldsBiomeID;
-	public static int posY;
-	public static int posX;
-	public static int runesBiomeID;
-	public static boolean HUD;
 	public static boolean EOS;
 	public static boolean showToolInfo;
 	public static boolean allowBreathing;
-	public static boolean mainMenu;
-	public static boolean allowBossSpawning;
 	public static boolean deadBodies;
 	public static boolean runCapes;
 
@@ -49,9 +43,7 @@ public class Config
 		vaerynID = config.get("Dimension IDs", "Vaeryn Dimension ID", 12).getInt();
 		flamonorID = config.get("Dimension IDs", "Flamonor Dimension ID", 13).getInt();
 		sanctuatiteID = config.get("Dimension IDs", "Sanctuatite Dimension ID", 14).getInt();
-		HUD = config.get("HUD", "Show 'The Mists of RioV - vX.X.X' on screen?", true).getBoolean(HUD);
 		EOS = config.get("HUD", "Use the purple Eos bar instead of text?", true).getBoolean(EOS);
-		mainMenu = config.get("Misc", "Use the RioV Main Menu? (If Aether II is installed this won't affect anything.)", true).getBoolean(mainMenu);
 		allowBreathing = config.get("Misc", "Allow Mob Breathing Sounds? (CLIENT SIDE)", true).getBoolean(allowBreathing);
 		blindOasisBiomeID = config.get("Biome IDs", "Blind Oasis Biome ID (Blind Oasis Dimension)", 40).getInt(blindOasisBiomeID);
 		glimmerwoodBiomeID = config.get("Biome IDs", "Glimmerwood Biome ID (Vaeryn Dimension)", 41).getInt(glimmerwoodBiomeID);
@@ -61,9 +53,6 @@ public class Config
 		sanctuatiteBiomeID = config.get("Biome IDs", "Sanctuatite Biome ID (Sanctuatite Dimension)", 45).getInt(sanctuatiteBiomeID);
 		showToolInfo = config.get("Misc", "Show Tool Info?", true).getBoolean(showToolInfo);
 		canopyOasisBiomeID = config.get("Biome IDs", "Canopy Oasis Biome ID (Overworld Dimension)", 46).getInt(canopyOasisBiomeID);
-		posX = config.get("HUD", "Position X of the 'The Mists of RioV - vX.X.X'", 2).getInt(posX);
-		posY = config.get("HUD", "Position Y of the 'The Mists of RioV - vX.X.X'", 2).getInt(posY);
-		allowBossSpawning = config.get("Misc", "Allow Pig, Cow, Chicken, and Sheep Boss Spawning?", true).getBoolean(allowBossSpawning);
 		deadBodies = config.get("Misc", "Allow Dead Bodies for mobs?", true).getBoolean(deadBodies);
 		runCapes = config.get("Misc", "(Mainly for people running Optifine that have capes) Allow RioV Capes to initialize?", true).getBoolean(runCapes);
 

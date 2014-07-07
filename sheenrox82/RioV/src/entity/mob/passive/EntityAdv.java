@@ -48,10 +48,6 @@ public class EntityAdv extends EntityMobDeadBody
 	{
 		super(par1World);
 		isImmuneToFire = false;
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));

@@ -11,30 +11,6 @@ public class ExpansionChecker
 	{
 		try
 		{
-			Class.forName("sheenrox82.RioV.expansion.valis.Valis");
-			FMLLog.info(Util.MOD_NAME + ": Valis detected, initiating.");
-			TheMistsOfRioV.getInstance().riovValis = true;
-		}
-		catch (Throwable var11)
-		{
-			FMLLog.info(Util.MOD_NAME + ": Valis wasn't detected, not initializing.");
-			TheMistsOfRioV.getInstance().riovValis = false;
-		}
-		
-		try
-		{
-			Class.forName("sheenrox82.RioV.expansion.bosses.VanillaBosses");
-			FMLLog.info(Util.MOD_NAME + ": Vanilla Bosses detected, initiating.");
-			TheMistsOfRioV.getInstance().bosses = true;
-		}
-		catch (Throwable var11)
-		{
-			FMLLog.info(Util.MOD_NAME + ": Vanilla Bosses wasn't detected, not initializing.");
-			TheMistsOfRioV.getInstance().bosses = false;
-		}
-		
-		try
-		{
 			Class.forName("optifine.OptiFineClassTransformer");
 			FMLLog.info("Optifine detected! Disabling RioV capes for safety measures!");
 			TheMistsOfRioV.getInstance().optifine = true;

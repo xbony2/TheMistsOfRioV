@@ -18,10 +18,6 @@ public class EntityAltruEssence extends EntityMob
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, var2, true));
 		this.tasks.addTask(5, new EntityAIWander(this, var2));
 		isImmuneToFire = false;
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
 	}
 
 	@Override

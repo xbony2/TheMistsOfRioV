@@ -35,10 +35,6 @@ public class EntityGalokin extends EntityMobDeadBody
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.galokinLeggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.galokinBoots));
 		isImmuneToFire = false;
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
 	}
 	
 	@Override

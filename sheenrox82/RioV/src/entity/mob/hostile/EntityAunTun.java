@@ -67,11 +67,7 @@ public class EntityAunTun extends EntityBossCore
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.supremeAunTunChestplate));
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.supremeAunTunLeggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.supremeAunTunBoots));
-
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
+		isImmuneToFire = true;
 	}
 
 	@Override

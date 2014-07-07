@@ -94,9 +94,8 @@ public class Registry
 		ExpansionChecker.check();
 		BiomeGenBase.extremeHills.theBiomeDecorator.treesPerChunk = 15;
 		BiomeGenBase.plains.theBiomeDecorator.treesPerChunk = 1;
-		BiomeGenBase.forest.theBiomeDecorator.treesPerChunk = 46;
 		BiomeGenBase.plains.theBiomeDecorator.bigMushroomsPerChunk = 1;
-		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 30;
+		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 20;
 		packetPipeline.initialise();
 		packetPipeline.registerPacket(PacketHandler.class);
 	}

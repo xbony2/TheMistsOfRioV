@@ -5,13 +5,6 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenBase.SpawnListEntry;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import sheenrox82.RioV.expansion.bosses.EntityChickenBoss;
-import sheenrox82.RioV.expansion.bosses.EntityCowBoss;
-import sheenrox82.RioV.expansion.bosses.EntityPigBoss;
-import sheenrox82.RioV.expansion.bosses.EntitySheepBoss;
-import sheenrox82.RioV.expansion.bosses.VanillaBosses;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunMinion;
@@ -81,19 +74,6 @@ public class EntityLoader
 		MethodUtil.registerEntity(EntityDarkMatter.class, "Dark Matter");
 		MethodUtil.registerEntity(EntityPaladin.class, "Paladin");
 		MethodUtil.registerEntity(EntityPinkEssence.class, "Pink Essence");
-
-		if(TheMistsOfRioV.getInstance().bosses)
-		{
-			MethodUtil.registerEntity(EntitySheepBoss.class, "Sheep - Boss");
-			MethodUtil.registerEntity(EntityChickenBoss.class, "Chicken - Boss");
-			MethodUtil.registerEntity(EntityPigBoss.class, "Pig - Boss");
-			MethodUtil.registerEntity(EntityCowBoss.class, "Cow - Boss");
-			MethodUtil.registerEgg(EntityChickenBoss.class);
-			MethodUtil.registerEgg(EntityPigBoss.class);
-			MethodUtil.registerEgg(EntitySheepBoss.class);
-			MethodUtil.registerEgg(EntityCowBoss.class);
-		}
-
 		MethodUtil.registerEgg(EntityAdv.class);
 		MethodUtil.registerEgg(EntityMage.class);
 		MethodUtil.registerEgg(EntityAltruEssence.class);
@@ -131,189 +111,167 @@ public class EntityLoader
 		BiomeGenBase[] frozen = BiomeDictionary.getBiomesForType(Type.FROZEN);
 		BiomeGenBase[] jungle = BiomeDictionary.getBiomesForType(Type.JUNGLE);
 		BiomeGenBase[] forest = BiomeDictionary.getBiomesForType(Type.FOREST);
+		BiomeGenBase[] swamp = BiomeDictionary.getBiomesForType(Type.SWAMP);
+		BiomeGenBase[] beach = BiomeDictionary.getBiomesForType(Type.BEACH);
+		BiomeGenBase[] wasteland = BiomeDictionary.getBiomesForType(Type.WASTELAND);
 
-		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 1, 3, 5);
-		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 1, 3, 5);
-		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 2, 2, 4);
-		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 2, 5, 7);
-		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 2, 5, 7);
-		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 2, 5, 7);
-		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 1, 3, 5);
-		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 1, 3, 5);
+		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 50, 4, 9);
+		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 40, 3, 5);
+		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 60, 5, 12);
+		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 38, 4, 8);
+		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 29, 5, 7);
+		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 30, 3, 7);
+		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 25, 2, 5);
+		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 25, 2, 4);
 
 		for(int i = 0; i < plains.length; i++)
 		{
-			if (!BiomeDictionary.isBiomeOfType(plains[i], Type.NETHER))
-			{
-				plains[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
-
-				if(Config.allowBossSpawning)
-				{
-					plains[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.chickBossSpawn);
-					plains[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.pigBossSpawn);
-					plains[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.cowBossSpawn);
-					plains[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.sheepBossSpawn);
-				}
-
-				plains[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
-				plains[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
-
-				if(Config.allowBossSpawning)
-				{
-					plains[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.chickBossSpawn);
-					plains[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.pigBossSpawn);
-					plains[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.cowBossSpawn);
-					plains[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.sheepBossSpawn);
-				}
-			}
+			plains[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			plains[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
 
 		for(int i = 0; i < mountain.length; i++)
 		{
-			if (!BiomeDictionary.isBiomeOfType(mountain[i], Type.NETHER))
-			{
-				mountain[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
-
-				if(Config.allowBossSpawning)
-				{
-					mountain[i].getSpawnableList(EnumCreatureType.creature).add(paladinSpawn);
-
-					if(TheMistsOfRioV.getInstance().bosses)
-					{
-						mountain[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.pigBossSpawn);
-						mountain[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.cowBossSpawn);
-						mountain[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.sheepBossSpawn);
-					}
-				}
-
-				mountain[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
-				mountain[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
-
-				if(Config.allowBossSpawning)
-				{
-					mountain[i].getSpawnableList(EnumCreatureType.monster).add(paladinSpawn);
-
-					if(TheMistsOfRioV.getInstance().bosses)
-					{
-						mountain[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.pigBossSpawn);
-						mountain[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.cowBossSpawn);
-						mountain[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.sheepBossSpawn);
-					}
-				}
-			}
+			mountain[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.creature).add(paladinSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
+			mountain[i].getSpawnableList(EnumCreatureType.monster).add(paladinSpawn);
 		}
 
 		for(int i = 0; i < frozen.length; i++)
 		{
-			if (!BiomeDictionary.isBiomeOfType(frozen[i], Type.NETHER))
-			{
-				frozen[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
-				frozen[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
-			}
+			frozen[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			frozen[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
 
 		for(int i = 0; i < jungle.length; i++)
 		{
-			if (!BiomeDictionary.isBiomeOfType(jungle[i], Type.NETHER))
-			{
-				jungle[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
-				jungle[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
-			}
+			jungle[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			jungle[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
 
 		for(int i = 0; i < forest.length; i++)
 		{
-			if (!BiomeDictionary.isBiomeOfType(forest[i], Type.NETHER))
-			{
-				forest[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
-				forest[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
-			}
+			forest[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			forest[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
 
 		for(int i = 0; i < desert.length; i++)
 		{
-			if (!BiomeDictionary.isBiomeOfType(desert[i], Type.NETHER))
-			{
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(nizonianSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(nizonianSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.creature).add(nizonianSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			desert[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
+		}
+		
+		for(int i = 0; i < swamp.length; i++)
+		{
+			swamp[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			swamp[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
+		}
 
-				if(Config.allowBossSpawning)
-				{
-					if(TheMistsOfRioV.getInstance().bosses)
-					{
-						desert[i].getSpawnableList(EnumCreatureType.creature).add(VanillaBosses.cowBossSpawn);
-					}
-				}
+		for(int i = 0; i < beach.length; i++)
+		{
+			beach[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.creature).add(paladinSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
+			beach[i].getSpawnableList(EnumCreatureType.monster).add(paladinSpawn);
+		}
 
-				desert[i].getSpawnableList(EnumCreatureType.creature).add(nizonianSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
-				desert[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
-
-				if(Config.allowBossSpawning)
-				{
-					if(TheMistsOfRioV.getInstance().bosses)
-					{
-						desert[i].getSpawnableList(EnumCreatureType.monster).add(VanillaBosses.cowBossSpawn);
-					}
-				}
-			}
+		for(int i = 0; i < wasteland.length; i++)
+		{
+			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(galokinSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(orcSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(sovSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.monster).add(advSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.monster).add(mageSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.monster).add(darkElfSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.monster).add(galokinSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
+			wasteland[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
 	}
 
@@ -321,10 +279,10 @@ public class EntityLoader
 	{
 		BiomeGenBase[] nether = BiomeDictionary.getBiomesForType(Type.NETHER);
 
-		SpawnListEntry skeleHorseSpawn = new SpawnListEntry(EntitySkeletalHorse.class, 3, 5, 7);
-		SpawnListEntry minionSpawn = new SpawnListEntry(EntityAunTunMinion.class, 2, 4, 6);
-		SpawnListEntry bodyguardSpawn = new SpawnListEntry(EntityAunTunBodyguard.class, 2, 4, 6);
-		SpawnListEntry hellhoundSpawn = new SpawnListEntry(EntityHellhound.class, 2, 4, 6);
+		SpawnListEntry skeleHorseSpawn = new SpawnListEntry(EntitySkeletalHorse.class, 34, 5, 7);
+		SpawnListEntry minionSpawn = new SpawnListEntry(EntityAunTunMinion.class, 29, 4, 6);
+		SpawnListEntry bodyguardSpawn = new SpawnListEntry(EntityAunTunBodyguard.class, 25, 4, 6);
+		SpawnListEntry hellhoundSpawn = new SpawnListEntry(EntityHellhound.class, 35, 4, 6);
 
 		for(int i = 0; i < nether.length; i++)
 		{
@@ -343,8 +301,8 @@ public class EntityLoader
 	{
 		BiomeGenBase[] end = BiomeDictionary.getBiomesForType(Type.END);
 
-		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 1, 3, 5);
-		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 1, 3, 5);
+		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 50, 3, 5);
+		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 55, 3, 5);
 
 		for(int i = 0; i < end.length; i++)
 		{

@@ -24,7 +24,7 @@ public class WorldGenBalance extends WorldGenerator
 
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
-        for (int l = 0; l < 64; ++l)
+        for (int l = 0; l < 16; ++l)
         {
             int i1 = par3 + par2Random.nextInt(8) - par2Random.nextInt(8);
             int j1 = par4 + par2Random.nextInt(4) - par2Random.nextInt(4);

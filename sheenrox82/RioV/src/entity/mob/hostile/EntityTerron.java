@@ -66,10 +66,6 @@ public class EntityTerron extends EntityBossCore
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTefGuard.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
 	}
 
 	@Override

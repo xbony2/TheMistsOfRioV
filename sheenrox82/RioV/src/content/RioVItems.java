@@ -10,6 +10,7 @@ import sheenrox82.RioV.src.item.RioVActivators;
 import sheenrox82.RioV.src.item.RioVArmor;
 import sheenrox82.RioV.src.item.RioVAxe;
 import sheenrox82.RioV.src.item.RioVBag;
+import sheenrox82.RioV.src.item.RioVBow;
 import sheenrox82.RioV.src.item.RioVConsumable;
 import sheenrox82.RioV.src.item.RioVDoor;
 import sheenrox82.RioV.src.item.RioVDrinkable;
@@ -314,9 +315,31 @@ public class RioVItems
 	public static Item paladinLongsword = (new RioVWeapon(InfusedOnyx, false)).setUnlocalizedName("paladinLongsword");
 	public static Item graviWand = (new RioVWand(0, 1, 3)).setUnlocalizedName("graviWand");
 	public static Item eosPotion = (new RioVDrinkable(0, 0, true)).setAlwaysEdible().setUnlocalizedName("eosPotion");
-
+	
+	//v2.2.2
+	public static Item amethystBow = (new RioVBow(Amethyst.getMaxUses())).setUnlocalizedName("amethystBow");
+	public static Item amethystArrow = (new RioVItem()).setUnlocalizedName("amethystArrow");
+	public static Item onyxBow = (new RioVBow(Onyx.getMaxUses())).setUnlocalizedName("onyxBow");
+	public static Item onyxArrow = (new RioVItem()).setUnlocalizedName("onyxArrow");
+	public static Item dragonBow = (new RioVBow(Dragon.getMaxUses())).setUnlocalizedName("dragonBow");
+	public static Item dragonArrow = (new RioVItem()).setUnlocalizedName("dragonArrow");
+	public static Item blindoniteBow = (new RioVBow(Blindonite.getMaxUses())).setUnlocalizedName("blindoniteBow");
+	public static Item blindoniteArrow = (new RioVItem()).setUnlocalizedName("blindoniteArrow");
+	public static Item alerisBow = (new RioVBow(Aleris.getMaxUses())).setUnlocalizedName("alerisBow");
+	public static Item alerisArrow = (new RioVItem()).setUnlocalizedName("alerisArrow");
+	
 	public static void add()
 	{		
+		MethodUtil.registerItem(amethystBow, "Amethyst Bow");
+		MethodUtil.registerItem(amethystArrow, "Amethyst Arrow");
+		MethodUtil.registerItem(onyxBow, "Onyx Bow");
+		MethodUtil.registerItem(onyxArrow, "Onyx Arrow");
+		MethodUtil.registerItem(dragonBow, "Dragon Bow");
+		MethodUtil.registerItem(dragonArrow, "Dragon Arrow");
+		MethodUtil.registerItem(blindoniteBow, "Blindonite Bow");
+		MethodUtil.registerItem(blindoniteArrow, "Blindonite Arrow");
+		MethodUtil.registerItem(alerisBow, "Aleris Bow");
+		MethodUtil.registerItem(alerisArrow, "Aleris Arrow");
 		MethodUtil.registerItem(eosPotion, "Eos Potion");
 		MethodUtil.registerItem(graviWand, "Gravi Wand");
 		MethodUtil.registerItem(paladinHelmet, "Paladin Helmet");

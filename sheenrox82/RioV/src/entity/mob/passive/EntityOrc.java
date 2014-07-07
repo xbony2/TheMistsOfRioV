@@ -45,11 +45,6 @@ public class EntityOrc extends EntityMobDeadBody
 	public EntityOrc(World par1World)
 	{
 		super(par1World);
-
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
 		isImmuneToFire = false;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));

@@ -35,10 +35,6 @@ public class EntityTefGuard extends EntityMobDeadBody
 	{
 		super(par1World);
 		isImmuneToFire = false;
-		if(TheMistsOfRioV.getInstance().riovValis)
-		{
-			isImmuneToFire = true;
-		}
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));

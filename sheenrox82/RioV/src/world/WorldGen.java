@@ -7,18 +7,20 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenForest;
 import net.minecraft.world.biome.BiomeGenPlains;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.world.biome.BiomeGenCanopyOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenFlamonor;
 import sheenrox82.RioV.src.world.biome.BiomeGenGlimmerwood;
 import sheenrox82.RioV.src.world.biome.BiomeGenSanctuatite;
 import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenCherryBlossomTree;
+import sheenrox82.RioV.src.world.feature.WorldGenGiantTree;
 import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree2;
 import sheenrox82.RioV.src.world.feature.WorldGenSanctuatiteTree;
+import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
 import sheenrox82.RioV.src.world.mineable.WorldGenEndMineable;
 import sheenrox82.RioV.src.world.mineable.WorldGenNetherMineable;
 import cpw.mods.fml.common.IWorldGenerator;
@@ -139,6 +141,7 @@ public class WorldGen implements IWorldGenerator
 		int d, y;
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		WorldGenCherryBlossomTree tree = new WorldGenCherryBlossomTree(false);
+		WorldGenGiantTree hugeTree = new WorldGenGiantTree(false, 100, 0, 0, 0);
 
 		for (int i = 0; i < 8; i++) 
 		{
@@ -162,15 +165,15 @@ public class WorldGen implements IWorldGenerator
 			int var7 = world.getHeightValue(blockX, blockZ);
 			int var8 = blockZ + rand.nextInt(16);
 
-			new WorldGenFlowers(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.tomatoPlant).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.grapePlant).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.pepperPlant).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.blueFlower).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.blueBerryBush).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.blackBerryBush).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.raspBerryBush).generate(world, rand, var6, var7, var8);
-			new WorldGenFlowers(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.tomatoPlant).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.grapePlant).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.pepperPlant).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.blueFlower).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.blueBerryBush).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.blackBerryBush).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.raspBerryBush).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);
 		}
 
 		if((biome instanceof BiomeGenForest)) 
@@ -192,6 +195,17 @@ public class WorldGen implements IWorldGenerator
 				int k = blockZ + rand.nextInt(16);
 				int j = world.getHeightValue(i, k);
 				tree.generate(world, rand, i, j, k);
+			}
+		}
+		
+		if((biome instanceof BiomeGenCanopyOasis)) 
+		{
+			for(int x = 0; x < 6; x++)
+			{
+				int i = blockX + rand.nextInt(16);
+				int k = blockZ + rand.nextInt(16);
+				int j = world.getHeightValue(i, k);
+				hugeTree.generate(world, rand, i, j, k);
 			}
 		}
 	}

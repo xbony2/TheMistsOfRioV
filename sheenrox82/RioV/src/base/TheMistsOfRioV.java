@@ -28,8 +28,6 @@ public class TheMistsOfRioV
 
 	public CreativeTabs tab = new CreativeTabs(Util.MOD_ID) {public Item getTabIconItem() {return Item.getItemFromBlock(RioVBlocks.infuser);}};
 	public GuiHandler guiHandler = new GuiHandler();
-	public boolean riovValis;
-	public boolean bosses;
 	public boolean natura;
 	public boolean aether;
 	public boolean thaumcraft;

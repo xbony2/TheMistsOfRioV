@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.Config;
@@ -57,7 +58,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								Minecraft.getMinecraft().thePlayer.sendChatMessage("[Terron] has been summoned!");
+								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[Terron] has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -65,7 +66,7 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("You do not have enough Eos!");
+						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
 					}
 				}
 
@@ -86,14 +87,14 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								Minecraft.getMinecraft().thePlayer.sendChatMessage("[\u00A74Tef\u00A7f] has been summoned!");
+								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[Tef] has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
 					}
 					else
 					{
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("You do not have enough Eos!");
+						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
 					}
 				}
 			}
@@ -113,7 +114,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								Minecraft.getMinecraft().thePlayer.sendChatMessage("[\u00A70The Darkness\u00A7f] has arrived!");
+								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[The Darkness] has arrived!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 
@@ -121,7 +122,7 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("You do not have enough Eos!");
+						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
 					}
 				}
 			}
@@ -145,14 +146,14 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								Minecraft.getMinecraft().thePlayer.sendChatMessage("[\u00A74Demon Angel\u00A7f] has been summoned!");
+								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[Demon Angel] has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
 					}
 					else
 					{
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("You do not have enough Eos!");
+						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
 					}
 				}
 			}
@@ -173,14 +174,14 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								Minecraft.getMinecraft().thePlayer.sendChatMessage(Color.DARK_RED + "Aun'Tun has been summoned!" + Color.WHITE + " Good luck, this'll be a LONG fight.");
+								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
 					}
 					else
 					{
-						Minecraft.getMinecraft().thePlayer.sendChatMessage("You do not have enough Eos!");
+						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
 					}
 				}
 			}
@@ -189,7 +190,6 @@ public class RioVSummoners extends Item
 		return false;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{

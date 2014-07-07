@@ -41,7 +41,7 @@ public class EntityDarknessArrow extends EntityCustomArrow implements IProjectil
 
 	public Entity shootingEntity;
 	private int ticksInGround;
-	public double damage = 3.0D;
+	public double damage = 2.6D;
 	/** The amount of knockback an arrow applies when it hits a mob. */
 
 	private int knockbackStrength;

@@ -23,7 +23,7 @@ import sheenrox82.RioV.src.util.MethodUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityVraviniteArrow extends EntityCustomArrow implements IProjectile
+public class EntityAlerisArrow extends EntityCustomArrow implements IProjectile
 {
 	private int field_145791_d = -1;
     private int field_145792_e = -1;
@@ -42,19 +42,19 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
     public Entity shootingEntity;
     private int ticksInGround;
     public int ticksInAir;
-    public double damage = 3.4D;
+    public double damage = 4.0D;
     /** The amount of knockback an arrow applies when it hits a mob. */
 
     private int knockbackStrength;
 
-    public EntityVraviniteArrow(World par1World)
+    public EntityAlerisArrow(World par1World)
     {
         super(par1World);
         this.renderDistanceWeight = 10.0D;
         this.setSize(0.5F, 0.5F);
     }
 
-    public EntityVraviniteArrow(World par1World, double par2, double par4, double par6)
+    public EntityAlerisArrow(World par1World, double par2, double par4, double par6)
     {
         super(par1World);
         this.renderDistanceWeight = 10.0D;
@@ -63,7 +63,7 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
         this.yOffset = 0.0F;
     }
 
-    public EntityVraviniteArrow(World par1World, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase, float par4, float par5)
+    public EntityAlerisArrow(World par1World, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase, float par4, float par5)
     {
         super(par1World);
         this.renderDistanceWeight = 10.0D;
@@ -93,7 +93,7 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
         }
     }
 
-    public EntityVraviniteArrow(World par1World, EntityLivingBase par2EntityLivingBase, float par3)
+    public EntityAlerisArrow(World par1World, EntityLivingBase par2EntityLivingBase, float par3)
     {
         super(par1World);
         this.renderDistanceWeight = 10.0D;
@@ -483,7 +483,7 @@ public class EntityVraviniteArrow extends EntityCustomArrow implements IProjecti
         {
             boolean flag = this.canBePickedUp == 1 || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
 
-            if (this.canBePickedUp == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.darknessArrow, 1)))
+            if (this.canBePickedUp == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(RioVItems.alerisArrow, 1)))
             {
                 flag = false;
             }
