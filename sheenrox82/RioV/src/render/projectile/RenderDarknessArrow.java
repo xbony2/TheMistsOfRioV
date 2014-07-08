@@ -2,29 +2,35 @@ package sheenrox82.RioV.src.render.projectile;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderDarknessArrow extends Render
 {
-    public void renderArrow(EntityDarknessArrow par1EntityArrow, double par2, double par4, double par6, float par8, float par9)
+    private static ResourceLocation arrowTextures;
+    private static final String __OBFID = "CL_00000978";
+
+    public RenderDarknessArrow(ResourceLocation rec)
     {
-        this.bindEntityTexture(par1EntityArrow);
+    	this.arrowTextures = rec;
+    }
+    
+    public void doRender(EntityDarknessArrow p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
+    {
+        this.bindEntityTexture(p_76986_1_);
         GL11.glPushMatrix();
-        GL11.glTranslatef((float)par2, (float)par4, (float)par6);
-        GL11.glRotatef(par1EntityArrow.prevRotationYaw + (par1EntityArrow.rotationYaw - par1EntityArrow.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glRotatef(par1EntityArrow.prevRotationPitch + (par1EntityArrow.rotationPitch - par1EntityArrow.prevRotationPitch) * par9, 0.0F, 0.0F, 1.0F);
+        GL11.glTranslatef((float)p_76986_2_, (float)p_76986_4_, (float)p_76986_6_);
+        GL11.glRotatef(p_76986_1_.prevRotationYaw + (p_76986_1_.rotationYaw - p_76986_1_.prevRotationYaw) * p_76986_9_ - 90.0F, 0.0F, 1.0F, 0.0F);
+        GL11.glRotatef(p_76986_1_.prevRotationPitch + (p_76986_1_.rotationPitch - p_76986_1_.prevRotationPitch) * p_76986_9_, 0.0F, 0.0F, 1.0F);
         Tessellator tessellator = Tessellator.instance;
         byte b0 = 0;
         float f2 = 0.0F;
@@ -37,7 +43,7 @@ public class RenderDarknessArrow extends Render
         float f9 = (float)(10 + b0 * 10) / 32.0F;
         float f10 = 0.05625F;
         GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-        float f11 = (float)par1EntityArrow.arrowShake - par9;
+        float f11 = (float)p_76986_1_.arrowShake - p_76986_9_;
 
         if (f11 > 0.0F)
         {
@@ -79,24 +85,30 @@ public class RenderDarknessArrow extends Render
         GL11.glPopMatrix();
     }
 
-    protected ResourceLocation getEntityTexture(EntityDarknessArrow par1EntityArrow)
+    /**
+     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+     */
+    protected ResourceLocation getEntityTexture(EntityDarknessArrow p_110775_1_)
     {
-        return EntityResourceLocation.darkness_arrow;
+        return arrowTextures;
     }
 
-    protected ResourceLocation getEntityTexture(Entity par1Entity)
+    /**
+     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+     */
+    protected ResourceLocation getEntityTexture(Entity p_110775_1_)
     {
-        return this.getEntityTexture((EntityDarknessArrow)par1Entity);
+        return this.getEntityTexture((EntityDarknessArrow)p_110775_1_);
     }
 
     /**
      * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
      * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-     * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
+     * (Render<T extends Entity) and this method has signature public void func_76986_a(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
      */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    public void doRender(Entity p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
     {
-        this.renderArrow((EntityDarknessArrow)par1Entity, par2, par4, par6, par8, par9);
+        this.doRender((EntityDarknessArrow)p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
     }
 }

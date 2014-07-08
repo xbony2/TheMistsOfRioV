@@ -36,9 +36,6 @@ public class ItemBowOfWurTun extends ItemBow
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
-	/**
-	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
-	 */
 	@Override
 	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
 	{

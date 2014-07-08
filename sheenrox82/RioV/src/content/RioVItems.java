@@ -27,7 +27,6 @@ import sheenrox82.RioV.src.item.unique.ItemBowOfWurTun;
 import sheenrox82.RioV.src.item.unique.ItemEnforcedBowOfWurTun;
 import sheenrox82.RioV.src.item.unique.ItemTasaravChestplate;
 import sheenrox82.RioV.src.item.unique.ItemTasaravHelmet;
-import sheenrox82.RioV.src.item.unique.ItemVraviniteBow;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 import sheenrox82.RioV.src.util.MethodUtil;
 
@@ -228,7 +227,7 @@ public class RioVItems
 	public static Item glimmerwoodShovel = (new RioVSpade(Glimmerwood, false)).setUnlocalizedName("glimmerwoodShovel");
 	public static Item glimmerwoodSword = (new RioVWeapon(Glimmerwood, false)).setUnlocalizedName("glimmerwoodSword");
 	public static Item blueMagicApple = (new RioVConsumable(8, 0, true)).setUnlocalizedName("blueApple");
-	public static Item vraviniteBow = (new ItemVraviniteBow()).setUnlocalizedName("vraviniteBow");
+	public static Item vraviniteBow = (new RioVBow(Vravinite.getMaxUses())).setUnlocalizedName("vraviniteBow");
 	public static Item vraviniteArrow = (new RioVItem()).setUnlocalizedName("vraviniteArrow");
 	public static Item vravinite = (new RioVItem()).setUnlocalizedName("vravinite");
 	public static Item vraviniteHelmet = (new RioVArmor(VraviniteArmorMaterial, render, 0, "vravinite", false)).setUnlocalizedName("vraviniteHelmet");

@@ -15,7 +15,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.DimensionManager;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.entity.projectile.EntityCustomArrow;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -34,9 +33,9 @@ public class MethodUtil
 		GameRegistry.registerBlock(block, string);
 	}
 
-	public static DamageSource causeArrowDamage(EntityCustomArrow entityDarknessArrow, Entity par1Entity)
+	public static DamageSource causeArrowDamage(Entity entityRioVArrow, Entity par1Entity)
 	{
-		return (new EntityDamageSourceIndirect("arrow", entityDarknessArrow, par1Entity)).setProjectile();
+		return (new EntityDamageSourceIndirect("arrow", entityRioVArrow, par1Entity)).setProjectile();
 	}
 
 	public static void registerEntity(Class entityClass, String entityName)

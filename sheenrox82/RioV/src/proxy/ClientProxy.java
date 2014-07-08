@@ -32,8 +32,13 @@ import sheenrox82.RioV.src.entity.mob.passive.EntityRabbit;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySoverianOfficer;
 import sheenrox82.RioV.src.entity.mob.passive.EntityWoodElf;
+import sheenrox82.RioV.src.entity.projectile.EntityAlerisArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityAmethystArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityBlindoniteArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityDragonArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityOnyxArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 import sheenrox82.RioV.src.lib.EntityResourceLocation;
@@ -59,8 +64,13 @@ import sheenrox82.RioV.src.render.RenderSkeletalHorse;
 import sheenrox82.RioV.src.render.RenderTef;
 import sheenrox82.RioV.src.render.item.ItemRenderBow;
 import sheenrox82.RioV.src.render.item.ItemRenderLongbow;
+import sheenrox82.RioV.src.render.projectile.RenderAlerisArrow;
+import sheenrox82.RioV.src.render.projectile.RenderAmethystArrow;
+import sheenrox82.RioV.src.render.projectile.RenderBlindoniteArrow;
 import sheenrox82.RioV.src.render.projectile.RenderDarkMatter;
 import sheenrox82.RioV.src.render.projectile.RenderDarknessArrow;
+import sheenrox82.RioV.src.render.projectile.RenderDragonArrow;
+import sheenrox82.RioV.src.render.projectile.RenderOnyxArrow;
 import sheenrox82.RioV.src.render.projectile.RenderPinkEssence;
 import sheenrox82.RioV.src.render.projectile.RenderVraviniteArrow;
 import sheenrox82.RioV.src.render.tileentity.RenderTileEntityFlag;
@@ -88,7 +98,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityTerron.class, new RenderBossCore(new ModelTerron(), 0.5F, 1.8F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemonAngel.class, new RenderBossCore(new ModelDemonAngel(), 0.5F, 2F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarkElf.class, new RenderBipedCore(EntityResourceLocation.dark_elf));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTun.class, new RenderAunTun());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAltruEssence.class, new RenderEssence());
 		RenderingRegistry.registerEntityRenderingHandler(EntityNizonian.class, new RenderLivingCore(new ModelTerron(), 0.5F, 1.5F, 1.5F, 1.5F));
@@ -109,9 +118,16 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityPaladin.class, new RenderPaladin());
 		RenderingRegistry.registerEntityRenderingHandler(EntityPinkEssence.class, new RenderPinkEssence(new ResourceLocation(Util.MOD_ID + ":" + "pinkEssence.png")));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":" + "darkMatter.png")));
-		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunMinion.class, new RenderBipedCore(EntityResourceLocation.auntun));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(EntityResourceLocation.blood_ghoul));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow(EntityResourceLocation.darkness_arrow));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAmethystArrow.class, new RenderAmethystArrow(EntityResourceLocation.amethyst_arrow));
+		RenderingRegistry.registerEntityRenderingHandler(EntityOnyxArrow.class, new RenderOnyxArrow(EntityResourceLocation.onyx_arrow));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDragonArrow.class, new RenderDragonArrow(EntityResourceLocation.dragon_arrow));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBlindoniteArrow.class, new RenderBlindoniteArrow(EntityResourceLocation.blindonite_arrow));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAlerisArrow.class, new RenderAlerisArrow(EntityResourceLocation.aleris_arrow));
+		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(EntityResourceLocation.vravinite_arrow));
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new RenderTileEntityFlag());
 	}
 

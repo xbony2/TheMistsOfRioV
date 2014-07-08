@@ -17,12 +17,11 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
-import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityAmethystArrow;
 
 public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackMob
 {
@@ -160,7 +159,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2) 
 	{
-		EntityVraviniteArrow entityarrow = new EntityVraviniteArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
+		EntityAmethystArrow entityarrow = new EntityAmethystArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
 		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
 		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
 		entityarrow.setDamage(3F);

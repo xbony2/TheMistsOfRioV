@@ -32,21 +32,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class RioVBow extends ItemBow
 {
-	public EntityVraviniteArrow amethystArrow = new EntityVraviniteArrow(null);
+	public EntityAmethystArrow amethystArrow = new EntityAmethystArrow(null);
 	public static final String[] amethyst = new String[] {Util.MOD_ID + ":" + "amethyst_pull_0", Util.MOD_ID + ":" + "amethyst_pull_1", Util.MOD_ID + ":" + "amethyst_pull_2"};
-
-	public EntityVraviniteArrow onyxArrow = new EntityVraviniteArrow(null);
+	public EntityOnyxArrow onyxArrow = new EntityOnyxArrow(null);
 	public static final String[] onyx = new String[] {Util.MOD_ID + ":" + "onyx_pull_0", Util.MOD_ID + ":" + "onyx_pull_1", Util.MOD_ID + ":" + "onyx_pull_2"};
-
-	public EntityVraviniteArrow dragonArrow = new EntityVraviniteArrow(null);
+	public EntityDragonArrow dragonArrow = new EntityDragonArrow(null);
 	public static final String[] dragon = new String[] {Util.MOD_ID + ":" + "dragon_pull_0", Util.MOD_ID + ":" + "dragon_pull_1", Util.MOD_ID + ":" + "dragon_pull_2"};
-
-	public EntityVraviniteArrow blindoniteArrow = new EntityVraviniteArrow(null);
+	public EntityBlindoniteArrow blindoniteArrow = new EntityBlindoniteArrow(null);
 	public static final String[] blindonite = new String[] {Util.MOD_ID + ":" + "blindonite_pull_0", Util.MOD_ID + ":" + "blindonite_pull_1", Util.MOD_ID + ":" + "blindonite_pull_2"};
-
-	public EntityVraviniteArrow alerisArrow = new EntityVraviniteArrow(null);
+	public EntityAlerisArrow alerisArrow = new EntityAlerisArrow(null);
 	public static final String[] aleris = new String[] {Util.MOD_ID + ":" + "aleris_pull_0", Util.MOD_ID + ":" + "aleris_pull_1", Util.MOD_ID + ":" + "aleris_pull_2"};
-
+	public EntityVraviniteArrow vraviniteArrow = new EntityVraviniteArrow(null);
+	public static final String[] vravinite = new String[] {Util.MOD_ID + ":" + "vBow_pull_0", Util.MOD_ID + ":" + "vBow_pull_1", Util.MOD_ID + ":" + "vBow_pull_2"};
+	
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
 
@@ -409,6 +407,73 @@ public class RioVBow extends ItemBow
 				}
 			}
 		}
+		
+		if(this == RioVItems.vraviniteBow)
+		{
+			if (flag || par3EntityPlayer.inventory.hasItem(RioVItems.vraviniteArrow))
+			{
+				float f = (float)j / 20.0F;
+				f = (f * f + f * 2.0F) / 3.0F;
+
+				if ((double)f < 0.1D)
+				{
+					return;
+				}
+
+				if (f > 1.0F)
+				{
+					f = 1.0F;
+				}
+
+				EntityVraviniteArrow entityarrow = new EntityVraviniteArrow(par2World, par3EntityPlayer, f * 2.0F);
+
+				if (f == 1.0F)
+				{
+					entityarrow.setIsCritical(true);
+				}
+
+				int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+
+				if (k > 0)
+				{
+					entityarrow.setDamage(entityarrow.getDamage() + (double)k * 0.5D + 0.5D);
+				}
+
+				int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+
+				if (l > 0)
+				{
+					entityarrow.setKnockbackStrength(l);
+				}
+
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+				{
+					entityarrow.setFire(100);
+				}
+
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.vicious.effectId, par1ItemStack) > 0)
+				{
+					entityarrow.setDamage(vraviniteArrow.damage * 1.4);	
+				}
+
+				par1ItemStack.damageItem(1, par3EntityPlayer);
+				par2World.playSoundAtEntity(par3EntityPlayer, Sounds.bow.getPrefixedName(), 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+
+				if (flag)
+				{
+					entityarrow.canBePickedUp = 2;
+				}
+				else
+				{
+					par3EntityPlayer.inventory.consumeInventoryItem(RioVItems.vraviniteArrow);
+				}
+
+				if (!par2World.isRemote)
+				{
+					par2World.spawnEntityInWorld(entityarrow);
+				}
+			}
+		}
 	}
 
 	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
@@ -483,6 +548,14 @@ public class RioVBow extends ItemBow
 				par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 			}
 		}
+		
+		if(this == RioVItems.vraviniteBow)
+		{
+			if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(RioVItems.vraviniteArrow))
+			{
+				par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
+			}
+		}
 
 		return par1ItemStack;
 	}
@@ -548,6 +621,16 @@ public class RioVBow extends ItemBow
 			for (int i = 0; i < this.iconArray.length; ++i)
 			{
 				this.iconArray[i] = par1IconRegister.registerIcon(aleris[i]);
+			}
+		}
+		
+		if(this == RioVItems.vraviniteBow)
+		{
+			this.iconArray = new IIcon[vravinite.length];
+
+			for (int i = 0; i < this.iconArray.length; ++i)
+			{
+				this.iconArray[i] = par1IconRegister.registerIcon(vravinite[i]);
 			}
 		}
 	}
@@ -642,6 +725,18 @@ public class RioVBow extends ItemBow
 				else
 				{
 					var3.add("Damage: " + alerisArrow.damage);
+				}
+			}
+			
+			if(this == RioVItems.vraviniteBow)
+			{
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.vicious.effectId, var1) > 0)
+				{
+					var3.add("Damage: " + vraviniteArrow.damage * 1.4);
+				}
+				else
+				{
+					var3.add("Damage: " + vraviniteArrow.damage);
 				}
 			}
 		}

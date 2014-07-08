@@ -31,4 +31,10 @@ public class EntityResourceLocation
 	public static final ResourceLocation angel = new ResourceLocation(Util.MOD_ID + ":" + entityString + "Angel.png");
 	public static final ResourceLocation rabbit = new ResourceLocation(Util.MOD_ID + ":" + entityString + "Rabbit.png");
 	public static final ResourceLocation officer = new ResourceLocation(Util.MOD_ID + ":" + entityString + "Officer.png");
+	public static final ResourceLocation amethyst_arrow = new ResourceLocation(Util.MOD_ID + ":" + entityString + "AmethystArrow.png");
+	public static final ResourceLocation dragon_arrow = new ResourceLocation(Util.MOD_ID + ":" + entityString + "DragonArrow.png");
+	public static final ResourceLocation blindonite_arrow = new ResourceLocation(Util.MOD_ID + ":" + entityString + "BlindoniteArrow.png");
+	public static final ResourceLocation aleris_arrow = new ResourceLocation(Util.MOD_ID + ":" + entityString + "AlerisArrow.png");
+
+
 }

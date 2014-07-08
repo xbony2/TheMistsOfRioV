@@ -9,22 +9,22 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityDragonArrow;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderVraviniteArrow extends Render
+public class RenderDragonArrow extends Render
 {
     private static ResourceLocation arrowTextures;
     private static final String __OBFID = "CL_00000978";
 
-    public RenderVraviniteArrow(ResourceLocation rec)
+    public RenderDragonArrow(ResourceLocation rec)
     {
     	this.arrowTextures = rec;
     }
     
-    public void doRender(EntityVraviniteArrow p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
+    public void doRender(EntityDragonArrow p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
     {
         this.bindEntityTexture(p_76986_1_);
         GL11.glPushMatrix();
@@ -88,7 +88,7 @@ public class RenderVraviniteArrow extends Render
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityVraviniteArrow p_110775_1_)
+    protected ResourceLocation getEntityTexture(EntityDragonArrow p_110775_1_)
     {
         return arrowTextures;
     }
@@ -98,7 +98,7 @@ public class RenderVraviniteArrow extends Render
      */
     protected ResourceLocation getEntityTexture(Entity p_110775_1_)
     {
-        return this.getEntityTexture((EntityVraviniteArrow)p_110775_1_);
+        return this.getEntityTexture((EntityDragonArrow)p_110775_1_);
     }
 
     /**
@@ -109,6 +109,6 @@ public class RenderVraviniteArrow extends Render
      */
     public void doRender(Entity p_76986_1_, double p_76986_2_, double p_76986_4_, double p_76986_6_, float p_76986_8_, float p_76986_9_)
     {
-        this.doRender((EntityVraviniteArrow)p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
+        this.doRender((EntityDragonArrow)p_76986_1_, p_76986_2_, p_76986_4_, p_76986_6_, p_76986_8_, p_76986_9_);
     }
 }
