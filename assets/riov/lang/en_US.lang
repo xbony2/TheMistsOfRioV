@@ -388,6 +388,12 @@ tile.glimmerwoodLadder.name=Glimmerwood Ladder
 tile.cherryBlossomLadder.name=Cherry Blossom Ladder
 tile.skywoodLadder.name=Skywood Ladder
 
+item.amethystBow.name=Amethyst Bow
+item.onyxBow.name=Onyx Bow
+item.dragonBow.name=Dragon Bow
+item.alerisBow=Aleris Bow
+item.blindoniteBow.name=Blindonite Bow
+
 entity.Adventurer.name=Adventurer
 entity.Mage.name=Mage
 entity.Altru Essence.name=Altru Essence
