@@ -19,6 +19,8 @@ import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
+import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDemonAngel;
+import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTerron;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 

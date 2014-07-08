@@ -27,7 +27,6 @@ import sheenrox82.RioV.src.block.BlockRioVFenceGate;
 import sheenrox82.RioV.src.block.BlockRioVLadder;
 import sheenrox82.RioV.src.block.BlockRioVLeaf;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
-import sheenrox82.RioV.src.block.BlockRioVTallGrass;
 import sheenrox82.RioV.src.block.BlockRioVTrapDoor;
 import sheenrox82.RioV.src.block.BlockRioVWorkbench;
 import sheenrox82.RioV.src.block.BlockSanctuatiteFire;
@@ -123,7 +122,6 @@ public class RioVBlocks
 	public static Block sanctuatiteFire = new BlockSanctuatiteFire().setBlockName("sanctuatiteFire");
 	public static Block sanctuatiteGrass = new BlockSanctuatiteGrass().setBlockName("sanctuatiteGrass");
 	public static Block sanctuatiteDirt = new BlockCoreOne().setStepSound(Block.soundTypeGrass).setBlockName("sanctuatiteDirt");
-	public static Block sanctuatiteTallGrass = new BlockRioVTallGrass().setBlockName("sanctuatiteTallGrass");
 	public static Block sanctuaryStone = new BlockCoreOne().setHardness(1.5F).setBlockName("sanctuaryStone");
 	public static Block skycloud = new BlockSkycloud().setBlockName("skycloud");
 	public static Block skywoodLog = new BlockSkywoodLog().setBlockName("skywoodLog");
@@ -209,7 +207,6 @@ public class RioVBlocks
 		MethodUtil.registerBlock(skywoodLog, "Skywood Log");
 		MethodUtil.registerBlock(skywoodSapling, "Skywood Sapling");
 		MethodUtil.registerBlock(sanctuaryStone, "Sanctuary Stone");
-		MethodUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
 		MethodUtil.registerBlock(sanctuatitePortal, "Sanctuatite Portal");
 		MethodUtil.registerBlock(sanctuatiteGrass, "Sanctuatite Grass");
 		MethodUtil.registerBlock(sanctuatiteDirt, "Sanctuatite Dirt");

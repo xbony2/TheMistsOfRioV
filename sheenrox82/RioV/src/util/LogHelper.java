@@ -7,63 +7,106 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.Level;
 
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import cpw.mods.fml.common.FMLLog;
 
 public class LogHelper {
 
-    private static BufferedWriter writer;
-    
-    static{
-        File dir = new File("./TheMistsOfRioV");
-        dir.mkdir();
-        dir = new File("./TheMistsOfRioV/debug.log");
-        try {
-            writer = new BufferedWriter(new FileWriter(dir));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	private static BufferedWriter writer;
 
-    private static void log(Level level, Object msg) {
-        FMLLog.log(Util.MOD_NAME, level, msg.toString());
-        System.err.println(msg);
-        writeFile(msg);
-    }
+	static
+	{
+		File dir = new File("./TheMistsOfRioV");
+		dir.mkdir();
+		dir = new File("./TheMistsOfRioV/debug.log");
 
-    public static void debug(Object msg) {
-        if (Util.DEBUG) log(Level.DEBUG, "[DEBUG] " + msg);
-    }
+		try 
+		{
+			writer = new BufferedWriter(new FileWriter(dir));
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
 
-    public static void error(Object msg) {
-        log(Level.ERROR, msg);
-    }
+	private static void log(Level level, String msg) 
+	{
+		FMLLog.log(Util.MOD_NAME, level, msg);
+		System.err.println(msg);
+		
+		if(TheMistsOfRioV.getInstance().modLoaded == false)
+		{
+			writeFile(msg);
+			flush();
+		}
+		
+		if(TheMistsOfRioV.getInstance().modLoaded == true)
+		{
+			closeFile();
+		}
+	}
 
-    public static void info(Object msg) {
-        log(Level.INFO, msg);
-    }
+	public static void debug(String msg) 
+	{
+		if (Util.DEBUG) log(Level.DEBUG, "[DEBUG] " + msg);
+	}
 
-    public static void warn(Object msg) {
-        log(Level.WARN, msg);
-    }
+	public static void error(String msg) 
+	{
+		log(Level.ERROR, msg);
+	}
 
-    public static void dev(Object msg) {
-        log(Level.INFO, "[DEVELOPMENT] " + msg);
-    }
-    
-    public static void writeFile(Object msg){
-        try {
-            writer.write(msg + "\n");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public static void closeFile() {
-        try {
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	public static void info(String msg)
+	{
+		log(Level.INFO, msg);
+	}
+
+	public static void warn(String msg) 
+	{
+		log(Level.WARN, msg);
+	}
+
+	public static void dev(String msg) 
+	{
+		log(Level.INFO, "[DEVELOPMENT] " + msg);
+	}
+
+	public static void writeFile(String msg)
+	{
+		try 
+		{
+			writer.write(msg);
+			writer.newLine();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public static void flush() 
+	{
+		try
+		{
+			writer.flush();
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+
+	public static void closeFile() 
+	{
+		try
+		{
+			writer.close();
+		}
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
 
 }

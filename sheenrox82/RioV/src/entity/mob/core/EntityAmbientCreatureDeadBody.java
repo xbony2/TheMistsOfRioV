@@ -27,7 +27,7 @@ public class EntityAmbientCreatureDeadBody extends EntityAmbientCreature
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(Config.deadBodies)
+		if(Config.deadBodies == true)
 		{
 			++this.deathTime;
 			int i;
@@ -58,6 +58,10 @@ public class EntityAmbientCreatureDeadBody extends EntityAmbientCreature
 			{
 				this.setDead();
 			}
+		}
+		else
+		{
+			super.onDeathUpdate();
 		}
 	}
 }

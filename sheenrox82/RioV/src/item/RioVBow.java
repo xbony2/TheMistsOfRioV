@@ -22,6 +22,7 @@ import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.projectile.EntityAlerisArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityAmethystArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityBlindoniteArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityDragonArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityOnyxArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
@@ -44,6 +45,8 @@ public class RioVBow extends ItemBow
 	public static final String[] aleris = new String[] {Util.MOD_ID + ":" + "aleris_pull_0", Util.MOD_ID + ":" + "aleris_pull_1", Util.MOD_ID + ":" + "aleris_pull_2"};
 	public EntityVraviniteArrow vraviniteArrow = new EntityVraviniteArrow(null);
 	public static final String[] vravinite = new String[] {Util.MOD_ID + ":" + "vBow_pull_0", Util.MOD_ID + ":" + "vBow_pull_1", Util.MOD_ID + ":" + "vBow_pull_2"};
+	public EntityDarknessArrow darknessArrow = new EntityDarknessArrow(null);
+	public static final String[] wurTunBow = new String[] {Util.MOD_ID + ":" + "wBow_pull_0", Util.MOD_ID + ":" + "wBow_pull_1", Util.MOD_ID + ":" + "wBow_pull_2"};
 	
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
@@ -474,6 +477,73 @@ public class RioVBow extends ItemBow
 				}
 			}
 		}
+		
+		if(this == RioVItems.bowOfWurTun)
+		{
+			if (flag || par3EntityPlayer.inventory.hasItem(RioVItems.darknessArrow))
+			{
+				float f = (float)j / 20.0F;
+				f = (f * f + f * 2.0F) / 3.0F;
+
+				if ((double)f < 0.1D)
+				{
+					return;
+				}
+
+				if (f > 1.0F)
+				{
+					f = 1.0F;
+				}
+
+				EntityDarknessArrow entityarrow = new EntityDarknessArrow(par2World, par3EntityPlayer, f * 2.0F);
+
+				if (f == 1.0F)
+				{
+					entityarrow.setIsCritical(true);
+				}
+
+				int k = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+
+				if (k > 0)
+				{
+					entityarrow.setDamage(entityarrow.getDamage() + (double)k * 0.5D + 0.5D);
+				}
+
+				int l = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+
+				if (l > 0)
+				{
+					entityarrow.setKnockbackStrength(l);
+				}
+
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+				{
+					entityarrow.setFire(100);
+				}
+
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.vicious.effectId, par1ItemStack) > 0)
+				{
+					entityarrow.setDamage(darknessArrow.damage * 1.4);	
+				}
+
+				par1ItemStack.damageItem(1, par3EntityPlayer);
+				par2World.playSoundAtEntity(par3EntityPlayer, Sounds.bow.getPrefixedName(), 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+
+				if (flag)
+				{
+					entityarrow.canBePickedUp = 2;
+				}
+				else
+				{
+					par3EntityPlayer.inventory.consumeInventoryItem(RioVItems.darknessArrow);
+				}
+
+				if (!par2World.isRemote)
+				{
+					par2World.spawnEntityInWorld(entityarrow);
+				}
+			}
+		}
 	}
 
 	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
@@ -556,6 +626,14 @@ public class RioVBow extends ItemBow
 				par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 			}
 		}
+		
+		if(this == RioVItems.bowOfWurTun)
+		{
+			if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(RioVItems.darknessArrow))
+			{
+				par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
+			}
+		}
 
 		return par1ItemStack;
 	}
@@ -631,6 +709,16 @@ public class RioVBow extends ItemBow
 			for (int i = 0; i < this.iconArray.length; ++i)
 			{
 				this.iconArray[i] = par1IconRegister.registerIcon(vravinite[i]);
+			}
+		}
+		
+		if(this == RioVItems.bowOfWurTun)
+		{
+			this.iconArray = new IIcon[wurTunBow.length];
+
+			for (int i = 0; i < this.iconArray.length; ++i)
+			{
+				this.iconArray[i] = par1IconRegister.registerIcon(wurTunBow[i]);
 			}
 		}
 	}
@@ -737,6 +825,18 @@ public class RioVBow extends ItemBow
 				else
 				{
 					var3.add("Damage: " + vraviniteArrow.damage);
+				}
+			}
+			
+			if(this == RioVItems.bowOfWurTun)
+			{
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.vicious.effectId, var1) > 0)
+				{
+					var3.add("Damage: " + darknessArrow.damage * 1.4);
+				}
+				else
+				{
+					var3.add("Damage: " + darknessArrow.damage);
 				}
 			}
 		}

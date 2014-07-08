@@ -19,7 +19,6 @@ public class Sounds
 	public static Sound exhale = new Sound("exhale");
 	public static Sound hello = new Sound("hello");
 	public static Sound pain = new Sound("pain");
-	public static Sound menuMusic = new Sound("menuMusic");
 
 	public static void playSound(Sound sound, World world, Entity entity, float volume, float pitch) {
 		world.playSoundAtEntity(entity, sound.getPrefixedName(), volume, pitch);

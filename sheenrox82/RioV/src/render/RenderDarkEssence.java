@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.hostile.EntityDarkEssence;
+import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.lib.EntityResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

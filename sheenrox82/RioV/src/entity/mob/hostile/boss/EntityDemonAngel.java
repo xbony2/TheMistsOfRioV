@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.entity.mob.hostile;
+package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;

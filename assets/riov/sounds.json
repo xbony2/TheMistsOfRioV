@@ -68,12 +68,5 @@
       "pain",
       "stream": false
     }]
-  },
- "menuMusic": {
-  "category":"master","sounds": [{
-    "name":
-      "menuMusic",
-      "stream": false
-    }]
   }
 }

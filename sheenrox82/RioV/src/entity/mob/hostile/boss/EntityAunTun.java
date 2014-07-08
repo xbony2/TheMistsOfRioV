@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.entity.mob.hostile;
+package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -24,6 +24,9 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityDarkElf;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityMage;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityTefGuard;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
 import sheenrox82.RioV.src.util.MethodUtil;

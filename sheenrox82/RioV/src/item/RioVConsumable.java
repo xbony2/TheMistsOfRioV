@@ -76,7 +76,6 @@ public class RioVConsumable extends ItemFood
 		return itemStack;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{

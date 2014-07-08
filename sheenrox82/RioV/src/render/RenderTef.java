@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.util.ResourceLocation;
-import sheenrox82.RioV.src.entity.mob.hostile.EntityTef;
+import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTef;
 import sheenrox82.RioV.src.lib.EntityResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

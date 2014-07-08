@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTun;
+import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityAunTun;
 import sheenrox82.RioV.src.lib.EntityResourceLocation;
 
 public class RenderAunTun extends RenderBiped

@@ -23,7 +23,6 @@ import sheenrox82.RioV.src.item.RioVSummoners;
 import sheenrox82.RioV.src.item.RioVVoidHolder;
 import sheenrox82.RioV.src.item.RioVWand;
 import sheenrox82.RioV.src.item.RioVWeapon;
-import sheenrox82.RioV.src.item.unique.ItemBowOfWurTun;
 import sheenrox82.RioV.src.item.unique.ItemEnforcedBowOfWurTun;
 import sheenrox82.RioV.src.item.unique.ItemTasaravChestplate;
 import sheenrox82.RioV.src.item.unique.ItemTasaravHelmet;
@@ -157,7 +156,7 @@ public class RioVItems
 	public static Item demonAngelCrystal = new RioVSummoners().setUnlocalizedName("demonAngelCrystal");
 	public static Item auntunSummoner = new RioVSummoners().setUnlocalizedName("auntunSummoner");
 	public static Item khuulisScythe = new RioVWeapon(Onyx, false).setUnlocalizedName("khuulisScythe");
-	public static Item bowOfWurTun = new ItemBowOfWurTun().setUnlocalizedName("bowOfWurTun");
+	public static Item bowOfWurTun = new RioVBow(400).setUnlocalizedName("bowOfWurTun");
 	public static Item wineGlass = new RioVItem().setUnlocalizedName("wineGlass");
 	public static Item potionGlass = new RioVItem().setUnlocalizedName("potionGlass");
 	public static Item grapes = new RioVConsumable(3, 0, false).setUnlocalizedName("grapes");

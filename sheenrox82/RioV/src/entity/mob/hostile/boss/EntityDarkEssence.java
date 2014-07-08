@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.entity.mob.hostile;
+package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

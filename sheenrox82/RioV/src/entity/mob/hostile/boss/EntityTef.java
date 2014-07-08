@@ -1,6 +1,8 @@
-package sheenrox82.RioV.src.entity.mob.hostile;
+package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -21,33 +23,40 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunMinion;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityHellhound;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityMage;
+import sheenrox82.RioV.src.entity.mob.hostile.EntityTefGuard;
+import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
 import sheenrox82.RioV.src.util.MethodUtil;
 
-public class EntityTerron extends EntityBossCore
+public class EntityTef extends EntityBossCore
 {
-	public EntityTerron(World par1World)
+
+	public EntityTef(World par1World)
 	{
 		super(par1World);
-		this.setSize(1F, 3.8F);
 		this.experienceValue = 70;
-		isImmuneToFire = false;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
+		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunBodyguard.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunMinion.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDemonAngel.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMage.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
@@ -61,37 +70,31 @@ public class EntityTerron extends EntityBossCore
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPigZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTef.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTefGuard.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
-	}
-
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(900.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
+		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
+		isImmuneToFire = true;
+		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.tefHelmet));
+		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.tefChestplate));
+		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.tefLeggings));
+		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.tefBoots));
 	}
 
 	@Override
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
-		if(this.worldObj.isRemote)
-		{
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Terron: *Grroowwwwwwwwwlllll*");
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Terron was killed!");
-		}
-	}
 
-	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
-		this.dropItem(RioVItems.agonite, 3);
+		if(!this.worldObj.isRemote)
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				EntityTefGuard var1 = new EntityTefGuard(this.worldObj);
+				var1.setPosition(this.posX, this.posY, this.posZ);
+				this.worldObj.spawnEntityInWorld(var1);
+			}
+		}
+		if(this.worldObj.isRemote)
+			MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Tef was killed!");
 	}
 
 	@Override
@@ -104,17 +107,66 @@ public class EntityTerron extends EntityBossCore
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readEntityFromNBT(par1NBTTagCompound);
+
 	}
 
 	@Override
-	protected boolean isAIEnabled()
+	protected void applyEntityAttributes()
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(400.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(60.0D);
+	}
+
+	@Override
+	public boolean isAIEnabled()
 	{
 		return true;
 	}
 
 	@Override
-	protected String getLivingSound()
+	protected void dropFewItems(boolean par1, int par2)
 	{
-		return Sounds.growl.getPrefixedName();
+		this.dropItem(RioVItems.darkMatter, 2);
+		this.dropItem(RioVItems.ambrosia, 1);
 	}
+
+	@Override
+	public boolean attackEntityAsMob(Entity par1Entity)
+	{
+		if (super.attackEntityAsMob(par1Entity))
+        {
+            if (par1Entity instanceof EntityLivingBase)
+            {
+                byte b0 = 0;
+
+                if (this.worldObj.difficultySetting.getDifficultyId() > 1)
+                {
+                    if (this.worldObj.difficultySetting.getDifficultyId() == 2)
+                    {
+                        b0 = 7;
+                    }
+                    else if (this.worldObj.difficultySetting.getDifficultyId() == 3)
+                    {
+                        b0 = 15;
+                    }
+                }
+
+                if (b0 > 0)
+                {
+                    ((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.blindness.id, 40, 1));
+                    ((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id, 80, 2));
+                    ((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.wither.id, 30, 1));
+                }
+            }
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+	}
+	
 }

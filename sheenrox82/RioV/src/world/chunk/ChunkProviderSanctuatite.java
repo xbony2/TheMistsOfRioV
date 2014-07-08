@@ -354,7 +354,7 @@ public class ChunkProviderSanctuatite implements IChunkProvider{
 			var14 = k + this.rand.nextInt(16);
 			var15 = this.rand.nextInt(128);
 			var16 = l + this.rand.nextInt(16);
-			(new WorldGenSanctuatiteMineable(RioVBlocks.alerisOre, 3)).generate(this.worldObj, this.rand, var14, var15, var16);
+			(new WorldGenSanctuatiteMineable(RioVBlocks.alerisOre, 1)).generate(this.worldObj, this.rand, var14, var15, var16);
 		}
 
 		byte var22 = 4;

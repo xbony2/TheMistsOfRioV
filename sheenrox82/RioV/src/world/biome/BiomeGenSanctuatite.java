@@ -23,10 +23,4 @@ public class BiomeGenSanctuatite extends BiomeGenBase
 		this.spawnableCaveCreatureList.clear();
 		this.theBiomeDecorator.grassPerChunk = 16;
 	}
-	
-	@Override
-    public WorldGenerator getRandomWorldGenForGrass(Random var1)
-    {
-        return new WorldGenTallGrass(RioVBlocks.sanctuatiteTallGrass, 16);
-    }
 }

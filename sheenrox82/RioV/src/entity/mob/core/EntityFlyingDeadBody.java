@@ -27,7 +27,7 @@ public class EntityFlyingDeadBody extends EntityFlying
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(Config.deadBodies)
+		if(Config.deadBodies == true)
 		{
 			++this.deathTime;
 			int i;
@@ -58,6 +58,10 @@ public class EntityFlyingDeadBody extends EntityFlying
 			{
 				this.setDead();
 			}
+		}
+		else
+		{
+			super.onDeathUpdate();
 		}
 	}
 }

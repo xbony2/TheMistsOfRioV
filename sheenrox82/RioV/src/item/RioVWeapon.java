@@ -179,7 +179,6 @@ public class RioVWeapon extends ItemSword
 		return itemstack;
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)

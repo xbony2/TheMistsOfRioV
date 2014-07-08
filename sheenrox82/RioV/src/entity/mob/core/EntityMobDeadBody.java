@@ -32,7 +32,7 @@ public class EntityMobDeadBody extends EntityMob
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(Config.deadBodies)
+		if(Config.deadBodies == true)
 		{
 			++this.deathTime;
 			int i;
@@ -63,6 +63,10 @@ public class EntityMobDeadBody extends EntityMob
 			{
 				this.setDead();
 			}
+		}
+		else
+		{
+			super.onDeathUpdate();
 		}
 	}
 }
