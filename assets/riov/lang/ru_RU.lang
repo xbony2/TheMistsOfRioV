@@ -388,6 +388,12 @@ tile.glimmerwoodLadder.name=Тусклая лестница
 tile.cherryBlossomLadder.name=Лестница из вишневого дерева
 tile.skywoodLadder.name=Небесная лестница
 
+item.amethystBow.name=Аметистовый лук
+item.onyxBow.name=Ониксовый лук
+item.dragonBow.name=Драконов лук
+item.alerisBow=Алерисовский лук
+item.blindoniteBow.name=Блиндонитовый лук
+
 entity.Adventurer.name=Путешественник
 entity.Mage.name=Маг
 entity.Altru Essence.name=Altru Essence
