@@ -233,7 +233,6 @@ item.auntunHelmet.name=Helmet of Aun'Tun
 item.auntunChestplate.name=Chestplate of Aun'Tun
 item.auntunLeggings.name=Leggings of Aun'Tun
 item.auntunBoots.name=Boots of Aun'Tun
-
 item.infusedDragonHelmet.name=§4Infused Dragon Helmet
 item.infusedDragonChestplate.name=§4Infused Dragon Chestplate
 item.infusedDragonLeggings.name=§4Infused Dragon Leggings
@@ -242,7 +241,6 @@ item.infusedDragonPickaxe.name=§4Infused Dragon Pickaxe
 item.infusedDragonAxe.name=§4Infused Dragon Axe
 item.infusedDragonShovel.name=§4Infused Dragon Shovel
 item.infusedDragonSword.name=§4Infused Dragon Sword
-
 item.dragonHelmet.name=§4Dragon Helmet
 item.dragonChestplate.name=§4Dragon Chestplate
 item.dragonLeggings.name=§4Dragon Leggings
@@ -253,13 +251,11 @@ item.dragonAxe.name=§4Dragon Axe
 item.dragonSword.name=§4Dragon Sword
 item.infusedDragonPickaxe.name=§4Infused Dragon Pickaxe
 item.dragonSoul.name=§4Dragon Soul Gem
-
 tile.blackQuartz.name=Black Quartz Block
 tile.stainedGlass.pattern1.name=A Field of Colorful Flowers
 tile.stainedGlass.pattern2.name=A Relaxing Melody
 tile.stainedGlass.pattern3.name=A Sunshine from a Thousand Suns
 tile.stainedGlass.pattern4.name=Dark Gothic Shades
-
 tile.flag.name=Flag (Unfinished)
 tile.steamingBloodDeposit.name=Steaming Blood Deposit
 tile.chocolateCake.name=Chocolate Cake
@@ -387,12 +383,17 @@ tile.bloodLadder.name=Blood Ladder
 tile.glimmerwoodLadder.name=Glimmerwood Ladder
 tile.cherryBlossomLadder.name=Cherry Blossom Ladder
 tile.skywoodLadder.name=Skywood Ladder
-
 item.amethystBow.name=Amethyst Bow
 item.onyxBow.name=Onyx Bow
 item.dragonBow.name=Dragon Bow
 item.alerisBow=Aleris Bow
 item.blindoniteBow.name=Blindonite Bow
+
+item.amethystArrow.name=Amethyst Arrow
+item.onyxArrow.name=Onyx Arrow
+item.dragonArrow.name=Dragon Arrow
+item.alerisArrow.name=Aleris Arrow
+item.blindoniteArrow.name=Blindonite Arrow
 
 entity.Adventurer.name=Adventurer
 entity.Mage.name=Mage

@@ -25,13 +25,12 @@ public class AnvilCraftingManager
 	public String[] sword = new String[] {" X ", " X ", "XXX", " ! ",};
 	public String[] shovel = new String[] {"X", "!", "!", "!"};
 	public String[] axe = new String[] {"XX", "X!", " !", " !"};
-	public String[] dagger = new String[] {"X", "!"};
-
+	public String[] bowOfWurTun = new String[] {" I*", "IB*", " I*"};
+	public String[] bow = new String[] {" I*", "I *", " I*"};
 	public String[] helmet = new String[] {"XXX", "X X"};
 	public String[] chestplate = new String[] {"X X", "XXX", "XXX"};
 	public String[] leggings = new String[] {"XXX", "X X", "X X"};
 	public String[] boots = new String[] {"X X", "X X"};
-	public String[] shield = { "X X", "XXX", " X " };
 
 	public static final int WILDCARD_VALUE = Short.MAX_VALUE;
 	public static AnvilCraftingManager instance = new AnvilCraftingManager();
@@ -77,7 +76,7 @@ public class AnvilCraftingManager
 		this.addRecipe(new ItemStack(RioVItems.glimmerwoodShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
 		this.addRecipe(new ItemStack(RioVItems.glimmerwoodAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
 		this.addRecipe(new ItemStack(RioVItems.khuulisScythe, 1), "X  ", " Z ", "  X", Character.valueOf('X'), Items.iron_ingot, Character.valueOf('Z'), RioVItems.blackBone);
-		this.addRecipe(new ItemStack(RioVItems.bowOfWurTun, 1), " XC", "D C", " XC", Character.valueOf('X'), Items.gold_ingot, Character.valueOf('C'), Items.string, Character.valueOf('D'), RioVItems.blackBone);
+		this.addRecipe(new ItemStack(RioVItems.bowOfWurTun, 1), bowOfWurTun, Character.valueOf('I'), Items.gold_ingot, Character.valueOf('*'), Items.string, Character.valueOf('D'), RioVItems.blackBone);
 		this.addRecipe(new ItemStack(RioVItems.enforcedBowOfWurTun, 1), " XC", "DOC", " XC", Character.valueOf('X'), Items.gold_ingot, Character.valueOf('C'), Items.string, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('O'), RioVItems.bowOfWurTun);
 		this.addRecipe(new ItemStack(RioVItems.skywoodPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVBlocks.skywoodPlanks, Character.valueOf('!'), RioVItems.skywoodSticks});
 		this.addRecipe(new ItemStack(RioVItems.skywoodSword, 1), new Object[] { sword, Character.valueOf('X'), RioVBlocks.skywoodPlanks, Character.valueOf('!'), RioVItems.skywoodSticks});
@@ -140,6 +139,13 @@ public class AnvilCraftingManager
 		this.addRecipe(new ItemStack(RioVItems.alerisChestplate, 1), new Object[] { chestplate, Character.valueOf('X'), RioVItems.aleris});
 		this.addRecipe(new ItemStack(RioVItems.alerisLeggings, 1), new Object[] { leggings, Character.valueOf('X'), RioVItems.aleris});
 		this.addRecipe(new ItemStack(RioVItems.alerisBoots, 1), new Object[] { boots, Character.valueOf('X'), RioVItems.aleris});
+		this.addRecipe(new ItemStack(RioVItems.amethystBow, 1), bow, Character.valueOf('I'), RioVItems.amethyst, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.onyxBow, 1), bow, Character.valueOf('I'), RioVItems.onyx, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.dragonBow, 1), bow, Character.valueOf('I'), RioVItems.dragonSoul, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.blindoniteBow, 1), bow, Character.valueOf('I'), RioVItems.blindonite, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.alerisBow, 1), bow, Character.valueOf('I'), RioVItems.aleris, Character.valueOf('*'), Items.string);
+
+		
 		Collections.sort(this.recipes, new Comparator()
 		{
 			public int compare(IRecipe par1IRecipe, IRecipe par2IRecipe)
