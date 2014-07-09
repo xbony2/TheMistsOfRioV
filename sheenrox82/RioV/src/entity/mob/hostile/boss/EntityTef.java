@@ -94,7 +94,7 @@ public class EntityTef extends EntityBossCore
 			}
 		}
 		if(this.worldObj.isRemote)
-			MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Tef was killed!");
+			MethodUtil.sendMessageToAll("Tef was killed!");
 	}
 
 	@Override

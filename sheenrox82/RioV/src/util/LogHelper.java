@@ -109,4 +109,10 @@ public class LogHelper {
 		}
 	}
 
+	public static void write(String msg)
+	{
+		System.err.println(msg);
+		writeFile(msg);
+		flush();
+	}
 }

@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityList.EntityEggInfo;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
@@ -15,6 +15,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.DimensionManager;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -67,30 +68,26 @@ public class MethodUtil
 		return unlocalizedName.substring(unlocalizedName.lastIndexOf(".") + 1);
 	}
 
-	public static int getMaxDamageFactor(ArmorMaterial material) {
-		int maxDamageFactor = 0;
-
-		try 
-		{
-			if (fMaxDamageFactor == null) 
-			{
-				fMaxDamageFactor = material.getClass().getDeclaredField("maxDamageFactor");
-				fMaxDamageFactor.setAccessible(true);
-			}
-			maxDamageFactor = fMaxDamageFactor.getInt(material);
-		} 
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
-		return maxDamageFactor;
-	}
-	
 	public static ChatComponentTranslation addChatMessage(EnumChatFormatting color, String str, Object... args)
 	{
 		ChatComponentTranslation ret = new ChatComponentTranslation(str, args);
 		ret.getChatStyle().setColor(color);
 		return ret;
+	}
+
+	public static ChatComponentTranslation addChatMessage(String str, Object... args)
+	{
+		ChatComponentTranslation ret = new ChatComponentTranslation(str, args);
+		return ret;
+	}
+
+	public static void sendMessageToAll(String message)
+	{
+		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(EnumChatFormatting.GOLD, message));
+	}
+	
+	public static void sendMessageToAll(String message, EntityPlayer player)
+	{
+		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(EnumChatFormatting.GOLD, message + player.getDisplayName()));
 	}
 }

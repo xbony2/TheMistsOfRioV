@@ -40,8 +40,8 @@ public class EntityDemonAngel extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Demon Angel: Aarrrrrrgghhhhhhhh!");
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Demon Angel was killed!");
+			MethodUtil.sendMessageToAll("Demon Angel: Aarrrrrrgghhhhhhhh!");
+			MethodUtil.sendMessageToAll("Demon Angel was killed!");
 		}
 	}
 

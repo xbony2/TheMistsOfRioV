@@ -1,10 +1,8 @@
 package sheenrox82.RioV.src.base;
 
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.handler.GuiHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 import sheenrox82.RioV.src.util.Registry;

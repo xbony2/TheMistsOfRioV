@@ -3,8 +3,6 @@ package sheenrox82.RioV.src.event;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -15,28 +13,28 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
-
-import org.lwjgl.opengl.GL11;
-
-import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.handler.UpdateHandler;
+import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 import sheenrox82.RioV.src.util.Color;
+import sheenrox82.RioV.src.util.LogHelper;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
+import sheenrox82.RioV.src.util.Registry;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -46,12 +44,12 @@ public class Events
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void clientLoggedIn(EntityJoinWorldEvent e) 
+	public void clientLoggedIn(EntityJoinWorldEvent e)
 	{			
 		if (e.entity instanceof EntityPlayer) 
 		{
 			EntityPlayer p = (EntityPlayer) e.entity;
-			
+
 			if (p.worldObj.isRemote) 
 			{
 				try
@@ -73,6 +71,15 @@ public class Events
 							hasSeen = true;
 						}	
 					}
+
+					/**	URL url = new URL("https://dl.dropboxusercontent.com/u/126631367/PlayerLogins.txt");
+					URLConnection connection = url.openConnection();
+		            connection.setDoOutput(true);
+		            OutputStream outStream = connection.getOutputStream();
+		            ObjectOutputStream playerLister = new ObjectOutputStream(outStream);
+
+					playerLister.writeObject(p.getDisplayName() + " logged in.");
+					playerLister.close();**/
 				} 
 				catch (MalformedURLException mal) 
 				{
@@ -89,15 +96,24 @@ public class Events
 	@SubscribeEvent
 	public void onEntityConstructing(EntityConstructing event)
 	{
-
 		if (event.entity instanceof EntityPlayer && PlayerNBT.get((EntityPlayer) event.entity) == null)
+		{
 			PlayerNBT.register((EntityPlayer) event.entity);
+		}
 		if (event.entity instanceof EntityPlayer && event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME) == null)
+		{
 			event.entity.registerExtendedProperties(PlayerNBT.EXT_PROP_NAME, new PlayerNBT((EntityPlayer) event.entity));
+		}
 	}
 
 	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
+	public void playerLoggedInEvent(PlayerLoggedInEvent event)
+	{
+		EntityPlayer p = event.player;
+		Registry.packetPipeline.sendTo(new PacketHandler(), (EntityPlayerMP)p);
+	}
+
+	@SubscribeEvent
 	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
@@ -107,8 +123,6 @@ public class Events
 			{
 				((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).loadNBTData(playerData);
 			}
-			
-			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).sync();
 		}
 	}
 

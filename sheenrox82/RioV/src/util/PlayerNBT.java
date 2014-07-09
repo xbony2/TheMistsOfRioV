@@ -1,7 +1,8 @@
 package sheenrox82.RioV.src.util;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -11,15 +12,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class PlayerNBT implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "PlayerNBT";
 	private final EntityPlayer player;
 	public static final int EOS_WATCHER = 20;
-	public int maxEos = 50;
+	public static int maxEos = 50;
 
 	public PlayerNBT(EntityPlayer player)
 	{
@@ -59,29 +58,6 @@ public class PlayerNBT implements IExtendedEntityProperties
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public final void sync()
-	{
-		ByteBuf data = Unpooled.buffer(5);
-        
-		try 
-		{
-			data.writeInt(this.maxEos);
-		} 
-		catch (Exception ex) 
-		{
-			ex.printStackTrace();
-		}
-
-		C17PacketCustomPayload packet = new C17PacketCustomPayload("riovchannel", data);
-
-		if (FMLCommonHandler.instance().getEffectiveSide().isServer()) 
-		{
-			EntityPlayerMP player1 = (EntityPlayerMP) player;
-			player1.playerNetServerHandler.processVanilla250Packet(packet);
-		}
-	}
-
 	public final boolean consumeEos(int amount)
 	{
 		int mana = this.player.getDataWatcher().getWatchableObjectInt(EOS_WATCHER);
@@ -110,7 +86,6 @@ public class PlayerNBT implements IExtendedEntityProperties
 	public void setMaxEos(int amount)
 	{
 		this.maxEos = 50;
-		this.sync();
 	}
 
 	private static String getSaveKey(EntityPlayer player) 
@@ -137,7 +112,5 @@ public class PlayerNBT implements IExtendedEntityProperties
 		{
 			playerData.loadNBTData(savedData);
 		}
-
-		playerData.sync();
 	}
 }

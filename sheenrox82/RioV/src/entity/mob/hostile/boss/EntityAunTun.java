@@ -80,8 +80,8 @@ public class EntityAunTun extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Aun'Tun: *Rupture");
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Aun'Tun was destroyed!");
+			MethodUtil.sendMessageToAll("Aun'Tun: *Rupture");
+			MethodUtil.sendMessageToAll("Aun'Tun was destroyed!");
 		}
 	}
 

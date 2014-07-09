@@ -88,8 +88,8 @@ public class EntityTerron extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Terron: *Grroowwwwwwwwwlllll*");
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "Terron was killed!");
+			MethodUtil.sendMessageToAll("Terron: *Grroowwwwwwwwwlllll*");
+			MethodUtil.sendMessageToAll("Terron was killed!");
 		}
 	}
 

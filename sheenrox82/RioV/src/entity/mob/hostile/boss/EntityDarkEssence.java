@@ -40,8 +40,8 @@ public class EntityDarkEssence extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "The Darkness: *Screeeech*");
-			MethodUtil.addChatMessage(EnumChatFormatting.RED, "The Darkness has vanished!");
+			MethodUtil.sendMessageToAll("The Darkness: *Screeeech*");
+			MethodUtil.sendMessageToAll("The Darkness has vanished!");
 		}
 	}
 

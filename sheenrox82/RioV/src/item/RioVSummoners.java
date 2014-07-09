@@ -58,7 +58,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[Terron] has been summoned!");
+								MethodUtil.sendMessageToAll("Terron has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -66,7 +66,7 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
+						MethodUtil.sendMessageToAll("You do not have enough Eos!");
 					}
 				}
 
@@ -87,14 +87,14 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[Tef] has been summoned!");
+								MethodUtil.sendMessageToAll("Tef has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
 					}
 					else
 					{
-						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
+						MethodUtil.sendMessageToAll("You do not have enough Eos!");
 					}
 				}
 			}
@@ -114,7 +114,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[The Darkness] has arrived!");
+								MethodUtil.sendMessageToAll("The Darkness has arrived!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 
@@ -122,7 +122,7 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
+						MethodUtil.sendMessageToAll("You do not have enough Eos!");
 					}
 				}
 			}
@@ -146,14 +146,14 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "[Demon Angel] has been summoned!");
+								MethodUtil.sendMessageToAll("Demon Angel has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
 					}
 					else
 					{
-						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
+						MethodUtil.sendMessageToAll("You do not have enough Eos!");
 					}
 				}
 			}
@@ -174,14 +174,14 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
+								MethodUtil.sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
 					}
 					else
 					{
-						MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!");
+						MethodUtil.sendMessageToAll("You do not have enough Eos!");
 					}
 				}
 			}

@@ -115,7 +115,6 @@ public class Registry
 		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 20;
 		packetPipeline.initialise();
 		LogHelper.info("Packets registering...");
-		packetPipeline.registerPacket(PacketHandler.class);
 		LogHelper.info("Packets registered.");
 		LogHelper.info("Other shit is registered. //END INITIALIZATION");
 	}
