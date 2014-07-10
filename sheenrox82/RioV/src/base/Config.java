@@ -1,5 +1,6 @@
 package sheenrox82.RioV.src.base;
 
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
@@ -27,7 +28,11 @@ public class Config
 	public static boolean allowBreathing = true;
 	public static boolean deadBodies = true;
 	public static boolean runCapes = true;
-
+	public static int hudPosX = 175;
+	public static int hudPosY = 50;
+	public static int eosPosX = 20;
+	public static int eosPosY = 20;
+	
 	public static void initialize(FMLPreInitializationEvent event)
 	{
 		config = new Configuration(event.getSuggestedConfigurationFile());

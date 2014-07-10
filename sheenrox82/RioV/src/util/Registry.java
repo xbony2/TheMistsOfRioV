@@ -16,9 +16,13 @@ import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.event.ConfigChanges;
 import sheenrox82.RioV.src.event.Events;
-import sheenrox82.RioV.src.gui.GuiEosBar;
+import sheenrox82.RioV.src.gui.hud.GuiBootsHud;
+import sheenrox82.RioV.src.gui.hud.GuiChestplateHud;
+import sheenrox82.RioV.src.gui.hud.GuiEosBar;
+import sheenrox82.RioV.src.gui.hud.GuiHelmetHud;
+import sheenrox82.RioV.src.gui.hud.GuiLeggingsHud;
+import sheenrox82.RioV.src.gui.hud.GuiToolHud;
 import sheenrox82.RioV.src.handler.FuelHandler;
-import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.handler.packet.PacketPipeline;
 import sheenrox82.RioV.src.recipe.AnvilCraftingManager;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
@@ -128,7 +132,12 @@ public class Registry
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
 		{
 			MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
-			LogHelper.info("Eos bar registered.");
+			MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiHelmetHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
+			LogHelper.info("HUD elements registered.");
 		}
 
 		Config.initPost();
@@ -143,6 +152,10 @@ public class Registry
         Config.allowBreathing = Config.config.getBoolean("Allow Mob Breathing Sounds? (CLIENT SIDE)", Configuration.CATEGORY_GENERAL, Config.allowBreathing, "// Boolean");
         Config.deadBodies = Config.config.getBoolean("Allow Dead Bodies for mobs?", Configuration.CATEGORY_GENERAL, Config.deadBodies, "// Boolean");
         Config.runCapes = Config.config.getBoolean("Allow RioV Capes to initialize?", Configuration.CATEGORY_GENERAL, Config.runCapes, "// Boolean");
+        Config.hudPosX = Config.config.getInt("Item HUD Position X || Max: 1000 || Default: 175", Configuration.CATEGORY_GENERAL, Config.hudPosX, 175, 1000, "// Integer");
+        Config.hudPosY = Config.config.getInt("Item HUD Position Y || Max: 500 || Default: 50", Configuration.CATEGORY_GENERAL, Config.hudPosY, 50, 500, "// Integer");
+        Config.eosPosX = Config.config.getInt("Eos HUD Position X || Max: 1000 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosX, 20, 800, "// Integer");
+        Config.eosPosY = Config.config.getInt("Eos HUD Position Y || Max: 500 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosY, 20, 800, "// Integer");
 
         if(Config.config.hasChanged())
         {

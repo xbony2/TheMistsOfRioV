@@ -1,8 +1,12 @@
-package sheenrox82.RioV.src.gui;
+package sheenrox82.RioV.src.gui.hud;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
@@ -10,17 +14,16 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.util.PlayerNBT;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiEosBar extends Gui
+public class GuiToolHud extends Gui
 {
 	public Minecraft mc;
 
-	public GuiEosBar(Minecraft mc)
+	public GuiToolHud(Minecraft mc)
 	{
 		super();
 		this.mc = mc;
@@ -34,38 +37,23 @@ public class GuiEosBar extends Gui
 		{
 			return;
 		}
-
-		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/eos_bar.png");
-		PlayerNBT props = PlayerNBT.get(mc.thePlayer);
+		
 		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
+		ItemStack currentHeldItem = mc.thePlayer.getCurrentEquippedItem();
 
-		if (props == null || props.maxEos == 0)
+		if (currentHeldItem == null)
 		{
 			return;
 		}
-
-		if(Config.EOS)
-		{
-			if(!mc.thePlayer.capabilities.isCreativeMode)
-			{
-				GL11.glPushMatrix();
-				Minecraft.getMinecraft().renderEngine.bindTexture(icons);
-				int height = event.resolution.getScaledHeight();
-				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-				float magicka = (((float) props.getCurrentEos() / props.maxEos) * 80);
-				this.drawTexturedModalRect(20, height - 20, 0, 49, 102, 14);
-				this.drawTexturedModalRect(31, height - 16, 11, 64, (int)magicka, 6);
-				GL11.glPopMatrix();
-			}
-		}
-
-		if(!Config.EOS)
+		
+		if(currentHeldItem.getItem() instanceof ItemTool || currentHeldItem.getItem() instanceof ItemSword)
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
 				int height = event.resolution.getScaledHeight();
+				int width = event.resolution.getScaledWidth();
 				GL11.glPushMatrix();
-				fontrenderer.drawStringWithShadow("Eos: " + props.getCurrentEos() + "/" + props.maxEos, 32, height - 18, 16777215);
+				fontrenderer.drawStringWithShadow(EnumChatFormatting.ITALIC + currentHeldItem.getDisplayName() + ": " + (currentHeldItem.getMaxDamage() - currentHeldItem.getItemDamage()), width - Config.hudPosX, height - Config.hudPosY, 16777215);
 				GL11.glPopMatrix();
 			}
 		}
