@@ -62,7 +62,7 @@ public class ContainerAnvil extends Container
 
 	public void onCraftMatrixChanged(IInventory iinventory)
 	{
-		craftResult.setInventorySlotContents(0, AnvilCraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
+		craftResult.setInventorySlotContents(0, AnvilCraftingManager.instance.findMatchingRecipe(craftMatrix, worldObj));
 	}
 
 	public void onContainerClosed(EntityPlayer entityplayer)

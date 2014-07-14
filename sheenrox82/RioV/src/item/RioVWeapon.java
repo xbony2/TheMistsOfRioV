@@ -125,17 +125,11 @@ public class RioVWeapon extends ItemSword
 			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.wither.id, 100, 2)); 
 		}
 
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			if(par1ItemStack.getItem().equals(RioVItems.infusedGravititeSword))
-			{
-				if (par3EntityLivingBase != null && par3EntityLivingBase instanceof EntityPlayer && (par2EntityLivingBase.hurtTime > 0 || par2EntityLivingBase.deathTime > 0))
-				{
-					par2EntityLivingBase.addVelocity(0.0D, 1.0D, 0.0D);
-					par1ItemStack.damageItem(1, par3EntityLivingBase);
-				}
-			}
+			
 		}
+		
 		par1ItemStack.damageItem(1, par3EntityLivingBase);
 		return true;
 	}
@@ -310,12 +304,9 @@ public class RioVWeapon extends ItemSword
 				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
 		}
 
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			if(this == RioVItems.infusedSkyrootSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Skyroot Sword");	
-			if(this == RioVItems.infusedHolystoneSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Holystone Sword");	
-			if(this == RioVItems.infusedZaniteSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Zanite Sword");	
-			if(this == RioVItems.infusedGravititeSword) this.itemIcon = par1IconRegister.registerIcon("Aether:Gravitite Sword");	
+			
 		}
 	}
 }

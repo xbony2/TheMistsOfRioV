@@ -101,14 +101,6 @@ public class BlockGlimmerGrass extends Block
 	
 	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
     {
-        Block plant = plantable.getPlant(world, x, y + 1, z);
-        EnumPlantType plantType = plantable.getPlantType(world, x, y + 1, z);
-
-        if (plant == RioVBlocks.glimmerwoodSapling)
-        {
-            return true;
-        }
-
-		return false;
+		return true;
     }
 }

@@ -59,9 +59,6 @@ public class RioVBow extends ItemBow
 		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
-	/**
-	 * called when the player releases the use item button. Args: itemstack, world, entityplayer, itemInUseCount
-	 */
 	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4)
 	{
 		int j = this.getMaxItemUseDuration(par1ItemStack) - par4;
@@ -76,7 +73,7 @@ public class RioVBow extends ItemBow
 
 		boolean flag = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
-		if(this == RioVItems.amethystBow)
+		/**if(this == RioVItems.amethystBow)
 		{
 			if (flag || par3EntityPlayer.inventory.hasItem(RioVItems.amethystArrow))
 			{
@@ -401,7 +398,7 @@ public class RioVBow extends ItemBow
 				}
 				else
 				{
-					par3EntityPlayer.inventory.consumeInventoryItem(RioVItems.alerisArrow);
+				//	par3EntityPlayer.inventory.consumeInventoryItem(RioVItems.alerisArrow);
 				}
 
 				if (!par2World.isRemote)
@@ -409,7 +406,7 @@ public class RioVBow extends ItemBow
 					par2World.spawnEntityInWorld(entityarrow);
 				}
 			}
-		}
+		}**/
 		
 		if(this == RioVItems.vraviniteBow)
 		{
@@ -551,25 +548,16 @@ public class RioVBow extends ItemBow
 		return par1ItemStack;
 	}
 
-	/**
-	 * How long it takes to use or consume an item
-	 */
 	public int getMaxItemUseDuration(ItemStack par1ItemStack)
 	{
 		return 72000;
 	}
 
-	/**
-	 * returns the action that specifies what animation to play when the items is being used
-	 */
 	public EnumAction getItemUseAction(ItemStack par1ItemStack)
 	{
 		return EnumAction.bow;
 	}
 
-	/**
-	 * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
-	 */
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
 		ArrowNockEvent event = new ArrowNockEvent(par3EntityPlayer, par1ItemStack);
@@ -579,7 +567,7 @@ public class RioVBow extends ItemBow
 			return event.result;
 		}
 
-		if(this == RioVItems.amethystBow)
+		/**if(this == RioVItems.amethystBow)
 		{
 			if (par3EntityPlayer.capabilities.isCreativeMode || par3EntityPlayer.inventory.hasItem(RioVItems.amethystArrow))
 			{
@@ -617,7 +605,7 @@ public class RioVBow extends ItemBow
 			{
 				par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 			}
-		}
+		}**/
 		
 		if(this == RioVItems.vraviniteBow)
 		{
@@ -638,9 +626,6 @@ public class RioVBow extends ItemBow
 		return par1ItemStack;
 	}
 
-	/**
-	 * Return the enchantability factor of the item, most of the time is based on material.
-	 */
 	public int getItemEnchantability()
 	{
 		return 1;
@@ -652,7 +637,7 @@ public class RioVBow extends ItemBow
 	{
 		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
 
-		if(this == RioVItems.amethystBow)
+	/**	if(this == RioVItems.amethystBow)
 		{
 			this.iconArray = new IIcon[amethyst.length];
 
@@ -700,7 +685,7 @@ public class RioVBow extends ItemBow
 			{
 				this.iconArray[i] = par1IconRegister.registerIcon(aleris[i]);
 			}
-		}
+		}**/
 		
 		if(this == RioVItems.vraviniteBow)
 		{
@@ -756,7 +741,7 @@ public class RioVBow extends ItemBow
 		{
 			var3.add(var1.getMaxDamage() - var1.getItemDamage() + " Uses");
 
-			if(this == RioVItems.amethystBow)
+		/**	if(this == RioVItems.amethystBow)
 			{
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.vicious.effectId, var1) > 0)
 				{
@@ -814,7 +799,7 @@ public class RioVBow extends ItemBow
 				{
 					var3.add("Damage: " + alerisArrow.damage);
 				}
-			}
+			}**/
 			
 			if(this == RioVItems.vraviniteBow)
 			{

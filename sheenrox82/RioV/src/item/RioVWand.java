@@ -128,6 +128,13 @@ public class RioVWand extends Item
 			if(!world.isRemote)
 				entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 		}
+		
+		if(player.getCurrentEos() < 0)
+		{
+			if(!world.isRemote)
+				entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+		}
+		
 		return itemstack;
 	}
 

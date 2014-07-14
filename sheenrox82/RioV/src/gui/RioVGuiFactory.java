@@ -1,13 +1,12 @@
-package sheenrox82.RioV.src.base;
+package sheenrox82.RioV.src.gui;
  
 import cpw.mods.fml.client.IModGuiFactory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
  
 
-import java.util.Set;
 
-import sheenrox82.RioV.src.gui.GuiRioVConfig;
+import java.util.Set;
  
 public class RioVGuiFactory implements IModGuiFactory 
 {

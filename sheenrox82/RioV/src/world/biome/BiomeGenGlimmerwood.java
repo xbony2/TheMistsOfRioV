@@ -1,12 +1,7 @@
 package sheenrox82.RioV.src.world.biome;
 
-import java.util.Random;
-
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree;
-import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree2;
 
 public class BiomeGenGlimmerwood extends BiomeGenBase
 {
@@ -24,5 +19,6 @@ public class BiomeGenGlimmerwood extends BiomeGenBase
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		this.theBiomeDecorator.treesPerChunk = 8;
+		this.theBiomeDecorator.grassPerChunk = 16;
 	}
 }

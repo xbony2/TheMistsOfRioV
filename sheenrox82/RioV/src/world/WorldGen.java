@@ -18,7 +18,6 @@ import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenCherryBlossomTree;
 import sheenrox82.RioV.src.world.feature.WorldGenGiantTree;
 import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree;
-import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree2;
 import sheenrox82.RioV.src.world.feature.WorldGenSanctuatiteTree;
 import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
 import sheenrox82.RioV.src.world.mineable.WorldGenEndMineable;
@@ -87,6 +86,29 @@ public class WorldGen implements IWorldGenerator
 				tree.generate(world, rand, i, j, k);
 			}
 		}
+		
+		for(int var5 = 0; var5 < 1; ++var5)
+		{
+			int var6 = blockX + rand.nextInt(16);
+			int var7 = world.getHeightValue(blockX, blockZ);
+			int var8 = blockZ + rand.nextInt(16);
+
+			//I know this is not efficient but it needs to be like this for it to work.
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+		}
 	}
 
 	private void generateFlamonor(World world, Random rand, int blockX, int blockZ) 
@@ -104,13 +126,35 @@ public class WorldGen implements IWorldGenerator
 				tree.generate(world, rand, i, j, k);
 			}
 		}
+		
+		for(int var5 = 0; var5 < 1; ++var5)
+		{
+			int var6 = blockX + rand.nextInt(16);
+			int var7 = world.getHeightValue(blockX, blockZ);
+			int var8 = blockZ + rand.nextInt(16);
+
+			//I know this is not efficient but it needs to be like this for it to work.
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+		}
 	}
 
 	private void generateVaeryn(World world, Random rand, int blockX, int blockZ) 
 	{
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		WorldGenGlimmerWoodTree tree = new WorldGenGlimmerWoodTree(false);
-		WorldGenGlimmerWoodTree2 tree2 = new WorldGenGlimmerWoodTree2(false);
 
 		if((biome instanceof BiomeGenGlimmerwood)) 
 		{
@@ -120,8 +164,30 @@ public class WorldGen implements IWorldGenerator
 				int k = blockZ + rand.nextInt(16);
 				int j = world.getHeightValue(i, k);
 				tree.generate(world, rand, i, j, k);
-				tree2.generate(world, rand, i, j, k);
 			}
+		}
+		
+		for(int var5 = 0; var5 < 1; ++var5)
+		{
+			int var6 = blockX + rand.nextInt(16);
+			int var7 = world.getHeightValue(blockX, blockZ);
+			int var8 = blockZ + rand.nextInt(16);
+			
+			//I know this is not efficient but it needs to be like this for it to work.
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
 		}
 	}
 

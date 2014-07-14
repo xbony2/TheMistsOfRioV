@@ -100,7 +100,6 @@ item.pepper.name=Pepper
 item.pepperSpices.name=Pepper Spices
 item.manchet.name=Manchet
 item.cherry.name=Cherry
-item.vaiziCurrency.name=Vaizi
 item.galokinSword.name=Galokin Sword
 item.galokinHelmet.name=Galokin Helmet
 item.galokinChestplate.name=Galokin Chestplate
@@ -393,6 +392,30 @@ tile.bloodLadder.name=Blood Ladder
 tile.glimmerwoodLadder.name=Glimmerwood Ladder
 tile.cherryBlossomLadder.name=Cherry Blossom Ladder
 tile.skywoodLadder.name=Skywood Ladder
+
+
+
+# For RioV Expansion: Natura
+item.Natura:bloodwood_pickaxe.name=Inused Bloodwood Pickaxe
+item.Natura:bloodwood_hatchet.name=Infused Bloodwood Hatchet
+item.Natura:bloodwood_shovel.name=Infused Bloodwood Shovel
+item.Natura:bloodwood_sword.name=Infused Bloodwood Sword
+item.Natura:ghostwood_pickaxe.name=Inused Ghostwood Pickaxe
+item.Natura:ghostwood_hatchet.name=Infused Ghostwood Hatchet
+item.Natura:ghostwood_shovel.name=Infused Ghostwood Shovel
+item.Natura:ghostwood_sword.name=Infused Ghostwood Sword
+item.Natura:darkwood_pickaxe.name=Inused Darkwood Pickaxe
+item.Natura:darkwood_hatchet.name=Infused Darkwood Hatchet
+item.Natura:darkwood_shovel.name=Infused Darkwood Shovel
+item.Natura:darkwood_sword.name=Infused Darkwood Sword
+item.Natura:fusewood_pickaxe.name=Inused Fusewood Pickaxe
+item.Natura:fusewood_hatchet.name=Infused Fusewood Hatchet
+item.Natura:fusewood_shovel.name=Infused Fusewood Shovel
+item.Natura:fusewood_sword.name=Infused Fusewood Sword
+item.Natura:netherquartz_pickaxe.name=Inused Fusewood Pickaxe
+item.Natura:netherquartz_hatchet.name=Infused Fusewood Hatchet
+item.Natura:netherquartz_shovel.name=Infused Fusewood Shovel
+item.Natura:netherquartz_sword.name=Infused Fusewood Sword
 
 entity.Adventurer.name=Adventurer
 entity.Mage.name=Mage

@@ -93,12 +93,9 @@ public class RioVAxe extends ItemAxe
 				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
 		}
 		
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			if(this == RioVItems.infusedSkyrootAxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Skyroot Axe");	
-			if(this == RioVItems.infusedHolystoneAxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Holystone Axe");	
-			if(this == RioVItems.infusedZaniteAxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Zanite Axe");	
-			if(this == RioVItems.infusedGravititeAxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Gravitite Axe");	
+			
 		}
 	}
 

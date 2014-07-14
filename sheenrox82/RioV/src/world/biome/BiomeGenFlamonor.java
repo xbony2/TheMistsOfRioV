@@ -22,5 +22,6 @@ public class BiomeGenFlamonor extends BiomeGenBase
 		this.spawnableWaterCreatureList.clear();
 		this.spawnableCaveCreatureList.clear();
 		this.theBiomeDecorator.treesPerChunk = 5;
+		this.theBiomeDecorator.grassPerChunk = 20;
 	}
 }

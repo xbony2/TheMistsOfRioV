@@ -89,12 +89,9 @@ public class RioVSpade extends ItemSpade
 				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
 		}
 
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			if(this == RioVItems.infusedSkyrootShovel) this.itemIcon = par1IconRegister.registerIcon("Aether:Skyroot Shovel");
-			if(this == RioVItems.infusedHolystoneShovel) this.itemIcon = par1IconRegister.registerIcon("Aether:Holystone Shovel");
-			if(this == RioVItems.infusedZaniteShovel) this.itemIcon = par1IconRegister.registerIcon("Aether:Zanite Shovel");
-			if(this == RioVItems.infusedGravititeShovel) this.itemIcon = par1IconRegister.registerIcon("Aether:Gravitite Shovel");
+		
 		}
 	}
 

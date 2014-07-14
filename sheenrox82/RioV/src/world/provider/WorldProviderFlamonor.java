@@ -17,7 +17,6 @@ public class WorldProviderFlamonor extends WorldProvider
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(Biomes.flamonor, 0.5F);
 		this.dimensionId = Config.flamonorID;
-		this.hasNoSky = false;
 	}
 
 	public IChunkProvider createChunkGenerator()

@@ -19,7 +19,6 @@ public class WorldProviderVaeryn extends WorldProvider
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(Biomes.glimmerwood, 1F);
 		this.dimensionId = Config.vaerynID;
-		this.hasNoSky = false;
 	}
 
 	public IChunkProvider createChunkGenerator()

@@ -75,37 +75,16 @@ public class InfuserRecipes
 		this.addAltarRecipe(RioVItems.vraviniteShovel, new ItemStack(RioVItems.infusedVraviniteShovel, 1));
 		this.addAltarRecipe(RioVItems.vraviniteSword, new ItemStack(RioVItems.infusedVraviniteSword, 1));
 
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
 			try 
 			{
-				Class<?> clAetherItems = Class.forName("net.aetherteam.aether.items.AetherItems");
+				Class botaniaItems = Class.forName("vazkii.botania.common.item.ModItems");
 
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("SkyrootPickaxe").get(null)), new ItemStack(RioVItems.infusedSkyrootPickaxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("SkyrootAxe").get(null)), new ItemStack(RioVItems.infusedSkyrootAxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("SkyrootShovel").get(null)), new ItemStack(RioVItems.infusedSkyrootShovel, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("SkyrootSword").get(null)), new ItemStack(RioVItems.infusedSkyrootSword, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("HolystonePickaxe").get(null)), new ItemStack(RioVItems.infusedHolystonePickaxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("HolystoneAxe").get(null)), new ItemStack(RioVItems.infusedHolystoneAxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("HolystoneShovel").get(null)), new ItemStack(RioVItems.infusedHolystoneShovel, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("HolystoneSword").get(null)), new ItemStack(RioVItems.infusedHolystoneSword, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZanitePickaxe").get(null)), new ItemStack(RioVItems.infusedZanitePickaxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZaniteAxe").get(null)), new ItemStack(RioVItems.infusedZaniteAxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZaniteShovel").get(null)), new ItemStack(RioVItems.infusedZaniteShovel, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZaniteSword").get(null)), new ItemStack(RioVItems.infusedZaniteSword, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititePickaxe").get(null)), new ItemStack(RioVItems.infusedGravititePickaxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititeAxe").get(null)), new ItemStack(RioVItems.infusedGravititeAxe, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititeShovel").get(null)), new ItemStack(RioVItems.infusedGravititeShovel, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititeSword").get(null)), new ItemStack(RioVItems.infusedGravititeSword, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititeHelmet").get(null)), new ItemStack(RioVItems.infusedGravititeHelmet, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititeChestplate").get(null)), new ItemStack(RioVItems.infusedGravititeChestplate, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititeLeggings").get(null)), new ItemStack(RioVItems.infusedGravititeLeggings, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("GravititeBoots").get(null)), new ItemStack(RioVItems.infusedGravititeBoots, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZaniteHelmet").get(null)), new ItemStack(RioVItems.infusedZaniteHelmet, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZaniteChestplate").get(null)), new ItemStack(RioVItems.infusedZaniteChestplate, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZaniteLeggings").get(null)), new ItemStack(RioVItems.infusedZaniteLeggings, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("ZaniteBoots").get(null)), new ItemStack(RioVItems.infusedZaniteBoots, 1));
-				this.addAltarRecipe(((Item)clAetherItems.getDeclaredField("BlueBerry").get(null)), new ItemStack(RioVItems.magicalBlueBerry, 1));
+				this.addAltarRecipe(((Item)botaniaItems.getDeclaredField("manasteelHelm").get(null)), new ItemStack(RioVItems.infusedManasteelHelm, 1));
+				this.addAltarRecipe(((Item)botaniaItems.getDeclaredField("manasteelChest").get(null)), new ItemStack(RioVItems.infusedManasteelChest, 1));
+				this.addAltarRecipe(((Item)botaniaItems.getDeclaredField("manasteelLegs").get(null)), new ItemStack(RioVItems.infusedManasteelLegs, 1));
+				this.addAltarRecipe(((Item)botaniaItems.getDeclaredField("manasteelBoots").get(null)), new ItemStack(RioVItems.infusedManasteelBoots, 1));
 			} 
 			catch(Exception e)
 			{
@@ -117,28 +96,28 @@ public class InfuserRecipes
 		{
 			try 
 			{
-				Class<?> clNContent = Class.forName("mods.natura.common.NContent");
+				Class natura = Class.forName("mods.natura.common.NContent");
 
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("bloodwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodPickaxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("bloodwoodAxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodAxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("bloodwoodShovel").get(null)), new ItemStack(RioVItems.infusedBloodwoodShovel, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("bloodwoodSword").get(null)), new ItemStack(RioVItems.infusedBloodwoodSword, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("ghostwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedGhostwoodPickaxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("ghostwoodAxe").get(null)), new ItemStack(RioVItems.infusedGhostwoodAxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("ghostwoodShovel").get(null)), new ItemStack(RioVItems.infusedGhostwoodShovel, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("ghostwoodSword").get(null)), new ItemStack(RioVItems.infusedGhostwoodSword, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("darkwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedDarkwoodPickaxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("darkwoodAxe").get(null)), new ItemStack(RioVItems.infusedDarkwoodAxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("darkwoodShovel").get(null)), new ItemStack(RioVItems.infusedDarkwoodShovel, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("darkwoodSword").get(null)), new ItemStack(RioVItems.infusedDarkwoodSword, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("netherquartzPickaxe").get(null)), new ItemStack(RioVItems.infusedNetherquartzPickaxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("netherquartzAxe").get(null)), new ItemStack(RioVItems.infusedNetherquartzAxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("netherquartzShovel").get(null)), new ItemStack(RioVItems.infusedNetherquartzShovel, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("netherquartzSword").get(null)), new ItemStack(RioVItems.infusedNetherquartzSword, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("fusewoodPickaxe").get(null)), new ItemStack(RioVItems.infusedFusewoodPickaxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("fusewoodAxe").get(null)), new ItemStack(RioVItems.infusedFusewoodAxe, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("fusewoodShovel").get(null)), new ItemStack(RioVItems.infusedFusewoodShovel, 1));
-				this.addAltarRecipe(((Item)clNContent.getDeclaredField("fusewoodSword").get(null)), new ItemStack(RioVItems.infusedFusewoodSword, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("bloodwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodPickaxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("bloodwoodAxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodAxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("bloodwoodShovel").get(null)), new ItemStack(RioVItems.infusedBloodwoodShovel, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("bloodwoodSword").get(null)), new ItemStack(RioVItems.infusedBloodwoodSword, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("ghostwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedGhostwoodPickaxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("ghostwoodAxe").get(null)), new ItemStack(RioVItems.infusedGhostwoodAxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("ghostwoodShovel").get(null)), new ItemStack(RioVItems.infusedGhostwoodShovel, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("ghostwoodSword").get(null)), new ItemStack(RioVItems.infusedGhostwoodSword, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("darkwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedDarkwoodPickaxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("darkwoodAxe").get(null)), new ItemStack(RioVItems.infusedDarkwoodAxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("darkwoodShovel").get(null)), new ItemStack(RioVItems.infusedDarkwoodShovel, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("darkwoodSword").get(null)), new ItemStack(RioVItems.infusedDarkwoodSword, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("netherquartzPickaxe").get(null)), new ItemStack(RioVItems.infusedNetherquartzPickaxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("netherquartzAxe").get(null)), new ItemStack(RioVItems.infusedNetherquartzAxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("netherquartzShovel").get(null)), new ItemStack(RioVItems.infusedNetherquartzShovel, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("netherquartzSword").get(null)), new ItemStack(RioVItems.infusedNetherquartzSword, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("fusewoodPickaxe").get(null)), new ItemStack(RioVItems.infusedFusewoodPickaxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("fusewoodAxe").get(null)), new ItemStack(RioVItems.infusedFusewoodAxe, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("fusewoodShovel").get(null)), new ItemStack(RioVItems.infusedFusewoodShovel, 1));
+				this.addAltarRecipe(((Item)natura.getDeclaredField("fusewoodSword").get(null)), new ItemStack(RioVItems.infusedFusewoodSword, 1));
 			} 
 			catch(Exception e)
 			{

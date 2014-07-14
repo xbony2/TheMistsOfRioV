@@ -1,17 +1,13 @@
 package sheenrox82.RioV.src.util;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
+import java.util.Random;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.proxy.CommonProxy;
-import cpw.mods.fml.common.FMLCommonHandler;
 
 public class PlayerNBT implements IExtendedEntityProperties
 {
@@ -82,10 +78,17 @@ public class PlayerNBT implements IExtendedEntityProperties
 	{
 		this.player.getDataWatcher().updateObject(EOS_WATCHER, (amount < this.maxEos ? amount : this.maxEos));
 	}
+	
+	public final void addEos(int amount)
+	{
+		int missingAmount = this.maxEos - this.getCurrentEos();
+		
+		this.player.getDataWatcher().updateObject(EOS_WATCHER, (amount < missingAmount ? amount : this.maxEos));
+	}
 
 	public void setMaxEos(int amount)
 	{
-		this.maxEos = 50;
+		this.maxEos = amount;
 	}
 
 	private static String getSaveKey(EntityPlayer player) 

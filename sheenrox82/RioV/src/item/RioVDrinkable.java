@@ -102,20 +102,12 @@ public class RioVDrinkable extends ItemFood
 		{
 			PlayerNBT player = PlayerNBT.get(entityPlayer);
 
-			if(player.getCurrentEos() == 0)
-			{
-				--itemStack.stackSize;
-				player.replenishEos();
-				entityPlayer.getFoodStats().func_151686_a(this, itemStack);
-				world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-				this.onFoodEaten(itemStack, world, entityPlayer);
-				return itemStack.stackSize <= 0 ? new ItemStack(Items.glass_bottle) : itemStack;		
-			}
-			else if(player.getCurrentEos() != 0)
-			{
-
-			}
-
+			--itemStack.stackSize;
+			player.replenishEos();
+			entityPlayer.getFoodStats().func_151686_a(this, itemStack);
+			world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+			this.onFoodEaten(itemStack, world, entityPlayer);
+			return itemStack.stackSize <= 0 ? new ItemStack(Items.glass_bottle) : itemStack;		
 		}
 
 		return itemStack;
@@ -138,14 +130,7 @@ public class RioVDrinkable extends ItemFood
 	{
 		PlayerNBT player = PlayerNBT.get(par3EntityPlayer);
 
-		if(par1ItemStack.getItem() == RioVItems.eosPotion && player.getCurrentEos() != 0)
-		{
-
-		}
-		else
-		{
-			par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
-		}
+		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 
 		return par1ItemStack;
 	}

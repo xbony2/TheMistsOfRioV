@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.item.RioVActivators;
 import sheenrox82.RioV.src.item.RioVArmor;
 import sheenrox82.RioV.src.item.RioVAxe;
@@ -167,7 +168,6 @@ public class RioVItems
 	public static Item pepperSpices = new RioVConsumable(1, 0, false).setUnlocalizedName("pepperSpices");
 	public static Item manchet = new RioVConsumable(4, 0, false).setUnlocalizedName("manchet");
 	public static Item cherry = new RioVConsumable(6, 0, false).setUnlocalizedName("cherry");
-	public static Item vaiziCurrency = new RioVItem().setUnlocalizedName("vaiziCurrency");
 	public static Item galokinSword = new RioVWeapon(Galokin, false).setUnlocalizedName("galokinSword");
 	public static RioVArmor galokinHelmet = (RioVArmor)new RioVArmor(GalokinArmorMaterial, render, 0, "galokin", false).setUnlocalizedName("galokinHelmet");
 	public static RioVArmor galokinChestplate = (RioVArmor)new RioVArmor(GalokinArmorMaterial, render, 1, "galokin", false).setUnlocalizedName("galokinChestplate");
@@ -315,7 +315,8 @@ public class RioVItems
 	public static Item eosPotion = (new RioVDrinkable(0, 0, true)).setAlwaysEdible().setUnlocalizedName("eosPotion");
 	
 	//v2.2.2
-	public static Item amethystBow = (new RioVBow(Amethyst.getMaxUses())).setUnlocalizedName("amethystBow");
+	//Not adding them currently, saving them for v2.3.0.
+	/**public static Item amethystBow = (new RioVBow(Amethyst.getMaxUses())).setUnlocalizedName("amethystBow");
 	public static Item amethystArrow = (new RioVItem()).setUnlocalizedName("amethystArrow");
 	public static Item onyxBow = (new RioVBow(Onyx.getMaxUses())).setUnlocalizedName("onyxBow");
 	public static Item onyxArrow = (new RioVItem()).setUnlocalizedName("onyxArrow");
@@ -324,11 +325,11 @@ public class RioVItems
 	public static Item blindoniteBow = (new RioVBow(Blindonite.getMaxUses())).setUnlocalizedName("blindoniteBow");
 	public static Item blindoniteArrow = (new RioVItem()).setUnlocalizedName("blindoniteArrow");
 	public static Item alerisBow = (new RioVBow(Aleris.getMaxUses())).setUnlocalizedName("alerisBow");
-	public static Item alerisArrow = (new RioVItem()).setUnlocalizedName("alerisArrow");
+	public static Item alerisArrow = (new RioVItem()).setUnlocalizedName("alerisArrow");**/
 	
 	public static void add()
 	{		
-		MethodUtil.registerItem(amethystBow, "Amethyst Bow");
+		/**MethodUtil.registerItem(amethystBow, "Amethyst Bow");
 		MethodUtil.registerItem(amethystArrow, "Amethyst Arrow");
 		MethodUtil.registerItem(onyxBow, "Onyx Bow");
 		MethodUtil.registerItem(onyxArrow, "Onyx Arrow");
@@ -337,7 +338,7 @@ public class RioVItems
 		MethodUtil.registerItem(blindoniteBow, "Blindonite Bow");
 		MethodUtil.registerItem(blindoniteArrow, "Blindonite Arrow");
 		MethodUtil.registerItem(alerisBow, "Aleris Bow");
-		MethodUtil.registerItem(alerisArrow, "Aleris Arrow");
+		MethodUtil.registerItem(alerisArrow, "Aleris Arrow");**/
 		MethodUtil.registerItem(eosPotion, "Eos Potion");
 		MethodUtil.registerItem(graviWand, "Gravi Wand");
 		MethodUtil.registerItem(paladinHelmet, "Paladin Helmet");
@@ -474,7 +475,6 @@ public class RioVItems
 		MethodUtil.registerItem(galokinChestplate, "Galokin Chestplate");
 		MethodUtil.registerItem(galokinLeggings, "Galokin Leggings");
 		MethodUtil.registerItem(galokinBoots, "Galokin Boots");
-		MethodUtil.registerItem(vaiziCurrency, "Vaizi");
 		MethodUtil.registerItem(cherry, "Cherry");
 		MethodUtil.registerItem(manchet, "Manchet");
 		MethodUtil.registerItem(pepper, "Pepper");
@@ -601,33 +601,32 @@ public class RioVItems
 
 	public static void addNatura()
 	{
-		/**
 		if(TheMistsOfRioV.getInstance().natura)
 		{
 			ToolMaterial InfusedBloodwood = EnumHelper.addToolMaterial("InfusedBloodwood", 3, 450, 8.0F, 4.0F, 25);
 			ToolMaterial InfusedGhostwood = EnumHelper.addToolMaterial("InfusedGhostwood", 1, 159, 3.0F, 1.0F, 16);
 			ToolMaterial InfusedDarkwood = EnumHelper.addToolMaterial("InfusedDarkwood", 2, 231, 5.0F, 2.0F, 6);
 
-			infusedBloodwoodPickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Bloodwood Pickaxe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_pickaxe");
-			infusedBloodwoodAxe = (new RioVAxe(Config.addExpansionItem("Infused Bloodwood Axe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_hatchet");
-			infusedBloodwoodShovel = (new RioVSpade(Config.addExpansionItem("Infused Bloodwood Shovel"), InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_shovel");
-			infusedBloodwoodSword = (new RioVWeapon(Config.addExpansionItem("Infused Bloodwood Sword"), InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_sword");
-			infusedGhostwoodPickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Ghostwood Pickaxe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:ghostwood_pickaxe");
-			infusedGhostwoodAxe = (new RioVAxe(Config.addExpansionItem("Infused Ghostwood Axe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:ghostwood_hatchet");
-			infusedGhostwoodShovel = (new RioVSpade(Config.addExpansionItem("Infused Ghostwood Shovel"), InfusedBloodwood, true)).setUnlocalizedName("Natura:ghostwood_shovel");
-			infusedGhostwoodSword = (new RioVWeapon(Config.addExpansionItem("Infused Ghostwood Sword"), InfusedBloodwood, true)).setUnlocalizedName("Natura:ghostwood_sword");
-			infusedDarkwoodPickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Darkwood Pickaxe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:darkwood_pickaxe");
-			infusedDarkwoodAxe = (new RioVAxe(Config.addExpansionItem("Infused Darkwood Axe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:darkwood_hatchet");
-			infusedDarkwoodShovel = (new RioVSpade(Config.addExpansionItem("Infused Darkwood Shovel"), InfusedBloodwood, true)).setUnlocalizedName("Natura:darkwood_shovel");
-			infusedDarkwoodSword = (new RioVWeapon(Config.addExpansionItem("Infused Darkwood Sword"), InfusedBloodwood, true)).setUnlocalizedName("Natura:darkwood_sword");
-			infusedFusewoodPickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Fusewood Pickaxe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:fusewood_pickaxe");
-			infusedFusewoodAxe = (new RioVAxe(Config.addExpansionItem("Infused Fusewood Axe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:fusewood_hatchet");
-			infusedFusewoodShovel = (new RioVSpade(Config.addExpansionItem("Infused Fusewood Shovel"), InfusedBloodwood, true)).setUnlocalizedName("Natura:fusewood_shovel");
-			infusedFusewoodSword = (new RioVWeapon(Config.addExpansionItem("Infused Fusewood Sword"), InfusedBloodwood, true)).setUnlocalizedName("Natura:fusewood_sword");
-			infusedNetherquartzPickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Netherquartz Pickaxe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:netherquartz_pickaxe");
-			infusedNetherquartzAxe = (new RioVAxe(Config.addExpansionItem("Infused Netherquartz Axe"), InfusedBloodwood, true)).setUnlocalizedName("Natura:netherquartz_hatchet");
-			infusedNetherquartzShovel = (new RioVSpade(Config.addExpansionItem("Infused Netherquartz Shovel"), InfusedBloodwood, true)).setUnlocalizedName("Natura:netherquartz_shovel");
-			infusedNetherquartzSword = (new RioVWeapon(Config.addExpansionItem("Infused Netherquartz Sword"), InfusedBloodwood, true)).setUnlocalizedName("Natura:netherquartz_sword");
+			infusedBloodwoodPickaxe = (new RioVPickaxe(InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_pickaxe");
+			infusedBloodwoodAxe = (new RioVAxe(InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_hatchet");
+			infusedBloodwoodShovel = (new RioVSpade(InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_shovel");
+			infusedBloodwoodSword = (new RioVWeapon(InfusedBloodwood, true)).setUnlocalizedName("Natura:bloodwood_sword");
+			infusedGhostwoodPickaxe = (new RioVPickaxe(InfusedGhostwood, true)).setUnlocalizedName("Natura:ghostwood_pickaxe");
+			infusedGhostwoodAxe = (new RioVAxe(InfusedGhostwood, true)).setUnlocalizedName("Natura:ghostwood_hatchet");
+			infusedGhostwoodShovel = (new RioVSpade(InfusedGhostwood, true)).setUnlocalizedName("Natura:ghostwood_shovel");
+			infusedGhostwoodSword = (new RioVWeapon(InfusedGhostwood, true)).setUnlocalizedName("Natura:ghostwood_sword");
+			infusedDarkwoodPickaxe = (new RioVPickaxe(InfusedDarkwood, true)).setUnlocalizedName("Natura:darkwood_pickaxe");
+			infusedDarkwoodAxe = (new RioVAxe(InfusedDarkwood, true)).setUnlocalizedName("Natura:darkwood_hatchet");
+			infusedDarkwoodShovel = (new RioVSpade(InfusedDarkwood, true)).setUnlocalizedName("Natura:darkwood_shovel");
+			infusedDarkwoodSword = (new RioVWeapon(InfusedDarkwood, true)).setUnlocalizedName("Natura:darkwood_sword");
+			infusedFusewoodPickaxe = (new RioVPickaxe(ToolMaterial.IRON, true)).setUnlocalizedName("Natura:fusewood_pickaxe");
+			infusedFusewoodAxe = (new RioVAxe(ToolMaterial.IRON, true)).setUnlocalizedName("Natura:fusewood_hatchet");
+			infusedFusewoodShovel = (new RioVSpade(ToolMaterial.IRON, true)).setUnlocalizedName("Natura:fusewood_shovel");
+			infusedFusewoodSword = (new RioVWeapon(ToolMaterial.IRON, true)).setUnlocalizedName("Natura:fusewood_sword");
+			infusedNetherquartzPickaxe = (new RioVPickaxe(ToolMaterial.STONE, true)).setUnlocalizedName("Natura:netherquartz_pickaxe");
+			infusedNetherquartzAxe = (new RioVAxe(ToolMaterial.STONE, true)).setUnlocalizedName("Natura:netherquartz_hatchet");
+			infusedNetherquartzShovel = (new RioVSpade(ToolMaterial.STONE, true)).setUnlocalizedName("Natura:netherquartz_shovel");
+			infusedNetherquartzSword = (new RioVWeapon(ToolMaterial.STONE, true)).setUnlocalizedName("Natura:netherquartz_sword");
 
 			MethodUtil.registerItem(infusedFusewoodPickaxe, "Infused Fusewood Pickaxe");
 			MethodUtil.registerItem(infusedFusewoodAxe, "Infused Fusewood Axe");
@@ -650,99 +649,29 @@ public class RioVItems
 			MethodUtil.registerItem(infusedDarkwoodShovel, "Infused Darkwood Shovel");
 			MethodUtil.registerItem(infusedDarkwoodSword, "Infused Darkwood Sword");
 		}
-		 **/
 	}
 
-	public static Item infusedSkyrootPickaxe;
-	public static Item infusedSkyrootAxe;
-	public static Item infusedSkyrootShovel;
-	public static Item infusedSkyrootSword;
-	public static Item infusedHolystonePickaxe;
-	public static Item infusedHolystoneAxe;
-	public static Item infusedHolystoneShovel;
-	public static Item infusedHolystoneSword;
-	public static Item infusedZanitePickaxe;
-	public static Item infusedZaniteAxe;
-	public static Item infusedZaniteShovel;
-	public static Item infusedZaniteSword;
-	public static Item infusedGravititePickaxe;
-	public static Item infusedGravititeAxe;
-	public static Item infusedGravititeShovel;
-	public static Item infusedGravititeSword;
-	public static Item infusedZaniteHelmet;
-	public static Item infusedZaniteChestplate;
-	public static Item infusedZaniteLeggings;
-	public static Item infusedZaniteBoots;
-	public static Item infusedGravititeHelmet;
-	public static Item infusedGravititeChestplate;
-	public static Item infusedGravititeLeggings;
-	public static Item infusedGravititeBoots;
-	public static Item magicalBlueBerry;
 
-	public static void addAether()
+	public static Item infusedManasteelHelm;
+	public static Item infusedManasteelChest;
+	public static Item infusedManasteelLegs;
+	public static Item infusedManasteelBoots;
+
+	public static void addBotania()
 	{
-		/**
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			ToolMaterial InfusedSkyroot = EnumHelper.addToolMaterial("InfusedSkyroot", 1, 159, 3.0F, 1.0F, 16);
-			ToolMaterial InfusedHolystone = EnumHelper.addToolMaterial("InfusedHolystone", 2, 231, 5.0F, 2.0F, 6);
-			ToolMaterial InfusedZanite = EnumHelper.addToolMaterial("InfusedZanite", 3, 350, 7.0F, 3.0F, 15);
-			ToolMaterial InfusedGravitite = EnumHelper.addToolMaterial("InfusedGravitite", 4, 1661, 9.0F, 4.0F, 11);
+			ArmorMaterial InfusedManasteelArmor = EnumHelper.addArmorMaterial("InfusedManasteelArmor", 19, new int[] { 3, 6, 6, 3 }, 22);
 
-			ArmorMaterial InfusedZaniteArmor = EnumHelper.addArmorMaterial("InfusedZaniteArmor", 17, new int[]{3, 6, 5, 3}, 11);
-			ArmorMaterial InfusedGravititeArmor = EnumHelper.addArmorMaterial("InfusedGravititeArmor", 35, new int[]{4, 8, 6, 4}, 12);
-
-			infusedSkyrootPickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Skyroot Pickaxe"), InfusedSkyroot, true)).setUnlocalizedName("infusedSkyrootPickaxe");
-			infusedSkyrootAxe = (new RioVAxe(Config.addExpansionItem("Infused Skyroot Axe"), InfusedSkyroot, true)).setUnlocalizedName("infusedSkyrootAxe");
-			infusedSkyrootShovel = (new RioVSpade(Config.addExpansionItem("Infused Skyroot Shovel"), InfusedSkyroot, true)).setUnlocalizedName("infusedSkyrootShovel");
-			infusedSkyrootSword = (new RioVWeapon(Config.addExpansionItem("Infused Skyroot Sword"), InfusedSkyroot, true)).setUnlocalizedName("infusedSkyrootSword");
-			infusedHolystonePickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Holystone Pickaxe"), InfusedHolystone, true)).setUnlocalizedName("infusedHolystonePickaxe");
-			infusedHolystoneAxe = (new RioVAxe(Config.addExpansionItem("Infused Holystone Axe"), InfusedHolystone, true)).setUnlocalizedName("infusedHolystoneAxe");
-			infusedHolystoneShovel = (new RioVSpade(Config.addExpansionItem("Infused Holystone Shovel"), InfusedHolystone, true)).setUnlocalizedName("infusedHolystoneShovel");
-			infusedHolystoneSword = (new RioVWeapon(Config.addExpansionItem("Infused Holystone Sword"), InfusedHolystone, true)).setUnlocalizedName("infusedHolystoneSword");
-			infusedZanitePickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Zanite Pickaxe"), InfusedZanite, true)).setUnlocalizedName("infusedZanitePickaxe");
-			infusedZaniteAxe = (new RioVAxe(Config.addExpansionItem("Infused Zanite Axe"), InfusedZanite, true)).setUnlocalizedName("infusedZaniteAxe");
-			infusedZaniteShovel = (new RioVSpade(Config.addExpansionItem("Infused Zanite Shovel"), InfusedZanite, true)).setUnlocalizedName("infusedZaniteShovel");
-			infusedZaniteSword = (new RioVWeapon(Config.addExpansionItem("Infused Zanite Sword"), InfusedZanite, true)).setUnlocalizedName("infusedZaniteSword");
-			infusedGravititePickaxe = (new RioVPickaxe(Config.addExpansionItem("Infused Gravitite Pickaxe"), InfusedGravitite, true)).setUnlocalizedName("infusedGravititePickaxe");
-			infusedGravititeAxe = (new RioVAxe(Config.addExpansionItem("Infused Gravitite Axe"), InfusedGravitite, true)).setUnlocalizedName("infusedGravititeAxe");
-			infusedGravititeShovel = (new RioVSpade(Config.addExpansionItem("Infused Gravitite Shovel"), InfusedGravitite, true)).setUnlocalizedName("infusedGravititeShovel");
-			infusedGravititeSword = (new RioVWeapon(Config.addExpansionItem("Infused Gravitite Sword"), InfusedGravitite, true)).setUnlocalizedName("infusedGravititeSword");
-			infusedZaniteHelmet = (new RioVArmor(Config.addExpansionItem("Infused Zanite Helmet"), InfusedZaniteArmor, render, 0, "Zanite", true)).setUnlocalizedName("infusedZaniteHelmet");
-			infusedZaniteChestplate = (new RioVArmor(Config.addExpansionItem("Infused Zanite Chestplate"), InfusedZaniteArmor, render, 1, "Zanite", true)).setUnlocalizedName("infusedZaniteChestplate");
-			infusedZaniteLeggings = (new RioVArmor(Config.addExpansionItem("Infused Zanite Leggings"), InfusedZaniteArmor, render, 2, "Zanite", true)).setUnlocalizedName("infusedZaniteLeggings");
-			infusedZaniteBoots = (new RioVArmor(Config.addExpansionItem("Infused Zanite Boots"), InfusedZaniteArmor, render, 3, "Zanite", true)).setUnlocalizedName("infusedZaniteBoots");
-			infusedGravititeHelmet = (new RioVArmor(Config.addExpansionItem("Infused Gravitite Helmet"), InfusedGravititeArmor, render, 0, "Gravitite", true)).setUnlocalizedName("infusedGravitieHelmet");
-			infusedGravititeChestplate = (new RioVArmor(Config.addExpansionItem("Infused Gravitite Chestplate"), InfusedGravititeArmor, render, 1, "Gravitite", true)).setUnlocalizedName("infusedGravitieChestplate");
-			infusedGravititeLeggings = (new RioVArmor(Config.addExpansionItem("Infused Gravitite Leggings"), InfusedGravititeArmor, render, 2, "Gravitite", true)).setUnlocalizedName("infusedGravitieLeggings");
-			infusedGravititeBoots = (new RioVArmor(Config.addExpansionItem("Infused Gravitite Boots"), InfusedGravititeArmor, render, 3, "Gravitite", true)).setUnlocalizedName("infusedGravitieBoots");
-			magicalBlueBerry = (new RioVConsumable(Config.addExpansionItem("Magical Blue Berry"), 6, 0, true)).setUnlocalizedName("magicalBlueBerry");
-
-			MethodUtil.registerItem(infusedZaniteHelmet, "Infused Zanite Helmet");
-			MethodUtil.registerItem(infusedZaniteChestplate, "Infused Zanite Chestplate");
-			MethodUtil.registerItem(infusedZaniteLeggings, "Infused Zanite Leggings");
-			MethodUtil.registerItem(infusedZaniteBoots, "Infused Zanite Boots");
-			MethodUtil.registerItem(infusedGravititeHelmet, "Infused Gravitite Helmet");
-			MethodUtil.registerItem(infusedGravititeChestplate, "Infused Gravitite Chestplate");
-			MethodUtil.registerItem(infusedGravititeLeggings, "Infused Gravitite Leggings");
-			MethodUtil.registerItem(infusedGravititeBoots, "Infused Gravitite Boots");
-			MethodUtil.registerItem(infusedSkyrootPickaxe, "Infused Skyroot Pickaxe");
-			MethodUtil.registerItem(infusedSkyrootAxe, "Infused Skyroot Axe");
-			MethodUtil.registerItem(infusedSkyrootShovel, "Infused Skyroot Shovel");
-			MethodUtil.registerItem(infusedSkyrootSword, "Infused Skyroot Sword");
-			MethodUtil.registerItem(infusedHolystonePickaxe, "Infused Holystone Pickaxe");
-			MethodUtil.registerItem(infusedHolystoneAxe, "Infused Holystone Axe");
-			MethodUtil.registerItem(infusedHolystoneShovel, "Infused Holystone Shovel");
-			MethodUtil.registerItem(infusedHolystoneSword, "Infused Holystone Sword");
-			MethodUtil.registerItem(infusedZanitePickaxe, "Infused Zanite Pickaxe");
-			MethodUtil.registerItem(infusedZaniteAxe, "Infused Zanite Axe");
-			MethodUtil.registerItem(infusedZaniteShovel, "Infused Zanite Shovel");
-			MethodUtil.registerItem(infusedZaniteSword, "Infused Zanite Sword");
-			MethodUtil.registerItem(infusedGravititePickaxe, "Infused Gravitite Pickaxe");
-			MethodUtil.registerItem(infusedGravititeAxe, "Infused Gravitite Axe");
-			MethodUtil.registerItem(infusedGravititeShovel, "Infused Gravitite Shovel");
-			MethodUtil.registerItem(infusedGravititeSword, "Infused Gravitite Sword");
-			MethodUtil.registerItem(magicalBlueBerry, "Magical Blue Berry");
-		}**/
+			infusedManasteelHelm = (new RioVArmor(InfusedManasteelArmor, render, 0, "manasteel", true)).setUnlocalizedName("infusedManasteelHelm");
+			infusedManasteelChest = (new RioVArmor(InfusedManasteelArmor, render, 1, "manasteel", true)).setUnlocalizedName("infusedManasteelChest");
+			infusedManasteelLegs = (new RioVArmor(InfusedManasteelArmor, render, 2, "manasteel", true)).setUnlocalizedName("infusedManasteelLegs");
+			infusedManasteelBoots = (new RioVArmor(InfusedManasteelArmor, render, 3, "manasteel", true)).setUnlocalizedName("infusedManasteelBoots");
+			
+			MethodUtil.registerItem(infusedManasteelHelm, "Infused Manasteel Helmet");
+			MethodUtil.registerItem(infusedManasteelChest, "Infused Manasteel Chestplate");
+			MethodUtil.registerItem(infusedManasteelLegs, "Infused Manasteel Leggings");
+			MethodUtil.registerItem(infusedManasteelBoots, "Infused Manasteel Boots");
+		}
 	}
 }

@@ -66,7 +66,17 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						MethodUtil.sendMessageToAll("You do not have enough Eos!");
+						if(player.getCurrentEos() < 3)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+						}
+
+						if(player.getCurrentEos() < 0)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+						}
 					}
 				}
 
@@ -94,7 +104,17 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						MethodUtil.sendMessageToAll("You do not have enough Eos!");
+						if(player.getCurrentEos() < 4)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+						}
+
+						if(player.getCurrentEos() < 0)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+						}
 					}
 				}
 			}
@@ -122,7 +142,17 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						MethodUtil.sendMessageToAll("You do not have enough Eos!");
+						if(player.getCurrentEos() < 18)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+						}
+
+						if(player.getCurrentEos() < 0)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+						}
 					}
 				}
 			}
@@ -153,7 +183,17 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						MethodUtil.sendMessageToAll("You do not have enough Eos!");
+						if(player.getCurrentEos() < 12)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+						}
+						
+						if(player.getCurrentEos() < 0)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+						}
 					}
 				}
 			}
@@ -181,7 +221,17 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						MethodUtil.sendMessageToAll("You do not have enough Eos!");
+						if(player.getCurrentEos() < 34)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+						}
+						
+						if(player.getCurrentEos() < 0)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+						}
 					}
 				}
 			}

@@ -36,35 +36,19 @@ public class ExpansionChecker
 			TheMistsOfRioV.getInstance().natura = false;
 		}
 
-		if(Loader.isModLoaded("Aether II"))
+		if(Loader.isModLoaded("Botania"))
 		{
-			FMLLog.info("Aether II detected! You get the Aether II Expansion for RioV! :)");
-			TheMistsOfRioV.getInstance().aether = true;
-			if(TheMistsOfRioV.getInstance().aether)
+			FMLLog.info("Botania detected! You get the Botania Expansion for RioV! :)");
+			TheMistsOfRioV.getInstance().botania = true;
+			if(TheMistsOfRioV.getInstance().botania)
 			{
-				RioVItems.addAether();
+				RioVItems.addBotania();
 			}
 		}
 		else
 		{
-			FMLLog.info("Aether II wasn't detected... No Aether II Expansion for you. :(");
-			TheMistsOfRioV.getInstance().aether = false;
-		}
-
-		if(Loader.isModLoaded("Thaumcraft"))
-		{
-			FMLLog.info("Thaumcraft detected! You get the Thaumcraft Expansion for RioV! :)");
-			TheMistsOfRioV.getInstance().thaumcraft = true;
-			if(TheMistsOfRioV.getInstance().thaumcraft)
-			{
-				//Aspects.add();
-				//ResearchRecipes.add();
-			}
-		}
-		else
-		{
-			FMLLog.info("Thaumcraft wasn't detected... No Thaumcraft Expansion for you. :(");
-			TheMistsOfRioV.getInstance().thaumcraft = false;
+			FMLLog.info("Botania wasn't detected... No Botania Expansion for you. :(");
+			TheMistsOfRioV.getInstance().botania = false;
 		}
 	}
 }

@@ -14,8 +14,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid= Util.MOD_ID ,name= Util.MOD_NAME, version= Util.VERSION, guiFactory = "sheenrox82.RioV.src.base.RioVGuiFactory")
+@Mod(modid= Util.MOD_ID ,name= Util.MOD_NAME, version= Util.VERSION, guiFactory = "sheenrox82.RioV.src.gui.RioVGuiFactory")
 public class TheMistsOfRioV
 {
 	@Instance(Util.MOD_ID)
@@ -27,8 +28,7 @@ public class TheMistsOfRioV
 	public CreativeTabs tab = new CreativeTabs(Util.MOD_ID) {public Item getTabIconItem() {return Item.getItemFromBlock(RioVBlocks.infuser);}};
 	public GuiHandler guiHandler = new GuiHandler();
 	public boolean natura;
-	public boolean aether;
-	public boolean thaumcraft;
+	public boolean botania;
 	public boolean optifine;
 	public boolean modLoaded = false;
 
@@ -53,5 +53,11 @@ public class TheMistsOfRioV
 	public void postInit(FMLPostInitializationEvent initEvent)
 	{
 		Registry.postInit(initEvent);
+	}
+	
+	@EventHandler
+	public static void serverLoad(FMLServerStartingEvent event)
+	{
+		Registry.serverLoad(event);
 	}
 }

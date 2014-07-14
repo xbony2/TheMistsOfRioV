@@ -111,12 +111,9 @@ public class RioVPickaxe extends ItemPickaxe
 				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
 		}
 
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			if(this == RioVItems.infusedSkyrootPickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Skyroot Pickaxe");
-			if(this == RioVItems.infusedHolystonePickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Holystone Pickaxe");
-			if(this == RioVItems.infusedZanitePickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Zanite Pickaxe");
-			if(this == RioVItems.infusedGravititePickaxe) this.itemIcon = par1IconRegister.registerIcon("Aether:Gravitite Pickaxe");
+			
 		}
 	}
 }

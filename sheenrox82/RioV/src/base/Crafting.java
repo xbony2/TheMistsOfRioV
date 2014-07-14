@@ -133,5 +133,22 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVItems.sheenBag, 1), "XXX", "XOX", "XXX", Character.valueOf('X'), Items.leather, Character.valueOf('O'), RioVItems.largeBag);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.auntunSummoner, 1), "XTX", "TOT", "XTX", Character.valueOf('O'), RioVItems.onyx, Character.valueOf('X'), RioVItems.darkMatter, Character.valueOf('T'), RioVBlocks.skycloud);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.chocolateCake, 1), "XXX", "XOX", "XXX", Character.valueOf('O'), Items.cake, Character.valueOf('X'), new ItemStack(Items.dye, 1, 4));
+		/**GameRegistry.addRecipe(new ItemStack(RioVItems.amethystArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.amethyst, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
+		GameRegistry.addRecipe(new ItemStack(RioVItems.onyxArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.onyx, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
+		GameRegistry.addRecipe(new ItemStack(RioVItems.dragonArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.dragonSoul, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
+		GameRegistry.addRecipe(new ItemStack(RioVItems.blindoniteArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.blindonite, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
+		GameRegistry.addRecipe(new ItemStack(RioVItems.alerisArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.aleris, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);**/
+		
+		
+		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe, 5), "***", " I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_axe, 5), "** ", "*I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel, 5), " * ", " I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_sword, 5), " * ", " * ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe, 5), "** ", " I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe, 5), "***", " I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_axe, 5), "** ", "*I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel, 5), " * ", " I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_sword, 5), " * ", " * ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
+		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe, 5), "** ", " I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
 	}
 }

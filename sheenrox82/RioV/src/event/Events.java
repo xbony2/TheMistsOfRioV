@@ -71,15 +71,6 @@ public class Events
 							hasSeen = true;
 						}	
 					}
-
-					/**	URL url = new URL("https://dl.dropboxusercontent.com/u/126631367/PlayerLogins.txt");
-					URLConnection connection = url.openConnection();
-		            connection.setDoOutput(true);
-		            OutputStream outStream = connection.getOutputStream();
-		            ObjectOutputStream playerLister = new ObjectOutputStream(outStream);
-
-					playerLister.writeObject(p.getDisplayName() + " logged in.");
-					playerLister.close();**/
 				} 
 				catch (MalformedURLException mal) 
 				{
@@ -119,6 +110,7 @@ public class Events
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
 			NBTTagCompound playerData = CommonProxy.getEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME);
+			
 			if (playerData != null) 
 			{
 				((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).loadNBTData(playerData);
@@ -145,40 +137,12 @@ public class Events
 		{
 			if (event.entityLiving instanceof EntityBlaze) 
 			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 1);
+				event.entityLiving.dropItem(RioVItems.onyx, 2);
 			}
 			if (event.entityLiving instanceof EntityDragon) 
 			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 40);
+				event.entityLiving.dropItem(RioVItems.dragonSoul, 40);
 			}
-			if (event.entityLiving instanceof EntityEnderman) 
-			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 1);
-			}
-			if (event.entityLiving instanceof EntityCreeper) 
-			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 1);
-			}
-			if (event.entityLiving instanceof EntityGhast) 
-			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 3);
-			}
-			if (event.entityLiving instanceof EntityPigZombie) 
-			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 2);
-			}
-			if (event.entityLiving instanceof EntityWitch) 
-			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 2);
-			}
-			if (event.entityLiving instanceof EntityWither) 
-			{
-				event.entityLiving.dropItem(RioVItems.vaiziCurrency, 5);
-			}
-		}
-
-		if (event.source.getDamageType().equals("player")) 
-		{
 			if (event.entityLiving instanceof EntityHorse) 
 			{
 				event.entityLiving.dropItem(RioVItems.horseMeat, 2);

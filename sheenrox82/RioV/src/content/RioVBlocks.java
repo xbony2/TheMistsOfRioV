@@ -27,6 +27,7 @@ import sheenrox82.RioV.src.block.BlockRioVFenceGate;
 import sheenrox82.RioV.src.block.BlockRioVLadder;
 import sheenrox82.RioV.src.block.BlockRioVLeaf;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
+import sheenrox82.RioV.src.block.BlockRioVTallGrass;
 import sheenrox82.RioV.src.block.BlockRioVTrapDoor;
 import sheenrox82.RioV.src.block.BlockRioVWorkbench;
 import sheenrox82.RioV.src.block.BlockSanctuatiteFire;
@@ -161,9 +162,15 @@ public class RioVBlocks
 	public static Block paleBush = new BlockBush().setBlockName("paleBush");
 	public static Block chocolateCake = new BlockRioVCake().setBlockName("chocolateCake");
 	public static Block flag = (new BlockFlag()).setBlockName("flag");
+	public static Block glimmerTallGrass = new BlockPlantCore().setBlockName("glimmerTallGrass");
+	public static Block sanctuatiteTallGrass = new BlockPlantCore().setBlockName("sanctuatiteTallGrass");
+	public static Block bloodTallGrass = new BlockPlantCore().setBlockName("bloodTallGrass");
 
 	public static void add()
 	{	
+		MethodUtil.registerBlock(glimmerTallGrass, "Glimmer Tall Grass");
+		MethodUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
+		MethodUtil.registerBlock(bloodTallGrass, "Blood Tall Grass");
 		MethodUtil.registerBlock(flag, "Flag");
 		MethodUtil.registerBlock(blackQuartz, "Black Quartz Block");
 		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, MethodUtil.getName(stainedGlass.getUnlocalizedName()));	

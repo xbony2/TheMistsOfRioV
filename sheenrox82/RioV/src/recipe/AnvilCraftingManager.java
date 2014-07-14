@@ -36,11 +36,6 @@ public class AnvilCraftingManager
 	public static AnvilCraftingManager instance = new AnvilCraftingManager();
 	public static List recipes = new ArrayList();
 
-	public static final AnvilCraftingManager getInstance()
-	{
-		return instance;
-	}
-
 	public AnvilCraftingManager()
 	{
 		recipes = new ArrayList();
@@ -139,13 +134,12 @@ public class AnvilCraftingManager
 		this.addRecipe(new ItemStack(RioVItems.alerisChestplate, 1), new Object[] { chestplate, Character.valueOf('X'), RioVItems.aleris});
 		this.addRecipe(new ItemStack(RioVItems.alerisLeggings, 1), new Object[] { leggings, Character.valueOf('X'), RioVItems.aleris});
 		this.addRecipe(new ItemStack(RioVItems.alerisBoots, 1), new Object[] { boots, Character.valueOf('X'), RioVItems.aleris});
-		this.addRecipe(new ItemStack(RioVItems.amethystBow, 1), bow, Character.valueOf('I'), RioVItems.amethyst, Character.valueOf('*'), Items.string);
+	/**	this.addRecipe(new ItemStack(RioVItems.amethystBow, 1), bow, Character.valueOf('I'), RioVItems.amethyst, Character.valueOf('*'), Items.string);
 		this.addRecipe(new ItemStack(RioVItems.onyxBow, 1), bow, Character.valueOf('I'), RioVItems.onyx, Character.valueOf('*'), Items.string);
 		this.addRecipe(new ItemStack(RioVItems.dragonBow, 1), bow, Character.valueOf('I'), RioVItems.dragonSoul, Character.valueOf('*'), Items.string);
 		this.addRecipe(new ItemStack(RioVItems.blindoniteBow, 1), bow, Character.valueOf('I'), RioVItems.blindonite, Character.valueOf('*'), Items.string);
 		this.addRecipe(new ItemStack(RioVItems.alerisBow, 1), bow, Character.valueOf('I'), RioVItems.aleris, Character.valueOf('*'), Items.string);
-
-		
+		**/
 		Collections.sort(this.recipes, new Comparator()
 		{
 			public int compare(IRecipe par1IRecipe, IRecipe par2IRecipe)

@@ -54,19 +54,9 @@ public class RioVConsumable extends ItemFood
 			return itemStack;
 		}
 		
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			if(itemStack.getItem().equals(RioVItems.magicalBlueBerry))
-			{
-				--itemStack.stackSize;
-				entityPlayer.getFoodStats().func_151686_a(this, itemStack);
-				world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 500, 3));//again, sets effect an time
-				entityPlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 300, 3));
-				this.onFoodEaten(itemStack, world, entityPlayer);
-				return itemStack;
-			}
+			
 		}
 
 		--itemStack.stackSize;
@@ -93,12 +83,9 @@ public class RioVConsumable extends ItemFood
 			return true;
 		}
 		
-		if(TheMistsOfRioV.getInstance().aether)
+		if(TheMistsOfRioV.getInstance().botania)
 		{
-			if(par1ItemStack.getItem().equals(RioVItems.magicalBlueBerry))
-			{
-				return true;
-			}
+			
 		}
 
 		return false;
