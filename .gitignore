@@ -25,3 +25,6 @@ mcp.png
 mcpmod.info
 Start.java
 *.lzma
+
+#Hidden mac file
+.DS_Store
