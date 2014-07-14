@@ -14,7 +14,6 @@ public class UpdateHandler
 	{
 		BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://dl.dropboxusercontent.com/u/126631367/Current%20Version.txt").openStream()));
 		String curVersion = versionFile.readLine();
-
 		versionFile.close();
 
 		if (!curVersion.equals(Util.VERSION))

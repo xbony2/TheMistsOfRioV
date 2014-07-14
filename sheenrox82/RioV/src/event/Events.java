@@ -1,7 +1,10 @@
 package sheenrox82.RioV.src.event;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
+import java.net.URL;
 
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.boss.EntityWither;
@@ -44,8 +47,12 @@ public class Events
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void clientLoggedIn(EntityJoinWorldEvent e)
+	public void clientLoggedIn(EntityJoinWorldEvent e) throws IOException
 	{			
+		BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://dl.dropboxusercontent.com/u/126631367/Current%20Version.txt").openStream()));
+		String curVersion = versionFile.readLine();
+		versionFile.close();
+
 		if (e.entity instanceof EntityPlayer) 
 		{
 			EntityPlayer p = (EntityPlayer) e.entity;
@@ -58,7 +65,7 @@ public class Events
 					{
 						if(!hasSeen)
 						{
-							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! An update is available for " + Util.MOD_NAME + ". Check http://goo.gl/Wf3zCW for more info. - sheenrox82"));
+							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + curVersion +  Color.DARK_RED + " is available! Check http://tinyurl.com/riovmod. - sheenrox82"));
 							hasSeen = true;
 						}
 					}
@@ -72,10 +79,6 @@ public class Events
 						}	
 					}
 				} 
-				catch (MalformedURLException mal) 
-				{
-					mal.printStackTrace();
-				}
 				catch (IOException io)
 				{
 					io.printStackTrace();
