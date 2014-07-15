@@ -26,7 +26,7 @@ import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTerron;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
-import sheenrox82.RioV.src.entity.projectile.EntityAmethystArrow;
+import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 
 public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackMob
 {
@@ -164,7 +164,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2) 
 	{
-		EntityAmethystArrow entityarrow = new EntityAmethystArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
+		EntityVraviniteArrow entityarrow = new EntityVraviniteArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
 		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
 		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
 		entityarrow.setDamage(3F);

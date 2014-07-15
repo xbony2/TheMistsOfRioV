@@ -6,23 +6,25 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
@@ -30,8 +32,8 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.handler.UpdateHandler;
 import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
+import sheenrox82.RioV.src.util.BloodUtil;
 import sheenrox82.RioV.src.util.Color;
-import sheenrox82.RioV.src.util.LogHelper;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 import sheenrox82.RioV.src.util.Registry;
@@ -47,41 +49,30 @@ public class Events
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void clientLoggedIn(EntityJoinWorldEvent e) throws IOException
+	public void clientLoggedIn(EntityJoinWorldEvent e) throws IOException, MalformedURLException 
 	{			
-		BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://dl.dropboxusercontent.com/u/126631367/Current%20Version.txt").openStream()));
-		String curVersion = versionFile.readLine();
-		versionFile.close();
-
 		if (e.entity instanceof EntityPlayer) 
 		{
 			EntityPlayer p = (EntityPlayer) e.entity;
 
 			if (p.worldObj.isRemote) 
 			{
-				try
+				if (UpdateHandler.isUpdateAvailable()) 
 				{
-					if (UpdateHandler.isUpdateAvailable()) 
+					if(!hasSeen)
 					{
-						if(!hasSeen)
-						{
-							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + curVersion +  Color.DARK_RED + " is available! Check http://tinyurl.com/riovmod. - sheenrox82"));
-							hasSeen = true;
-						}
+						p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! A new version is available! Check http://tinyurl.com/riovmod. - sheenrox82"));
+						hasSeen = true;
 					}
+				}
 
-					if (!UpdateHandler.isUpdateAvailable()) 
-					{
-						if(!hasSeen)
-						{
-							p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
-							hasSeen = true;
-						}	
-					}
-				} 
-				catch (IOException io)
+				if (!UpdateHandler.isUpdateAvailable()) 
 				{
-					io.printStackTrace();
+					if(!hasSeen)
+					{
+						p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						hasSeen = true;
+					}	
 				}
 			}
 		} 
@@ -113,7 +104,7 @@ public class Events
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
 			NBTTagCompound playerData = CommonProxy.getEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME);
-			
+
 			if (playerData != null) 
 			{
 				((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).loadNBTData(playerData);
@@ -123,10 +114,14 @@ public class Events
 
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDeathEvent event)
-	{
-		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
+	{			
+		if (!event.entity.worldObj.isRemote && (event.entity instanceof EntityPlayer || event.entity instanceof EntityPlayerMP))
 		{
 			NBTTagCompound playerData = new NBTTagCompound();
+			if(playerData != null)
+			{
+				BloodUtil.setCurrentBlood(100);
+			}
 			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).saveNBTData(playerData);
 			CommonProxy.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
 			PlayerNBT.saveProxyData((EntityPlayer) event.entity);
@@ -174,6 +169,93 @@ public class Events
 		if(event.world.getBlock(event.x, event.y, event.z) == RioVBlocks.skywoodSapling)
 		{
 			((BlockRioVSapling)RioVBlocks.skywoodSapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
+		}
+	}
+
+	@SubscribeEvent
+	public void playerBloodUpdate(LivingHurtEvent event)
+	{
+		if(event.entity instanceof EntityPlayer)
+		{
+			BloodUtil.consumeBlood(2);
+		}
+	}
+
+	public boolean bloodBlur = false;
+	public boolean bloodColor = false;
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void playerUpdateClient(LivingEvent.LivingUpdateEvent event)
+	{
+		Minecraft mc = Minecraft.getMinecraft();
+
+		if(event.entity instanceof EntityPlayer)
+		{
+			if(BloodUtil.getCurrentBlood() == 100)
+			{
+				mc.entityRenderer.theShaderGroup = null;
+				bloodBlur = false;
+				bloodColor = false;
+			}
+
+			if(BloodUtil.getCurrentBlood() <= 70 && BloodUtil.getCurrentBlood() > 60)
+			{
+				mc.entityRenderer.theShaderGroup = null;
+				bloodBlur = false;
+				bloodColor = false;
+			}
+
+			if(BloodUtil.getCurrentBlood() <= 60)
+			{
+				if(bloodBlur == false)
+				{
+					try
+					{
+						mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("shaders/post/blur.json"));
+						mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+						bloodBlur = true;
+					}
+					catch(IOException ioexception)
+					{
+						ioexception.printStackTrace();
+					}
+				}
+			}
+
+			if(BloodUtil.getCurrentBlood() <= 50)
+			{
+				if(bloodColor == false)
+				{
+					try
+					{
+						mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("riov", "shaders/post/desaturateBlur.json"));
+						mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+						bloodColor = true;
+					}
+					catch(IOException ioexception)
+					{
+						ioexception.printStackTrace();
+					}
+				}
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void playerUpdate(LivingEvent.LivingUpdateEvent event)
+	{
+		if(event.entity instanceof EntityPlayer)
+		{
+			if(BloodUtil.getCurrentBlood() <= 85)
+			{
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 5));
+			}
+
+			if(BloodUtil.getCurrentBlood() <= 35)
+			{
+				event.entityLiving.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
+			}
 		}
 	}
 }

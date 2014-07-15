@@ -30,7 +30,7 @@ public class GuiHelmetHud extends Gui
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void renderMagickaBar(RenderGameOverlayEvent event)
+	public void render(RenderGameOverlayEvent event)
 	{
 		if (event.isCancelable() || event.type != ElementType.EXPERIENCE)
 		{

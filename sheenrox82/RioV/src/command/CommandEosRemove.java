@@ -9,6 +9,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 
@@ -57,14 +58,14 @@ public class CommandEosRemove extends CommandBase implements ICommand
 
 			int amount = Integer.parseInt(astring[0]);
 
-			if(amount > props.getCurrentEos())
+			if(amount > EosUtil.getCurrentEos())
 			{
 				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is higher than the current amount of Eos."));
 			}
 			else
 			{
-				props.consumeEos(amount);
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Removed " + amount + " Eos from yourself. Eos: " + props.getCurrentEos() + "/" + props.maxEos));
+				EosUtil.consumeEos(amount);
+				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Removed " + amount + " Eos from yourself. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
 			}
 		}
 	}

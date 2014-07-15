@@ -12,10 +12,16 @@ import sheenrox82.RioV.src.proxy.CommonProxy;
 public class PlayerNBT implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "PlayerNBT";
-	private final EntityPlayer player;
+	public static EntityPlayer player;
+	
+	//EOS
 	public static final int EOS_WATCHER = 20;
 	public static int maxEos = 50;
 
+	//BLOOD
+	public static final int BLOOD_WATCHER = 21;
+	public static int maxBlood = 100;
+	
 	public PlayerNBT(EntityPlayer player)
 	{
 		this.player = player;
@@ -37,6 +43,10 @@ public class PlayerNBT implements IExtendedEntityProperties
 		NBTTagCompound properties = new NBTTagCompound();
 		properties.setInteger("CurrentEos", this.player.getDataWatcher().getWatchableObjectInt(EOS_WATCHER));
 		properties.setInteger("MaxEos", this.maxEos);
+		
+		properties.setInteger("CurrentBlood", this.player.getDataWatcher().getWatchableObjectInt(BLOOD_WATCHER));
+		properties.setInteger("MaxBlood", this.maxBlood);
+		
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
 
@@ -46,49 +56,16 @@ public class PlayerNBT implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		this.player.getDataWatcher().updateObject(EOS_WATCHER, properties.getInteger("CurrentEos"));
 		this.maxEos = properties.getInteger("MaxEos");
+		
+		this.player.getDataWatcher().updateObject(BLOOD_WATCHER, properties.getInteger("CurrentBlood"));
+		this.maxBlood = properties.getInteger("MaxBlood");
 	}
 
 	@Override
 	public void init(Entity entity, World world)
 	{
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
-	}
-
-	public final boolean consumeEos(int amount)
-	{
-		int mana = this.player.getDataWatcher().getWatchableObjectInt(EOS_WATCHER);
-		boolean sufficient = amount <= mana;
-		mana -= (amount < mana ? amount : mana);
-		this.player.getDataWatcher().updateObject(EOS_WATCHER, mana);
-		return sufficient;
-	}
-
-
-	public final void replenishEos()
-	{
-		this.player.getDataWatcher().updateObject(EOS_WATCHER, this.maxEos);
-	}
-
-	public final int getCurrentEos()
-	{
-		return this.player.getDataWatcher().getWatchableObjectInt(EOS_WATCHER);
-	}
-
-	public final void setCurrentEos(int amount)
-	{
-		this.player.getDataWatcher().updateObject(EOS_WATCHER, (amount < this.maxEos ? amount : this.maxEos));
-	}
-	
-	public final void addEos(int amount)
-	{
-		int missingAmount = this.maxEos - this.getCurrentEos();
-		
-		this.player.getDataWatcher().updateObject(EOS_WATCHER, (amount < missingAmount ? amount : this.maxEos));
-	}
-
-	public void setMaxEos(int amount)
-	{
-		this.maxEos = amount;
+		this.player.getDataWatcher().addObject(BLOOD_WATCHER, this.maxBlood);
 	}
 
 	private static String getSaveKey(EntityPlayer player) 

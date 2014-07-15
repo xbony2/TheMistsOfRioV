@@ -12,7 +12,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 
 public class CommonProxy
 {
-	private static final Map<String, NBTTagCompound> entityPlayerEosData = new HashMap<String, NBTTagCompound>();
+	private static final Map<String, NBTTagCompound> entityPlayerData = new HashMap<String, NBTTagCompound>();
 	
 	public static int addArmor(String armorName)
 	{
@@ -46,11 +46,11 @@ public class CommonProxy
 
 	public static void storeEntityData(String name, NBTTagCompound compound)
 	{
-		entityPlayerEosData.put(name, compound);
+		entityPlayerData.put(name, compound);
 	}
 
 	public static NBTTagCompound getEntityData(String name)
 	{
-		return entityPlayerEosData.remove(name);
+		return entityPlayerData.remove(name);
 	}
 }

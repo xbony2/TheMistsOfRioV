@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
+import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 import sheenrox82.RioV.src.util.Util;
@@ -55,7 +56,7 @@ public class RioVWand extends Item
 			{
 				if (this.firetick == this.firemax && this.firemax != 0)
 				{
-					if(player.consumeEos(2))
+					if(EosUtil.consumeEos(2))
 					{
 						Vec3 look = entityplayer.getLookVec();
 						EntityLargeFireball fireball2 = new EntityLargeFireball(world, entityplayer, 1, 1, 1);
@@ -101,7 +102,7 @@ public class RioVWand extends Item
 			{
 				if (this.firetick == this.firemax && this.firemax != 0)
 				{
-					if(player.consumeEos(2))
+					if(EosUtil.consumeEos(2))
 					{
 						world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
 
@@ -123,13 +124,13 @@ public class RioVWand extends Item
 			}
 		}
 
-		if(player.getCurrentEos() == 0)
+		if(EosUtil.getCurrentEos() == 0)
 		{
 			if(!world.isRemote)
 				entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 		}
 		
-		if(player.getCurrentEos() < 0)
+		if(EosUtil.getCurrentEos() < 0)
 		{
 			if(!world.isRemote)
 				entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));

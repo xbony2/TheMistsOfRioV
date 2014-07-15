@@ -10,6 +10,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.util.BloodUtil;
 import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -17,11 +18,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiEosBar extends Gui
+public class GuiBloodBar extends Gui
 {
 	public Minecraft mc;
 
-	public GuiEosBar(Minecraft mc)
+	public GuiBloodBar(Minecraft mc)
 	{
 		super();
 		this.mc = mc;
@@ -36,16 +37,16 @@ public class GuiEosBar extends Gui
 			return;
 		}
 
-		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/eos_bar.png");
+		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/blood_bar.png");
 		PlayerNBT props = PlayerNBT.get(mc.thePlayer);
 		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
 
-		if (props == null || props.maxEos == 0)
+		if (props == null || props.maxBlood == 0)
 		{
 			return;
 		}
 
-		if(Config.EOS)
+		if(Config.BLOOD)
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
@@ -53,20 +54,20 @@ public class GuiEosBar extends Gui
 				Minecraft.getMinecraft().renderEngine.bindTexture(icons);
 				int height = event.resolution.getScaledHeight();
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-				float eos = (((float) EosUtil.getCurrentEos() / props.maxEos) * 80);
-				this.drawTexturedModalRect(Config.eosPosX, height - Config.eosPosY, 0, 49, 102, 14);
-				this.drawTexturedModalRect(Config.eosPosX + 11, (height - Config.eosPosY) + 4, 11, 64, (int)eos, 6);
+				float blood = (((float) BloodUtil.getCurrentBlood() / props.maxBlood) * 80);
+				this.drawTexturedModalRect(Config.bloodPosX, height - Config.bloodPosY, 0, 49, 102, 14);
+				this.drawTexturedModalRect(Config.bloodPosX + 11, (height - Config.bloodPosY) + 4, 11, 64, (int)blood, 6);
 				GL11.glPopMatrix();
 			}
 		}
 
-		if(!Config.EOS)
+		if(!Config.BLOOD)
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
 				int height = event.resolution.getScaledHeight();
 				GL11.glPushMatrix();
-				fontrenderer.drawStringWithShadow("Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos, 32, height - 18, 16777215);
+				fontrenderer.drawStringWithShadow("Blood: " + BloodUtil.getCurrentBlood() + "/" + props.maxBlood, 32, height - 18, 16777215);
 				GL11.glPopMatrix();
 			}
 		}

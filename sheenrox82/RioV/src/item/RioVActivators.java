@@ -9,6 +9,7 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 import sheenrox82.RioV.src.util.Util;
@@ -68,9 +69,9 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(player.getCurrentEos() > 10)
+				if(EosUtil.getCurrentEos() > 10)
 				{
-					if(player.consumeEos(10))
+					if(EosUtil.consumeEos(10))
 					{
 						if (world.isAirBlock(par4, par5, par6))
 						{
@@ -89,7 +90,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(player.getCurrentEos() < 10)
+					if(EosUtil.getCurrentEos() < 10)
 					{
 						if(!world.isRemote)
 						{
@@ -138,9 +139,9 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(player.getCurrentEos() > 15)
+				if(EosUtil.getCurrentEos() > 15)
 				{
-					if(player.consumeEos(15))
+					if(EosUtil.consumeEos(15))
 					{
 						if (world.isAirBlock(par4, par5, par6))
 						{
@@ -159,7 +160,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(player.getCurrentEos() < 15)
+					if(EosUtil.getCurrentEos() < 15)
 					{
 						if(!world.isRemote)
 						{
@@ -208,9 +209,9 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(player.getCurrentEos() > 20)
+				if(EosUtil.getCurrentEos() > 20)
 				{
-					if(player.consumeEos(20))
+					if(EosUtil.consumeEos(20))
 					{
 						if (world.isAirBlock(par4, par5, par6))
 						{
@@ -229,7 +230,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(player.getCurrentEos() < 20)
+					if(EosUtil.getCurrentEos() < 20)
 					{
 						if(!world.isRemote)
 						{
@@ -278,9 +279,9 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(player.getCurrentEos() > 35)
+				if(EosUtil.getCurrentEos() > 35)
 				{
-					if(player.consumeEos(35))
+					if(EosUtil.consumeEos(35))
 					{
 						if (world.isAirBlock(par4, par5, par6))
 						{
@@ -294,7 +295,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(player.getCurrentEos() < 35)
+					if(EosUtil.getCurrentEos() < 35)
 					{
 						if(!world.isRemote)
 						{

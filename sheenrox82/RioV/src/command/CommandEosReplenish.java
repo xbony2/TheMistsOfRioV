@@ -8,6 +8,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 
@@ -47,8 +48,8 @@ public class CommandEosReplenish extends CommandBase implements ICommand
 
 		if(icommandsender instanceof EntityPlayer)
 		{
-			props.replenishEos();
-			icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Replenished Eos. Eos: " + props.getCurrentEos() + "/" + props.maxEos));
+			EosUtil.replenishEos();
+			icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Replenished Eos. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
 		}
 	}
 

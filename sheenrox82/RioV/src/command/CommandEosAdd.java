@@ -8,6 +8,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 
@@ -53,7 +54,7 @@ public class CommandEosAdd extends CommandBase implements ICommand
 			}
 
 			int amount = Integer.parseInt(astring[0]);
-			int missingAmount = props.maxEos - props.getCurrentEos();
+			int missingAmount = props.maxEos - EosUtil.getCurrentEos();
 			
 			if(amount > missingAmount)
 			{
@@ -61,8 +62,8 @@ public class CommandEosAdd extends CommandBase implements ICommand
 			}
 			else
 			{
-				props.addEos(amount);
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Added " + amount + " Eos to yourself. Eos: " + props.getCurrentEos() + "/" + props.maxEos));
+				EosUtil.addEos(amount);
+				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Added " + amount + " Eos to yourself. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
 			}
 		}
 	}

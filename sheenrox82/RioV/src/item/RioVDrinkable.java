@@ -11,6 +11,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 import sheenrox82.RioV.src.util.Util;
@@ -103,7 +104,7 @@ public class RioVDrinkable extends ItemFood
 			PlayerNBT player = PlayerNBT.get(entityPlayer);
 
 			--itemStack.stackSize;
-			player.replenishEos();
+			EosUtil.replenishEos();
 			entityPlayer.getFoodStats().func_151686_a(this, itemStack);
 			world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 			this.onFoodEaten(itemStack, world, entityPlayer);

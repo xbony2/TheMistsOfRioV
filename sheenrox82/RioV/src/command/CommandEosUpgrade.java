@@ -8,6 +8,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.util.EosUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.util.PlayerNBT;
 
@@ -62,7 +63,7 @@ public class CommandEosUpgrade extends CommandBase implements ICommand
 			}
 			else
 			{
-				props.setMaxEos(amount);
+				EosUtil.setMaxEos(amount);
 				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Set " + amount + " as new max Eos."));
 			}
 		}
