@@ -192,69 +192,77 @@ public class Events
 
 		if(event.entity instanceof EntityPlayer)
 		{
-			if(BloodUtil.getCurrentBlood() == 100)
+			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
-				mc.entityRenderer.theShaderGroup = null;
-				bloodBlur = false;
-				bloodColor = false;
-			}
-
-			if(BloodUtil.getCurrentBlood() <= 70 && BloodUtil.getCurrentBlood() > 60)
-			{
-				mc.entityRenderer.theShaderGroup = null;
-				bloodBlur = false;
-				bloodColor = false;
-			}
-
-			if(BloodUtil.getCurrentBlood() <= 60)
-			{
-				if(bloodBlur == false)
+				if(BloodUtil.getCurrentBlood() == 100)
 				{
-					try
+					mc.entityRenderer.theShaderGroup = null;
+					bloodBlur = false;
+					bloodColor = false;
+				}
+
+				if(BloodUtil.getCurrentBlood() <= 70 && BloodUtil.getCurrentBlood() > 60)
+				{
+					mc.entityRenderer.theShaderGroup = null;
+					bloodBlur = false;
+					bloodColor = false;
+				}
+
+				if(BloodUtil.getCurrentBlood() <= 60)
+				{
+					if(bloodBlur == false)
 					{
-						mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("shaders/post/blur.json"));
-						mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-						bloodBlur = true;
-					}
-					catch(IOException ioexception)
-					{
-						ioexception.printStackTrace();
+						try
+						{
+							mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("shaders/post/blur.json"));
+							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+							bloodBlur = true;
+						}
+						catch(IOException ioexception)
+						{
+							ioexception.printStackTrace();
+						}
 					}
 				}
-			}
 
-			if(BloodUtil.getCurrentBlood() <= 50)
-			{
-				if(bloodColor == false)
+				if(BloodUtil.getCurrentBlood() <= 50)
 				{
-					try
+					if(bloodColor == false)
 					{
-						mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("riov", "shaders/post/desaturateBlur.json"));
-						mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-						bloodColor = true;
-					}
-					catch(IOException ioexception)
-					{
-						ioexception.printStackTrace();
+						try
+						{
+							mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("riov", "shaders/post/desaturateBlur.json"));
+							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+							bloodColor = true;
+						}
+						catch(IOException ioexception)
+						{
+							ioexception.printStackTrace();
+						}
 					}
 				}
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void playerUpdate(LivingEvent.LivingUpdateEvent event)
 	{
 		if(event.entity instanceof EntityPlayer)
 		{
-			if(BloodUtil.getCurrentBlood() <= 85)
-			{
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 1));
-			}
+			EntityPlayer thePlayer = (EntityPlayer)event.entityLiving;
 
-			if(BloodUtil.getCurrentBlood() <= 35)
+			if(!thePlayer.capabilities.isCreativeMode)
 			{
-				event.entityLiving.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
+				if(BloodUtil.getCurrentBlood() <= 85)
+				{
+					event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 1));
+				}
+
+				if(BloodUtil.getCurrentBlood() <= 35)
+				{
+					event.entityLiving.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
+				}
 			}
 		}
 	}

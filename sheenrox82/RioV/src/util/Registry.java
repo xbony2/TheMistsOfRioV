@@ -13,6 +13,7 @@ import sheenrox82.RioV.src.command.CommandEosAdd;
 import sheenrox82.RioV.src.command.CommandEosCheck;
 import sheenrox82.RioV.src.command.CommandEosRemove;
 import sheenrox82.RioV.src.command.CommandEosReplenish;
+import sheenrox82.RioV.src.command.CommandRageQuit;
 import sheenrox82.RioV.src.content.Biomes;
 import sheenrox82.RioV.src.content.Enchantments;
 import sheenrox82.RioV.src.content.EntityLoader;
@@ -179,7 +180,8 @@ public class Registry
 		event.registerServerCommand(new CommandEosReplenish());
 		event.registerServerCommand(new CommandEosCheck());
 		event.registerServerCommand(new CommandEosAdd());
-		
+		event.registerServerCommand(new CommandRageQuit());
+
 		// May or may not add Eos upgrading...
 		//event.registerServerCommand(new CommandEosUpgrade());
 	}
