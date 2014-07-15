@@ -249,7 +249,7 @@ public class Events
 		{
 			if(BloodUtil.getCurrentBlood() <= 85)
 			{
-				event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 5));
+				event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 1));
 			}
 
 			if(BloodUtil.getCurrentBlood() <= 35)
