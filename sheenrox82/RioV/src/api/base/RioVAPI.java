@@ -2,6 +2,7 @@ package sheenrox82.RioV.src.api.base;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -13,33 +14,49 @@ import sheenrox82.RioV.src.api.util.Util;
 
 public class RioVAPI
 {
-	//The API instance.
+	/**
+	 * The API instance.
+	 */
 	private static RioVAPI api = new RioVAPI();
 
-	//The crafting manager for the Anvil in RioV
+	/**
+	 * The crafting manager for the Anvil in RioV
+	 */
 	private static AnvilCraftingManager crafter = new AnvilCraftingManager();
 
-	//Gets infuser crafting from RioV
+	/**
+	 * Gets infuser crafting from RioV
+	 */
 	private static InfuserManager infuser = new InfuserManager();
 
-	//Writes to ./TheMistsOfRioV/debug.log
+	/**
+	 * Writes to ./TheMistsOfRioV/debug.log
+	 */
 	private static LogHelper logger = new LogHelper();
 
-	//Used to correctly write and close the debug file.
+	/**
+	 * Used to correctly write and close the debug file.
+	 */
 	public boolean modLoaded = false;
 
-	//Get RioV PacketPipeline
+	/**
+	 * Get RioV PacketPipeline
+	 */
 	public PacketPipeline packetPipeline = new PacketPipeline();
 
-	//These booleans are used to detect if certain mods are loaded in the ExpansionChecker class in the main source code for RioV.
-	//Natura - continued by progwml6
-	//Botania - by Vazkii
-	//Optifine - by sp614x
+	/**
+	 * These booleans are used to detect if certain mods are loaded in the ExpansionChecker class in the main source code for RioV.
+	 * Natura - continued by progwml6
+	 * Botania - by Vazkii
+	 * Optifine - by sp614x
+	 */
 	public boolean natura;
 	public boolean botania;
 	public boolean optifine;
 
-	//RioV tab.
+	/**
+	 * RioV tab.
+	 */
 	public CreativeTabs tab = new CreativeTabs(Util.MOD_ID) {public Item getTabIconItem() {return Item.getItemFromBlock(getRioVBlock("infuser"));}};
 
 	public static RioVAPI getInstance()
@@ -112,7 +129,29 @@ public class RioVAPI
 	}
 	
 	/**
-	 * Get a RioV Config field using a string.
+	 * Get a RioV Enchantment using a string.
+	 * 
+	 * @param enchantmentName - Object name in Enchantments.java (check Github).
+	 */
+	public Enchantment getRioVEnchantment(String enchantmentName)
+	{
+		try
+		{
+			Class riovEnchants = Class.forName("sheenrox82.RioV.src.content.Enchantments");
+			Enchantment enchantToGet = (Enchantment)riovEnchants.getDeclaredField(enchantmentName).get(null);
+			return enchantToGet;
+		}
+		catch(Exception e)
+		{
+			//If it can't find the enchantment it will revert 
+			//to this until the enchantment is found. This is so 
+			//you don't crash with this API in Eclipse because you don't have the RioV source code.
+			return Enchantment.protection;
+		}
+	}
+	
+	/**
+	 * Get a RioV Config boolean field using a string.
 	 * 
 	 * @param field - Field name in Config.java (check Github).
 	 */
@@ -126,7 +165,7 @@ public class RioVAPI
 		}
 		catch(Exception e)
 		{
-			//If field is not found, the boolean will be false.
+			//If field is not found, the boolean will return false.
 			return false;
 		}
 	}
