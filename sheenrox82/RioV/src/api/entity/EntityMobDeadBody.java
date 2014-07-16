@@ -1,19 +1,24 @@
-package sheenrox82.RioV.src.entity.mob.core;
+package sheenrox82.RioV.src.api.entity;
 
-import org.lwjgl.input.Keyboard;
-
-import sheenrox82.RioV.src.base.Config;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.passive.EntityAmbientCreature;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityAmbientCreatureDeadBody extends EntityAmbientCreature
+import org.lwjgl.input.Keyboard;
+
+import sheenrox82.RioV.src.api.base.Config;
+
+public class EntityMobDeadBody extends EntityMob
 {
-	public EntityAmbientCreatureDeadBody(World par1World)
+	public int counter;
+	public int countdown;
+	public boolean justJumped;
+
+	public EntityMobDeadBody(World par1World)
 	{
 		super(par1World);
 	}

@@ -9,18 +9,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.EosUtil;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTerron;
-import sheenrox82.RioV.src.util.EosUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -32,7 +32,7 @@ public class RioVSummoners extends Item
 		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(1);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.sendMessageToAll("Terron has been summoned!");
+								RioVAPIUtil.sendMessageToAll("Terron has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -68,13 +68,13 @@ public class RioVSummoners extends Item
 						if(EosUtil.getCurrentEos() < 3)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(EosUtil.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -96,7 +96,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.sendMessageToAll("Tef has been summoned!");
+								RioVAPIUtil.sendMessageToAll("Tef has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -106,13 +106,13 @@ public class RioVSummoners extends Item
 						if(EosUtil.getCurrentEos() < 4)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(EosUtil.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -133,7 +133,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.sendMessageToAll("The Darkness has arrived!");
+								RioVAPIUtil.sendMessageToAll("The Darkness has arrived!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 
@@ -144,13 +144,13 @@ public class RioVSummoners extends Item
 						if(EosUtil.getCurrentEos() < 18)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(EosUtil.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -175,7 +175,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.sendMessageToAll("Demon Angel has been summoned!");
+								RioVAPIUtil.sendMessageToAll("Demon Angel has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -185,13 +185,13 @@ public class RioVSummoners extends Item
 						if(EosUtil.getCurrentEos() < 12)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 						
 						if(EosUtil.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -213,7 +213,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								MethodUtil.sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
+								RioVAPIUtil.sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -223,13 +223,13 @@ public class RioVSummoners extends Item
 						if(EosUtil.getCurrentEos() < 34)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 						
 						if(EosUtil.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -263,7 +263,7 @@ public class RioVSummoners extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
 
 }

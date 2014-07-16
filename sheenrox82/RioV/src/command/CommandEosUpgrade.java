@@ -8,9 +8,9 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
-import sheenrox82.RioV.src.util.EosUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.EosUtil;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 
 public class CommandEosUpgrade extends CommandBase implements ICommand
 {
@@ -52,19 +52,19 @@ public class CommandEosUpgrade extends CommandBase implements ICommand
 		{
 			if (astring.length == 0)
 			{
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /upgradeEos <newMaxEosAmmount> to upgrade max Eos."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /upgradeEos <newMaxEosAmmount> to upgrade max Eos."));
 			}
 
 			int amount = Integer.parseInt(astring[0]);
 			
 			if(amount < props.maxEos)
 			{
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is lower than the current max Eos amount. (" + props.maxEos + ")"));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is lower than the current max Eos amount. (" + props.maxEos + ")"));
 			}
 			else
 			{
 				EosUtil.setMaxEos(amount);
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Set " + amount + " as new max Eos."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "Set " + amount + " as new max Eos."));
 			}
 		}
 	}

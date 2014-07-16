@@ -11,15 +11,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenCherryBlossomTree;
 import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree;
@@ -34,7 +33,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	public BlockRioVSapling()
 	{
 		super();
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setStepSound(Block.soundTypeGrass);
         this.setHardness(0.2F);
         this.setLightOpacity(1);
@@ -412,7 +411,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister p_149651_1_)
 	{
-		blockIcon = p_149651_1_.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		blockIcon = p_149651_1_.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
 
 	protected boolean canPlaceBlockOn(Block block)

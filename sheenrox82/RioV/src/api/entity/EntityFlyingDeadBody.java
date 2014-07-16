@@ -1,19 +1,19 @@
-package sheenrox82.RioV.src.entity.mob.core;
+package sheenrox82.RioV.src.api.entity;
 
 import org.lwjgl.input.Keyboard;
 
-import sheenrox82.RioV.src.base.Config;
-import net.minecraft.entity.EntityAgeable;
+import sheenrox82.RioV.src.api.base.Config;
+import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityTameableDeadBody extends EntityTameable
+public class EntityFlyingDeadBody extends EntityFlying
 {
-	public EntityTameableDeadBody(World par1World)
+	public EntityFlyingDeadBody(World par1World)
 	{
 		super(par1World);
 	}
@@ -63,11 +63,5 @@ public class EntityTameableDeadBody extends EntityTameable
 		{
 			super.onDeathUpdate();
 		}
-	}
-
-	@Override
-	public EntityAgeable createChild(EntityAgeable entityageable) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

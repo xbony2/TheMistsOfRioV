@@ -1,7 +1,7 @@
 package sheenrox82.RioV.src.content;
 
 import net.minecraft.enchantment.Enchantment;
-import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.api.base.Config;
 import sheenrox82.RioV.src.enchantment.EnchantmentVicious;
 import sheenrox82.RioV.src.enchantment.EnchantmentVenom;
 import sheenrox82.RioV.src.enchantment.EnchantmentConfusion;

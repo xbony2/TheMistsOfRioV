@@ -10,11 +10,11 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.Materials;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 
 public class BlockSkycloud extends Block
 {
@@ -24,7 +24,7 @@ public class BlockSkycloud extends Block
 	{
 		super(Materials.customMaterial);
 		this.setStepSound(this.soundTypeCloth);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4)
@@ -84,7 +84,7 @@ public class BlockSkycloud extends Block
 	@Override
 	public void registerBlockIcons(IIconRegister var1)
 	{
-		this.blockIcon = var1.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		this.blockIcon = var1.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
 
 	/**@Override

@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -19,17 +18,15 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.entity.EntityBossCore;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityMage;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityTefGuard;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
-import sheenrox82.RioV.src.util.MethodUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -80,8 +77,8 @@ public class EntityAunTun extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			MethodUtil.sendMessageToAll("Aun'Tun: *Rupture");
-			MethodUtil.sendMessageToAll("Aun'Tun was destroyed!");
+			RioVAPIUtil.sendMessageToAll("Aun'Tun: *Rupture");
+			RioVAPIUtil.sendMessageToAll("Aun'Tun was destroyed!");
 		}
 	}
 

@@ -1,13 +1,11 @@
-package sheenrox82.RioV.src.util;
+package sheenrox82.RioV.src.api.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import org.apache.logging.log4j.Level;
-
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import cpw.mods.fml.common.FMLLog;
 
 public class LogHelper {
@@ -30,49 +28,49 @@ public class LogHelper {
 		}
 	}
 
-	private static void log(Level level, String msg) 
+	private void log(Level level, String msg) 
 	{
 		FMLLog.log(Util.MOD_NAME, level, msg);
 		System.err.println(msg);
 		
-		if(TheMistsOfRioV.getInstance().modLoaded == false)
+		if(RioVAPI.getInstance().modLoaded == false)
 		{
 			writeFile(msg);
 			flush();
 		}
 		
-		if(TheMistsOfRioV.getInstance().modLoaded == true)
+		if(RioVAPI.getInstance().modLoaded == true)
 		{
 			closeFile();
 		}
 	}
 
-	public static void debug(String msg) 
+	public void debug(String msg) 
 	{
 		if (Util.DEBUG) log(Level.DEBUG, "[DEBUG] " + msg);
 	}
 
-	public static void error(String msg) 
+	public void error(String msg) 
 	{
 		log(Level.ERROR, msg);
 	}
 
-	public static void info(String msg)
+	public void info(String msg)
 	{
 		log(Level.INFO, msg);
 	}
 
-	public static void warn(String msg) 
+	public void warn(String msg) 
 	{
 		log(Level.WARN, msg);
 	}
 
-	public static void dev(String msg) 
+	public void dev(String msg) 
 	{
 		log(Level.INFO, "[DEVELOPMENT] " + msg);
 	}
 
-	public static void writeFile(String msg)
+	public void writeFile(String msg)
 	{
 		try 
 		{
@@ -85,7 +83,7 @@ public class LogHelper {
 		}
 	}
 
-	public static void flush() 
+	public void flush() 
 	{
 		try
 		{
@@ -97,7 +95,7 @@ public class LogHelper {
 		}
 	}
 
-	public static void closeFile() 
+	public void closeFile() 
 	{
 		try
 		{
@@ -109,7 +107,7 @@ public class LogHelper {
 		}
 	}
 
-	public static void write(String msg)
+	public void write(String msg)
 	{
 		System.err.println(msg);
 		writeFile(msg);

@@ -10,10 +10,10 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -24,7 +24,7 @@ public class RioVConsumable extends ItemFood
 	public RioVConsumable(int par2, float par3, boolean par4)
 	{
 		super(par2, par3, par4);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	@Override
@@ -53,11 +53,6 @@ public class RioVConsumable extends ItemFood
 			this.onFoodEaten(itemStack, world, entityPlayer);
 			return itemStack;
 		}
-		
-		if(TheMistsOfRioV.getInstance().botania)
-		{
-			
-		}
 
 		--itemStack.stackSize;
 		entityPlayer.getFoodStats().func_151686_a(this, itemStack);
@@ -82,11 +77,6 @@ public class RioVConsumable extends ItemFood
 		{
 			return true;
 		}
-		
-		if(TheMistsOfRioV.getInstance().botania)
-		{
-			
-		}
 
 		return false;
 	}
@@ -95,6 +85,6 @@ public class RioVConsumable extends ItemFood
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
 }

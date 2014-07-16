@@ -1,10 +1,7 @@
 package sheenrox82.RioV.src.event;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.shader.ShaderGroup;
@@ -26,18 +23,18 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.BloodUtil;
+import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.PlayerStorage;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.handler.UpdateHandler;
 import sheenrox82.RioV.src.handler.packet.PacketHandler;
-import sheenrox82.RioV.src.proxy.CommonProxy;
-import sheenrox82.RioV.src.util.BloodUtil;
-import sheenrox82.RioV.src.util.Color;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
-import sheenrox82.RioV.src.util.Registry;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -61,7 +58,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! A new version is available! Check http://tinyurl.com/riovmod. - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! A new version is available! Check http://tinyurl.com/riovmod. - sheenrox82"));
 						hasSeen = true;
 					}
 				}
@@ -70,7 +67,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
 				}
@@ -95,7 +92,7 @@ public class Events
 	public void playerLoggedInEvent(PlayerLoggedInEvent event)
 	{
 		EntityPlayer p = event.player;
-		Registry.packetPipeline.sendTo(new PacketHandler(), (EntityPlayerMP)p);
+		RioVAPI.getInstance().getPacketPipeline().sendTo(new PacketHandler(), (EntityPlayerMP)p);
 	}
 
 	@SubscribeEvent
@@ -103,7 +100,7 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
-			NBTTagCompound playerData = CommonProxy.getEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME);
+			NBTTagCompound playerData = PlayerStorage.getEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME);
 
 			if (playerData != null) 
 			{
@@ -123,7 +120,7 @@ public class Events
 				BloodUtil.setCurrentBlood(100);
 			}
 			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).saveNBTData(playerData);
-			CommonProxy.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
+			PlayerStorage.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
 			PlayerNBT.saveProxyData((EntityPlayer) event.entity);
 		}
 	}
@@ -175,14 +172,18 @@ public class Events
 	@SubscribeEvent
 	public void playerBloodUpdate(LivingHurtEvent event)
 	{
-		if(event.entity instanceof EntityPlayer)
+		if(RioVAPI.getInstance().blood == false)
 		{
-			BloodUtil.consumeBlood(2);
+			if(event.entity instanceof EntityPlayer)
+			{
+				BloodUtil.consumeBlood(3);
+			}
 		}
 	}
 
 	public boolean bloodBlur = false;
 	public boolean bloodColor = false;
+	public boolean bloodColorII = false;
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
@@ -190,78 +191,129 @@ public class Events
 	{
 		Minecraft mc = Minecraft.getMinecraft();
 
-		if(event.entity instanceof EntityPlayer)
+		if(RioVAPI.getInstance().blood == false)
 		{
-			if(!mc.thePlayer.capabilities.isCreativeMode)
+			if(event.entity instanceof EntityPlayer)
 			{
-				if(BloodUtil.getCurrentBlood() == 100)
+				if(!mc.thePlayer.capabilities.isCreativeMode)
 				{
-					mc.entityRenderer.theShaderGroup = null;
-					bloodBlur = false;
-					bloodColor = false;
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 70 && BloodUtil.getCurrentBlood() > 60)
-				{
-					mc.entityRenderer.theShaderGroup = null;
-					bloodBlur = false;
-					bloodColor = false;
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 60)
-				{
-					if(bloodBlur == false)
+					if(BloodUtil.getCurrentBlood() == 100)
 					{
-						try
+						mc.entityRenderer.theShaderGroup = null;
+						bloodBlur = false;
+						bloodColor = false;
+						bloodColorII = false;
+					}
+
+					if(BloodUtil.getCurrentBlood() <= 85 && BloodUtil.getCurrentBlood() > 60)
+					{
+						mc.entityRenderer.theShaderGroup = null;
+						bloodBlur = false;
+						bloodColor = false;
+						bloodColorII = false;
+					}
+
+					if(BloodUtil.getCurrentBlood() <= 60)
+					{
+						if(bloodBlur == false)
 						{
-							mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("shaders/post/blur.json"));
-							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-							bloodBlur = true;
-						}
-						catch(IOException ioexception)
-						{
-							ioexception.printStackTrace();
+							try
+							{
+								mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("shaders/post/blur.json"));
+								mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+								bloodBlur = true;
+							}
+							catch(IOException ioexception)
+							{
+								ioexception.printStackTrace();
+							}
 						}
 					}
-				}
 
-				if(BloodUtil.getCurrentBlood() <= 50)
-				{
-					if(bloodColor == false)
+					if(BloodUtil.getCurrentBlood() <= 50 && BloodUtil.getCurrentBlood() > 40)
 					{
-						try
+						if(bloodColor == false)
 						{
-							mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("riov", "shaders/post/desaturateBlur.json"));
-							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-							bloodColor = true;
+							try
+							{
+								mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("blood", "shaders/post/desaturateBlur.json"));
+								mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+								bloodColor = true;
+								bloodColorII = false;
+							}
+							catch(IOException ioexception)
+							{
+								ioexception.printStackTrace();
+							}
 						}
-						catch(IOException ioexception)
+					}
+
+					if(BloodUtil.getCurrentBlood() <= 40 && BloodUtil.getCurrentBlood() > 35)
+					{
+						if(bloodColorII == false)
 						{
-							ioexception.printStackTrace();
+							try
+							{
+								mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("blood", "shaders/post/desaturateBlurII.json"));
+								mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
+								bloodColorII = true;
+								bloodColor = false;
+								event.entityLiving.addPotionEffect(new PotionEffect(Potion.harm.getId(), 20, 1));
+							}
+							catch(IOException ioexception)
+							{
+								ioexception.printStackTrace();
+							}
 						}
+					}
+
+					if(BloodUtil.getCurrentBlood() <= 35)
+					{
+						event.entityLiving.addPotionEffect(new PotionEffect(Potion.poison.getId(), 20, 1));
+						event.entityLiving.addPotionEffect(new PotionEffect(Potion.blindness.getId(), 20, 1));
+						event.entityLiving.addPotionEffect(new PotionEffect(Potion.hunger.getId(), 20, 1));
 					}
 				}
 			}
 		}
 	}
 
+	public int regenTimer;
+
 	@SubscribeEvent
 	public void playerUpdate(LivingEvent.LivingUpdateEvent event)
 	{
-		if(event.entity instanceof EntityPlayer)
+		if(RioVAPI.getInstance().blood == false)
 		{
-			EntityPlayer thePlayer = (EntityPlayer)event.entityLiving;
-
-			if(!thePlayer.capabilities.isCreativeMode)
+			if(event.entity instanceof EntityPlayer)
 			{
-				if(BloodUtil.getCurrentBlood() <= 85)
-				{
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 1));
-				}
+				EntityPlayer thePlayer = (EntityPlayer)event.entityLiving;
 
-				if(BloodUtil.getCurrentBlood() <= 35)
+				if(!thePlayer.capabilities.isCreativeMode)
 				{
-					event.entityLiving.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
+					if(BloodUtil.getCurrentBlood() <= 85)
+					{
+						event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 20, 1));
+					}
+
+					if(BloodUtil.getCurrentBlood() <= 30 && BloodUtil.getCurrentBlood() > 0)
+					{
+						event.entityLiving.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
+					}
+
+					if(thePlayer.getFoodStats().getFoodLevel() >= 19)
+					{
+						if(BloodUtil.getCurrentBlood() < PlayerNBT.maxBlood)
+						{
+							++regenTimer;
+
+							if(regenTimer > 100)
+							{
+								BloodUtil.consumeBlood(-1);
+								regenTimer = 0;
+							}
+						}
+					}
 				}
 			}
 		}

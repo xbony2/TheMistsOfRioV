@@ -9,9 +9,9 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumChatFormatting;
-import sheenrox82.RioV.src.util.EosUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.EosUtil;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 
 public class CommandEosRemove extends CommandBase implements ICommand
 {
@@ -53,19 +53,19 @@ public class CommandEosRemove extends CommandBase implements ICommand
 		{
 			if (astring.length == 0)
 			{
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /removeEos <amount> to remove Eos."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /removeEos <amount> to remove Eos."));
 			}
 
 			int amount = Integer.parseInt(astring[0]);
 
 			if(amount > EosUtil.getCurrentEos())
 			{
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is higher than the current amount of Eos."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is higher than the current amount of Eos."));
 			}
 			else
 			{
 				EosUtil.consumeEos(amount);
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Removed " + amount + " Eos from yourself. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "Removed " + amount + " Eos from yourself. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
 			}
 		}
 	}

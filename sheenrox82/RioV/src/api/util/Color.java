@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.util;
+package sheenrox82.RioV.src.api.util;
 
 public class Color
 {

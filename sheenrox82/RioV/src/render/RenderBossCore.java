@@ -10,11 +10,11 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
+import sheenrox82.RioV.src.api.entity.EntityBossCore;
+import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTerron;
 import sheenrox82.RioV.src.lib.EntityResourceLocation;
-import sheenrox82.RioV.src.util.Color;
 
 
 public class RenderBossCore extends RenderLiving

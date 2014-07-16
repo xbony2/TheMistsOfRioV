@@ -1,13 +1,10 @@
-package sheenrox82.RioV.src.util;
-
-import java.util.Random;
+package sheenrox82.RioV.src.api.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
-import sheenrox82.RioV.src.proxy.CommonProxy;
 
 public class PlayerNBT implements IExtendedEntityProperties
 {
@@ -15,11 +12,11 @@ public class PlayerNBT implements IExtendedEntityProperties
 	public static EntityPlayer player;
 	
 	//EOS
-	public static final int EOS_WATCHER = 20;
+	public static final int EOS_WATCHER = 30;
 	public static int maxEos = 50;
 
 	//BLOOD
-	public static final int BLOOD_WATCHER = 21;
+	public static final int BLOOD_WATCHER = 31;
 	public static int maxBlood = 100;
 	
 	public PlayerNBT(EntityPlayer player)
@@ -80,13 +77,13 @@ public class PlayerNBT implements IExtendedEntityProperties
 
 		playerData.saveNBTData(savedData);
 
-		CommonProxy.storeEntityData(getSaveKey(player), savedData);
+		PlayerStorage.storeEntityData(getSaveKey(player), savedData);
 	}
 
 	public static void loadProxyData(EntityPlayer player) 
 	{
 		PlayerNBT playerData = PlayerNBT.get(player);
-		NBTTagCompound savedData = CommonProxy.getEntityData(getSaveKey(player));
+		NBTTagCompound savedData = PlayerStorage.getEntityData(getSaveKey(player));
 
 		if(savedData != null) 
 		{

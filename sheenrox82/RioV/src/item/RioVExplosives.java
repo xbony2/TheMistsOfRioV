@@ -5,10 +5,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 
 public class RioVExplosives extends Item
 {
@@ -16,7 +16,7 @@ public class RioVExplosives extends Item
 	{
 		super();
 		this.maxStackSize = 1;
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3)
@@ -36,6 +36,6 @@ public class RioVExplosives extends Item
 
 	public void registerIcons(IIconRegister i)
 	{
-		this.itemIcon = i.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = i.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
 }

@@ -3,9 +3,10 @@ package sheenrox82.RioV.src.handler.packet;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
-import sheenrox82.RioV.src.util.BloodUtil;
-import sheenrox82.RioV.src.util.EosUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
+import sheenrox82.RioV.src.api.handler.packet.AbstractPacket;
+import sheenrox82.RioV.src.api.util.BloodUtil;
+import sheenrox82.RioV.src.api.util.EosUtil;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
 
 public class PacketHandler extends AbstractPacket 
 {

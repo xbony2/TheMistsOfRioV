@@ -5,7 +5,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
-import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.api.base.Config;
 import sheenrox82.RioV.src.world.biome.BiomeGenBlindOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenCanopyOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenFlamonor;
@@ -27,9 +27,9 @@ public class Biomes
 
 	public static void add()
 	{
-		 BiomeDictionary.registerBiomeType(snowyMountains, Type.FROZEN, Type.MOUNTAIN);
+		 BiomeDictionary.registerBiomeType(snowyMountains, Type.SNOWY, Type.MOUNTAIN);
          BiomeManager.icyBiomes.add(new BiomeEntry(snowyMountains, 10));
-         BiomeDictionary.registerBiomeType(savannah, Type.DESERT, Type.FOREST);
+         BiomeDictionary.registerBiomeType(savannah, Type.SANDY, Type.FOREST);
          BiomeManager.desertBiomes.add(new BiomeEntry(savannah, 10));
          BiomeDictionary.registerBiomeType(canopyOasis, Type.FOREST, Type.HILLS);
          BiomeManager.warmBiomes.add(new BiomeEntry(canopyOasis, 10));

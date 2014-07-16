@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.base;
+package sheenrox82.RioV.src.api.base;
 
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.config.Configuration;
@@ -40,6 +40,10 @@ public class Config
 	{
 		config = new Configuration(event.getSuggestedConfigurationFile());
 
+		/*
+		 * You best not fuck with this.
+		 */
+		
 		blindOasisID = config.get("Dimension IDs", "Blind Oasis Dimension ID", 11).getInt();
 		vaerynID = config.get("Dimension IDs", "Vaeryn Dimension ID", 12).getInt();
 		flamonorID = config.get("Dimension IDs", "Flamonor Dimension ID", 13).getInt();

@@ -6,12 +6,12 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.Color;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -22,7 +22,7 @@ public class RioVPickaxe extends ItemPickaxe
 	{
 		super(par2EnumToolMaterial);
 		this.isInfused = par2;
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	@Override
@@ -105,15 +105,10 @@ public class RioVPickaxe extends ItemPickaxe
 		{
 			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "alerisPickaxe");
 		}
-		if(TheMistsOfRioV.getInstance().natura)
+		if(RioVAPI.getInstance().natura)
 		{
 			if(this == RioVItems.infusedBloodwoodPickaxe || this == RioVItems.infusedGhostwoodPickaxe || this == RioVItems.infusedDarkwoodPickaxe || this == RioVItems.infusedFusewoodPickaxe || this == RioVItems.infusedNetherquartzPickaxe)
-				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
-		}
-
-		if(TheMistsOfRioV.getInstance().botania)
-		{
-			
+				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
 		}
 	}
 }

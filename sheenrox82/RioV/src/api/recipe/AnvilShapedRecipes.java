@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.recipe;
+package sheenrox82.RioV.src.api.recipe;
 
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;

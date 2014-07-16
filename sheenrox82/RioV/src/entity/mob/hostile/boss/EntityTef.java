@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -28,17 +27,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.entity.EntityBossCore;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityHellhound;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityMage;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityTefGuard;
 import sheenrox82.RioV.src.entity.mob.passive.EntityAdv;
-import sheenrox82.RioV.src.util.MethodUtil;
 
 public class EntityTef extends EntityBossCore
 {
@@ -94,7 +92,7 @@ public class EntityTef extends EntityBossCore
 			}
 		}
 		if(this.worldObj.isRemote)
-			MethodUtil.sendMessageToAll("Tef was killed!");
+			RioVAPIUtil.sendMessageToAll("Tef was killed!");
 	}
 
 	@Override

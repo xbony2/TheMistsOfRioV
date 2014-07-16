@@ -4,6 +4,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -16,6 +17,17 @@ public class Crafting
 	public static String[] leggings = new String[] {"XXX", "X X", "X X"};
 	public static String[] boots = new String[] {"X X", "X X"};
 	public static String[] bricks = new String[] {"XX"};
+	
+	public static String[] pickaxe = new String[] {"XXX", " ! ", " ! ", " ! "};
+	public static String[] sword = new String[] {" X ", " X ", "XXX", " ! ",};
+	public static String[] shovel = new String[] {"X", "!", "!", "!"};
+	public static String[] axe = new String[] {"XX", "X!", " !", " !"};
+	public static String[] bowOfWurTun = new String[] {" I*", "IB*", " I*"};
+	public static String[] bow = new String[] {" I*", "I *", " I*"};
+	public static String[] riovhelmet = new String[] {"XXX", "X X"};
+	public static String[] riovchestplate = new String[] {"X X", "XXX", "XXX"};
+	public static String[] riovleggings = new String[] {"XXX", "X X", "X X"};
+	public static String[] riovboots = new String[] {"X X", "X X"};
 	
 	public static void add()
 	{
@@ -139,7 +151,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVItems.blindoniteArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.blindonite, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.alerisArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.aleris, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);**/
 		
-		
 		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe, 5), "***", " I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_axe, 5), "** ", "*I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel, 5), " * ", " I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
@@ -150,5 +161,202 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel, 5), " * ", " I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_sword, 5), " * ", " * ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe, 5), "** ", " I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
+	
+		//ANVIL CRAFTING
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.onyx, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.onyx, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.onyx, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVItems.onyx, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.dragonSoul, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.dragonSoul, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.dragonSoul, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVItems.dragonSoul, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.agonitePickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.agonite, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.galokinCrystal, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindonitePickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.blindonite, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.blindonite, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.blindonite, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVItems.blindonite, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vravinitePickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.vravinite, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.vravinite, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.vravinite, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVItems.vravinite, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.cherryBlossomPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVBlocks.cherryPlanks, Character.valueOf('!'), RioVItems.cherryBlossomSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.cherryBlossomSword, 1), new Object[] { sword, Character.valueOf('X'), RioVBlocks.cherryPlanks, Character.valueOf('!'), RioVItems.cherryBlossomSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.cherryBlossomShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVBlocks.cherryPlanks, Character.valueOf('!'), RioVItems.cherryBlossomSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.cherryBlossomAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVBlocks.cherryPlanks, Character.valueOf('!'), RioVItems.cherryBlossomSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.glimmerwoodPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.glimmerwoodSword, 1), new Object[] { sword, Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.glimmerwoodShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.glimmerwoodAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVBlocks.glimmerwoodPlanks, Character.valueOf('!'), RioVItems.glimmerwoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.khuulisScythe, 1), "X  ", " Z ", "  X", Character.valueOf('X'), Items.iron_ingot, Character.valueOf('Z'), RioVItems.blackBone);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.bowOfWurTun, 1), bowOfWurTun, Character.valueOf('I'), Items.gold_ingot, Character.valueOf('*'), Items.string, Character.valueOf('D'), RioVItems.blackBone);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.enforcedBowOfWurTun, 1), " XC", "DOC", " XC", Character.valueOf('X'), Items.gold_ingot, Character.valueOf('C'), Items.string, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('O'), RioVItems.bowOfWurTun);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.skywoodPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVBlocks.skywoodPlanks, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.skywoodSword, 1), new Object[] { sword, Character.valueOf('X'), RioVBlocks.skywoodPlanks, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.skywoodShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVBlocks.skywoodPlanks, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.skywoodAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVBlocks.skywoodPlanks, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.bloodPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVBlocks.bloodPlanks, Character.valueOf('!'), RioVItems.bloodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.bloodSword, 1), new Object[] { sword, Character.valueOf('X'), RioVBlocks.bloodPlanks, Character.valueOf('!'), RioVItems.bloodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.bloodShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVBlocks.bloodPlanks, Character.valueOf('!'), RioVItems.bloodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.bloodAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVBlocks.bloodPlanks, Character.valueOf('!'), RioVItems.bloodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.aleris, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.aleris, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.aleris, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVItems.aleris, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.daetoriSword, 1), new Object[] { " X ", " X ", "!!!", " X ", Character.valueOf('X'), RioVItems.blackBone, Character.valueOf('!'), Items.iron_ingot});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.sorrowSword, 1), new Object[] { " X ", " X ", "XXX", " X ", Character.valueOf('X'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.unfusedAxeOfAunTun, 1), new Object[] { "XOX", "X!X", " ! ", "*!*", Character.valueOf('X'), RioVItems.vulron, Character.valueOf('!'), RioVItems.blackBone, Character.valueOf('O'), RioVItems.darkMatter, Character.valueOf('*'), RioVItems.clothOfMagic});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.swordOfFlame, 1), "*", "*", "*", Character.valueOf('*'), RioVItems.ingotOfFlame);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.onyx});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.onyx});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.onyx});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.onyx});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.amethyst});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.amethyst});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.amethyst});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.amethyst});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.garnet});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.garnet});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.garnet});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.garnet});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.mythrilHelmet, 1), "XAX", "X*X", Character.valueOf('X'), RioVItems.mythrilIngot, Character.valueOf('A'), Items.iron_ingot, Character.valueOf('*'), RioVItems.darkMatter);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.mythrilChestplate, 1), "X X", "XAX", "X*X", Character.valueOf('X'), RioVItems.mythrilIngot, Character.valueOf('A'), Items.iron_ingot, Character.valueOf('*'), RioVItems.darkMatter);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.mythrilLeggings, 1), "X*X", "A A", "X X", Character.valueOf('X'), RioVItems.mythrilIngot, Character.valueOf('A'), Items.iron_ingot, Character.valueOf('*'), RioVItems.darkMatter);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.mythrilBoots, 1), "A A", "X*X", Character.valueOf('X'), RioVItems.mythrilIngot, Character.valueOf('A'), Items.iron_ingot, Character.valueOf('*'), RioVItems.darkMatter);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.dragonSoul});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.dragonSoul});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.dragonSoul});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.dragonSoul});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.galokinCrystal});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.galokinCrystal});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.galokinCrystal});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.galokinCrystal});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.blindonite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.blindonite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.blindonite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.blindonite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.helmetOfFlame, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.ingotOfFlame});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.chestplateOfFlame, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.ingotOfFlame});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.leggingsOfFlame, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.ingotOfFlame});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.bootsOfFlame, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.ingotOfFlame});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.vravinite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.vravinite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.vravinite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.vravinite});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.magickaHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.clothOfMagic});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.magickaChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.clothOfMagic});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.magickaLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.clothOfMagic});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.magickaBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.clothOfMagic});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.aleris});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.aleris});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.aleris});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.aleris});
+	/**	this.addRecipe(new ItemStack(RioVItems.amethystBow, 1), bow, Character.valueOf('I'), RioVItems.amethyst, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.onyxBow, 1), bow, Character.valueOf('I'), RioVItems.onyx, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.dragonBow, 1), bow, Character.valueOf('I'), RioVItems.dragonSoul, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.blindoniteBow, 1), bow, Character.valueOf('I'), RioVItems.blindonite, Character.valueOf('*'), Items.string);
+		this.addRecipe(new ItemStack(RioVItems.alerisBow, 1), bow, Character.valueOf('I'), RioVItems.aleris, Character.valueOf('*'), Items.string);
+		**/
+		
+		//INFUSER CRAFTING
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystSword, new ItemStack(RioVItems.infusedAmethystSword, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxSword, new ItemStack(RioVItems.infusedOnyxSword, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystShovel, new ItemStack(RioVItems.infusedAmethystShovel, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystPickaxe, new ItemStack(RioVItems.infusedAmethystPickaxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystAxe, new ItemStack(RioVItems.infusedAmethystAxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxShovel, new ItemStack(RioVItems.infusedOnyxShovel, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxPickaxe, new ItemStack(RioVItems.infusedOnyxPickaxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxAxe, new ItemStack(RioVItems.infusedOnyxAxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystHelmet, new ItemStack(RioVItems.infusedAmethystHelmet, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystChestplate, new ItemStack(RioVItems.infusedAmethystChestplate, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystLeggings, new ItemStack(RioVItems.infusedAmethystLeggings, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystBoots, new ItemStack(RioVItems.infusedAmethystBoots, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxHelmet, new ItemStack(RioVItems.infusedOnyxHelmet, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxChestplate, new ItemStack(RioVItems.infusedOnyxChestplate, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxLeggings, new ItemStack(RioVItems.infusedOnyxLeggings, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxBoots, new ItemStack(RioVItems.infusedOnyxBoots, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.unfusedAxeOfAunTun, new ItemStack(RioVItems.halfFusedAxeOfAunTun, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.halfFusedAxeOfAunTun, new ItemStack(RioVItems.axeOfAunTun, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonHelmet, new ItemStack(RioVItems.infusedDragonHelmet, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonChestplate, new ItemStack(RioVItems.infusedDragonChestplate, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonLeggings, new ItemStack(RioVItems.infusedDragonLeggings, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonBoots, new ItemStack(RioVItems.infusedDragonBoots, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonPickaxe, new ItemStack(RioVItems.infusedDragonPickaxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonAxe, new ItemStack(RioVItems.infusedDragonAxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonShovel, new ItemStack(RioVItems.infusedDragonShovel, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonSword, new ItemStack(RioVItems.infusedDragonSword, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteHelmet, new ItemStack(RioVItems.infusedBlindoniteHelmet, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteChestplate, new ItemStack(RioVItems.infusedBlindoniteChestplate, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteLeggings, new ItemStack(RioVItems.infusedBlindoniteLeggings, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteBoots, new ItemStack(RioVItems.infusedBlindoniteBoots, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindonitePickaxe, new ItemStack(RioVItems.infusedBlindonitePickaxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteAxe, new ItemStack(RioVItems.infusedBlindoniteAxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteShovel, new ItemStack(RioVItems.infusedBlindoniteShovel, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteSword, new ItemStack(RioVItems.infusedBlindoniteSword, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(Items.apple, new ItemStack(RioVItems.blueMagicApple, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteHelmet, new ItemStack(RioVItems.infusedVraviniteHelmet, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteChestplate, new ItemStack(RioVItems.infusedVraviniteChestplate, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteLeggings, new ItemStack(RioVItems.infusedVraviniteLeggings, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteBoots, new ItemStack(RioVItems.infusedVraviniteBoots, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vravinitePickaxe, new ItemStack(RioVItems.infusedVravinitePickaxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteAxe, new ItemStack(RioVItems.infusedVraviniteAxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteShovel, new ItemStack(RioVItems.infusedVraviniteShovel, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteSword, new ItemStack(RioVItems.infusedVraviniteSword, 1));
+
+		//vraviniteSword
+		if(RioVAPI.getInstance().botania)
+		{
+			try 
+			{
+				Class botaniaItems = Class.forName("vazkii.botania.common.item.ModItems");
+
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelHelm").get(null)), new ItemStack(RioVItems.infusedManasteelHelm, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelChest").get(null)), new ItemStack(RioVItems.infusedManasteelChest, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelLegs").get(null)), new ItemStack(RioVItems.infusedManasteelLegs, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelBoots").get(null)), new ItemStack(RioVItems.infusedManasteelBoots, 1));
+			} 
+			catch(Exception e)
+			{
+
+			}
+		}
+
+		if(RioVAPI.getInstance().natura)
+		{
+			try 
+			{
+				Class natura = Class.forName("mods.natura.common.NContent");
+
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("bloodwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodPickaxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("bloodwoodAxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodAxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("bloodwoodShovel").get(null)), new ItemStack(RioVItems.infusedBloodwoodShovel, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("bloodwoodSword").get(null)), new ItemStack(RioVItems.infusedBloodwoodSword, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("ghostwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedGhostwoodPickaxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("ghostwoodAxe").get(null)), new ItemStack(RioVItems.infusedGhostwoodAxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("ghostwoodShovel").get(null)), new ItemStack(RioVItems.infusedGhostwoodShovel, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("ghostwoodSword").get(null)), new ItemStack(RioVItems.infusedGhostwoodSword, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("darkwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedDarkwoodPickaxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("darkwoodAxe").get(null)), new ItemStack(RioVItems.infusedDarkwoodAxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("darkwoodShovel").get(null)), new ItemStack(RioVItems.infusedDarkwoodShovel, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("darkwoodSword").get(null)), new ItemStack(RioVItems.infusedDarkwoodSword, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("netherquartzPickaxe").get(null)), new ItemStack(RioVItems.infusedNetherquartzPickaxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("netherquartzAxe").get(null)), new ItemStack(RioVItems.infusedNetherquartzAxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("netherquartzShovel").get(null)), new ItemStack(RioVItems.infusedNetherquartzShovel, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("netherquartzSword").get(null)), new ItemStack(RioVItems.infusedNetherquartzSword, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("fusewoodPickaxe").get(null)), new ItemStack(RioVItems.infusedFusewoodPickaxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("fusewoodAxe").get(null)), new ItemStack(RioVItems.infusedFusewoodAxe, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("fusewoodShovel").get(null)), new ItemStack(RioVItems.infusedFusewoodShovel, 1));
+				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("fusewoodSword").get(null)), new ItemStack(RioVItems.infusedFusewoodSword, 1));
+			} 
+			catch(Exception e)
+			{
+
+			}
+		}
 	}
 }

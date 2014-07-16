@@ -8,9 +8,9 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
-import sheenrox82.RioV.src.util.EosUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.EosUtil;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 
 public class CommandEosReplenish extends CommandBase implements ICommand
 {
@@ -49,7 +49,7 @@ public class CommandEosReplenish extends CommandBase implements ICommand
 		if(icommandsender instanceof EntityPlayer)
 		{
 			EosUtil.replenishEos();
-			icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Replenished Eos. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
+			icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "Replenished Eos. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
 		}
 	}
 

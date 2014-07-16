@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.recipe.InfuserRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -268,7 +268,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
         else
         {
-            ItemStack itemstack = InfuserRecipes.getInfuser().getResult(this.infuserStacks[0]);
+            ItemStack itemstack = RioVAPI.getInstance().getInfuser().getResult(this.infuserStacks[0]);
             if (itemstack == null) return false;
             if (this.infuserStacks[2] == null) return true;
             if (!this.infuserStacks[2].isItemEqual(itemstack)) return false;
@@ -281,7 +281,7 @@ public class TileEntityInfuser extends TileEntity implements IInventory
     {
         if (this.canSmelt())
         {
-            ItemStack itemstack = InfuserRecipes.getInfuser().getResult(this.infuserStacks[0]);
+            ItemStack itemstack = RioVAPI.getInstance().getInfuser().getResult(this.infuserStacks[0]);
 
             if (this.infuserStacks[2] == null)
             {

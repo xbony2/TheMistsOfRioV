@@ -18,13 +18,13 @@ import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.Enchantments;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.Color;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -40,7 +40,7 @@ public class RioVWeapon extends ItemSword
 		this.toolMaterial = par2EnumToolMaterial;
 		this.maxStackSize = 1;
 		this.setMaxDamage(par2EnumToolMaterial.getMaxUses());
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.weaponDamage = 4 + par2EnumToolMaterial.getDamageVsEntity();
 		this.isInfused = par2;
 	}
@@ -123,11 +123,6 @@ public class RioVWeapon extends ItemSword
 		if (EnchantmentHelper.getEnchantmentLevel(Enchantments.confusion.effectId, par1ItemStack) == 1)
 		{
 			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.wither.id, 100, 2)); 
-		}
-
-		if(TheMistsOfRioV.getInstance().botania)
-		{
-			
 		}
 		
 		par1ItemStack.damageItem(1, par3EntityLivingBase);
@@ -298,15 +293,10 @@ public class RioVWeapon extends ItemSword
 		{
 			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "paladinLongsword");
 		}
-		if(TheMistsOfRioV.getInstance().natura)
+		if(RioVAPI.getInstance().natura)
 		{
 			if(this == RioVItems.infusedBloodwoodSword || this == RioVItems.infusedGhostwoodSword || this == RioVItems.infusedDarkwoodSword || this == RioVItems.infusedFusewoodSword || this == RioVItems.infusedNetherquartzSword)
-				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
-		}
-
-		if(TheMistsOfRioV.getInstance().botania)
-		{
-			
+				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
 		}
 	}
 }

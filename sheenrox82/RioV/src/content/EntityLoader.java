@@ -117,9 +117,9 @@ public class EntityLoader
 	public static void addOverworldSpawning()
 	{
 		BiomeGenBase[] plains = BiomeDictionary.getBiomesForType(Type.PLAINS);
-		BiomeGenBase[] desert = BiomeDictionary.getBiomesForType(Type.DESERT);
+		BiomeGenBase[] desert = BiomeDictionary.getBiomesForType(Type.SANDY);
 		BiomeGenBase[] mountain = BiomeDictionary.getBiomesForType(Type.MOUNTAIN);
-		BiomeGenBase[] frozen = BiomeDictionary.getBiomesForType(Type.FROZEN);
+		BiomeGenBase[] frozen = BiomeDictionary.getBiomesForType(Type.SNOWY);
 		BiomeGenBase[] jungle = BiomeDictionary.getBiomesForType(Type.JUNGLE);
 		BiomeGenBase[] forest = BiomeDictionary.getBiomesForType(Type.FOREST);
 		BiomeGenBase[] swamp = BiomeDictionary.getBiomesForType(Type.SWAMP);

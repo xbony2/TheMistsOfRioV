@@ -1,6 +1,6 @@
 package sheenrox82.RioV.src.util;
 
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.content.RioVItems;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
@@ -13,19 +13,19 @@ public class ExpansionChecker
 		{
 			Class.forName("optifine.OptiFineClassTransformer");
 			FMLLog.info("Optifine detected! Disabling RioV capes for safety measures!");
-			TheMistsOfRioV.getInstance().optifine = true;
+			RioVAPI.getInstance().optifine = true;
 		}
 		catch (Throwable var11)
 		{
 			FMLLog.info("Optifine not detected! RioV Capes is activating using DeveloperCapes by Jadar.");
-			TheMistsOfRioV.getInstance().optifine = false;
+			RioVAPI.getInstance().optifine = false;
 		}
 
 		if(Loader.isModLoaded("Natura"))
 		{
 			FMLLog.info("Natura detected! You get the Natura Expansion for RioV! :)");
-			TheMistsOfRioV.getInstance().natura = true;
-			if(TheMistsOfRioV.getInstance().natura)
+			RioVAPI.getInstance().natura = true;
+			if(RioVAPI.getInstance().natura)
 			{
 				RioVItems.addNatura();
 			}
@@ -33,14 +33,14 @@ public class ExpansionChecker
 		else
 		{
 			FMLLog.info("Natura wasn't detected... No Natura Expansion for you. :(");
-			TheMistsOfRioV.getInstance().natura = false;
+			RioVAPI.getInstance().natura = false;
 		}
 
 		if(Loader.isModLoaded("Botania"))
 		{
 			FMLLog.info("Botania detected! You get the Botania Expansion for RioV! :)");
-			TheMistsOfRioV.getInstance().botania = true;
-			if(TheMistsOfRioV.getInstance().botania)
+			RioVAPI.getInstance().botania = true;
+			if(RioVAPI.getInstance().botania)
 			{
 				RioVItems.addBotania();
 			}
@@ -48,7 +48,18 @@ public class ExpansionChecker
 		else
 		{
 			FMLLog.info("Botania wasn't detected... No Botania Expansion for you. :(");
-			TheMistsOfRioV.getInstance().botania = false;
+			RioVAPI.getInstance().botania = false;
+		}
+		
+		if(Loader.isModLoaded("Blood"))
+		{
+			FMLLog.info("sheenrox82's Blood mod detected! Disabling RioV blood bar.");
+			RioVAPI.getInstance().blood = true;
+		}
+		else
+		{
+			FMLLog.info("sheenrox82's Blood mod not detected! Enabling RioV blood bar.");
+			RioVAPI.getInstance().blood = false;
 		}
 	}
 }

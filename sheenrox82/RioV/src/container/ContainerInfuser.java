@@ -6,7 +6,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import sheenrox82.RioV.src.recipe.InfuserRecipes;
+import sheenrox82.RioV.src.api.recipe.manager.InfuserManager;
 import sheenrox82.RioV.src.slot.SlotInfuser;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import cpw.mods.fml.relauncher.Side;
@@ -131,7 +131,7 @@ public class ContainerInfuser extends Container
             }
             else if (par2 != 1 && par2 != 0)
             {
-                if (InfuserRecipes.getInfuser().getResult(itemstack1) != null)
+                if (InfuserManager.getInfuser().getResult(itemstack1) != null)
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {

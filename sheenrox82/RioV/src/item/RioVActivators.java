@@ -6,13 +6,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.EosUtil;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.EosUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -23,7 +23,7 @@ public class RioVActivators extends Item
 		super();
 		this.maxStackSize = 1;
 		this.setMaxDamage(50);
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class RioVActivators extends Item
 
 						if(!world.isRemote)
 						{
-							MethodUtil.sendMessageToAll("A Blind Oasis portal has opened!");	
+							RioVAPIUtil.sendMessageToAll("A Blind Oasis portal has opened!");	
 						}
 
 						itemstack.damageItem(1, entityplayer);
@@ -94,7 +94,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
 					}
 				}
@@ -151,7 +151,7 @@ public class RioVActivators extends Item
 
 						if(!world.isRemote)
 						{
-							MethodUtil.sendMessageToAll("A Vaeryn portal has opened!");	
+							RioVAPIUtil.sendMessageToAll("A Vaeryn portal has opened!");	
 						}
 
 						itemstack.damageItem(1, entityplayer);
@@ -164,7 +164,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
 					}
 				}
@@ -221,7 +221,7 @@ public class RioVActivators extends Item
 
 						if(!world.isRemote)
 						{
-							MethodUtil.sendMessageToAll("A Flamonor portal has opened!");	
+							RioVAPIUtil.sendMessageToAll("A Flamonor portal has opened!");	
 						}
 
 						itemstack.damageItem(1, entityplayer);
@@ -234,7 +234,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
 					}
 				}
@@ -299,7 +299,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
 					}
 				}
@@ -313,7 +313,7 @@ public class RioVActivators extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
 }
 

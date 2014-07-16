@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.entity.mob.core;
+package sheenrox82.RioV.src.api.entity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.IBossDisplayData;

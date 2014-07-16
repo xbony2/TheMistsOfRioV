@@ -5,7 +5,7 @@ import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
-import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
+import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

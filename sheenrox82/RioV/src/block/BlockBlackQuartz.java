@@ -1,19 +1,12 @@
 package sheenrox82.RioV.src.block;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -28,7 +21,7 @@ public class BlockBlackQuartz extends Block
     {
         super(Material.rock);
 		this.setStepSound(this.soundTypeStone);
-        this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+        this.setCreativeTab(RioVAPI.getInstance().tab);
     }
 
     @SideOnly(Side.CLIENT)
@@ -40,8 +33,8 @@ public class BlockBlackQuartz extends Block
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
-        this.field_150190_P = p_149651_1_.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()) + "_" + "top");
-        this.field_150188_Q = p_149651_1_.registerIcon(Util.MOD_ID + ":" + MethodUtil.getName(this.getUnlocalizedName()) + "_" + "bottom");
+        this.field_150190_P = p_149651_1_.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()) + "_" + "top");
+        this.field_150188_Q = p_149651_1_.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()) + "_" + "bottom");
     }
     
     public boolean renderAsNormalBlock()

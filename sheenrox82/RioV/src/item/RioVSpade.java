@@ -6,12 +6,12 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.Color;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -23,7 +23,7 @@ public class RioVSpade extends ItemSpade
 	{
 		super(par2EnumToolMaterial);
 		this.isInfused = par2;
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	public boolean hasEffect(ItemStack par1ItemStack)
@@ -83,15 +83,10 @@ public class RioVSpade extends ItemSpade
 		{
 			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "alerisShovel");
 		}
-		if(TheMistsOfRioV.getInstance().natura)
+		if(RioVAPI.getInstance().natura)
 		{
 			if(this == RioVItems.infusedBloodwoodShovel || this == RioVItems.infusedGhostwoodShovel || this == RioVItems.infusedDarkwoodShovel || this == RioVItems.infusedFusewoodShovel || this == RioVItems.infusedNetherquartzShovel)
-				this.itemIcon = par1IconRegister.registerIcon(MethodUtil.getName(this.getUnlocalizedName()));
-		}
-
-		if(TheMistsOfRioV.getInstance().botania)
-		{
-		
+				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
 		}
 	}
 

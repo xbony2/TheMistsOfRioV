@@ -6,7 +6,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.handler.packet.PacketPipeline;
+import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
+import sheenrox82.RioV.src.api.util.LogHelper;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.command.CommandEosAdd;
@@ -29,8 +34,7 @@ import sheenrox82.RioV.src.gui.hud.GuiHelmetHud;
 import sheenrox82.RioV.src.gui.hud.GuiLeggingsHud;
 import sheenrox82.RioV.src.gui.hud.GuiToolHud;
 import sheenrox82.RioV.src.handler.FuelHandler;
-import sheenrox82.RioV.src.handler.packet.PacketPipeline;
-import sheenrox82.RioV.src.recipe.AnvilCraftingManager;
+import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
@@ -51,14 +55,13 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class Registry 
 {
 	public static int render = 3;
-	public static final PacketPipeline packetPipeline = new PacketPipeline();
 
 	public static void preInit(FMLPreInitializationEvent initEvent)
 	{		
-		TheMistsOfRioV.getInstance().modLoaded = false;
+		RioVAPI.getInstance().modLoaded = false;
 		/**Inits and Regs**/
-		LogHelper.info("Starting... //START PRE-INITIALIZATION");
-		LogHelper.info("Sounds loaded.");
+		RioVAPI.getInstance().getLogger().info("Starting... //START PRE-INITIALIZATION");
+		RioVAPI.getInstance().getLogger().info("Sounds loaded.");
 		FMLCommonHandler.instance().bus().register(new ConfigChanges());
 		TheMistsOfRioV.commonProxy.init();
 		ModMetadata data = initEvent.getModMetadata();
@@ -77,20 +80,20 @@ public class Registry
 				"arrived, such as the dark elves. There is a myth that in 1610 a monster called a " +
 				"Soverian Overlord will destroy the land of RioV and leave it in ashes. " +
 				"This is The Mists of RioV.";
-		LogHelper.info("mcmod.info data initiated.");
+		RioVAPI.getInstance().getLogger().info("mcmod.info data initiated.");
 		Config.initialize(initEvent);
 		syncConfig();
-		LogHelper.info("Config loaded.");
+		RioVAPI.getInstance().getLogger().info("Config loaded.");
 		MinecraftForge.EVENT_BUS.register(new Events());
-		LogHelper.info("Events registered.");
+		RioVAPI.getInstance().getLogger().info("Events registered.");
 		RioVItems.add();
 		RioVBlocks.add();
 		Crafting.add();
 		Biomes.add();
 		Enchantments.add();
-		LogHelper.info("Content added.");
+		RioVAPI.getInstance().getLogger().info("Content added.");
 		HarvestLevelRegistry.addHarvestLevels();
-		LogHelper.info("Some stats initiated.");
+		RioVAPI.getInstance().getLogger().info("Some stats initiated.");
 		GameRegistry.registerFuelHandler(new FuelHandler());
 		GameRegistry.registerTileEntity(TileEntityInfuser.class, "Infuser");
 		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
@@ -100,57 +103,62 @@ public class Registry
 		MethodUtil.registerDimension(Config.vaerynID, WorldProviderVaeryn.class);
 		MethodUtil.registerDimension(Config.flamonorID, WorldProviderFlamonor.class);
 		MethodUtil.registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
-		AnvilCraftingManager.instance = new AnvilCraftingManager();
-		LogHelper.info("Core data registered. //END PRE-INITIALIZATION");
+		RioVAPI.getInstance().getLogger().info("Core data registered. //END PRE-INITIALIZATION");
 	}
 
 	public static void init(FMLInitializationEvent init)
 	{		
-		LogHelper.info("Other shit is registering. //START INITIALIZATION");
+		RioVAPI.getInstance().getLogger().info("Other shit is registering. //START INITIALIZATION");
 		TheMistsOfRioV.commonProxy.cape();
-		LogHelper.info("Adding special capes. ;)");
+		RioVAPI.getInstance().getLogger().info("Adding special capes. ;)");
 		TheMistsOfRioV.commonProxy.registerItemRenderers();
-		LogHelper.info("Item renderers registered.");
+		RioVAPI.getInstance().getLogger().info("Item renderers registered.");
 		EntityLoader.add();
-		LogHelper.info("Entity data registering...");
+		RioVAPI.getInstance().getLogger().info("Entity data registering...");
 		EntityLoader.addOverworldSpawning();
 		EntityLoader.addNetherSpawning();
 		EntityLoader.addEndSpawning();
 		EntityLoader.addDimensionSpawning();
-		LogHelper.info("Entity data registered.");
+		RioVAPI.getInstance().getLogger().info("Entity data registered.");
 		ExpansionChecker.check();
-		LogHelper.info("Checking for expansions...");
+		RioVAPI.getInstance().getLogger().info("Checking for expansions...");
 		BiomeGenBase.extremeHills.theBiomeDecorator.treesPerChunk = 15;
 		BiomeGenBase.plains.theBiomeDecorator.treesPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.bigMushroomsPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 20;
-		packetPipeline.initialise();
-		LogHelper.info("Packets registering...");
-		LogHelper.info("Packets registered.");
-		LogHelper.info("Other shit is registered. //END INITIALIZATION");
+		RioVAPI.getInstance().getPacketPipeline().initialise();
+		RioVAPI.getInstance().getPacketPipeline().registerPacket(PacketHandler.class);
+		RioVAPI.getInstance().getLogger().info("Packets registering...");
+		RioVAPI.getInstance().getLogger().info("Packets registered.");
+		RioVAPI.getInstance().getLogger().info("Other shit is registered. //END INITIALIZATION");
 	}
 
 	public static void postInit(FMLPostInitializationEvent postInit)
 	{
-		LogHelper.info("Almost done initializing. //START POST-INITIALIZATION");
-		packetPipeline.postInitialise();
-		LogHelper.info("Packets post-registered.");
+		RioVAPI.getInstance().getLogger().info("Almost done initializing. //START POST-INITIALIZATION");
+		RioVAPI.getInstance().getPacketPipeline().postInitialise();
+		RioVAPI.getInstance().getLogger().info("Packets post-registered.");
 
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
 		{
 			MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiBloodBar(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiHelmetHud(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
-			LogHelper.info("HUD elements registered.");
+			
+			if(RioVAPI.getInstance().blood == false)
+			{
+				MinecraftForge.EVENT_BUS.register(new GuiBloodBar(Minecraft.getMinecraft()));
+			}
+			
+			RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 		}
 
 		Config.initPost();
-		LogHelper.info("Mod loaded! Sup. //END POST-INITIALIZATION");
-		TheMistsOfRioV.getInstance().modLoaded = true;
+		RioVAPI.getInstance().getLogger().info("Mod loaded! Sup. //END POST-INITIALIZATION");
+		RioVAPI.getInstance().modLoaded = true;
 	}
 
 	public static void syncConfig() 

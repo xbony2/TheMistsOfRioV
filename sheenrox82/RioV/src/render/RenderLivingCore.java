@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
+import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityHellhound;
 import sheenrox82.RioV.src.entity.mob.passive.EntityNizonian;
 import sheenrox82.RioV.src.entity.mob.passive.EntityWoodElf;

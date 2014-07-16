@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.handler.packet;
+package sheenrox82.RioV.src.api.handler.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;

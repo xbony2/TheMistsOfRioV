@@ -1,8 +1,5 @@
 package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -10,12 +7,13 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.entity.EntityBossCore;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
-import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
-import sheenrox82.RioV.src.util.MethodUtil;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityDarkEssence extends EntityBossCore
 {
@@ -40,8 +38,8 @@ public class EntityDarkEssence extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			MethodUtil.sendMessageToAll("The Darkness: *Screeeech*");
-			MethodUtil.sendMessageToAll("The Darkness has vanished!");
+			RioVAPIUtil.sendMessageToAll("The Darkness: *Screeeech*");
+			RioVAPIUtil.sendMessageToAll("The Darkness has vanished!");
 		}
 	}
 

@@ -8,9 +8,9 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
-import sheenrox82.RioV.src.util.EosUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.EosUtil;
+import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 
 public class CommandEosAdd extends CommandBase implements ICommand
 {
@@ -50,7 +50,7 @@ public class CommandEosAdd extends CommandBase implements ICommand
 		{
 			if (astring.length == 0)
 			{
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /addEos <amount> to add Eos."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /addEos <amount> to add Eos."));
 			}
 
 			int amount = Integer.parseInt(astring[0]);
@@ -58,12 +58,12 @@ public class CommandEosAdd extends CommandBase implements ICommand
 			
 			if(amount > missingAmount)
 			{
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is higher than the current missing Eos amount."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is higher than the current missing Eos amount."));
 			}
 			else
 			{
 				EosUtil.addEos(amount);
-				icommandsender.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.GREEN, "Added " + amount + " Eos to yourself. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "Added " + amount + " Eos to yourself. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
 			}
 		}
 	}

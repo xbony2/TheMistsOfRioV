@@ -11,12 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.Color;
-import sheenrox82.RioV.src.util.MethodUtil;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -30,7 +29,7 @@ public class RioVArmor extends ItemArmor
 		super(par2EnumArmorMaterial, par3, par4);
 		this.material = par2EnumArmorMaterial;
 		this.setMaxDamage(par2EnumArmorMaterial.getDurability(par4));
-		this.setCreativeTab(TheMistsOfRioV.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 		armorNamePrefix = armornamePrefix;
 		this.isInfused = par5;
 	}
@@ -38,11 +37,6 @@ public class RioVArmor extends ItemArmor
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(TheMistsOfRioV.getInstance().botania)
-		{
-			return slot == 2 ? "botania:textures/model/" + armorNamePrefix + "1.png" : "botania:textures/model/" + armorNamePrefix + "0.png";
-		}
-		
 		if (stack.toString().contains("leggings")) 
 		{
 			return Util.MOD_ID + ":" + "textures/armor/" + armorNamePrefix + "_2.png";
@@ -249,7 +243,7 @@ public class RioVArmor extends ItemArmor
 		if (this == RioVItems.paladinLeggings)this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "paladinLeggings");
 		if (this == RioVItems.paladinBoots)this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "paladinBoots");
 		
-		if (TheMistsOfRioV.getInstance().botania)
+		if (RioVAPI.getInstance().botania)
 		{
 			if (this == RioVItems.infusedManasteelHelm)this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelHelm");
 			if (this == RioVItems.infusedManasteelChest)this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelChest");

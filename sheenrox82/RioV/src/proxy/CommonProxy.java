@@ -11,9 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.client.FMLClientHandler;
 
 public class CommonProxy
-{
-	private static final Map<String, NBTTagCompound> entityPlayerData = new HashMap<String, NBTTagCompound>();
-	
+{	
 	public static int addArmor(String armorName)
 	{
 		return 0;
@@ -42,15 +40,5 @@ public class CommonProxy
 	public ModelBiped getArmorModel(int id)
 	{
 		return null;
-	}
-
-	public static void storeEntityData(String name, NBTTagCompound compound)
-	{
-		entityPlayerData.put(name, compound);
-	}
-
-	public static NBTTagCompound getEntityData(String name)
-	{
-		return entityPlayerData.remove(name);
 	}
 }

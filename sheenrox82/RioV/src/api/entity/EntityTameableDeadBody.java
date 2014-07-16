@@ -1,24 +1,19 @@
-package sheenrox82.RioV.src.entity.mob.core;
+package sheenrox82.RioV.src.api.entity;
 
-import net.minecraft.client.Minecraft;
+import org.lwjgl.input.Keyboard;
+
+import sheenrox82.RioV.src.api.base.Config;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-import org.lwjgl.input.Keyboard;
-
-import sheenrox82.RioV.src.base.Config;
-
-public class EntityMobDeadBody extends EntityMob
+public class EntityTameableDeadBody extends EntityTameable
 {
-	public int counter;
-	public int countdown;
-	public boolean justJumped;
-
-	public EntityMobDeadBody(World par1World)
+	public EntityTameableDeadBody(World par1World)
 	{
 		super(par1World);
 	}
@@ -68,5 +63,11 @@ public class EntityMobDeadBody extends EntityMob
 		{
 			super.onDeathUpdate();
 		}
+	}
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable entityageable) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.entity.mob.hostile.boss;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -9,13 +8,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.entity.EntityBossCore;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
-import sheenrox82.RioV.src.entity.mob.core.EntityBossCore;
-import sheenrox82.RioV.src.util.MethodUtil;
 
 public class EntityDemonAngel extends EntityBossCore
 {
@@ -40,8 +38,8 @@ public class EntityDemonAngel extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			MethodUtil.sendMessageToAll("Demon Angel: Aarrrrrrgghhhhhhhh!");
-			MethodUtil.sendMessageToAll("Demon Angel was killed!");
+			RioVAPIUtil.sendMessageToAll("Demon Angel: Aarrrrrrgghhhhhhhh!");
+			RioVAPIUtil.sendMessageToAll("Demon Angel was killed!");
 		}
 	}
 

@@ -1,19 +1,19 @@
-package sheenrox82.RioV.src.entity.mob.core;
+package sheenrox82.RioV.src.api.entity;
 
 import org.lwjgl.input.Keyboard;
 
-import sheenrox82.RioV.src.base.Config;
-import net.minecraft.entity.EntityFlying;
+import sheenrox82.RioV.src.api.base.Config;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
+import net.minecraft.entity.passive.EntityAmbientCreature;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityFlyingDeadBody extends EntityFlying
+public class EntityAmbientCreatureDeadBody extends EntityAmbientCreature
 {
-	public EntityFlyingDeadBody(World par1World)
+	public EntityAmbientCreatureDeadBody(World par1World)
 	{
 		super(par1World);
 	}

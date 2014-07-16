@@ -3,7 +3,7 @@ package sheenrox82.RioV.src.gui;
 import java.util.ArrayList;
 import java.util.List;
 
-import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.api.base.Config;
 import cpw.mods.fml.client.config.GuiConfig;
 import cpw.mods.fml.client.config.IConfigElement;
 import cpw.mods.fml.client.config.DummyConfigElement.DummyCategoryElement;

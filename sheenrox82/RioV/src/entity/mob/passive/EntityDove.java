@@ -7,7 +7,7 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.entity.mob.core.EntityAmbientCreatureDeadBody;
+import sheenrox82.RioV.src.api.entity.EntityAmbientCreatureDeadBody;
 
 public class EntityDove extends EntityAmbientCreatureDeadBody
 {

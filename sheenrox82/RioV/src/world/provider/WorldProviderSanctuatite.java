@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
-import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.api.base.Config;
 import sheenrox82.RioV.src.content.Biomes;
 import sheenrox82.RioV.src.world.chunk.ChunkProviderSanctuatite;
 import cpw.mods.fml.relauncher.Side;

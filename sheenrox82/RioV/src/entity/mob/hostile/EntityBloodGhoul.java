@@ -8,8 +8,8 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 
 public class EntityBloodGhoul extends EntityMobDeadBody
 {

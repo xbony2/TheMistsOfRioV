@@ -25,12 +25,11 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.Sounds;
-import sheenrox82.RioV.src.entity.mob.core.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityShadow;
-import sheenrox82.RioV.src.util.MethodUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -269,7 +268,7 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 		par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
 		
 		if(!this.worldObj.isRemote)
-			par1EntityPlayer.addChatMessage(MethodUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
+			par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		return true;
     }
 }

@@ -26,8 +26,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.entity.EntityTameableDeadBody;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.mob.core.EntityTameableDeadBody;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
