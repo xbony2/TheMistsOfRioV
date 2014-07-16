@@ -14,10 +14,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
-import sheenrox82.RioV.src.api.base.Config;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.Enchantments;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
@@ -737,7 +737,7 @@ public class RioVBow extends ItemBow
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
-		if(Config.showToolInfo)
+		if(RioVAPI.getInstance().getConfigFields("showToolInfo") == true)
 		{
 			var3.add(var1.getMaxDamage() - var1.getItemDamage() + " Uses");
 

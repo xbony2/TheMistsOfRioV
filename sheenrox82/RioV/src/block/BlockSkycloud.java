@@ -10,10 +10,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.api.base.Config;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.Materials;
 
 public class BlockSkycloud extends Block

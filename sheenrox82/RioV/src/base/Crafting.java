@@ -308,7 +308,6 @@ public class Crafting
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteShovel, new ItemStack(RioVItems.infusedVraviniteShovel, 1));
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteSword, new ItemStack(RioVItems.infusedVraviniteSword, 1));
 
-		//vraviniteSword
 		if(RioVAPI.getInstance().botania)
 		{
 			try 

@@ -19,9 +19,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
@@ -164,7 +165,7 @@ public class EntityOrc extends EntityMobDeadBody
 	@SideOnly(Side.CLIENT)
 	protected String getLivingSound()
 	{
-		if(Config.allowBreathing)
+		if(RioVAPI.getInstance().getConfigFields("allowBreathing") == true)
 		{
 			return Sounds.exhale.getPrefixedName();
 		}

@@ -1,16 +1,9 @@
 package sheenrox82.RioV.src.api.entity;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
-import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 
 public class EntityMobDeadBody extends EntityMob
 {
@@ -32,7 +25,7 @@ public class EntityMobDeadBody extends EntityMob
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(Config.deadBodies == true)
+		if(RioVAPI.getInstance().getConfigFields("deadBodies") == true)
 		{
 			++this.deathTime;
 			int i;

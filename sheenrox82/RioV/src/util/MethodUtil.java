@@ -17,7 +17,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.DimensionManager;
-import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.EntityRegistry;

@@ -18,11 +18,11 @@ import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.util.StatCollector;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.api.base.Config;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.Enchantments;
 import sheenrox82.RioV.src.content.RioVItems;
 import cpw.mods.fml.relauncher.Side;
@@ -191,7 +191,7 @@ public class RioVWeapon extends ItemSword
 			var3.add(StatCollector.translateToLocal("Fusion: 50%"));
 		}
 
-		if(Config.showToolInfo)
+		if(RioVAPI.getInstance().getConfigFields("showToolInfo") == true)
 		{
 			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
 			var3.add(Color.DARK_PURPLE + "Damage: " + toolMaterial.getDamageVsEntity());

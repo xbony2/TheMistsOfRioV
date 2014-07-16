@@ -5,7 +5,7 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
-import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.world.biome.BiomeGenBlindOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenCanopyOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenFlamonor;

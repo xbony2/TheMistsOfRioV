@@ -8,7 +8,7 @@ import net.minecraft.world.biome.BiomeGenForest;
 import net.minecraft.world.biome.BiomeGenPlains;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.world.biome.BiomeGenCanopyOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenFlamonor;

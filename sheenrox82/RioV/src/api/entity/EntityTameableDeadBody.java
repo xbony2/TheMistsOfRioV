@@ -1,15 +1,10 @@
 package sheenrox82.RioV.src.api.entity;
 
-import org.lwjgl.input.Keyboard;
-
-import sheenrox82.RioV.src.api.base.Config;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.passive.EntityTameable;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 
 public class EntityTameableDeadBody extends EntityTameable
 {
@@ -27,7 +22,7 @@ public class EntityTameableDeadBody extends EntityTameable
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(Config.deadBodies == true)
+		if(RioVAPI.getInstance().getConfigFields("deadBodies") == true)
 		{
 			++this.deathTime;
 			int i;

@@ -112,4 +112,24 @@ public class RioVAPI
 			return Blocks.stone;
 		}
 	}
+	
+	/**
+	 * Get a RioV Config field using a string.
+	 * 
+	 * @param field - Field name in Config.java (check Github).
+	 */
+	public boolean getConfigFields(String field)
+	{
+		try
+		{
+			Class riovBlocks = Class.forName("sheenrox82.RioV.src.base.Config");
+			boolean blockToGet = (Boolean)riovBlocks.getDeclaredField(field).get(null);
+			return blockToGet;
+		}
+		catch(Exception e)
+		{
+			//If field is not found, the boolean will be false.
+			return false;
+		}
+	}
 }

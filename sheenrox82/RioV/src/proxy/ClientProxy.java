@@ -3,8 +3,9 @@ package sheenrox82.RioV.src.proxy;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
-import sheenrox82.RioV.src.api.base.Config;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunMinion;
@@ -142,7 +143,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void cape()
 	{
-		if(Config.runCapes)
+		if(RioVAPI.getInstance().getConfigFields("runCapes") == true)
 		{
 			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
 		}

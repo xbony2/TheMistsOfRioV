@@ -1,15 +1,9 @@
 package sheenrox82.RioV.src.api.entity;
 
-import org.lwjgl.input.Keyboard;
-
-import sheenrox82.RioV.src.api.base.Config;
 import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 
 public class EntityFlyingDeadBody extends EntityFlying
 {
@@ -27,7 +21,7 @@ public class EntityFlyingDeadBody extends EntityFlying
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(Config.deadBodies == true)
+		if(RioVAPI.getInstance().getConfigFields("deadBodies") == true)
 		{
 			++this.deathTime;
 			int i;
