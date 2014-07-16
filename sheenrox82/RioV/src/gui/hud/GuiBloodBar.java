@@ -47,7 +47,7 @@ public class GuiBloodBar extends Gui
 			return;
 		}
 
-		if(RioVAPI.getInstance().getConfigFields("BLOOD") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("BLOOD") == true)
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
@@ -62,7 +62,7 @@ public class GuiBloodBar extends Gui
 			}
 		}
 
-		if(!RioVAPI.getInstance().getConfigFields("BLOOD"))
+		if(!RioVAPI.getInstance().getUtil().getConfigBool("BLOOD"))
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{

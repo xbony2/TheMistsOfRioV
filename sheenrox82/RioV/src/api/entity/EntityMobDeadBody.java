@@ -25,7 +25,7 @@ public class EntityMobDeadBody extends EntityMob
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(RioVAPI.getInstance().getConfigFields("deadBodies") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("deadBodies") == true)
 		{
 			++this.deathTime;
 			int i;

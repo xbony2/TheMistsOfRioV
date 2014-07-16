@@ -43,7 +43,7 @@ public class RioVSpade extends ItemSpade
 
 		if(RioVAPI.getInstance().natura)
 		{
-			if(this == RioVAPI.getInstance().getRioVItem("infusedBloodwoodShovel") || this == RioVAPI.getInstance().getRioVItem("infusedGhostwoodShovel") || this == RioVAPI.getInstance().getRioVItem("infusedDarkwoodShovel") || this == RioVAPI.getInstance().getRioVItem("infusedFusewoodShovel") || this == RioVAPI.getInstance().getRioVItem("infusedNetherquartzShovel"))
+			if(this == RioVAPI.getInstance().getUtil().getRioVItem("infusedBloodwoodShovel") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedGhostwoodShovel") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedDarkwoodShovel") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedFusewoodShovel") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedNetherquartzShovel"))
 				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
 		}
 	}
@@ -51,7 +51,7 @@ public class RioVSpade extends ItemSpade
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
-		if(RioVAPI.getInstance().getConfigFields("showToolInfo") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
 			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
 			var3.add(Color.DARK_PURPLE + "Digging Speed: " + toolMaterial.getEfficiencyOnProperMaterial());

@@ -46,7 +46,7 @@ public class GuiEosBar extends Gui
 			return;
 		}
 
-		if(RioVAPI.getInstance().getConfigFields("EOS") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("EOS") == true)
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
@@ -61,7 +61,7 @@ public class GuiEosBar extends Gui
 			}
 		}
 
-		if(!RioVAPI.getInstance().getConfigFields("EOS"))
+		if(!RioVAPI.getInstance().getUtil().getConfigBool("EOS"))
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{

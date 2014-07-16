@@ -25,6 +25,7 @@ public class RioVArmor extends ItemArmor
 	public String armorNamePrefix;
 	public ArmorMaterial material;
 	public boolean isInfused;
+	
 	public RioVArmor(ArmorMaterial par2EnumArmorMaterial, int par3, int par4, String armornamePrefix, boolean par5)
 	{
 		super(par2EnumArmorMaterial, par3, par4);
@@ -77,13 +78,13 @@ public class RioVArmor extends ItemArmor
 
 		if(boots != null) 
 		{
-			if(boots.getItem().equals(RioVAPI.getInstance().getRioVItem("magickaBoots")))
+			if(boots.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("magickaBoots")))
 			{
 				player.fallDistance = 0.0F;
 				player.addPotionEffect(new PotionEffect(Potion.jump.id, 5, 2));
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 5, 0));
 			}
-			if(boots.getItem().equals(RioVAPI.getInstance().getRioVItem("bootsOfFlame")))
+			if(boots.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("bootsOfFlame")))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 5, 1));
 			}
@@ -91,11 +92,11 @@ public class RioVArmor extends ItemArmor
 
 		if(chestplate != null) 
 		{
-			if(chestplate.getItem().equals(RioVAPI.getInstance().getRioVItem("magickaChestplate")))
+			if(chestplate.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("magickaChestplate")))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 5, 2));
 			}
-			if(chestplate.getItem().equals(RioVAPI.getInstance().getRioVItem("chestplateOfFlame")))
+			if(chestplate.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("chestplateOfFlame")))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 5, 1));
 			}
@@ -103,11 +104,11 @@ public class RioVArmor extends ItemArmor
 
 		if(leggings != null) 
 		{
-			if(leggings.getItem().equals(RioVAPI.getInstance().getRioVItem("magickaLeggings")))
+			if(leggings.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("magickaLeggings")))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 5, 0));
 			}
-			if(leggings.getItem().equals(RioVAPI.getInstance().getRioVItem("leggingsOfFlame")))
+			if(leggings.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("leggingsOfFlame")))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 5, 1));
 			}
@@ -115,11 +116,11 @@ public class RioVArmor extends ItemArmor
 
 		if(helmet != null) 
 		{
-			if(helmet.getItem().equals(RioVAPI.getInstance().getRioVItem("magickaHelmet")))
+			if(helmet.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("magickaHelmet")))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 5, 0));
 			}
-			if(helmet.getItem().equals(RioVAPI.getInstance().getRioVItem("helmetOfFlame")))
+			if(helmet.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("helmetOfFlame")))
 			{
 				player.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 5, 1));
 			}
@@ -134,10 +135,10 @@ public class RioVArmor extends ItemArmor
 		
 		if (RioVAPI.getInstance().botania)
 		{
-			if (this == RioVAPI.getInstance().getRioVItem("infusedManasteelHelm"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelHelm");
-			if (this == RioVAPI.getInstance().getRioVItem("infusedManasteelChest"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelChest");
-			if (this == RioVAPI.getInstance().getRioVItem("infusedManasteelLegs"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelLegs");
-			if (this == RioVAPI.getInstance().getRioVItem("infusedManasteelBoots"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelBoots");
+			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelHelm"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelHelm");
+			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelChest"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelChest");
+			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelLegs"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelLegs");
+			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelBoots"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelBoots");
 		}
 	}
 
@@ -145,7 +146,7 @@ public class RioVArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
-		if(RioVAPI.getInstance().getConfigFields("showToolInfo") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
 			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
 			var3.add(Color.DARK_PURPLE + "Protection: " + RioVArmor.getMaxDamageFactor(material));

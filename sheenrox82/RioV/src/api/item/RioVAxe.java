@@ -45,7 +45,7 @@ public class RioVAxe extends ItemAxe
 
 		if(RioVAPI.getInstance().natura)
 		{
-			if(this == RioVAPI.getInstance().getRioVItem("infusedBloodwoodAxe") || this == RioVAPI.getInstance().getRioVItem("infusedGhostwoodAxe") || this == RioVAPI.getInstance().getRioVItem("infusedDarkwoodAxe") || this == RioVAPI.getInstance().getRioVItem("infusedFusewoodAxe") || this == RioVAPI.getInstance().getRioVItem("infusedNetherquartzAxe"))
+			if(this == RioVAPI.getInstance().getUtil().getRioVItem("infusedBloodwoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedGhostwoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedDarkwoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedFusewoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedNetherquartzAxe"))
 				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
 		}
 	}
@@ -54,7 +54,7 @@ public class RioVAxe extends ItemAxe
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
-		if(RioVAPI.getInstance().getConfigFields("showToolInfo") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
 			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
 			var3.add(Color.DARK_PURPLE + "Axing Speed: " + toolMaterial.getEfficiencyOnProperMaterial());

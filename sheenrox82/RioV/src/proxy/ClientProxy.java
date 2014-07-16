@@ -143,7 +143,7 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void cape()
 	{
-		if(RioVAPI.getInstance().getConfigFields("runCapes") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("runCapes") == true)
 		{
 			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
 		}

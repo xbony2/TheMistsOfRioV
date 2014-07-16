@@ -40,12 +40,12 @@ public class RioVPickaxe extends ItemPickaxe
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
-		if (var1.getItem() == RioVAPI.getInstance().getRioVItem("agonitePickaxe"))
+		if (var1.getItem() == RioVAPI.getInstance().getUtil().getRioVItem("agonitePickaxe"))
 		{
 			var3.add("Used to mine Nironite/Dragon/Vravinite Ore");
 		}
 
-		if(RioVAPI.getInstance().getConfigFields("showToolInfo") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
 			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
 			var3.add(Color.DARK_PURPLE + "Mining Speed: " + toolMaterial.getEfficiencyOnProperMaterial());
@@ -61,7 +61,7 @@ public class RioVPickaxe extends ItemPickaxe
 
 		if(RioVAPI.getInstance().natura)
 		{
-			if(this == RioVAPI.getInstance().getRioVItem("infusedBloodwoodPickaxe") || this == RioVAPI.getInstance().getRioVItem("infusedGhostwoodPickaxe") || this == RioVAPI.getInstance().getRioVItem("infusedDarkwoodPickaxe") || this == RioVAPI.getInstance().getRioVItem("infusedFusewoodPickaxe") || this == RioVAPI.getInstance().getRioVItem("infusedNetherquartzPickaxe"))
+			if(this == RioVAPI.getInstance().getUtil().getRioVItem("infusedBloodwoodPickaxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedGhostwoodPickaxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedDarkwoodPickaxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedFusewoodPickaxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedNetherquartzPickaxe"))
 				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
 		}
 	}

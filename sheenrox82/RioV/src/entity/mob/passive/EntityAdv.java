@@ -248,7 +248,7 @@ public class EntityAdv extends EntityMobDeadBody
 	@SideOnly(Side.CLIENT)
 	protected String getLivingSound()
 	{
-		if(RioVAPI.getInstance().getConfigFields("allowBreathing") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("allowBreathing") == true)
 		{
 			return Sounds.exhale.getPrefixedName();
 		}

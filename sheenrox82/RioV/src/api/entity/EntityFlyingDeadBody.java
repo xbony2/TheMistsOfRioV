@@ -21,7 +21,7 @@ public class EntityFlyingDeadBody extends EntityFlying
 	@Override
 	protected void onDeathUpdate()
 	{
-		if(RioVAPI.getInstance().getConfigFields("deadBodies") == true)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("deadBodies") == true)
 		{
 			++this.deathTime;
 			int i;

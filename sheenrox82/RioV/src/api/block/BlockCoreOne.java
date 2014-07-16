@@ -24,53 +24,53 @@ public class BlockCoreOne extends Block
 	@Override
 	public Item getItemDropped(int par1, Random par2Random, int par3)
 	{
-		if(this == RioVAPI.getInstance().getRioVBlock("onyxOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("onyxOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("onyx");
+			return RioVAPI.getInstance().getUtil().getRioVItem("onyx");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("garnetOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("garnetOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("garnet");
+			return RioVAPI.getInstance().getUtil().getRioVItem("garnet");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("nironiteOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("nironiteOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("nironite");
+			return RioVAPI.getInstance().getUtil().getRioVItem("nironite");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("dragonOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("dragonOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("dragonSoul");
+			return RioVAPI.getInstance().getUtil().getRioVItem("dragonSoul");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("netherCrystal"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("netherCrystal"))
 		{
-			return RioVAPI.getInstance().getRioVItem("burnedQuartz");
+			return RioVAPI.getInstance().getUtil().getRioVItem("burnedQuartz");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("slate"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("slate"))
 		{
-			return Item.getItemFromBlock(RioVAPI.getInstance().getRioVBlock("slateCobble"));
+			return Item.getItemFromBlock(RioVAPI.getInstance().getUtil().getRioVBlock("slateCobble"));
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("amethystOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("amethystOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("amethyst");
+			return RioVAPI.getInstance().getUtil().getRioVItem("amethyst");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("blindoniteOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("blindoniteOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("blindonite");
+			return RioVAPI.getInstance().getUtil().getRioVItem("blindonite");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("vraviniteOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("vraviniteOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("vravinite");
+			return RioVAPI.getInstance().getUtil().getRioVItem("vravinite");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("drakiuzOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("drakiuzOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("drakiuz");
+			return RioVAPI.getInstance().getUtil().getRioVItem("drakiuz");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("alerisOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("alerisOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("aleris");
+			return RioVAPI.getInstance().getUtil().getRioVItem("aleris");
 		}
-		if(this == RioVAPI.getInstance().getRioVBlock("jaavikOre"))
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("jaavikOre"))
 		{
-			return RioVAPI.getInstance().getRioVItem("jaavik");
+			return RioVAPI.getInstance().getUtil().getRioVItem("jaavik");
 		}
 
 		return Item.getItemFromBlock(this);
