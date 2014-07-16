@@ -147,12 +147,8 @@ public class Registry
 			MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
-			
-			if(RioVAPI.getInstance().blood == false)
-			{
-				MinecraftForge.EVENT_BUS.register(new GuiBloodBar(Minecraft.getMinecraft()));
-			}
-			
+			MinecraftForge.EVENT_BUS.register(new GuiBloodBar(Minecraft.getMinecraft()));
+
 			RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 		}
 
@@ -189,8 +185,5 @@ public class Registry
 		event.registerServerCommand(new CommandEosCheck());
 		event.registerServerCommand(new CommandEosAdd());
 		event.registerServerCommand(new CommandRageQuit());
-
-		// May or may not add Eos upgrading...
-		//event.registerServerCommand(new CommandEosUpgrade());
 	}
 }

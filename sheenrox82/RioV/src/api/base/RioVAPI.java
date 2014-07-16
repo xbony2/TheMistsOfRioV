@@ -34,11 +34,9 @@ public class RioVAPI
 	//These booleans are used to detect if certain mods are loaded in the ExpansionChecker class in the main source code for RioV.
 	//Natura - continued by progwml6
 	//Botania - by Vazkii
-	//Blood - by sheenrox82
 	//Optifine - by sp614x
 	public boolean natura;
 	public boolean botania;
-	public boolean blood;
 	public boolean optifine;
 
 	//RioV tab.

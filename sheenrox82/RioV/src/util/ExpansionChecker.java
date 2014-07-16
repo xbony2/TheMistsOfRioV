@@ -50,16 +50,5 @@ public class ExpansionChecker
 			FMLLog.info("Botania wasn't detected... No Botania Expansion for you. :(");
 			RioVAPI.getInstance().botania = false;
 		}
-		
-		if(Loader.isModLoaded("Blood"))
-		{
-			FMLLog.info("sheenrox82's Blood mod detected! Disabling RioV blood bar.");
-			RioVAPI.getInstance().blood = true;
-		}
-		else
-		{
-			FMLLog.info("sheenrox82's Blood mod not detected! Enabling RioV blood bar.");
-			RioVAPI.getInstance().blood = false;
-		}
 	}
 }
