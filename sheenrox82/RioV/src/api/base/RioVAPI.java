@@ -72,7 +72,7 @@ public class RioVAPI
 	/**
 	 * Get a RioV Item using a string.
 	 * 
-	 * @param itemName - Object name in RioVItems.java (check Github)
+	 * @param itemName - Object name in RioVItems.java (check Github).
 	 */
 	public Item getRioVItem(String itemName)
 	{
@@ -94,7 +94,7 @@ public class RioVAPI
 	/**
 	 * Get a RioV Block using a string.
 	 * 
-	 * @param blockName - Object name in RioVBlocks.java (check Github)
+	 * @param blockName - Object name in RioVBlocks.java (check Github).
 	 */
 	public Block getRioVBlock(String blockName)
 	{
