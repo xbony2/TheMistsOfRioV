@@ -13,6 +13,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.RioV.src.api.util.EosUtil;
 import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 
 public class CommandRageQuit extends CommandBase implements ICommand
@@ -50,11 +51,12 @@ public class CommandRageQuit extends CommandBase implements ICommand
 		EntityPlayer player = (EntityPlayer)icommandsender;
         EntityPlayerMP entityplayermp = MinecraftServer.getServer().getConfigurationManager().func_152612_a(icommandsender.getCommandSenderName());
         String s = "You rage quit!";
-
+        
 		if(icommandsender instanceof EntityPlayer)
 		{
             ((EntityPlayer)icommandsender).attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
             entityplayermp.playerNetServerHandler.kickPlayerFromServer(s);
+            RioVAPIUtil.sendMessageToAll(player.getDisplayName() + " rage quit!");
 		}
 	}
 

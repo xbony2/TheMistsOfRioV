@@ -16,7 +16,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid= Util.MOD_ID ,name= Util.MOD_NAME, version= Util.VERSION, guiFactory = "sheenrox82.RioV.src.gui.RioVGuiFactory")
+@Mod(modid = Util.MOD_ID ,name = Util.MOD_NAME, version = Util.VERSION, guiFactory = "sheenrox82.RioV.src.gui.RioVGuiFactory")
 public class TheMistsOfRioV
 {
 	@Instance(Util.MOD_ID)
