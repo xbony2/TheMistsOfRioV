@@ -8,7 +8,6 @@ import java.io.IOException;
 import org.apache.logging.log4j.Level;
 
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.FMLLog;
 
 public class LogHelper {
@@ -33,7 +32,7 @@ public class LogHelper {
 
 	private void log(Level level, String msg) 
 	{
-		FMLLog.log(Util.MOD_NAME, level, msg);
+		FMLLog.log(RioVAPI.mod_name, level, msg);
 		System.err.println(msg);
 		
 		if(RioVAPI.getInstance().modLoaded == false)
@@ -50,7 +49,7 @@ public class LogHelper {
 
 	public void debug(String msg) 
 	{
-		if (Util.DEBUG) log(Level.DEBUG, "[DEBUG] " + msg);
+		log(Level.DEBUG, "[DEBUG] " + msg);
 	}
 
 	public void error(String msg) 

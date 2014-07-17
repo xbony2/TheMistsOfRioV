@@ -10,7 +10,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.tileentity.statue.TileEntityStatue;
+import sheenrox82.RioV.src.tileentity.statue.TileEntityTerronStatue;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,7 +30,7 @@ public class BlockTerronStatue extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World par1World, int var1)
 	{
-		return new TileEntityStatue();
+		return new TileEntityTerronStatue();
 	}
 
 	@Override

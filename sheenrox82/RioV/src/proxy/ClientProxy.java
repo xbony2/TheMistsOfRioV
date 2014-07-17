@@ -48,6 +48,7 @@ import sheenrox82.RioV.src.model.ModelHellhound;
 import sheenrox82.RioV.src.model.ModelTasaravChestplate;
 import sheenrox82.RioV.src.model.ModelTasaravHelmet;
 import sheenrox82.RioV.src.model.ModelTerron;
+import sheenrox82.RioV.src.model.statue.ModelTerronStatue;
 import sheenrox82.RioV.src.render.RenderAngel;
 import sheenrox82.RioV.src.render.RenderAunTun;
 import sheenrox82.RioV.src.render.RenderBipedCore;
@@ -74,7 +75,9 @@ import sheenrox82.RioV.src.render.projectile.RenderOnyxArrow;
 import sheenrox82.RioV.src.render.projectile.RenderPinkEssence;
 import sheenrox82.RioV.src.render.projectile.RenderVraviniteArrow;
 import sheenrox82.RioV.src.render.tileentity.RenderTileEntityFlag;
+import sheenrox82.RioV.src.render.tileentity.RenderTileEntityStatue;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
+import sheenrox82.RioV.src.tileentity.statue.TileEntityTerronStatue;
 import sheenrox82.RioV.src.util.Util;
 
 import com.jadarstudios.developercapes.DevCapes;
@@ -128,6 +131,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityAlerisArrow.class, new RenderAlerisArrow(EntityResourceLocation.aleris_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(EntityResourceLocation.vravinite_arrow));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new RenderTileEntityFlag());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTerronStatue.class, new RenderTileEntityStatue(new ModelTerronStatue(), "TerronStatue"));
 	}
 
 	@Override

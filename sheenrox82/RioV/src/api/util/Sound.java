@@ -2,7 +2,7 @@ package sheenrox82.RioV.src.api.util;
 
 import java.util.ArrayList;
 
-import sheenrox82.RioV.src.util.Util;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 
 
 public class Sound {
@@ -37,7 +37,7 @@ public class Sound {
 	}
 
 	public String getPrefixedName(){
-		return Util.MOD_ID + ":" + name;
+		return RioVAPI.mod_id + ":" + name;
 	}
 
 	public boolean isMob(){

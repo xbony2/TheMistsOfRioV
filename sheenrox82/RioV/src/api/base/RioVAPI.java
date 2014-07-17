@@ -7,7 +7,6 @@ import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
 import sheenrox82.RioV.src.api.recipe.manager.InfuserManager;
 import sheenrox82.RioV.src.api.util.LogHelper;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.util.Util;
 
 public class RioVAPI
 {
@@ -43,7 +42,7 @@ public class RioVAPI
 	/**
 	 * RioV tab.
 	 */
-	public CreativeTabs tab = new CreativeTabs(Util.MOD_ID) {public Item getTabIconItem() {return Item.getItemFromBlock(getUtil().getRioVBlock("infuser"));}};
+	public CreativeTabs tab = new CreativeTabs("RioV") {public Item getTabIconItem() {return Item.getItemFromBlock(getUtil().getRioVBlock("infuser"));}};
 
 	/**
 	 * The API instance.
