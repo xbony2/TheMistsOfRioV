@@ -118,11 +118,6 @@ public class BlockVaerynPortal extends BlockPortal
                 for (i1 = 0; i1 < 3; ++i1)
                 {
                     par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, RioVBlocks.vaerynPortal, 0, 2);
-                    
-                    if(!par1World.isRemote)
-					{
-						RioVAPIUtil.sendMessageToAll("A Vaeryn portal has opened!");	
-					}
                 }
             }
  
