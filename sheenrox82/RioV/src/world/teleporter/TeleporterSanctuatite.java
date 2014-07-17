@@ -1,10 +1,14 @@
 package sheenrox82.RioV.src.world.teleporter;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.util.MathHelper;
@@ -12,46 +16,46 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.teleporter.position.PortalPositionBlindOasis;
-import sheenrox82.RioV.src.world.teleporter.position.PortalPositionFlamonor;
-import sheenrox82.RioV.src.world.teleporter.position.PortalPositionSanctuatite;
 
 public class TeleporterSanctuatite extends Teleporter
 {
     private final WorldServer worldServerInstance;
     /** A private Random() function in Teleporter */
-
     private final Random random;
     /** Stores successful portal placement locations for rapid lookup. */
-
     private final LongHashMap destinationCoordinateCache = new LongHashMap();
-  
-    public TeleporterSanctuatite(WorldServer par1WorldServer)
+    /**
+     * A list of valid keys for the destinationCoordainteCache. These are based on the X & Z of the players initial
+     * location.
+     */
+    private final List destinationCoordinateKeys = new ArrayList();
+    private static final String __OBFID = "CL_00000153";
+
+    public TeleporterSanctuatite(WorldServer p_i1963_1_)
     {
-    	super(par1WorldServer);
-        this.worldServerInstance = par1WorldServer;
-        this.random = new Random(par1WorldServer.getSeed());
+    	super(p_i1963_1_);
+        this.worldServerInstance = p_i1963_1_;
+        this.random = new Random(p_i1963_1_.getSeed());
     }
 
     /**
      * Place an entity in a nearby portal, creating one if necessary.
      */
-
-    public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
+    public void placeInPortal(Entity p_77185_1_, double p_77185_2_, double p_77185_4_, double p_77185_6_, float p_77185_8_)
     {
         if (this.worldServerInstance.provider.dimensionId != 1)
         {
-            if (!this.placeInExistingPortal(par1Entity, par2, par4, par6, par8))
+            if (!this.placeInExistingPortal(p_77185_1_, p_77185_2_, p_77185_4_, p_77185_6_, p_77185_8_))
             {
-                this.makePortal(par1Entity);
-                this.placeInExistingPortal(par1Entity, par2, par4, par6, par8);
+                this.makePortal(p_77185_1_);
+                this.placeInExistingPortal(p_77185_1_, p_77185_2_, p_77185_4_, p_77185_6_, p_77185_8_);
             }
         }
         else
         {
-            int i = MathHelper.floor_double(par1Entity.posX);
-            int j = MathHelper.floor_double(par1Entity.posY) - 1;
-            int k = MathHelper.floor_double(par1Entity.posZ);
+            int i = MathHelper.floor_double(p_77185_1_.posX);
+            int j = MathHelper.floor_double(p_77185_1_.posY) - 1;
+            int k = MathHelper.floor_double(p_77185_1_.posZ);
             byte b0 = 1;
             byte b1 = 0;
 
@@ -70,24 +74,23 @@ public class TeleporterSanctuatite extends Teleporter
                 }
             }
 
-            par1Entity.setLocationAndAngles((double)i, (double)j, (double)k, par1Entity.rotationYaw, 0.0F);
-            par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
+            p_77185_1_.setLocationAndAngles((double)i, (double)j, (double)k, p_77185_1_.rotationYaw, 0.0F);
+            p_77185_1_.motionX = p_77185_1_.motionY = p_77185_1_.motionZ = 0.0D;
         }
     }
 
     /**
      * Place an entity in a nearby portal which already exists.
      */
-
-    public boolean placeInExistingPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
+    public boolean placeInExistingPortal(Entity p_77184_1_, double p_77184_2_, double p_77184_4_, double p_77184_6_, float p_77184_8_)
     {
         short short1 = 128;
         double d3 = -1.0D;
         int i = 0;
         int j = 0;
         int k = 0;
-        int l = MathHelper.floor_double(par1Entity.posX);
-        int i1 = MathHelper.floor_double(par1Entity.posZ);
+        int l = MathHelper.floor_double(p_77184_1_.posX);
+        int i1 = MathHelper.floor_double(p_77184_1_.posZ);
         long j1 = ChunkCoordIntPair.chunkXZ2Int(l, i1);
         boolean flag = true;
         double d7;
@@ -95,23 +98,23 @@ public class TeleporterSanctuatite extends Teleporter
 
         if (this.destinationCoordinateCache.containsItem(j1))
         {
-            PortalPositionBlindOasis portalposition = (PortalPositionBlindOasis)this.destinationCoordinateCache.getValueByKey(j1);
+            TeleporterSanctuatite.PortalPosition portalposition = (TeleporterSanctuatite.PortalPosition)this.destinationCoordinateCache.getValueByKey(j1);
             d3 = 0.0D;
             i = portalposition.posX;
             j = portalposition.posY;
             k = portalposition.posZ;
-            portalposition.field_85087_d = this.worldServerInstance.getTotalWorldTime();
+            portalposition.lastUpdateTime = this.worldServerInstance.getTotalWorldTime();
             flag = false;
         }
         else
         {
             for (l3 = l - short1; l3 <= l + short1; ++l3)
             {
-                double d4 = (double)l3 + 0.5D - par1Entity.posX;
+                double d4 = (double)l3 + 0.5D - p_77184_1_.posX;
 
                 for (int l1 = i1 - short1; l1 <= i1 + short1; ++l1)
                 {
-                    double d5 = (double)l1 + 0.5D - par1Entity.posZ;
+                    double d5 = (double)l1 + 0.5D - p_77184_1_.posZ;
 
                     for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
                     {
@@ -122,7 +125,7 @@ public class TeleporterSanctuatite extends Teleporter
                                 --i2;
                             }
 
-                            d7 = (double)i2 + 0.5D - par1Entity.posY;
+                            d7 = (double)i2 + 0.5D - p_77184_1_.posY;
                             double d8 = d4 * d4 + d7 * d7 + d5 * d5;
 
                             if (d3 < 0.0D || d8 < d3)
@@ -142,7 +145,8 @@ public class TeleporterSanctuatite extends Teleporter
         {
             if (flag)
             {
-                this.destinationCoordinateCache.add(j1, new PortalPositionSanctuatite(this, i, j, k, this.worldServerInstance.getTotalWorldTime()));
+                this.destinationCoordinateCache.add(j1, new TeleporterSanctuatite.PortalPosition(i, j, k, this.worldServerInstance.getTotalWorldTime()));
+                this.destinationCoordinateKeys.add(Long.valueOf(j1));
             }
 
             double d11 = (double)i + 0.5D;
@@ -170,7 +174,7 @@ public class TeleporterSanctuatite extends Teleporter
                 i4 = 1;
             }
 
-            int j2 = par1Entity.getTeleportDirection();
+            int j2 = p_77184_1_.getTeleportDirection();
 
             if (i4 > -1)
             {
@@ -242,18 +246,18 @@ public class TeleporterSanctuatite extends Teleporter
                     f6 = 1.0F;
                 }
 
-                double d9 = par1Entity.motionX;
-                double d10 = par1Entity.motionZ;
-                par1Entity.motionX = d9 * (double)f3 + d10 * (double)f6;
-                par1Entity.motionZ = d9 * (double)f5 + d10 * (double)f4;
-                par1Entity.rotationYaw = par8 - (float)(j2 * 90) + (float)(i4 * 90);
+                double d9 = p_77184_1_.motionX;
+                double d10 = p_77184_1_.motionZ;
+                p_77184_1_.motionX = d9 * (double)f3 + d10 * (double)f6;
+                p_77184_1_.motionZ = d9 * (double)f5 + d10 * (double)f4;
+                p_77184_1_.rotationYaw = p_77184_8_ - (float)(j2 * 90) + (float)(i4 * 90);
             }
             else
             {
-                par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
+                p_77184_1_.motionX = p_77184_1_.motionY = p_77184_1_.motionZ = 0.0D;
             }
 
-            par1Entity.setLocationAndAngles(d11, d6, d7, par1Entity.rotationYaw, par1Entity.rotationPitch);
+            p_77184_1_.setLocationAndAngles(d11, d6, d7, p_77184_1_.rotationYaw, p_77184_1_.rotationPitch);
             return true;
         }
         else
@@ -262,13 +266,13 @@ public class TeleporterSanctuatite extends Teleporter
         }
     }
 
-    public boolean makePortal(Entity par1Entity)
+    public boolean makePortal(Entity p_85188_1_)
     {
         byte b0 = 16;
         double d0 = -1.0D;
-        int i = MathHelper.floor_double(par1Entity.posX);
-        int j = MathHelper.floor_double(par1Entity.posY);
-        int k = MathHelper.floor_double(par1Entity.posZ);
+        int i = MathHelper.floor_double(p_85188_1_.posX);
+        int j = MathHelper.floor_double(p_85188_1_.posY);
+        int k = MathHelper.floor_double(p_85188_1_.posZ);
         int l = i;
         int i1 = j;
         int j1 = k;
@@ -276,27 +280,27 @@ public class TeleporterSanctuatite extends Teleporter
         int l1 = this.random.nextInt(4);
         int i2;
         double d1;
-        double d2;
         int k2;
+        double d2;
         int i3;
-        int k3;
         int j3;
-        int i4;
+        int k3;
         int l3;
-        int k4;
+        int i4;
         int j4;
-        int i5;
+        int k4;
         int l4;
+        int i5;
         double d3;
         double d4;
 
         for (i2 = i - b0; i2 <= i + b0; ++i2)
         {
-            d1 = (double)i2 + 0.5D - par1Entity.posX;
+            d1 = (double)i2 + 0.5D - p_85188_1_.posX;
 
             for (k2 = k - b0; k2 <= k + b0; ++k2)
             {
-                d2 = (double)k2 + 0.5D - par1Entity.posZ;
+                d2 = (double)k2 + 0.5D - p_85188_1_.posZ;
                 label274:
 
                 for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3)
@@ -337,12 +341,12 @@ public class TeleporterSanctuatite extends Teleporter
                                 }
                             }
 
-                            d4 = (double)i3 + 0.5D - par1Entity.posY;
-                            d3 = d1 * d1 + d4 * d4 + d2 * d2;
+                            d3 = (double)i3 + 0.5D - p_85188_1_.posY;
+                            d4 = d1 * d1 + d3 * d3 + d2 * d2;
 
-                            if (d0 < 0.0D || d3 < d0)
+                            if (d0 < 0.0D || d4 < d0)
                             {
-                                d0 = d3;
+                                d0 = d4;
                                 l = i2;
                                 i1 = i3;
                                 j1 = k2;
@@ -358,11 +362,11 @@ public class TeleporterSanctuatite extends Teleporter
         {
             for (i2 = i - b0; i2 <= i + b0; ++i2)
             {
-                d1 = (double)i2 + 0.5D - par1Entity.posX;
+                d1 = (double)i2 + 0.5D - p_85188_1_.posX;
 
                 for (k2 = k - b0; k2 <= k + b0; ++k2)
                 {
-                    d2 = (double)k2 + 0.5D - par1Entity.posZ;
+                    d2 = (double)k2 + 0.5D - p_85188_1_.posZ;
                     label222:
 
                     for (i3 = this.worldServerInstance.getActualHeight() - 1; i3 >= 0; --i3)
@@ -394,12 +398,12 @@ public class TeleporterSanctuatite extends Teleporter
                                     }
                                 }
 
-                                d4 = (double)i3 + 0.5D - par1Entity.posY;
-                                d3 = d1 * d1 + d4 * d4 + d2 * d2;
+                                d3 = (double)i3 + 0.5D - p_85188_1_.posY;
+                                d4 = d1 * d1 + d3 * d3 + d2 * d2;
 
-                                if (d0 < 0.0D || d3 < d0)
+                                if (d0 < 0.0D || d4 < d0)
                                 {
-                                    d0 = d3;
+                                    d0 = d4;
                                     l = i2;
                                     i1 = i3;
                                     j1 = k2;
@@ -489,10 +493,37 @@ public class TeleporterSanctuatite extends Teleporter
      * called periodically to remove out-of-date portal locations from the cache list. Argument par1 is a
      * WorldServer.getTotalWorldTime() value.
      */
-
-    public void removeStalePortalLocations(long par1)
+    public void removeStalePortalLocations(long p_85189_1_)
     {
-    	super.removeStalePortalLocations(par1);
-       
+        if (p_85189_1_ % 100L == 0L)
+        {
+            Iterator iterator = this.destinationCoordinateKeys.iterator();
+            long j = p_85189_1_ - 600L;
+
+            while (iterator.hasNext())
+            {
+                Long olong = (Long)iterator.next();
+                TeleporterSanctuatite.PortalPosition portalposition = (TeleporterSanctuatite.PortalPosition)this.destinationCoordinateCache.getValueByKey(olong.longValue());
+
+                if (portalposition == null || portalposition.lastUpdateTime < j)
+                {
+                    iterator.remove();
+                    this.destinationCoordinateCache.remove(olong.longValue());
+                }
+            }
+        }
+    }
+
+    public class PortalPosition extends ChunkCoordinates
+    {
+        /** The worldtime at which this PortalPosition was last verified */
+        public long lastUpdateTime;
+        private static final String __OBFID = "CL_00000154";
+
+        public PortalPosition(int p_i1962_2_, int p_i1962_3_, int p_i1962_4_, long p_i1962_5_)
+        {
+            super(p_i1962_2_, p_i1962_3_, p_i1962_4_);
+            this.lastUpdateTime = p_i1962_5_;
+        }
     }
 }

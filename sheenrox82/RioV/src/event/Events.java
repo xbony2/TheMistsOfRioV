@@ -7,8 +7,7 @@ import java.util.Date;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.*;
 import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -40,7 +39,9 @@ import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.handler.UpdateHandler;
+import sheenrox82.RioV.src.handler.WavHandler;
 import sheenrox82.RioV.src.handler.packet.PacketHandler;
+import cpw.mods.fml.client.GuiModList;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -324,6 +325,9 @@ public class Events
 
 		if(event.gui instanceof GuiMainMenu)
 		{
+			WavHandler.setUpSound("BackgroundMusic.wav");
+			WavHandler.playSound(0);
+			
 			Random rand = new Random();
 			int panoRand = rand.nextInt(2);
 
@@ -348,6 +352,11 @@ public class Events
 			{
 				RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, "", event.gui);
 			}
+		}
+		
+		if(event.gui instanceof GuiOptions || event.gui instanceof GuiLanguage || event.gui instanceof GuiSelectWorld || event.gui instanceof GuiMultiplayer || event.gui instanceof GuiModList || event.gui instanceof GuiDownloadTerrain)
+		{
+			WavHandler.stopSound();
 		}
 	}
 }
