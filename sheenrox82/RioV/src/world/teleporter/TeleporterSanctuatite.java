@@ -74,7 +74,7 @@ public class TeleporterSanctuatite extends Teleporter
                 }
             }
 
-            p_77185_1_.setLocationAndAngles((double)i, (double)j, (double)k, p_77185_1_.rotationYaw, 0.0F);
+            p_77185_1_.setLocationAndAngles((double)BlockSanctuatitePortal.x, (double)BlockSanctuatitePortal.y, (double)BlockSanctuatitePortal.z, p_77185_1_.rotationYaw, 0.0F);
             p_77185_1_.motionX = p_77185_1_.motionY = p_77185_1_.motionZ = 0.0D;
         }
     }
