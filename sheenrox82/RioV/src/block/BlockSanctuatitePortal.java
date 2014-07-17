@@ -14,9 +14,7 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.util.MethodUtil;
 import sheenrox82.RioV.src.world.teleporter.TeleporterSanctuatite;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,7 +25,7 @@ public class BlockSanctuatitePortal extends BlockPortal
     {
         super();
         setBlockName(Util.MOD_ID + ":" + "sanctuatitePortal");
-        //setCreativeTab(TheMistsOfRioV.getInstance().tab);
+      //  setCreativeTab(TheMistsOfRioV.getInstance().tab);
     }
  
     @Override
@@ -46,7 +44,6 @@ public class BlockSanctuatitePortal extends BlockPortal
             else if (player.dimension != Config.sanctuatiteID)
             {
                 player.timeUntilPortal = 10;
- 
                 player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Config.sanctuatiteID, new TeleporterSanctuatite(mServer.worldServerForDimension(Config.sanctuatiteID)));
             }
             else
@@ -119,6 +116,11 @@ public class BlockSanctuatitePortal extends BlockPortal
                 for (i1 = 0; i1 < 3; ++i1)
                 {
                     par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, RioVBlocks.sanctuatitePortal, 0, 2);
+                    
+                    if(!par1World.isRemote)
+					{
+						RioVAPIUtil.sendMessageToAll("A Sanctuatite portal has opened!");	
+					}
                 }
             }
  

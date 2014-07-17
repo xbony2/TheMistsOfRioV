@@ -5,7 +5,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Util;
-import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunMinion;
@@ -128,7 +127,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlindoniteArrow.class, new RenderBlindoniteArrow(EntityResourceLocation.blindonite_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAlerisArrow.class, new RenderAlerisArrow(EntityResourceLocation.aleris_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(EntityResourceLocation.vravinite_arrow));
-
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new RenderTileEntityFlag());
 	}
 
@@ -149,7 +147,7 @@ public class ClientProxy extends CommonProxy
 		}
 		else
 		{
-			
+
 		}
 	}
 

@@ -51,7 +51,7 @@ public class BlockPlantCore extends BlockFlower
 			return RioVItems.heart;
 		}
 
-		return Item.getItemFromBlock(this);
+		return Item.getItemFromBlock(Blocks.air);
 	}
 
 	@SideOnly(Side.CLIENT)

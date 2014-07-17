@@ -69,33 +69,27 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 10)
+				if(EosUtil.getCurrentEos() > 7)
 				{
-					if(EosUtil.consumeEos(10))
+					if (world.isAirBlock(par4, par5, par6))
 					{
-						if (world.isAirBlock(par4, par5, par6))
-						{
-							world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-							world.setBlock(par4, par5, par6, RioVBlocks.blackFire);
-						}
-
-						if(!world.isRemote)
-						{
-							RioVAPIUtil.sendMessageToAll("A Blind Oasis portal has opened!");	
-						}
-
-						itemstack.damageItem(1, entityplayer);
-						return true;
+						world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+						world.setBlock(par4, par5, par6, RioVBlocks.blackFire);
+						EosUtil.consumeEos(7);
 					}
+
+					itemstack.damageItem(1, entityplayer);
+					return true;
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 10)
+					if(EosUtil.getCurrentEos() < 7)
 					{
 						if(!world.isRemote)
 						{
 							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
+						return true;
 					}
 				}
 			}
@@ -139,19 +133,15 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 15)
+				if(EosUtil.getCurrentEos() > 10)
 				{
-					if(EosUtil.consumeEos(15))
+					if(EosUtil.consumeEos(10))
 					{
 						if (world.isAirBlock(par4, par5, par6))
 						{
 							world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 							world.setBlock(par4, par5, par6, RioVBlocks.whiteFire);
-						}
-
-						if(!world.isRemote)
-						{
-							RioVAPIUtil.sendMessageToAll("A Vaeryn portal has opened!");	
+							EosUtil.consumeEos(10);
 						}
 
 						itemstack.damageItem(1, entityplayer);
@@ -160,12 +150,13 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 15)
+					if(EosUtil.getCurrentEos() < 10)
 					{
 						if(!world.isRemote)
 						{
 							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
+						return true;
 					}
 				}
 			}
@@ -209,33 +200,28 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 20)
+				if(EosUtil.getCurrentEos() > 15)
 				{
-					if(EosUtil.consumeEos(20))
+					if (world.isAirBlock(par4, par5, par6))
 					{
-						if (world.isAirBlock(par4, par5, par6))
-						{
-							world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-							world.setBlock(par4, par5, par6, RioVBlocks.redFire);
-						}
-
-						if(!world.isRemote)
-						{
-							RioVAPIUtil.sendMessageToAll("A Flamonor portal has opened!");	
-						}
-
-						itemstack.damageItem(1, entityplayer);
-						return true;
+						world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+						world.setBlock(par4, par5, par6, RioVBlocks.redFire);
+						EosUtil.consumeEos(15);
 					}
+
+					itemstack.damageItem(1, entityplayer);
+					return true;
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 20)
+					if(EosUtil.getCurrentEos() < 15)
 					{
 						if(!world.isRemote)
 						{
 							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
+
+						return true;
 					}
 				}
 			}
@@ -279,28 +265,27 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 35)
+				if(EosUtil.getCurrentEos() > 20)
 				{
-					if(EosUtil.consumeEos(35))
+					if (world.isAirBlock(par4, par5, par6))
 					{
-						if (world.isAirBlock(par4, par5, par6))
-						{
-							world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-							world.setBlock(par4, par5, par6, RioVBlocks.sanctuatiteFire);
-						}
-						
-						itemstack.damageItem(1, entityplayer);
-						return true;
+						world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+						world.setBlock(par4, par5, par6, RioVBlocks.sanctuatiteFire);
+						EosUtil.consumeEos(20);
 					}
+
+					itemstack.damageItem(1, entityplayer);
+					return true;
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 35)
+					if(EosUtil.getCurrentEos() < 20)
 					{
 						if(!world.isRemote)
 						{
 							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
 						}	
+						return true;
 					}
 				}
 			}

@@ -2,8 +2,13 @@ package sheenrox82.RioV.src.event;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -16,6 +21,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -306,6 +312,41 @@ public class Events
 						}
 					}
 				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void guiEvent(GuiOpenEvent event)
+	{	    
+		String riov = Util.MOD_ID.toLowerCase();
+
+		if(event.gui instanceof GuiMainMenu)
+		{
+			Random rand = new Random();
+			int panoRand = rand.nextInt(2);
+
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(new Date());
+			ResourceLocation buttonTextures = new ResourceLocation(riov, "widget.png");
+
+			//NEW FIELDS
+			ResourceLocation title = new ResourceLocation(riov, "title.png");
+			ResourceLocation[] flamonorPano = new ResourceLocation[] {new ResourceLocation(riov, "pano/flamonor/north.png"), new ResourceLocation(riov, "pano/flamonor/left.png"), new ResourceLocation(riov, "pano/flamonor/back.png"), new ResourceLocation(riov, "pano/flamonor/right.png"), new ResourceLocation(riov, "pano/flamonor/up.png"), new ResourceLocation(riov, "pano/flamonor/down.png")};
+			ResourceLocation[] vaerynPano = new ResourceLocation[] {new ResourceLocation(riov, "pano/vaeryn/north.png"), new ResourceLocation(riov, "pano/vaeryn/left.png"), new ResourceLocation(riov, "pano/vaeryn/back.png"), new ResourceLocation(riov, "pano/vaeryn/right.png"), new ResourceLocation(riov, "pano/vaeryn/up.png"), new ResourceLocation(riov, "pano/vaeryn/down.png")};
+
+			RioVAPIUtil.replaceField("minecraftTitleTextures", GuiMainMenu.class, title, event.gui);
+			RioVAPIUtil.replaceField("titlePanoramaPaths", GuiMainMenu.class, flamonorPano, event.gui);
+			RioVAPIUtil.replaceField("buttonTextures", GuiButton.class, buttonTextures, event.gui);
+
+			if (calendar.get(2) + 1 == 3 && calendar.get(5) == 12)
+			{
+				RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, Color.AQUA + "The Mists of RioV Anniversary!", event.gui);
+			}
+			else
+			{
+				RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, "", event.gui);
 			}
 		}
 	}

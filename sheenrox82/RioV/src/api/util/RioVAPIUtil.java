@@ -1,5 +1,9 @@
 package sheenrox82.RioV.src.api.util;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +27,7 @@ public class RioVAPIUtil
 	{
 		GameRegistry.registerBlock(block, string);
 	}
-	
+
 	public static String getName(String unlocalizedName) 
 	{
 		return unlocalizedName.substring(unlocalizedName.lastIndexOf(".") + 1);
@@ -46,12 +50,12 @@ public class RioVAPIUtil
 	{
 		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(EnumChatFormatting.GOLD, message));
 	}
-	
+
 	public static void sendMessageToAll(String message, EntityPlayer player)
 	{
 		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(EnumChatFormatting.GOLD, message + player.getDisplayName()));
 	}
-	
+
 	/**
 	 * Get a RioV Item using a string.
 	 * 
@@ -95,7 +99,7 @@ public class RioVAPIUtil
 			return Blocks.stone;
 		}
 	}
-	
+
 	/**
 	 * Get a RioV Enchantment using a string.
 	 * 
@@ -117,7 +121,7 @@ public class RioVAPIUtil
 			return Enchantment.protection;
 		}
 	}
-	
+
 	/**
 	 * Get a RioV Biome using a string.
 	 * 
@@ -139,7 +143,7 @@ public class RioVAPIUtil
 			return BiomeGenBase.plains;
 		}
 	}
-	
+
 	/**
 	 * Get a RioV Sound using a string.
 	 * 
@@ -161,7 +165,7 @@ public class RioVAPIUtil
 			return "";
 		}
 	}
-	
+
 	/**
 	 * Get a RioV Config boolean field using a string.
 	 * 
@@ -181,7 +185,7 @@ public class RioVAPIUtil
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Get a RioV Config integer field using a string.
 	 * 
@@ -199,6 +203,33 @@ public class RioVAPIUtil
 		{
 			//If field is not found, the int will return 0.
 			return 0;
+		}
+	}
+
+	/**
+	 * Replace a field in a class.
+	 */
+	public static void replaceField(String fieldName, Class clazz, Object value, Object instance)
+	{
+		try
+		{
+			Field field = clazz.getDeclaredField(fieldName);
+
+			if(field != null)
+			{
+				field.setAccessible(true);
+				
+				Field modField = Field.class.getDeclaredField("modifiers");
+				
+				modField.setAccessible(true);
+				modField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+				
+				field.set(instance, value);
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 }

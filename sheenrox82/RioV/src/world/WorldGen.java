@@ -92,21 +92,6 @@ public class WorldGen implements IWorldGenerator
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = world.getHeightValue(blockX, blockZ);
 			int var8 = blockZ + rand.nextInt(16);
-
-			//I know this is not efficient but it needs to be like this for it to work.
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
 		}
 	}
@@ -132,21 +117,6 @@ public class WorldGen implements IWorldGenerator
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = world.getHeightValue(blockX, blockZ);
 			int var8 = blockZ + rand.nextInt(16);
-
-			//I know this is not efficient but it needs to be like this for it to work.
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
 		}
 	}
@@ -172,21 +142,6 @@ public class WorldGen implements IWorldGenerator
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = world.getHeightValue(blockX, blockZ);
 			int var8 = blockZ + rand.nextInt(16);
-			
-			//I know this is not efficient but it needs to be like this for it to work.
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
 			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
 		}
 	}

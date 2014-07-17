@@ -22,9 +22,6 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.Util;
-import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.content.Enchantments;
-import sheenrox82.RioV.src.content.RioVItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -132,7 +129,7 @@ public class RioVWeapon extends ItemSword
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)
 	{
-		if(itemstack.getItem().equals(RioVItems.khuulisScythe))
+		if(itemstack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("khuulisScythe")))
 		{
 			float f = 1.0F;
 			float f1 = entityplayer.prevRotationPitch + (entityplayer.rotationPitch - entityplayer.prevRotationPitch) * f;

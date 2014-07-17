@@ -29,10 +29,12 @@ public class RioVAPI
 	 * Natura - continued by progwml6
 	 * Botania - by Vazkii
 	 * Optifine - by sp614x
+	 * NEI - by CodeChicken
 	 */
 	public boolean natura;
 	public boolean botania;
 	public boolean optifine;
+	public boolean nei;
 
 	/**
 	 * RioV tab.
