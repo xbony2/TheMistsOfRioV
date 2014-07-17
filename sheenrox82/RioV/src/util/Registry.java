@@ -10,7 +10,6 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.handler.packet.PacketPipeline;
 import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
 import sheenrox82.RioV.src.api.util.LogHelper;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;

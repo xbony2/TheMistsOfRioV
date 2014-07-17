@@ -13,7 +13,6 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.EosUtil;
 import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityAunTun;
@@ -21,6 +20,7 @@ import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTerron;
+import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

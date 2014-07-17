@@ -16,7 +16,6 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.Enchantments;
 import sheenrox82.RioV.src.content.RioVItems;
@@ -28,6 +27,7 @@ import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityDragonArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityOnyxArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
+import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

@@ -232,4 +232,19 @@ public class RioVAPIUtil
 			e.printStackTrace();
 		}
 	}
+	
+	public String getUtilString(String utilString)
+	{
+		try
+		{
+			Class util = Class.forName("sheenrox82.RioV.src.util.Util");
+			String strToGet = (String)util.getDeclaredField(utilString).get(null);
+			return strToGet;
+		}
+		catch(Exception e)
+		{
+	
+			return "";
+		}
+	}
 }

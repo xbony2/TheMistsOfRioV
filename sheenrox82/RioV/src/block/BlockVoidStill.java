@@ -11,8 +11,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.util.Util;
 
 public class BlockVoidStill extends BlockStaticLiquid
 {

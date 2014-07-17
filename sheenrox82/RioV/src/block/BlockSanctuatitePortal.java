@@ -5,33 +5,32 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPortal;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemMonsterPlacer;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.content.Sounds;
+import sheenrox82.RioV.src.util.Util;
 import sheenrox82.RioV.src.world.teleporter.TeleporterSanctuatite;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSanctuatitePortal extends BlockPortal
-{
-	public static int x, y, z;
-	
+{	
 	public BlockSanctuatitePortal()
 	{
 		super();
 		setBlockName(Util.MOD_ID + ":" + "sanctuatitePortal");
-		//  setCreativeTab(TheMistsOfRioV.getInstance().tab);
 	}
 
 	@Override
@@ -49,9 +48,6 @@ public class BlockSanctuatitePortal extends BlockPortal
 			{
 				player.timeUntilPortal = 300;
 				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Config.sanctuatiteID, new TeleporterSanctuatite(player.mcServer.worldServerForDimension(Config.sanctuatiteID)));
-				x = par2;
-				y = par3;
-				z = par4;
 			}
 			else
 			{
@@ -77,16 +73,6 @@ public class BlockSanctuatitePortal extends BlockPortal
 			for (l = p_149674_3_; !World.doesBlockHaveSolidTopSurface(p_149674_1_, p_149674_2_, l, p_149674_4_) && l > 0; --l)
 			{
 				;
-			}
-
-			if (l > 0 && !p_149674_1_.getBlock(p_149674_2_, l + 1, p_149674_4_).isNormalCube())
-			{
-				Entity entity = ItemMonsterPlacer.spawnCreature(p_149674_1_, 57, (double)p_149674_2_ + 0.5D, (double)l + 1.1D, (double)p_149674_4_ + 0.5D);
-
-				if (entity != null)
-				{
-					entity.timeUntilPortal = entity.getPortalCooldown();
-				}
 			}
 		}
 	}
@@ -256,34 +242,7 @@ public class BlockSanctuatitePortal extends BlockPortal
 	{
 		if (p_149734_5_.nextInt(100) == 0)
 		{
-			p_149734_1_.playSound((double)p_149734_2_ + 0.5D, (double)p_149734_3_ + 0.5D, (double)p_149734_4_ + 0.5D, "portal.portal", 0.5F, p_149734_5_.nextFloat() * 0.4F + 0.8F, false);
-		}
-
-		for (int l = 0; l < 4; ++l)
-		{
-			double d0 = (double)((float)p_149734_2_ + p_149734_5_.nextFloat());
-			double d1 = (double)((float)p_149734_3_ + p_149734_5_.nextFloat());
-			double d2 = (double)((float)p_149734_4_ + p_149734_5_.nextFloat());
-			double d3 = 0.0D;
-			double d4 = 0.0D;
-			double d5 = 0.0D;
-			int i1 = p_149734_5_.nextInt(2) * 2 - 1;
-			d3 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
-			d4 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
-			d5 = ((double)p_149734_5_.nextFloat() - 0.5D) * 0.5D;
-
-			if (p_149734_1_.getBlock(p_149734_2_ - 1, p_149734_3_, p_149734_4_) != this && p_149734_1_.getBlock(p_149734_2_ + 1, p_149734_3_, p_149734_4_) != this)
-			{
-				d0 = (double)p_149734_2_ + 0.5D + 0.25D * (double)i1;
-				d3 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
-			}
-			else
-			{
-				d2 = (double)p_149734_4_ + 0.5D + 0.25D * (double)i1;
-				d5 = (double)(p_149734_5_.nextFloat() * 2.0F * (float)i1);
-			}
-
-			p_149734_1_.spawnParticle("portal", d0, d1, d2, d3, d4, d5);
+			p_149734_1_.playSound((double)p_149734_2_ + 0.5D, (double)p_149734_3_ + 0.5D, (double)p_149734_4_ + 0.5D, Sounds.portal.getPrefixedName(), 0.5F, p_149734_5_.nextFloat() * 0.4F + 0.8F, false);
 		}
 	}
 
@@ -403,7 +362,7 @@ public class BlockSanctuatitePortal extends BlockPortal
 
 						if (j == 0)
 						{
-							block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockSanctuatitePortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][0]]);
+							block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockSanctuatitePortal.field_150001_a[this.field_150865_b][0]], i, l + Direction.offsetZ[BlockSanctuatitePortal.field_150001_a[this.field_150865_b][0]]);
 
 							if (block != Blocks.quartz_block)
 							{
@@ -412,7 +371,7 @@ public class BlockSanctuatitePortal extends BlockPortal
 						}
 						else if (j == this.field_150868_h - 1)
 						{
-							block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockSanctuatitePortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockPortal.field_150001_a[this.field_150865_b][1]]);
+							block = this.field_150867_a.getBlock(k + Direction.offsetX[BlockSanctuatitePortal.field_150001_a[this.field_150865_b][1]], i, l + Direction.offsetZ[BlockSanctuatitePortal.field_150001_a[this.field_150865_b][1]]);
 
 							if (block != Blocks.quartz_block)
 							{
@@ -473,4 +432,16 @@ public class BlockSanctuatitePortal extends BlockPortal
 			}
 		}
 	}
+	
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return this.blockIcon;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
+	{
+		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+	} 
 }

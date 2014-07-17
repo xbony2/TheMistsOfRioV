@@ -2,11 +2,11 @@ package sheenrox82.RioV.src.base;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.handler.GuiHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 import sheenrox82.RioV.src.util.Registry;
+import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;

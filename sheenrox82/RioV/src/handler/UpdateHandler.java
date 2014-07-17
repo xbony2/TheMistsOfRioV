@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.util.Util;
 
 public class UpdateHandler 
 {

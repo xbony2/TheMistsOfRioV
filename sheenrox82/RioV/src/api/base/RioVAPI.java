@@ -7,7 +7,7 @@ import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
 import sheenrox82.RioV.src.api.recipe.manager.InfuserManager;
 import sheenrox82.RioV.src.api.util.LogHelper;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.util.Util;
 
 public class RioVAPI
 {
@@ -17,6 +17,10 @@ public class RioVAPI
 	private static LogHelper logger = new LogHelper();
 	private static RioVAPIUtil util = new RioVAPIUtil();
 	
+	public static final String mod_id = getUtil().getUtilString("MOD_ID");
+	public static final String mod_name = getUtil().getUtilString("MOD_NAME");
+	public static final String version = getUtil().getUtilString("VERSION");
+
 	/**
 	 * Used to correctly write and close the debug file.
 	 */
@@ -84,7 +88,7 @@ public class RioVAPI
 	/**
 	 * Get RioVAPIUtil.java
 	 */
-	public RioVAPIUtil getUtil()
+	public static RioVAPIUtil getUtil()
 	{
 		return util;
 	}

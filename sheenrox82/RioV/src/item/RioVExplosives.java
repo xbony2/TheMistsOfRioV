@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
+import sheenrox82.RioV.src.util.Util;
 
 public class RioVExplosives extends Item
 {

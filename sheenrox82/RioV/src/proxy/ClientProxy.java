@@ -4,7 +4,6 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunMinion;
@@ -76,6 +75,7 @@ import sheenrox82.RioV.src.render.projectile.RenderPinkEssence;
 import sheenrox82.RioV.src.render.projectile.RenderVraviniteArrow;
 import sheenrox82.RioV.src.render.tileentity.RenderTileEntityFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
+import sheenrox82.RioV.src.util.Util;
 
 import com.jadarstudios.developercapes.DevCapes;
 

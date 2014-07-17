@@ -1,7 +1,7 @@
 package sheenrox82.RioV.src.lib;
 
 import net.minecraft.util.ResourceLocation;
-import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.util.Util;
 
 public class GuiResourceLocation 
 {	

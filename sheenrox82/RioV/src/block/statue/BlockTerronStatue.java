@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.block;
+package sheenrox82.RioV.src.block.statue;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -9,34 +9,34 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.tileentity.TileEntityFlag;
+import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.tileentity.statue.TileEntityStatue;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFlag extends BlockContainer 
+public class BlockTerronStatue extends BlockContainer 
 {
 	@SideOnly(Side.CLIENT)
 	private IIcon blockIcon;
 	
-	public BlockFlag() 
+	public BlockTerronStatue() 
 	{
 		super(Material.wood);
-//		/this.setCreativeTab(RioVAPI.getInstance().tab);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World par1World, int var1)
 	{
-		return new TileEntityFlag();
+		return new TileEntityStatue();
 	}
 
 	@Override
 	public int getRenderType()
 	{
-		return 50;
+		return 51;
 	}
 	
 	@Override

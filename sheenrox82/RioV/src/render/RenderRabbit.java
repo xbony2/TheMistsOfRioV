@@ -4,9 +4,9 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.entity.mob.passive.EntityRabbit;
 import sheenrox82.RioV.src.model.ModelRabbit;
+import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

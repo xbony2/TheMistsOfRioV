@@ -3,7 +3,7 @@ package sheenrox82.RioV.src.content;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.util.Sound;
-import sheenrox82.RioV.src.api.util.Util;
+import sheenrox82.RioV.src.util.Util;
 
 public class Sounds 
 {

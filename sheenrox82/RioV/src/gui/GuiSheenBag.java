@@ -11,9 +11,9 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.container.ContainerBagSheen;
 import sheenrox82.RioV.src.inventory.InventoryBagSheen;
+import sheenrox82.RioV.src.util.Util;
 
 public class GuiSheenBag extends GuiContainer
 {

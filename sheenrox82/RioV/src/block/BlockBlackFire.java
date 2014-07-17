@@ -21,8 +21,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import sheenrox82.RioV.src.api.util.Util;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.util.Util;
 
 import com.google.common.collect.Maps;
 
