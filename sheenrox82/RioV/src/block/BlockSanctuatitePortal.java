@@ -25,6 +25,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockSanctuatitePortal extends BlockPortal
 {
+	public static int x, y, z;
+	
 	public BlockSanctuatitePortal()
 	{
 		super();
@@ -47,6 +49,9 @@ public class BlockSanctuatitePortal extends BlockPortal
 			{
 				player.timeUntilPortal = 300;
 				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, Config.sanctuatiteID, new TeleporterSanctuatite(player.mcServer.worldServerForDimension(Config.sanctuatiteID)));
+				x = par2;
+				y = par3;
+				z = par4;
 			}
 			else
 			{
