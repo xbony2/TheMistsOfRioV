@@ -1,7 +1,6 @@
 package sheenrox82.RioV.src.proxy;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import sheenrox82.RioV.src.api.base.RioVAPI;
@@ -46,12 +45,7 @@ import sheenrox82.RioV.src.lib.EntityResourceLocation;
 import sheenrox82.RioV.src.model.ModelDemonAngel;
 import sheenrox82.RioV.src.model.ModelDragonWings;
 import sheenrox82.RioV.src.model.ModelHellhound;
-import sheenrox82.RioV.src.model.ModelTasaravChestplate;
-import sheenrox82.RioV.src.model.ModelTasaravHelmet;
 import sheenrox82.RioV.src.model.ModelTerron;
-import sheenrox82.RioV.src.model.statue.ModelDemonAngelStatue;
-import sheenrox82.RioV.src.model.statue.ModelTerronStatue;
-import sheenrox82.RioV.src.model.statue.ModelTheDarknessStatue;
 import sheenrox82.RioV.src.render.RenderAngel;
 import sheenrox82.RioV.src.render.RenderAunTun;
 import sheenrox82.RioV.src.render.RenderBipedCore;
@@ -77,14 +71,8 @@ import sheenrox82.RioV.src.render.projectile.RenderDragonArrow;
 import sheenrox82.RioV.src.render.projectile.RenderOnyxArrow;
 import sheenrox82.RioV.src.render.projectile.RenderPinkEssence;
 import sheenrox82.RioV.src.render.projectile.RenderVraviniteArrow;
-import sheenrox82.RioV.src.render.tileentity.RenderDemonAngelStatue;
-import sheenrox82.RioV.src.render.tileentity.RenderTerronStatue;
-import sheenrox82.RioV.src.render.tileentity.RenderTheDarknessStatue;
 import sheenrox82.RioV.src.render.tileentity.RenderTileEntityFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
-import sheenrox82.RioV.src.tileentity.statue.TileEntityDemonAngelStatue;
-import sheenrox82.RioV.src.tileentity.statue.TileEntityTerronStatue;
-import sheenrox82.RioV.src.tileentity.statue.TileEntityTheDarknessStatue;
 import sheenrox82.RioV.src.util.Util;
 
 import com.jadarstudios.developercapes.DevCapes;
@@ -136,15 +124,11 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityAlerisArrow.class, new RenderAlerisArrow(EntityResourceLocation.aleris_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(EntityResourceLocation.vravinite_arrow));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new RenderTileEntityFlag());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTerronStatue.class, new RenderTerronStatue(new ModelTerronStatue(), "Terron"));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDemonAngelStatue.class, new RenderDemonAngelStatue(new ModelDemonAngelStatue(), "DemonAngel"));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTheDarknessStatue.class, new RenderTheDarknessStatue(new ModelTheDarknessStatue(), "null"));
 	}
 
 	@Override
 	public void registerItemRenderers()
 	{
-		TileEntitySpecialRenderer render = new RenderTerronStatue(new ModelTerronStatue(), "Terron");
 		MinecraftForgeClient.registerItemRenderer(RioVItems.bowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.enforcedBowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.vraviniteBow, new ItemRenderLongbow());
