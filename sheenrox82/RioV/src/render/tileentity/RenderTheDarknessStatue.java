@@ -9,12 +9,12 @@ import org.lwjgl.opengl.GL11;
 import sheenrox82.RioV.src.model.statue.ModelStatueCore;
 import sheenrox82.RioV.src.util.Util;
 
-public class RenderTileEntityStatue extends TileEntitySpecialRenderer 
+public class RenderTheDarknessStatue extends TileEntitySpecialRenderer 
 {
 	public static ModelStatueCore model;
 	public static String texture;
 
-	public RenderTileEntityStatue(ModelStatueCore model, String texture) 
+	public RenderTheDarknessStatue(ModelStatueCore model, String texture) 
 	{
 		this.model = model;
 		this.texture = texture;
@@ -47,7 +47,7 @@ public class RenderTileEntityStatue extends TileEntitySpecialRenderer
 		GL11.glRotatef(rotationAngle , 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(0.0F, -1.5F, 0.0F);
 		GL11.glScalef(2.0F, 2.0F, 2.0F);
-		ResourceLocation textures = (new ResourceLocation(Util.MOD_ID + ":" + "textures/blocks/" + texture + ".png")); 
+		ResourceLocation textures = (new ResourceLocation(Util.MOD_ID + ":" + "textures/entity/" + "Essence" + ".png")); 
 		this.bindTexture(textures);
 		this.model.renderAll();
 		GL11.glPopMatrix();	

@@ -26,8 +26,6 @@ import sheenrox82.RioV.src.item.RioVSummoners;
 import sheenrox82.RioV.src.item.RioVVoidHolder;
 import sheenrox82.RioV.src.item.RioVWand;
 import sheenrox82.RioV.src.item.unique.ItemEnforcedBowOfWurTun;
-import sheenrox82.RioV.src.item.unique.ItemTasaravChestplate;
-import sheenrox82.RioV.src.item.unique.ItemTasaravHelmet;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 
 public class RioVItems 
@@ -301,11 +299,6 @@ public class RioVItems
 	public static Item supremeAunTunLeggings = (new RioVArmor(SupremeAunTunArmorMaterial, render, 2, "auntunminion", true)).setUnlocalizedName("supreme.auntunMinionLeggings");
 	public static Item supremeAunTunBoots = (new RioVArmor(SupremeAunTunArmorMaterial, render, 3, "auntunminion", true)).setUnlocalizedName("supreme.auntunMinionBoots");
 	public static Item ultraAxeOfAunTun = (new RioVWeapon(UltraAxeOfAunTun, true)).setUnlocalizedName("ultra.axeOfAunTun");
-	public static Item tasaravHelmet = (new ItemTasaravHelmet(AlerisArmorMaterial, render, 0, "tasarav", false)).setUnlocalizedName("tasaravHelmet");
-	public static Item tasaravChestplate = (new ItemTasaravChestplate(AlerisArmorMaterial, render, 1, "tasarav", false)).setUnlocalizedName("tasaravChestplate");
-	public static Item tasaravLeggings = (new RioVArmor(AlerisArmorMaterial, render, 2, "tasarav", false)).setUnlocalizedName("tasaravLeggings");
-	public static Item tasaravBoots = (new RioVArmor(AlerisArmorMaterial, render, 3, "tasarav", false)).setUnlocalizedName("tasaravBoots");
-	public static Item tasaravSword = (new RioVWeapon(Aleris, false)).setUnlocalizedName("tasaravSword");
 	public static Item paladinHelmet = (new RioVArmor(FlameArmorMaterial, render, 0, "paladin", false)).setUnlocalizedName("paladinHelmet");
 	public static Item paladinChestplate = (new RioVArmor(FlameArmorMaterial, render, 1, "paladin", false)).setUnlocalizedName("paladinChestplate");
 	public static Item paladinLeggings = (new RioVArmor(FlameArmorMaterial, render, 2, "paladin", false)).setUnlocalizedName("paladinLeggings");
@@ -345,11 +338,6 @@ public class RioVItems
 		RioVAPIUtil.registerItem(paladinLeggings, "Paladin Leggings");
 		RioVAPIUtil.registerItem(paladinBoots, "Paladin Boots");
 		RioVAPIUtil.registerItem(paladinLongsword, "Paladin Longsword");
-		RioVAPIUtil.registerItem(tasaravHelmet, "Tasarav Mallor's Helmet");
-		RioVAPIUtil.registerItem(tasaravChestplate, "Tasarav Mallor's Chestplate");
-		RioVAPIUtil.registerItem(tasaravLeggings, "Tasarav Mallor's Leggings");
-		RioVAPIUtil.registerItem(tasaravBoots, "Tasarav Mallor's Boots");
-		RioVAPIUtil.registerItem(tasaravSword, "Tasarav Mallor's Sword");
 		RioVAPIUtil.registerItem(supremeAunTunHelmet, "Supreme Aun'Tun Helmet");
 		RioVAPIUtil.registerItem(supremeAunTunChestplate, "Supreme Aun'Tun Chestplate");
 		RioVAPIUtil.registerItem(supremeAunTunLeggings, "Supreme Aun'Tun Leggings");

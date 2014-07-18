@@ -10,14 +10,12 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.tileentity.statue.TileEntityTerronStatue;
+import sheenrox82.RioV.src.tileentity.statue.TileEntityDemonAngelStatue;
 import sheenrox82.RioV.src.util.Util;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockTerronStatue extends BlockContainer 
+public class BlockDemonAngelStatue extends BlockContainer 
 {
-	public BlockTerronStatue() 
+	public BlockDemonAngelStatue() 
 	{
 		super(Material.rock);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
@@ -27,7 +25,7 @@ public class BlockTerronStatue extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World par1World, int var1)
 	{
-		return new TileEntityTerronStatue();
+		return new TileEntityDemonAngelStatue();
 	}
 
 	@Override
@@ -56,7 +54,7 @@ public class BlockTerronStatue extends BlockContainer
 	
 	public void registerBlockIcons(IIconRegister icon) 
 	{
-		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + "terronStatue");
+		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + "demonAngelStatue");
 	}
 
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)

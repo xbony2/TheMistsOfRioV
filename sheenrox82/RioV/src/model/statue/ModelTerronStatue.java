@@ -93,6 +93,8 @@ public class ModelTerronStatue extends ModelStatueCore
 	@Override
 	public void renderAll()
 	{
+		super.renderAll();
+		
 		head.render(0.0625F);
 		body.render(0.0625F);
 		leg1.render(0.0625F);

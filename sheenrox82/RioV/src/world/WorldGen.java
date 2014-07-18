@@ -3,6 +3,7 @@ package sheenrox82.RioV.src.world;
 import java.util.Random;
 
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.BiomeGenForest;
 import net.minecraft.world.biome.BiomeGenPlains;
@@ -44,27 +45,27 @@ public class WorldGen implements IWorldGenerator
 		{
 			generateEnd(world, random, chunkX * 16, chunkZ * 16);	
 		}
-		
+
 		if(world.provider.dimensionId == 0)
 		{
 			generateSurface(world, random, chunkX * 16, chunkZ * 16);
 		}
-		
+
 		if(world.provider.dimensionId == -1)
 		{
 			generateNether(world, random, chunkX * 16, chunkZ * 16);
 		}
-		
+
 		if(world.provider.dimensionId == Config.vaerynID)
 		{
 			generateVaeryn(world, random, chunkX * 16, chunkZ * 16);
 		}
-		
+
 		if(world.provider.dimensionId == Config.flamonorID)
 		{
 			generateFlamonor(world, random, chunkX * 16, chunkZ * 16);
 		}
-		
+
 		if(world.provider.dimensionId == Config.sanctuatiteID)
 		{
 			generateSanctuatite(world, random, chunkX * 16, chunkZ * 16);
@@ -86,7 +87,7 @@ public class WorldGen implements IWorldGenerator
 				tree.generate(world, rand, i, j, k);
 			}
 		}
-		
+
 		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
@@ -111,7 +112,7 @@ public class WorldGen implements IWorldGenerator
 				tree.generate(world, rand, i, j, k);
 			}
 		}
-		
+
 		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
@@ -136,7 +137,7 @@ public class WorldGen implements IWorldGenerator
 				tree.generate(world, rand, i, j, k);
 			}
 		}
-		
+
 		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
@@ -164,69 +165,72 @@ public class WorldGen implements IWorldGenerator
 		WorldGenCherryBlossomTree tree = new WorldGenCherryBlossomTree(false);
 		WorldGenGiantTree hugeTree = new WorldGenGiantTree(false, 100, 0, 0, 0);
 
-		for (int i = 0; i < 8; i++) 
+		if(world.getWorldInfo().getTerrainType() == WorldType.DEFAULT || world.getWorldInfo().getTerrainType() == WorldType.LARGE_BIOMES || world.getWorldInfo().getTerrainType() == WorldType.AMPLIFIED)
 		{
-			int Xcoord = blockX + rand.nextInt(16);
-			int YcoordSurface1 = rand.nextInt(50);
-			int YcoordSurface2 = rand.nextInt(40);
-			int YcoordSurface3 = rand.nextInt(30);
-			int YcoordSurface4 = rand.nextInt(20);
-			int YcoordSurface5 = rand.nextInt(10);
-			int Zcoord = blockZ + rand.nextInt(16);
-			(new WorldGenMinable(RioVBlocks.onyxOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
-			(new WorldGenMinable(RioVBlocks.garnetOre, 3)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
-			(new WorldGenMinable(RioVBlocks.nironiteOre, 3)).generate(world, rand, Xcoord, YcoordSurface4, Zcoord);
-			(new WorldGenMinable(RioVBlocks.amethystOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
-			(new WorldGenMinable(RioVBlocks.slate, 8)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
-		}
-
-		for(int var5 = 0; var5 < 1; ++var5)
-		{
-			int var6 = blockX + rand.nextInt(16);
-			int var7 = world.getHeightValue(blockX, blockZ);
-			int var8 = blockZ + rand.nextInt(16);
-
-			new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.tomatoPlant).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.grapePlant).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.pepperPlant).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.blueFlower).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.blueBerryBush).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.blackBerryBush).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.raspBerryBush).generate(world, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);
-		}
-
-		if((biome instanceof BiomeGenForest)) 
-		{
-			for(int x = 0; x < 2; x++)
+			for (int i = 0; i < 8; i++) 
 			{
-				int i = blockX + rand.nextInt(16);
-				int k = blockZ + rand.nextInt(16);
-				int j = world.getHeightValue(i, k);
-				tree.generate(world, rand, i, j, k);
+				int Xcoord = blockX + rand.nextInt(16);
+				int YcoordSurface1 = rand.nextInt(50);
+				int YcoordSurface2 = rand.nextInt(40);
+				int YcoordSurface3 = rand.nextInt(30);
+				int YcoordSurface4 = rand.nextInt(20);
+				int YcoordSurface5 = rand.nextInt(10);
+				int Zcoord = blockZ + rand.nextInt(16);
+				(new WorldGenMinable(RioVBlocks.onyxOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
+				(new WorldGenMinable(RioVBlocks.garnetOre, 3)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
+				(new WorldGenMinable(RioVBlocks.nironiteOre, 3)).generate(world, rand, Xcoord, YcoordSurface4, Zcoord);
+				(new WorldGenMinable(RioVBlocks.amethystOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
+				(new WorldGenMinable(RioVBlocks.slate, 8)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
 			}
-		}
 
-		if((biome instanceof BiomeGenPlains)) 
-		{
-			for(int x = 0; x < 2; x++)
+			for(int var5 = 0; var5 < 1; ++var5)
 			{
-				int i = blockX + rand.nextInt(16);
-				int k = blockZ + rand.nextInt(16);
-				int j = world.getHeightValue(i, k);
-				tree.generate(world, rand, i, j, k);
+				int var6 = blockX + rand.nextInt(16);
+				int var7 = world.getHeightValue(blockX, blockZ);
+				int var8 = blockZ + rand.nextInt(16);
+
+				new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.tomatoPlant).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.grapePlant).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.pepperPlant).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.blueFlower).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.blueBerryBush).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.blackBerryBush).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.raspBerryBush).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);
 			}
-		}
-		
-		if((biome instanceof BiomeGenCanopyOasis)) 
-		{
-			for(int x = 0; x < 6; x++)
+
+			if((biome instanceof BiomeGenForest)) 
 			{
-				int i = blockX + rand.nextInt(16);
-				int k = blockZ + rand.nextInt(16);
-				int j = world.getHeightValue(i, k);
-				hugeTree.generate(world, rand, i, j, k);
+				for(int x = 0; x < 2; x++)
+				{
+					int i = blockX + rand.nextInt(16);
+					int k = blockZ + rand.nextInt(16);
+					int j = world.getHeightValue(i, k);
+					tree.generate(world, rand, i, j, k);
+				}
+			}
+
+			if((biome instanceof BiomeGenPlains)) 
+			{
+				for(int x = 0; x < 2; x++)
+				{
+					int i = blockX + rand.nextInt(16);
+					int k = blockZ + rand.nextInt(16);
+					int j = world.getHeightValue(i, k);
+					tree.generate(world, rand, i, j, k);
+				}
+			}
+
+			if((biome instanceof BiomeGenCanopyOasis)) 
+			{
+				for(int x = 0; x < 6; x++)
+				{
+					int i = blockX + rand.nextInt(16);
+					int k = blockZ + rand.nextInt(16);
+					int j = world.getHeightValue(i, k);
+					hugeTree.generate(world, rand, i, j, k);
+				}
 			}
 		}
 	}

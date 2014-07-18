@@ -42,7 +42,9 @@ import sheenrox82.RioV.src.block.BlockVaerynPortal;
 import sheenrox82.RioV.src.block.BlockVoidFlowing;
 import sheenrox82.RioV.src.block.BlockVoidStill;
 import sheenrox82.RioV.src.block.BlockWhiteFire;
+import sheenrox82.RioV.src.block.statue.BlockDemonAngelStatue;
 import sheenrox82.RioV.src.block.statue.BlockTerronStatue;
+import sheenrox82.RioV.src.block.statue.BlockTheDarknessStatue;
 import sheenrox82.RioV.src.item.metadata.ItemBricks;
 import sheenrox82.RioV.src.item.metadata.ItemPlanksColored;
 import sheenrox82.RioV.src.item.metadata.ItemStainedGlass;
@@ -166,9 +168,13 @@ public class RioVBlocks
 	public static Block sanctuatiteTallGrass = new BlockPlantCore().setBlockName("sanctuatiteTallGrass");
 	public static Block bloodTallGrass = new BlockPlantCore().setBlockName("bloodTallGrass");
 	public static Block terronStatue = (new BlockTerronStatue()).setBlockName("terronStatue");
+	public static Block demonAngelStatue = (new BlockDemonAngelStatue()).setBlockName("demonAngelStatue");
+	public static Block theDarknessStatue = (new BlockTheDarknessStatue()).setBlockName("theDarknessStatue");
 
 	public static void add()
 	{	
+		RioVAPIUtil.registerBlock(theDarknessStatue, "The Darkness Statue");
+		RioVAPIUtil.registerBlock(demonAngelStatue, "Demon Angel Statue");
 		RioVAPIUtil.registerBlock(terronStatue, "Terron Statue");
 		RioVAPIUtil.registerBlock(glimmerTallGrass, "Glimmer Tall Grass");
 		RioVAPIUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
