@@ -71,7 +71,7 @@ public class GuiHandler implements IGuiHandler
 				return new ContainerBagSheen(player, player.inventory, new InventoryBagSheen(player.getHeldItem()));
 			}
 		}
-
+		
 		return null;
 	}
 

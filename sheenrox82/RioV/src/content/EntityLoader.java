@@ -32,13 +32,8 @@ import sheenrox82.RioV.src.entity.mob.passive.EntityRabbit;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.passive.EntitySoverianOfficer;
 import sheenrox82.RioV.src.entity.mob.passive.EntityWoodElf;
-import sheenrox82.RioV.src.entity.projectile.EntityAlerisArrow;
-import sheenrox82.RioV.src.entity.projectile.EntityAmethystArrow;
-import sheenrox82.RioV.src.entity.projectile.EntityBlindoniteArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
-import sheenrox82.RioV.src.entity.projectile.EntityDragonArrow;
-import sheenrox82.RioV.src.entity.projectile.EntityOnyxArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 import sheenrox82.RioV.src.util.MethodUtil;
@@ -77,11 +72,6 @@ public class EntityLoader
 		MethodUtil.registerEntity(EntityDarkMatter.class, "Dark Matter");
 		MethodUtil.registerEntity(EntityPaladin.class, "Paladin");
 		MethodUtil.registerEntity(EntityPinkEssence.class, "Pink Essence");
-		MethodUtil.registerEntity(EntityAmethystArrow.class, "Amethyst Arrow");
-		MethodUtil.registerEntity(EntityOnyxArrow.class, "Onyx Arrow");
-		MethodUtil.registerEntity(EntityDragonArrow.class, "Dragon Arrow");
-		MethodUtil.registerEntity(EntityBlindoniteArrow.class, "Blindonite Arrow");
-		MethodUtil.registerEntity(EntityAlerisArrow.class, "Aleris Arrow");
 		MethodUtil.registerEntity(EntityDarknessArrow.class, "Darkness Arrow");
 		MethodUtil.registerEntity(EntityVraviniteArrow.class, "Vravinite Arrow");
 

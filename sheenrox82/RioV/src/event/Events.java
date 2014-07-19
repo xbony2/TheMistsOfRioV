@@ -1,7 +1,6 @@
 package sheenrox82.RioV.src.event;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
@@ -9,6 +8,7 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiDownloadTerrain;
+import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiMultiplayer;
@@ -27,6 +27,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -37,6 +38,7 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.BloodUtil;
 import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.EosUtil;
 import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.PlayerStorage;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
@@ -59,11 +61,11 @@ public class Events
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void clientLoggedIn(EntityJoinWorldEvent e)
+	public void clientLoggedIn(EntityJoinWorldEvent event)
 	{			
-		if (e.entity instanceof EntityPlayer) 
+		if (event.entity instanceof EntityPlayer) 
 		{
-			EntityPlayer p = (EntityPlayer) e.entity;
+			EntityPlayer p = (EntityPlayer) event.entity;
 
 			if (p.worldObj.isRemote) 
 			{
@@ -111,8 +113,10 @@ public class Events
 	@SubscribeEvent
 	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{
-		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
+		if (event.entity instanceof EntityPlayer)
 		{
+			EntityPlayer player = (EntityPlayer)event.entity;
+
 			NBTTagCompound playerData = PlayerStorage.getEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME);
 
 			if (playerData != null) 
@@ -128,10 +132,12 @@ public class Events
 		if (!event.entity.worldObj.isRemote && (event.entity instanceof EntityPlayer || event.entity instanceof EntityPlayerMP))
 		{
 			NBTTagCompound playerData = new NBTTagCompound();
+
 			if(playerData != null)
 			{
 				BloodUtil.setCurrentBlood(100);
 			}
+
 			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).saveNBTData(playerData);
 			PlayerStorage.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
 			PlayerNBT.saveProxyData((EntityPlayer) event.entity);
@@ -187,10 +193,7 @@ public class Events
 	{
 		if(event.entity instanceof EntityPlayer)
 		{
-			if(event.source.equals("mob") || event.source.equals("thorns") || event.source.equals("explosion.player"))
-			{
-				BloodUtil.consumeBlood(3);
-			}
+			BloodUtil.consumeBlood(3);
 		}
 	}
 
@@ -269,7 +272,7 @@ public class Events
 							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
 							bloodColorII = true;
 							bloodColor = false;
-							event.entityLiving.addPotionEffect(new PotionEffect(Potion.harm.getId(), 20, 1));
+							event.entityLiving.addPotionEffect(new PotionEffect(Potion.harm.getId(), 100, 2));
 						}
 						catch(IOException ioexception)
 						{
@@ -280,9 +283,9 @@ public class Events
 
 				if(BloodUtil.getCurrentBlood() <= 35)
 				{
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.poison.getId(), 20, 1));
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.blindness.getId(), 20, 1));
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.hunger.getId(), 20, 1));
+					event.entityLiving.addPotionEffect(new PotionEffect(Potion.poison.getId(), 100, 2));
+					event.entityLiving.addPotionEffect(new PotionEffect(Potion.blindness.getId(), 100, 2));
+					event.entityLiving.addPotionEffect(new PotionEffect(Potion.hunger.getId(), 100, 2));
 				}
 			}
 		}
@@ -301,7 +304,7 @@ public class Events
 			{
 				if(BloodUtil.getCurrentBlood() <= 85)
 				{
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 20, 1));
+					event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 2));
 				}
 
 				if(BloodUtil.getCurrentBlood() <= 30 && BloodUtil.getCurrentBlood() > 0)
@@ -309,18 +312,29 @@ public class Events
 					event.entityLiving.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
 				}
 
-				if(thePlayer.getFoodStats().getFoodLevel() >= 19)
+				if(thePlayer.getFoodStats().getFoodLevel() >= 12)
 				{
 					if(BloodUtil.getCurrentBlood() < PlayerNBT.maxBlood)
 					{
 						++regenTimer;
 
-						if(regenTimer > 100)
+						if(regenTimer > 70)
 						{
 							BloodUtil.consumeBlood(-1);
 							regenTimer = 0;
 						}
 					}
+				}
+			}
+
+			if(EosUtil.getCurrentEos() < PlayerNBT.maxEos)
+			{
+				++regenTimer;
+
+				if(regenTimer > 70)
+				{
+					EosUtil.consumeEos(-1);
+					regenTimer = 0;
 				}
 			}
 		}
@@ -334,8 +348,11 @@ public class Events
 
 		if(event.gui instanceof GuiMainMenu)
 		{
-			WavHandler.setUpSound("BackgroundMusic.wav");
-			WavHandler.playSound(0);
+			if(RioVAPI.getInstance().getUtil().getConfigBool("menuMusic") == true)
+			{
+				WavHandler.setUpSound("BackgroundMusic.wav");
+				WavHandler.playSound(0);
+			}
 
 			Random rand = new Random();
 			int panoRand = rand.nextInt(2);
@@ -363,9 +380,34 @@ public class Events
 			}
 		}
 
-		if(event.gui instanceof GuiOptions || event.gui instanceof GuiLanguage || event.gui instanceof GuiSelectWorld || event.gui instanceof GuiMultiplayer || event.gui instanceof GuiModList || event.gui instanceof GuiDownloadTerrain)
+		if(event.gui == null || event.gui instanceof GuiOptions || event.gui instanceof GuiLanguage || event.gui instanceof GuiSelectWorld || event.gui instanceof GuiMultiplayer || event.gui instanceof GuiModList || event.gui instanceof GuiDownloadTerrain)
 		{
-			WavHandler.stopSound();
+			if(RioVAPI.getInstance().getUtil().getConfigBool("menuMusic") == true)
+			{
+				WavHandler.stopSound();
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void editMessage(ServerChatEvent event)
+	{
+		event.setCanceled(true);
+		PlayerNBT player = PlayerNBT.get(event.player);
+
+		if(player.factionID == player.raetiinID)
+		{
+			event.player.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "[Raetiin] " + event.component.getUnformattedTextForChat()));
+		}
+
+		if(player.factionID == player.jaerinID)
+		{
+			event.player.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "[Jaerin] " + event.component.getUnformattedTextForChat()));
+		}
+
+		if(player.factionID == -1)
+		{
+			event.player.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "[No Faction] " + event.component.getUnformattedTextForChat()));
 		}
 	}
 }

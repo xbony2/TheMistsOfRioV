@@ -165,8 +165,15 @@ public class RioVBlocks
 	public static Block sanctuatiteTallGrass = new BlockPlantCore().setBlockName("sanctuatiteTallGrass");
 	public static Block bloodTallGrass = new BlockPlantCore().setBlockName("bloodTallGrass");
 
+	//v2.3.0
+	// The Flora Update
+	public static Block glimmerBush = new BlockBush().setBlockName("glimmerBush");
+	public static Block glimmerBerryBush = new BlockBush().setBlockName("glimmerBerryBush");
+
 	public static void add()
 	{	
+		RioVAPIUtil.registerBlock(glimmerBush, "Glimmer Bush");
+		RioVAPIUtil.registerBlock(glimmerBerryBush, "Glimmer Berry Bush");
 		RioVAPIUtil.registerBlock(glimmerTallGrass, "Glimmer Tall Grass");
 		RioVAPIUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
 		RioVAPIUtil.registerBlock(bloodTallGrass, "Blood Tall Grass");

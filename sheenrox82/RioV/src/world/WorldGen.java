@@ -88,12 +88,12 @@ public class WorldGen implements IWorldGenerator
 			}
 		}
 
-		for(int var5 = 0; var5 < 1; ++var5)
+		for(int var5 = 0; var5 < 8; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
-			int var7 = world.getHeightValue(blockX, blockZ);
-			int var8 = blockZ + rand.nextInt(16);
-			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var7, var8);
+			int var7 = blockZ + rand.nextInt(16);
+			int var8 = world.getHeightValue(var6, var7);
+			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var8, var7);
 		}
 	}
 
@@ -116,9 +116,9 @@ public class WorldGen implements IWorldGenerator
 		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
-			int var7 = world.getHeightValue(blockX, blockZ);
-			int var8 = blockZ + rand.nextInt(16);
-			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var7, var8);
+			int var7 = blockZ + rand.nextInt(16);
+			int var8 = world.getHeightValue(var6, var7);
+			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var8, var7);
 		}
 	}
 
@@ -141,9 +141,11 @@ public class WorldGen implements IWorldGenerator
 		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
-			int var7 = world.getHeightValue(blockX, blockZ);
-			int var8 = blockZ + rand.nextInt(16);
-			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var7, var8);
+			int var7 = blockZ + rand.nextInt(16);
+			int var8 = world.getHeightValue(var6, var7);
+			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.glimmerBerryBush).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.glimmerBush).generate(world, rand, var6, var8, var7);
 		}
 	}
 
@@ -186,8 +188,8 @@ public class WorldGen implements IWorldGenerator
 			for(int var5 = 0; var5 < 1; ++var5)
 			{
 				int var6 = blockX + rand.nextInt(16);
-				int var7 = world.getHeightValue(blockX, blockZ);
-				int var8 = blockZ + rand.nextInt(16);
+				int var7 = blockZ + rand.nextInt(16);
+				int var8 = world.getHeightValue(var6, var7);
 
 				new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
 				new WorldGenBalance(RioVBlocks.tomatoPlant).generate(world, rand, var6, var7, var8);

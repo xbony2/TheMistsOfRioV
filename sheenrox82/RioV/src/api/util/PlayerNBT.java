@@ -10,9 +10,10 @@ public class PlayerNBT implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "PlayerNBT";
 	public static EntityPlayer player;
-	
-	public static int raetiinID = 0;
-	public static int jaerinID = 1;
+	public static boolean receivedScroll;
+
+	public static int raetiinID;
+	public static int jaerinID;
 
 	//EOS
 	public static final int EOS_WATCHER = 30;
@@ -21,6 +22,10 @@ public class PlayerNBT implements IExtendedEntityProperties
 	//BLOOD
 	public static final int BLOOD_WATCHER = 31;
 	public static int maxBlood = 100;
+
+	//FACTION
+	public static int factionID;
+	public static boolean hasSeenFactionGui;
 
 	public PlayerNBT(EntityPlayer player)
 	{
@@ -43,9 +48,14 @@ public class PlayerNBT implements IExtendedEntityProperties
 		NBTTagCompound properties = new NBTTagCompound();
 		properties.setInteger("CurrentEos", this.player.getDataWatcher().getWatchableObjectInt(EOS_WATCHER));
 		properties.setInteger("MaxEos", this.maxEos);
-		
+
 		properties.setInteger("CurrentBlood", this.player.getDataWatcher().getWatchableObjectInt(BLOOD_WATCHER));
 		properties.setInteger("MaxBlood", this.maxBlood);
+
+		properties.setInteger("FactionID", this.factionID);
+		properties.setBoolean("FactionGui", this.hasSeenFactionGui);
+
+		properties.setBoolean("ScrollItem", this.receivedScroll);
 
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
@@ -56,9 +66,14 @@ public class PlayerNBT implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		this.player.getDataWatcher().updateObject(EOS_WATCHER, properties.getInteger("CurrentEos"));
 		this.maxEos = properties.getInteger("MaxEos");
-		
+
 		this.player.getDataWatcher().updateObject(BLOOD_WATCHER, properties.getInteger("CurrentBlood"));
 		this.maxBlood = properties.getInteger("MaxBlood");
+
+		this.factionID = properties.getInteger("FactionID");
+		this.hasSeenFactionGui = properties.getBoolean("FactionGui");
+
+		this.receivedScroll = properties.getBoolean("ScrollItem");
 	}
 
 	@Override
@@ -66,6 +81,11 @@ public class PlayerNBT implements IExtendedEntityProperties
 	{
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
 		this.player.getDataWatcher().addObject(BLOOD_WATCHER, this.maxBlood);
+		this.factionID = -1;
+		this.hasSeenFactionGui = false;
+		this.raetiinID = 0;
+		this.jaerinID = 1;
+		this.receivedScroll = false;
 	}
 
 	private static String getSaveKey(EntityPlayer player) 

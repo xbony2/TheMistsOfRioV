@@ -27,6 +27,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
 import sheenrox82.RioV.src.world.mineable.WorldGenVaerynMineable;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 

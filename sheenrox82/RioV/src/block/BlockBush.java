@@ -65,19 +65,23 @@ public class BlockBush extends BlockFlower
 
 		return Item.getItemFromBlock(this);
 	}
-	
+
 	@Override
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
+	{
 		return this.blockIcon;
 	}
-	
+
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
 		if(this == RioVBlocks.paleBush)
 		{
 			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "paleLeaf");
+		}
+		else if(this == RioVBlocks.glimmerBush)
+		{
+			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodLeaf");
 		}
 		else
 		{
@@ -128,6 +132,10 @@ public class BlockBush extends BlockFlower
 		{
 			world.setBlock(x, y, z, RioVBlocks.bush, meta, meta);
 		}
+		if(this == RioVBlocks.glimmerBerryBush)
+		{
+			world.setBlock(x, y, z, RioVBlocks.glimmerBush, meta, meta);
+		}
 	}
 
 	@Override
@@ -142,6 +150,10 @@ public class BlockBush extends BlockFlower
 		if(this == RioVBlocks.bloodBerryBush || this == RioVBlocks.paleBush)
 		{
 			return block == RioVBlocks.bloodDirt || block == RioVBlocks.bloodGrass;
+		}
+		if(this == RioVBlocks.glimmerBush || this == RioVBlocks.glimmerBerryBush)
+		{
+			return block == RioVBlocks.glimmerDirt || block == RioVBlocks.glimmerGrass;
 		}
 		else
 		{
