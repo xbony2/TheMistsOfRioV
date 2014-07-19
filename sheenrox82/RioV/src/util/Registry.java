@@ -138,13 +138,17 @@ public class Registry
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
 		{
 			MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiHelmetHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
 			MinecraftForge.EVENT_BUS.register(new GuiBloodBar(Minecraft.getMinecraft()));
 
+			if(RioVAPI.getInstance().getUtil().getConfigBool("toolHud") == true)
+			{
+				MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
+				MinecraftForge.EVENT_BUS.register(new GuiHelmetHud(Minecraft.getMinecraft()));
+				MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
+				MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
+				MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
+			}
+			
 			RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 		}
 
@@ -157,6 +161,7 @@ public class Registry
 	{
 		Config.EOS = Config.config.getBoolean("Use the purple Eos bar instead of text?", Configuration.CATEGORY_GENERAL, Config.EOS, "// Boolean");
 		Config.BLOOD = Config.config.getBoolean("Use the red Blood bar instead of text?", Configuration.CATEGORY_GENERAL, Config.BLOOD, "// Boolean");
+		Config.toolHud = Config.config.getBoolean("Show tool info in corner?", Configuration.CATEGORY_GENERAL, Config.toolHud, "// Boolean");
 		Config.showToolInfo = Config.config.getBoolean("Show Tool Info?", Configuration.CATEGORY_GENERAL, Config.showToolInfo, "// Boolean");
 		Config.allowBreathing = Config.config.getBoolean("Allow Mob Breathing Sounds? (CLIENT SIDE)", Configuration.CATEGORY_GENERAL, Config.allowBreathing, "// Boolean");
 		Config.deadBodies = Config.config.getBoolean("Allow Dead Bodies for mobs?", Configuration.CATEGORY_GENERAL, Config.deadBodies, "// Boolean");

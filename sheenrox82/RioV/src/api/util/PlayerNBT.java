@@ -11,6 +11,9 @@ public class PlayerNBT implements IExtendedEntityProperties
 	public final static String EXT_PROP_NAME = "PlayerNBT";
 	public static EntityPlayer player;
 	
+	public static int raetiinID = 0;
+	public static int jaerinID = 1;
+
 	//EOS
 	public static final int EOS_WATCHER = 30;
 	public static int maxEos = 50;
@@ -18,7 +21,7 @@ public class PlayerNBT implements IExtendedEntityProperties
 	//BLOOD
 	public static final int BLOOD_WATCHER = 31;
 	public static int maxBlood = 100;
-	
+
 	public PlayerNBT(EntityPlayer player)
 	{
 		this.player = player;
@@ -43,7 +46,7 @@ public class PlayerNBT implements IExtendedEntityProperties
 		
 		properties.setInteger("CurrentBlood", this.player.getDataWatcher().getWatchableObjectInt(BLOOD_WATCHER));
 		properties.setInteger("MaxBlood", this.maxBlood);
-		
+
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
 

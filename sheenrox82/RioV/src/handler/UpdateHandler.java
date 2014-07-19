@@ -10,17 +10,25 @@ import sheenrox82.RioV.src.util.Util;
 
 public class UpdateHandler 
 {
-	public static boolean isUpdateAvailable() throws IOException, MalformedURLException 
+	public static boolean isUpdateAvailable()
 	{
-		BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://dl.dropboxusercontent.com/u/126631367/Current%20Version.txt").openStream()));
-		String curVersion = versionFile.readLine();
-		versionFile.close();
-
-		if (!curVersion.equals(Util.VERSION))
+		try
 		{
-			return true;
-		}
+			BufferedReader versionFile = new BufferedReader(new InputStreamReader(new URL("https://dl.dropboxusercontent.com/u/126631367/Current%20Version.txt").openStream()));
+			String curVersion = versionFile.readLine();
+			versionFile.close();
 
+			if (!curVersion.equals(Util.VERSION))
+			{
+				return true;
+			}
+
+		}
+		catch(Exception e)
+		{
+			return false;
+		}
+		
 		return false;
 	}
 }

@@ -7,7 +7,13 @@ import java.util.Date;
 import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.*;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiDownloadTerrain;
+import net.minecraft.client.gui.GuiLanguage;
+import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiMultiplayer;
+import net.minecraft.client.gui.GuiOptions;
+import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -53,7 +59,7 @@ public class Events
 
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-	public void clientLoggedIn(EntityJoinWorldEvent e) throws IOException, MalformedURLException 
+	public void clientLoggedIn(EntityJoinWorldEvent e)
 	{			
 		if (e.entity instanceof EntityPlayer) 
 		{
@@ -181,7 +187,10 @@ public class Events
 	{
 		if(event.entity instanceof EntityPlayer)
 		{
-			BloodUtil.consumeBlood(3);
+			if(event.source.equals("mob") || event.source.equals("thorns") || event.source.equals("explosion.player"))
+			{
+				BloodUtil.consumeBlood(3);
+			}
 		}
 	}
 
@@ -327,7 +336,7 @@ public class Events
 		{
 			WavHandler.setUpSound("BackgroundMusic.wav");
 			WavHandler.playSound(0);
-			
+
 			Random rand = new Random();
 			int panoRand = rand.nextInt(2);
 
@@ -353,7 +362,7 @@ public class Events
 				RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, "", event.gui);
 			}
 		}
-		
+
 		if(event.gui instanceof GuiOptions || event.gui instanceof GuiLanguage || event.gui instanceof GuiSelectWorld || event.gui instanceof GuiMultiplayer || event.gui instanceof GuiModList || event.gui instanceof GuiDownloadTerrain)
 		{
 			WavHandler.stopSound();

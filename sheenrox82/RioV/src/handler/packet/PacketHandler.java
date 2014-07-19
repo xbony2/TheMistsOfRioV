@@ -14,7 +14,7 @@ public class PacketHandler extends AbstractPacket
 	public int mEos;
 	public int blood;
 	public int mBlood;
-	
+
 	public PacketHandler() 
 	{
 		super();
@@ -26,7 +26,7 @@ public class PacketHandler extends AbstractPacket
 		PlayerNBT props = PlayerNBT.get((EntityPlayer)ctx);
 		buffer.writeInt(EosUtil.getCurrentEos());
 		buffer.writeInt(props.maxEos);
-		
+
 		buffer.writeInt(BloodUtil.getCurrentBlood());
 		buffer.writeInt(props.maxBlood);
 	}
@@ -37,7 +37,7 @@ public class PacketHandler extends AbstractPacket
 		PlayerNBT props = PlayerNBT.get((EntityPlayer)ctx);
 		eos = buffer.readInt();
 		mEos = buffer.readInt();
-		
+
 		blood = buffer.readInt();
 		mBlood = buffer.readInt();
 	}
@@ -46,7 +46,7 @@ public class PacketHandler extends AbstractPacket
 	public void handleClientSide(EntityPlayer player) 
 	{
 		PlayerNBT props = PlayerNBT.get(player);
-		
+
 		eos = EosUtil.getCurrentEos();
 		mEos = props.maxEos;
 		blood = BloodUtil.getCurrentBlood();
@@ -56,6 +56,6 @@ public class PacketHandler extends AbstractPacket
 	@Override
 	public void handleServerSide(EntityPlayer player)
 	{
-		
+
 	}
 }
