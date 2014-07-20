@@ -17,6 +17,7 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
@@ -37,8 +38,8 @@ public class EntityAunTun extends EntityBossCore
 	public EntityAunTun(World par1World)
 	{
 		super(par1World);
-		this.setSize(9F, 28F);
-		this.experienceValue = 70;
+		this.setSize(12F, 30);
+		this.experienceValue = 170;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));
@@ -142,7 +143,7 @@ public class EntityAunTun extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(3000.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2600.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(28.0D);
 	}

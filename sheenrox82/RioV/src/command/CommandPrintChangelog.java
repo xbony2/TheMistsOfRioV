@@ -37,7 +37,7 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/printChangelog - Prints changelog for the new update.";
+		return EnumChatFormatting.GOLD + "/printChangelog - Prints changelog for new update.";
 	}
 
 	@Override
@@ -78,5 +78,10 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 	public int compareTo(Object o)
 	{
 		return 0;
+	}
+
+	public int getRequiredPermissionLevel()
+	{
+		return 3;
 	}
 }

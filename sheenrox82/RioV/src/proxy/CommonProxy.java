@@ -32,11 +32,6 @@ public class CommonProxy
 
 	}
 
-	public Minecraft getClient()
-	{
-		return FMLClientHandler.instance().getClient();
-	}
-
 	public ModelBiped getArmorModel(int id)
 	{
 		return null;

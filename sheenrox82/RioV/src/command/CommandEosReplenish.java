@@ -80,6 +80,6 @@ public class CommandEosReplenish extends CommandBase implements ICommand
 
 	public int getRequiredPermissionLevel()
 	{
-		return 2;
+		return 3;
 	}
 }

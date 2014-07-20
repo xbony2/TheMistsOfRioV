@@ -50,10 +50,4 @@ public class MethodUtil
 	{
 		return id++;
 	}	
-
-	public static void registerDimension(int id, Class worldProvider)
-	{
-		DimensionManager.registerProviderType(id, worldProvider, true);
-		DimensionManager.registerDimension(id, id);
-	}
 }

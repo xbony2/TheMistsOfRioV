@@ -56,22 +56,24 @@ public class RioVWand extends Item
 			{
 				if (this.firetick == this.firemax && this.firemax != 0)
 				{
-					if(EosUtil.consumeEos(2))
-					{
-						Vec3 look = entityplayer.getLookVec();
-						EntityLargeFireball fireball2 = new EntityLargeFireball(world, entityplayer, 1, 1, 1);
-						fireball2.setPosition(
-								entityplayer.posX + look.xCoord * 5,
-								entityplayer.posY + look.yCoord * 5,
-								entityplayer.posZ + look.zCoord * 5);
-						fireball2.accelerationX = look.xCoord * 0.1;
-						fireball2.accelerationY = look.yCoord * 0.1;
-						fireball2.accelerationZ = look.zCoord * 0.1;
-						world.spawnEntityInWorld(fireball2);
+					Vec3 look = entityplayer.getLookVec();
+					EntityLargeFireball fireball2 = new EntityLargeFireball(world, entityplayer, 1, 1, 1);
+					fireball2.setPosition(
+							entityplayer.posX + look.xCoord * 5,
+							entityplayer.posY + look.yCoord * 5,
+							entityplayer.posZ + look.zCoord * 5);
+					fireball2.accelerationX = look.xCoord * 0.1;
+					fireball2.accelerationY = look.yCoord * 0.1;
+					fireball2.accelerationZ = look.zCoord * 0.1;
+					world.spawnEntityInWorld(fireball2);
 
-						itemstack.damageItem(1, entityplayer);
-						this.firetick = 0;
+					if(entityplayer.capabilities.isCreativeMode == false)
+					{
+						EosUtil.consumeEos(2);
 					}
+
+					itemstack.damageItem(1, entityplayer);
+					this.firetick = 0;
 				}
 				else
 				{
@@ -102,13 +104,15 @@ public class RioVWand extends Item
 			{
 				if (this.firetick == this.firemax && this.firemax != 0)
 				{
-					if(EosUtil.consumeEos(2))
+					world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
+					
+					if(entityplayer.capabilities.isCreativeMode == false)
 					{
-						world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
-
-						itemstack.damageItem(1, entityplayer);
-						this.firetick = 0;
+						EosUtil.consumeEos(2);
 					}
+					
+					itemstack.damageItem(1, entityplayer);
+					this.firetick = 0;
 				}
 				else
 				{
@@ -129,13 +133,13 @@ public class RioVWand extends Item
 			if(!world.isRemote)
 				entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 		}
-		
+
 		if(EosUtil.getCurrentEos() < 0)
 		{
 			if(!world.isRemote)
 				entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 		}
-		
+
 		return itemstack;
 	}
 

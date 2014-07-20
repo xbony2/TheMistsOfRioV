@@ -45,7 +45,7 @@ public class CommandEosAdd extends CommandBase implements ICommand
 	{
 		EntityPlayer player = (EntityPlayer)icommandsender;
 		PlayerNBT props = PlayerNBT.get(player);
-		
+
 		if(icommandsender instanceof EntityPlayer)
 		{
 			if (astring.length == 0)
@@ -55,7 +55,7 @@ public class CommandEosAdd extends CommandBase implements ICommand
 
 			int amount = Integer.parseInt(astring[0]);
 			int missingAmount = props.maxEos - EosUtil.getCurrentEos();
-			
+
 			if(amount > missingAmount)
 			{
 				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.RED, "The number you entered is higher than the current missing Eos amount."));
@@ -92,9 +92,9 @@ public class CommandEosAdd extends CommandBase implements ICommand
 	{
 		return 0;
 	}
-	
+
 	public int getRequiredPermissionLevel()
 	{
-		return 2;
+		return 3;
 	}
 }

@@ -78,7 +78,7 @@ public class CommandEosRemove extends CommandBase implements ICommand
 
 	public int getRequiredPermissionLevel()
 	{
-		return 2;
+		return 3;
 	}
 
 	@Override
@@ -97,10 +97,5 @@ public class CommandEosRemove extends CommandBase implements ICommand
 	public int compareTo(Object o)
 	{
 		return 0;
-	}
-
-	protected String[] getListOfPlayerUsernames()
-	{
-		return MinecraftServer.getServer().getAllUsernames();
 	}
 }

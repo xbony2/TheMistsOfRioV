@@ -8,6 +8,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
@@ -57,7 +58,6 @@ public class Registry
 	public static void preInit(FMLPreInitializationEvent initEvent)
 	{		
 		RioVAPI.getInstance().modLoaded = false;
-		/**Inits and Regs**/
 		RioVAPI.getInstance().getLogger().info("Starting... //START PRE-INITIALIZATION");
 		RioVAPI.getInstance().getLogger().info("Sounds loaded.");
 		FMLCommonHandler.instance().bus().register(new ConfigChanges());
@@ -98,10 +98,10 @@ public class Registry
 		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
-		MethodUtil.registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
-		MethodUtil.registerDimension(Config.vaerynID, WorldProviderVaeryn.class);
-		MethodUtil.registerDimension(Config.flamonorID, WorldProviderFlamonor.class);
-		MethodUtil.registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
+		RioVAPIUtil.registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
+		RioVAPIUtil.registerDimension(Config.vaerynID, WorldProviderVaeryn.class);
+		RioVAPIUtil.registerDimension(Config.flamonorID, WorldProviderFlamonor.class);
+		RioVAPIUtil.registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
 		RioVAPI.getInstance().getLogger().info("Core data registered. //END PRE-INITIALIZATION");
 	}
 

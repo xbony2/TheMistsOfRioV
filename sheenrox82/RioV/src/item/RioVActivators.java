@@ -75,7 +75,11 @@ public class RioVActivators extends Item
 					{
 						world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 						world.setBlock(par4, par5, par6, RioVBlocks.blackFire);
-						EosUtil.consumeEos(7);
+
+						if(entityplayer.capabilities.isCreativeMode == false)
+						{
+							EosUtil.consumeEos(7);
+						}
 					}
 
 					itemstack.damageItem(1, entityplayer);
@@ -135,18 +139,19 @@ public class RioVActivators extends Item
 			{
 				if(EosUtil.getCurrentEos() > 10)
 				{
-					if(EosUtil.consumeEos(10))
+					if (world.isAirBlock(par4, par5, par6))
 					{
-						if (world.isAirBlock(par4, par5, par6))
+						world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+						world.setBlock(par4, par5, par6, RioVBlocks.whiteFire);
+
+						if(entityplayer.capabilities.isCreativeMode == false)
 						{
-							world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-							world.setBlock(par4, par5, par6, RioVBlocks.whiteFire);
 							EosUtil.consumeEos(10);
 						}
-
-						itemstack.damageItem(1, entityplayer);
-						return true;
 					}
+
+					itemstack.damageItem(1, entityplayer);
+					return true;
 				}
 				else
 				{
@@ -206,7 +211,11 @@ public class RioVActivators extends Item
 					{
 						world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 						world.setBlock(par4, par5, par6, RioVBlocks.redFire);
-						EosUtil.consumeEos(15);
+
+						if(entityplayer.capabilities.isCreativeMode == false)
+						{
+							EosUtil.consumeEos(15);
+						}
 					}
 
 					itemstack.damageItem(1, entityplayer);
@@ -271,7 +280,11 @@ public class RioVActivators extends Item
 					{
 						world.playSoundEffect((double)par4 + 0.5D, (double)par5 + 0.5D, (double)par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
 						world.setBlock(par4, par5, par6, RioVBlocks.sanctuatiteFire);
-						EosUtil.consumeEos(20);
+
+						if(entityplayer.capabilities.isCreativeMode == false)
+						{
+							EosUtil.consumeEos(20);
+						}
 					}
 
 					itemstack.damageItem(1, entityplayer);

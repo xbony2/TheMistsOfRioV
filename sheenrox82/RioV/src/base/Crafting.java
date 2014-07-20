@@ -145,12 +145,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVItems.sheenBag, 1), "XXX", "XOX", "XXX", Character.valueOf('X'), Items.leather, Character.valueOf('O'), RioVItems.largeBag);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.auntunSummoner, 1), "XTX", "TOT", "XTX", Character.valueOf('O'), RioVItems.onyx, Character.valueOf('X'), RioVItems.darkMatter, Character.valueOf('T'), RioVBlocks.skycloud);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.chocolateCake, 1), "XXX", "XOX", "XXX", Character.valueOf('O'), Items.cake, Character.valueOf('X'), new ItemStack(Items.dye, 1, 4));
-		/**GameRegistry.addRecipe(new ItemStack(RioVItems.amethystArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.amethyst, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.onyxArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.onyx, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.dragonArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.dragonSoul, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.blindoniteArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.blindonite, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.alerisArrow, 5), "  *", " D ", "X  ", Character.valueOf('*'), RioVItems.aleris, Character.valueOf('D'), RioVItems.blackBone, Character.valueOf('X'), Items.feather);**/
-		
 		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe, 5), "***", " I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_axe, 5), "** ", "*I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel, 5), " * ", " I ", " I ", Character.valueOf('*'), Blocks.stone, Character.valueOf('I'), Items.stick);
@@ -256,13 +250,7 @@ public class Crafting
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.aleris});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.aleris});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.aleris});
-	/**	this.addRecipe(new ItemStack(RioVItems.amethystBow, 1), bow, Character.valueOf('I'), RioVItems.amethyst, Character.valueOf('*'), Items.string);
-		this.addRecipe(new ItemStack(RioVItems.onyxBow, 1), bow, Character.valueOf('I'), RioVItems.onyx, Character.valueOf('*'), Items.string);
-		this.addRecipe(new ItemStack(RioVItems.dragonBow, 1), bow, Character.valueOf('I'), RioVItems.dragonSoul, Character.valueOf('*'), Items.string);
-		this.addRecipe(new ItemStack(RioVItems.blindoniteBow, 1), bow, Character.valueOf('I'), RioVItems.blindonite, Character.valueOf('*'), Items.string);
-		this.addRecipe(new ItemStack(RioVItems.alerisBow, 1), bow, Character.valueOf('I'), RioVItems.aleris, Character.valueOf('*'), Items.string);
-		**/
-		
+
 		//INFUSER CRAFTING
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystSword, new ItemStack(RioVItems.infusedAmethystSword, 1));
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxSword, new ItemStack(RioVItems.infusedOnyxSword, 1));

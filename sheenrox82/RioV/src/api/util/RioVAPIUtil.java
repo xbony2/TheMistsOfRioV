@@ -3,7 +3,6 @@ package sheenrox82.RioV.src.api.util;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import sheenrox82.RioV.src.api.base.RioVAPI;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.DimensionManager;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -56,6 +56,12 @@ public class RioVAPIUtil
 		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(EnumChatFormatting.GOLD, message + player.getDisplayName()));
 	}
 
+	public static void registerDimension(int id, Class worldProvider)
+	{
+		DimensionManager.registerProviderType(id, worldProvider, true);
+		DimensionManager.registerDimension(id, id);
+	}
+	
 	/**
 	 * Get a RioV Item using a string.
 	 * 

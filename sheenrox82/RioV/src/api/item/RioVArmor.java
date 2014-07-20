@@ -22,7 +22,7 @@ public class RioVArmor extends ItemArmor
 	public String armorNamePrefix;
 	public ArmorMaterial material;
 	public boolean isInfused;
-	
+
 	public RioVArmor(ArmorMaterial par2EnumArmorMaterial, int par3, int par4, String armornamePrefix, boolean par5)
 	{
 		super(par2EnumArmorMaterial, par3, par4);
@@ -129,7 +129,7 @@ public class RioVArmor extends ItemArmor
 	public void registerIcons(IIconRegister par1IconRegister)
 	{		
 		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
-		
+
 		if (RioVAPI.getInstance().botania)
 		{
 			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelHelm"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelHelm");

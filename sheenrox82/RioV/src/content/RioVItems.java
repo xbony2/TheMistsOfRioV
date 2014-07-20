@@ -41,7 +41,7 @@ public class RioVItems
 	static ToolMaterial Daetori = EnumHelper.addToolMaterial("Daetori", 2, 500, 5F, 9, 12);
 	static ToolMaterial Sorrow = EnumHelper.addToolMaterial("Sorrow", 2, 700, 5F, 10, 13);
 	static ToolMaterial AxeOfAunTun = EnumHelper.addToolMaterial("AxeOfAunTun", 2, 2500, 5F, 18, 16);
-	static ToolMaterial UltraAxeOfAunTun = EnumHelper.addToolMaterial("UltraAxeOfAunTun", 2, 5000, 5F, 26, 30);
+	static ToolMaterial UltraAxeOfAunTun = EnumHelper.addToolMaterial("UltraAxeOfAunTun", 2, -1, 5F, 26, 30);
 	static ToolMaterial Vulron = EnumHelper.addToolMaterial("Vulron", 6, 200, 9F, 6, 12);
 	static ToolMaterial InfusedDragon = EnumHelper.addToolMaterial("InfusedDragon", 11, 3400, 18F, 11, 16);
 	static ToolMaterial Galokin = EnumHelper.addToolMaterial("Galokin", 4, 400, 6F, 6, 12);
