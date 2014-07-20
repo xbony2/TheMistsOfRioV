@@ -17,27 +17,27 @@ import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.util.MethodUtil;
 
-public class CommandRageQuit extends CommandBase implements ICommand
+public class CommandPrintChangelog extends CommandBase implements ICommand
 {
 	private List aliases;
-	public CommandRageQuit()
+	public CommandPrintChangelog()
 	{
 		this.aliases = new ArrayList();
-		this.aliases.add("rageQuit");
-		this.aliases.add("ragequit");
-		this.aliases.add("rq");
+		this.aliases.add("printChangelog");
+		this.aliases.add("printchangelog");
+		this.aliases.add("pc");
 	}
 
 	@Override
 	public String getCommandName()
 	{
-		return "rageQuit";
+		return "printChangelog";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/rageQuit - Kicks you from the server.";
+		return EnumChatFormatting.GOLD + "/printChangelog - Prints changelog for the new update.";
 	}
 
 	@Override
@@ -48,16 +48,10 @@ public class CommandRageQuit extends CommandBase implements ICommand
 
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
-	{
-		EntityPlayer player = (EntityPlayer)icommandsender;
-        EntityPlayerMP entityplayermp = MinecraftServer.getServer().getConfigurationManager().func_152612_a(icommandsender.getCommandSenderName());
-        String s = "You rage quit!";
-        
+	{        
 		if(icommandsender instanceof EntityPlayer)
 		{
-            ((EntityPlayer)icommandsender).attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
-            entityplayermp.playerNetServerHandler.kickPlayerFromServer(s);
-            RioVAPIUtil.sendMessageToAll(player.getDisplayName() + " rage quit!");
+			ModUpdateChecker.printChangelog("https://dl.dropboxusercontent.com/u/126631367/IngameChangelog.txt");
 		}
 	}
 

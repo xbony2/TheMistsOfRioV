@@ -8,7 +8,6 @@ import java.util.Random;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiDownloadTerrain;
-import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiMultiplayer;
@@ -35,6 +34,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.BloodUtil;
 import sheenrox82.RioV.src.api.util.Color;
@@ -45,7 +45,6 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.handler.UpdateHandler;
 import sheenrox82.RioV.src.handler.WavHandler;
 import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.util.Util;
@@ -69,16 +68,16 @@ public class Events
 
 			if (p.worldObj.isRemote) 
 			{
-				if (UpdateHandler.isUpdateAvailable()) 
+				if (ModUpdateChecker.isUpdateAvailable()) 
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! A new version is available! Check http://tinyurl.com/riovmod. - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + EnumChatFormatting.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + EnumChatFormatting.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
 						hasSeen = true;
 					}
 				}
 
-				if (!UpdateHandler.isUpdateAvailable()) 
+				if (!ModUpdateChecker.isUpdateAvailable()) 
 				{
 					if(!hasSeen)
 					{
