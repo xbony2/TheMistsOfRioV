@@ -116,14 +116,14 @@ public class EntityLoader
 		BiomeGenBase[] beach = BiomeDictionary.getBiomesForType(Type.BEACH);
 		BiomeGenBase[] wasteland = BiomeDictionary.getBiomesForType(Type.WASTELAND);
 
-		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 50, 4, 9);
-		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 40, 3, 5);
-		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 60, 5, 12);
-		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 38, 4, 8);
-		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 29, 5, 7);
+		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 30, 4, 9);
+		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 30, 3, 5);
+		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 30, 5, 12);
+		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 30, 4, 8);
+		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 30, 5, 7);
 		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 30, 3, 7);
-		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 25, 2, 5);
-		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 25, 2, 4);
+		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 30, 2, 5);
+		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 30, 2, 4);
 
 		for(int i = 0; i < plains.length; i++)
 		{
@@ -302,8 +302,8 @@ public class EntityLoader
 	{
 		BiomeGenBase[] end = BiomeDictionary.getBiomesForType(Type.END);
 
-		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 50, 3, 5);
-		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 55, 3, 5);
+		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 30, 3, 5);
+		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 30, 3, 5);
 
 		for(int i = 0; i < end.length; i++)
 		{

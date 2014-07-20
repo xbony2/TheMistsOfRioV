@@ -1,15 +1,19 @@
 package sheenrox82.RioV.src.block;
 
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
@@ -27,7 +31,7 @@ public class BlockBush extends BlockFlower
 	public BlockBush()
 	{
 		super(0);
-		this.setCreativeTab(null);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setStepSound(Block.soundTypeGrass);
 		this.setHardness(0.3F);
 		float f = 0.375F;
@@ -62,8 +66,34 @@ public class BlockBush extends BlockFlower
 		{
 			return RioVItems.strawberry;
 		}
+		
+		if(this == RioVBlocks.fakeBloodBerryBush)
+		{
+			return RioVItems.fakeBloodberry;
+		}
+		
+		if(this == RioVBlocks.glimmerBerryBush)
+		{
+			return RioVItems.glimmerBerry;
+		}
+		
+		if(this == RioVBlocks.sanctuatiteBerryBush)
+		{
+			return RioVItems.sanctuatiteBerry;
+		}
+		
+		if(this == RioVBlocks.fireBerryBush)
+		{
+			return RioVItems.fireBerry;
+		}
 
-		return Item.getItemFromBlock(this);
+		return Item.getItemFromBlock(null);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
+	{
+		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
 	}
 
 	@Override
@@ -78,6 +108,10 @@ public class BlockBush extends BlockFlower
 		if(this == RioVBlocks.paleBush)
 		{
 			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "paleLeaf");
+		}
+		else if(this == RioVBlocks.fakeBloodBerryBush)
+		{
+			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "bloodBerryBush");
 		}
 		else if(this == RioVBlocks.glimmerBush)
 		{
@@ -112,7 +146,7 @@ public class BlockBush extends BlockFlower
 		{
 			world.setBlockToAir(x, y, z);
 		}
-		if(this == RioVBlocks.bloodBerryBush)
+		if(this == RioVBlocks.bloodBerryBush || this == RioVBlocks.fakeBloodBerryBush)
 		{
 			world.setBlock(x, y, z, RioVBlocks.paleBush, meta, meta);
 		}
@@ -136,6 +170,14 @@ public class BlockBush extends BlockFlower
 		{
 			world.setBlock(x, y, z, RioVBlocks.glimmerBush, meta, meta);
 		}
+		if(this == RioVBlocks.sanctuatiteBerryBush)
+		{
+			world.setBlock(x, y, z, RioVBlocks.sanctuatiteBush, meta, meta);
+		}
+		if(this == RioVBlocks.fireBerryBush)
+		{
+			world.setBlock(x, y, z, RioVBlocks.fireBush, meta, meta);
+		}
 	}
 
 	@Override
@@ -147,13 +189,21 @@ public class BlockBush extends BlockFlower
 	@Override
 	protected boolean canPlaceBlockOn(Block block)
 	{
-		if(this == RioVBlocks.bloodBerryBush || this == RioVBlocks.paleBush)
+		if(this == RioVBlocks.bloodBerryBush || this == RioVBlocks.paleBush || this == RioVBlocks.fakeBloodBerryBush)
 		{
 			return block == RioVBlocks.bloodDirt || block == RioVBlocks.bloodGrass;
 		}
 		if(this == RioVBlocks.glimmerBush || this == RioVBlocks.glimmerBerryBush)
 		{
 			return block == RioVBlocks.glimmerDirt || block == RioVBlocks.glimmerGrass;
+		}
+		if(this == RioVBlocks.sanctuatiteBush || this == RioVBlocks.sanctuatiteBerryBush)
+		{
+			return block == RioVBlocks.sanctuatiteDirt || block == RioVBlocks.sanctuatiteGrass;
+		}
+		if(this == RioVBlocks.fireBush || this == RioVBlocks.fireBerryBush)
+		{
+			return block == Blocks.netherrack;
 		}
 		else
 		{

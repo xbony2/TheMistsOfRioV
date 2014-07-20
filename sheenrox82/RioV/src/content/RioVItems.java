@@ -308,10 +308,24 @@ public class RioVItems
 	public static Item eosPotion = (new RioVDrinkable(0, 0, true)).setAlwaysEdible().setUnlocalizedName("eosPotion");
 
 	//v2.3.0
-	// The Flora Update
+	//The Flora Update
+	public static Item fakeBloodberry = (new RioVConsumable(-5, 0, false)).setUnlocalizedName("fakeBloodberry");
+	public static Item glimmerBerry = (new RioVConsumable(2, 1, false)).setUnlocalizedName("glimmerBerry");
+	public static Item elderBerry = (new RioVConsumable(5, 2, false)).setUnlocalizedName("elderBerry");
+	public static Item enderBerry = (new RioVConsumable(3, 1, false)).setUnlocalizedName("enderBerry");
+	public static Item cloudBerry = (new RioVConsumable(4, 3, false)).setUnlocalizedName("cloudBerry");
+	public static Item fireBerry = (new RioVConsumable(2, 2, false)).setUnlocalizedName("fireBerry");
+	public static Item sanctuatiteBerry = (new RioVConsumable(7, 5, false)).setUnlocalizedName("sanctuatiteBerry");
 	
 	public static void add()
 	{		
+		RioVAPIUtil.registerItem(glimmerBerry, "Glimmerberry");
+		RioVAPIUtil.registerItem(elderBerry, "Elderberry");
+		RioVAPIUtil.registerItem(enderBerry, "Enderberry");
+		RioVAPIUtil.registerItem(cloudBerry, "Cloudberry");
+		RioVAPIUtil.registerItem(fireBerry, "Fireberry");
+		RioVAPIUtil.registerItem(sanctuatiteBerry, "Sanctuatite Berry");
+		RioVAPIUtil.registerItem(fakeBloodberry, "Fake Bloodberry");
 		RioVAPIUtil.registerItem(eosPotion, "Eos Potion");
 		RioVAPIUtil.registerItem(graviWand, "Gravi Wand");
 		RioVAPIUtil.registerItem(paladinHelmet, "Paladin Helmet");

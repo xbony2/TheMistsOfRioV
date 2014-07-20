@@ -54,7 +54,7 @@ public class RioVConsumable extends ItemFood
 			this.onFoodEaten(itemStack, world, entityPlayer);
 			return itemStack;
 		}
-		
+
 		if(itemStack.getItem().equals(RioVItems.bloodBerry))
 		{
 			--itemStack.stackSize;
@@ -63,6 +63,17 @@ public class RioVConsumable extends ItemFood
 				BloodUtil.consumeBlood(-4);
 			}
 			entityPlayer.getFoodStats().func_151686_a(this, itemStack);
+			world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+			this.onFoodEaten(itemStack, world, entityPlayer);
+			return itemStack;
+		}
+
+		if(itemStack.getItem().equals(RioVItems.fakeBloodberry))
+		{
+			--itemStack.stackSize;
+			BloodUtil.consumeBlood(2);
+			entityPlayer.getFoodStats().func_151686_a(this, itemStack);
+			entityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, 50, 2));
 			world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 			this.onFoodEaten(itemStack, world, entityPlayer);
 			return itemStack;
@@ -99,6 +110,13 @@ public class RioVConsumable extends ItemFood
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		if(this == RioVItems.fakeBloodberry)
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "bloodBerry");
+		}
+		else
+		{
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		}
 	}
 }

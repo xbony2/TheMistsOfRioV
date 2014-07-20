@@ -1,5 +1,9 @@
 package sheenrox82.RioV.src.api.util;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
@@ -61,7 +65,7 @@ public class RioVAPIUtil
 		DimensionManager.registerProviderType(id, worldProvider, true);
 		DimensionManager.registerDimension(id, id);
 	}
-	
+
 	/**
 	 * Get a RioV Item using a string.
 	 * 
@@ -224,12 +228,12 @@ public class RioVAPIUtil
 			if(field != null)
 			{
 				field.setAccessible(true);
-				
+
 				Field modField = Field.class.getDeclaredField("modifiers");
-				
+
 				modField.setAccessible(true);
 				modField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-				
+
 				field.set(instance, value);
 			}
 		}
@@ -238,7 +242,7 @@ public class RioVAPIUtil
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String getUtilString(String utilString)
 	{
 		try
@@ -249,7 +253,7 @@ public class RioVAPIUtil
 		}
 		catch(Exception e)
 		{
-	
+
 			return "";
 		}
 	}

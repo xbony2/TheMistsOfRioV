@@ -94,6 +94,9 @@ public class WorldGen implements IWorldGenerator
 			int var7 = blockZ + rand.nextInt(16);
 			int var8 = world.getHeightValue(var6, var7);
 			new WorldGenBalance(RioVBlocks.sanctuatiteTallGrass).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.sanctuatiteBerryBush).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.sanctuatiteBush).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.cloudBerryPlant).generate(world, rand, var6, var8, var7);
 		}
 	}
 
@@ -113,12 +116,13 @@ public class WorldGen implements IWorldGenerator
 			}
 		}
 
-		for(int var5 = 0; var5 < 1; ++var5)
+		for(int var5 = 0; var5 < 8; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = blockZ + rand.nextInt(16);
 			int var8 = world.getHeightValue(var6, var7);
 			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.fakeBloodBerryBush).generate(world, rand, var6, var8, var7);
 		}
 	}
 
@@ -146,6 +150,7 @@ public class WorldGen implements IWorldGenerator
 			new WorldGenBalance(RioVBlocks.glimmerTallGrass).generate(world, rand, var6, var8, var7);
 			new WorldGenBalance(RioVBlocks.glimmerBerryBush).generate(world, rand, var6, var8, var7);
 			new WorldGenBalance(RioVBlocks.glimmerBush).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.elderBerryPlant).generate(world, rand, var6, var8, var7);
 		}
 	}
 
@@ -157,6 +162,14 @@ public class WorldGen implements IWorldGenerator
 			int YcoordEnd = rand.nextInt(56);
 			int Zcoord = blockZ + rand.nextInt(16);
 			(new WorldGenEndMineable(RioVBlocks.dragonOre, 3)).generate(world, rand, Xcoord, YcoordEnd, Zcoord);
+		}
+		
+		for(int var5 = 0; var5 < 1; ++var5)
+		{
+			int var6 = blockX + rand.nextInt(16);
+			int var7 = blockZ + rand.nextInt(16);
+			int var8 = world.getHeightValue(var6, var7);
+			new WorldGenBalance(RioVBlocks.enderBerryPlant).generate(world, rand, var6, var8, var7);
 		}
 	}
 
@@ -250,5 +263,14 @@ public class WorldGen implements IWorldGenerator
 			(new WorldGenNetherMineable(RioVBlocks.netherCrystal, 9)).generate(world, rand, Xcoord, YcoordNether1, Zcoord);
 			(new WorldGenNetherMineable(RioVBlocks.bloodRock, 20)).generate(world, rand, Xcoord, YcoordNether2, Zcoord);
 		}	
+		
+		for(int var5 = 0; var5 < 1; ++var5)
+		{
+			int var6 = blockX + rand.nextInt(16) + 8;
+			int var7 = blockZ + rand.nextInt(16) + 8;
+			int var8 = rand.nextInt(128);
+			new WorldGenBalance(RioVBlocks.fireBush).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.fireBerryBush).generate(world, rand, var6, var8, var7);
+		}
 	}
 }

@@ -1,5 +1,12 @@
 itemGroup.RioV=The Mists of RioV
 
+item.fakeBloodberry.name=Blood Berry
+item.glimmerBerry.name=Glimmerberry
+item.elderBerry.name=Elderberry
+item.enderBerry.name=Enderberry
+item.cloudBerry.name=Cloudberry
+item.fireBerry.name=Fireberry
+item.sanctuatiteBerry.name=Sanctuatite Berry
 item.amethystBow.name=Amethyst Bow
 item.onyxBow.name=Onyx Bow
 item.dragonBow.name=Dragon Bow
@@ -388,8 +395,16 @@ tile.bloodLadder.name=Blood Ladder
 tile.glimmerwoodLadder.name=Glimmerwood Ladder
 tile.cherryBlossomLadder.name=Cherry Blossom Ladder
 tile.skywoodLadder.name=Skywood Ladder
-
-
+tile.fakeBloodBerryBush.name=Bloodberry Bush
+tile.glimmerBush.name=Glimmer Bush
+tile.glimmerBerryBush.name=Glimmerberry Bush
+tile.elderBerryPlant.name=Elderberry Plant
+tile.sanctuatiteBush.name=Sanctuatite Bush
+tile.sanctuatiteBerryBush.name=Sanctuatite Berry Bush
+tile.cloudBerryPlant.name=Cloudberry Plant
+tile.enderBerryPlant.name=Enderberry Plant
+tile.fireBush.name=Fire Bush
+tile.fireBerryBush.name=Fireberry Bush
 
 # For RioV Expansion: Natura
 item.Natura:bloodwood_pickaxe.name=Inused Bloodwood Pickaxe

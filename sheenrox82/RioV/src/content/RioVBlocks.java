@@ -166,12 +166,32 @@ public class RioVBlocks
 	public static Block bloodTallGrass = new BlockPlantCore().setBlockName("bloodTallGrass");
 
 	//v2.3.0
-	// The Flora Update
+	//The Flora Update
+	public static Block fakeBloodBerryBush = new BlockBush().setBlockName("fakeBloodBerryBush");
+
 	public static Block glimmerBush = new BlockBush().setBlockName("glimmerBush");
 	public static Block glimmerBerryBush = new BlockBush().setBlockName("glimmerBerryBush");
+	public static Block elderBerryPlant = new BlockPlantCore().setBlockName("elderBerryPlant");
+
+	public static Block sanctuatiteBush = new BlockBush().setBlockName("sanctuatiteBush");
+	public static Block sanctuatiteBerryBush = new BlockBush().setBlockName("sanctuatiteBerryBush");
+	public static Block cloudBerryPlant = new BlockPlantCore().setBlockName("cloudBerryPlant");
+
+	public static Block enderBerryPlant = new BlockPlantCore().setBlockName("enderBerryPlant");
+	
+	public static Block fireBush = new BlockBush().setBlockName("fireBush");
+	public static Block fireBerryBush = new BlockBush().setBlockName("fireBerryBush");
 
 	public static void add()
 	{	
+		RioVAPIUtil.registerBlock(fireBerryBush, "Fireberry Bush");
+		RioVAPIUtil.registerBlock(fireBush, "Fire Bush");
+		RioVAPIUtil.registerBlock(enderBerryPlant, "Enderberry Plant");
+		RioVAPIUtil.registerBlock(fakeBloodBerryBush, "Fake Bloodberry Bush");
+		RioVAPIUtil.registerBlock(cloudBerryPlant, "Cloudberry Plant");
+		RioVAPIUtil.registerBlock(sanctuatiteBush, "Sanctuatite Bush");
+		RioVAPIUtil.registerBlock(sanctuatiteBerryBush, "Sanctuatite Berry Bush");
+		RioVAPIUtil.registerBlock(elderBerryPlant, "Elderberry Plant");
 		RioVAPIUtil.registerBlock(glimmerBush, "Glimmer Bush");
 		RioVAPIUtil.registerBlock(glimmerBerryBush, "Glimmer Berry Bush");
 		RioVAPIUtil.registerBlock(glimmerTallGrass, "Glimmer Tall Grass");

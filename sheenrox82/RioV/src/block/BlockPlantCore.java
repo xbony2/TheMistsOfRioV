@@ -11,6 +11,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
@@ -24,7 +25,7 @@ public class BlockPlantCore extends BlockFlower
 	{
 		super(0);
 		this.setStepSound(Block.soundTypeGrass);
-		this.setCreativeTab(null);
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	@Override
@@ -50,8 +51,20 @@ public class BlockPlantCore extends BlockFlower
 		{
 			return RioVItems.heart;
 		}
+		if(this == RioVBlocks.elderBerryPlant)
+		{
+			return RioVItems.elderBerry;
+		}
+		if(this == RioVBlocks.cloudBerryPlant)
+		{
+			return RioVItems.cloudBerry;
+		}
+		if(this == RioVBlocks.enderBerryPlant)
+		{
+			return RioVItems.enderBerry;
+		}
 
-		return Item.getItemFromBlock(Blocks.air);
+		return Item.getItemFromBlock(null);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -82,14 +95,19 @@ public class BlockPlantCore extends BlockFlower
 			return par1 == RioVBlocks.bloodGrass;
 		}
 
-		if(this == RioVBlocks.glimmerTallGrass)
+		if(this == RioVBlocks.glimmerTallGrass || this == RioVBlocks.elderBerryPlant)
 		{
 			return par1 == RioVBlocks.glimmerGrass;
 		}
 
-		if(this == RioVBlocks.sanctuatiteTallGrass)
+		if(this == RioVBlocks.sanctuatiteTallGrass || this == RioVBlocks.cloudBerryPlant)
 		{
 			return par1 == RioVBlocks.sanctuatiteGrass;
+		}
+		
+		if(this == RioVBlocks.enderBerryPlant)
+		{
+			return par1 == Blocks.end_stone;
 		}
 
 		return par1 == Blocks.grass || par1 == Blocks.dirt || par1 == Blocks.farmland;
