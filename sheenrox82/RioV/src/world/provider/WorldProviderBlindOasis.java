@@ -101,8 +101,6 @@ public class WorldProviderBlindOasis extends WorldProvider
             	this.lightBrightnessTable[i] = 0.5F * scaledBrightness / (f1 * 3.0F + 1.0F) * (1.0F - f) + f;
             else
             	this.lightBrightnessTable[i] = scaledBrightness / (f1 * 3.0F + 1.0F) * (1.0F - f) + f;
-            	
-            
         }
     }
     

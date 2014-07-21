@@ -27,6 +27,7 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.world.mineable.WorldGenFlamonorMineable;
 import sheenrox82.RioV.src.world.mineable.WorldGenSanctuatiteMineable;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
@@ -388,39 +389,16 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 		int var16;
 		int d, y;
 
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(par1IChunkProvider, worldObj, rand, par2, par3, false));
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Pre(worldObj, rand, k, l));
-
-		this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, par2, par3);
-
 		for(int x =0; x < 8; x++)
 		{
 			var14 = k + this.rand.nextInt(16);
 			var15 = this.rand.nextInt(128);
 			var16 = l + this.rand.nextInt(16);
-			(new WorldGenSanctuatiteMineable(RioVBlocks.alerisOre, 1)).generate(this.worldObj, this.rand, var14, var15, var16);
+			(new WorldGenFlamonorMineable(RioVBlocks.alerisOre, 5)).generate(this.worldObj, this.rand, var14, var15, var16);
 		}
-
-		byte var22 = 4;
-		byte var21 = 3;
-		int var17;
-		WorldGenerator var18;
-
-		for (int var0 = 0; var0 < var22; ++var0)
-		{
-			int Xcoord = k + rand.nextInt(16);
-			int Zcoord = l + rand.nextInt(16) + 8;
-			var18 = biomegenbase.getRandomWorldGenForGrass(this.rand);
-			var18.setScale(1.0D, 1.0D, 1.0D);
-			var18.generate(this.worldObj, this.rand, Xcoord, this.worldObj.getHeightValue(Xcoord, Zcoord), Zcoord);
-		}
-
+		
 		biomegenbase.decorate(this.worldObj, this.rand, k, l);
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
-
-		MinecraftForge.EVENT_BUS.post(new DecorateBiomeEvent.Post(worldObj, rand, k, l));
-		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(par1IChunkProvider, worldObj, rand, par2, par3, false));
-
 
 		BlockSand.fallInstantly = false;
 	}

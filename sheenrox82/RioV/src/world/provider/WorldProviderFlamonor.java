@@ -29,12 +29,6 @@ public class WorldProviderFlamonor extends WorldProvider
 	}
 
 	@SideOnly(Side.CLIENT)
-	public float getCloudHeight()
-	{
-		return 128.0F;
-	}
-
-	@SideOnly(Side.CLIENT)
 	public String getWelcomeMessage()
 	{
 		return "Entering Flamonor";

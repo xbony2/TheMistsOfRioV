@@ -55,7 +55,7 @@ public class BlockVaerynPortal extends BlockPortal
 				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterVaeryn(player.mcServer.worldServerForDimension(0)));
 			}
 			
-			par5Entity.setInPortal();
+			player.setInPortal();
 		}
 	}
 

@@ -378,16 +378,7 @@ public class ChunkProviderFlamonor implements IChunkProvider
 			(new WorldGenFlamonorMineable(RioVBlocks.drakiuzOre, 4)).generate(this.worldObj, this.rand, var14, var15, var16);
 			(new WorldGenFlamonorMineable(RioVBlocks.steamingBloodDeposit, 5)).generate(this.worldObj, this.rand, var14, var15, var16);
 		}
-
-		for(int var5 = 0; var5 < 2; ++var5)
-		{
-			int var6 = k + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = l + rand.nextInt(16);
-			new WorldGenBalance(RioVBlocks.bloodBerryBush).generate(worldObj, rand, var6, var7, var8);
-			new WorldGenBalance(RioVBlocks.bloodFlower).generate(worldObj, rand, var6, var7, var8);
-		}
-
+		
 		biomegenbase.decorate(this.worldObj, this.rand, k, l);
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, biomegenbase, k + 8, l + 8, 16, 16, this.rand);
 

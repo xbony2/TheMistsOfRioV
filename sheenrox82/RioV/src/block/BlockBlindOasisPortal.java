@@ -55,7 +55,7 @@ public class BlockBlindOasisPortal extends BlockPortal
 				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterBlindOasis(player.mcServer.worldServerForDimension(0)));
 			}
 			
-			par5Entity.setInPortal();
+			player.setInPortal();
 		}
 	}
 

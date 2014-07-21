@@ -55,7 +55,7 @@ public class BlockFlamonorPortal extends BlockPortal
 				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterFlamonor(player.mcServer.worldServerForDimension(0)));
 			}
 			
-			par5Entity.setInPortal();
+			player.setInPortal();
 		}
 	}
 

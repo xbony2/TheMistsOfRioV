@@ -30,6 +30,7 @@ public class BlockSanctuatitePortal extends BlockPortal
 	public BlockSanctuatitePortal()
 	{
 		super();
+		this.setHardness(Float.MAX_VALUE);
 		setBlockName(Util.MOD_ID + ":" + "sanctuatitePortal");
 	}
 
@@ -55,7 +56,7 @@ public class BlockSanctuatitePortal extends BlockPortal
 				player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new TeleporterSanctuatite(player.mcServer.worldServerForDimension(1)));
 			}
 			
-			par5Entity.setInPortal();
+			player.setInPortal();
 		}
 	}
 

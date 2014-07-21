@@ -117,6 +117,10 @@ public class BlockBush extends BlockFlower
 		{
 			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerwoodLeaf");
 		}
+		else if(this == RioVBlocks.sanctuatiteBush)
+		{
+			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "paleLeaf");
+		}
 		else
 		{
 			this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));

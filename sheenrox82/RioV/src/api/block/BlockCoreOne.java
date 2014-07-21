@@ -72,7 +72,7 @@ public class BlockCoreOne extends Block
 			return RioVAPI.getInstance().getUtil().getRioVItem("jaavik");
 		}
 
-		return Item.getItemFromBlock(this);
+		 return Item.getItemFromBlock(this);
 	}
 
 	@Override

@@ -1,7 +1,5 @@
 package sheenrox82.RioV.src.world.provider;
 
-import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -32,7 +30,7 @@ public class WorldProviderSanctuatite extends WorldProvider
 	@SideOnly(Side.CLIENT)
 	public String getWelcomeMessage()
 	{
-		return "Entering Your Sanctuary";
+		return "Entering Sanctuatite";
 	}
 	
     public String getSaveFolder()

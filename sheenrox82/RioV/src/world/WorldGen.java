@@ -88,7 +88,7 @@ public class WorldGen implements IWorldGenerator
 			}
 		}
 
-		for(int var5 = 0; var5 < 8; ++var5)
+		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = blockZ + rand.nextInt(16);
@@ -116,13 +116,15 @@ public class WorldGen implements IWorldGenerator
 			}
 		}
 
-		for(int var5 = 0; var5 < 8; ++var5)
+		for(int var5 = 0; var5 < 1; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = blockZ + rand.nextInt(16);
 			int var8 = world.getHeightValue(var6, var7);
 			new WorldGenBalance(RioVBlocks.bloodTallGrass).generate(world, rand, var6, var8, var7);
 			new WorldGenBalance(RioVBlocks.fakeBloodBerryBush).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.bloodBerryBush).generate(world, rand, var6, var8, var7);
+			new WorldGenBalance(RioVBlocks.bloodFlower).generate(world, rand, var6, var8, var7);
 		}
 	}
 

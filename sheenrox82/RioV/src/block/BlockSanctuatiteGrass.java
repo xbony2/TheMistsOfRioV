@@ -26,6 +26,7 @@ public class BlockSanctuatiteGrass extends Block
 	public BlockSanctuatiteGrass()
 	{
 		super(Material.grass);
+		this.setHardness(0.5f);
 		this.setTickRandomly(true);
 		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
