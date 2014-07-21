@@ -13,6 +13,7 @@ import sheenrox82.RioV.src.block.BlockBloodRock;
 import sheenrox82.RioV.src.block.BlockBricks;
 import sheenrox82.RioV.src.block.BlockBush;
 import sheenrox82.RioV.src.block.BlockCherryLog;
+import sheenrox82.RioV.src.block.BlockCloudPlant;
 import sheenrox82.RioV.src.block.BlockFlag;
 import sheenrox82.RioV.src.block.BlockFlamonorPortal;
 import sheenrox82.RioV.src.block.BlockGlimmerGrass;
@@ -33,6 +34,7 @@ import sheenrox82.RioV.src.block.BlockRioVWorkbench;
 import sheenrox82.RioV.src.block.BlockSanctuatiteFire;
 import sheenrox82.RioV.src.block.BlockSanctuatiteFlowing;
 import sheenrox82.RioV.src.block.BlockSanctuatiteGrass;
+import sheenrox82.RioV.src.block.BlockSanctuatitePlant;
 import sheenrox82.RioV.src.block.BlockSanctuatitePortal;
 import sheenrox82.RioV.src.block.BlockSancuatiteStill;
 import sheenrox82.RioV.src.block.BlockSkycloud;
@@ -168,17 +170,13 @@ public class RioVBlocks
 	//v2.3.0
 	//The Flora Update
 	public static Block fakeBloodBerryBush = new BlockBush().setBlockName("fakeBloodBerryBush");
-
 	public static Block glimmerBush = new BlockBush().setBlockName("glimmerBush");
 	public static Block glimmerBerryBush = new BlockBush().setBlockName("glimmerBerryBush");
 	public static Block elderBerryPlant = new BlockPlantCore().setBlockName("elderBerryPlant");
-
-	public static Block sanctuatiteBush = new BlockBush().setBlockName("sanctuatiteBush");
-	public static Block sanctuatiteBerryBush = new BlockBush().setBlockName("sanctuatiteBerryBush");
-	public static Block cloudBerryPlant = new BlockPlantCore().setBlockName("cloudBerryPlant");
-
+	public static Block sanctuatiteBush = new BlockSanctuatitePlant().setBlockName("sanctuatiteBush");
+	public static Block sanctuatiteBerryBush = new BlockSanctuatitePlant().setBlockName("sanctuatiteBerryBush");
+	public static Block cloudBerryPlant = new BlockCloudPlant().setBlockName("cloudBerryPlant");
 	public static Block enderBerryPlant = new BlockPlantCore().setBlockName("enderBerryPlant");
-	
 	public static Block fireBush = new BlockBush().setBlockName("fireBush");
 	public static Block fireBerryBush = new BlockBush().setBlockName("fireBerryBush");
 

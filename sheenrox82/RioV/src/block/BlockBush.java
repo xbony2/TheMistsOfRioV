@@ -66,22 +66,22 @@ public class BlockBush extends BlockFlower
 		{
 			return RioVItems.strawberry;
 		}
-		
+
 		if(this == RioVBlocks.fakeBloodBerryBush)
 		{
 			return RioVItems.fakeBloodberry;
 		}
-		
+
 		if(this == RioVBlocks.glimmerBerryBush)
 		{
 			return RioVItems.glimmerBerry;
 		}
-		
+
 		if(this == RioVBlocks.sanctuatiteBerryBush)
 		{
 			return RioVItems.sanctuatiteBerry;
 		}
-		
+
 		if(this == RioVBlocks.fireBerryBush)
 		{
 			return RioVItems.fireBerry;

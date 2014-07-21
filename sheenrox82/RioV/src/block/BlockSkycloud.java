@@ -86,10 +86,4 @@ public class BlockSkycloud extends Block
 	{
 		this.blockIcon = var1.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
-
-	/**@Override
-	public int idDropped(int par1, Random par2Random, int par3)
-	{
-		return RioVItems.windElement.itemID;
-	}**/
 }

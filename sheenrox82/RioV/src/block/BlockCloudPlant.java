@@ -4,60 +4,39 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.content.Materials;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.BlockBush;
 
-public class BlockPlantCore extends BlockFlower
+public class BlockCloudPlant extends BlockBush
 {
-	public BlockPlantCore()
+	public BlockCloudPlant()
 	{
-		super(0);
+		super(Materials.customMaterial);
 		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
+		this.setHardness(0.3F);
 	}
 
 	@Override
 	public Item getItemDropped(int par1, Random par2Random, int par3)
 	{
-		if(this == RioVBlocks.blackDuriiPlant)
+		if(this == RioVBlocks.cloudBerryPlant)
 		{
-			return RioVItems.blackDurii;
-		}
-		if(this == RioVBlocks.tomatoPlant)
-		{
-			return RioVItems.tomato;
-		}
-		if(this == RioVBlocks.grapePlant)
-		{
-			return RioVItems.grapes;
-		}
-		if(this == RioVBlocks.pepperPlant)
-		{
-			return RioVItems.pepper;
-		}
-		if(this == RioVBlocks.bloodFlower)
-		{
-			return RioVItems.heart;
-		}
-		if(this == RioVBlocks.elderBerryPlant)
-		{
-			return RioVItems.elderBerry;
-		}
-		if(this == RioVBlocks.enderBerryPlant)
-		{
-			return RioVItems.enderBerry;
+			return RioVItems.cloudBerry;
 		}
 
 		return Item.getItemFromBlock(null);
@@ -68,9 +47,6 @@ public class BlockPlantCore extends BlockFlower
 	{
 		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
 	}
-
-	@SideOnly(Side.CLIENT)
-	public IIcon blockIcon;
 
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
@@ -84,28 +60,23 @@ public class BlockPlantCore extends BlockFlower
 		return blockIcon;
 	}
 
+	public int getRenderBlockPass()
+	{
+		return 1;
+	}
+
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
+
 	protected boolean canPlaceBlockOn(Block par1)
 	{		
-		if(this == RioVBlocks.bloodFlower ||this == RioVBlocks.bloodTallGrass)
-		{
-			return par1 == RioVBlocks.bloodGrass;
-		}
+		return par1 == RioVBlocks.sanctuatiteGrass;
+	}
 
-		if(this == RioVBlocks.glimmerTallGrass || this == RioVBlocks.elderBerryPlant)
-		{
-			return par1 == RioVBlocks.glimmerGrass;
-		}
-
-		if(this == RioVBlocks.sanctuatiteTallGrass)
-		{
-			return par1 == RioVBlocks.sanctuatiteGrass;
-		}
-		
-		if(this == RioVBlocks.enderBerryPlant)
-		{
-			return par1 == Blocks.end_stone;
-		}
-
-		return par1 == Blocks.grass || par1 == Blocks.dirt || par1 == Blocks.farmland;
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4)
+	{
+		return AxisAlignedBB.getBoundingBox((double)var2, (double)var3, (double)var4, (double)(var2 + 1), (double)var3, (double)(var4 + 1));
 	}
 }
