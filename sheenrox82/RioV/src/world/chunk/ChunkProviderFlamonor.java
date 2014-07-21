@@ -25,8 +25,8 @@ import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
 import sheenrox82.RioV.src.world.mineable.WorldGenFlamonorMineable;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
-public class ChunkProviderFlamonor implements IChunkProvider{
-
+public class ChunkProviderFlamonor implements IChunkProvider
+{
 	private Random rand;
 	private NoiseGeneratorOctaves noiseGen1;
 	private NoiseGeneratorOctaves noiseGen2;
@@ -49,7 +49,8 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 	int[][] field_914_i = new int[32][32];
 	private double[] generatedTemperatures;
 
-	public ChunkProviderFlamonor(World var1, long var2){
+	public ChunkProviderFlamonor(World var1, long var2)
+	{
 		this.worldObj = var1;
 		this.rand = new Random(var2);
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
@@ -63,11 +64,13 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 	}
 
 	@Override
-	public boolean chunkExists(int i, int j) {
+	public boolean chunkExists(int i, int j)
+	{
 		return true;
 	}
 
-	public void generateTerrain(int var1, int var2, Block[] var3, BiomeGenBase[] var4) {
+	public void generateTerrain(int var1, int var2, Block[] var3, BiomeGenBase[] var4) 
+	{
 		byte var6 = 2;
 		int var7 = var6 + 1;
 		byte var8 = 33;
@@ -127,7 +130,8 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 		}
 	}
 
-    public Chunk provideChunk(int par1, int par2) {
+    public Chunk provideChunk(int par1, int par2) 
+    {
         this.rand.setSeed((long)par1 * 391279128714L + (long)par2 * 132894987741L);
         Block[] ablock = new Block[32768];
         this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
@@ -136,7 +140,8 @@ public class ChunkProviderFlamonor implements IChunkProvider{
         Chunk chunk = new Chunk(this.worldObj, ablock, par1, par2);
         byte[] abyte = chunk.getBiomeArray();
 
-        for (int k = 0; k < abyte.length; ++k) {
+        for (int k = 0; k < abyte.length; ++k) 
+        {
             abyte[k] = (byte)this.biomesForGeneration[k].biomeID;
         }
 
@@ -144,7 +149,8 @@ public class ChunkProviderFlamonor implements IChunkProvider{
         return chunk;
     }
 
-	public void replaceBlocksForBiome(int var1, int var2, Block[] var3, BiomeGenBase[] var4) {
+	public void replaceBlocksForBiome(int var1, int var2, Block[] var3, BiomeGenBase[] var4) 
+	{
 		byte var5 = 63;
 		double var6 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, var1 * 16, var2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
@@ -153,8 +159,10 @@ public class ChunkProviderFlamonor implements IChunkProvider{
         MinecraftForge.EVENT_BUS.post(event);
         if (event.getResult() == Result.DENY) return;
 
-		for (int var8 = 0; var8 < 16; ++var8) {
-			for (int var9 = 0; var9 < 16; ++var9) {
+		for (int var8 = 0; var8 < 16; ++var8) 
+		{
+			for (int var9 = 0; var9 < 16; ++var9)
+			{
 				BiomeGenBase var10 = var4[var9 + var8 * 16];
 				float var11 = var10.getFloatTemperature(var9, var9, var9);
 				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
@@ -162,50 +170,65 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 				Block var14 = var10.topBlock;
 				Block var15 = RioVBlocks.bloodGrass;
 
-				for (int var16 = 127; var16 >= 0; --var16) {
+				for (int var16 = 127; var16 >= 0; --var16) 
+				{
 					int var17 = (var9 * 16 + var8) * 128 + var16;
 
-					if (var16 <= 0 + this.rand.nextInt(5)) {
+					if (var16 <= 0 + this.rand.nextInt(5)) 
+					{
 						var3[var17] = null;
-					} else {
+					} else 
+					{
 						Block var18 = var3[var17];
 
-						if (var18 == null) {
+						if (var18 == null) 
+						{
 							var13 = -1;
 						}
-						else if (var18 == Blocks.stone) {
-							if (var13 == -1) {
-								if (var12 <= 0) {
+						else if (var18 == Blocks.stone)
+						{
+							if (var13 == -1)
+							{
+								if (var12 <= 0) 
+								{
 									var14 = RioVBlocks.bloodGrass;
 									var15 = RioVBlocks.bloodGrass;
 								}
-								else if (var16 >= var5 - 4 && var16 <= var5 + 1) {
+								else if (var16 >= var5 - 4 && var16 <= var5 + 1) 
+								{
 									var14 = RioVBlocks.bloodGrass;
 									var15 = RioVBlocks.flamonorRock;
 								}
 
-								if (var16 >= var5 - 1) {
+								if (var16 >= var5 - 1) 
+								{
 									var3[var17] = var14;
-								} else {
+								} 
+								else 
+								{
 									var3[var17] = var15;
 								}
 							}
-							else if (var13 > 0) {
+							else if (var13 > 0) 
+							{
 								--var13;
 								var3[var17] = var15;
 
-								if (var13 == 0 && var15 == RioVBlocks.bloodGrass) {
+								if (var13 == 0 && var15 == RioVBlocks.bloodGrass) 
+								{
 									var13 = -1;
 									var15 = RioVBlocks.bloodGrass;
 								}
 							}
 						}
 
-						if (var13 > 0) {
+						if (var13 > 0)
+						{
 							--var13;
 							var3[var17] = var15;
 
-							if (var13 == 0 && var15 == RioVBlocks.flamonorRock) {
+							if (var13 == 0 && var15 == RioVBlocks.flamonorRock) 
+							{
 								var13 = -1;
 								var15 = RioVBlocks.flamonorRock;
 							}
@@ -217,12 +240,15 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 	}
 
 	@Override
-	public Chunk loadChunk(int i, int j) {
+	public Chunk loadChunk(int i, int j)
+	{
 		return this.provideChunk(i, j);
 	}
 
-	private double[] initializeNoiseField(double[] var1, int var2, int var3, int var4, int var5, int var6, int var7) {
-		if (var1 == null) {
+	private double[] initializeNoiseField(double[] var1, int var2, int var3, int var4, int var5, int var6, int var7)
+	{
+		if (var1 == null)
+		{
 			var1 = new double[var5 * var6 * var7];
 		}
 
@@ -238,28 +264,33 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 		int var13 = 0;
 		int var14 = 16 / var5;
 
-		for (int var15 = 0; var15 < var5; ++var15) {
+		for (int var15 = 0; var15 < var5; ++var15)
+		{
 			int var16 = var15 * var14 + var14 / 2;
 
-			for (int var17 = 0; var17 < var7; ++var17) {
+			for (int var17 = 0; var17 < var7; ++var17) 
+			{
 				int var18 = var17 * var14 + var14 / 2;
 				double var19 = (this.noise5[var13] + 256.0D) / 512.0D;
 				double var21 = this.noise6[var13] / 8000.0D;
 
-				if (var21 < 0.0D) {
+				if (var21 < 0.0D) 
+				{
 					var21 = -var21 * 0.3D;
 				}
 
 				var21 = var21 * 3.0D - 2.0D;
 
-				if (var21 > 1.0D) {
+				if (var21 > 1.0D) 
+				{
 					var21 = 1.0D;
 				}
 
 				var21 /= 8.0D;
 				var21 = 0.0D;
 
-				if (var19 < 0.0D) {
+				if (var19 < 0.0D) 
+				{
 					var19 = 0.0D;
 				}
 
@@ -268,11 +299,13 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 				++var13;
 				double var23 = var6 / 2.0D;
 
-				for (int var25 = 0; var25 < var6; ++var25) {
+				for (int var25 = 0; var25 < var6; ++var25) 
+				{
 					double var26 = 0.0D;
 					double var28 = (var25 - var23) * 8.0D / var19;
 
-					if (var28 < 0.0D) {
+					if (var28 < 0.0D) 
+					{
 						var28 *= -1.0D;
 					}
 
@@ -280,12 +313,16 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 					double var32 = this.noise2[var12] / 512.0D;
 					double var34 = (this.noise3[var12] / 10.0D + 1.0D) / 2.0D;
 
-					if (var34 < 0.0D) {
+					if (var34 < 0.0D) 
+					{
 						var26 = var30;
 					}
-					else if (var34 > 1.0D) {
+					else if (var34 > 1.0D)
+					{
 						var26 = var32;
-					} else {
+					} 
+					else
+					{
 						var26 = var30 + (var32 - var30) * var34;
 					}
 
@@ -293,14 +330,16 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 					byte var36 = 32;
 					double var37;
 
-					if (var25 > var6 - var36) {
+					if (var25 > var6 - var36)
+					{
 						var37 = (var25 - (var6 - var36)) / (var36 - 1.0F);
 						var26 = var26 * (1.0D - var37) + -30.0D * var37;
 					}
 
 					var36 = 8;
 
-					if (var25 < var36) {
+					if (var25 < var36) 
+					{
 						var37 = (var36 - var25) / (var36 - 1.0F);
 						var26 = var26 * (1.0D - var37) + -30.0D * var37;
 					}
@@ -310,7 +349,6 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 				}
 			}
 		}
-
 		return var1;
 	}
 
@@ -357,38 +395,45 @@ public class ChunkProviderFlamonor implements IChunkProvider{
 	}
 	
 	@Override
-	public boolean saveChunks(boolean flag, IProgressUpdate iprogressupdate) {
+	public boolean saveChunks(boolean flag, IProgressUpdate iprogressupdate) 
+	{
 		return true;
 	}
 
 	@Override
-	public boolean unloadQueuedChunks() {
+	public boolean unloadQueuedChunks() 
+	{
 		return false;
 	}
 
 	@Override
-	public boolean canSave() {
+	public boolean canSave() 
+	{
 		return true;
 	}
 
 	@Override
-	public String makeString() {
-		return "Flamonor";
+	public String makeString() 
+	{
+		return "FlamonorSource";
 	}
 
 	@Override
-	public List getPossibleCreatures(EnumCreatureType enumcreaturetype, int i, int j, int k) {
+	public List getPossibleCreatures(EnumCreatureType enumcreaturetype, int i, int j, int k)
+	{
 		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(i, k);
 		return var5 == null ? null : var5.getSpawnableList(enumcreaturetype);
 	}
 
 	@Override
-	public ChunkPosition func_147416_a(World world, String s, int i, int j, int k) {
+	public ChunkPosition func_147416_a(World world, String s, int i, int j, int k) 
+	{
 		return null;
 	}
 
 	@Override
-	public int getLoadedChunkCount() {
+	public int getLoadedChunkCount()
+	{
 		return 0;
 	}
 

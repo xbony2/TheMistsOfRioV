@@ -11,17 +11,9 @@ import sheenrox82.RioV.src.content.RioVBlocks;
 
 public class WorldGenCherryBlossomTree extends WorldGenAbstractTree
 {
-    /** The minimum height of a generated tree. */
-
     private final int minTreeHeight;
-    /** True if this tree should grow Vines. */
-
     private final boolean vinesGrow;
-    /** The metadata value of the wood to use in tree generation. */
-
     private final int metaWood;
-    /** The metadata value of the leaves to use in tree generation. */
-
     private final int metaLeaves;
 
     public WorldGenCherryBlossomTree(boolean par1)

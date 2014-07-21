@@ -15,7 +15,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderBlindOasis extends WorldProvider
 {
-
 	public void registerWorldChunkManager()
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(Biomes.blindOasis, 0.5F);
@@ -28,78 +27,9 @@ public class WorldProviderBlindOasis extends WorldProvider
 		return new ChunkProviderBlindOasis(this.worldObj, this.worldObj.getSeed());
 	}
 
-	public int getAverageGroundLevel()
-	{
-		return 0;
-	}
-
-	
-	@SideOnly(Side.CLIENT)
-	public boolean doesXZShowFog(int par1, int par2)
-	{
-		return false;
-	}
-
 	public String getDimensionName()
 	{
 		return "Blind Oasis";
-	}
-
-	public boolean renderStars()
-	{
-		return false;
-	}
-
-	public float getStarBrightness(World world, float f)
-	{
-		return 10.0F;
-	}
-
-	public boolean renderClouds()
-	{
-		return false;
-	}
-
-	public boolean renderVoidFog()
-	{
-		return false;
-	}
-
-	public boolean renderEndSky()
-	{
-		return true;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public boolean isSkyColored()
-	{
-		return false;
-	}
-
-	public boolean canRespawnHere()
-	{
-		return false;
-	}
-
-	public boolean isSurfaceWorld()
-	{
-		return false;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public float getCloudHeight()
-	{
-		return 128.0F;
-	}
-
-	public boolean canCoordinateBeSpawn(int par1, int par2)
-	{
-		return false;
-	}
-
-	public ChunkCoordinates getEntrancePortalLocation()
-	{
-		return new ChunkCoordinates(50, 5, 0);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -108,10 +38,6 @@ public class WorldProviderBlindOasis extends WorldProvider
 		return "Entering the Blind Oasis";
 	}
 
-
-    /**
-     * Calculates the angle of sun and moon in the sky relative to a specified time (usually worldTime)
-     */
     @Override
     public float calculateCelestialAngle(long par1, float par3)
     {
@@ -132,15 +58,9 @@ public class WorldProviderBlindOasis extends WorldProvider
         f1 = 1.0F - (float)((Math.cos((double)f1 * Math.PI) + 1.0D) / 2.0D);
         f1 = f2 + (f1 - f2) / 3.0F;
         return f1;
-        //return (float) Math.sin(f2);
-        //return 1F;
     }
     
     @SideOnly(Side.CLIENT)
-
-    /**
-     * Return Vec3D with biome specific fog color
-     */
     @Override
     public Vec3 getFogColor(float par1, float par2)
     {

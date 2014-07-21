@@ -353,29 +353,32 @@ public class Events
 				WavHandler.playSound(0);
 			}
 
-			Random rand = new Random();
-			int panoRand = rand.nextInt(2);
-
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(new Date());
-			ResourceLocation buttonTextures = new ResourceLocation(riov, "widget.png");
-
-			//NEW FIELDS
-			ResourceLocation title = new ResourceLocation(riov, "title.png");
-			ResourceLocation[] flamonorPano = new ResourceLocation[] {new ResourceLocation(riov, "pano/flamonor/north.png"), new ResourceLocation(riov, "pano/flamonor/left.png"), new ResourceLocation(riov, "pano/flamonor/back.png"), new ResourceLocation(riov, "pano/flamonor/right.png"), new ResourceLocation(riov, "pano/flamonor/up.png"), new ResourceLocation(riov, "pano/flamonor/down.png")};
-			ResourceLocation[] vaerynPano = new ResourceLocation[] {new ResourceLocation(riov, "pano/vaeryn/north.png"), new ResourceLocation(riov, "pano/vaeryn/left.png"), new ResourceLocation(riov, "pano/vaeryn/back.png"), new ResourceLocation(riov, "pano/vaeryn/right.png"), new ResourceLocation(riov, "pano/vaeryn/up.png"), new ResourceLocation(riov, "pano/vaeryn/down.png")};
-
-			RioVAPIUtil.replaceField("minecraftTitleTextures", GuiMainMenu.class, title, event.gui);
-			RioVAPIUtil.replaceField("titlePanoramaPaths", GuiMainMenu.class, flamonorPano, event.gui);
-			RioVAPIUtil.replaceField("buttonTextures", GuiButton.class, buttonTextures, event.gui);
-
-			if (calendar.get(2) + 1 == 3 && calendar.get(5) == 12)
+			if(RioVAPI.getInstance().getUtil().getConfigBool("riovMenu") == true)
 			{
-				RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, Color.AQUA + "The Mists of RioV Anniversary!", event.gui);
-			}
-			else
-			{
-				RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, "", event.gui);
+				Random rand = new Random();
+				int panoRand = rand.nextInt(2);
+
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(new Date());
+				ResourceLocation buttonTextures = new ResourceLocation(riov, "widget.png");
+
+				//NEW FIELDS
+				ResourceLocation title = new ResourceLocation(riov, "title.png");
+				ResourceLocation[] flamonorPano = new ResourceLocation[] {new ResourceLocation(riov, "pano/flamonor/north.png"), new ResourceLocation(riov, "pano/flamonor/left.png"), new ResourceLocation(riov, "pano/flamonor/back.png"), new ResourceLocation(riov, "pano/flamonor/right.png"), new ResourceLocation(riov, "pano/flamonor/up.png"), new ResourceLocation(riov, "pano/flamonor/down.png")};
+				ResourceLocation[] vaerynPano = new ResourceLocation[] {new ResourceLocation(riov, "pano/vaeryn/north.png"), new ResourceLocation(riov, "pano/vaeryn/left.png"), new ResourceLocation(riov, "pano/vaeryn/back.png"), new ResourceLocation(riov, "pano/vaeryn/right.png"), new ResourceLocation(riov, "pano/vaeryn/up.png"), new ResourceLocation(riov, "pano/vaeryn/down.png")};
+
+				RioVAPIUtil.replaceField("minecraftTitleTextures", GuiMainMenu.class, title, event.gui);
+				RioVAPIUtil.replaceField("titlePanoramaPaths", GuiMainMenu.class, flamonorPano, event.gui);
+				RioVAPIUtil.replaceField("buttonTextures", GuiButton.class, buttonTextures, event.gui);
+
+				if (calendar.get(2) + 1 == 3 && calendar.get(5) == 12)
+				{
+					RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, Color.AQUA + "The Mists of RioV Anniversary!", event.gui);
+				}
+				else
+				{
+					RioVAPIUtil.replaceField("splashText", GuiMainMenu.class, "", event.gui);
+				}
 			}
 		}
 

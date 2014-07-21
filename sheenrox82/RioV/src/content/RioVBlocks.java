@@ -79,7 +79,7 @@ public class RioVBlocks
 	public static Block blueFlower = new BlockPlantCore().setBlockName("blueFlower");
 	public static Block blindOasisPortal = new BlockBlindOasisPortal().setBlockName("blindOasisPortal");
 	public static Block blackFire = new BlockBlackFire().setBlockName("blackFire");
-	public static Block blindoniteOre = new BlockCoreOne().setBlockName("blindoniteOre");
+	public static Block blindoniteOre = new BlockCoreOne().setLightLevel(1.0F).setBlockName("blindoniteOre");
 	public static Block blackRock = new BlockCoreOne().setHardness(1.5F).setBlockName("blackRock");
 	public static Block whiteStone = new BlockCoreOne().setHardness(1.5F).setBlockName("whiteStone");
 	public static Block blindoniteBlock = new BlockCoreOne().setHardness(1.5F).setBlockName("blindoniteBlock");

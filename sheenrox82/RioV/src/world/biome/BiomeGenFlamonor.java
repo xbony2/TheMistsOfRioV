@@ -9,7 +9,6 @@ import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
 
 public class BiomeGenFlamonor extends BiomeGenBase
 {
-
 	public BiomeGenFlamonor(int par1)
 	{
 		super(par1);

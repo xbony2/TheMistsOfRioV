@@ -12,7 +12,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class WorldProviderFlamonor extends WorldProvider
 {
-
 	public void registerWorldChunkManager()
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(Biomes.flamonor, 0.5F);
@@ -24,62 +23,9 @@ public class WorldProviderFlamonor extends WorldProvider
 		return new ChunkProviderFlamonor(this.worldObj, this.worldObj.getSeed());
 	}
 
-	public int getAverageGroundLevel()
-	{
-		return 0;
-	}
-
-	
-	@SideOnly(Side.CLIENT)
-	public boolean doesXZShowFog(int par1, int par2)
-	{
-		return false;
-	}
-
 	public String getDimensionName()
 	{
 		return "Flamonor";
-	}
-
-	public boolean renderStars()
-	{
-		return true;
-	}
-
-	public float getStarBrightness(World world, float f)
-	{
-		return 10.0F;
-	}
-
-	public boolean renderClouds()
-	{
-		return true;
-	}
-
-	public boolean renderVoidFog()
-	{
-		return false;
-	}
-
-	public boolean renderEndSky()
-	{
-		return true;
-	}
-
-	@SideOnly(Side.CLIENT)
-	public boolean isSkyColored()
-	{
-		return false;
-	}
-
-	public boolean canRespawnHere()
-	{
-		return false;
-	}
-
-	public boolean isSurfaceWorld()
-	{
-		return false;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -88,11 +34,6 @@ public class WorldProviderFlamonor extends WorldProvider
 		return 128.0F;
 	}
 
-	public boolean canCoordinateBeSpawn(int par1, int par2)
-	{
-		return false;
-	}
-	
 	@SideOnly(Side.CLIENT)
 	public String getWelcomeMessage()
 	{

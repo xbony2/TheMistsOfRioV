@@ -54,7 +54,7 @@ public class ModUpdateChecker
 			
 			while ((changelog = changelogFile.readLine()) != null)
 			{
-				RioVAPIUtil.sendMessageToAll(EnumChatFormatting.WHITE + changelog);
+				RioVAPIUtil.sendMessageToAll(EnumChatFormatting.GOLD + changelog);
 			}
 			
 			changelogFile.close();

@@ -33,7 +33,6 @@ import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderVaeryn implements IChunkProvider
 {
-
 	private Random rand;
 	private NoiseGeneratorOctaves noiseGen1, noiseGen2, noiseGen3, noiseGen5, noiseGen6;
 	private NoiseGeneratorPerlin noiseGen4;
@@ -59,8 +58,10 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.da = new double[825];
 		this.parabolicField = new float[25];
-		for(int j = -2; j <= 2; ++j) {
-			for(int k = -2; k <= 2; ++k) {
+		for(int j = -2; j <= 2; ++j) 
+		{
+			for(int k = -2; k <= 2; ++k) 
+			{
 				float f = 10.0F / MathHelper.sqrt_float((float)(j * j + k * k) + 0.2F);
 				this.parabolicField[j + 2 + (k + 2) * 5] = f;
 			}
@@ -76,22 +77,26 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		this.noiseGen6 = (NoiseGeneratorOctaves)noiseGens[5];
 	}
 
-	public void generate(int i, int j, Block[] b) {
+	public void generate(int i, int j, Block[] b) 
+	{
 		byte b0 = 63;
 		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, i * 4 - 2, j * 4 - 2, 10, 10);
 		this.generate(i * 4, 0, j * 4);
 
-		for(int k = 0; k < 4; ++k) {
+		for(int k = 0; k < 4; ++k) 
+		{
 			int l = k * 5;
 			int i1 = (k + 1) * 5;
 
-			for(int j1 = 0; j1 < 4; ++j1) {
+			for(int j1 = 0; j1 < 4; ++j1) 
+			{
 				int k1 = (l + j1) * 33;
 				int l1 = (l + j1 + 1) * 33;
 				int i2 = (i1 + j1) * 33;
 				int j2 = (i1 + j1 + 1) * 33;
 
-				for(int k2 = 0; k2 < 32; ++k2) {
+				for(int k2 = 0; k2 < 32; ++k2) 
+				{
 					double d0 = 0.125D;
 					double d1 = this.da[k1 + k2];
 					double d2 = this.da[l1 + k2];
@@ -102,14 +107,16 @@ public class ChunkProviderVaeryn implements IChunkProvider
 					double d7 = (this.da[i2 + k2 + 1] - d3) * d0;
 					double d8 = (this.da[j2 + k2 + 1] - d4) * d0;
 
-					for(int l2 = 0; l2 < 8; ++l2) {
+					for(int l2 = 0; l2 < 8; ++l2) 
+					{
 						double d9 = 0.25D;
 						double d10 = d1;
 						double d11 = d2;
 						double d12 = (d3 - d1) * d9;
 						double d13 = (d4 - d2) * d9;
 
-						for(int i3 = 0; i3 < 4; ++i3) {
+						for(int i3 = 0; i3 < 4; ++i3) 
+						{
 							int j3 = i3 + k * 4 << 12 | 0 + j1 * 4 << 8 | k2 * 8 + l2;
 							short short1 = 256;
 							j3 -= short1;
@@ -117,22 +124,30 @@ public class ChunkProviderVaeryn implements IChunkProvider
 							double d16 = (d11 - d10) * d14;
 							double d15 = d10 - d16;
 
-							for(int k3 = 0; k3 < 4; ++k3) {
+							for(int k3 = 0; k3 < 4; ++k3)
+							{
 								if((d15 += d16) > 0.0D) 
+								{
 									b[j3 += short1] = RioVBlocks.glimmerRock;
-
+								}
 								else if(k2 * 8 + l2 < 62) 
+								{
 									b[j3 += short1] = RioVBlocks.glimmerDirt;
-
+								}
 								else if(k2 * 8 + l2 < b0) 
+								{
 									b[j3 += short1] = RioVBlocks.glimmerGrass;
-
+								}
 								else 
+								{
 									b[j3 += short1] = null;
+								}
 							}
+
 							d10 += d12;
 							d11 += d13;
 						}
+
 						d1 += d5;
 						d2 += d6;
 						d3 += d7;
@@ -143,12 +158,15 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		}
 	}
 
-	public void replaceBlocksForBiome(int i, int j, Block[] ba, byte[] by, BiomeGenBase[] b) {
+	public void replaceBlocksForBiome(int i, int j, Block[] ba, byte[] by, BiomeGenBase[] b) 
+	{
 		double d0 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.func_151599_a(this.stoneNoise, (double)(i * 16), (double)(j * 16), 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
 
-		for(int k = 0; k < 16; ++k) {
-			for(int l = 0; l < 16; ++l) {
+		for(int k = 0; k < 16; ++k) 
+		{
+			for(int l = 0; l < 16; ++l)
+			{
 				BiomeGenBase biomegenbase = b[l + k * 16];
 				genBiomeTerrain(this.worldObj, this.rand, ba, by, i * 16 + k, j * 16 + l, this.stoneNoise[l + k * 16], biomegenbase);
 			}
@@ -167,58 +185,83 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		int j1 = j & 15;
 		int k1 = blocks.length / 256;
 
-		for(int l1 = 255; l1 >= 0; --l1) {
+		for(int l1 = 255; l1 >= 0; --l1) 
+		{
 			int i2 = (j1 * 16 + i1) * k1 + l1;
-			if(l1 <= 0 + rand.nextInt(5)) {
+			if(l1 <= 0 + rand.nextInt(5))
+			{
 				blocks[i2] = Blocks.bedrock;
-			} else {
+			}
+			else 
+			{
 				Block block2 = blocks[i2];
-				if(block2 != null && block2.getMaterial() != Material.air) {
-					if(block2 == RioVBlocks.glimmerRock) {
-						if(k == -1) {
-							if(l <= 0) {
+
+				if(block2 != null && block2.getMaterial() != Material.air) 
+				{
+					if(block2 == RioVBlocks.glimmerRock) 
+					{
+						if(k == -1) 
+						{
+							if(l <= 0) 
+							{
 								block = null;
 								b0 = 0;
 								block1 = RioVBlocks.glimmerRock;
 							}
-							else if(l1 >= 59 && l1 <= 64) {
+							else if(l1 >= 59 && l1 <= 64)
+							{
 								block = b.topBlock;
 								b0 = (byte)(b.field_150604_aj & 255);
 								block1 = b.fillerBlock;
 							}
 
-							if(l1 < 63 && (block == null || block.getMaterial() == Material.air)) {
-								if(b.getFloatTemperature(i, l1, j) < 0.15F) {
+							if(l1 < 63 && (block == null || block.getMaterial() == Material.air)) 
+							{
+								if(b.getFloatTemperature(i, l1, j) < 0.15F) 
+								{
 									block = Blocks.ice;
 									b0 = 0;
-								} else {
+								} 
+								else 
+								{
 									block = RioVBlocks.glimmerRock;
 									b0 = 0;
 								}
 							}
+
 							k = l;
-							if(l1 >= 62) {
+
+							if(l1 >= 62) 
+							{
 								blocks[i2] = block;
 								bytes[i2] = b0;
 							}
-							else if(l1 < 56 - l) {
+							else if(l1 < 56 - l) 
+							{
 								block = null;
 								block1 = RioVBlocks.glimmerRock;
 								blocks[i2] = RioVBlocks.glimmerRock;
-							} else {
+							}
+							else
+							{
 								blocks[i2] = block1;
 							}
 						}
-						else if(k > 0) {
+						else if(k > 0) 
+						{
 							--k;
 							blocks[i2] = block1;
-							if(k == 0 && block1 == RioVBlocks.glimmerRock){
+
+							if(k == 0 && block1 == RioVBlocks.glimmerRock)
+							{
 								k = rand.nextInt(4) + Math.max(0, l1 - 63);
 								block1 = RioVBlocks.glimmerRock;
 							}
 						}
 					}
-				} else {
+				} 
+				else 
+				{
 					k = -1;
 				}
 			}
@@ -244,13 +287,16 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		byte[] abyte1 = chunk.getBiomeArray();
 
 		for(int k = 0; k < abyte1.length; ++k) 
+		{
 			abyte1[k] = (byte)this.biomesForGeneration[k].biomeID;
+		}
 
 		chunk.generateSkylightMap();
 		return chunk;
 	}
 
-	private void generate(int x, int y, int z) {
+	private void generate(int x, int y, int z) 
+	{
 		double d0 = 684.412D;
 		double d1 = 684.412D;
 		double d2 = 512.0D;
@@ -265,21 +311,26 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		int i1 = 0;
 		double d4 = 8.5D;
 
-		for(int j1 = 0; j1 < 5; ++j1) {
-			for(int k1 = 0; k1 < 5; ++k1) {
+		for(int j1 = 0; j1 < 5; ++j1) 
+		{
+			for(int k1 = 0; k1 < 5; ++k1) 
+			{
 				float f = 0.0F;
 				float f1 = 0.0F;
 				float f2 = 0.0F;
 				byte b0 = 2;
 				BiomeGenBase biomegenbase = this.biomesForGeneration[j1 + 2 + (k1 + 2) * 10];
 
-				for(int l1 = -b0; l1 <= b0; ++l1) {
-					for(int i2 = -b0; i2 <= b0; ++i2) {
+				for(int l1 = -b0; l1 <= b0; ++l1)
+				{
+					for(int i2 = -b0; i2 <= b0; ++i2) 
+					{
 						BiomeGenBase biomegenbase1 = this.biomesForGeneration[j1 + l1 + 2 + (k1 + i2 + 2) * 10];
 						float f3 = biomegenbase1.rootHeight;
 						float f4 = biomegenbase1.heightVariation;
 
-						if(this.type == WorldType.AMPLIFIED && f3 > 0.0F) {
+						if(this.type == WorldType.AMPLIFIED && f3 > 0.0F) 
+						{
 							f3 = 1.0F + f3 * 2.0F;
 							f4 = 1.0F + f4 * 4.0F;
 						}
@@ -287,8 +338,10 @@ public class ChunkProviderVaeryn implements IChunkProvider
 						float f5 = this.parabolicField[l1 + 2 + (i2 + 2) * 5] / (f3 + 2.0F);
 
 						if(biomegenbase1.rootHeight > biomegenbase.rootHeight)
+						{
 							f5 /= 2.0F;
-
+						}
+						
 						f += f4 * f5;
 						f1 += f3 * f5;
 						f2 += f5;
@@ -301,13 +354,15 @@ public class ChunkProviderVaeryn implements IChunkProvider
 				f1 = (f1 * 4.0F - 1.0F) / 8.0F;
 				double d12 = this.gen4[i1] / 8000.0D;
 
-				if(d12 < 0.0D) {
+				if(d12 < 0.0D)
+				{
 					d12 = -d12 * 0.3D;
 				}
 
 				d12 = d12 * 3.0D - 2.0D;
 
-				if(d12 < 0.0D) {
+				if(d12 < 0.0D) 
+				{
 					d12 /= 2.0D;
 
 					if(d12 < -1.0D) 
@@ -315,7 +370,9 @@ public class ChunkProviderVaeryn implements IChunkProvider
 
 					d12 /= 1.4D;
 					d12 /= 2.0D;
-				} else {
+				} 
+				else 
+				{
 					if(d12 > 1.0D) 
 						d12 = 1.0D;
 
@@ -329,7 +386,8 @@ public class ChunkProviderVaeryn implements IChunkProvider
 				d13 = d13 * 8.5D / 8.0D;
 				double d5 = 8.5D + d13 * 4.0D;
 
-				for(int j2 = 0; j2 < 33; ++j2) {
+				for(int j2 = 0; j2 < 33; ++j2) 
+				{
 					double d6 = ((double)j2 - d5) * 12.0D * 128.0D / 256.0D / d14;
 
 					if(d6 < 0.0D) 
@@ -341,7 +399,8 @@ public class ChunkProviderVaeryn implements IChunkProvider
 					double d9 = (this.gen1[l] / 10.0D + 1.0D) / 2.0D;
 					double d10 = MathHelper.denormalizeClamp(d7, d8, d9) - d6;
 
-					if(j2 > 29) {
+					if(j2 > 29)
+					{
 						double d11 = (double)((float)(j2 - 29) / 3.0F);
 						d10 = d10 * (1.0D - d11) + -10.0D * d11;
 					}
@@ -354,7 +413,8 @@ public class ChunkProviderVaeryn implements IChunkProvider
 	}
 
 	@Override
-	public boolean chunkExists(int par1, int par2) {
+	public boolean chunkExists(int par1, int par2)
+	{
 		return true;
 	}
 
@@ -375,7 +435,8 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		int var15;
 		int var16;
 
-		for (var13 = 0; var13 < 17; ++var13) {
+		for (var13 = 0; var13 < 17; ++var13)
+		{
 			var14 = var4 + this.rand.nextInt(16);
 			var15 = this.rand.nextInt(128);
 			var16 = var5 + this.rand.nextInt(16);
@@ -387,45 +448,51 @@ public class ChunkProviderVaeryn implements IChunkProvider
 
 
 	@Override
-	public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate) {
+	public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate) 
+	{
 		return true;
 	}
 
 	@Override
-	public void saveExtraData() { }
-
-	@Override
-	public boolean unloadQueuedChunks() {
+	public boolean unloadQueuedChunks() 
+	{
 		return false;
 	}
 
 	@Override
-	public boolean canSave() {
+	public boolean canSave() 
+	{
 		return true;
 	}
 
-	//does anyone actually know what this does?
 	@Override
-	public String makeString() {
-		return "Vaeryn";
+	public String makeString() 
+	{
+		return "VaerynSource";
 	}
 
 	@Override
-	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4) {
+	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4) 
+	{
 		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(par2, par4);
 		return biomegenbase.getSpawnableList(par1EnumCreatureType);
 	}
 
 	@Override
-	public ChunkPosition func_147416_a(World w, String s, int x, int y, int z) {
+	public ChunkPosition func_147416_a(World w, String s, int x, int y, int z) 
+	{
 		return null;
 	}
 
 	@Override
-	public int getLoadedChunkCount() {
+	public int getLoadedChunkCount() 
+	{
 		return 0;
 	}
 
+	@Override
+	public void saveExtraData() { }
+	
 	@Override
 	public void recreateStructures(int par1, int par2) { }
 }

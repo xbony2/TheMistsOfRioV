@@ -46,33 +46,17 @@ import cpw.mods.fml.common.eventhandler.Event.Result;
 public class ChunkProviderBlindOasis implements IChunkProvider
 {
     private Random random;
-    /**
-     * A NoiseGeneratorOctaves used in generating nether terrain
-     */
     private NoiseGeneratorOctaves netherNoiseGen1;
     private NoiseGeneratorOctaves netherNoiseGen2;
     private NoiseGeneratorOctaves netherNoiseGen3;
-    /**
-     * Determines whether slowsand or gravel can be generated at a location
-     */
     private NoiseGeneratorOctaves slowsandGravelNoiseGen;
-    /**
-     * Determines whether something other than nettherack can be generated at a location
-     */
     private NoiseGeneratorOctaves netherrackExculsivityNoiseGen;
     public NoiseGeneratorOctaves netherNoiseGen6;
     public NoiseGeneratorOctaves netherNoiseGen7;
-    /**
-     * Is the world that the nether is getting generated.
-     */
     private World worldObj;
     private double[] noiseField;
-
     private double[] slowsandNoise = new double[256];
     private double[] gravelNoise = new double[256];
-    /**
-     * Holds the noise used to determine whether something other than netherrack can be generated at a location
-     */
     private double[] netherrackExclusivityNoise = new double[256];
     private MapGenBase netherCaveGenerator = new MapGenCavesHell();
     double[] noiseData1;
@@ -109,14 +93,14 @@ public class ChunkProviderBlindOasis implements IChunkProvider
         this.netherNoiseGen7 = (NoiseGeneratorOctaves)noiseGens[6];
     }
 
-    public void func_147419_a(int p_147419_1_, int p_147419_2_, Block[] p_147419_3_)
+    public void replaceBlocks(int par1, int par2, Block[] par3BlockArray)
     {
         byte b0 = 4;
         byte b1 = 32;
         int k = b0 + 1;
         byte b2 = 17;
         int l = b0 + 1;
-        this.noiseField = this.initializeNoiseField(this.noiseField, p_147419_1_ * b0, 0, p_147419_2_ * b0, k, b2, l);
+        this.noiseField = this.initializeNoiseField(this.noiseField, par1 * b0, 0, par2 * b0, k, b2, l);
 
         for (int i1 = 0; i1 < b0; ++i1)
         {
@@ -164,7 +148,7 @@ public class ChunkProviderBlindOasis implements IChunkProvider
                                     block = RioVBlocks.blackRock;
                                 }
 
-                                p_147419_3_[j2] = block;
+                                par3BlockArray[j2] = block;
                                 j2 += short1;
                                 d15 += d16;
                             }
@@ -183,17 +167,17 @@ public class ChunkProviderBlindOasis implements IChunkProvider
         }
     }
 
-    public void func_147418_b(int p_147418_1_, int p_147418_2_, Block[] p_147418_3_)
+    public void generateTerrain(int par1, int par2, Block[] par3BlockArray)
     {
-        ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, p_147418_1_, p_147418_2_, p_147418_3_, null);
+        ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, par1, par2, par3BlockArray, null);
         MinecraftForge.EVENT_BUS.post(event);
         if (event.getResult() == Result.DENY) return;
 
         byte b0 = 64;
         double d0 = 0.03125D;
-        this.slowsandNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.slowsandNoise, p_147418_1_ * 16, p_147418_2_ * 16, 0, 16, 16, 1, d0, d0, 1.0D);
-        this.gravelNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.gravelNoise, p_147418_1_ * 16, 109, p_147418_2_ * 16, 16, 1, 16, d0, 1.0D, d0);
-        this.netherrackExclusivityNoise = this.netherrackExculsivityNoiseGen.generateNoiseOctaves(this.netherrackExclusivityNoise, p_147418_1_ * 16, p_147418_2_ * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
+        this.slowsandNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.slowsandNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d0, d0, 1.0D);
+        this.gravelNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.gravelNoise, par1 * 16, 109, par2 * 16, 16, 1, 16, d0, 1.0D, d0);
+        this.netherrackExclusivityNoise = this.netherrackExculsivityNoiseGen.generateNoiseOctaves(this.netherrackExclusivityNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d0 * 2.0D, d0 * 2.0D, d0 * 2.0D);
 
         for (int k = 0; k < 16; ++k)
         {
@@ -212,7 +196,7 @@ public class ChunkProviderBlindOasis implements IChunkProvider
 
                     if (k1 < 127 - this.random.nextInt(5) && k1 > 0 + this.random.nextInt(5))
                     {
-                        Block block2 = p_147418_3_[l1];
+                        Block block2 = par3BlockArray[l1];
 
                         if (block2 != null && block2.getMaterial() != Material.air)
                         {
@@ -252,17 +236,17 @@ public class ChunkProviderBlindOasis implements IChunkProvider
 
                                     if (k1 >= b0 - 1)
                                     {
-                                        p_147418_3_[l1] = block;
+                                        par3BlockArray[l1] = block;
                                     }
                                     else
                                     {
-                                        p_147418_3_[l1] = block1;
+                                        par3BlockArray[l1] = block1;
                                     }
                                 }
                                 else if (j1 > 0)
                                 {
                                     --j1;
-                                    p_147418_3_[l1] = block1;
+                                    par3BlockArray[l1] = block1;
                                 }
                             }
                         }
@@ -273,31 +257,24 @@ public class ChunkProviderBlindOasis implements IChunkProvider
                     }
                     else
                     {
-                        p_147418_3_[l1] = Blocks.bedrock;
+                        par3BlockArray[l1] = Blocks.bedrock;
                     }
                 }
             }
         }
     }
 
-    /**
-     * loads or generates the chunk at the chunk location specified
-     */
     public Chunk loadChunk(int par1, int par2)
     {
         return this.provideChunk(par1, par2);
     }
 
-    /**
-     * Will return back a chunk, if it doesn't exist and its not a MP client it will generates all the blocks for the
-     * specified chunk from the map seed and chunk seed
-     */
     public Chunk provideChunk(int par1, int par2)
     {
         this.random.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
         Block[] ablock = new Block[32768];
-        this.func_147419_a(par1, par2, ablock);
-        this.func_147418_b(par1, par2, ablock);
+        this.replaceBlocks(par1, par2, ablock);
+        this.generateTerrain(par1, par2, ablock);
         this.netherCaveGenerator.func_151539_a(this, this.worldObj, par1, par2, ablock);
         Chunk chunk = new Chunk(this.worldObj, ablock, par1, par2);
         BiomeGenBase[] abiomegenbase = this.worldObj.getWorldChunkManager().loadBlockGeneratorData((BiomeGenBase[])null, par1 * 16, par2 * 16, 16, 16);
@@ -312,10 +289,6 @@ public class ChunkProviderBlindOasis implements IChunkProvider
         return chunk;
     }
 
-    /**
-     * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the
-     * size.
-     */
     private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
     {
         ChunkProviderEvent.InitNoiseField event = new ChunkProviderEvent.InitNoiseField(this, par1ArrayOfDouble, par2, par3, par4, par5, par6, par7);
@@ -460,17 +433,11 @@ public class ChunkProviderBlindOasis implements IChunkProvider
         return par1ArrayOfDouble;
     }
 
-    /**
-     * Checks to see if a chunk exists at x, y
-     */
     public boolean chunkExists(int par1, int par2)
     {
         return true;
     }
 
-    /**
-     * Populates chunk with ores etc etc
-     */
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
         BlockFalling.fallInstantly = true;
@@ -495,48 +462,28 @@ public class ChunkProviderBlindOasis implements IChunkProvider
         BlockFalling.fallInstantly = false;
     }
 
-    /**
-     * Two modes of operation: if passed true, save all Chunks in one go.  If passed false, save up to two chunks.
-     * Return true if all chunks have been saved.
-     */
     public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
     {
         return true;
     }
 
-    /**
-     * Save extra data not associated with any Chunk.  Not saved during autosave, only during world unload.  Currently
-     * unimplemented.
-     */
     public void saveExtraData() {}
 
-    /**
-     * Unloads chunks that are marked to be unloaded. This is not guaranteed to unload every such chunk.
-     */
     public boolean unloadQueuedChunks()
     {
         return false;
     }
 
-    /**
-     * Returns if the IChunkProvider supports saving.
-     */
     public boolean canSave()
     {
         return true;
     }
 
-    /**
-     * Converts the instance data to a readable string.
-     */
     public String makeString()
     {
         return "BlindOasisSource";
     }
 
-    /**
-     * Returns a list of creatures of the specified type that can spawn at the given location.
-     */
     public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
     {
         if (par1EnumCreatureType == EnumCreatureType.monster)
