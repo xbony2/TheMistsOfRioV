@@ -387,26 +387,4 @@ public class Events
 			}
 		}
 	}
-
-	@SubscribeEvent
-	public void editMessage(ServerChatEvent event)
-	{
-		event.setCanceled(true);
-		PlayerNBT player = PlayerNBT.get(event.player);
-
-		if(player.factionID == player.raetiinID)
-		{
-			event.player.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "[Raetiin] " + event.component.getUnformattedTextForChat()));
-		}
-
-		if(player.factionID == player.jaerinID)
-		{
-			event.player.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "[Jaerin] " + event.component.getUnformattedTextForChat()));
-		}
-
-		if(player.factionID == -1)
-		{
-			event.player.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "[No Faction] " + event.component.getUnformattedTextForChat()));
-		}
-	}
 }
