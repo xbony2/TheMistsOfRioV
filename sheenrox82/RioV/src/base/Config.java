@@ -26,8 +26,6 @@ public class Config
 	public static boolean EOS = true;
 	public static boolean BLOOD = true;
 	public static boolean toolHud = true;
-	public static boolean menuMusic = true;
-	public static boolean riovMenu = true;
 	public static boolean showToolInfo = true;
 	public static boolean allowBreathing = true;
 	public static boolean deadBodies = true;

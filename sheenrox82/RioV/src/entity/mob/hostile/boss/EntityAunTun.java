@@ -143,7 +143,7 @@ public class EntityAunTun extends EntityBossCore
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2600.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2400.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(28.0D);
 	}
