@@ -1,32 +1,21 @@
 package sheenrox82.RioV.src.event;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiDownloadTerrain;
-import net.minecraft.client.gui.GuiLanguage;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiMultiplayer;
-import net.minecraft.client.gui.GuiOptions;
-import net.minecraft.client.gui.GuiSelectWorld;
 import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -45,10 +34,8 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.handler.WavHandler;
 import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.util.Util;
-import cpw.mods.fml.client.GuiModList;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -122,6 +109,8 @@ public class Events
 			{
 				((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).loadNBTData(playerData);
 			}
+			
+			player.inventory.addItemStackToInventory(new ItemStack(RioVItems.factionScroll));
 		}
 	}
 
@@ -336,6 +325,19 @@ public class Events
 					regenTimer = 0;
 				}
 			}
+			
+			
+			//UPDATE DATA FOR SERVER
+			NBTTagCompound playerData = new NBTTagCompound();
+
+			if(playerData != null)
+			{
+				BloodUtil.setCurrentBlood(100);
+			}
+
+			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).saveNBTData(playerData);
+			PlayerStorage.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
+			PlayerNBT.saveProxyData((EntityPlayer) event.entity);
 		}
 	}
 }

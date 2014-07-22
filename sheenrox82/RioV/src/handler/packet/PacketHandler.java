@@ -7,6 +7,7 @@ import sheenrox82.RioV.src.api.handler.packet.AbstractPacket;
 import sheenrox82.RioV.src.api.util.BloodUtil;
 import sheenrox82.RioV.src.api.util.EosUtil;
 import sheenrox82.RioV.src.api.util.PlayerNBT;
+import sheenrox82.RioV.src.faction.FactionUtil;
 
 public class PacketHandler extends AbstractPacket 
 {
@@ -14,7 +15,9 @@ public class PacketHandler extends AbstractPacket
 	public int mEos;
 	public int blood;
 	public int mBlood;
-
+	public int facID;
+	public boolean seenGui;
+	
 	public PacketHandler() 
 	{
 		super();
@@ -29,6 +32,8 @@ public class PacketHandler extends AbstractPacket
 
 		buffer.writeInt(BloodUtil.getCurrentBlood());
 		buffer.writeInt(props.maxBlood);
+		buffer.writeInt(FactionUtil.factionID);
+		buffer.writeBoolean(FactionUtil.hasSeenFactionGui);
 	}
 
 	@Override
@@ -40,6 +45,8 @@ public class PacketHandler extends AbstractPacket
 
 		blood = buffer.readInt();
 		mBlood = buffer.readInt();
+		facID = buffer.readInt();
+		seenGui = buffer.readBoolean();
 	}
 
 	@Override
@@ -51,11 +58,14 @@ public class PacketHandler extends AbstractPacket
 		mEos = props.maxEos;
 		blood = BloodUtil.getCurrentBlood();
 		mBlood = props.maxBlood;
+		facID = FactionUtil.factionID;
+		seenGui = FactionUtil.hasSeenFactionGui;
 	}
 
 	@Override
 	public void handleServerSide(EntityPlayer player)
 	{
-
+		facID = FactionUtil.factionID;
+		seenGui = FactionUtil.hasSeenFactionGui;
 	}
 }

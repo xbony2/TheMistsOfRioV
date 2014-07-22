@@ -1,5 +1,6 @@
 package sheenrox82.RioV.src.api.util;
 
+import sheenrox82.RioV.src.faction.FactionUtil;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,10 +11,6 @@ public class PlayerNBT implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "PlayerNBT";
 	public static EntityPlayer player;
-	public static boolean receivedScroll;
-
-	public static int raetiinID;
-	public static int jaerinID;
 
 	//EOS
 	public static final int EOS_WATCHER = 30;
@@ -22,10 +19,6 @@ public class PlayerNBT implements IExtendedEntityProperties
 	//BLOOD
 	public static final int BLOOD_WATCHER = 31;
 	public static int maxBlood = 100;
-
-	//FACTION
-	public static int factionID;
-	public static boolean hasSeenFactionGui;
 
 	public PlayerNBT(EntityPlayer player)
 	{
@@ -52,10 +45,10 @@ public class PlayerNBT implements IExtendedEntityProperties
 		properties.setInteger("CurrentBlood", this.player.getDataWatcher().getWatchableObjectInt(BLOOD_WATCHER));
 		properties.setInteger("MaxBlood", this.maxBlood);
 
-		properties.setInteger("FactionID", this.factionID);
-		properties.setBoolean("FactionGui", this.hasSeenFactionGui);
+		properties.setInteger("FactionID", FactionUtil.factionID);
+		properties.setBoolean("FactionGui", FactionUtil.hasSeenFactionGui);
 
-		properties.setBoolean("ScrollItem", this.receivedScroll);
+		properties.setBoolean("ScrollItem", FactionUtil.receivedScroll);
 
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
@@ -70,10 +63,10 @@ public class PlayerNBT implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(BLOOD_WATCHER, properties.getInteger("CurrentBlood"));
 		this.maxBlood = properties.getInteger("MaxBlood");
 
-		this.factionID = properties.getInteger("FactionID");
-		this.hasSeenFactionGui = properties.getBoolean("FactionGui");
+		FactionUtil.factionID = properties.getInteger("FactionID");
+		FactionUtil.hasSeenFactionGui = properties.getBoolean("FactionGui");
 
-		this.receivedScroll = properties.getBoolean("ScrollItem");
+		FactionUtil.receivedScroll = properties.getBoolean("ScrollItem");
 	}
 
 	@Override
@@ -81,11 +74,11 @@ public class PlayerNBT implements IExtendedEntityProperties
 	{
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
 		this.player.getDataWatcher().addObject(BLOOD_WATCHER, this.maxBlood);
-		this.factionID = -1;
-		this.hasSeenFactionGui = false;
-		this.raetiinID = 0;
-		this.jaerinID = 1;
-		this.receivedScroll = false;
+		FactionUtil.factionID = FactionUtil.noFactionID;
+		FactionUtil.hasSeenFactionGui = false;
+		FactionUtil.raetiinID = 1;
+		FactionUtil.jaerinID = 2;
+		FactionUtil.receivedScroll = false;
 	}
 
 	private static String getSaveKey(EntityPlayer player) 
@@ -112,5 +105,10 @@ public class PlayerNBT implements IExtendedEntityProperties
 		{
 			playerData.loadNBTData(savedData);
 		}
+	}
+	
+	public static void setFaction(int factionID)
+	{
+		FactionUtil.factionID = factionID;
 	}
 }
