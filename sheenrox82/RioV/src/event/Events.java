@@ -1,43 +1,29 @@
 package sheenrox82.RioV.src.event;
 
-import java.io.IOException;
+import java.util.List;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.DamageSource;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.Core.src.base.ModUpdateChecker;
-import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.BloodUtil;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
-import sheenrox82.RioV.src.api.util.PlayerStorage;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.handler.packet.PacketHandler;
+import sheenrox82.RioV.src.util.RioVPlayer;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -52,8 +38,9 @@ public class Events
 		if (event.entity instanceof EntityPlayer) 
 		{
 			EntityPlayer p = (EntityPlayer) event.entity;
-
-			if (p.worldObj.isRemote) 
+			RioVPlayer player = RioVPlayer.get(p);
+			
+			if (!p.worldObj.isRemote) 
 			{
 				if (ModUpdateChecker.isUpdateAvailable()) 
 				{
@@ -74,62 +61,6 @@ public class Events
 				}
 			}
 		} 
-	}
-
-	@SubscribeEvent
-	public void onEntityConstructing(EntityConstructing event)
-	{
-		if (event.entity instanceof EntityPlayer && PlayerNBT.get((EntityPlayer) event.entity) == null)
-		{
-			PlayerNBT.register((EntityPlayer) event.entity);
-		}
-		if (event.entity instanceof EntityPlayer && event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME) == null)
-		{
-			event.entity.registerExtendedProperties(PlayerNBT.EXT_PROP_NAME, new PlayerNBT((EntityPlayer) event.entity));
-		}
-	}
-
-	@SubscribeEvent
-	public void playerLoggedInEvent(PlayerLoggedInEvent event)
-	{
-		EntityPlayer p = event.player;
-		RioVAPI.getInstance().getPacketPipeline().sendTo(new PacketHandler(), (EntityPlayerMP)p);
-	}
-
-	@SubscribeEvent
-	public void onEntityJoinWorld(EntityJoinWorldEvent event)
-	{
-		if (event.entity instanceof EntityPlayer)
-		{
-			EntityPlayer player = (EntityPlayer)event.entity;
-
-			NBTTagCompound playerData = PlayerStorage.getEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME);
-
-			if (playerData != null) 
-			{
-				((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).loadNBTData(playerData);
-			}
-			
-			player.inventory.addItemStackToInventory(new ItemStack(RioVItems.factionScroll));
-		}
-	}
-
-	@SubscribeEvent
-	public void onLivingDeathEvent(LivingDeathEvent event)
-	{			
-		if (!event.entity.worldObj.isRemote && (event.entity instanceof EntityPlayer || event.entity instanceof EntityPlayerMP))
-		{
-			NBTTagCompound playerData = new NBTTagCompound();
-
-			if(playerData != null)
-			{
-				BloodUtil.setCurrentBlood(100);
-			}
-
-			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).saveNBTData(playerData);
-			PlayerStorage.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
-			PlayerNBT.saveProxyData((EntityPlayer) event.entity);
-		}
 	}
 
 	@SubscribeEvent
@@ -177,167 +108,61 @@ public class Events
 	}
 
 	@SubscribeEvent
-	public void playerBloodUpdate(LivingHurtEvent event)
+	public void onEntityConstructing(EntityConstructing event) 
 	{
-		if(event.entity instanceof EntityPlayer)
+		if (event.entity instanceof EntityPlayer) 
 		{
-			BloodUtil.consumeBlood(3);
+			if (RioVPlayer.get((EntityPlayer) event.entity) == null)
+				RioVPlayer.register((EntityPlayer) event.entity);
 		}
 	}
-
-	public boolean bloodBlur = false;
-	public boolean bloodColor = false;
-	public boolean bloodColorII = false;
 
 	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void playerUpdateClient(LivingEvent.LivingUpdateEvent event)
+	public void onEntityJoinWorld(EntityJoinWorldEvent event)
 	{
-		Minecraft mc = Minecraft.getMinecraft();
-
-		if(event.entity instanceof EntityPlayer)
+		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
-			if(!mc.thePlayer.capabilities.isCreativeMode)
-			{
-				if(BloodUtil.getCurrentBlood() == 100)
-				{
-					mc.entityRenderer.theShaderGroup = null;
-					bloodBlur = false;
-					bloodColor = false;
-					bloodColorII = false;
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 85 && BloodUtil.getCurrentBlood() > 60)
-				{
-					mc.entityRenderer.theShaderGroup = null;
-					bloodBlur = false;
-					bloodColor = false;
-					bloodColorII = false;
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 60)
-				{
-					if(bloodBlur == false)
-					{
-						try
-						{
-							mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("shaders/post/blur.json"));
-							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-							bloodBlur = true;
-						}
-						catch(IOException ioexception)
-						{
-							ioexception.printStackTrace();
-						}
-					}
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 50 && BloodUtil.getCurrentBlood() > 40)
-				{
-					if(bloodColor == false)
-					{
-						try
-						{
-							mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("blood", "shaders/post/desaturateBlur.json"));
-							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-							bloodColor = true;
-							bloodColorII = false;
-						}
-						catch(IOException ioexception)
-						{
-							ioexception.printStackTrace();
-						}
-					}
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 40 && BloodUtil.getCurrentBlood() > 35)
-				{
-					if(bloodColorII == false)
-					{
-						try
-						{
-							mc.entityRenderer.theShaderGroup = new ShaderGroup(mc.getTextureManager(), mc.getResourceManager(), mc.getFramebuffer(), new ResourceLocation("blood", "shaders/post/desaturateBlurII.json"));
-							mc.entityRenderer.theShaderGroup.createBindFramebuffers(mc.displayWidth, mc.displayHeight);
-							bloodColorII = true;
-							bloodColor = false;
-							event.entityLiving.addPotionEffect(new PotionEffect(Potion.harm.getId(), 100, 2));
-						}
-						catch(IOException ioexception)
-						{
-							ioexception.printStackTrace();
-						}
-					}
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 35)
-				{
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.poison.getId(), 100, 2));
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.blindness.getId(), 100, 2));
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.hunger.getId(), 100, 2));
-				}
-			}
+			RioVPlayer.loadProxyData((EntityPlayer) event.entity);
 		}
 	}
-
-	public int regenTimer;
 
 	@SubscribeEvent
-	public void playerUpdate(LivingEvent.LivingUpdateEvent event)
+	public void onLivingDeathEvent(LivingDeathEvent event)
 	{
-		if(event.entity instanceof EntityPlayer)
+		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			EntityPlayer thePlayer = (EntityPlayer)event.entityLiving;
-
-			if(!thePlayer.capabilities.isCreativeMode)
-			{
-				if(BloodUtil.getCurrentBlood() <= 85)
-				{
-					event.entityLiving.addPotionEffect(new PotionEffect(Potion.confusion.getId(), 100, 2));
-				}
-
-				if(BloodUtil.getCurrentBlood() <= 30 && BloodUtil.getCurrentBlood() > 0)
-				{
-					event.entityLiving.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
-				}
-
-				if(thePlayer.getFoodStats().getFoodLevel() >= 12)
-				{
-					if(BloodUtil.getCurrentBlood() < PlayerNBT.maxBlood)
-					{
-						++regenTimer;
-
-						if(regenTimer > 70)
-						{
-							BloodUtil.consumeBlood(-1);
-							regenTimer = 0;
-						}
-					}
-				}
-			}
-
-			if(EosUtil.getCurrentEos() < PlayerNBT.maxEos)
-			{
-				++regenTimer;
-
-				if(regenTimer > 70)
-				{
-					EosUtil.consumeEos(-1);
-					regenTimer = 0;
-				}
-			}
-			
-			
-			//UPDATE DATA FOR SERVER
-			NBTTagCompound playerData = new NBTTagCompound();
-
-			if(playerData != null)
-			{
-				BloodUtil.setCurrentBlood(100);
-			}
-
-			((PlayerNBT)(event.entity.getExtendedProperties(PlayerNBT.EXT_PROP_NAME))).saveNBTData(playerData);
-			PlayerStorage.storeEntityData(((EntityPlayer) event.entity).getDisplayName() + PlayerNBT.EXT_PROP_NAME, playerData);
-			PlayerNBT.saveProxyData((EntityPlayer) event.entity);
+			RioVPlayer.saveProxyData((EntityPlayer) event.entity);
 		}
 	}
+
+	@SubscribeEvent
+	public void onServerChatReceivedEvent(ServerChatEvent event)
+	{
+		if (event.player != null) 
+		{
+			EntityPlayer player = (EntityPlayer) event.player;
+			RioVPlayer riovPlayer = RioVPlayer.get(player);
+			
+			if (player != null)
+			{
+
+				event.setCanceled(true);
+
+				List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
+
+				for (int i = 0; i < + players.size(); i++) 
+				{
+					EntityPlayer target = (EntityPlayer) players.get(i);
+
+					String chattxt = "[" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
+
+					target.addChatMessage(new ChatComponentTranslation(chattxt));
+				}
+
+			}
+
+		}
+
+	}
+
 }

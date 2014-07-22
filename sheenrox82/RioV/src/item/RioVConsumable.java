@@ -11,7 +11,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.BloodUtil;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.util.Util;
@@ -55,23 +54,9 @@ public class RioVConsumable extends ItemFood
 			return itemStack;
 		}
 
-		if(itemStack.getItem().equals(RioVItems.bloodBerry))
-		{
-			--itemStack.stackSize;
-			if(BloodUtil.getCurrentBlood() < 96)
-			{
-				BloodUtil.consumeBlood(-4);
-			}
-			entityPlayer.getFoodStats().func_151686_a(this, itemStack);
-			world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-			this.onFoodEaten(itemStack, world, entityPlayer);
-			return itemStack;
-		}
-
 		if(itemStack.getItem().equals(RioVItems.fakeBloodberry))
 		{
 			--itemStack.stackSize;
-			BloodUtil.consumeBlood(2);
 			entityPlayer.getFoodStats().func_151686_a(this, itemStack);
 			entityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, 50, 2));
 			world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);

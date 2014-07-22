@@ -15,18 +15,14 @@ public class RioVAPI
 	private static InfuserManager infuser = new InfuserManager();
 	private static LogHelper logger = new LogHelper();
 	private static RioVAPIUtil util = new RioVAPIUtil();
-	
+	private static PacketPipeline pipeline = new PacketPipeline();
+
 	public static final String mod_id = getUtil().getUtilString("MOD_ID");
 	public static final String mod_name = getUtil().getUtilString("MOD_NAME");
 	public static final String version = getUtil().getUtilString("VERSION");
 
-	/**
-	 * Used to correctly write and close the debug file.
-	 */
 	public boolean modLoaded = false;
-
-	public PacketPipeline packetPipeline = new PacketPipeline();
-
+	
 	/**
 	 * These booleans are used to detect if certain mods are loaded in the ExpansionChecker class in the main source code for RioV.
 	 * Natura - continued by progwml6
@@ -77,18 +73,15 @@ public class RioVAPI
 	}
 
 	/**
-	 * Get RioV PacketPipeline
-	 */
-	public PacketPipeline getPacketPipeline()
-	{
-		return packetPipeline;
-	}	
-	
-	/**
 	 * Get RioVAPIUtil.java
 	 */
 	public static RioVAPIUtil getUtil()
 	{
 		return util;
+	}
+
+	public PacketPipeline getPipeline() 
+	{
+		return pipeline;
 	}
 }

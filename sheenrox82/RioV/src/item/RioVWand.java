@@ -9,11 +9,10 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
+import sheenrox82.RioV.src.util.RioVPlayer;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -48,7 +47,7 @@ public class RioVWand extends Item
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)
 	{
-		PlayerNBT player = PlayerNBT.get(entityplayer);
+		RioVPlayer player = RioVPlayer.get(entityplayer);
 
 		if(itemstack.getItem().equals(RioVItems.fireballWand))
 		{
@@ -69,7 +68,7 @@ public class RioVWand extends Item
 
 					if(entityplayer.capabilities.isCreativeMode == false)
 					{
-						EosUtil.consumeEos(2);
+						player.consumeEos(2);
 					}
 
 					itemstack.damageItem(1, entityplayer);
@@ -105,12 +104,12 @@ public class RioVWand extends Item
 				if (this.firetick == this.firemax && this.firemax != 0)
 				{
 					world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
-					
+
 					if(entityplayer.capabilities.isCreativeMode == false)
 					{
-						EosUtil.consumeEos(2);
+						player.consumeEos(2);
 					}
-					
+
 					itemstack.damageItem(1, entityplayer);
 					this.firetick = 0;
 				}
@@ -128,13 +127,13 @@ public class RioVWand extends Item
 			}
 		}
 
-		if(EosUtil.getCurrentEos() == 0)
+		if(player.getCurrentEos() == 0)
 		{
 			if(!world.isRemote)
 				entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 		}
 
-		if(EosUtil.getCurrentEos() < 0)
+		if(player.getCurrentEos() < 0)
 		{
 			if(!world.isRemote)
 				entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
@@ -149,4 +148,3 @@ public class RioVWand extends Item
 		this.firetick = this.firemax;
 	}
 }
-

@@ -11,11 +11,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
-import sheenrox82.Core.src.base.ModUpdateChecker;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
 
 public class CommandRageQuit extends CommandBase implements ICommand
 {

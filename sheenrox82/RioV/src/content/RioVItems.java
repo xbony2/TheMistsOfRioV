@@ -14,7 +14,6 @@ import sheenrox82.RioV.src.api.item.RioVPickaxe;
 import sheenrox82.RioV.src.api.item.RioVSpade;
 import sheenrox82.RioV.src.api.item.RioVWeapon;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.item.ItemFactionScroll;
 import sheenrox82.RioV.src.item.RioVActivators;
 import sheenrox82.RioV.src.item.RioVBag;
 import sheenrox82.RioV.src.item.RioVBow;
@@ -307,7 +306,6 @@ public class RioVItems
 	public static Item paladinLongsword = (new RioVWeapon(InfusedOnyx, false)).setUnlocalizedName("paladinLongsword");
 	public static Item graviWand = (new RioVWand(0, 1, 3)).setUnlocalizedName("graviWand");
 	public static Item eosPotion = (new RioVDrinkable(0, 0, true)).setAlwaysEdible().setUnlocalizedName("eosPotion");
-	public static Item factionScroll = (new ItemFactionScroll()).setUnlocalizedName("factionScroll");
 
 	//v2.3.0
 	//The Flora Update
@@ -321,7 +319,6 @@ public class RioVItems
 	
 	public static void add()
 	{		
-		RioVAPIUtil.registerItem(factionScroll, "Faction Scroll");
 		RioVAPIUtil.registerItem(glimmerBerry, "Glimmerberry");
 		RioVAPIUtil.registerItem(elderBerry, "Elderberry");
 		RioVAPIUtil.registerItem(enderBerry, "Enderberry");

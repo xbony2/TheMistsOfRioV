@@ -7,15 +7,8 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.Core.src.base.ModUpdateChecker;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.util.MethodUtil;
 
 public class CommandPrintChangelog extends CommandBase implements ICommand
 {

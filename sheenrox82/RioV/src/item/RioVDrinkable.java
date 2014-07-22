@@ -10,10 +10,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.RioVPlayer;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -101,10 +100,10 @@ public class RioVDrinkable extends ItemFood
 
 		if(itemStack.getItem().equals(RioVItems.eosPotion))
 		{
-			PlayerNBT player = PlayerNBT.get(entityPlayer);
+			RioVPlayer player = RioVPlayer.get(entityPlayer);
 
 			--itemStack.stackSize;
-			EosUtil.replenishEos();
+			player.replenishEos();
 			entityPlayer.getFoodStats().func_151686_a(this, itemStack);
 			world.playSoundAtEntity(entityPlayer, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 			this.onFoodEaten(itemStack, world, entityPlayer);
@@ -129,8 +128,6 @@ public class RioVDrinkable extends ItemFood
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
-		PlayerNBT player = PlayerNBT.get(par3EntityPlayer);
-
 		par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
 
 		return par1ItemStack;

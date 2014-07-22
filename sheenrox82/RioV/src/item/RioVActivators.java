@@ -7,11 +7,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.RioVPlayer;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,7 +28,7 @@ public class RioVActivators extends Item
 	@Override
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer entityplayer, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
 	{
-		PlayerNBT player = PlayerNBT.get(entityplayer);
+		RioVPlayer player = RioVPlayer.get(entityplayer);
 
 		if(this ==  RioVItems.blindOasisActivator)
 		{
@@ -69,7 +68,7 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 7)
+				if(player.getCurrentEos() > 7)
 				{
 					if (world.isAirBlock(par4, par5, par6))
 					{
@@ -78,7 +77,7 @@ public class RioVActivators extends Item
 
 						if(entityplayer.capabilities.isCreativeMode == false)
 						{
-							EosUtil.consumeEos(7);
+							player.consumeEos(7);
 						}
 					}
 
@@ -87,7 +86,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 7)
+					if(player.getCurrentEos() < 7)
 					{
 						if(!world.isRemote)
 						{
@@ -137,7 +136,7 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 10)
+				if(player.getCurrentEos() > 10)
 				{
 					if (world.isAirBlock(par4, par5, par6))
 					{
@@ -146,7 +145,7 @@ public class RioVActivators extends Item
 
 						if(entityplayer.capabilities.isCreativeMode == false)
 						{
-							EosUtil.consumeEos(10);
+							player.consumeEos(10);
 						}
 					}
 
@@ -155,7 +154,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 10)
+					if(player.getCurrentEos() < 10)
 					{
 						if(!world.isRemote)
 						{
@@ -205,7 +204,7 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 15)
+				if(player.getCurrentEos() > 15)
 				{
 					if (world.isAirBlock(par4, par5, par6))
 					{
@@ -214,7 +213,7 @@ public class RioVActivators extends Item
 
 						if(entityplayer.capabilities.isCreativeMode == false)
 						{
-							EosUtil.consumeEos(15);
+							player.consumeEos(15);
 						}
 					}
 
@@ -223,7 +222,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 15)
+					if(player.getCurrentEos() < 15)
 					{
 						if(!world.isRemote)
 						{
@@ -274,7 +273,7 @@ public class RioVActivators extends Item
 			}
 			else
 			{
-				if(EosUtil.getCurrentEos() > 20)
+				if(player.getCurrentEos() > 20)
 				{
 					if (world.isAirBlock(par4, par5, par6))
 					{
@@ -283,7 +282,7 @@ public class RioVActivators extends Item
 
 						if(entityplayer.capabilities.isCreativeMode == false)
 						{
-							EosUtil.consumeEos(20);
+							player.consumeEos(20);
 						}
 					}
 
@@ -292,7 +291,7 @@ public class RioVActivators extends Item
 				}
 				else
 				{
-					if(EosUtil.getCurrentEos() < 20)
+					if(player.getCurrentEos() < 20)
 					{
 						if(!world.isRemote)
 						{
@@ -314,4 +313,3 @@ public class RioVActivators extends Item
 		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 	}
 }
-

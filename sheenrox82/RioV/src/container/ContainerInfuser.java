@@ -25,7 +25,6 @@ public class ContainerInfuser extends Container
         
         this.addSlotToContainer(new Slot(par2TileEntityInfusionAltar, 0, 56, 35));
         this.addSlotToContainer(new Slot(par2TileEntityInfusionAltar, 1, 16, 35));
-        //this.addSlotToContainer(new Slot(par2TileEntityInfusionAltar, 2, 116, 35));
         this.addSlotToContainer(new SlotInfuser(par1InventoryPlayer.player, par2TileEntityInfusionAltar, 2, 116, 35));
 
         int var3;

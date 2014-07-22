@@ -17,6 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.NetHandlerPlayServer;
+import sheenrox82.RioV.src.handler.packet.RioVPlayerPackets;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.FMLEmbeddedChannel;
 import cpw.mods.fml.common.network.FMLOutboundHandler;
@@ -115,9 +116,8 @@ public class PacketPipeline extends MessageToMessageCodec<FMLProxyPacket, Abstra
 	// Method to call from FMLInitializationEvent
 	public void initialise() 
 	{
-		this.channels = NetworkRegistry.INSTANCE.newChannel("RioV", new ChannelHandler[] { this });
-		
-		
+		this.channels = NetworkRegistry.INSTANCE.newChannel("RioV", this);
+		registerPacket(RioVPlayerPackets.class);
 	}
 
 	// Method to call from FMLPostInitializationEvent

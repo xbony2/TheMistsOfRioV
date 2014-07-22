@@ -45,7 +45,6 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.62D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTef.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTefGuard.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkElf.class, 0, true));
@@ -63,6 +62,8 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.62D, true));
 		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.auntunHelmet));
@@ -100,7 +101,6 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		{
 			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F);
 		}
-
 
 		for (int i = 0; i < 2; ++i)
 		{
@@ -148,16 +148,16 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 			this.dropItem(RioVItems.ingotOfFlame, 1);
 		}
 	}
-	
+
 	@Override
 	protected String getLivingSound()
 	{
 		return Sounds.auntun.getPrefixedName();
 	}
-	
+
 	@Override
 	public boolean attackEntityAsMob(Entity par1Entity)
-    {
+	{
 		super.attackEntityAsMob(par1Entity);
 		((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.wither.id, 70, 1));
 		return true;

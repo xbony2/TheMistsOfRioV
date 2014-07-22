@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.command;
+package sheenrox82.RioV.src.faction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,30 +8,34 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.Core.src.base.ModUpdateChecker;
+import sheenrox82.RioV.src.util.RioVPlayer;
 
-public class CommandEosReplenish extends CommandBase implements ICommand
+public class CommandFaction extends CommandBase implements ICommand
 {
 	private List aliases;
-	public CommandEosReplenish()
+	public CommandFaction()
 	{
 		this.aliases = new ArrayList();
-		this.aliases.add("resetEos");
-		this.aliases.add("reseteos");
+		this.aliases.add("faction");
+		this.aliases.add("Faction");
+		this.aliases.add("f");
+		this.aliases.add("F");
+		this.aliases.add("riovFaction");
+		this.aliases.add("riovfaction");
+
 	}
 
 	@Override
 	public String getCommandName()
 	{
-		return "resetEos";
+		return "faction";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/resetEos - Resets Eos to 50.";
+		return EnumChatFormatting.GOLD + "/faction <factionID> - Choose a Faction. (Raetiin (bad) ID: 1) || (Jaerin (good) ID: 2)";
 	}
 
 	@Override
@@ -42,14 +46,25 @@ public class CommandEosReplenish extends CommandBase implements ICommand
 
 	@Override
 	public void processCommand(ICommandSender icommandsender, String[] astring)
-	{
-		EntityPlayer player = (EntityPlayer)icommandsender;
-		PlayerNBT props = PlayerNBT.get(player);
-
+	{        
 		if(icommandsender instanceof EntityPlayer)
 		{
-			EosUtil.replenishEos();
-			icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "Replenished Eos. Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos));
+			EntityPlayer thePlayer = (EntityPlayer)icommandsender;
+			RioVPlayer player = RioVPlayer.get(thePlayer);
+			
+			int factionID = Integer.parseInt(astring[0]);
+			
+			if(factionID == 1)
+			{
+				player.setFactionID(player.raetiinID);
+				player.setFactionName(player.raetiinName);
+			}
+			
+			if(factionID == 2)
+			{
+				player.setFactionID(player.jaerinID);
+				player.setFactionName(player.jaerinName);
+			}
 		}
 	}
 
@@ -80,6 +95,6 @@ public class CommandEosReplenish extends CommandBase implements ICommand
 
 	public int getRequiredPermissionLevel()
 	{
-		return 3;
+		return 0;
 	}
 }

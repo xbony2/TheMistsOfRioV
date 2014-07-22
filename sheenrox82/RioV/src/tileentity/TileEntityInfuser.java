@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityInfuser extends TileEntity implements IInventory
 {
-    private ItemStack[] infuserStacks = new ItemStack[3];
+    public ItemStack[] infuserStacks = new ItemStack[3];
     public int altarBurnTime = 0;
     public int currentItemBurnTime = 0;
     public int altarCookTime = 0;

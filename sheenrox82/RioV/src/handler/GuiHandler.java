@@ -12,8 +12,6 @@ import sheenrox82.RioV.src.container.ContainerBagSheen;
 import sheenrox82.RioV.src.container.ContainerBagSmall;
 import sheenrox82.RioV.src.container.ContainerInfuser;
 import sheenrox82.RioV.src.container.ContainerRioVWorkbench;
-import sheenrox82.RioV.src.faction.ContainerFactionScroll;
-import sheenrox82.RioV.src.faction.GuiFaction;
 import sheenrox82.RioV.src.gui.GuiAnvil;
 import sheenrox82.RioV.src.gui.GuiInfuser;
 import sheenrox82.RioV.src.gui.GuiLargeBag;
@@ -25,7 +23,6 @@ import sheenrox82.RioV.src.inventory.InventoryBagLarge;
 import sheenrox82.RioV.src.inventory.InventoryBagMedium;
 import sheenrox82.RioV.src.inventory.InventoryBagSheen;
 import sheenrox82.RioV.src.inventory.InventoryBagSmall;
-import sheenrox82.RioV.src.item.ItemFactionScroll;
 import sheenrox82.RioV.src.item.RioVBag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -75,11 +72,6 @@ public class GuiHandler implements IGuiHandler
 			}
 		}
 		
-		if(id == ItemFactionScroll.guiID)
-		{
-			return new ContainerFactionScroll(player.inventory);
-		}
-		
 		return null;
 	}
 
@@ -126,11 +118,6 @@ public class GuiHandler implements IGuiHandler
 			}
 		}
 		
-		if(id == ItemFactionScroll.guiID)
-		{
-			return new GuiFaction(player.inventory);
-		}
-
 		return null;
 	}
 }

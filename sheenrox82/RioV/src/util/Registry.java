@@ -12,10 +12,6 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.command.CommandEosAdd;
-import sheenrox82.RioV.src.command.CommandEosCheck;
-import sheenrox82.RioV.src.command.CommandEosRemove;
-import sheenrox82.RioV.src.command.CommandEosReplenish;
 import sheenrox82.RioV.src.command.CommandPrintChangelog;
 import sheenrox82.RioV.src.command.CommandRageQuit;
 import sheenrox82.RioV.src.content.Biomes;
@@ -25,15 +21,13 @@ import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.event.ConfigChanges;
 import sheenrox82.RioV.src.event.Events;
-import sheenrox82.RioV.src.gui.hud.GuiBloodBar;
+import sheenrox82.RioV.src.faction.CommandFaction;
 import sheenrox82.RioV.src.gui.hud.GuiBootsHud;
 import sheenrox82.RioV.src.gui.hud.GuiChestplateHud;
-import sheenrox82.RioV.src.gui.hud.GuiEosBar;
 import sheenrox82.RioV.src.gui.hud.GuiHelmetHud;
 import sheenrox82.RioV.src.gui.hud.GuiLeggingsHud;
 import sheenrox82.RioV.src.gui.hud.GuiToolHud;
 import sheenrox82.RioV.src.handler.FuelHandler;
-import sheenrox82.RioV.src.handler.packet.PacketHandler;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
 import sheenrox82.RioV.src.tileentity.TileEntityFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
@@ -125,9 +119,8 @@ public class Registry
 		BiomeGenBase.plains.theBiomeDecorator.treesPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.bigMushroomsPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 20;
-		RioVAPI.getInstance().getPacketPipeline().initialise();
-		RioVAPI.getInstance().getPacketPipeline().registerPacket(PacketHandler.class);
 		RioVAPI.getInstance().getLogger().info("Packets registering...");
+		RioVAPI.getInstance().getPipeline().initialise();
 		RioVAPI.getInstance().getLogger().info("Packets registered.");
 		RioVAPI.getInstance().getLogger().info("Other shit is registered. //END INITIALIZATION");
 	}
@@ -135,14 +128,11 @@ public class Registry
 	public static void postInit(FMLPostInitializationEvent postInit)
 	{
 		RioVAPI.getInstance().getLogger().info("Almost done initializing. //START POST-INITIALIZATION");
-		RioVAPI.getInstance().getPacketPipeline().postInitialise();
+		RioVAPI.getInstance().getPipeline().postInitialise();
 		RioVAPI.getInstance().getLogger().info("Packets post-registered.");
 
 		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
 		{
-			MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiBloodBar(Minecraft.getMinecraft()));
-
 			if(RioVAPI.getInstance().getUtil().getConfigBool("toolHud") == true)
 			{
 				MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
@@ -151,7 +141,7 @@ public class Registry
 				MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
 				MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
 			}
-			
+
 			RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 		}
 
@@ -184,10 +174,7 @@ public class Registry
 
 	public static void serverLoad(FMLServerStartingEvent event)
 	{
-		event.registerServerCommand(new CommandEosRemove());
-		event.registerServerCommand(new CommandEosReplenish());
-		event.registerServerCommand(new CommandEosCheck());
-		event.registerServerCommand(new CommandEosAdd());
+		event.registerServerCommand(new CommandFaction());
 		event.registerServerCommand(new CommandRageQuit());
 		event.registerServerCommand(new CommandPrintChangelog());
 	}

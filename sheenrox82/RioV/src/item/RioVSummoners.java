@@ -10,8 +10,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
@@ -20,6 +18,7 @@ import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTerron;
+import sheenrox82.RioV.src.util.RioVPlayer;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,7 +37,7 @@ public class RioVSummoners extends Item
 	@Override
 	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer entityplayer, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
 	{
-		PlayerNBT player = PlayerNBT.get(entityplayer);
+		RioVPlayer player = RioVPlayer.get(entityplayer);
 
 		if(world.provider.dimensionId == Config.blindOasisID)
 		{
@@ -47,11 +46,11 @@ public class RioVSummoners extends Item
 				int var4 = 0;
 				if (!world.isRemote)
 				{
-					if(EosUtil.getCurrentEos() > 3)
+					if(player.getCurrentEos() > 3)
 					{
 						while (var4 < 1)
 						{
-							if(EosUtil.consumeEos(3))
+							if(player.consumeEos(3))
 							{
 								EntityTerron var5 = new EntityTerron(world);
 								var5.setPosition(par4, par5+1, par6);
@@ -65,13 +64,13 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						if(EosUtil.getCurrentEos() < 3)
+						if(player.getCurrentEos() < 3)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
-						if(EosUtil.getCurrentEos() < 0)
+						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
@@ -86,11 +85,11 @@ public class RioVSummoners extends Item
 				int var4 = 0;
 				if (!world.isRemote)
 				{
-					if(EosUtil.getCurrentEos() > 4)
+					if(player.getCurrentEos() > 4)
 					{
 						while (var4 < 1)
 						{
-							if(EosUtil.consumeEos(4))
+							if(player.consumeEos(4))
 							{
 								EntityTef var5 = new EntityTef(world);
 								var5.setPosition(par4, par5+1, par6);
@@ -103,13 +102,13 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						if(EosUtil.getCurrentEos() < 4)
+						if(player.getCurrentEos() < 4)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
-						if(EosUtil.getCurrentEos() < 0)
+						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
@@ -123,11 +122,11 @@ public class RioVSummoners extends Item
 				int var4 = 0;
 				if (!world.isRemote)
 				{
-					if(EosUtil.getCurrentEos() > 18)
+					if(player.getCurrentEos() > 18)
 					{
 						while (var4 < 1)
 						{
-							if(EosUtil.consumeEos(18))
+							if(player.consumeEos(18))
 							{
 								EntityDarkEssence var5 = new EntityDarkEssence(world);
 								var5.setPosition(par4, par5+1, par6);
@@ -141,13 +140,13 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						if(EosUtil.getCurrentEos() < 18)
+						if(player.getCurrentEos() < 18)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
-						if(EosUtil.getCurrentEos() < 0)
+						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
@@ -164,12 +163,12 @@ public class RioVSummoners extends Item
 				int var4 = 0;
 				if (!world.isRemote)
 				{
-					if(EosUtil.getCurrentEos() > 12)
+					if(player.getCurrentEos() > 12)
 					{
 
 						while (var4 < 1)
 						{
-							if(EosUtil.consumeEos(12))
+							if(player.consumeEos(12))
 							{
 								EntityDemonAngel var5 = new EntityDemonAngel(world);
 								var5.setPosition(par4, par5+1, par6);
@@ -182,13 +181,13 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						if(EosUtil.getCurrentEos() < 12)
+						if(player.getCurrentEos() < 12)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
-						
-						if(EosUtil.getCurrentEos() < 0)
+
+						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
@@ -203,11 +202,11 @@ public class RioVSummoners extends Item
 
 				if (!world.isRemote)
 				{
-					if(EosUtil.getCurrentEos() > 34)
+					if(player.getCurrentEos() > 34)
 					{
 						while (var4 < 1)
 						{
-							if(EosUtil.consumeEos(34))
+							if(player.consumeEos(34))
 							{
 								EntityAunTun var5 = new EntityAunTun(world);
 								var5.setPosition(par4, par5+1, par6);
@@ -220,13 +219,13 @@ public class RioVSummoners extends Item
 					}
 					else
 					{
-						if(EosUtil.getCurrentEos() < 34)
+						if(player.getCurrentEos() < 34)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
-						
-						if(EosUtil.getCurrentEos() < 0)
+
+						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
 								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
@@ -267,4 +266,3 @@ public class RioVSummoners extends Item
 	}
 
 }
-

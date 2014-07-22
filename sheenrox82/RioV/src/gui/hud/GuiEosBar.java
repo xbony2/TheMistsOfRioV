@@ -10,9 +10,8 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.EosUtil;
-import sheenrox82.RioV.src.api.util.PlayerNBT;
 import sheenrox82.RioV.src.base.Config;
+import sheenrox82.RioV.src.util.RioVPlayer;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -38,7 +37,7 @@ public class GuiEosBar extends Gui
 		}
 
 		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/eos_bar.png");
-		PlayerNBT props = PlayerNBT.get(mc.thePlayer);
+		RioVPlayer props = RioVPlayer.get(mc.thePlayer);
 		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
 
 		if (props == null || props.maxEos == 0)
@@ -54,7 +53,7 @@ public class GuiEosBar extends Gui
 				Minecraft.getMinecraft().renderEngine.bindTexture(icons);
 				int height = event.resolution.getScaledHeight();
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-				float eos = (((float) EosUtil.getCurrentEos() / props.maxEos) * 80);
+				float eos = (((float) props.getCurrentEos() / props.maxEos) * 80);
 				this.drawTexturedModalRect(Config.eosPosX, height - Config.eosPosY, 0, 49, 102, 14);
 				this.drawTexturedModalRect(Config.eosPosX + 11, (height - Config.eosPosY) + 4, 11, 64, (int)eos, 6);
 				GL11.glPopMatrix();
@@ -67,7 +66,7 @@ public class GuiEosBar extends Gui
 			{
 				int height = event.resolution.getScaledHeight();
 				GL11.glPushMatrix();
-				fontrenderer.drawStringWithShadow("Eos: " + EosUtil.getCurrentEos() + "/" + props.maxEos, 32, height - 18, 16777215);
+				fontrenderer.drawStringWithShadow("Eos: " + props.getCurrentEos() + "/" + props.maxEos, 32, height - 18, 16777215);
 				GL11.glPopMatrix();
 			}
 		}
