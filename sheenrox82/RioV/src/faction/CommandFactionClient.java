@@ -18,8 +18,13 @@ public class CommandFactionClient extends CommandBase implements ICommand
 	public CommandFactionClient()
 	{
 		this.aliases = new ArrayList();
-		this.aliases.add("spFaction");
 		this.aliases.add("spfaction");
+		this.aliases.add("spFaction");
+		this.aliases.add("spf");
+		this.aliases.add("spF");
+		this.aliases.add("spriovFaction");
+		this.aliases.add("spriovfaction");
+
 	}
 
 	@Override

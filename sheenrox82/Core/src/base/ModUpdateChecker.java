@@ -1,24 +1,17 @@
 package sheenrox82.Core.src.base;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.util.Util;
 
 public class ModUpdateChecker 
 {
 	public static String urlString;
 	public static String versionString;
 	public static String newVersionStr;
-	public static int statusInt;
-	public static int updateNotAvailable = 1;
-	public static int updateAvailable = 2;
-	public static int offline = 3;
 
 	public static void init(String url, String version)
 	{
@@ -26,7 +19,7 @@ public class ModUpdateChecker
 		versionString = version;
 	}
 
-	public static int updateStatus()
+	public static boolean isUpdateAvailable()
 	{
 		try
 		{
@@ -37,17 +30,16 @@ public class ModUpdateChecker
 
 			if (!curVersion.equals(versionString))
 			{
-				return updateAvailable;
+				return true;
 			}
 			else
 			{
-				return updateNotAvailable;
+				return false;
 			}
-
 		}
 		catch(Exception e)
 		{
-			return offline;
+			return false;
 		}
 	}
 

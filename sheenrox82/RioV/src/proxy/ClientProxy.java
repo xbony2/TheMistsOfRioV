@@ -131,7 +131,7 @@ public class ClientProxy extends CommonProxy
 	{
 		if(RioVAPI.getInstance().getUtil().getConfigBool("runCapes") == true)
 		{
-			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.txt", Util.MOD_ID);
+			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.json");
 		}
 		else
 		{

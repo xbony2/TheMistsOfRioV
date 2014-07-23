@@ -24,7 +24,6 @@ public class CommandFaction extends CommandBase implements ICommand
 		this.aliases.add("mpF");
 		this.aliases.add("mpriovFaction");
 		this.aliases.add("mpriovfaction");
-
 	}
 
 	@Override

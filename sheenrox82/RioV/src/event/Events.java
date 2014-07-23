@@ -23,6 +23,7 @@ import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.Registry;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -43,7 +44,7 @@ public class Events
 
 			if (!p.worldObj.isRemote) 
 			{
-				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.updateAvailable) 
+				if (ModUpdateChecker.isUpdateAvailable()) 
 				{
 					if(!hasSeen)
 					{
@@ -52,20 +53,11 @@ public class Events
 					}
 				}
 
-				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.updateNotAvailable) 
+				if (ModUpdateChecker.isUpdateAvailable()) 
 				{
 					if(!hasSeen)
 					{
 						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
-						hasSeen = true;
-					}	
-				}
-
-				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.offline) 
-				{
-					if(!hasSeen)
-					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "[" + Color.WHITE + Util.MOD_NAME + Color.GOLD + "] Could not connect to update checking URL, either you are not connected to the internet or the Dropbox website is down."));
 						hasSeen = true;
 					}	
 				}
@@ -189,9 +181,17 @@ public class Events
 				{
 					EntityPlayer target = (EntityPlayer) players.get(i);
 
-					String chattxt = "[" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
+					String playerMsg = "[" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
+					String devMsg = Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.white + " [" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 
-					target.addChatMessage(new ChatComponentTranslation(chattxt));
+					if(player.getDisplayName().equals(Registry.developer))
+					{
+						target.addChatMessage(new ChatComponentTranslation(devMsg));
+					}
+					else
+					{
+						target.addChatMessage(new ChatComponentTranslation(playerMsg));
+					}
 				}
 
 			}

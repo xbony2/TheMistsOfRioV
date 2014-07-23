@@ -241,7 +241,7 @@ public class WorldGen implements IWorldGenerator
 
 			if((biome instanceof BiomeGenCanopyOasis)) 
 			{
-				for(int x = 0; x < 6; x++)
+				for(int x = 0; x < 2; x++)
 				{
 					int i = blockX + rand.nextInt(16);
 					int k = blockZ + rand.nextInt(16);

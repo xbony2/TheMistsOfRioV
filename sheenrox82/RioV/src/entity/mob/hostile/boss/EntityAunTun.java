@@ -76,6 +76,7 @@ public class EntityAunTun extends EntityBossCore
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
+		
 		if(this.worldObj.isRemote)
 		{
 			RioVAPIUtil.sendMessageToAll("Aun'Tun: *Rupture");
