@@ -1,11 +1,10 @@
-package sheenrox82.RioV.src.handler.packet;
+package sheenrox82.RioV.src.api.handler.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import sheenrox82.RioV.src.api.handler.packet.AbstractPacket;
-import sheenrox82.RioV.src.util.RioVPlayer;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 import cpw.mods.fml.common.network.ByteBufUtils;
 
 public class RioVPlayerPackets extends AbstractPacket

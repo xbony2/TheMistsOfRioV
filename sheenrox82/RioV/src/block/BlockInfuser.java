@@ -22,188 +22,194 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockInfuser extends BlockContainer
 {
-    private Random AltarRand = new Random();
-    public final boolean isActive;
-    private static boolean keepAltarInventory = false;
-    @SideOnly(Side.CLIENT)
-    private IIcon field_94461_a;
-    @SideOnly(Side.CLIENT)
-    private IIcon field_94460_b;
-    @SideOnly(Side.CLIENT)
-    private IIcon blockIcon;
-    
-    public BlockInfuser(boolean par3)
-    {
-        super(Material.iron);
-        this.isActive = par3;
-        this.setCreativeTab(RioVAPI.getInstance().tab);
-    }
-    
-    @Override
-    public IIcon getIcon(int par1, int par2)
-    {
-        return par1 == 0 ? this.field_94460_b : (par1 == 1 ? this.field_94461_a : this.blockIcon);
-    }
+	private Random AltarRand = new Random();
+	public final boolean isActive;
+	private static boolean keepAltarInventory = false;
+	@SideOnly(Side.CLIENT)
+	private IIcon field_94461_a;
+	@SideOnly(Side.CLIENT)
+	private IIcon field_94460_b;
+	@SideOnly(Side.CLIENT)
+	private IIcon blockIcon;
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
-    {
-        this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_side");
-        this.field_94461_a = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_top");
-        this.field_94460_b = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_bottom");
-    }
-    
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
-    {
-        super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
+	public BlockInfuser(boolean par3)
+	{
+		super(Material.iron);
+		this.isActive = par3;
+		this.setCreativeTab(RioVAPI.getInstance().tab);
+	}
 
-        for (int var6 = par2 - 2; var6 <= par2 + 2; ++var6)
-        {
-            for (int var7 = par4 - 2; var7 <= par4 + 2; ++var7)
-            {
-                if (var6 > par2 - 2 && var6 < par2 + 2 && var7 == par4 - 1)
-                {
-                    var7 = par4 + 2;
-                }
+	@Override
+	public IIcon getIcon(int par1, int par2)
+	{
+		return par1 == 0 ? this.field_94460_b : (par1 == 1 ? this.field_94461_a : this.blockIcon);
+	}
 
-                if (par5Random.nextInt(16) == 0)
-                {
-                    for (int var8 = par3; var8 <= par3 + 1; ++var8)
-                    {
-                        
-                            if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
-                            {
-                                break;
-                            }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
+	{
+		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_side");
+		this.field_94461_a = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_top");
+		this.field_94460_b = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "infuser_bottom");
+	}
 
-                            par1World.spawnParticle("enchantmenttable", (double)par2 + 0.5D, (double)par3 + 2.0D, (double)par4 + 0.5D, (double)((float)(var6 - par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(var8 - par3) - par5Random.nextFloat() - 1.0F), (double)((float)(var7 - par4) + par5Random.nextFloat()) - 0.5D);
-                            Particles.spawnParticle("glimmer", (double)par2 + 0.5D, (double)par3 + 1.0D, (double)par4 + 0.5D, (double)((float)(par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(par3) - par5Random.nextFloat() - 1.0F), (double)((float)(par4) + par5Random.nextFloat()) - 0.5D);
-                       
-                        	if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
-                            {
-                                break;
-                            }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
+	{
+		super.randomDisplayTick(par1World, par2, par3, par4, par5Random);
 
-                            par1World.spawnParticle("enchantmenttable", (double)par2 + 0.5D, (double)par3 + 2.0D, (double)par4 + 0.5D, (double)((float)(var6 - par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(var8 - par3) - par5Random.nextFloat() - 1.0F), (double)((float)(var7 - par4) + par5Random.nextFloat()) - 0.5D);
-                            Particles.spawnParticle("glimmer", (double)par2 + 0.5D, (double)par3 + 1.0D, (double)par4 + 0.5D, (double)((float)(par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(par3) - par5Random.nextFloat() - 1.0F), (double)((float)(par4) + par5Random.nextFloat()) - 0.5D);                       	
-                    }
-                }
-            }
-        }
-    }
-    
-    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
-    {
-        super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-        this.func_149930_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-    }
+		for (int var6 = par2 - 2; var6 <= par2 + 2; ++var6)
+		{
+			for (int var7 = par4 - 2; var7 <= par4 + 2; ++var7)
+			{
+				if (var6 > par2 - 2 && var6 < par2 + 2 && var7 == par4 - 1)
+				{
+					var7 = par4 + 2;
+				}
 
-    private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
-    {
-        if (!p_149930_1_.isRemote)
-        {
-            Block block = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
-            Block block1 = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
-            Block block2 = p_149930_1_.getBlock(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
-            Block block3 = p_149930_1_.getBlock(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
-            byte b0 = 3;
+				if (par5Random.nextInt(16) == 0)
+				{
+					for (int var8 = par3; var8 <= par3 + 1; ++var8)
+					{
 
-            if (block.func_149730_j() && !block1.func_149730_j())
-            {
-                b0 = 3;
-            }
+						if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
+						{
+							break;
+						}
 
-            if (block1.func_149730_j() && !block.func_149730_j())
-            {
-                b0 = 2;
-            }
+						par1World.spawnParticle("enchantmenttable", (double)par2 + 0.5D, (double)par3 + 2.0D, (double)par4 + 0.5D, (double)((float)(var6 - par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(var8 - par3) - par5Random.nextFloat() - 1.0F), (double)((float)(var7 - par4) + par5Random.nextFloat()) - 0.5D);
+						Particles.spawnParticle("glimmer", (double)par2 + 0.5D, (double)par3 + 1.0D, (double)par4 + 0.5D, (double)((float)(par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(par3) - par5Random.nextFloat() - 1.0F), (double)((float)(par4) + par5Random.nextFloat()) - 0.5D);
 
-            if (block2.func_149730_j() && !block3.func_149730_j())
-            {
-                b0 = 5;
-            }
+						if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
+						{
+							break;
+						}
 
-            if (block3.func_149730_j() && !block2.func_149730_j())
-            {
-                b0 = 4;
-            }
+						par1World.spawnParticle("enchantmenttable", (double)par2 + 0.5D, (double)par3 + 2.0D, (double)par4 + 0.5D, (double)((float)(var6 - par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(var8 - par3) - par5Random.nextFloat() - 1.0F), (double)((float)(var7 - par4) + par5Random.nextFloat()) - 0.5D);
+						Particles.spawnParticle("glimmer", (double)par2 + 0.5D, (double)par3 + 1.0D, (double)par4 + 0.5D, (double)((float)(par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(par3) - par5Random.nextFloat() - 1.0F), (double)((float)(par4) + par5Random.nextFloat()) - 0.5D);                       	
+					}
+				}
+			}
+		}
+	}
 
-            p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
-        }
-    }
-    
-    @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
+	{
+		super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+		this.func_149930_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+	}
 
-	    if (!world.isRemote)
-	    {
-            TileEntityInfuser tileEntityInfusionAltar = (TileEntityInfuser) world.getTileEntity(x, y, z);
-            if(player.isSneaking() || tileEntityInfusionAltar == null)
-            {
-            	return false;
-            }
-            else if (tileEntityInfusionAltar != null)
-            {
-                player.openGui(TheMistsOfRioV.getInstance(), 2, world, x, y, z);
-            }
-	    }
+	private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
+	{
+		if (!p_149930_1_.isRemote)
+		{
+			Block block = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
+			Block block1 = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
+			Block block2 = p_149930_1_.getBlock(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
+			Block block3 = p_149930_1_.getBlock(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
+			byte b0 = 3;
 
-        return true;
+			if (block.func_149730_j() && !block1.func_149730_j())
+			{
+				b0 = 3;
+			}
 
-    }
+			if (block1.func_149730_j() && !block.func_149730_j())
+			{
+				b0 = 2;
+			}
 
-    
-    @Override
-    public TileEntity createNewTileEntity(World par1World, int var1)
-    {
-        return new TileEntityInfuser();
-    }
+			if (block2.func_149730_j() && !block3.func_149730_j())
+			{
+				b0 = 5;
+			}
 
-    @Override
-    public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
-    {
-        if (!keepAltarInventory)
-        {
-            TileEntityInfuser var7 = (TileEntityInfuser)par1World.getTileEntity(par2, par3, par4);
+			if (block3.func_149730_j() && !block2.func_149730_j())
+			{
+				b0 = 4;
+			}
 
-            if (var7 != null)
-            {
-                for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
-                {
-                    ItemStack var9 = var7.getStackInSlot(var8);
+			p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
+		}
+	}
 
-                    if (var9 != null)
-                    {
-                        float var10 = this.AltarRand.nextFloat() * 0.8F + 0.1F;
-                        float var11 = this.AltarRand.nextFloat() * 0.8F + 0.1F;
-                        float var12 = this.AltarRand.nextFloat() * 0.8F + 0.1F;
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 
-                        while (var9.stackSize > 0)
-                        {
-                            int var13 = this.AltarRand.nextInt(21) + 10;
+		if (!world.isRemote)
+		{
+			TileEntityInfuser tileEntityInfusionAltar = (TileEntityInfuser) world.getTileEntity(x, y, z);
+			if(player.isSneaking() || tileEntityInfusionAltar == null)
+			{
+				return false;
+			}
+			else if (tileEntityInfusionAltar != null)
+			{
+				player.openGui(TheMistsOfRioV.getInstance(), 2, world, x, y, z);
+			}
+		}
 
-                            if (var13 > var9.stackSize)
-                            {
-                                var13 = var9.stackSize;
-                            }
+		return true;
 
-                            var9.stackSize -= var13;
-                            EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
+	}
 
-                            float var15 = 0.05F;
-                            var14.motionX = (double)((float)this.AltarRand.nextGaussian() * var15);
-                            var14.motionY = (double)((float)this.AltarRand.nextGaussian() * var15 + 0.2F);
-                            var14.motionZ = (double)((float)this.AltarRand.nextGaussian() * var15);
-                            par1World.spawnEntityInWorld(var14);
-                        }
-                    }
-                }
-            }
-        }
 
-        super.breakBlock(par1World, par2, par3, par4, par5, par6);
-    }
+	@Override
+	public TileEntity createNewTileEntity(World par1World, int var1)
+	{
+		return new TileEntityInfuser();
+	}
+
+	@Override
+	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
+	{
+		if (!keepAltarInventory)
+		{
+			TileEntityInfuser var7 = (TileEntityInfuser)par1World.getTileEntity(par2, par3, par4);
+
+			if (var7 != null)
+			{
+				for (int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
+				{
+					ItemStack var9 = var7.getStackInSlot(var8);
+
+					if (var9 != null)
+					{
+						float var10 = this.AltarRand.nextFloat() * 0.8F + 0.1F;
+						float var11 = this.AltarRand.nextFloat() * 0.8F + 0.1F;
+						float var12 = this.AltarRand.nextFloat() * 0.8F + 0.1F;
+
+						while (var9.stackSize > 0)
+						{
+							int var13 = this.AltarRand.nextInt(21) + 10;
+
+							if (var13 > var9.stackSize)
+							{
+								var13 = var9.stackSize;
+							}
+
+							var9.stackSize -= var13;
+							EntityItem var14 = new EntityItem(par1World, (double)((float)par2 + var10), (double)((float)par3 + var11), (double)((float)par4 + var12), new ItemStack(var9.getItem(), var13, var9.getItemDamage()));
+
+							float var15 = 0.05F;
+							var14.motionX = (double)((float)this.AltarRand.nextGaussian() * var15);
+							var14.motionY = (double)((float)this.AltarRand.nextGaussian() * var15 + 0.2F);
+							var14.motionZ = (double)((float)this.AltarRand.nextGaussian() * var15);
+							par1World.spawnEntityInWorld(var14);
+						}
+					}
+				}
+			}
+		}
+
+		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+	}
+
+	@Override
+	public boolean isOpaqueCube()
+	{
+		return false;
+	}
 }

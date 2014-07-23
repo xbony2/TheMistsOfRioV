@@ -9,7 +9,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.Core.src.base.ModUpdateChecker;
-import sheenrox82.RioV.src.util.RioVPlayer;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 
 public class CommandFaction extends CommandBase implements ICommand
 {

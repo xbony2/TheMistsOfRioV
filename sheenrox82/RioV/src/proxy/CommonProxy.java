@@ -36,16 +36,4 @@ public class CommonProxy
 	{
 		return null;
 	}
-	
-	private static final Map<String, NBTTagCompound> entityPlayerData = new HashMap<String, NBTTagCompound>();
-
-	public static void storeEntityData(String name, NBTTagCompound compound)
-	{
-		entityPlayerData.put(name, compound);
-	}
-
-	public static NBTTagCompound getEntityData(String name)
-	{
-		return entityPlayerData.remove(name);
-	}
 }

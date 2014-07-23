@@ -15,6 +15,10 @@ public class ModUpdateChecker
 	public static String urlString;
 	public static String versionString;
 	public static String newVersionStr;
+	public static int statusInt;
+	public static int updateNotAvailable = 1;
+	public static int updateAvailable = 2;
+	public static int offline = 3;
 
 	public static void init(String url, String version)
 	{
@@ -22,7 +26,7 @@ public class ModUpdateChecker
 		versionString = version;
 	}
 
-	public static boolean isUpdateAvailable()
+	public static int updateStatus()
 	{
 		try
 		{
@@ -33,16 +37,18 @@ public class ModUpdateChecker
 
 			if (!curVersion.equals(versionString))
 			{
-				return true;
+				return updateAvailable;
+			}
+			else
+			{
+				return updateNotAvailable;
 			}
 
 		}
 		catch(Exception e)
 		{
-			return false;
+			return offline;
 		}
-
-		return false;
 	}
 
 	public static void printChangelog(String url)

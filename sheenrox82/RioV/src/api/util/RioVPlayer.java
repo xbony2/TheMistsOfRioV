@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.util;
+package sheenrox82.RioV.src.api.util;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,8 +8,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.handler.packet.RioVPlayerPackets;
-import sheenrox82.RioV.src.proxy.CommonProxy;
+import sheenrox82.RioV.src.api.handler.packet.RioVPlayerPackets;
 
 public class RioVPlayer implements IExtendedEntityProperties
 {
@@ -34,12 +33,12 @@ public class RioVPlayer implements IExtendedEntityProperties
 	{
 		this.player = player;
 		this.maxEos = 50;
-		factionID = noFactionID;
 		noFactionID = 0;
+		factionID = noFactionID;
 		raetiinID = 1;
 		jaerinID = 2;
-		factionName = noFactionName;
 		noFactionName = "No Faction";
+		factionName = noFactionName;
 		raetiinName = EnumChatFormatting.DARK_RED + "Raetiin";
 		jaerinName = EnumChatFormatting.GREEN + "Jaerin";
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
@@ -146,13 +145,13 @@ public class RioVPlayer implements IExtendedEntityProperties
 	{
 		NBTTagCompound savedData = new NBTTagCompound();
 		RioVPlayer.get(player).saveNBTData(savedData);
-		CommonProxy.storeEntityData(getSaveKey(player), savedData);
+		PlayerStorage.storeEntityData(getSaveKey(player), savedData);
 	}
 
 	public static final void loadProxyData(EntityPlayer player) 
 	{
 		RioVPlayer playerData = RioVPlayer.get(player);
-		NBTTagCompound savedData = CommonProxy.getEntityData(getSaveKey(player));
+		NBTTagCompound savedData = PlayerStorage.getEntityData(getSaveKey(player));
 		
 		if (savedData != null) 
 		{ 

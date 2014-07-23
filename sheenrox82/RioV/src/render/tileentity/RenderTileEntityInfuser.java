@@ -12,17 +12,15 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.model.ModelFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import sheenrox82.RioV.src.util.Util;
 
 public class RenderTileEntityInfuser extends TileEntitySpecialRenderer
 {
-	private final ModelFlag model;
-
 	public RenderTileEntityInfuser() 
 	{
-		this.model = new ModelFlag();
 	}
 
 	@Override
@@ -30,15 +28,32 @@ public class RenderTileEntityInfuser extends TileEntitySpecialRenderer
 	{
 		TileEntityInfuser infuser = (TileEntityInfuser)entity;
 		ItemStack itemToRender = infuser.getStackInSlot(0);
+		ItemStack itemToRender1 = infuser.getStackInSlot(2);
 
-		if(itemToRender != null)
+		if(itemToRender != null && itemToRender1 == null)
 		{
 			GL11.glPushMatrix();
 			ItemStack stack = new ItemStack(itemToRender.getItem(), 1, 0);
 			EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, stack);
 			entItem.hoverStart = 0.0F;
 			RenderItem.renderInFrame = true;
-			RenderManager.instance.renderEntityWithPosYaw(entItem, x + 0.5, y + 1.2, z + 0.5, 0, 0);
+			GL11.glTranslatef((float)x + 0.5F, (float)y + 1.02F, (float)z + 0.3F);
+		//	GL11.glRotatef(180, 0, 1, 1);
+			RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
+			RenderItem.renderInFrame = false;
+			GL11.glPopMatrix();
+		}
+		
+		if(itemToRender1 != null && itemToRender == null)
+		{
+			GL11.glPushMatrix();
+			ItemStack stack = new ItemStack(itemToRender1.getItem(), 1, 0);
+			EntityItem entItem = new EntityItem(Minecraft.getMinecraft().thePlayer.getEntityWorld(), 0D, 0D, 0D, stack);
+			entItem.hoverStart = 0.0F;
+			RenderItem.renderInFrame = true;
+			GL11.glTranslatef((float)x + 0.5F, (float)y + 1.02F, (float)z + 0.3F);
+			//GL11.glRotatef(180, 0, 1, 1);
+			RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
 			RenderItem.renderInFrame = false;
 			GL11.glPopMatrix();
 		}

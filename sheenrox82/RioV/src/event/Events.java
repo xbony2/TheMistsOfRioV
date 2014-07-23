@@ -18,10 +18,10 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.RioVPlayer;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -42,7 +42,7 @@ public class Events
 			
 			if (!p.worldObj.isRemote) 
 			{
-				if (ModUpdateChecker.isUpdateAvailable()) 
+				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.updateAvailable) 
 				{
 					if(!hasSeen)
 					{
@@ -51,11 +51,20 @@ public class Events
 					}
 				}
 
-				if (!ModUpdateChecker.isUpdateAvailable()) 
+				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.updateNotAvailable) 
 				{
 					if(!hasSeen)
 					{
 						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						hasSeen = true;
+					}	
+				}
+				
+				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.offline) 
+				{
+					if(!hasSeen)
+					{
+						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GOLD, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Could not connect to update checking URL, either you are not connected to the internet or the Dropbox website is down."));
 						hasSeen = true;
 					}	
 				}
