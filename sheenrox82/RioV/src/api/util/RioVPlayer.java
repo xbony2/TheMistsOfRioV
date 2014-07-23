@@ -9,6 +9,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.handler.packet.RioVPlayerPackets;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class RioVPlayer implements IExtendedEntityProperties
 {
@@ -21,11 +23,11 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public static final int EOS_WATCHER = 20;
 
 	public int factionID;
-	public int noFactionID;
+	public int noFactionID = 0;
 	public int raetiinID;
 	public int jaerinID;
 	public String factionName;
-	public String noFactionName;
+	public String noFactionName = "No Faction";
 	public String raetiinName;
 	public String jaerinName;
 
@@ -33,11 +35,9 @@ public class RioVPlayer implements IExtendedEntityProperties
 	{
 		this.player = player;
 		this.maxEos = 50;
-		noFactionID = 0;
 		factionID = noFactionID;
 		raetiinID = 1;
 		jaerinID = 2;
-		noFactionName = "No Faction";
 		factionName = noFactionName;
 		raetiinName = EnumChatFormatting.DARK_RED + "Raetiin";
 		jaerinName = EnumChatFormatting.GREEN + "Jaerin";
@@ -120,6 +120,12 @@ public class RioVPlayer implements IExtendedEntityProperties
 		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
 	
+	@SideOnly(Side.CLIENT)
+	public final void setClientFactionID(int facID)
+	{
+		factionID = facID;
+	}
+	
 	public final int getFactionID()
 	{
 		return factionID;
@@ -129,6 +135,12 @@ public class RioVPlayer implements IExtendedEntityProperties
 	{
 		factionName = facName;
 		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public final void setClientFactionName(String facName)
+	{
+		factionName = facName;
 	}
 	
 	public final String getFactionName()

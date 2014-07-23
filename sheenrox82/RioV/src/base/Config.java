@@ -24,7 +24,6 @@ public class Config
 	public static int canopyOasisBiomeID;
 	
 	public static boolean EOS = true;
-	public static boolean BLOOD = true;
 	public static boolean toolHud = true;
 	public static boolean showToolInfo = true;
 	public static boolean allowBreathing = true;
@@ -34,8 +33,6 @@ public class Config
 	public static int hudPosY = 50;
 	public static int eosPosX = 20;
 	public static int eosPosY = 20;
-	public static int bloodPosX = 20;
-	public static int bloodPosY = 40;
 	
 	public static void initialize(FMLPreInitializationEvent event)
 	{

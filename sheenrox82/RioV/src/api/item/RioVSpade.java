@@ -50,9 +50,9 @@ public class RioVSpade extends ItemSpade
 	{
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
-			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
-			var3.add(Color.DARK_PURPLE + "Digging Speed: " + toolMaterial.getEfficiencyOnProperMaterial());
-			var3.add(Color.AQUA + "Harvest Level: " + toolMaterial.getHarvestLevel());
+			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
+			var3.add(Color.dark_purple + "Digging Speed: " + toolMaterial.getEfficiencyOnProperMaterial());
+			var3.add(Color.aqua + "Harvest Level: " + toolMaterial.getHarvestLevel());
 		}
 	}
 }

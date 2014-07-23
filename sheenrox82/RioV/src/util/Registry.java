@@ -22,6 +22,7 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.event.ConfigChanges;
 import sheenrox82.RioV.src.event.Events;
 import sheenrox82.RioV.src.faction.CommandFaction;
+import sheenrox82.RioV.src.faction.CommandFactionClient;
 import sheenrox82.RioV.src.gui.hud.GuiBootsHud;
 import sheenrox82.RioV.src.gui.hud.GuiChestplateHud;
 import sheenrox82.RioV.src.gui.hud.GuiHelmetHud;
@@ -153,7 +154,6 @@ public class Registry
 	public static void syncConfig() 
 	{
 		Config.EOS = Config.config.getBoolean("Use the purple Eos bar instead of text?", Configuration.CATEGORY_GENERAL, Config.EOS, "// Boolean");
-		Config.BLOOD = Config.config.getBoolean("Use the red Blood bar instead of text?", Configuration.CATEGORY_GENERAL, Config.BLOOD, "// Boolean");
 		Config.toolHud = Config.config.getBoolean("Show tool info in corner?", Configuration.CATEGORY_GENERAL, Config.toolHud, "// Boolean");
 		Config.showToolInfo = Config.config.getBoolean("Show Tool Info?", Configuration.CATEGORY_GENERAL, Config.showToolInfo, "// Boolean");
 		Config.allowBreathing = Config.config.getBoolean("Allow Mob Breathing Sounds? (CLIENT SIDE)", Configuration.CATEGORY_GENERAL, Config.allowBreathing, "// Boolean");
@@ -163,8 +163,6 @@ public class Registry
 		Config.hudPosY = Config.config.getInt("Item HUD Position Y || Max: 500 || Default: 50", Configuration.CATEGORY_GENERAL, Config.hudPosY, 50, 500, "// Integer");
 		Config.eosPosX = Config.config.getInt("Eos HUD Position X || Max: 800 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosX, 20, 800, "// Integer");
 		Config.eosPosY = Config.config.getInt("Eos HUD Position Y || Max: 800 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosY, 20, 800, "// Integer");
-		Config.bloodPosX = Config.config.getInt("Blood HUD Position X || Max: 800 || Default: 20", Configuration.CATEGORY_GENERAL, Config.bloodPosX, 20, 800, "// Integer");
-		Config.bloodPosY = Config.config.getInt("Blood HUD Position Y || Max: 800 || Default: 40", Configuration.CATEGORY_GENERAL, Config.bloodPosY, 20, 800, "// Integer");
 
 		if(Config.config.hasChanged())
 		{
@@ -174,6 +172,7 @@ public class Registry
 
 	public static void serverLoad(FMLServerStartingEvent event)
 	{
+		event.registerServerCommand(new CommandFactionClient());
 		event.registerServerCommand(new CommandFaction());
 		event.registerServerCommand(new CommandRageQuit());
 		event.registerServerCommand(new CommandPrintChangelog());

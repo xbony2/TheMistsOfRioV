@@ -145,8 +145,8 @@ public class RioVArmor extends ItemArmor
 	{
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
-			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
-			var3.add(Color.DARK_PURPLE + "Protection: " + RioVArmor.getMaxDamageFactor(material));
+			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
+			var3.add(Color.dark_purple + "Protection: " + RioVArmor.getMaxDamageFactor(material));
 		}
 	}
 

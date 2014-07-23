@@ -12,31 +12,26 @@ import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 
-public class CommandFaction extends CommandBase implements ICommand
+public class CommandFactionClient extends CommandBase implements ICommand
 {
 	private List aliases;
-	public CommandFaction()
+	public CommandFactionClient()
 	{
 		this.aliases = new ArrayList();
-		this.aliases.add("mpfaction");
-		this.aliases.add("mpFaction");
-		this.aliases.add("mpf");
-		this.aliases.add("mpF");
-		this.aliases.add("mpriovFaction");
-		this.aliases.add("mpriovfaction");
-
+		this.aliases.add("spFaction");
+		this.aliases.add("spfaction");
 	}
 
 	@Override
 	public String getCommandName()
 	{
-		return "mpFaction";
+		return "faction";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/mpFaction <factionID> - [MULTIPLAYER] Choose a Faction. (" + EnumChatFormatting.DARK_RED + "Raetiin ID: 1" + EnumChatFormatting.GOLD + ", " + EnumChatFormatting.GREEN + "Jaerin ID: 2" + EnumChatFormatting.GOLD + ")";
+		return EnumChatFormatting.GOLD + "/spFaction <factionID> - [SINGLEPLAYER] Choose a Faction. (" + EnumChatFormatting.DARK_RED + "Raetiin ID: 1" + EnumChatFormatting.GOLD + ", " + EnumChatFormatting.GREEN + "Jaerin ID: 2" + EnumChatFormatting.GOLD + ")";
 	}
 
 	@Override
@@ -55,7 +50,7 @@ public class CommandFaction extends CommandBase implements ICommand
 		{
 			if (astring.length == 0)
 			{
-				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /mpFaction <factionID> to join a faction."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /spFaction <factionID> to join a faction."));
 			}
 
 			if(astring.length > 0)
@@ -64,14 +59,14 @@ public class CommandFaction extends CommandBase implements ICommand
 
 				if(facID == 1)
 				{
-					player.setFactionID(player.raetiinID);
-					player.setFactionName(player.raetiinName);
+					player.setClientFactionID(player.raetiinID);
+					player.setClientFactionName(player.raetiinName);
 				}
 
 				if(facID == 2)
 				{
-					player.setFactionID(player.jaerinID);
-					player.setFactionName(player.jaerinName);
+					player.setClientFactionID(player.jaerinID);
+					player.setClientFactionName(player.jaerinName);
 				}
 			}
 		}

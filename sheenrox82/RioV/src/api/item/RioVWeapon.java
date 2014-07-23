@@ -189,8 +189,8 @@ public class RioVWeapon extends ItemSword
 
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
-			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
-			var3.add(Color.DARK_PURPLE + "Damage: " + toolMaterial.getDamageVsEntity());
+			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
+			var3.add(Color.dark_purple + "Damage: " + toolMaterial.getDamageVsEntity());
 		}
 	}
 

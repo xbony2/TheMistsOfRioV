@@ -12,6 +12,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
@@ -39,14 +40,14 @@ public class Events
 		{
 			EntityPlayer p = (EntityPlayer) event.entity;
 			RioVPlayer player = RioVPlayer.get(p);
-			
+
 			if (!p.worldObj.isRemote) 
 			{
 				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.updateAvailable) 
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + EnumChatFormatting.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + EnumChatFormatting.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
 						hasSeen = true;
 					}
 				}
@@ -55,16 +56,16 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
 				}
-				
+
 				if (ModUpdateChecker.updateStatus() == ModUpdateChecker.offline) 
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.GOLD, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Could not connect to update checking URL, either you are not connected to the internet or the Dropbox website is down."));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "[" + Color.WHITE + Util.MOD_NAME + Color.GOLD + "] Could not connect to update checking URL, either you are not connected to the internet or the Dropbox website is down."));
 						hasSeen = true;
 					}	
 				}
@@ -145,16 +146,41 @@ public class Events
 	}
 
 	@SubscribeEvent
+	public void onBurnDamage(LivingAttackEvent event)
+	{
+		if (event.entity instanceof EntityPlayer) 
+		{
+			EntityPlayer player = (EntityPlayer)event.entity;
+			RioVPlayer riovPlayer = RioVPlayer.get(player);
+
+			if(event.source.getDamageType().equals("onFire") || event.source.getDamageType().equals("inFire") || event.source.getDamageType().equals("lava"))
+			{
+				if(riovPlayer.getFactionID() == riovPlayer.raetiinID)
+				{
+					event.setCanceled(true);
+				}
+			}
+
+			if(event.source.getDamageType().equals("fall"))
+			{
+				if(riovPlayer.getFactionID() == riovPlayer.jaerinID)
+				{
+					event.setCanceled(true);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
 	public void onServerChatReceivedEvent(ServerChatEvent event)
 	{
 		if (event.player != null) 
 		{
 			EntityPlayer player = (EntityPlayer) event.player;
 			RioVPlayer riovPlayer = RioVPlayer.get(player);
-			
+
 			if (player != null)
 			{
-
 				event.setCanceled(true);
 
 				List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
