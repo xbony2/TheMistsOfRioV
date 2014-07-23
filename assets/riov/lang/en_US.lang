@@ -405,6 +405,9 @@ tile.cloudBerryPlant.name=Cloudberry Plant
 tile.enderBerryPlant.name=Enderberry Plant
 tile.fireBush.name=Fire Bush
 tile.fireBerryBush.name=Fireberry Bush
+tile.noFactionFlag.name=No Faction Flag
+tile.raetiinFlag.name=Raetiin Flag
+tile.jaerinFlag.name=Jaerin Flag
 
 # For RioV Expansion: Natura
 item.Natura:bloodwood_pickaxe.name=Inused Bloodwood Pickaxe

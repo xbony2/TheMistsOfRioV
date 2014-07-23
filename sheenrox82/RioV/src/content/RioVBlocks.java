@@ -15,13 +15,15 @@ import sheenrox82.RioV.src.block.BlockBush;
 import sheenrox82.RioV.src.block.BlockCherryLog;
 import sheenrox82.RioV.src.block.BlockCloudPlant;
 import sheenrox82.RioV.src.block.BlockDirt;
-import sheenrox82.RioV.src.block.BlockFlag;
 import sheenrox82.RioV.src.block.BlockFlamonorPortal;
 import sheenrox82.RioV.src.block.BlockGlimmerGrass;
 import sheenrox82.RioV.src.block.BlockGlimmerwoodLog;
 import sheenrox82.RioV.src.block.BlockInfuser;
+import sheenrox82.RioV.src.block.BlockJaerinFlag;
+import sheenrox82.RioV.src.block.BlockNoFactionFlag;
 import sheenrox82.RioV.src.block.BlockPlanks;
 import sheenrox82.RioV.src.block.BlockPlantCore;
+import sheenrox82.RioV.src.block.BlockRaetiinFlag;
 import sheenrox82.RioV.src.block.BlockRedFire;
 import sheenrox82.RioV.src.block.BlockRioVCake;
 import sheenrox82.RioV.src.block.BlockRioVDoor;
@@ -47,9 +49,6 @@ import sheenrox82.RioV.src.block.BlockWhiteFire;
 import sheenrox82.RioV.src.item.metadata.ItemBricks;
 import sheenrox82.RioV.src.item.metadata.ItemPlanksColored;
 import sheenrox82.RioV.src.item.metadata.ItemStainedGlass;
-import sheenrox82.RioV.src.tileentity.flag.TileEntityJaerinFlag;
-import sheenrox82.RioV.src.tileentity.flag.TileEntityNoFactionFlag;
-import sheenrox82.RioV.src.tileentity.flag.TileEntityRaetiinFlag;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RioVBlocks 
@@ -181,12 +180,15 @@ public class RioVBlocks
 	public static Block enderBerryPlant = new BlockPlantCore().setBlockName("enderBerryPlant");
 	public static Block fireBush = new BlockBush().setBlockName("fireBush");
 	public static Block fireBerryBush = new BlockBush().setBlockName("fireBerryBush");
-	public static Block noFacFlag = new BlockFlag(new TileEntityNoFactionFlag()).setHardness(3F).setBlockName("noFacFlag");
-	public static Block raetiinFlag = new BlockFlag(new TileEntityRaetiinFlag()).setHardness(3F).setBlockName("raetiinFlag");
-	public static Block jaerinFlag = new BlockFlag(new TileEntityJaerinFlag()).setHardness(3F).setBlockName("jaerinFlag");
+	public static Block noFacFlag = new BlockNoFactionFlag().setHardness(3F).setBlockName("noFactionFlag");
+	public static Block raetiinFlag = new BlockRaetiinFlag().setHardness(3F).setBlockName("raetiinFlag");
+	public static Block jaerinFlag = new BlockJaerinFlag().setHardness(3F).setBlockName("jaerinFlag");
 	
 	public static void add()
 	{	
+		RioVAPIUtil.registerBlock(noFacFlag, "No Faction Flag");
+		RioVAPIUtil.registerBlock(raetiinFlag, "Raetiin Flag");
+		RioVAPIUtil.registerBlock(jaerinFlag, "Jaerin Flag");
 		RioVAPIUtil.registerBlock(fireBerryBush, "Fireberry Bush");
 		RioVAPIUtil.registerBlock(fireBush, "Fire Bush");
 		RioVAPIUtil.registerBlock(enderBerryPlant, "Enderberry Plant");
@@ -200,7 +202,6 @@ public class RioVBlocks
 		RioVAPIUtil.registerBlock(glimmerTallGrass, "Glimmer Tall Grass");
 		RioVAPIUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
 		RioVAPIUtil.registerBlock(bloodTallGrass, "Blood Tall Grass");
-		RioVAPIUtil.registerBlock(noFacFlag, "No Faction Flag");
 		RioVAPIUtil.registerBlock(blackQuartz, "Black Quartz Block");
 		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, RioVAPIUtil.getName(stainedGlass.getUnlocalizedName()));	
 		GameRegistry.registerBlock(bricks, ItemBricks.class, RioVAPIUtil.getName(bricks.getUnlocalizedName()));		

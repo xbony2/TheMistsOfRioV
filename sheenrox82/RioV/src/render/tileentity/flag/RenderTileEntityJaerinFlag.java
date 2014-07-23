@@ -20,35 +20,42 @@ public class RenderTileEntityJaerinFlag extends TileEntitySpecialRenderer
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity tileentity, double par2, double par4, double par6, float par8) 
+	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float par8) 
 	{
+		ResourceLocation textures = (new ResourceLocation(Util.MOD_ID + ":" + "textures/blocks/JaerinFlag.png")); 
 		int metadata = tileentity.getBlockMetadata();
+
 		int rotationAngle = 0;
-		if(metadata%4 == 0)
+		
+		if(metadata%4 == 2)
 		{
 			rotationAngle = 270;
 		}
-		if(metadata%4 == 1)
+		
+		if(metadata%4 == 3)
 		{
 			rotationAngle = 0;
 		}
-		if(metadata%4 == 2)
+		
+		if(metadata%4 == 0)
 		{
 			rotationAngle = 90;
 		}
-		if(metadata%4 == 3)
+		
+		if(metadata%4 == 1)
 		{
 			rotationAngle = 180;
 		}
+
 		GL11.glPushMatrix();
-		GL11.glTranslated((float)par2 + 0.5F, (float)par4 + 1.5F, (float)par6 + 0.5F);
-		GL11.glScalef(1.0F, -1F, -1F);
-		GL11.glRotatef(rotationAngle , 0.0F, 1.0F, 0.0F);
-		GL11.glTranslatef(0.0F, -1.5F, 0.0F);
-		GL11.glScalef(2.0F, 2.0F, 2.0F);
-		ResourceLocation textures = (new ResourceLocation(Util.MOD_ID + ":" + "textures/blocks/JaerinFlag.png")); 
+		GL11.glTranslatef((float)x + 0.5F, (float)y + 3F, (float)z + 0.5F);
+		GL11.glRotatef(180, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
+		GL11.glScalef(2, 2, 2);
+		GL11.glPushMatrix();
 		this.bindTexture(textures);
-		this.model.renderAll();
-		GL11.glPopMatrix();	
+		model.renderAll();
+		GL11.glPopMatrix();
+		GL11.glPopMatrix();
 	}
 }

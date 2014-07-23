@@ -28,6 +28,7 @@ public class Crafting
 	public static String[] riovchestplate = new String[] {"X X", "XXX", "XXX"};
 	public static String[] riovleggings = new String[] {"XXX", "X X", "X X"};
 	public static String[] riovboots = new String[] {"X X", "X X"};
+	public static String[] flag = new String[] {"XXX", "XXX", "XXX", " ! "};
 	
 	public static void add()
 	{
@@ -113,7 +114,7 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodFenceGate, 1), "XOX", "XOX", Character.valueOf('O'), RioVBlocks.bloodPlanks,  Character.valueOf('X'), RioVItems.bloodSticks);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.bloodSticks, 4), "X", "X", Character.valueOf('X'), RioVBlocks.bloodPlanks);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bloodFence, 2), "XXX", "XXX", Character.valueOf('X'), RioVItems.bloodSticks);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.anvil, 1), "XOX", "XXX", Character.valueOf('X'), RioVBlocks.slateBricks, Character.valueOf('O'), new ItemStack(Blocks.wool, 1, 14));
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.anvil, 1), "XOX", "XXX", Character.valueOf('X'), RioVBlocks.slateBricks, Character.valueOf('O'), new ItemStack(Blocks.wool, 1, 0));
 		GameRegistry.addRecipe(new ItemStack(RioVItems.voidHolder, 1), "X X", " X ", Character.valueOf('X'), RioVItems.onyx);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.jaavikBlock, 1), "XXX", "XXX", "XXX", Character.valueOf('X'), RioVItems.jaavik);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.jaavik, 9), "X", Character.valueOf('X'), RioVBlocks.jaavikBlock);
@@ -250,6 +251,9 @@ public class Crafting
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.aleris});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.aleris});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.aleris});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVBlocks.noFacFlag, 1), new Object[] { flag, Character.valueOf('X'), new ItemStack(Blocks.wool, 1, 0), Character.valueOf('!'), Items.stick});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVBlocks.jaerinFlag, 1), new Object[] { flag, Character.valueOf('X'), new ItemStack(Blocks.wool, 1, 13), Character.valueOf('!'), Items.stick});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVBlocks.raetiinFlag, 1), new Object[] { flag, Character.valueOf('X'), new ItemStack(Blocks.wool, 1, 14), Character.valueOf('!'), Items.stick});
 
 		//INFUSER CRAFTING
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystSword, new ItemStack(RioVItems.infusedAmethystSword, 1));

@@ -10,16 +10,14 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityJaerinFlag;
 import sheenrox82.RioV.src.util.Util;
 
-public class BlockFlag extends BlockContainer 
-{
-	public TileEntity tile;
-	
-	public BlockFlag(TileEntity tileentity) 
+public class BlockJaerinFlag extends BlockContainer 
+{	
+	public BlockJaerinFlag() 
 	{
 		super(Material.wood);
-		this.tile = tileentity;
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
 	}
@@ -27,13 +25,13 @@ public class BlockFlag extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World par1World, int var1)
 	{
-		return tile;
+		return new TileEntityJaerinFlag();
 	}
 
 	@Override
 	public int getRenderType()
 	{
-		return 50;
+		return 71;
 	}
 	
 	@Override
@@ -45,7 +43,7 @@ public class BlockFlag extends BlockContainer
 	@Override
 	public boolean renderAsNormalBlock()
 	{
-		return true;
+		return false;
 	}
 
 	@Override

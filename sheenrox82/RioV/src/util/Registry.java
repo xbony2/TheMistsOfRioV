@@ -2,7 +2,6 @@ package sheenrox82.RioV.src.util;
 
 import java.util.Arrays;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -23,15 +22,12 @@ import sheenrox82.RioV.src.event.ConfigChanges;
 import sheenrox82.RioV.src.event.Events;
 import sheenrox82.RioV.src.faction.CommandFaction;
 import sheenrox82.RioV.src.faction.CommandFactionClient;
-import sheenrox82.RioV.src.gui.hud.GuiBootsHud;
-import sheenrox82.RioV.src.gui.hud.GuiChestplateHud;
-import sheenrox82.RioV.src.gui.hud.GuiHelmetHud;
-import sheenrox82.RioV.src.gui.hud.GuiLeggingsHud;
-import sheenrox82.RioV.src.gui.hud.GuiToolHud;
 import sheenrox82.RioV.src.handler.FuelHandler;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityJaerinFlag;
 import sheenrox82.RioV.src.tileentity.flag.TileEntityNoFactionFlag;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityRaetiinFlag;
 import sheenrox82.RioV.src.world.WorldGen;
 import sheenrox82.RioV.src.world.provider.WorldProviderBlindOasis;
 import sheenrox82.RioV.src.world.provider.WorldProviderFlamonor;
@@ -90,7 +86,9 @@ public class Registry
 		RioVAPI.getInstance().getLogger().info("Some stats initiated.");
 		GameRegistry.registerFuelHandler(new FuelHandler());
 		GameRegistry.registerTileEntity(TileEntityInfuser.class, "Infuser");
-		GameRegistry.registerTileEntity(TileEntityNoFactionFlag.class, "Flag");
+		GameRegistry.registerTileEntity(TileEntityNoFactionFlag.class, "No Faction Flag");
+		GameRegistry.registerTileEntity(TileEntityRaetiinFlag.class, "Raetiin Flag");
+		GameRegistry.registerTileEntity(TileEntityJaerinFlag.class, "Jaerin Flag");
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
 		RioVAPIUtil.registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
@@ -131,21 +129,6 @@ public class Registry
 		RioVAPI.getInstance().getLogger().info("Almost done initializing. //START POST-INITIALIZATION");
 		RioVAPI.getInstance().getPipeline().postInitialise();
 		RioVAPI.getInstance().getLogger().info("Packets post-registered.");
-
-		if (FMLCommonHandler.instance().getEffectiveSide().isClient())
-		{
-			if(RioVAPI.getInstance().getUtil().getConfigBool("toolHud") == true)
-			{
-				MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
-				MinecraftForge.EVENT_BUS.register(new GuiHelmetHud(Minecraft.getMinecraft()));
-				MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
-				MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
-				MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
-			}
-
-			RioVAPI.getInstance().getLogger().info("HUD elements registered.");
-		}
-
 		Config.initPost();
 		RioVAPI.getInstance().getLogger().info("Mod loaded! Sup. //END POST-INITIALIZATION");
 		RioVAPI.getInstance().modLoaded = true;

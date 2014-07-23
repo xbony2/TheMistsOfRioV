@@ -2,10 +2,12 @@ package sheenrox82.RioV.src.proxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.hostile.EntityAunTunMinion;
@@ -38,7 +40,12 @@ import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
+import sheenrox82.RioV.src.gui.hud.GuiBootsHud;
+import sheenrox82.RioV.src.gui.hud.GuiChestplateHud;
 import sheenrox82.RioV.src.gui.hud.GuiEosBar;
+import sheenrox82.RioV.src.gui.hud.GuiHelmetHud;
+import sheenrox82.RioV.src.gui.hud.GuiLeggingsHud;
+import sheenrox82.RioV.src.gui.hud.GuiToolHud;
 import sheenrox82.RioV.src.lib.EntityResourceLocation;
 import sheenrox82.RioV.src.model.ModelDemonAngel;
 import sheenrox82.RioV.src.model.ModelDragonWings;
@@ -59,15 +66,22 @@ import sheenrox82.RioV.src.render.RenderRabbit;
 import sheenrox82.RioV.src.render.RenderSkeletalHorse;
 import sheenrox82.RioV.src.render.RenderTef;
 import sheenrox82.RioV.src.render.item.ItemRenderBow;
+import sheenrox82.RioV.src.render.item.ItemRenderJaerinFlag;
 import sheenrox82.RioV.src.render.item.ItemRenderLongbow;
+import sheenrox82.RioV.src.render.item.ItemRenderNoFactionFlag;
+import sheenrox82.RioV.src.render.item.ItemRenderRaetiinFlag;
 import sheenrox82.RioV.src.render.projectile.RenderDarkMatter;
 import sheenrox82.RioV.src.render.projectile.RenderDarknessArrow;
 import sheenrox82.RioV.src.render.projectile.RenderPinkEssence;
 import sheenrox82.RioV.src.render.projectile.RenderVraviniteArrow;
 import sheenrox82.RioV.src.render.tileentity.RenderTileEntityInfuser;
+import sheenrox82.RioV.src.render.tileentity.flag.RenderTileEntityJaerinFlag;
 import sheenrox82.RioV.src.render.tileentity.flag.RenderTileEntityNoFactionFlag;
+import sheenrox82.RioV.src.render.tileentity.flag.RenderTileEntityRaetiinFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityJaerinFlag;
 import sheenrox82.RioV.src.tileentity.flag.TileEntityNoFactionFlag;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityRaetiinFlag;
 import sheenrox82.RioV.src.util.Util;
 
 import com.jadarstudios.developercapes.DevCapes;
@@ -114,13 +128,30 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow(EntityResourceLocation.darkness_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(EntityResourceLocation.vravinite_arrow));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJaerinFlag.class, new RenderTileEntityJaerinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfuser.class, new RenderTileEntityInfuser());
 		MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
+		
+		if(RioVAPI.getInstance().getUtil().getConfigBool("toolHud") == true)
+		{
+			MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiHelmetHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
+			MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
+		}
+
+		RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 	}
 
 	@Override
 	public void registerItemRenderers()
 	{
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.noFacFlag), new ItemRenderNoFactionFlag());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.raetiinFlag), new ItemRenderRaetiinFlag());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.jaerinFlag), new ItemRenderJaerinFlag());
+
 		MinecraftForgeClient.registerItemRenderer(RioVItems.bowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.enforcedBowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.vraviniteBow, new ItemRenderLongbow());
