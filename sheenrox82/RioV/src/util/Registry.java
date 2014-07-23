@@ -30,8 +30,8 @@ import sheenrox82.RioV.src.gui.hud.GuiLeggingsHud;
 import sheenrox82.RioV.src.gui.hud.GuiToolHud;
 import sheenrox82.RioV.src.handler.FuelHandler;
 import sheenrox82.RioV.src.registries.HarvestLevelRegistry;
-import sheenrox82.RioV.src.tileentity.TileEntityFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityNoFactionFlag;
 import sheenrox82.RioV.src.world.WorldGen;
 import sheenrox82.RioV.src.world.provider.WorldProviderBlindOasis;
 import sheenrox82.RioV.src.world.provider.WorldProviderFlamonor;
@@ -90,7 +90,7 @@ public class Registry
 		RioVAPI.getInstance().getLogger().info("Some stats initiated.");
 		GameRegistry.registerFuelHandler(new FuelHandler());
 		GameRegistry.registerTileEntity(TileEntityInfuser.class, "Infuser");
-		GameRegistry.registerTileEntity(TileEntityFlag.class, "Flag");
+		GameRegistry.registerTileEntity(TileEntityNoFactionFlag.class, "Flag");
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
 		RioVAPIUtil.registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);

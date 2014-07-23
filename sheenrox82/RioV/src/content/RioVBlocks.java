@@ -47,6 +47,9 @@ import sheenrox82.RioV.src.block.BlockWhiteFire;
 import sheenrox82.RioV.src.item.metadata.ItemBricks;
 import sheenrox82.RioV.src.item.metadata.ItemPlanksColored;
 import sheenrox82.RioV.src.item.metadata.ItemStainedGlass;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityJaerinFlag;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityNoFactionFlag;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityRaetiinFlag;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RioVBlocks 
@@ -162,7 +165,6 @@ public class RioVBlocks
 	public static Block bloodFlower = new BlockPlantCore().setBlockName("bloodFlower");
 	public static Block paleBush = new BlockBush().setBlockName("paleBush");
 	public static Block chocolateCake = new BlockRioVCake().setHardness(0.5F).setBlockName("chocolateCake");
-	public static Block flag = new BlockFlag().setHardness(3F).setBlockName("flag");
 	public static Block glimmerTallGrass = new BlockPlantCore().setBlockName("glimmerTallGrass");
 	public static Block sanctuatiteTallGrass = new BlockPlantCore().setBlockName("sanctuatiteTallGrass");
 	public static Block bloodTallGrass = new BlockPlantCore().setBlockName("bloodTallGrass");
@@ -179,7 +181,10 @@ public class RioVBlocks
 	public static Block enderBerryPlant = new BlockPlantCore().setBlockName("enderBerryPlant");
 	public static Block fireBush = new BlockBush().setBlockName("fireBush");
 	public static Block fireBerryBush = new BlockBush().setBlockName("fireBerryBush");
-
+	public static Block noFacFlag = new BlockFlag(new TileEntityNoFactionFlag()).setHardness(3F).setBlockName("noFacFlag");
+	public static Block raetiinFlag = new BlockFlag(new TileEntityRaetiinFlag()).setHardness(3F).setBlockName("raetiinFlag");
+	public static Block jaerinFlag = new BlockFlag(new TileEntityJaerinFlag()).setHardness(3F).setBlockName("jaerinFlag");
+	
 	public static void add()
 	{	
 		RioVAPIUtil.registerBlock(fireBerryBush, "Fireberry Bush");
@@ -195,7 +200,7 @@ public class RioVBlocks
 		RioVAPIUtil.registerBlock(glimmerTallGrass, "Glimmer Tall Grass");
 		RioVAPIUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
 		RioVAPIUtil.registerBlock(bloodTallGrass, "Blood Tall Grass");
-		RioVAPIUtil.registerBlock(flag, "Flag");
+		RioVAPIUtil.registerBlock(noFacFlag, "No Faction Flag");
 		RioVAPIUtil.registerBlock(blackQuartz, "Black Quartz Block");
 		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, RioVAPIUtil.getName(stainedGlass.getUnlocalizedName()));	
 		GameRegistry.registerBlock(bricks, ItemBricks.class, RioVAPIUtil.getName(bricks.getUnlocalizedName()));		

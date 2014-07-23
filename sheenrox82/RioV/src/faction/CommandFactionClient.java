@@ -9,6 +9,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 
@@ -24,7 +25,6 @@ public class CommandFactionClient extends CommandBase implements ICommand
 		this.aliases.add("spF");
 		this.aliases.add("spriovFaction");
 		this.aliases.add("spriovfaction");
-
 	}
 
 	@Override
@@ -64,14 +64,52 @@ public class CommandFactionClient extends CommandBase implements ICommand
 
 				if(facID == 1)
 				{
-					player.setClientFactionID(player.raetiinID);
-					player.setClientFactionName(player.raetiinName);
+					if(player.getFactionID() == player.noFactionID && !thePlayer.capabilities.isCreativeMode)
+					{
+						player.setClientFactionID(player.raetiinID);
+						player.setClientFactionName(player.raetiinName);
+						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
+
+					}
+					else
+					{
+						if(thePlayer.capabilities.isCreativeMode)
+						{
+							player.setClientFactionID(player.raetiinID);
+							player.setClientFactionName(player.raetiinName);
+						}
+						else
+						{
+							icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
+						}
+					}
 				}
 
 				if(facID == 2)
 				{
-					player.setClientFactionID(player.jaerinID);
-					player.setClientFactionName(player.jaerinName);
+					if(player.getFactionID() == player.noFactionID && !thePlayer.capabilities.isCreativeMode)
+					{
+						player.setClientFactionID(player.jaerinID);
+						player.setClientFactionName(player.jaerinName);
+						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
+					}
+					else
+					{
+						if(thePlayer.capabilities.isCreativeMode)
+						{
+							player.setClientFactionID(player.jaerinID);
+							player.setClientFactionName(player.jaerinName);
+						}
+						else
+						{
+							icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
+						}
+					}
+				}
+
+				if(facID > 2)
+				{
+					icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "The max number is two. Use one or two for the ID."));
 				}
 			}
 		}

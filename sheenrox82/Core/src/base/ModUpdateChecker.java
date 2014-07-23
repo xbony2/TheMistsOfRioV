@@ -39,6 +39,7 @@ public class ModUpdateChecker
 		}
 		catch(Exception e)
 		{
+			//If can't connect I just return it false. just cuz
 			return false;
 		}
 	}

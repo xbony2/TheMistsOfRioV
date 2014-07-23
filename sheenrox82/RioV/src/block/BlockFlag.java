@@ -9,28 +9,25 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.tileentity.TileEntityFlag;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.util.Util;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFlag extends BlockContainer 
 {
-	@SideOnly(Side.CLIENT)
-	private IIcon blockIcon;
+	public TileEntity tile;
 	
-	public BlockFlag() 
+	public BlockFlag(TileEntity tileentity) 
 	{
 		super(Material.wood);
-//		/this.setCreativeTab(RioVAPI.getInstance().tab);
+		this.tile = tileentity;
+		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World par1World, int var1)
 	{
-		return new TileEntityFlag();
+		return tile;
 	}
 
 	@Override
@@ -59,7 +56,7 @@ public class BlockFlag extends BlockContainer
 	
 	public void registerBlockIcons(IIconRegister icon) 
 	{
-		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + "flagIcon");
+		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)

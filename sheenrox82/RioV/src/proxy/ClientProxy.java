@@ -64,10 +64,10 @@ import sheenrox82.RioV.src.render.projectile.RenderDarkMatter;
 import sheenrox82.RioV.src.render.projectile.RenderDarknessArrow;
 import sheenrox82.RioV.src.render.projectile.RenderPinkEssence;
 import sheenrox82.RioV.src.render.projectile.RenderVraviniteArrow;
-import sheenrox82.RioV.src.render.tileentity.RenderTileEntityFlag;
 import sheenrox82.RioV.src.render.tileentity.RenderTileEntityInfuser;
-import sheenrox82.RioV.src.tileentity.TileEntityFlag;
+import sheenrox82.RioV.src.render.tileentity.flag.RenderTileEntityNoFactionFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
+import sheenrox82.RioV.src.tileentity.flag.TileEntityNoFactionFlag;
 import sheenrox82.RioV.src.util.Util;
 
 import com.jadarstudios.developercapes.DevCapes;
@@ -113,7 +113,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(EntityResourceLocation.blood_ghoul));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow(EntityResourceLocation.darkness_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(EntityResourceLocation.vravinite_arrow));
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFlag.class, new RenderTileEntityFlag());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfuser.class, new RenderTileEntityInfuser());
 		MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
 	}

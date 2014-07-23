@@ -20,7 +20,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 
 	public int maxEos;
 
-	public static final int EOS_WATCHER = 20;
+	public final int EOS_WATCHER = 20;
 
 	public int factionID;
 	public int noFactionID = 0;

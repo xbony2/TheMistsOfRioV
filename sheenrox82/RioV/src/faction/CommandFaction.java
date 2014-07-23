@@ -9,6 +9,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 
@@ -35,7 +36,7 @@ public class CommandFaction extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/mpFaction <factionID> - [MULTIPLAYER] Choose a Faction. (" + EnumChatFormatting.DARK_RED + "Raetiin ID: 1" + EnumChatFormatting.GOLD + ", " + EnumChatFormatting.GREEN + "Jaerin ID: 2" + EnumChatFormatting.GOLD + ")";
+		return EnumChatFormatting.GOLD + "/mpFaction <factionID> - [MULTIPLAYER] Choose a Faction. (" + Color.DARK_RED + "Raetiin ID: 1" + Color.GOLD + ", " + Color.GREEN + "Jaerin ID: 2" + Color.GOLD + ")";
 	}
 
 	@Override
@@ -54,7 +55,7 @@ public class CommandFaction extends CommandBase implements ICommand
 		{
 			if (astring.length == 0)
 			{
-				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /mpFaction <factionID> to join a faction."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "Invalid arguments. Use /mpFaction <factionID> to join a faction."));
 			}
 
 			if(astring.length > 0)
@@ -63,14 +64,52 @@ public class CommandFaction extends CommandBase implements ICommand
 
 				if(facID == 1)
 				{
-					player.setFactionID(player.raetiinID);
-					player.setFactionName(player.raetiinName);
+					if(player.getFactionID() == player.noFactionID && !thePlayer.capabilities.isCreativeMode)
+					{
+						player.setFactionID(player.raetiinID);
+						player.setFactionName(player.raetiinName);
+						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
+
+					}
+					else
+					{
+						if(thePlayer.capabilities.isCreativeMode)
+						{
+							player.setFactionID(player.raetiinID);
+							player.setFactionName(player.raetiinName);
+						}
+						else
+						{
+							icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
+						}
+					}
 				}
 
 				if(facID == 2)
 				{
-					player.setFactionID(player.jaerinID);
-					player.setFactionName(player.jaerinName);
+					if(player.getFactionID() == player.noFactionID && !thePlayer.capabilities.isCreativeMode)
+					{
+						player.setFactionID(player.jaerinID);
+						player.setFactionName(player.jaerinName);
+						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
+					}
+					else
+					{
+						if(thePlayer.capabilities.isCreativeMode)
+						{
+							player.setFactionID(player.jaerinID);
+							player.setFactionName(player.jaerinName);
+						}
+						else
+						{
+							icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
+						}
+					}
+				}
+
+				if(facID > 2)
+				{
+					icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "The max number is two. Use one or two for the ID."));
 				}
 			}
 		}

@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.render.tileentity;
+package sheenrox82.RioV.src.render.tileentity.flag;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
@@ -10,11 +10,11 @@ import org.lwjgl.opengl.GL11;
 import sheenrox82.RioV.src.model.ModelFlag;
 import sheenrox82.RioV.src.util.Util;
 
-public class RenderTileEntityFlag extends TileEntitySpecialRenderer 
+public class RenderTileEntityJaerinFlag extends TileEntitySpecialRenderer 
 {
 	private final ModelFlag model;
 
-	public RenderTileEntityFlag() 
+	public RenderTileEntityJaerinFlag() 
 	{
 		this.model = new ModelFlag();
 	}
@@ -46,7 +46,7 @@ public class RenderTileEntityFlag extends TileEntitySpecialRenderer
 		GL11.glRotatef(rotationAngle , 0.0F, 1.0F, 0.0F);
 		GL11.glTranslatef(0.0F, -1.5F, 0.0F);
 		GL11.glScalef(2.0F, 2.0F, 2.0F);
-		ResourceLocation textures = (new ResourceLocation(Util.MOD_ID + ":" + "textures/blocks/RioVFlag.png")); 
+		ResourceLocation textures = (new ResourceLocation(Util.MOD_ID + ":" + "textures/blocks/JaerinFlag.png")); 
 		this.bindTexture(textures);
 		this.model.renderAll();
 		GL11.glPopMatrix();	
