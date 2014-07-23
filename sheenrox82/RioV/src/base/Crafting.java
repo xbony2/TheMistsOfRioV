@@ -254,7 +254,11 @@ public class Crafting
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVBlocks.noFacFlag, 1), new Object[] { flag, Character.valueOf('X'), new ItemStack(Blocks.wool, 1, 0), Character.valueOf('!'), Items.stick});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVBlocks.jaerinFlag, 1), new Object[] { flag, Character.valueOf('X'), new ItemStack(Blocks.wool, 1, 13), Character.valueOf('!'), Items.stick});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVBlocks.raetiinFlag, 1), new Object[] { flag, Character.valueOf('X'), new ItemStack(Blocks.wool, 1, 14), Character.valueOf('!'), Items.stick});
-
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.sanctuaryStonePickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVBlocks.sanctuaryStone, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.sanctuaryStoneSword, 1), new Object[] { sword, Character.valueOf('X'), RioVBlocks.sanctuaryStone, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.sanctuaryStoneShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVBlocks.sanctuaryStone, Character.valueOf('!'), RioVItems.skywoodSticks});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.sanctuaryStoneAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVBlocks.sanctuaryStone, Character.valueOf('!'), RioVItems.skywoodSticks});
+		
 		//INFUSER CRAFTING
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystSword, new ItemStack(RioVItems.infusedAmethystSword, 1));
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxSword, new ItemStack(RioVItems.infusedOnyxSword, 1));

@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.faction;
+package sheenrox82.RioV.src.command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,30 +13,30 @@ import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 
-public class CommandFaction extends CommandBase implements ICommand
+public class CommandFactionClient extends CommandBase implements ICommand
 {
 	private List aliases;
-	public CommandFaction()
+	public CommandFactionClient()
 	{
 		this.aliases = new ArrayList();
-		this.aliases.add("mpfaction");
-		this.aliases.add("mpFaction");
-		this.aliases.add("mpf");
-		this.aliases.add("mpF");
-		this.aliases.add("mpriovFaction");
-		this.aliases.add("mpriovfaction");
+		this.aliases.add("spfaction");
+		this.aliases.add("spFaction");
+		this.aliases.add("spf");
+		this.aliases.add("spF");
+		this.aliases.add("spriovFaction");
+		this.aliases.add("spriovfaction");
 	}
 
 	@Override
 	public String getCommandName()
 	{
-		return "mpFaction";
+		return "faction";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/mpFaction <factionID> - [MULTIPLAYER] Choose a Faction. (" + Color.DARK_RED + "Raetiin ID: 1" + Color.GOLD + ", " + Color.GREEN + "Jaerin ID: 2" + Color.GOLD + ")";
+		return EnumChatFormatting.GOLD + "/spFaction <factionID> - [SINGLEPLAYER] Choose a Faction. (" + EnumChatFormatting.DARK_RED + "Raetiin ID: 1" + EnumChatFormatting.GOLD + ", " + EnumChatFormatting.GREEN + "Jaerin ID: 2" + EnumChatFormatting.GOLD + ")";
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public class CommandFaction extends CommandBase implements ICommand
 		{
 			if (astring.length == 0)
 			{
-				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "Invalid arguments. Use /mpFaction <factionID> to join a faction."));
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.DARK_RED, "Invalid arguments. Use /spFaction <factionID> to join a faction."));
 			}
 
 			if(astring.length > 0)
@@ -66,8 +66,8 @@ public class CommandFaction extends CommandBase implements ICommand
 				{
 					if(player.getFactionID() == player.noFactionID && !thePlayer.capabilities.isCreativeMode)
 					{
-						player.setFactionID(player.raetiinID);
-						player.setFactionName(player.raetiinName);
+						player.setClientFactionID(player.raetiinID);
+						player.setClientFactionName(player.raetiinName);
 						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
 
 					}
@@ -75,8 +75,8 @@ public class CommandFaction extends CommandBase implements ICommand
 					{
 						if(thePlayer.capabilities.isCreativeMode)
 						{
-							player.setFactionID(player.raetiinID);
-							player.setFactionName(player.raetiinName);
+							player.setClientFactionID(player.raetiinID);
+							player.setClientFactionName(player.raetiinName);
 						}
 						else
 						{
@@ -89,16 +89,16 @@ public class CommandFaction extends CommandBase implements ICommand
 				{
 					if(player.getFactionID() == player.noFactionID && !thePlayer.capabilities.isCreativeMode)
 					{
-						player.setFactionID(player.jaerinID);
-						player.setFactionName(player.jaerinName);
+						player.setClientFactionID(player.jaerinID);
+						player.setClientFactionName(player.jaerinName);
 						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
 					}
 					else
 					{
 						if(thePlayer.capabilities.isCreativeMode)
 						{
-							player.setFactionID(player.jaerinID);
-							player.setFactionName(player.jaerinName);
+							player.setClientFactionID(player.jaerinID);
+							player.setClientFactionName(player.jaerinName);
 						}
 						else
 						{

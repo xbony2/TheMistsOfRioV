@@ -23,7 +23,6 @@ public class TeleporterBlindOasis extends Teleporter
     private final Random random;
     private final LongHashMap destinationCoordinateCache = new LongHashMap();
     private final List destinationCoordinateKeys = new ArrayList();
-    private static final String __OBFID = "CL_00000153";
 
     public TeleporterBlindOasis(WorldServer p_i1963_1_)
     {
