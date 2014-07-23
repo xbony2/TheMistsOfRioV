@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,6 +23,10 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RioVAPIUtil 
 {
+	public final String mod_id = getUtilString("MOD_ID");
+	public final String mod_name = getUtilString("MOD_NAME");
+	public final String version = getUtilString("VERSION");
+	
 	public static void registerItem(Item item, String string)
 	{
 		GameRegistry.registerItem(item, string);	

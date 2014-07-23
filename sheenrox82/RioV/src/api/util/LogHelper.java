@@ -32,7 +32,7 @@ public class LogHelper {
 
 	private void log(Level level, String msg) 
 	{
-		FMLLog.log(RioVAPI.mod_name, level, msg);
+		FMLLog.log(RioVAPI.getInstance().getUtil().mod_name, level, msg);
 		System.err.println(msg);
 		
 		if(RioVAPI.getInstance().modLoaded == false)

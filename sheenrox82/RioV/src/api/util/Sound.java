@@ -37,7 +37,7 @@ public class Sound {
 	}
 
 	public String getPrefixedName(){
-		return RioVAPI.mod_id + ":" + name;
+		return RioVAPI.getInstance().getUtil().mod_id + ":" + name;
 	}
 
 	public boolean isMob(){

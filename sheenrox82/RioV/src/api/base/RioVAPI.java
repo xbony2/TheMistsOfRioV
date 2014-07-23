@@ -11,15 +11,11 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 public class RioVAPI
 {
 	private static RioVAPI api = new RioVAPI();
-	private static AnvilCraftingManager crafter = new AnvilCraftingManager();
-	private static InfuserManager infuser = new InfuserManager();
-	private static LogHelper logger = new LogHelper();
-	private static RioVAPIUtil util = new RioVAPIUtil();
-	private static PacketPipeline pipeline = new PacketPipeline();
-
-	public static final String mod_id = getUtil().getUtilString("MOD_ID");
-	public static final String mod_name = getUtil().getUtilString("MOD_NAME");
-	public static final String version = getUtil().getUtilString("VERSION");
+	private AnvilCraftingManager crafter = new AnvilCraftingManager();
+	private InfuserManager infuser = new InfuserManager();
+	private LogHelper logger = new LogHelper();
+	private RioVAPIUtil util = new RioVAPIUtil();
+	private PacketPipeline pipeline = new PacketPipeline();
 
 	public boolean modLoaded = false;
 	
@@ -75,7 +71,7 @@ public class RioVAPI
 	/**
 	 * Get RioVAPIUtil.java
 	 */
-	public static RioVAPIUtil getUtil()
+	public RioVAPIUtil getUtil()
 	{
 		return util;
 	}

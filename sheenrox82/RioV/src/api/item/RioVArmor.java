@@ -38,14 +38,14 @@ public class RioVArmor extends ItemArmor
 	{
 		if (stack.toString().contains("leggings")) 
 		{
-			return RioVAPI.mod_id + ":" + "textures/armor/" + armorNamePrefix + "_2.png";
+			return RioVAPI.getInstance().getUtil().mod_id + ":" + "textures/armor/" + armorNamePrefix + "_2.png";
 		}
 		if (stack.toString().contains("Leggings")) 
 		{
-			return RioVAPI.mod_id + ":" + "textures/armor/" + armorNamePrefix + "_2.png";
+			return RioVAPI.getInstance().getUtil().mod_id + ":" + "textures/armor/" + armorNamePrefix + "_2.png";
 		}
 
-		return RioVAPI.mod_id + ":" + "textures/armor/" + armorNamePrefix + "_1.png";
+		return RioVAPI.getInstance().getUtil().mod_id + ":" + "textures/armor/" + armorNamePrefix + "_1.png";
 	}
 
 	@Override
@@ -128,7 +128,7 @@ public class RioVArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{		
-		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
 
 		if (RioVAPI.getInstance().botania)
 		{

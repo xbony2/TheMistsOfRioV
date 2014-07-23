@@ -4,7 +4,6 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
@@ -90,7 +89,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
 						}	
 						return true;
 					}
@@ -158,7 +157,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage("You do not have enough Eos!"));	
 						}	
 						return true;
 					}
@@ -226,7 +225,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage("You do not have enough Eos!"));	
 						}	
 
 						return true;
@@ -295,7 +294,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage("You do not have enough Eos!"));	
 						}	
 						return true;
 					}

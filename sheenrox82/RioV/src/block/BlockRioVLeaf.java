@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.content.Particles;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
@@ -225,14 +226,49 @@ public class BlockRioVLeaf extends BlockLeavesBase
      * A randomly called display update to be able to add particles or other items for display
      */
     @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
+    public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        if (p_149734_1_.canLightningStrikeAt(p_149734_2_, p_149734_3_ + 1, p_149734_4_) && !World.doesBlockHaveSolidTopSurface(p_149734_1_, p_149734_2_, p_149734_3_ - 1, p_149734_4_) && p_149734_5_.nextInt(15) == 1)
+        if (par1World.canLightningStrikeAt(par2, par3 + 1, par4) && !World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4) && par5Random.nextInt(15) == 1)
         {
-            double d0 = (double)((float)p_149734_2_ + p_149734_5_.nextFloat());
-            double d1 = (double)p_149734_3_ - 0.05D;
-            double d2 = (double)((float)p_149734_4_ + p_149734_5_.nextFloat());
-            p_149734_1_.spawnParticle("dripWater", d0, d1, d2, 0.0D, 0.0D, 0.0D);
+            double d0 = (double)((float)par2 + par5Random.nextFloat());
+            double d1 = (double)par3 - 0.05D;
+            double d2 = (double)((float)par4 + par5Random.nextFloat());
+            par1World.spawnParticle("dripWater", d0, d1, d2, 0.0D, 0.0D, 0.0D);
+        }
+        
+        if(this == RioVBlocks.glimmerwoodLeaf)
+        {
+        	for (int var6 = par2 - 2; var6 <= par2 + 2; ++var6)
+    		{
+    			for (int var7 = par4 - 2; var7 <= par4 + 2; ++var7)
+    			{
+    				if (var6 > par2 - 2 && var6 < par2 + 2 && var7 == par4 - 1)
+    				{
+    					var7 = par4 + 2;
+    				}
+
+    				if (par5Random.nextInt(16) == 0)
+    				{
+    					for (int var8 = par3; var8 <= par3 + 1; ++var8)
+    					{
+
+    						if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
+    						{
+    							break;
+    						}
+
+    						Particles.spawnParticle("glimmer", (double)par2 + 0.5D, (double)par3 + 1.0D, (double)par4 + 0.5D, (double)((float)(par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(par3) - par5Random.nextFloat() - 1.0F), (double)((float)(par4) + par5Random.nextFloat()) - 0.5D);
+
+    						if (!par1World.isAirBlock((var6 - par2) / 2 + par2, var8, (var7 - par4) / 2 + par4))
+    						{
+    							break;
+    						}
+
+    						Particles.spawnParticle("glimmer", (double)par2 + 0.5D, (double)par3 + 1.0D, (double)par4 + 0.5D, (double)((float)(par2) + par5Random.nextFloat()) - 0.5D, (double)((float)(par3) - par5Random.nextFloat() - 1.0F), (double)((float)(par4) + par5Random.nextFloat()) - 0.5D);                       	
+    					}
+    				}
+    			}
+    		}
         }
     }
 
