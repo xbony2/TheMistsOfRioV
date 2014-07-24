@@ -32,10 +32,10 @@ import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
+import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
-import sheenrox82.RioV.src.entity.mob.raetiin.EntityMage;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
 
 public class EntityTef extends EntityBossCore

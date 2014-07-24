@@ -22,14 +22,14 @@ public class RioVPlayer implements IExtendedEntityProperties
 
 	public final int EOS_WATCHER = 20;
 
-	public int factionID;
-	public int noFactionID = 0;
-	public int raetiinID;
-	public int jaerinID;
-	public String factionName;
-	public String noFactionName = "No Faction";
-	public String raetiinName;
-	public String jaerinName;
+	public static int factionID;
+	public static int noFactionID = 0;
+	public static int raetiinID;
+	public static int jaerinID;
+	public static String factionName;
+	public static String noFactionName = "No Faction";
+	public static String raetiinName;
+	public static String jaerinName;
 
 	public RioVPlayer(EntityPlayer player) 
 	{

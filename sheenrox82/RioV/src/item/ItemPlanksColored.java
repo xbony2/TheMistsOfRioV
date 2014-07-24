@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.item.metadata;
+package sheenrox82.RioV.src.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;

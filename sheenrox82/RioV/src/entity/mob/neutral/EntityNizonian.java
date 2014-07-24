@@ -22,7 +22,6 @@ import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
-import sheenrox82.RioV.src.entity.mob.raetiin.EntityMage;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;

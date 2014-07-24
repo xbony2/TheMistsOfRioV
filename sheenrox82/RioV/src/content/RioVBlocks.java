@@ -46,9 +46,9 @@ import sheenrox82.RioV.src.block.BlockVaerynPortal;
 import sheenrox82.RioV.src.block.BlockVoidFlowing;
 import sheenrox82.RioV.src.block.BlockVoidStill;
 import sheenrox82.RioV.src.block.BlockWhiteFire;
-import sheenrox82.RioV.src.item.metadata.ItemBricks;
-import sheenrox82.RioV.src.item.metadata.ItemPlanksColored;
-import sheenrox82.RioV.src.item.metadata.ItemStainedGlass;
+import sheenrox82.RioV.src.item.ItemBricks;
+import sheenrox82.RioV.src.item.ItemPlanksColored;
+import sheenrox82.RioV.src.item.ItemStainedGlass;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RioVBlocks 

@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.entity.mob.raetiin;
+package sheenrox82.RioV.src.entity.mob.neutral;
 
 import java.util.Random;
 

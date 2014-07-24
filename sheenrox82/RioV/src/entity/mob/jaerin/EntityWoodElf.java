@@ -30,6 +30,7 @@ import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.Sounds;
+import sheenrox82.RioV.src.entity.mob.ai.JaerinEntityAttackAI;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadow;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -45,9 +46,10 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
 		targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityShadow.class, 0, true));
+		targetTasks.addTask(1, new JaerinEntityAttackAI(this, EntityPlayer.class, 0, true));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		isImmuneToFire = false;
+		this.fallDistance = 0.0f;
 		if (par1World != null && !par1World.isRemote)
 		{
 			this.setCombatTask();

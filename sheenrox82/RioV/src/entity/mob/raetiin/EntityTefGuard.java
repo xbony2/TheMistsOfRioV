@@ -25,7 +25,9 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.entity.mob.ai.RaetiinEntityAttackAI;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
+import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 
 public class EntityTefGuard extends EntityMobDeadBody
@@ -35,16 +37,12 @@ public class EntityTefGuard extends EntityMobDeadBody
 	public EntityTefGuard(World par1World)
 	{
 		super(par1World);
-		isImmuneToFire = false;
+		this.isImmuneToFire = true;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunBodyguard.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunMinion.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDemonAngel.class, 0, true));
+		targetTasks.addTask(1, new RaetiinEntityAttackAI(this, EntityPlayer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMage.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
@@ -58,6 +56,7 @@ public class EntityTefGuard extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPigZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
+		
 		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));

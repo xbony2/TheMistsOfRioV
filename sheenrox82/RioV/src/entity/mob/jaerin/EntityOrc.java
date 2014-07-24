@@ -25,12 +25,13 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
+import sheenrox82.RioV.src.entity.mob.ai.JaerinEntityAttackAI;
+import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityVravinite;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
-import sheenrox82.RioV.src.entity.mob.raetiin.EntityMage;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
@@ -46,11 +47,10 @@ public class EntityOrc extends EntityMobDeadBody
 	public EntityOrc(World par1World)
 	{
 		super(par1World);
-		isImmuneToFire = false;
+		this.fallDistance = 0.0f;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunBodyguard.class, 0, true));
@@ -70,6 +70,7 @@ public class EntityOrc extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVravinite.class, 0, true));
+		targetTasks.addTask(1, new JaerinEntityAttackAI(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
 		this.setCurrentItemOrArmor(4, new ItemStack(Items.iron_helmet));

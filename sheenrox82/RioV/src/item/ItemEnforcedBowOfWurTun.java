@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.item.unique;
+package sheenrox82.RioV.src.item;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;

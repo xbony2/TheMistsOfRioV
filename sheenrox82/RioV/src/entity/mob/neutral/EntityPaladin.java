@@ -24,7 +24,6 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
-import sheenrox82.RioV.src.entity.mob.raetiin.EntityMage;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 

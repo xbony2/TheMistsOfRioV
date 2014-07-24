@@ -14,6 +14,7 @@ import sheenrox82.RioV.src.api.item.RioVPickaxe;
 import sheenrox82.RioV.src.api.item.RioVSpade;
 import sheenrox82.RioV.src.api.item.RioVWeapon;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.item.ItemEnforcedBowOfWurTun;
 import sheenrox82.RioV.src.item.RioVActivators;
 import sheenrox82.RioV.src.item.RioVBag;
 import sheenrox82.RioV.src.item.RioVBow;
@@ -25,7 +26,6 @@ import sheenrox82.RioV.src.item.RioVPotions;
 import sheenrox82.RioV.src.item.RioVSummoners;
 import sheenrox82.RioV.src.item.RioVVoidHolder;
 import sheenrox82.RioV.src.item.RioVWand;
-import sheenrox82.RioV.src.item.unique.ItemEnforcedBowOfWurTun;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 
 public class RioVItems 
