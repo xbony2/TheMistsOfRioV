@@ -146,17 +146,18 @@ public class RioVArmor extends ItemArmor
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
 			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
-			var3.add(Color.dark_purple + "Protection: " + RioVArmor.getMaxDamageFactor(material));
+			var3.add(Color.dark_purple + "Protection: " + getMaxDamageFactor(material));
 		}
 	}
 
-	public static int getMaxDamageFactor(ArmorMaterial material)
+	public final int getMaxDamageFactor(ArmorMaterial material)
 	{
 		int maxDamageFactor = 0;
 
 		try 
 		{
-			Field fMaxDamageFactor = material.getClass().getDeclaredField("maxDamageFactor");
+			//will not work in eclipse environment
+			Field fMaxDamageFactor = material.getClass().getDeclaredField("field_78048_f");
 			fMaxDamageFactor.setAccessible(true);
 			maxDamageFactor = fMaxDamageFactor.getInt(material);
 		} 

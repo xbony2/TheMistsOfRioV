@@ -8,13 +8,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
@@ -30,6 +26,7 @@ public class BlockFlamonorPortal extends BlockPortal
 	public BlockFlamonorPortal()
 	{
 		super();
+		setHardness(Float.MAX_VALUE);
 		setBlockName(Util.MOD_ID + ":" + "flamonorPortal");
 	}
 
@@ -59,184 +56,12 @@ public class BlockFlamonorPortal extends BlockPortal
 		}
 	}
 
-	/**
-	 * Ticks the block if it's been scheduled
-	 */
+	@Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
 	{
-		super.updateTick(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_, p_149674_5_);
-
-		if (p_149674_1_.provider.isSurfaceWorld() && p_149674_1_.getGameRules().getGameRuleBooleanValue("doMobSpawning") && p_149674_5_.nextInt(2000) < p_149674_1_.difficultySetting.getDifficultyId())
-		{
-			int l;
-
-			for (l = p_149674_3_; !World.doesBlockHaveSolidTopSurface(p_149674_1_, p_149674_2_, l, p_149674_4_) && l > 0; --l)
-			{
-				;
-			}
-		}
+		
 	}
 
-	/**
-	 * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
-	 * cleared to be reused)
-	 */
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
-	{
-		return null;
-	}
-
-	/**
-	 * Updates the blocks bounds based on its current state. Args: world, x, y, z
-	 */
-	public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
-	{
-		int l = func_149999_b(p_149719_1_.getBlockMetadata(p_149719_2_, p_149719_3_, p_149719_4_));
-
-		if (l == 0)
-		{
-			if (p_149719_1_.getBlock(p_149719_2_ - 1, p_149719_3_, p_149719_4_) != this && p_149719_1_.getBlock(p_149719_2_ + 1, p_149719_3_, p_149719_4_) != this)
-			{
-				l = 2;
-			}
-			else
-			{
-				l = 1;
-			}
-
-			if (p_149719_1_ instanceof World && !((World)p_149719_1_).isRemote)
-			{
-				((World)p_149719_1_).setBlockMetadataWithNotify(p_149719_2_, p_149719_3_, p_149719_4_, l, 2);
-			}
-		}
-
-		float f = 0.125F;
-		float f1 = 0.125F;
-
-		if (l == 1)
-		{
-			f = 0.5F;
-		}
-
-		if (l == 2)
-		{
-			f1 = 0.5F;
-		}
-
-		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
-	}
-
-	/**
-	 * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
-	 */
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
-
-	public boolean func_150000_e(World p_150000_1_, int p_150000_2_, int p_150000_3_, int p_150000_4_)
-	{
-		BlockFlamonorPortal.Size size = new BlockFlamonorPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
-		BlockFlamonorPortal.Size size1 = new BlockFlamonorPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 2);
-
-		if (size.func_150860_b() && size.field_150864_e == 0)
-		{
-			size.func_150859_c();
-			return true;
-		}
-		else if (size1.func_150860_b() && size1.field_150864_e == 0)
-		{
-			size1.func_150859_c();
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	/**
-	 * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
-	 * their own) Args: x, y, z, neighbor Block
-	 */
-	public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
-	{
-		int l = func_149999_b(p_149695_1_.getBlockMetadata(p_149695_2_, p_149695_3_, p_149695_4_));
-		BlockFlamonorPortal.Size size = new BlockFlamonorPortal.Size(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, 1);
-		BlockFlamonorPortal.Size size1 = new BlockFlamonorPortal.Size(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, 2);
-
-		if (l == 1 && (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g))
-		{
-			p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
-		}
-		else if (l == 2 && (!size1.func_150860_b() || size1.field_150864_e < size1.field_150868_h * size1.field_150862_g))
-		{
-			p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
-		}
-		else if (l == 0 && !size.func_150860_b() && !size1.func_150860_b())
-		{
-			p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
-		}
-	}
-
-	/**
-	 * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
-	 * coordinates.  Args: blockAccess, x, y, z, side
-	 */
-	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
-	{
-		int i1 = 0;
-
-		if (p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_) == this)
-		{
-			i1 = func_149999_b(p_149646_1_.getBlockMetadata(p_149646_2_, p_149646_3_, p_149646_4_));
-
-			if (i1 == 0)
-			{
-				return false;
-			}
-
-			if (i1 == 2 && p_149646_5_ != 5 && p_149646_5_ != 4)
-			{
-				return false;
-			}
-
-			if (i1 == 1 && p_149646_5_ != 3 && p_149646_5_ != 2)
-			{
-				return false;
-			}
-		}
-
-		boolean flag = p_149646_1_.getBlock(p_149646_2_ - 1, p_149646_3_, p_149646_4_) == this && p_149646_1_.getBlock(p_149646_2_ - 2, p_149646_3_, p_149646_4_) != this;
-		boolean flag1 = p_149646_1_.getBlock(p_149646_2_ + 1, p_149646_3_, p_149646_4_) == this && p_149646_1_.getBlock(p_149646_2_ + 2, p_149646_3_, p_149646_4_) != this;
-		boolean flag2 = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ - 1) == this && p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ - 2) != this;
-		boolean flag3 = p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ + 1) == this && p_149646_1_.getBlock(p_149646_2_, p_149646_3_, p_149646_4_ + 2) != this;
-		boolean flag4 = flag || flag1 || i1 == 1;
-		boolean flag5 = flag2 || flag3 || i1 == 2;
-		return flag4 && p_149646_5_ == 4 ? true : (flag4 && p_149646_5_ == 5 ? true : (flag5 && p_149646_5_ == 2 ? true : flag5 && p_149646_5_ == 3));
-	}
-
-	/**
-	 * Returns the quantity of items to drop on block destruction.
-	 */
-	public int quantityDropped(Random p_149745_1_)
-	{
-		return 0;
-	}
-
-	/**
-	 * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
-	 */
-	@SideOnly(Side.CLIENT)
-	public int getRenderBlockPass()
-	{
-		return 1;
-	}
-
-	/**
-	 * A randomly called display update to be able to add particles or other items for display
-	 */
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
 	{
@@ -244,20 +69,6 @@ public class BlockFlamonorPortal extends BlockPortal
 		{
 			p_149734_1_.playSound((double)p_149734_2_ + 0.5D, (double)p_149734_3_ + 0.5D, (double)p_149734_4_ + 0.5D, Sounds.portal.getPrefixedName(), 0.5F, p_149734_5_.nextFloat() * 0.4F + 0.8F, false);
 		}
-	}
-
-	public static int func_149999_b(int p_149999_0_)
-	{
-		return p_149999_0_ & 3;
-	}
-
-	/**
-	 * Gets an item for the block being called on. Args: world, x, y, z
-	 */
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World p_149694_1_, int p_149694_2_, int p_149694_3_, int p_149694_4_)
-	{
-		return Item.getItemById(0);
 	}
 
 	public static class Size

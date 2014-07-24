@@ -31,7 +31,7 @@ public class BlockBush extends BlockFlower
 	public BlockBush()
 	{
 		super(0);
-		this.setCreativeTab(RioVAPI.getInstance().tab);
+		//this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setStepSound(Block.soundTypeGrass);
 		this.setHardness(0.3F);
 		float f = 0.375F;

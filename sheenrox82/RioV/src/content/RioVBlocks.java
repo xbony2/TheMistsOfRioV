@@ -102,7 +102,7 @@ public class RioVBlocks
 	public static Block glimmerwoodTrapdoor = new BlockRioVTrapDoor().setHardness(1.5F).setBlockName("glimmerwoodTrapdoor");
 	public static Block bloodGrass = new BlockBloodGrass().setHardness(0.5F).setBlockName("bloodGrass");
 	public static Block bloodDirt = new BlockDirt().setHardness(0.3F).setStepSound(Block.soundTypeGrass).setBlockName("bloodDirt");
-	public static Block flamonorPortal = new BlockFlamonorPortal().setHardness(Float.MAX_VALUE).setBlockName("flamonorPortal");
+	public static Block flamonorPortal = new BlockFlamonorPortal().setBlockName("flamonorPortal");
 	public static Block flamonorRock = new BlockCoreOne().setHardness(2.5F).setBlockName("flamonorRock");
 	public static Block redFire = new BlockRedFire().setBlockName("redFire");
 	public static Block drakiuzOre = new BlockCoreOne().setHardness(20.8F).setBlockName("drakiuzOre");

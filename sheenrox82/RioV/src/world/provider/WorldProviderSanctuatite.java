@@ -33,6 +33,11 @@ public class WorldProviderSanctuatite extends WorldProvider
 		return "Entering Sanctuatite";
 	}
 	
+	public boolean canRespawnHere()
+    {
+        return false;
+    }
+	
     public String getSaveFolder()
     {
         return "SanctuatiteDim";

@@ -37,6 +37,11 @@ public class WorldProviderVaeryn extends WorldProvider
 		return "Entering Vaeryn";
 	}
 	
+	public boolean canRespawnHere()
+    {
+        return false;
+    }
+	
     public String getSaveFolder()
     {
         return "VaerynDim";

@@ -34,6 +34,11 @@ public class WorldProviderFlamonor extends WorldProvider
 		return "Entering Flamonor";
 	}
 	
+	public boolean canRespawnHere()
+    {
+        return false;
+    }
+	
     public String getSaveFolder()
     {
         return "FlamonorDim";

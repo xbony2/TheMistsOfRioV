@@ -26,7 +26,7 @@ public class BlockPlantCore extends BlockFlower
 		super(0);
 		this.setHardness(0.3F);
 		this.setStepSound(Block.soundTypeGrass);
-		this.setCreativeTab(RioVAPI.getInstance().tab);
+		//this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
 	@Override

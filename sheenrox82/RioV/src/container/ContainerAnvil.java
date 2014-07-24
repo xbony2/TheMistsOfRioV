@@ -2,7 +2,6 @@ package sheenrox82.RioV.src.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
@@ -10,7 +9,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
 import sheenrox82.RioV.src.content.RioVBlocks;
@@ -83,15 +81,18 @@ public class ContainerAnvil extends Container
 		}
 	}
 
-	public boolean canInteractWith(EntityPlayer par1EntityPlayer)
+	public boolean canInteractWith(EntityPlayer player)
 	{
-		return true;
+		return this.worldObj.getBlock(this.posX, this.posY, this.posZ) != RioVBlocks.anvil ? false : player.getDistanceSq((double)this.posX + 0.5D, (double)this.posY + 0.5D, (double)this.posZ + 0.5D) <= 64.0D;
 	}
 
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	{
+		super.transferStackInSlot(par1EntityPlayer, par2);
+
 		ItemStack itemstack = null;
 		Slot slot = (Slot)inventorySlots.get(par2);
+
 		if(slot != null && slot.getHasStack())
 		{
 			ItemStack itemstack1 = slot.getStack();
@@ -102,40 +103,43 @@ public class ContainerAnvil extends Container
 				{
 					return null;
 				}
-			} else
-				if(par2 >= 10 && par2 < 37)
+			} 
+			else if(par2 >= 10 && par2 < 37)
+			{
+				if(!mergeItemStack(itemstack1, 37, 46, false))
 				{
-					if(!mergeItemStack(itemstack1, 37, 46, false))
-					{
-						return null;
-					}
-				} else
-					if(par2 >= 37 && par2 < 46)
-					{
-						if(!mergeItemStack(itemstack1, 10, 37, false))
-						{
-							return null;
-						}
-					} else
-						if(!mergeItemStack(itemstack1, 10, 46, false))
-						{
-							return null;
-						}
+					return null;
+				}
+			}
+			else if(par2 >= 37 && par2 < 46)
+			{
+				if(!mergeItemStack(itemstack1, 10, 37, false))
+				{
+					return null;
+				}
+			} 
+			else if(!mergeItemStack(itemstack1, 10, 46, false))
+			{
+				return null;
+			}
 			if(itemstack1.stackSize == 0)
 			{
 				slot.putStack(null);
-			} else
+			} 
+			else
 			{
 				slot.onSlotChanged();
 			}
 			if(itemstack1.stackSize != itemstack.stackSize)
 			{
 				slot.onPickupFromSlot(par1EntityPlayer, itemstack1);
-			} else
+			}
+			else
 			{
 				return null;
 			}
 		}
+
 		return itemstack;
 	}
 }

@@ -27,7 +27,7 @@ public class BlockCloudPlant extends BlockBush
 	{
 		super(Materials.customMaterial);
 		this.setStepSound(Block.soundTypeGrass);
-		this.setCreativeTab(RioVAPI.getInstance().tab);
+		//this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setHardness(0.3F);
 	}
 
