@@ -12,9 +12,9 @@ import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityDemonAngel;
-import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityTerron;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
+import sheenrox82.RioV.src.lib.RioVLib;
 
 
 public class RenderBossCore extends RenderLiving
@@ -69,8 +69,8 @@ public class RenderBossCore extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
-		if(entity instanceof EntityTerron) return EntityResourceLocation.terron;
-		if(entity instanceof EntityDemonAngel) return EntityResourceLocation.demon_angel;
+		if(entity instanceof EntityTerron) return RioVLib.terron;
+		if(entity instanceof EntityDemonAngel) return RioVLib.demon_angel;
 		return null;
 	}
 }

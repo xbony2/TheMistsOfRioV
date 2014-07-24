@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.util.ResourceLocation;
-import sheenrox82.RioV.src.entity.mob.hostile.EntityPaladin;
+import sheenrox82.RioV.src.entity.mob.neutral.EntityPaladin;
 import sheenrox82.RioV.src.util.Util;
 
 

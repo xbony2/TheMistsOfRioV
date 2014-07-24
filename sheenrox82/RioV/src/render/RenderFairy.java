@@ -8,8 +8,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.passive.EntityFairy;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.neutral.EntityFairy;
+import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.model.ModelFairy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -50,8 +50,8 @@ public class RenderFairy extends RenderLiving
     }
 
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) {
-		// TODO Auto-generated method stub
-		return EntityResourceLocation.fairy;
+	protected ResourceLocation getEntityTexture(Entity entity) 
+	{
+		return RioVLib.fairy;
 	}
 }

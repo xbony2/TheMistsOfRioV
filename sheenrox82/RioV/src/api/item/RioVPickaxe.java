@@ -37,11 +37,6 @@ public class RioVPickaxe extends ItemPickaxe
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
-		if (var1.getItem() == RioVAPI.getInstance().getUtil().getRioVItem("agonitePickaxe"))
-		{
-			var3.add("Used to mine Nironite/Dragon/Vravinite Ore");
-		}
-
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
 			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");

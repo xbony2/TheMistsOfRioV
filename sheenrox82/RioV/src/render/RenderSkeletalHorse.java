@@ -5,8 +5,8 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
-import sheenrox82.RioV.src.entity.mob.passive.EntitySkeletalHorse;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
+import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,7 +38,7 @@ public class RenderSkeletalHorse extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return EntityResourceLocation.skeletal_horse;
+		return RioVLib.skeletal_horse;
 	}
 }
 

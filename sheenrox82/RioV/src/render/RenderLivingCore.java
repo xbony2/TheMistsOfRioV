@@ -9,10 +9,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
-import sheenrox82.RioV.src.entity.mob.hostile.EntityHellhound;
-import sheenrox82.RioV.src.entity.mob.passive.EntityNizonian;
-import sheenrox82.RioV.src.entity.mob.passive.EntityWoodElf;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
+import sheenrox82.RioV.src.entity.mob.neutral.EntityNizonian;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
+import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -61,17 +61,17 @@ public class RenderLivingCore extends RenderLiving
 	{
 		if(entity instanceof EntityNizonian)
 		{
-			return EntityResourceLocation.nizonian;
+			return RioVLib.nizonian;
 		}
 		
 		if(entity instanceof EntityHellhound)
 		{
-			return EntityResourceLocation.hellhound;
+			return RioVLib.hellhound;
 		}
 		
 		if(entity instanceof EntityWoodElf)
 		{
-			return EntityResourceLocation.wood_elf;
+			return RioVLib.wood_elf;
 		}
 		
 		return null;

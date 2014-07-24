@@ -8,7 +8,7 @@ import net.minecraft.util.StatCollector;
 import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.container.ContainerInfuser;
-import sheenrox82.RioV.src.lib.GuiResourceLocation;
+import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 
 public class GuiInfuser extends GuiContainer
@@ -26,11 +26,10 @@ public class GuiInfuser extends GuiContainer
 	}
 
 	@Override
-	//drawGuiContainerBackgroundLayer
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.infuser);
+		Minecraft.getMinecraft().renderEngine.bindTexture(RioVLib.infuser);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);

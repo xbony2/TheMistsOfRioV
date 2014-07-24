@@ -21,12 +21,12 @@ import sheenrox82.RioV.src.inventory.InventoryBagLarge;
 import sheenrox82.RioV.src.inventory.InventoryBagMedium;
 import sheenrox82.RioV.src.inventory.InventoryBagSheen;
 import sheenrox82.RioV.src.inventory.InventoryBagSmall;
-import sheenrox82.RioV.src.lib.GuiID;
+import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler
-{	
+{		
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z){
 
@@ -37,34 +37,34 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerInfuser(player.inventory, (TileEntityInfuser) tile_entity);
 		}
 
-		if (id == GuiID.riovWorkbenchID)
+		if (id == RioVLib.riovWorkbenchID)
 		{
 			return new ContainerRioVWorkbench(player.inventory, world, x, y, z);
 		}
 
-		if (id == GuiID.anvilID)
+		if (id == RioVLib.anvilID)
 		{
 			return new ContainerAnvil(player.inventory, world, x, y, z);
 		}
 
-		if(id == GuiID.smallBagID)
+		if(id == RioVLib.smallBagID)
 		{
 			return new ContainerBagSmall(player, player.inventory, new InventoryBagSmall(player.getHeldItem()));
 		}
 
-		if(id == GuiID.mediumBagID)
+		if(id == RioVLib.mediumBagID)
 		{
 			return new ContainerBagMedium(player, player.inventory, new InventoryBagMedium(player.getHeldItem()));
 		}
 
-		if(id == GuiID.largeBagID)
+		if(id == RioVLib.largeBagID)
 		{
 			return new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem()));
 		}
 
 		if(player.getDisplayName().equals("sheenrox82"))
 		{
-			if(id == GuiID.sheensBagID)
+			if(id == RioVLib.sheensBagID)
 			{
 				return new ContainerBagSheen(player, player.inventory, new InventoryBagSheen(player.getHeldItem()));
 			}
@@ -83,34 +83,34 @@ public class GuiHandler implements IGuiHandler
 			return new GuiInfuser(player.inventory, (TileEntityInfuser) tile_entity);
 		}
 		
-		if (id == GuiID.riovWorkbenchID)
+		if (id == RioVLib.riovWorkbenchID)
 		{
 			return new GuiWorkbench(player.inventory, world, x, y, z);
 		}
 
-		if (id == GuiID.anvilID)
+		if (id == RioVLib.anvilID)
 		{
 			return new GuiAnvil(player.inventory, world, x, y, z);
 		}
 
-		if(id == GuiID.smallBagID)
+		if(id == RioVLib.smallBagID)
 		{
 			return new GuiSmallBag((ContainerBagSmall) new ContainerBagSmall(player, player.inventory, new InventoryBagSmall(player.getHeldItem())));
 		}
 
-		if(id == GuiID.mediumBagID)
+		if(id == RioVLib.mediumBagID)
 		{
 			return new GuiMediumBag((ContainerBagMedium) new ContainerBagMedium(player, player.inventory, new InventoryBagMedium(player.getHeldItem())));
 		}
 
-		if(id == GuiID.largeBagID)
+		if(id == RioVLib.largeBagID)
 		{
 			return new GuiLargeBag((ContainerBagLarge) new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem())));
 		}
 
 		if(player.getDisplayName().equals("sheenrox82"))
 		{
-			if(id == GuiID.sheensBagID)
+			if(id == RioVLib.sheensBagID)
 			{
 				return new GuiSheenBag((ContainerBagSheen) new ContainerBagSheen(player, player.inventory, new InventoryBagSheen(player.getHeldItem())));
 			}

@@ -7,8 +7,8 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.Core.src.base.ModUpdateChecker;
+import sheenrox82.RioV.src.api.util.Color;
 
 public class CommandPrintChangelog extends CommandBase implements ICommand
 {
@@ -30,7 +30,7 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/printChangelog - Prints changelog for new update.";
+		return Color.GOLD + "/printChangelog - Prints changelog for new update.";
 	}
 
 	@Override

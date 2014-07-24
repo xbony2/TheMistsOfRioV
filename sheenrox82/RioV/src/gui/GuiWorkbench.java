@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.container.ContainerRioVWorkbench;
-import sheenrox82.RioV.src.lib.GuiResourceLocation;
+import sheenrox82.RioV.src.lib.RioVLib;
 
 public class GuiWorkbench extends GuiContainer
 {
@@ -28,7 +28,7 @@ public class GuiWorkbench extends GuiContainer
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
-		Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.workbench);
+		Minecraft.getMinecraft().renderEngine.bindTexture(RioVLib.workbench);
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;

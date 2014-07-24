@@ -147,7 +147,7 @@ public class Events
 			riovPlayer.saveProxyData(player);
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void playerUpdate(LivingEvent.LivingUpdateEvent event)
 	{
@@ -155,7 +155,7 @@ public class Events
 		{
 			EntityPlayer player = (EntityPlayer)event.entity;
 			RioVPlayer riovPlayer = RioVPlayer.get(player);
-			
+
 			riovPlayer.saveProxyData(player);
 		}
 	}

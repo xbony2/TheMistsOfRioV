@@ -5,8 +5,8 @@ import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
-import sheenrox82.RioV.src.entity.mob.passive.EntityAltruEssence;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
+import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -36,8 +36,8 @@ public class RenderEssence extends RenderBiped
 	}
 	
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) {
-		// TODO Auto-generated method stub
-		return EntityResourceLocation.essence;
+	protected ResourceLocation getEntityTexture(Entity entity) 
+	{
+		return RioVLib.essence;
 	}
 }

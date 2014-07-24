@@ -51,7 +51,7 @@ public class TheMistsOfRioV
 	}
 	
 	@EventHandler
-	public static void serverLoad(FMLServerStartingEvent event)
+	public void serverLoad(FMLServerStartingEvent event)
 	{
 		Registry.serverLoad(event);
 	}

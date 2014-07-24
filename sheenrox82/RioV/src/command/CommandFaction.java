@@ -9,7 +9,6 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
@@ -39,7 +38,7 @@ public class CommandFaction extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/mpFaction <factionID> - [MULTIPLAYER] Choose a Faction. (" + Color.DARK_RED + "Raetiin ID: 1" + Color.GOLD + ", " + Color.GREEN + "Jaerin ID: 2" + Color.GOLD + ")";
+		return Color.GOLD + "/mpFaction <factionID> - [MULTIPLAYER] Choose a Faction. (" + Color.DARK_RED + "Raetiin ID: 1" + Color.GOLD + ", " + Color.GREEN + "Jaerin ID: 2" + Color.GOLD + ")";
 	}
 
 	@Override

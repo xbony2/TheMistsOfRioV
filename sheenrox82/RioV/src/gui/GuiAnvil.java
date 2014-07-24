@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.container.ContainerAnvil;
-import sheenrox82.RioV.src.lib.GuiResourceLocation;
+import sheenrox82.RioV.src.lib.RioVLib;
 
 public class GuiAnvil extends GuiContainer
 {	
@@ -30,7 +30,7 @@ public class GuiAnvil extends GuiContainer
     protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        Minecraft.getMinecraft().renderEngine.bindTexture(GuiResourceLocation.anvil);
+        Minecraft.getMinecraft().renderEngine.bindTexture(RioVLib.anvil);
         int k = (this.width - this.xSize) / 2;
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);

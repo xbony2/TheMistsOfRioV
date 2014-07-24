@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.lib.GuiID;
+import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -117,7 +117,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 			return true;
 		}
 
-		player.openGui(TheMistsOfRioV.getInstance(), GuiID.riovWorkbenchID, var1, var2, var3, var4);
+		player.openGui(TheMistsOfRioV.getInstance(), RioVLib.riovWorkbenchID, var1, var2, var3, var4);
 		return true;
 	}
 }

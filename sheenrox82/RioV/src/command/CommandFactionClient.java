@@ -12,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVBlocks;
 
@@ -39,7 +38,7 @@ public class CommandFactionClient extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/spFaction <factionID> - [SINGLEPLAYER] Choose a Faction. (" + EnumChatFormatting.DARK_RED + "Raetiin ID: 1" + EnumChatFormatting.GOLD + ", " + EnumChatFormatting.GREEN + "Jaerin ID: 2" + EnumChatFormatting.GOLD + ")";
+		return Color.GOLD + "/spFaction <factionID> - [SINGLEPLAYER] Choose a Faction. (" + Color.DARK_RED + "Raetiin ID: 1" + Color.GOLD + ", " + Color.GREEN + "Jaerin ID: 2" + Color.GOLD + ")";
 	}
 
 	@Override

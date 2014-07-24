@@ -10,9 +10,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.Color;
 
 public class CommandRageQuit extends CommandBase implements ICommand
 {
@@ -34,7 +33,7 @@ public class CommandRageQuit extends CommandBase implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return EnumChatFormatting.GOLD + "/rageQuit - Kicks you from the server.";
+		return Color.GOLD + "/rageQuit - Kicks you from the server.";
 	}
 
 	@Override

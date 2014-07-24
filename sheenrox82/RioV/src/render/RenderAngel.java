@@ -1,24 +1,15 @@
 package sheenrox82.RioV.src.render;
 
-import static net.minecraftforge.client.IItemRenderer.ItemRenderType.EQUIPPED;
-import static net.minecraftforge.client.IItemRenderer.ItemRendererHelper.BLOCK_3D;
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.passive.EntityAngel;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityAngel;
+import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.model.ModelDemonAngel;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -67,6 +58,6 @@ public class RenderAngel extends RenderLiving
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity)
 	{
-		return EntityResourceLocation.angel;
+		return RioVLib.angel;
 	}
 }

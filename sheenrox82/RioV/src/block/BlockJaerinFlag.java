@@ -10,7 +10,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.tileentity.flag.TileEntityJaerinFlag;
+import sheenrox82.RioV.src.tileentity.TileEntityJaerinFlag;
 import sheenrox82.RioV.src.util.Util;
 
 public class BlockJaerinFlag extends BlockContainer 

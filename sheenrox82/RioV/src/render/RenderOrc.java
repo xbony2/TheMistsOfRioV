@@ -9,8 +9,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.passive.EntityOrc;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
+import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -51,6 +51,6 @@ public class RenderOrc extends RenderBiped
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
-		return EntityResourceLocation.orc;
+		return RioVLib.orc;
 	}
 }

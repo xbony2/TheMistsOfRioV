@@ -10,8 +10,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.entity.mob.hostile.boss.EntityAunTun;
-import sheenrox82.RioV.src.lib.EntityResourceLocation;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
+import sheenrox82.RioV.src.lib.RioVLib;
 
 public class RenderAunTun extends RenderBiped
 {
@@ -51,6 +51,6 @@ public class RenderAunTun extends RenderBiped
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) 
 	{
-		return EntityResourceLocation.auntun;
+		return RioVLib.auntun;
 	}
 }
