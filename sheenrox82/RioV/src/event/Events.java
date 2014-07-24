@@ -15,11 +15,11 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
@@ -116,7 +116,11 @@ public class Events
 		if (event.entity instanceof EntityPlayer) 
 		{
 			if (RioVPlayer.get((EntityPlayer) event.entity) == null)
-				RioVPlayer.register((EntityPlayer) event.entity);
+			{
+				EntityPlayer player = (EntityPlayer)event.entity;
+
+				RioVPlayer.register(player);
+			}
 		}
 	}
 
@@ -125,7 +129,10 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
-			RioVPlayer.loadProxyData((EntityPlayer) event.entity);
+			EntityPlayer player = (EntityPlayer)event.entity;
+			RioVPlayer riovPlayer = RioVPlayer.get(player);
+
+			riovPlayer.loadProxyData(player);
 		}
 	}
 
@@ -134,7 +141,22 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			RioVPlayer.saveProxyData((EntityPlayer) event.entity);
+			EntityPlayer player = (EntityPlayer)event.entity;
+			RioVPlayer riovPlayer = RioVPlayer.get(player);
+
+			riovPlayer.saveProxyData(player);
+		}
+	}
+	
+	@SubscribeEvent
+	public void playerUpdate(LivingEvent.LivingUpdateEvent event)
+	{
+		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
+		{
+			EntityPlayer player = (EntityPlayer)event.entity;
+			RioVPlayer riovPlayer = RioVPlayer.get(player);
+			
+			riovPlayer.saveProxyData(player);
 		}
 	}
 

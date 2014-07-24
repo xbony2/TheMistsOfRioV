@@ -30,7 +30,6 @@ public class BlockVaerynPortal extends BlockPortal
 	public BlockVaerynPortal()
 	{
 		super();
-		setBlockName(Util.MOD_ID + ":" + "vaerynPortal");
 	}
 
 	@Override
@@ -63,6 +62,47 @@ public class BlockVaerynPortal extends BlockPortal
 	{
 		
 	}
+
+    public boolean func_150000_e(World p_150000_1_, int p_150000_2_, int p_150000_3_, int p_150000_4_)
+    {
+    	BlockVaerynPortal.Size size = new BlockVaerynPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
+        BlockVaerynPortal.Size size1 = new BlockVaerynPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 2);
+
+        if (size.func_150860_b() && size.field_150864_e == 0)
+        {
+            size.func_150859_c();
+            return true;
+        }
+        else if (size1.func_150860_b() && size1.field_150864_e == 0)
+        {
+            size1.func_150859_c();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
+    {
+        int l = func_149999_b(p_149695_1_.getBlockMetadata(p_149695_2_, p_149695_3_, p_149695_4_));
+        BlockVaerynPortal.Size size = new BlockVaerynPortal.Size(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, 1);
+        BlockVaerynPortal.Size size1 = new BlockVaerynPortal.Size(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_, 2);
+
+        if (l == 1 && (!size.func_150860_b() || size.field_150864_e < size.field_150868_h * size.field_150862_g))
+        {
+            p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
+        }
+        else if (l == 2 && (!size1.func_150860_b() || size1.field_150864_e < size1.field_150868_h * size1.field_150862_g))
+        {
+            p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
+        }
+        else if (l == 0 && !size.func_150860_b() && !size1.func_150860_b())
+        {
+            p_149695_1_.setBlock(p_149695_2_, p_149695_3_, p_149695_4_, Blocks.air);
+        }
+    }
 
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)

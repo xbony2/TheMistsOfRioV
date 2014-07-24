@@ -148,19 +148,19 @@ public class RioVPlayer implements IExtendedEntityProperties
 		return factionName;
 	}
 
-	private static final String getSaveKey(EntityPlayer player) 
+	private final String getSaveKey(EntityPlayer player) 
 	{
 		return player.getCommandSenderName() + ":" + EXT_PROP_NAME;
 	}
 
-	public static final void saveProxyData(EntityPlayer player)
+	public final void saveProxyData(EntityPlayer player)
 	{
 		NBTTagCompound savedData = new NBTTagCompound();
 		RioVPlayer.get(player).saveNBTData(savedData);
 		PlayerStorage.storeEntityData(getSaveKey(player), savedData);
 	}
 
-	public static final void loadProxyData(EntityPlayer player) 
+	public final void loadProxyData(EntityPlayer player) 
 	{
 		RioVPlayer playerData = RioVPlayer.get(player);
 		NBTTagCompound savedData = PlayerStorage.getEntityData(getSaveKey(player));
