@@ -88,7 +88,7 @@ public class WorldGen implements IWorldGenerator
 			}
 		}
 
-		for(int var5 = 0; var5 < 1; ++var5)
+		for(int var5 = 0; var5 < 6; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = blockZ + rand.nextInt(16);
@@ -116,7 +116,7 @@ public class WorldGen implements IWorldGenerator
 			}
 		}
 
-		for(int var5 = 0; var5 < 1; ++var5)
+		for(int var5 = 0; var5 < 6; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = blockZ + rand.nextInt(16);
@@ -144,7 +144,7 @@ public class WorldGen implements IWorldGenerator
 			}
 		}
 
-		for(int var5 = 0; var5 < 1; ++var5)
+		for(int var5 = 0; var5 < 6; ++var5)
 		{
 			int var6 = blockX + rand.nextInt(16);
 			int var7 = blockZ + rand.nextInt(16);

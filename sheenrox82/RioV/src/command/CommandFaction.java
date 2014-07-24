@@ -8,10 +8,13 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
+import sheenrox82.RioV.src.content.RioVBlocks;
 
 public class CommandFaction extends CommandBase implements ICommand
 {
@@ -68,7 +71,8 @@ public class CommandFaction extends CommandBase implements ICommand
 					{
 						player.setFactionID(player.raetiinID);
 						player.setFactionName(player.raetiinName);
-						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
+						thePlayer.inventory.addItemStackToInventory(new ItemStack(RioVBlocks.raetiinFlag));
+						icommandsender.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
 
 					}
 					else
@@ -80,7 +84,7 @@ public class CommandFaction extends CommandBase implements ICommand
 						}
 						else
 						{
-							icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
+							icommandsender.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
 						}
 					}
 				}
@@ -91,7 +95,8 @@ public class CommandFaction extends CommandBase implements ICommand
 					{
 						player.setFactionID(player.jaerinID);
 						player.setFactionName(player.jaerinName);
-						icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
+						thePlayer.inventory.addItemStackToInventory(new ItemStack(RioVBlocks.jaerinFlag));
+						icommandsender.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.WHITE, "Current faction set to: " + player.getFactionName()));
 					}
 					else
 					{
@@ -102,14 +107,14 @@ public class CommandFaction extends CommandBase implements ICommand
 						}
 						else
 						{
-							icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
+							icommandsender.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.WHITE, "Your faction is currently: " + player.getFactionName() + Color.WHITE + " - You cannot change it."));
 						}
 					}
 				}
 
 				if(facID > 2)
 				{
-					icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "The max number is two. Use one or two for the ID."));
+					icommandsender.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.DARK_RED, "The max number is two. Use one or two for the ID."));
 				}
 			}
 		}

@@ -319,6 +319,7 @@ public class RioVItems
 	
 	public static void add()
 	{		
+		RioVAPIUtil.registerItem(chain, "Chain");
 		RioVAPIUtil.registerItem(glimmerBerry, "Glimmerberry");
 		RioVAPIUtil.registerItem(elderBerry, "Elderberry");
 		RioVAPIUtil.registerItem(enderBerry, "Enderberry");

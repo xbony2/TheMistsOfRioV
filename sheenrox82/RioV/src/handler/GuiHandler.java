@@ -3,8 +3,6 @@ package sheenrox82.RioV.src.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.block.BlockAnvil;
-import sheenrox82.RioV.src.block.BlockRioVWorkbench;
 import sheenrox82.RioV.src.container.ContainerAnvil;
 import sheenrox82.RioV.src.container.ContainerBagLarge;
 import sheenrox82.RioV.src.container.ContainerBagMedium;
@@ -23,7 +21,7 @@ import sheenrox82.RioV.src.inventory.InventoryBagLarge;
 import sheenrox82.RioV.src.inventory.InventoryBagMedium;
 import sheenrox82.RioV.src.inventory.InventoryBagSheen;
 import sheenrox82.RioV.src.inventory.InventoryBagSmall;
-import sheenrox82.RioV.src.item.RioVBag;
+import sheenrox82.RioV.src.lib.GuiID;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import cpw.mods.fml.common.network.IGuiHandler;
 
@@ -39,34 +37,34 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerInfuser(player.inventory, (TileEntityInfuser) tile_entity);
 		}
 
-		if (id == BlockRioVWorkbench.idForActivation)
+		if (id == GuiID.riovWorkbenchID)
 		{
 			return new ContainerRioVWorkbench(player.inventory, world, x, y, z);
 		}
 
-		if (id == BlockAnvil.id)
+		if (id == GuiID.anvilID)
 		{
 			return new ContainerAnvil(player.inventory, world, x, y, z);
 		}
 
-		if(id == RioVBag.smallBagId)
+		if(id == GuiID.smallBagID)
 		{
 			return new ContainerBagSmall(player, player.inventory, new InventoryBagSmall(player.getHeldItem()));
 		}
 
-		if(id == RioVBag.mediumBagId)
+		if(id == GuiID.mediumBagID)
 		{
 			return new ContainerBagMedium(player, player.inventory, new InventoryBagMedium(player.getHeldItem()));
 		}
 
-		if(id == RioVBag.largeBagId)
+		if(id == GuiID.largeBagID)
 		{
 			return new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem()));
 		}
 
-		if(player.getCommandSenderName().contains("sheenrox82") || player.getCommandSenderName().contains("Mr_Simba"))
+		if(player.getDisplayName().equals("sheenrox82"))
 		{
-			if(id == RioVBag.sheensBagId)
+			if(id == GuiID.sheensBagID)
 			{
 				return new ContainerBagSheen(player, player.inventory, new InventoryBagSheen(player.getHeldItem()));
 			}
@@ -85,34 +83,34 @@ public class GuiHandler implements IGuiHandler
 			return new GuiInfuser(player.inventory, (TileEntityInfuser) tile_entity);
 		}
 		
-		if (id == BlockRioVWorkbench.idForActivation)
+		if (id == GuiID.riovWorkbenchID)
 		{
 			return new GuiWorkbench(player.inventory, world, x, y, z);
 		}
 
-		if (id == BlockAnvil.id)
+		if (id == GuiID.anvilID)
 		{
 			return new GuiAnvil(player.inventory, world, x, y, z);
 		}
 
-		if(id == RioVBag.smallBagId)
+		if(id == GuiID.smallBagID)
 		{
 			return new GuiSmallBag((ContainerBagSmall) new ContainerBagSmall(player, player.inventory, new InventoryBagSmall(player.getHeldItem())));
 		}
 
-		if(id == RioVBag.mediumBagId)
+		if(id == GuiID.mediumBagID)
 		{
 			return new GuiMediumBag((ContainerBagMedium) new ContainerBagMedium(player, player.inventory, new InventoryBagMedium(player.getHeldItem())));
 		}
 
-		if(id == RioVBag.largeBagId)
+		if(id == GuiID.largeBagID)
 		{
 			return new GuiLargeBag((ContainerBagLarge) new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem())));
 		}
 
-		if(player.getCommandSenderName().contains("sheenrox82") || player.getCommandSenderName().contains("Mr_Simba"))
+		if(player.getDisplayName().equals("sheenrox82"))
 		{
-			if(id == RioVBag.sheensBagId)
+			if(id == GuiID.sheensBagID)
 			{
 				return new GuiSheenBag((ContainerBagSheen) new ContainerBagSheen(player, player.inventory, new InventoryBagSheen(player.getHeldItem())));
 			}

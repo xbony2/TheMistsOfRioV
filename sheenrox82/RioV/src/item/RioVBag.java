@@ -16,16 +16,14 @@ import sheenrox82.RioV.src.container.ContainerBagMedium;
 import sheenrox82.RioV.src.container.ContainerBagSheen;
 import sheenrox82.RioV.src.container.ContainerBagSmall;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.lib.GuiID;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class RioVBag extends Item
 {
-	public static int smallBagId = 4;
-	public static int mediumBagId = 5;
-	public static int largeBagId = 6;
-	public static int sheensBagId = 7;
+
 
 	public RioVBag()
 	{
@@ -99,24 +97,24 @@ public class RioVBag extends Item
 		{
 			if(stack.getItem().equals(RioVItems.smallBag))
 			{
-				player.openGui(TheMistsOfRioV.getInstance(), smallBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+				player.openGui(TheMistsOfRioV.getInstance(), GuiID.smallBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 			}
 
 			if(stack.getItem().equals(RioVItems.mediumBag))
 			{
-				player.openGui(TheMistsOfRioV.getInstance(), mediumBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+				player.openGui(TheMistsOfRioV.getInstance(), GuiID.mediumBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 			}
 
 			if(stack.getItem().equals(RioVItems.largeBag))
 			{
-				player.openGui(TheMistsOfRioV.getInstance(), largeBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+				player.openGui(TheMistsOfRioV.getInstance(), GuiID.largeBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 			}
 
-			if(player.getCommandSenderName().contains("sheenrox82") || player.getCommandSenderName().contains("Mr_Simba"))
+			if(player.getDisplayName().equals("sheenrox82"))
 			{
 				if(stack.getItem().equals(RioVItems.sheenBag))
 				{
-					player.openGui(TheMistsOfRioV.getInstance(), sheensBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+					player.openGui(TheMistsOfRioV.getInstance(), GuiID.sheensBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 				}
 			}
 		}
@@ -131,24 +129,24 @@ public class RioVBag extends Item
 		{
 			if(itemstack.getItem().equals(RioVItems.smallBag))
 			{
-				player.openGui(TheMistsOfRioV.getInstance(), smallBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+				player.openGui(TheMistsOfRioV.getInstance(), GuiID.smallBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 			}
 
 			if(itemstack.getItem().equals(RioVItems.mediumBag))
 			{
-				player.openGui(TheMistsOfRioV.getInstance(), mediumBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+				player.openGui(TheMistsOfRioV.getInstance(), GuiID.mediumBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 			}
 
 			if(itemstack.getItem().equals(RioVItems.largeBag))
 			{
-				player.openGui(TheMistsOfRioV.getInstance(), largeBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+				player.openGui(TheMistsOfRioV.getInstance(), GuiID.largeBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 			}
 
-			if(player.getCommandSenderName().contains("sheenrox82") || player.getCommandSenderName().contains("Mr_Simba"))
+			if(player.getDisplayName().equals("sheenrox82"))
 			{
 				if(itemstack.getItem().equals(RioVItems.sheenBag))
 				{
-					player.openGui(TheMistsOfRioV.getInstance(), sheensBagId, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+					player.openGui(TheMistsOfRioV.getInstance(), GuiID.sheensBagID, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 				}
 			}
 		}

@@ -17,6 +17,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.Core.src.base.ModUpdateChecker;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
@@ -48,7 +49,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
+						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
 						hasSeen = true;
 					}
 				}
@@ -57,7 +58,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
 				}
@@ -153,7 +154,7 @@ public class Events
 				}
 			}
 
-			if(event.source.getDamageType().equals("fall"))
+			if(event.source.getDamageType().equals("fall") || event.source.getDamageType().equals("cactus"))
 			{
 				if(riovPlayer.getFactionID() == riovPlayer.jaerinID)
 				{
@@ -193,11 +194,7 @@ public class Events
 						target.addChatMessage(new ChatComponentTranslation(playerMsg));
 					}
 				}
-
 			}
-
 		}
-
 	}
-
 }

@@ -55,8 +55,7 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 	}
 
 	@Override
-	public List addTabCompletionOptions(ICommandSender icommandsender,
-			String[] astring)
+	public List addTabCompletionOptions(ICommandSender icommandsender, String[] astring)
 	{
 		return null;
 	}
@@ -75,6 +74,6 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 
 	public int getRequiredPermissionLevel()
 	{
-		return 3;
+		return 0;
 	}
 }

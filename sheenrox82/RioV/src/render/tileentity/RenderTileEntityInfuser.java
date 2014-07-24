@@ -38,7 +38,7 @@ public class RenderTileEntityInfuser extends TileEntitySpecialRenderer
 			entItem.hoverStart = 0.0F;
 			RenderItem.renderInFrame = true;
 			GL11.glTranslatef((float)x + 0.5F, (float)y + 1.02F, (float)z + 0.3F);
-		//	GL11.glRotatef(180, 0, 1, 1);
+			GL11.glRotatef(180, 0, 1, 1);
 			RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
 			RenderItem.renderInFrame = false;
 			GL11.glPopMatrix();
@@ -52,7 +52,7 @@ public class RenderTileEntityInfuser extends TileEntitySpecialRenderer
 			entItem.hoverStart = 0.0F;
 			RenderItem.renderInFrame = true;
 			GL11.glTranslatef((float)x + 0.5F, (float)y + 1.02F, (float)z + 0.3F);
-			//GL11.glRotatef(180, 0, 1, 1);
+			GL11.glRotatef(180, 0, 1, 1);
 			RenderManager.instance.renderEntityWithPosYaw(entItem, 0.0D, 0.0D, 0.0D, 0.0F, 0.0F);
 			RenderItem.renderInFrame = false;
 			GL11.glPopMatrix();

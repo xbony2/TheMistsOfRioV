@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumChatFormatting;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 
 public class CommandRageQuit extends CommandBase implements ICommand
@@ -53,7 +54,7 @@ public class CommandRageQuit extends CommandBase implements ICommand
 		{
             ((EntityPlayer)icommandsender).attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
             entityplayermp.playerNetServerHandler.kickPlayerFromServer(s);
-            RioVAPIUtil.sendMessageToAll(player.getDisplayName() + " rage quit!");
+            RioVAPI.getInstance().getUtil().sendMessageToAll(player.getDisplayName() + " rage quit!");
 		}
 	}
 

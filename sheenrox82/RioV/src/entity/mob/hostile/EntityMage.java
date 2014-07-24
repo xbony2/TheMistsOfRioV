@@ -121,14 +121,15 @@ public class EntityMage extends EntityMobDeadBody
 		}
 		if (var1 == 4)
 		{
-
+			this.dropItem(RioVItems.graviWand, 1);
 		}
 		if (var1 == 5)
 		{
-
+			this.dropItem(RioVItems.fireballWand, 1);
 		}
 		if (var1 == 6)
 		{
+			
 		}
 		if (var1 == 7)
 		{

@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.lib.GuiID;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,10 +25,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 	public IIcon workbenchIconFront;
 	@SideOnly(Side.CLIENT)
 	public IIcon bottom;
-	public IIcon blockIcon;
-	@SuppressWarnings("rawtypes")
 	public static List containerList = new ArrayList();
-	public static int idForActivation = 1;
 	private static BlockRioVWorkbench workbench = new BlockRioVWorkbench();
 
 	public static BlockRioVWorkbench getInstance()
@@ -119,8 +117,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 			return true;
 		}
 
-		int id = this.idForActivation;
-		player.openGui(TheMistsOfRioV.getInstance(), id, var1, var2, var3, var4);
+		player.openGui(TheMistsOfRioV.getInstance(), GuiID.riovWorkbenchID, var1, var2, var3, var4);
 		return true;
 	}
 }

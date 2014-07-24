@@ -57,7 +57,6 @@ public class RioVItem extends Item
 	{
 		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("heart")))
 		{
-
 			if(par3EntityPlayer.getHealth() < par3EntityPlayer.getMaxHealth())
 			{
 				par3EntityPlayer.heal(1);

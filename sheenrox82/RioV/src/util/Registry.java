@@ -7,7 +7,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
@@ -91,10 +90,10 @@ public class Registry
 		GameRegistry.registerTileEntity(TileEntityJaerinFlag.class, "Jaerin Flag");
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
-		RioVAPIUtil.registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
-		RioVAPIUtil.registerDimension(Config.vaerynID, WorldProviderVaeryn.class);
-		RioVAPIUtil.registerDimension(Config.flamonorID, WorldProviderFlamonor.class);
-		RioVAPIUtil.registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
+		RioVAPI.getInstance().getUtil().registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
+		RioVAPI.getInstance().getUtil().registerDimension(Config.vaerynID, WorldProviderVaeryn.class);
+		RioVAPI.getInstance().getUtil().registerDimension(Config.flamonorID, WorldProviderFlamonor.class);
+		RioVAPI.getInstance().getUtil().registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
 		RioVAPI.getInstance().getLogger().info("Core data registered. //END PRE-INITIALIZATION");
 	}
 

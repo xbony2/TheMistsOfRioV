@@ -56,7 +56,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								RioVAPIUtil.sendMessageToAll("Terron has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll("Terron has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -67,13 +67,13 @@ public class RioVSummoners extends Item
 						if(player.getCurrentEos() < 3)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -95,7 +95,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								RioVAPIUtil.sendMessageToAll("Tef has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll("Tef has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -105,13 +105,13 @@ public class RioVSummoners extends Item
 						if(player.getCurrentEos() < 4)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -132,7 +132,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								RioVAPIUtil.sendMessageToAll("The Darkness has arrived!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll("The Darkness has arrived!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 
@@ -143,13 +143,13 @@ public class RioVSummoners extends Item
 						if(player.getCurrentEos() < 18)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -174,7 +174,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								RioVAPIUtil.sendMessageToAll("Demon Angel has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll("Demon Angel has been summoned!");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -184,13 +184,13 @@ public class RioVSummoners extends Item
 						if(player.getCurrentEos() < 12)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}
@@ -212,7 +212,7 @@ public class RioVSummoners extends Item
 								var5.setPosition(par4, par5+1, par6);
 								world.spawnEntityInWorld(var5);
 								++var4;
-								RioVAPIUtil.sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
+								RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -222,13 +222,13 @@ public class RioVSummoners extends Item
 						if(player.getCurrentEos() < 34)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 						}
 
 						if(player.getCurrentEos() < 0)
 						{
 							if(!world.isRemote)
-								entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 						}
 					}
 				}

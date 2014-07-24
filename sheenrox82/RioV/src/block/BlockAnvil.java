@@ -8,13 +8,13 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.lib.GuiID;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAnvil extends Block
 {
-	public static int id = 2;
 	@SideOnly(Side.CLIENT)
 	private IIcon field_94461_a;
 	@SideOnly(Side.CLIENT)
@@ -62,7 +62,7 @@ public class BlockAnvil extends Block
 	{
 		if(!par5EntityPlayer.isSneaking())
 		{
-			par5EntityPlayer.openGui(TheMistsOfRioV.getInstance(), id, par1World, par2, par3, par4);
+			par5EntityPlayer.openGui(TheMistsOfRioV.getInstance(), GuiID.anvilID, par1World, par2, par3, par4);
 			return true;
 		}
 		else

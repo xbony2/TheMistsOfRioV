@@ -157,7 +157,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage("You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
 						}	
 						return true;
 					}
@@ -225,7 +225,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage("You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
 						}	
 
 						return true;
@@ -294,7 +294,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPIUtil.addChatMessage("You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
 						}	
 						return true;
 					}
