@@ -25,7 +25,13 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityAngel;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityGalokin;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityNizonian;
 
 public class EntityAunTunBodyguard extends EntityMobDeadBody
@@ -39,6 +45,16 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 		this.tasks.addTask(5, new EntityAIWander(this, 0.62D));
 		this.tasks.addTask(1, new EntityAIOpenDoor(this, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAngel.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGalokin.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityOrc.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElf.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
+
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, true));
@@ -48,11 +64,6 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGiantZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityOrc.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityNizonian.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-
 		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.auntunHelmet));
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.auntunChestplate));
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.auntunLeggings));

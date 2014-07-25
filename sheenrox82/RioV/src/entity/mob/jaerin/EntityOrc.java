@@ -25,15 +25,18 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
+import sheenrox82.RioV.src.entity.mob.neutral.EntityPaladin;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityVravinite;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -56,8 +59,15 @@ public class EntityOrc extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkElf.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDemonAngel.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMage.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTef.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTefGuard.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeletalHorse.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTerron.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVravinite.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPaladin.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEnderman.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhast.class, 0, true));
@@ -66,10 +76,6 @@ public class EntityOrc extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPigZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVravinite.class, 0, true));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
 		this.setCurrentItemOrArmor(4, new ItemStack(Items.iron_helmet));

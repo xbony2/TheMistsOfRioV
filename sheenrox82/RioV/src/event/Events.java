@@ -213,7 +213,7 @@ public class Events
 			attacker instanceof EntityAunTun || attacker instanceof EntityDarkEssence || attacker instanceof EntityDemonAngel || 
 			attacker instanceof EntityTef || attacker instanceof EntityTerron)
 			{
-				if(riov.factionID == riov.raetiinID)
+				if(riov.getFactionID() == riov.raetiinID)
 				{
 					attacker.setAttackTarget(null);
 				}
@@ -224,7 +224,7 @@ public class Events
 			attacker instanceof EntityGalokin || attacker instanceof EntityOrc || attacker instanceof EntityWoodElf || 
 			attacker instanceof EntityAltru || attacker instanceof EntityTiTun || attacker instanceof EntityWoodElfKing)
 			{
-				if(riov.factionID == riov.jaerinID)
+				if(riov.getFactionID() == riov.jaerinID)
 				{
 					attacker.setAttackTarget(null);
 				}
