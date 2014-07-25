@@ -40,6 +40,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntitySoverianOfficer;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
@@ -71,6 +72,7 @@ public class EntityWoodElfKing extends EntityBossCore implements IRangedAttackMo
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTerron.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVravinite.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySoverianOfficer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPaladin.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		
