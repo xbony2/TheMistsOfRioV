@@ -29,6 +29,7 @@ public class Config
 	public static boolean allowBreathing = true;
 	public static boolean deadBodies = true;
 	public static boolean runCapes = true;
+	public static boolean dev = true;
 	public static int hudPosX = 145;
 	public static int hudPosY = 50;
 	public static int eosPosX = 20;

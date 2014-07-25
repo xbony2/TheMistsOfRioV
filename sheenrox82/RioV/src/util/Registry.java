@@ -144,6 +144,7 @@ public class Registry
 		Config.hudPosY = Config.config.getInt("Item HUD Position Y || Max: 500 || Default: 50", Configuration.CATEGORY_GENERAL, Config.hudPosY, 50, 500, "// Integer");
 		Config.eosPosX = Config.config.getInt("Eos HUD Position X || Max: 800 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosX, 20, 800, "// Integer");
 		Config.eosPosY = Config.config.getInt("Eos HUD Position Y || Max: 800 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosY, 20, 800, "// Integer");
+		Config.dev = Config.config.getBoolean("Development only. Some things will not work.", Configuration.CATEGORY_GENERAL, Config.dev, "// Boolean");
 
 		if(Config.config.hasChanged())
 		{
