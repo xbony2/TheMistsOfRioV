@@ -138,7 +138,7 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(70.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
 
 	@Override

@@ -120,7 +120,7 @@ public class EntityTef extends EntityBossCore
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(400.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(60.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
 
 	@Override

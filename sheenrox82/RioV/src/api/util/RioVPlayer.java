@@ -15,27 +15,30 @@ public class RioVPlayer implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "RioVPlayer";
 
-	private EntityPlayer player;
+	private final EntityPlayer player;
 
 	public int maxEos;
-
 	public static final int EOS_WATCHER = 20;
 
 	public int factionID;
 	public int noFactionID = 0;
-	public int raetiinID = 1;
-	public int jaerinID = 2;
+	public int raetiinID;
+	public int jaerinID;
 	public String factionName;
 	public String noFactionName = "No Faction";
-	public String raetiinName = Color.DARK_RED + "Raetiin";
-	public String jaerinName = Color.GREEN + "Jaerin";
+	public String raetiinName;
+	public String jaerinName;
 
 	public RioVPlayer(EntityPlayer player) 
 	{
 		this.player = player;
 		this.maxEos = 50;
 		factionID = noFactionID;
+		raetiinID = 1;
+		jaerinID = 2;
 		factionName = noFactionName;
+		raetiinName = Color.DARK_RED + "Raetiin";
+		jaerinName = Color.GREEN + "Jaerin";
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
 	}
 
@@ -147,7 +150,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 
 	private static final String getSaveKey(EntityPlayer player) 
 	{
-		return player.getCommandSenderName() + ":" + EXT_PROP_NAME;
+		return player.getDisplayName() + ":" + EXT_PROP_NAME;
 	}
 
 	public static final void saveProxyData(EntityPlayer player)

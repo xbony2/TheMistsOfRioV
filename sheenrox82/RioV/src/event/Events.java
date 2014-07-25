@@ -140,7 +140,9 @@ public class Events
 		if (event.entity instanceof EntityPlayer) 
 		{
 			if (RioVPlayer.get((EntityPlayer) event.entity) == null)
+			{
 				RioVPlayer.register((EntityPlayer) event.entity);
+			}
 		}
 	}
 
@@ -149,7 +151,10 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			RioVPlayer.loadProxyData((EntityPlayer) event.entity);
+			if (RioVPlayer.get((EntityPlayer) event.entity) != null)
+			{
+				RioVPlayer.loadProxyData((EntityPlayer) event.entity);
+			}
 		}
 	}
 
@@ -158,7 +163,10 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
-			RioVPlayer.saveProxyData((EntityPlayer) event.entity);
+			if (RioVPlayer.get((EntityPlayer) event.entity) != null)
+			{
+				RioVPlayer.saveProxyData((EntityPlayer) event.entity);
+			}
 		}
 	}
 
@@ -167,7 +175,10 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			RioVPlayer.saveProxyData((EntityPlayer) event.entity);
+			if (RioVPlayer.get((EntityPlayer) event.entity) != null)
+			{
+				RioVPlayer.saveProxyData((EntityPlayer) event.entity);
+			}
 		}
 	}
 
@@ -208,21 +219,21 @@ public class Events
 
 			//RAETIIN
 			if(attacker instanceof EntityAunTunMinion || attacker instanceof EntityAunTunBodyguard || attacker instanceof EntityBloodGhoul || 
-			attacker instanceof EntityDarkElf || attacker instanceof EntityHellhound || attacker instanceof EntityShadow || 
-			attacker instanceof EntitySkeletalHorse || attacker instanceof EntitySoverianOfficer || attacker instanceof EntityTefGuard || 
-			attacker instanceof EntityAunTun || attacker instanceof EntityDarkEssence || attacker instanceof EntityDemonAngel || 
-			attacker instanceof EntityTef || attacker instanceof EntityTerron)
+					attacker instanceof EntityDarkElf || attacker instanceof EntityHellhound || attacker instanceof EntityShadow || 
+					attacker instanceof EntitySkeletalHorse || attacker instanceof EntitySoverianOfficer || attacker instanceof EntityTefGuard || 
+					attacker instanceof EntityAunTun || attacker instanceof EntityDarkEssence || attacker instanceof EntityDemonAngel || 
+					attacker instanceof EntityTef || attacker instanceof EntityTerron)
 			{
 				if(riov.getFactionID() == riov.raetiinID)
 				{
 					attacker.setAttackTarget(null);
 				}
 			}
-			
+
 			//JAERIN
 			if(attacker instanceof EntityAdv || attacker instanceof EntityAltruEssence || attacker instanceof EntityAngel || 
-			attacker instanceof EntityGalokin || attacker instanceof EntityOrc || attacker instanceof EntityWoodElf || 
-			attacker instanceof EntityAltru || attacker instanceof EntityTiTun || attacker instanceof EntityWoodElfKing)
+					attacker instanceof EntityGalokin || attacker instanceof EntityOrc || attacker instanceof EntityWoodElf || 
+					attacker instanceof EntityAltru || attacker instanceof EntityTiTun || attacker instanceof EntityWoodElfKing)
 			{
 				if(riov.getFactionID() == riov.jaerinID)
 				{

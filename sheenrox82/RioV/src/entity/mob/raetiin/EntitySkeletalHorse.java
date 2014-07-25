@@ -73,7 +73,7 @@ public class EntitySkeletalHorse extends EntityHorse
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
 
 	@Override
