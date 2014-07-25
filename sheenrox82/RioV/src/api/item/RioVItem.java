@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -53,29 +55,29 @@ public class RioVItem extends Item
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player)
 	{
 		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("heart")))
 		{
-			if(par3EntityPlayer.getHealth() < par3EntityPlayer.getMaxHealth())
+			if(player.getHealth() < player.getMaxHealth())
 			{
-				par3EntityPlayer.heal(1);
+				player.heal(1);
 
-				par3EntityPlayer.inventory.consumeInventoryItem(RioVAPI.getInstance().getUtil().getRioVItem("heart"));
+				player.inventory.consumeInventoryItem(RioVAPI.getInstance().getUtil().getRioVItem("heart"));
 			}
 			
-			if(par3EntityPlayer.getHealth() >= 20 && par3EntityPlayer.getMaxHealth() < 60)
+			if(player.getHealth() >= 20 && player.getMaxHealth() < 60)
 			{
 				double amount = 2D;
 
 				try
 				{
-					amount = par3EntityPlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth).getModifier(par3EntityPlayer.getPersistentID()).getAmount() + 2D;
+					amount = player.getEntityAttribute(SharedMonsterAttributes.maxHealth).getModifier(player.getPersistentID()).getAmount() + 2D;
 				}
 				catch (Exception e) {}
 
-				AttributeModifier moreHealth = new AttributeModifier(par3EntityPlayer.getPersistentID(), "newHealth", amount, 0);
-				IAttributeInstance attributeInstance = par3EntityPlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth);	
+				AttributeModifier moreHealth = new AttributeModifier(player.getPersistentID(), "newHealth", amount, 0);
+				IAttributeInstance attributeInstance = player.getEntityAttribute(SharedMonsterAttributes.maxHealth);	
 				attributeInstance.removeModifier(moreHealth);
 				attributeInstance.applyModifier(moreHealth);
 			}

@@ -7,6 +7,7 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
@@ -74,6 +75,7 @@ public class Events
 					if(!hasSeen)
 					{
 						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "Please use /riovfactionhelp - Find the command to join a faction."));
 						hasSeen = true;
 					}
 				}
@@ -83,6 +85,7 @@ public class Events
 					if(!hasSeen)
 					{
 						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "Please use /riovfactionhelp - Find the command to join a faction."));
 						hasSeen = true;
 					}	
 				}
@@ -151,9 +154,13 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			if (RioVPlayer.get((EntityPlayer) event.entity) != null)
+			EntityPlayer player = (EntityPlayer)event.entity;
+
+			if (RioVPlayer.get(player) != null)
 			{
-				RioVPlayer.loadProxyData((EntityPlayer) event.entity);
+				RioVPlayer playerRioV = RioVPlayer.get(player);
+
+				playerRioV.loadProxyData(player);
 			}
 		}
 	}

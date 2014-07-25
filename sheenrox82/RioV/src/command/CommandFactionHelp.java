@@ -9,28 +9,30 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 
-public class CommandPrintChangelog extends CommandBase implements ICommand
+public class CommandFactionHelp extends CommandBase implements ICommand
 {
 	private List aliases;
-	public CommandPrintChangelog()
+	public CommandFactionHelp()
 	{
 		this.aliases = new ArrayList();
-		this.aliases.add("printChangelog");
-		this.aliases.add("printchangelog");
-		this.aliases.add("pc");
+		this.aliases.add("riovfactionhelp");
+		this.aliases.add("riovFactionhelp");
+		this.aliases.add("rfactionhelp");
+		this.aliases.add("rFactionhelp");
 	}
 
 	@Override
 	public String getCommandName()
 	{
-		return "printChangelog";
+		return "riovfactionhelp";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender icommandsender)
 	{
-		return Color.GOLD + "/printChangelog - Prints changelog for new update.";
+		return Color.GOLD + "/riovfactionhelp - Find the command to join a faction.";
 	}
 
 	@Override
@@ -44,7 +46,15 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 	{        
 		if(icommandsender instanceof EntityPlayer)
 		{
-			ModUpdateChecker.printChangelog("https://dl.dropboxusercontent.com/u/126631367/IngameChangelog.txt");
+			if(astring.length > 0)
+			{
+				icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "Invalid arguments. Use { /riovfactionhelp } to join a faction."));
+			}
+
+			icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.AQUA + "MULTIPLAYER: /mpfaction <factionID> - Join a faction on SMP."));
+			icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.AQUA + "SINGLEPLAYER: /spfaction <factionID> - Join a faction on SSP."));
+			icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.AQUA + "<Faction IDs>"));
+			icommandsender.addChatMessage(RioVAPIUtil.addChatMessage(Color.AQUA + "Raetiin (bad) ID: 1, Jaerin (good) ID: 2"));
 		}
 	}
 
@@ -74,6 +84,6 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 
 	public int getRequiredPermissionLevel()
 	{
-		return 3;
+		return 0;
 	}
 }

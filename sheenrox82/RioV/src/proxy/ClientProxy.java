@@ -2,11 +2,13 @@ package sheenrox82.RioV.src.proxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
@@ -94,11 +96,13 @@ import com.jadarstudios.developercapes.DevCapes;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy 
 {	
 	private static final ModelDragonWings dragonWings = new ModelDragonWings(1.0F);
-	
+
 	@Override
 	public void init() 
 	{
@@ -135,14 +139,14 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(RioVLib.vravinite_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElfKing.class, new RenderWoodElfKing());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTiTun.class, new RenderTiTun());
-		
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJaerinFlag.class, new RenderTileEntityJaerinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfuser.class, new RenderTileEntityInfuser());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAltru.class, new RenderAltru());
 		MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
-		
+
 		if(RioVAPI.getInstance().getUtil().getConfigBool("toolHud") == true)
 		{
 			MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));

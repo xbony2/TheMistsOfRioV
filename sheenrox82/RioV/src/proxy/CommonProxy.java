@@ -1,14 +1,9 @@
 package sheenrox82.RioV.src.proxy;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.util.HashMap;
-import java.util.Map;
-
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.client.FMLClientHandler;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 
 public class CommonProxy
 {	

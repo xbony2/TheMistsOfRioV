@@ -12,6 +12,7 @@ import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.command.CommandFaction;
 import sheenrox82.RioV.src.command.CommandFactionClient;
+import sheenrox82.RioV.src.command.CommandFactionHelp;
 import sheenrox82.RioV.src.command.CommandPrintChangelog;
 import sheenrox82.RioV.src.command.CommandRageQuit;
 import sheenrox82.RioV.src.content.Biomes;
@@ -158,5 +159,6 @@ public class Registry
 		event.registerServerCommand(new CommandFaction());
 		event.registerServerCommand(new CommandRageQuit());
 		event.registerServerCommand(new CommandPrintChangelog());
+		event.registerServerCommand(new CommandFactionHelp());
 	}
 }

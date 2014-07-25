@@ -11,6 +11,7 @@ public class RioVPlayerPackets extends AbstractPacket
 {
 	private NBTTagCompound data;
 	public RioVPlayerPackets() {}
+	
 	public RioVPlayerPackets(EntityPlayer player) 
 	{
 		data = new NBTTagCompound();

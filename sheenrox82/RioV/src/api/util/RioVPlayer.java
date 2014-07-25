@@ -61,7 +61,6 @@ public class RioVPlayer implements IExtendedEntityProperties
 		properties.setInteger("MaxEos", maxEos);
 		properties.setInteger("FactionID", factionID);
 		properties.setString("FactionName", factionName);
-
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
 
