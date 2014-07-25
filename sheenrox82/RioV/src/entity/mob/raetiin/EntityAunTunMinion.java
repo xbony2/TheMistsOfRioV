@@ -24,15 +24,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
-import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
-import sheenrox82.RioV.src.entity.mob.ai.RaetiinEntityAttackAI;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 
 public class EntityAunTunMinion extends EntityMobDeadBody
 {
@@ -56,7 +51,7 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityDarkEssence.class, 0, true));
-		targetTasks.addTask(1, new RaetiinEntityAttackAI(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.62D, true));

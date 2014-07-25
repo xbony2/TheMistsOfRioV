@@ -14,6 +14,8 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
@@ -50,17 +52,14 @@ public class RioVSummoners extends Item
 					{
 						while (var4 < 1)
 						{
-							if(player.consumeEos(3))
-							{
-								EntityTerron var5 = new EntityTerron(world);
-								var5.setPosition(par4, par5+1, par6);
-								world.spawnEntityInWorld(var5);
-								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Terron has been summoned!");
-								par1ItemStack.damageItem(2, entityplayer);
-							}
+							EntityTerron var5 = new EntityTerron(world);
+							var5.setPosition(par4, par5+1, par6);
+							world.spawnEntityInWorld(var5);
+							player.consumeEos(3);
+							++var4;
+							RioVAPI.getInstance().getUtil().sendMessageToAll("Terron has been summoned!");
+							par1ItemStack.damageItem(2, entityplayer);
 						}
-
 					}
 					else
 					{
@@ -89,15 +88,13 @@ public class RioVSummoners extends Item
 					{
 						while (var4 < 1)
 						{
-							if(player.consumeEos(4))
-							{
-								EntityTef var5 = new EntityTef(world);
-								var5.setPosition(par4, par5+1, par6);
-								world.spawnEntityInWorld(var5);
-								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Tef has been summoned!");
-								par1ItemStack.damageItem(2, entityplayer);
-							}
+							EntityTef var5 = new EntityTef(world);
+							var5.setPosition(par4, par5+1, par6);
+							world.spawnEntityInWorld(var5);
+							player.consumeEos(4);
+							++var4;
+							RioVAPI.getInstance().getUtil().sendMessageToAll("Tef has been summoned!");
+							par1ItemStack.damageItem(2, entityplayer);
 						}
 					}
 					else
@@ -126,16 +123,13 @@ public class RioVSummoners extends Item
 					{
 						while (var4 < 1)
 						{
-							if(player.consumeEos(18))
-							{
-								EntityDarkEssence var5 = new EntityDarkEssence(world);
-								var5.setPosition(par4, par5+1, par6);
-								world.spawnEntityInWorld(var5);
-								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("The Darkness has arrived!");
-								par1ItemStack.damageItem(2, entityplayer);
-							}
-
+							EntityDarkEssence var5 = new EntityDarkEssence(world);
+							var5.setPosition(par4, par5+1, par6);
+							world.spawnEntityInWorld(var5);
+							player.consumeEos(18);
+							++var4;
+							RioVAPI.getInstance().getUtil().sendMessageToAll("The Darkness has arrived!");
+							par1ItemStack.damageItem(2, entityplayer);
 						}
 					}
 					else
@@ -165,18 +159,15 @@ public class RioVSummoners extends Item
 				{
 					if(player.getCurrentEos() > 12)
 					{
-
 						while (var4 < 1)
 						{
-							if(player.consumeEos(12))
-							{
-								EntityDemonAngel var5 = new EntityDemonAngel(world);
-								var5.setPosition(par4, par5+1, par6);
-								world.spawnEntityInWorld(var5);
-								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Demon Angel has been summoned!");
-								par1ItemStack.damageItem(2, entityplayer);
-							}
+							EntityDemonAngel var5 = new EntityDemonAngel(world);
+							var5.setPosition(par4, par5+1, par6);
+							world.spawnEntityInWorld(var5);
+							player.consumeEos(12);
+							++var4;
+							RioVAPI.getInstance().getUtil().sendMessageToAll("Demon Angel has been summoned!");
+							par1ItemStack.damageItem(2, entityplayer);
 						}
 					}
 					else
@@ -206,15 +197,13 @@ public class RioVSummoners extends Item
 					{
 						while (var4 < 1)
 						{
-							if(player.consumeEos(34))
-							{
-								EntityAunTun var5 = new EntityAunTun(world);
-								var5.setPosition(par4, par5+1, par6);
-								world.spawnEntityInWorld(var5);
-								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
-								par1ItemStack.damageItem(2, entityplayer);
-							}
+							EntityAunTun var5 = new EntityAunTun(world);
+							var5.setPosition(par4, par5+1, par6);
+							world.spawnEntityInWorld(var5);
+							player.consumeEos(34);
+							++var4;
+							RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
+							par1ItemStack.damageItem(2, entityplayer);
 						}
 					}
 					else
@@ -234,6 +223,81 @@ public class RioVSummoners extends Item
 				}
 			}
 		}
+
+		if(world.provider.dimensionId == 0)
+		{
+			if (par1ItemStack.getItem().equals(RioVItems.woodElfKingCrystal))
+			{
+				int var4 = 0;
+				if (!world.isRemote)
+				{
+					if(player.getCurrentEos() > 3)
+					{
+						while (var4 < 1)
+						{
+							EntityWoodElfKing var5 = new EntityWoodElfKing(world);
+							var5.setPosition(par4, par5+1, par6);
+							world.spawnEntityInWorld(var5);
+							player.consumeEos(3);
+							++var4;
+							RioVAPI.getInstance().getUtil().sendMessageToAll("Wood Elf King has been summoned!");
+							par1ItemStack.damageItem(2, entityplayer);
+						}
+					}
+					else
+					{
+						if(player.getCurrentEos() < 3)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+						}
+
+						if(player.getCurrentEos() < 0)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+						}
+					}
+				}
+			}
+			
+			if (par1ItemStack.getItem().equals(RioVItems.altruCrystal))
+			{
+				int var4 = 0;
+				
+				if (!world.isRemote)
+				{
+					if(player.getCurrentEos() > 3)
+					{
+						while (var4 < 1)
+						{
+							EntityAltru var5 = new EntityAltru(world);
+							var5.setPosition(par4, par5+1, par6);
+							world.spawnEntityInWorld(var5);
+							player.consumeEos(3);
+							++var4;
+							RioVAPI.getInstance().getUtil().sendMessageToAll("Altru has been summoned!");
+							par1ItemStack.damageItem(2, entityplayer);
+						}
+					}
+					else
+					{
+						if(player.getCurrentEos() < 3)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+						}
+
+						if(player.getCurrentEos() < 0)
+						{
+							if(!world.isRemote)
+								entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+						}
+					}
+				}
+			}
+		}
+
 
 		return false;
 	}
@@ -255,6 +319,11 @@ public class RioVSummoners extends Item
 		if (var1.getItem().equals(RioVItems.demonAngelCrystal) || var1.getItem().equals(RioVItems.auntunSummoner))
 		{
 			var3.add(StatCollector.translateToLocal("Spawned in: Flamonor Dimension"));
+		}
+		
+		if (var1.getItem().equals(RioVItems.woodElfKingCrystal))
+		{
+			var3.add(StatCollector.translateToLocal("Spawned in: Overworld Dimension"));
 		}
 	}
 

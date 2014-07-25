@@ -26,7 +26,7 @@ public class RioVAPIUtil
 	public final String mod_id = getUtilString("MOD_ID");
 	public final String mod_name = getUtilString("MOD_NAME");
 	public final String version = getUtilString("VERSION");
-	
+
 	public static void registerItem(Item item, String string)
 	{
 		GameRegistry.registerItem(item, string);	
@@ -224,7 +224,7 @@ public class RioVAPIUtil
 	/**
 	 * Replace a field in a class.
 	 */
-	public static void replaceField(String fieldName, Class clazz, Object value, Object instance)
+	public void replaceField(String fieldName, Class clazz, Object value, Object instance)
 	{
 		try
 		{
@@ -258,7 +258,20 @@ public class RioVAPIUtil
 		}
 		catch(Exception e)
 		{
+			return "";
+		}
+	}
 
+	public String getRioVPlayerFaction(String faction)
+	{
+		try
+		{
+			Class riovPlayer = Class.forName("sheenrox82.RioV.src.api.util.RioVPlayer");
+			String facToGet = (String)riovPlayer.getDeclaredField(faction).get(null);
+			return facToGet;
+		}
+		catch(Exception e)
+		{
 			return "";
 		}
 	}

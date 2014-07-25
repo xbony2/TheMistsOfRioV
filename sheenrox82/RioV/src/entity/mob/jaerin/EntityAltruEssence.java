@@ -3,12 +3,11 @@ package sheenrox82.RioV.src.entity.mob.jaerin;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.entity.mob.ai.JaerinEntityAttackAI;
 
 public class EntityAltruEssence extends EntityMob
 {
@@ -16,7 +15,7 @@ public class EntityAltruEssence extends EntityMob
 	{
 		super(par1World);
 		float var2 = 0.56F;
-		targetTasks.addTask(1, new JaerinEntityAttackAI(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, var2, true));
 		this.tasks.addTask(5, new EntityAIWander(this, var2));

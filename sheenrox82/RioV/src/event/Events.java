@@ -2,6 +2,7 @@ package sheenrox82.RioV.src.event;
 
 import java.util.List;
 
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.passive.EntityHorse;
@@ -16,14 +17,38 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.Core.src.base.ModUpdateChecker;
-import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityAngel;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityGalokin;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
+import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityBloodGhoul;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadow;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntitySoverianOfficer;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.util.Registry;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -41,7 +66,6 @@ public class Events
 		if (event.entity instanceof EntityPlayer) 
 		{
 			EntityPlayer p = (EntityPlayer) event.entity;
-			RioVPlayer player = RioVPlayer.get(p);
 
 			if (!p.worldObj.isRemote) 
 			{
@@ -49,16 +73,16 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
 						hasSeen = true;
 					}
 				}
 
-				if (ModUpdateChecker.isUpdateAvailable()) 
+				if (!ModUpdateChecker.isUpdateAvailable()) 
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
 				}
@@ -116,35 +140,25 @@ public class Events
 		if (event.entity instanceof EntityPlayer) 
 		{
 			if (RioVPlayer.get((EntityPlayer) event.entity) == null)
-			{
-				EntityPlayer player = (EntityPlayer)event.entity;
-
-				RioVPlayer.register(player);
-			}
+				RioVPlayer.register((EntityPlayer) event.entity);
 		}
 	}
 
 	@SubscribeEvent
-	public void onEntityJoinWorld(EntityJoinWorldEvent event)
-	{
-		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
-		{
-			EntityPlayer player = (EntityPlayer)event.entity;
-			RioVPlayer riovPlayer = RioVPlayer.get(player);
-
-			riovPlayer.loadProxyData(player);
-		}
-	}
-
-	@SubscribeEvent
-	public void onLivingDeathEvent(LivingDeathEvent event)
+	public void onEntityJoinWorld(EntityJoinWorldEvent event) 
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			EntityPlayer player = (EntityPlayer)event.entity;
-			RioVPlayer riovPlayer = RioVPlayer.get(player);
+			RioVPlayer.loadProxyData((EntityPlayer) event.entity);
+		}
+	}
 
-			riovPlayer.saveProxyData(player);
+	@SubscribeEvent
+	public void onLivingDeathEvent(LivingDeathEvent event) 
+	{
+		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
+		{
+			RioVPlayer.saveProxyData((EntityPlayer) event.entity);
 		}
 	}
 
@@ -153,10 +167,7 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			EntityPlayer player = (EntityPlayer)event.entity;
-			RioVPlayer riovPlayer = RioVPlayer.get(player);
-
-			riovPlayer.saveProxyData(player);
+			RioVPlayer.saveProxyData((EntityPlayer) event.entity);
 		}
 	}
 
@@ -181,6 +192,41 @@ public class Events
 				if(riovPlayer.getFactionID() == riovPlayer.jaerinID)
 				{
 					event.setCanceled(true);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void entityTarget(LivingSetAttackTargetEvent event)
+	{
+		if (event.target instanceof EntityPlayer) 
+		{
+			EntityPlayer player = (EntityPlayer)event.target;
+			RioVPlayer riov = RioVPlayer.get(player);
+			EntityLiving attacker = (EntityLiving)event.entityLiving;
+
+			//RAETIIN
+			if(attacker instanceof EntityAunTunMinion || attacker instanceof EntityAunTunBodyguard || attacker instanceof EntityBloodGhoul || 
+			attacker instanceof EntityDarkElf || attacker instanceof EntityHellhound || attacker instanceof EntityShadow || 
+			attacker instanceof EntitySkeletalHorse || attacker instanceof EntitySoverianOfficer || attacker instanceof EntityTefGuard || 
+			attacker instanceof EntityAunTun || attacker instanceof EntityDarkEssence || attacker instanceof EntityDemonAngel || 
+			attacker instanceof EntityTef || attacker instanceof EntityTerron)
+			{
+				if(riov.factionID == riov.raetiinID)
+				{
+					attacker.setAttackTarget(null);
+				}
+			}
+			
+			//JAERIN
+			if(attacker instanceof EntityAdv || attacker instanceof EntityAltruEssence || attacker instanceof EntityAngel || 
+			attacker instanceof EntityGalokin || attacker instanceof EntityOrc || attacker instanceof EntityWoodElf || 
+			attacker instanceof EntityAltru || attacker instanceof EntityTiTun || attacker instanceof EntityWoodElfKing)
+			{
+				if(riov.factionID == riov.jaerinID)
+				{
+					attacker.setAttackTarget(null);
 				}
 			}
 		}

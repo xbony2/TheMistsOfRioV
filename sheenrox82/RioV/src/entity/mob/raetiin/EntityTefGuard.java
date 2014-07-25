@@ -23,12 +23,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.mob.ai.RaetiinEntityAttackAI;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 
 public class EntityTefGuard extends EntityMobDeadBody
 {
@@ -42,7 +39,7 @@ public class EntityTefGuard extends EntityMobDeadBody
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, true));
-		targetTasks.addTask(1, new RaetiinEntityAttackAI(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMage.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));

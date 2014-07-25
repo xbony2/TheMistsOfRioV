@@ -12,6 +12,7 @@ import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.Color;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.lib.RioVLib;
@@ -71,6 +72,7 @@ public class RenderBossCore extends RenderLiving
 	{
 		if(entity instanceof EntityTerron) return RioVLib.terron;
 		if(entity instanceof EntityDemonAngel) return RioVLib.demon_angel;
+		if(entity instanceof EntityWoodElfKing) return RioVLib.wood_elf;
 		return null;
 	}
 }

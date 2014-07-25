@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.entity.mob.raetiin.boss;
+package sheenrox82.RioV.src.entity.mob.jaerin.boss;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -13,14 +13,13 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.content.Sounds;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityDarkEssence extends EntityBossCore
+public class EntityAltru extends EntityBossCore
 {
 
-	public EntityDarkEssence(World par1World)
+	public EntityAltru(World par1World)
 	{
 		super(par1World);
 		this.setSize(1F, 4F);
@@ -29,9 +28,10 @@ public class EntityDarkEssence extends EntityBossCore
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.62D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.62D, true));
-		isImmuneToFire = true;
+		this.fallDistance = 0.0f;
 	}
 
 	@Override
@@ -41,8 +41,8 @@ public class EntityDarkEssence extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("The Darkness: *Screeeech*");
-			RioVAPIUtil.sendMessageToAll("The Darkness has vanished!");
+			RioVAPIUtil.sendMessageToAll("Altru: *Poof*");
+			RioVAPIUtil.sendMessageToAll("Altru has vanished!");
 		}
 	}
 
@@ -62,10 +62,6 @@ public class EntityDarkEssence extends EntityBossCore
 	@Override
 	public void onLivingUpdate()
 	{
-		if (!this.worldObj.isRemote)
-		{
-		}
-
 		if (this.rand.nextInt(24) == 0)
 		{
 		}
@@ -77,8 +73,8 @@ public class EntityDarkEssence extends EntityBossCore
 
 		for (int var1 = 0; var1 < 2; ++var1)
 		{
-			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
-			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+			this.worldObj.spawnParticle("portal", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+			this.worldObj.spawnParticle("portal", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 			this.worldObj.spawnParticle("enchantmenttable", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 		}
 		super.onLivingUpdate();
@@ -88,7 +84,6 @@ public class EntityDarkEssence extends EntityBossCore
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
 	{
 		super.readEntityFromNBT(par1NBTTagCompound);
-
 	}
 
 	@Override
@@ -109,14 +104,7 @@ public class EntityDarkEssence extends EntityBossCore
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		this.dropItem(RioVItems.clothOfMagic, 3);
-		this.dropItem(RioVItems.darkMatter, 2);
-		this.dropItem(RioVItems.tefCrystal, 1);
-	}
-
-	@Override
-	protected String getLivingSound()
-	{
-		return Sounds.darkness.getPrefixedName();
+		this.dropItem(RioVItems.enderBerry, 3);
+		this.dropItem(RioVItems.altruSoul, 4);
 	}
 }

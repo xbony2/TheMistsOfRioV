@@ -11,6 +11,9 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityAngel;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityGalokin;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityDove;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityFairy;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
@@ -74,6 +77,9 @@ public class EntityLoader
 		MethodUtil.registerEntity(EntityPinkEssence.class, "Pink Essence");
 		MethodUtil.registerEntity(EntityDarknessArrow.class, "Darkness Arrow");
 		MethodUtil.registerEntity(EntityVraviniteArrow.class, "Vravinite Arrow");
+		MethodUtil.registerEntity(EntityTiTun.class, "Ti'Tun");
+		MethodUtil.registerEntity(EntityWoodElfKing.class, "Wood Elf King");
+		MethodUtil.registerEntity(EntityAltru.class, "Altru");
 
 		MethodUtil.registerEgg(EntityAdv.class);
 		MethodUtil.registerEgg(EntityMage.class);
@@ -101,6 +107,9 @@ public class EntityLoader
 		MethodUtil.registerEgg(EntityDemonAngel.class);
 		MethodUtil.registerEgg(EntityDarkEssence.class);
 		MethodUtil.registerEgg(EntityAunTun.class);
+		MethodUtil.registerEgg(EntityTiTun.class);
+		MethodUtil.registerEgg(EntityWoodElfKing.class);
+		MethodUtil.registerEgg(EntityAltru.class);
 		MethodUtil.registerEgg(EntityPaladin.class);
 	}
 

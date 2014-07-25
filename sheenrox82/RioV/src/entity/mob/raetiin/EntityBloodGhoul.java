@@ -10,7 +10,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.mob.ai.RaetiinEntityAttackAI;
 
 public class EntityBloodGhoul extends EntityMobDeadBody
 {
@@ -18,7 +17,7 @@ public class EntityBloodGhoul extends EntityMobDeadBody
 	{
 
 		super(par1World);
-		targetTasks.addTask(1, new RaetiinEntityAttackAI(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56F, true));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.56F));

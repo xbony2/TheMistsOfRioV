@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.entity.mob.jaerin;
+package sheenrox82.RioV.src.entity.mob.jaerin.boss;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,23 +19,21 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
+import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
+public class EntityWoodElfKing extends EntityBossCore implements IRangedAttackMob
 {
 	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
 	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
 
-	public EntityWoodElf(World par1World)
+	public EntityWoodElfKing(World par1World)
 	{
 		super(par1World);
+		this.setSize(1F, 3.8F);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
@@ -43,8 +41,12 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
 		this.fallDistance = 0.0f;
+		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.blindoniteHelmet));
+		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.blindoniteChestplate));
+		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.blindoniteLeggings));
+		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.blindoniteBoots));
+		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
 		if (par1World != null && !par1World.isRemote)
 		{
 			this.setCombatTask();
@@ -94,38 +96,18 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
+	
+		if(this.worldObj.isRemote)
+		{
+			RioVAPIUtil.sendMessageToAll("Wood Elf King: *Scream*");
+			RioVAPIUtil.sendMessageToAll("Wood Elf King was killed!");
+		}
 	}
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
-		int var1 = this.rand.nextInt(8);
-
-		if (var1 == 0)
-		{
-		}
-		if (var1 == 1)
-		{
-		}
-		if (var1 == 2)
-		{
-		}
-		if (var1 == 3)
-		{
-
-		}
-		if (var1 == 4)
-		{
-		}
-		if (var1 == 5)
-		{
-		}
-		if (var1 == 6)
-		{
-		}
-		if (var1 == 7)
-		{
-		}
+		this.dropItem(RioVItems.elfCrystal, 2);
 	}
 
 	public void setCombatTask()
@@ -159,14 +141,8 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2)
 	{
 		EntityArrow entityarrow = new EntityArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
-		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
+		entityarrow.setDamage(5.0D);
 		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
-		entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting.getDifficultyId() * 0.11F));
-
-		if (i > 0)
-		{
-			entityarrow.setDamage(entityarrow.getDamage() + (double)i * 0.5D + 0.5D);
-		}
 
 		if (j > 0)
 		{
@@ -182,21 +158,9 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(900.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	protected String getLivingSound()
-	{
-		if(RioVAPI.getInstance().getUtil().getConfigBool("allowBreathing") == true)
-		{
-			return Sounds.exhale.getPrefixedName();
-		}
-		
-		return null;
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
 	}
 	
 	@Override
@@ -204,14 +168,4 @@ public class EntityWoodElf extends EntityMobDeadBody implements IRangedAttackMob
 	{
 		return Sounds.pain.getPrefixedName();
 	}
-	
-	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer)
-    {
-		par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
-		
-		if(!this.worldObj.isRemote)
-			par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
-		return true;
-    }
 }

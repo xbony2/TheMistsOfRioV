@@ -23,7 +23,6 @@ import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
-import sheenrox82.RioV.src.entity.mob.ai.RaetiinEntityAttackAI;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
@@ -52,7 +51,7 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityOrc.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityNizonian.class, 0, true));
-		targetTasks.addTask(1, new RaetiinEntityAttackAI(this, EntityPlayer.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 
 		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.auntunHelmet));
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.auntunChestplate));

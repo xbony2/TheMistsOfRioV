@@ -171,6 +171,12 @@ public class PacketPipeline extends MessageToMessageCodec<FMLProxyPacket, Abstra
 		this.channels.get(Side.SERVER).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player);
 		this.channels.get(Side.SERVER).writeAndFlush(message);
 	}
+	
+	public void sendTo(AbstractPacket message, EntityPlayer player) {
+		this.channels.get(Side.CLIENT).attr(FMLOutboundHandler.FML_MESSAGETARGET).set(FMLOutboundHandler.OutboundTarget.PLAYER);
+		this.channels.get(Side.CLIENT).attr(FMLOutboundHandler.FML_MESSAGETARGETARGS).set(player);
+		this.channels.get(Side.CLIENT).writeAndFlush(message);
+	}
 
 	/**
 	 * Send this message to everyone within a certain range of a point.

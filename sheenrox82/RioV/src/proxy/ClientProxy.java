@@ -15,6 +15,8 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityAngel;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityGalokin;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityDove;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityFairy;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
@@ -51,6 +53,7 @@ import sheenrox82.RioV.src.model.ModelDemonAngel;
 import sheenrox82.RioV.src.model.ModelDragonWings;
 import sheenrox82.RioV.src.model.ModelHellhound;
 import sheenrox82.RioV.src.model.ModelTerron;
+import sheenrox82.RioV.src.render.RenderAltru;
 import sheenrox82.RioV.src.render.RenderAngel;
 import sheenrox82.RioV.src.render.RenderAunTun;
 import sheenrox82.RioV.src.render.RenderBipedCore;
@@ -65,6 +68,7 @@ import sheenrox82.RioV.src.render.RenderPaladin;
 import sheenrox82.RioV.src.render.RenderRabbit;
 import sheenrox82.RioV.src.render.RenderSkeletalHorse;
 import sheenrox82.RioV.src.render.RenderTef;
+import sheenrox82.RioV.src.render.RenderWoodElfKing;
 import sheenrox82.RioV.src.render.item.ItemRenderBow;
 import sheenrox82.RioV.src.render.item.ItemRenderJaerinFlag;
 import sheenrox82.RioV.src.render.item.ItemRenderLongbow;
@@ -127,10 +131,12 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(RioVLib.blood_ghoul));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow(RioVLib.darkness_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(RioVLib.vravinite_arrow));
+		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElfKing.class, new RenderWoodElfKing());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJaerinFlag.class, new RenderTileEntityJaerinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfuser.class, new RenderTileEntityInfuser());
+		RenderingRegistry.registerEntityRenderingHandler(EntityAltru.class, new RenderAltru());
 		MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
 		
 		if(RioVAPI.getInstance().getUtil().getConfigBool("toolHud") == true)

@@ -4,7 +4,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.api.base.RioVAPI;
@@ -16,31 +15,27 @@ public class RioVPlayer implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "RioVPlayer";
 
-	private static EntityPlayer player;
+	private EntityPlayer player;
 
 	public int maxEos;
 
-	public final int EOS_WATCHER = 20;
+	public static final int EOS_WATCHER = 20;
 
-	public static int factionID;
-	public static int noFactionID = 0;
-	public static int raetiinID;
-	public static int jaerinID;
-	public static String factionName;
-	public static String noFactionName = "No Faction";
-	public static String raetiinName;
-	public static String jaerinName;
+	public int factionID;
+	public int noFactionID = 0;
+	public int raetiinID = 1;
+	public int jaerinID = 2;
+	public String factionName;
+	public String noFactionName = "No Faction";
+	public String raetiinName = Color.DARK_RED + "Raetiin";
+	public String jaerinName = Color.GREEN + "Jaerin";
 
 	public RioVPlayer(EntityPlayer player) 
 	{
 		this.player = player;
 		this.maxEos = 50;
 		factionID = noFactionID;
-		raetiinID = 1;
-		jaerinID = 2;
 		factionName = noFactionName;
-		raetiinName = EnumChatFormatting.DARK_RED + "Raetiin";
-		jaerinName = EnumChatFormatting.GREEN + "Jaerin";
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
 	}
 
@@ -124,6 +119,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public final void setClientFactionID(int facID)
 	{
 		factionID = facID;
+		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayer) player);
 	}
 	
 	public final int getFactionID()
@@ -141,6 +137,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public final void setClientFactionName(String facName)
 	{
 		factionName = facName;
+		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayer) player);
 	}
 	
 	public final String getFactionName()
@@ -148,19 +145,19 @@ public class RioVPlayer implements IExtendedEntityProperties
 		return factionName;
 	}
 
-	private final String getSaveKey(EntityPlayer player) 
+	private static final String getSaveKey(EntityPlayer player) 
 	{
 		return player.getCommandSenderName() + ":" + EXT_PROP_NAME;
 	}
 
-	public final void saveProxyData(EntityPlayer player)
+	public static final void saveProxyData(EntityPlayer player)
 	{
 		NBTTagCompound savedData = new NBTTagCompound();
 		RioVPlayer.get(player).saveNBTData(savedData);
 		PlayerStorage.storeEntityData(getSaveKey(player), savedData);
 	}
 
-	public final void loadProxyData(EntityPlayer player) 
+	public static final void loadProxyData(EntityPlayer player) 
 	{
 		RioVPlayer playerData = RioVPlayer.get(player);
 		NBTTagCompound savedData = PlayerStorage.getEntityData(getSaveKey(player));

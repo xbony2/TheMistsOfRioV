@@ -1,5 +1,6 @@
 package sheenrox82.RioV.src.content;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -306,9 +307,6 @@ public class RioVItems
 	public static Item paladinLongsword = (new RioVWeapon(InfusedOnyx, false)).setUnlocalizedName("paladinLongsword");
 	public static Item graviWand = (new RioVWand(0, 1, 3)).setUnlocalizedName("graviWand");
 	public static Item eosPotion = (new RioVDrinkable(0, 0, true)).setAlwaysEdible().setUnlocalizedName("eosPotion");
-
-	//v2.3.0
-	//The Flora Update
 	public static Item fakeBloodberry = (new RioVConsumable(-5, 0, false)).setUnlocalizedName("fakeBloodberry");
 	public static Item glimmerBerry = (new RioVConsumable(2, 1, false)).setUnlocalizedName("glimmerBerry");
 	public static Item elderBerry = (new RioVConsumable(5, 2, false)).setUnlocalizedName("elderBerry");
@@ -317,8 +315,28 @@ public class RioVItems
 	public static Item fireBerry = (new RioVConsumable(2, 2, false)).setUnlocalizedName("fireBerry");
 	public static Item sanctuatiteBerry = (new RioVConsumable(7, 5, false)).setUnlocalizedName("sanctuatiteBerry");
 	
+	//v2.3.2
+	public static Item glowingSwordOfTiTun = (new RioVWeapon(UltraAxeOfAunTun, true)).setUnlocalizedName("glowingSwordOfTiTun");;
+	public static Item tiTunHelmet = (new RioVArmor(SupremeAunTunArmorMaterial, render, 0, "tiTun", true)).setUnlocalizedName("tiTunHelmet");
+	public static Item tiTunChestplate = (new RioVArmor(SupremeAunTunArmorMaterial, render, 1, "tiTun", true)).setUnlocalizedName("tiTunChestplate");
+	public static Item tiTunLeggings = (new RioVArmor(SupremeAunTunArmorMaterial, render, 2, "tiTun", true)).setUnlocalizedName("tiTunLeggings");
+	public static Item tiTunBoots = (new RioVArmor(SupremeAunTunArmorMaterial, render, 3, "tiTun", true)).setUnlocalizedName("tiTunBoots");
+	public static Item elfCrystal = (new RioVItem()).setUnlocalizedName("elfCrystal");
+	public static Item altruSoul = (new RioVItem()).setUnlocalizedName("altruSoul");
+	public static Item woodElfKingCrystal = (new RioVSummoners()).setUnlocalizedName("woodElfKingCrystal");
+	public static Item altruCrystal = (new RioVSummoners()).setUnlocalizedName("altruCrystal");
+
 	public static void add()
 	{		
+		RioVAPIUtil.registerItem(altruCrystal, "Altru Crystal");
+		RioVAPIUtil.registerItem(woodElfKingCrystal, "Wood Elf King Crystal");
+		RioVAPIUtil.registerItem(altruSoul, "Altru Soul");
+		RioVAPIUtil.registerItem(elfCrystal, "Elf Crystal");
+		RioVAPIUtil.registerItem(tiTunHelmet, "Ti'Tun Helmet");
+		RioVAPIUtil.registerItem(tiTunChestplate, "Ti'Tun Chestplate");
+		RioVAPIUtil.registerItem(tiTunLeggings, "Ti'Tun Leggings");
+		RioVAPIUtil.registerItem(tiTunBoots, "Ti'Tun Boots");
+		RioVAPIUtil.registerItem(glowingSwordOfTiTun, "Glowing Sword of Ti'Tun");
 		RioVAPIUtil.registerItem(chain, "Chain");
 		RioVAPIUtil.registerItem(glimmerBerry, "Glimmerberry");
 		RioVAPIUtil.registerItem(elderBerry, "Elderberry");
