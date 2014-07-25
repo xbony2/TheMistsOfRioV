@@ -1,5 +1,15 @@
 itemGroup.RioV=The Mists of RioV
 
+item.glowingSwordOfTiTun.name=Glowing Sword of Ti'Tun
+item.tiTunHelmet.name=Ti'Tun Helmet
+item.tiTunChestplate.name=Ti'Tun Chestplate
+item.tiTunLeggings.name=Ti'Tun Leggings
+item.tiTunBoots.name=Ti'Tun Boots
+item.elfCrystal.name=Elf Crystal
+item.altruSoul.name=Altru Soul
+item.woodElfKingCrystal.name=Wood Elf King Crystal
+item.altruCrystal.name=Altru Crystal
+item.tiTunSummoner.name=Ti'Tun Summoner
 item.chain.name=Chain
 item.fakeBloodberry.name=Blood Berry
 item.glimmerBerry.name=Glimmerberry

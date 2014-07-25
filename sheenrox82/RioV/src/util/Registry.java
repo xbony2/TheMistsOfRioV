@@ -140,7 +140,7 @@ public class Registry
 		Config.allowBreathing = Config.config.getBoolean("Allow Mob Breathing Sounds? (CLIENT SIDE)", Configuration.CATEGORY_GENERAL, Config.allowBreathing, "// Boolean");
 		Config.deadBodies = Config.config.getBoolean("Allow Dead Bodies for mobs?", Configuration.CATEGORY_GENERAL, Config.deadBodies, "// Boolean");
 		Config.runCapes = Config.config.getBoolean("Allow RioV Capes to initialize?", Configuration.CATEGORY_GENERAL, Config.runCapes, "// Boolean");
-		Config.hudPosX = Config.config.getInt("Item HUD Position X || Max: 1000 || Default: 185", Configuration.CATEGORY_GENERAL, Config.hudPosX, 185, 1000, "// Integer");
+		Config.hudPosX = Config.config.getInt("Item HUD Position X || Max: 1000 || Default: 145", Configuration.CATEGORY_GENERAL, Config.hudPosX, 145, 1000, "// Integer");
 		Config.hudPosY = Config.config.getInt("Item HUD Position Y || Max: 500 || Default: 50", Configuration.CATEGORY_GENERAL, Config.hudPosY, 50, 500, "// Integer");
 		Config.eosPosX = Config.config.getInt("Eos HUD Position X || Max: 800 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosX, 20, 800, "// Integer");
 		Config.eosPosY = Config.config.getInt("Eos HUD Position Y || Max: 800 || Default: 20", Configuration.CATEGORY_GENERAL, Config.eosPosY, 20, 800, "// Integer");
