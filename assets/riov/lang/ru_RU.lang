@@ -1,5 +1,15 @@
 itemGroup.RioV=The Mists of RioV
 
+item.glowingSwordOfTiTun.name=Пылающий меч ТиТуна
+item.tiTunHelmet.name=Шлем ТиТуна
+item.tiTunChestplate.name=Кираса ТиТуна
+item.tiTunLeggings.name=Поножи ТиТуна
+item.tiTunBoots.name=Ботинки ТиТуна
+item.elfCrystal.name=Кристалл эльфов
+item.altruSoul.name=Дух Алтру
+item.woodElfKingCrystal.name=Кристалл королевского лесного эльфа
+item.altruCrystal.name=Кристалл Алтру
+item.tiTunSummoner.name=Призыватель ТиТуна
 item.chain.name=Цепь
 item.fakeBloodberry.name=Кровавая ягода
 item.glimmerBerry.name=Тусклая ягода
