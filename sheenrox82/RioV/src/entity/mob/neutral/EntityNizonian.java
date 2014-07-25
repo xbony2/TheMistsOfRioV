@@ -79,6 +79,7 @@ public class EntityNizonian extends EntityMobDeadBody
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(60.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(7.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
 	}
 
 	@Override

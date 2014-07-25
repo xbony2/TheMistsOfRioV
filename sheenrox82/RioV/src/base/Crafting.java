@@ -156,7 +156,10 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel, 5), " * ", " I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_sword, 5), " * ", " * ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
 		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe, 5), "** ", " I ", " I ", Character.valueOf('*'), Blocks.mossy_cobblestone, Character.valueOf('I'), Items.stick);
-	
+		GameRegistry.addRecipe(new ItemStack(RioVItems.woodElfKingCrystal, 1), "XXX", "XAX", "XXX", Character.valueOf('X'), RioVItems.blindonite, Character.valueOf('A'), RioVItems.baseCrystal);
+		GameRegistry.addRecipe(new ItemStack(RioVItems.altruCrystal, 1), "XMX", "MAM", "XMX", Character.valueOf('X'), RioVItems.blindonite, Character.valueOf('A'), RioVItems.baseCrystal, Character.valueOf('M'), RioVItems.elfCrystal);
+		GameRegistry.addRecipe(new ItemStack(RioVItems.tiTunSummoner, 1), "XMX", "MAM", "XMX", Character.valueOf('X'), RioVItems.blindonite, Character.valueOf('A'), RioVItems.baseCrystal, Character.valueOf('M'), RioVItems.altruSoul);
+
 		//ANVIL CRAFTING
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystPickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.amethyst, Character.valueOf('!'), RioVItems.blackBone});

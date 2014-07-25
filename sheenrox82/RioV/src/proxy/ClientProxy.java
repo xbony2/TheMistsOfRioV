@@ -16,6 +16,7 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityGalokin;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
+import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityDove;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityFairy;
@@ -68,6 +69,7 @@ import sheenrox82.RioV.src.render.RenderPaladin;
 import sheenrox82.RioV.src.render.RenderRabbit;
 import sheenrox82.RioV.src.render.RenderSkeletalHorse;
 import sheenrox82.RioV.src.render.RenderTef;
+import sheenrox82.RioV.src.render.RenderTiTun;
 import sheenrox82.RioV.src.render.RenderWoodElfKing;
 import sheenrox82.RioV.src.render.item.ItemRenderBow;
 import sheenrox82.RioV.src.render.item.ItemRenderJaerinFlag;
@@ -132,6 +134,8 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow(RioVLib.darkness_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(RioVLib.vravinite_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElfKing.class, new RenderWoodElfKing());
+		RenderingRegistry.registerEntityRenderingHandler(EntityTiTun.class, new RenderTiTun());
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJaerinFlag.class, new RenderTileEntityJaerinFlag());

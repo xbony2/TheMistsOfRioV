@@ -88,6 +88,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
 	}
 	
 	@Override

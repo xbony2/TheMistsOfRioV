@@ -102,6 +102,7 @@ public class EntityTefGuard extends EntityMobDeadBody
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(18.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
 	}
 	
 	public boolean isAIEnabled()

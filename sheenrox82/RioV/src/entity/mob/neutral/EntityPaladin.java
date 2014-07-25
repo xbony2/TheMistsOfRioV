@@ -101,6 +101,7 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.56D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
 	}
 	
 	@Override

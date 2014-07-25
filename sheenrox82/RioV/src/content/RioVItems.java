@@ -325,9 +325,11 @@ public class RioVItems
 	public static Item altruSoul = (new RioVItem()).setUnlocalizedName("altruSoul");
 	public static Item woodElfKingCrystal = (new RioVSummoners()).setUnlocalizedName("woodElfKingCrystal");
 	public static Item altruCrystal = (new RioVSummoners()).setUnlocalizedName("altruCrystal");
+	public static Item tiTunSummoner = (new RioVSummoners()).setUnlocalizedName("tiTunSummoner");
 
 	public static void add()
 	{		
+		RioVAPIUtil.registerItem(tiTunSummoner, "Ti'Tun Summoner");
 		RioVAPIUtil.registerItem(altruCrystal, "Altru Crystal");
 		RioVAPIUtil.registerItem(woodElfKingCrystal, "Wood Elf King Crystal");
 		RioVAPIUtil.registerItem(altruSoul, "Altru Soul");

@@ -284,6 +284,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
 	}
 
 	@Override

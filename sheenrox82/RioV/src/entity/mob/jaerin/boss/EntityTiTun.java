@@ -143,5 +143,6 @@ public class EntityTiTun extends EntityBossCore
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2400.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(28.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(128.0D);
 	}
 }
