@@ -29,10 +29,8 @@ public class Config
 	public static boolean deadBodies = true;
 	public static boolean runCapes = true;
 	public static boolean dev = false;
-	public static int hudPosX = 145;
-	public static int hudPosY = 50;
-	public static int eosPosX = 20;
-	public static int eosPosY = 20;
+	public static int hudPosX = 20;
+	public static int hudPosY = 20;
 	
 	public static void initialize(FMLPreInitializationEvent event)
 	{

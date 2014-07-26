@@ -72,8 +72,8 @@ public class RioVItems
 	static ArmorMaterial AlerisArmorMaterial = EnumHelper.addArmorMaterial("ALERIS", 48, new int[] {5, 8, 6, 5}, 20);
 	static ArmorMaterial InfusedVraviniteArmorMaterial = EnumHelper.addArmorMaterial("VRAVINITE", 33, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial VraviniteArmorMaterial = EnumHelper.addArmorMaterial("VRAVINITE", 32, new int[] {4, 6, 6, 4}, 20);
-	static ArmorMaterial SupremeAunTunArmorMaterial = EnumHelper.addArmorMaterial("SUPREMEAUNTUN", 68, new int[] {7, 10, 9, 9}, 50);
-
+	static ArmorMaterial SupremeAunTunArmorMaterial = EnumHelper.addArmorMaterial("SUPREMEAUNTUN", 68, new int[] {7, 10, 9, 9}, 50);	
+	
 	public static RioVArmor onyxHelmet = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 0, "onyx", false).setUnlocalizedName("onyxHelmet");
 	public static RioVArmor onyxChestplate = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 1, "onyx", false).setUnlocalizedName("onyxChestplate");
 	public static RioVArmor onyxLeggings = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 2, "onyx", false).setUnlocalizedName("onyxLeggings");

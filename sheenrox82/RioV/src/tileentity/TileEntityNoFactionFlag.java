@@ -4,8 +4,5 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityNoFactionFlag extends TileEntity 
 {
-	public TileEntityNoFactionFlag()
-	{
-		super();
-	}
+	
 }

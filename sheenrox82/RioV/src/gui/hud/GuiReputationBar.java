@@ -52,20 +52,20 @@ public class GuiReputationBar extends Gui
 			
 			if(props.getCurrentRep() < 0)
 			{
-				fontrenderer.drawStringWithShadow("Reputation: " + Color.DARK_RED + props.getCurrentRep(), 32, height - 40, 16777215);
+				fontrenderer.drawStringWithShadow("Reputation: " + Color.DARK_RED + props.getCurrentRep(), Config.hudPosX + 11, (height - Config.hudPosY) - 20, 16777215);
 			}
 			
 			if(props.getCurrentRep() > 0)
 			{
-				fontrenderer.drawStringWithShadow("Reputation: " + Color.GREEN + props.getCurrentRep(), 32, height - 40, 16777215);
+				fontrenderer.drawStringWithShadow("Reputation: " + Color.GREEN + props.getCurrentRep(), Config.hudPosX + 11, (height - Config.hudPosY) - 20, 16777215);
 			}
 			
 			if(props.getCurrentRep() == 0)
 			{
-				fontrenderer.drawStringWithShadow("Reputation: " + Color.WHITE + props.getCurrentRep(), 32, height - 40, 16777215);
+				fontrenderer.drawStringWithShadow("Reputation: " + Color.WHITE + props.getCurrentRep(), Config.hudPosX + 11, (height - Config.hudPosY) - 20, 16777215);
 			}
 			
-			fontrenderer.drawStringWithShadow("Faction: " + props.getFactionName(), 32, height - 30, 16777215);
+			fontrenderer.drawStringWithShadow("Faction: " + props.getFactionName(), Config.hudPosX + 11, (height - Config.hudPosY) - 10, 16777215);
 	
 			GL11.glPopMatrix();
 		}

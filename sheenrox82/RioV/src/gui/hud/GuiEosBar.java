@@ -54,8 +54,8 @@ public class GuiEosBar extends Gui
 				int height = event.resolution.getScaledHeight();
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				float eos = (((float) props.getCurrentEos() / props.maxEos) * 80);
-				this.drawTexturedModalRect(Config.eosPosX, height - Config.eosPosY, 0, 49, 102, 14);
-				this.drawTexturedModalRect(Config.eosPosX + 11, (height - Config.eosPosY) + 4, 11, 64, (int)eos, 6);
+				this.drawTexturedModalRect(Config.hudPosX, height - Config.hudPosY, 0, 49, 102, 14);
+				this.drawTexturedModalRect(Config.hudPosX + 11, (height - Config.hudPosY) + 4, 11, 64, (int)eos, 6);
 				GL11.glPopMatrix();
 			}
 		}
@@ -66,7 +66,7 @@ public class GuiEosBar extends Gui
 			{
 				int height = event.resolution.getScaledHeight();
 				GL11.glPushMatrix();
-				fontrenderer.drawStringWithShadow("Eos: " + props.getCurrentEos() + "/" + props.maxEos, 32, height - 18, 16777215);
+				fontrenderer.drawStringWithShadow("Eos: " + props.getCurrentEos() + "/" + props.maxEos, Config.hudPosX + 11, (height - Config.hudPosY) + 4, 16777215);
 				GL11.glPopMatrix();
 			}
 		}

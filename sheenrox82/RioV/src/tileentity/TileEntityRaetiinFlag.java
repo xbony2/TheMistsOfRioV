@@ -4,8 +4,5 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityRaetiinFlag extends TileEntity 
 {
-	public TileEntityRaetiinFlag()
-	{
-		super();
-	}
+	
 }
