@@ -37,7 +37,6 @@ public class GuiReputationBar extends Gui
 			return;
 		}
 
-		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/rep_bar.png");
 		RioVPlayer props = RioVPlayer.get(mc.thePlayer);
 		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
 
@@ -50,6 +49,7 @@ public class GuiReputationBar extends Gui
 		{
 			int height = event.resolution.getScaledHeight();
 			GL11.glPushMatrix();
+			
 			if(props.getCurrentRep() < 0)
 			{
 				fontrenderer.drawStringWithShadow("Reputation: " + Color.DARK_RED + props.getCurrentRep(), 32, height - 40, 16777215);
@@ -64,6 +64,9 @@ public class GuiReputationBar extends Gui
 			{
 				fontrenderer.drawStringWithShadow("Reputation: " + Color.WHITE + props.getCurrentRep(), 32, height - 40, 16777215);
 			}
+			
+			fontrenderer.drawStringWithShadow("Faction: " + props.getFactionName(), 32, height - 30, 16777215);
+	
 			GL11.glPopMatrix();
 		}
 	}
