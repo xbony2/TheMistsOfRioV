@@ -264,29 +264,100 @@ public class Events
 		{
 			EntityPlayer player = (EntityPlayer)event.target;
 			RioVPlayer riov = RioVPlayer.get(player);
-			EntityLiving attacker = (EntityLiving)event.entityLiving;
 
-			//RAETIIN
-			if(attacker instanceof EntityAunTunMinion || attacker instanceof EntityAunTunBodyguard || attacker instanceof EntityBloodGhoul || 
-					attacker instanceof EntityDarkElf || attacker instanceof EntityHellhound || attacker instanceof EntityShadow || 
-					attacker instanceof EntitySkeletalHorse || attacker instanceof EntitySoverianOfficer || attacker instanceof EntityTefGuard || 
-					attacker instanceof EntityAunTun || attacker instanceof EntityDarkEssence || attacker instanceof EntityDemonAngel || 
-					attacker instanceof EntityTef || attacker instanceof EntityTerron)
+			if(riov.getFactionID() == riov.raetiinID)
 			{
-				if(riov.getFactionID() == riov.raetiinID)
+				if(event.entityLiving instanceof EntityAunTunMinion)
 				{
-					attacker.setAttackTarget(null);
+					((EntityAunTunMinion)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityAunTunBodyguard)
+				{
+					((EntityAunTunBodyguard)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityBloodGhoul)
+				{
+					((EntityBloodGhoul)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityDarkElf)
+				{
+					((EntityDarkElf)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityHellhound)
+				{
+					((EntityHellhound)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityShadow)
+				{
+					((EntityShadow)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntitySkeletalHorse)
+				{
+					((EntitySkeletalHorse)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntitySoverianOfficer)
+				{
+					((EntitySoverianOfficer)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityTefGuard)
+				{
+					((EntityTefGuard)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityAunTun)
+				{
+					((EntityAunTun)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityDarkEssence)
+				{
+					((EntityDarkEssence)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityDemonAngel)
+				{
+					((EntityDemonAngel)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityTef)
+				{
+					((EntityTef)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityTerron)
+				{
+					((EntityTerron)event.entityLiving).setAttackTarget(null);
 				}
 			}
 
-			//JAERIN
-			if(attacker instanceof EntityAdv || attacker instanceof EntityAltruEssence || attacker instanceof EntityAngel || 
-					attacker instanceof EntityGalokin || attacker instanceof EntityOrc || attacker instanceof EntityWoodElf || 
-					attacker instanceof EntityAltru || attacker instanceof EntityTiTun || attacker instanceof EntityWoodElfKing)
+			if(riov.getFactionID() == riov.jaerinID)
 			{
-				if(riov.getFactionID() == riov.jaerinID)
+				if(event.entityLiving instanceof EntityAdv)
 				{
-					attacker.setAttackTarget(null);
+					((EntityAdv)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityAltruEssence)
+				{
+					((EntityAltruEssence)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityAngel)
+				{
+					((EntityAngel)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityGalokin)
+				{
+					((EntityGalokin)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityWoodElf)
+				{
+					((EntityWoodElf)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityAltru)
+				{
+					((EntityAltru)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityTiTun)
+				{
+					((EntityTiTun)event.entityLiving).setAttackTarget(null);
+				}
+				if(event.entityLiving instanceof EntityWoodElfKing)
+				{
+					((EntityWoodElfKing)event.entityLiving).setAttackTarget(null);
 				}
 			}
 		}
