@@ -28,21 +28,28 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public String noFactionName = "No Faction";
 	public String raetiinName;
 	public String jaerinName;
-	
+
 	//NEW FACTION SYSTEM FIELDS
+	public int defaultRep;
+	public int maxRep;
+	public int minRep;
 	public static final int REP_WATCHER = 21;
 
 	public RioVPlayer(EntityPlayer player) 
 	{
 		this.player = player;
 		this.maxEos = 50;
-		factionID = noFactionID;
-		raetiinID = 1;
-		jaerinID = 2;
-		factionName = noFactionName;
-		raetiinName = Color.DARK_RED + "Raetiin";
-		jaerinName = Color.GREEN + "Jaerin";
+		this.defaultRep = 0;
+		this.maxRep = 100;
+		this.minRep = -100;
+		this.factionID = noFactionID;
+		this.raetiinID = 1;
+		this.jaerinID = 2;
+		this.factionName = noFactionName;
+		this.raetiinName = Color.DARK_RED + "Raetiin";
+		this.jaerinName = Color.GREEN + "Jaerin";
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
+		this.player.getDataWatcher().addObject(REP_WATCHER, this.defaultRep);
 	}
 
 	public static final void register(EntityPlayer player) 
@@ -59,9 +66,13 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public final void saveNBTData(NBTTagCompound compound) 
 	{
 		NBTTagCompound properties = new NBTTagCompound();
-		
+
 		properties.setInteger("CurrentEos", player.getDataWatcher().getWatchableObjectInt(EOS_WATCHER));
 		properties.setInteger("MaxEos", maxEos);
+		properties.setInteger("CurrentRep", player.getDataWatcher().getWatchableObjectInt(REP_WATCHER));
+		properties.setInteger("MinRep", minRep);
+		properties.setInteger("MaxRep", maxRep);
+
 		properties.setInteger("FactionID", factionID);
 		properties.setString("FactionName", factionName);
 		compound.setTag(EXT_PROP_NAME, properties);
@@ -71,9 +82,13 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public final void loadNBTData(NBTTagCompound compound) 
 	{
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
-		
+
 		player.getDataWatcher().updateObject(EOS_WATCHER, properties.getInteger("CurrentEos"));
 		maxEos = properties.getInteger("MaxEos");
+		player.getDataWatcher().updateObject(REP_WATCHER, properties.getInteger("CurrentRep"));
+		minRep = properties.getInteger("MinRep");
+		maxRep = properties.getInteger("MaxRep");
+
 		factionID = properties.getInteger("FactionID");
 		factionName = properties.getString("FactionName");
 	}
@@ -113,38 +128,62 @@ public class RioVPlayer implements IExtendedEntityProperties
 		maxEos = (amount > 0 ? amount : 0);
 		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
-	
+
+	public final boolean consumeRep(int amount) 
+	{
+		boolean sufficient = true;
+		setCurrentRep(getCurrentRep() - amount);
+		return sufficient;
+	}
+
+	public final void resetRep()
+	{
+		this.player.getDataWatcher().updateObject(REP_WATCHER, this.defaultRep);
+	}
+
+	public final int getCurrentRep() 
+	{
+		return player.getDataWatcher().getWatchableObjectInt(REP_WATCHER);
+	}
+
+	public final void setCurrentRep(int amount)
+	{
+		if(amount > maxRep)
+		{
+			player.getDataWatcher().updateObject(REP_WATCHER, maxRep);
+		}
+		else if(amount < minRep)
+		{
+			player.getDataWatcher().updateObject(REP_WATCHER, minRep);
+		}
+		else
+		{
+			player.getDataWatcher().updateObject(REP_WATCHER, amount);
+		}
+	}
+
+	public final int getDefaultRep() 
+	{
+		return defaultRep;
+	}
+
 	public final void setFactionID(int facID)
 	{
 		factionID = facID;
 		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public final void setClientFactionID(int facID)
-	{
-		factionID = facID;
-		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayer) player);
-	}
-	
+
 	public final int getFactionID()
 	{
 		return factionID;
 	}
-	
+
 	public final void setFactionName(String facName)
 	{
 		factionName = facName;
 		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public final void setClientFactionName(String facName)
-	{
-		factionName = facName;
-		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayer) player);
-	}
-	
+
 	public final String getFactionName()
 	{
 		return factionName;
@@ -166,7 +205,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 	{
 		RioVPlayer playerData = RioVPlayer.get(player);
 		NBTTagCompound savedData = PlayerStorage.getEntityData(getSaveKey(player));
-		
+
 		if (savedData != null) 
 		{ 
 			playerData.loadNBTData(savedData); 

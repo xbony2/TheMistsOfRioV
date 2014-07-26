@@ -2,13 +2,11 @@ package sheenrox82.RioV.src.proxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
@@ -45,12 +43,8 @@ import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
-import sheenrox82.RioV.src.gui.hud.GuiBootsHud;
-import sheenrox82.RioV.src.gui.hud.GuiChestplateHud;
 import sheenrox82.RioV.src.gui.hud.GuiEosBar;
-import sheenrox82.RioV.src.gui.hud.GuiHelmetHud;
-import sheenrox82.RioV.src.gui.hud.GuiLeggingsHud;
-import sheenrox82.RioV.src.gui.hud.GuiToolHud;
+import sheenrox82.RioV.src.gui.hud.GuiReputationBar;
 import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.model.ModelDemonAngel;
 import sheenrox82.RioV.src.model.ModelDragonWings;
@@ -96,8 +90,6 @@ import com.jadarstudios.developercapes.DevCapes;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
 
 public class ClientProxy extends CommonProxy 
 {	
@@ -146,16 +138,8 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfuser.class, new RenderTileEntityInfuser());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAltru.class, new RenderAltru());
 		MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
-
-		if(RioVAPI.getInstance().getUtil().getConfigBool("toolHud") == true)
-		{
-			MinecraftForge.EVENT_BUS.register(new GuiToolHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiHelmetHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiChestplateHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiLeggingsHud(Minecraft.getMinecraft()));
-			MinecraftForge.EVENT_BUS.register(new GuiBootsHud(Minecraft.getMinecraft()));
-		}
-
+		MinecraftForge.EVENT_BUS.register(new GuiReputationBar(Minecraft.getMinecraft()));
+		
 		RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 	}
 

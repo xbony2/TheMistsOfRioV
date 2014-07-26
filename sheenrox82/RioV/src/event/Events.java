@@ -7,7 +7,7 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
@@ -75,7 +75,6 @@ public class Events
 					if(!hasSeen)
 					{
 						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "Please use /riovfactionhelp - Find the command to join a faction."));
 						hasSeen = true;
 					}
 				}
@@ -85,7 +84,6 @@ public class Events
 					if(!hasSeen)
 					{
 						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "Please use /riovfactionhelp - Find the command to join a faction."));
 						hasSeen = true;
 					}	
 				}
@@ -175,6 +173,29 @@ public class Events
 				RioVPlayer.saveProxyData((EntityPlayer) event.entity);
 			}
 		}
+
+		if ((event.source.getEntity() instanceof EntityPlayer))
+		{
+			EntityPlayer entityplayer = (EntityPlayer)event.source.getEntity();
+			RioVPlayer player = RioVPlayer.get(entityplayer);
+			EntityLiving victim = (EntityLiving)event.entity;
+
+			if(victim instanceof EntityAunTunMinion || victim instanceof EntityAunTunBodyguard || victim instanceof EntityBloodGhoul || 
+					victim instanceof EntityDarkElf || victim instanceof EntityHellhound || victim instanceof EntityShadow || 
+					victim instanceof EntitySkeletalHorse || victim instanceof EntitySoverianOfficer || victim instanceof EntityTefGuard || 
+					victim instanceof EntityAunTun || victim instanceof EntityDarkEssence || victim instanceof EntityDemonAngel || 
+					victim instanceof EntityTef || victim instanceof EntityTerron)
+			{
+				player.consumeRep(-3);
+			}
+
+			if(victim instanceof EntityAdv || victim instanceof EntityAltruEssence || victim instanceof EntityAngel || 
+					victim instanceof EntityGalokin || victim instanceof EntityOrc || victim instanceof EntityWoodElf || 
+					victim instanceof EntityAltru || victim instanceof EntityTiTun || victim instanceof EntityWoodElfKing)
+			{
+				player.consumeRep(3);
+			}
+		}
 	}
 
 	@SubscribeEvent
@@ -182,9 +203,30 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer) 
 		{
-			if (RioVPlayer.get((EntityPlayer) event.entity) != null)
+			EntityPlayer entityplayer = (EntityPlayer)event.entity;
+			RioVPlayer player = RioVPlayer.get(entityplayer);
+
+			if (RioVPlayer.get(entityplayer) != null)
 			{
-				RioVPlayer.saveProxyData((EntityPlayer) event.entity);
+				RioVPlayer.saveProxyData(entityplayer);
+			}
+
+			if(player.getCurrentRep() > 0)
+			{
+				player.setFactionID(player.jaerinID);
+				player.setFactionName(player.jaerinName);
+			}
+
+			if(player.getCurrentRep() == 0)
+			{
+				player.setFactionID(player.noFactionID);
+				player.setFactionName(player.noFactionName);
+			}
+
+			if(player.getCurrentRep() < 0)
+			{
+				player.setFactionID(player.raetiinID);
+				player.setFactionName(player.raetiinName);
 			}
 		}
 	}

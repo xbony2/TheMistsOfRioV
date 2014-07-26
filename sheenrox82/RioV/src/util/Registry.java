@@ -10,9 +10,6 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
-import sheenrox82.RioV.src.command.CommandFaction;
-import sheenrox82.RioV.src.command.CommandFactionClient;
-import sheenrox82.RioV.src.command.CommandFactionHelp;
 import sheenrox82.RioV.src.command.CommandPrintChangelog;
 import sheenrox82.RioV.src.command.CommandRageQuit;
 import sheenrox82.RioV.src.content.Biomes;
@@ -136,7 +133,6 @@ public class Registry
 	public static void syncConfig() 
 	{
 		Config.EOS = Config.config.getBoolean("Use the purple Eos bar instead of text?", Configuration.CATEGORY_GENERAL, Config.EOS, "// Boolean");
-		Config.toolHud = Config.config.getBoolean("Show tool info in corner?", Configuration.CATEGORY_GENERAL, Config.toolHud, "// Boolean");
 		Config.showToolInfo = Config.config.getBoolean("Show Tool Info?", Configuration.CATEGORY_GENERAL, Config.showToolInfo, "// Boolean");
 		Config.allowBreathing = Config.config.getBoolean("Allow Mob Breathing Sounds? (CLIENT SIDE)", Configuration.CATEGORY_GENERAL, Config.allowBreathing, "// Boolean");
 		Config.deadBodies = Config.config.getBoolean("Allow Dead Bodies for mobs?", Configuration.CATEGORY_GENERAL, Config.deadBodies, "// Boolean");
@@ -155,10 +151,7 @@ public class Registry
 
 	public static void serverLoad(FMLServerStartingEvent event)
 	{
-		event.registerServerCommand(new CommandFactionClient());
-		event.registerServerCommand(new CommandFaction());
 		event.registerServerCommand(new CommandRageQuit());
 		event.registerServerCommand(new CommandPrintChangelog());
-		event.registerServerCommand(new CommandFactionHelp());
 	}
 }
