@@ -7,7 +7,6 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
@@ -50,7 +49,6 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
-import sheenrox82.RioV.src.util.Registry;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
@@ -381,10 +379,10 @@ public class Events
 				{
 					EntityPlayer target = (EntityPlayer) players.get(i);
 
-					String playerMsg = "[" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
+					String playerMsg = "[" + riovPlayer.getFactionName() + Color.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 					String devMsg = Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.white + " [" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 
-					if(player.getDisplayName().equals(Registry.developer))
+					if(player.getDisplayName().equals(Util.DEVELOPER))
 					{
 						target.addChatMessage(new ChatComponentTranslation(devMsg));
 					}

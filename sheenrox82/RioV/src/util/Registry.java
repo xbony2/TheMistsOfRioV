@@ -39,9 +39,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Registry 
-{
-	public static int render = 3;
-	public static String developer = "sheenrox82";
+{	
 	public static void preInit(FMLPreInitializationEvent initEvent)
 	{		
 		RioVAPI.getInstance().modLoaded = false;
@@ -57,7 +55,7 @@ public class Registry
 		data.logoFile = "/assets/riov/textures/misc/RioV.png";
 		data.version = (Util.VERSION);
 		data.url = "http://www.minecraftforum.net/members/sheenrox82/";
-		data.authorList = Arrays.asList(new String[] {developer});
+		data.authorList = Arrays.asList(new String[] {Util.DEVELOPER});
 		data.description = Util.MOD_NAME + " - The imagined world is called RioV, " +
 				"in the year of 1301 DoC (Death of Carigon.), the land of RioV is " +
 				"filled with Nizonians. A native creature that are basically giant beasts. " +
