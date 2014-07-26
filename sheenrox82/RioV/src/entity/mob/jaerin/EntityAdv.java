@@ -45,8 +45,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityAdv extends EntityMobDeadBody
 {
-	private static ItemStack defaultHeldItem;
-
 	public EntityAdv(World par1World)
 	{
 		super(par1World);

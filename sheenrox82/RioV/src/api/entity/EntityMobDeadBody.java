@@ -2,6 +2,7 @@ package sheenrox82.RioV.src.api.entity;
 
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 
@@ -10,6 +11,7 @@ public class EntityMobDeadBody extends EntityMob
 	public int counter;
 	public int countdown;
 	public boolean justJumped;
+	public static ItemStack defaultHeldItem;
 
 	public EntityMobDeadBody(World par1World)
 	{

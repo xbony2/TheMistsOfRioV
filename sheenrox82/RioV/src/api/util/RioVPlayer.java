@@ -28,6 +28,9 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public String noFactionName = "No Faction";
 	public String raetiinName;
 	public String jaerinName;
+	
+	//NEW FACTION SYSTEM FIELDS
+	public static final int REP_WATCHER = 21;
 
 	public RioVPlayer(EntityPlayer player) 
 	{
