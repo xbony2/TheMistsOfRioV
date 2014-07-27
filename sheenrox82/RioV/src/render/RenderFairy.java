@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityFairy;
 import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.model.ModelFairy;
@@ -24,9 +25,9 @@ public class RenderFairy extends RenderLiving
 
 	}
 
-	public void renderAdv(EntityFairy var1, double var2, double var4, double var6, float var8, float var9)
+	public void renderAdv(EntityFairy par1Entity, double par2, double par4, double par6, float par8, float par9)
 	{
-		super.doRender(var1, var2, var4, var6, var8, var9);
+		super.doRender(par1Entity, par2, par4, par6, par8, par9);
 	}
 
 	public void doRender(EntityLiving var1, double var2, double var4, double var6, float var8, float var9)

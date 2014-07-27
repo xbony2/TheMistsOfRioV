@@ -38,6 +38,7 @@ public class EntityAltruEssence extends EntityMob
 	{
 		super(par1World);
 		float var2 = 0.56F;
+		this.setSize(1f, 2.1f);
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunBodyguard.class, 0, true));

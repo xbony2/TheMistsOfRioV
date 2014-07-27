@@ -21,6 +21,7 @@ public class EntityMage extends EntityMobDeadBody
 	public EntityMage(World par1World)
 	{
 		super(par1World);
+		this.setSize(1f, 2.1f);
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));

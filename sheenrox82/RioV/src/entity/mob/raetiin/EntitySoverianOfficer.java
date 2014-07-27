@@ -48,6 +48,7 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 	{
 		super(par1World);
 		this.isImmuneToFire = true;
+		this.setSize(1f, 2.1f);
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));

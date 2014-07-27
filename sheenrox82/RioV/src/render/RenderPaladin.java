@@ -23,7 +23,8 @@ public class RenderPaladin extends RenderBiped
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
 	{
 		this.func_82418_a((EntityPaladin)par1Entity, par2, par4, par6, par8, par9);
-		func_147906_a((EntityLiving)par1Entity, "\u00A79Paladin", par2, par4, par6, 64);
+		func_147906_a((EntityLiving)par1Entity, "Paladin", par2, par4, par6, 64);
+		func_147906_a((EntityLiving)par1Entity, "Faction: No Faction", par2, par4 - 0.25d, par6, 64);
 		doRenderLiving((EntityLiving)par1Entity, par2, par4, par6, par8, par9);
 	}
 

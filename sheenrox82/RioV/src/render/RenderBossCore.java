@@ -31,22 +31,24 @@ public class RenderBossCore extends RenderLiving
 
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.func_82418_a((EntityBossCore)par1Entity, par2, par4, par6, par8, par9);
+		this.renderBoss((EntityBossCore)par1Entity, par2, par4, par6, par8, par9);
 
 		if(par1Entity instanceof EntityDemonAngel)
 		{
-			this.func_147906_a((EntityLiving)par1Entity, Color.DARK_RED + "Demon Angel", par2, par4, par6, 64);
+			this.func_147906_a((EntityLiving)par1Entity, "Demon Angel", par2, par4, par6, 64);
+			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
 		}
 
 		if(par1Entity instanceof EntityTerron)
 		{
 			this.func_147906_a((EntityLiving)par1Entity, "Terron", par2, par4, par6, 64);
+			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
 		}
 
 		doRenderLiving((EntityLiving)par1Entity, par2, par4, par6, par8, par9);
 	}
 
-	public void func_82418_a(EntityBossCore par1, double par2, double par4, double par6, float par8, float par9)
+	public void renderBoss(EntityBossCore par1, double par2, double par4, double par6, float par8, float par9)
 	{
 		super.doRender(par1, par2, par4, par6, par8, par9);
 		BossStatus.setBossStatus(par1, true);
@@ -64,7 +66,7 @@ public class RenderBossCore extends RenderLiving
 
 	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
 	{
-		this.func_82418_a((EntityBossCore)par1EntityLiving, par2, par4, par6, par8, par9);
+		this.renderBoss((EntityBossCore)par1EntityLiving, par2, par4, par6, par8, par9);
 	}
 
 	@Override

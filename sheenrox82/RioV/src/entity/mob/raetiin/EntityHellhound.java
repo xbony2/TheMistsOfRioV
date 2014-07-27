@@ -42,6 +42,7 @@ public class EntityHellhound extends EntityMobDeadBody
 	{
 		super(par1World);
 		this.getNavigator().setCanSwim(true);
+		this.setSize(1.5f, 1.7f);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));

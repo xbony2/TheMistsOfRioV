@@ -43,6 +43,7 @@ public class EntityTefGuard extends EntityMobDeadBody
 	{
 		super(par1World);
 		this.isImmuneToFire = true;
+		this.setSize(1f, 2.1f);
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));

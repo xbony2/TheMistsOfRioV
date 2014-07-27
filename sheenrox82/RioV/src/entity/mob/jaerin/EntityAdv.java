@@ -48,6 +48,7 @@ public class EntityAdv extends EntityMobDeadBody
 	public EntityAdv(World par1World)
 	{
 		super(par1World);
+		this.setSize(1f, 2.1f);
 		isImmuneToFire = false;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));

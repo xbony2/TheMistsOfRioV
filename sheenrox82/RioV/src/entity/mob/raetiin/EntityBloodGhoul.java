@@ -35,6 +35,7 @@ public class EntityBloodGhoul extends EntityMobDeadBody
 	{
 
 		super(par1World);
+		this.setSize(1f, 2.1f);
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
