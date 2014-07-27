@@ -176,20 +176,19 @@ public class Events
 		{
 			EntityPlayer entityplayer = (EntityPlayer)event.source.getEntity();
 			RioVPlayer player = RioVPlayer.get(entityplayer);
-			EntityLiving victim = (EntityLiving)event.entity;
-
-			if(victim instanceof EntityAunTunMinion || victim instanceof EntityAunTunBodyguard || victim instanceof EntityBloodGhoul || 
-					victim instanceof EntityDarkElf || victim instanceof EntityHellhound || victim instanceof EntityShadow || 
-					victim instanceof EntitySkeletalHorse || victim instanceof EntitySoverianOfficer || victim instanceof EntityTefGuard || 
-					victim instanceof EntityAunTun || victim instanceof EntityDarkEssence || victim instanceof EntityDemonAngel || 
-					victim instanceof EntityTef || victim instanceof EntityTerron)
+			
+			if(event.entityLiving instanceof EntityAunTunMinion || event.entityLiving instanceof EntityAunTunBodyguard || event.entityLiving instanceof EntityBloodGhoul || 
+					event.entityLiving instanceof EntityDarkElf || event.entityLiving instanceof EntityHellhound || event.entityLiving instanceof EntityShadow || 
+					event.entityLiving instanceof EntitySkeletalHorse || event.entityLiving instanceof EntitySoverianOfficer || event.entityLiving instanceof EntityTefGuard || 
+					event.entityLiving instanceof EntityAunTun || event.entityLiving instanceof EntityDarkEssence || event.entityLiving instanceof EntityDemonAngel || 
+					event.entityLiving instanceof EntityTef || event.entityLiving instanceof EntityTerron)
 			{
 				player.consumeRep(-3);
 			}
 
-			if(victim instanceof EntityAdv || victim instanceof EntityAltruEssence || victim instanceof EntityAngel || 
-					victim instanceof EntityGalokin || victim instanceof EntityOrc || victim instanceof EntityWoodElf || 
-					victim instanceof EntityAltru || victim instanceof EntityTiTun || victim instanceof EntityWoodElfKing)
+			if(event.entityLiving instanceof EntityAdv || event.entityLiving instanceof EntityAltruEssence || event.entityLiving instanceof EntityAngel || 
+					event.entityLiving instanceof EntityGalokin || event.entityLiving instanceof EntityOrc || event.entityLiving instanceof EntityWoodElf || 
+					event.entityLiving instanceof EntityAltru || event.entityLiving instanceof EntityTiTun || event.entityLiving instanceof EntityWoodElfKing)
 			{
 				player.consumeRep(3);
 			}
@@ -382,7 +381,7 @@ public class Events
 					String playerMsg = "[" + riovPlayer.getFactionName() + Color.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 					String devMsg = Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.white + " [" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 
-					if(player.getDisplayName().equals(Util.DEVELOPER))
+					if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]))
 					{
 						target.addChatMessage(new ChatComponentTranslation(devMsg));
 					}

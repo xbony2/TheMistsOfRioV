@@ -23,6 +23,7 @@ import sheenrox82.RioV.src.inventory.InventoryBagSheen;
 import sheenrox82.RioV.src.inventory.InventoryBagSmall;
 import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
+import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler
@@ -62,7 +63,7 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem()));
 		}
 
-		if(player.getDisplayName().equals("sheenrox82"))
+		if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]))
 		{
 			if(id == RioVLib.sheensBagID)
 			{
@@ -108,7 +109,7 @@ public class GuiHandler implements IGuiHandler
 			return new GuiLargeBag((ContainerBagLarge) new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem())));
 		}
 
-		if(player.getDisplayName().equals("sheenrox82"))
+		if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]))
 		{
 			if(id == RioVLib.sheensBagID)
 			{
