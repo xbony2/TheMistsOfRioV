@@ -20,6 +20,7 @@ public class BlockRaetiinFlag extends BlockContainer
 		super(Material.wood);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
+		this.setStepSound(this.soundTypeWood);
 	}
 
 	@Override

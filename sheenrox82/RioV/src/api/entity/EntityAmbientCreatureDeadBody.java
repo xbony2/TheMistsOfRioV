@@ -7,6 +7,8 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 
 public class EntityAmbientCreatureDeadBody extends EntityAmbientCreature
 {
+	public boolean isDeadBody = false;
+	
 	public EntityAmbientCreatureDeadBody(World par1World)
 	{
 		super(par1World);

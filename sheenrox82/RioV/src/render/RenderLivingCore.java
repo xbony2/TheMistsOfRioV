@@ -44,8 +44,13 @@ public class RenderLivingCore extends RenderLiving
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
 	{
 		render((EntityMobDeadBody)par1Entity, par2, par4, par6, par8, par9);
-		this.func_147906_a((EntityLiving)par1Entity, renderName1, par2, par4, par6, 64);
-		this.func_147906_a((EntityLiving)par1Entity, "Faction: " + renderName2, par2, par4 - 0.25d, par6, 64);
+		EntityMobDeadBody mob = (EntityMobDeadBody)par1Entity;
+
+		if(!mob.isDeadBody)
+		{
+			this.func_147906_a((EntityLiving)par1Entity, renderName1, par2, par4, par6, 64);
+			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + renderName2, par2, par4 - 0.25d, par6, 64);
+		}
 	}
 
 	public void doRenderLiving(Entity var1, double var2, double var4, double var6, float var8, float var9)
@@ -70,17 +75,17 @@ public class RenderLivingCore extends RenderLiving
 		{
 			return RioVLib.nizonian;
 		}
-		
+
 		if(entity instanceof EntityHellhound)
 		{
 			return RioVLib.hellhound;
 		}
-		
+
 		if(entity instanceof EntityWoodElf)
 		{
 			return RioVLib.wood_elf;
 		}
-		
+
 		return null;
 	}
 }

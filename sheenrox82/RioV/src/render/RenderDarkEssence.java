@@ -12,6 +12,7 @@ import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,8 +30,13 @@ public class RenderDarkEssence extends RenderBiped
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
 	{
 		this.func_82418_a((EntityDarkEssence)par1Entity, par2, par4, par6, par8, par9);
-		this.func_147906_a((EntityLiving)par1Entity, "The Darkness", par2, par4, par6, 64);
-		this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+		EntityDarkEssence mob = (EntityDarkEssence)par1Entity;
+
+		if(!mob.isDeadBody)
+		{
+			this.func_147906_a((EntityLiving)par1Entity, "The Darkness", par2, par4, par6, 64);
+			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+		}
 	}
 
 
@@ -54,7 +60,7 @@ public class RenderDarkEssence extends RenderBiped
 	{
 		this.func_82418_a((EntityDarkEssence)par1EntityLiving, par2, par4, par6, par8, par9);
 	}
-	
+
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) 
 	{

@@ -17,6 +17,7 @@ public class BlockCoreOne extends Block
 	public BlockCoreOne()
 	{
 		super(Material.rock);
+		this.setHardness(5.0F);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 	

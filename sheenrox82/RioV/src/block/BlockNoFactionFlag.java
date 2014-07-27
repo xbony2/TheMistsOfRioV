@@ -15,12 +15,12 @@ import sheenrox82.RioV.src.util.Util;
 
 public class BlockNoFactionFlag extends BlockContainer 
 {
-	
 	public BlockNoFactionFlag() 
 	{
 		super(Material.wood);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
+		this.setStepSound(this.soundTypeWood);
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class BlockNoFactionFlag extends BlockContainer
 	{
 		return 70;
 	}
-	
+
 	@Override
 	public boolean isOpaqueCube()
 	{
@@ -52,7 +52,7 @@ public class BlockNoFactionFlag extends BlockContainer
 	{
 		return this.blockIcon;
 	}
-	
+
 	public void registerBlockIcons(IIconRegister icon) 
 	{
 		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));

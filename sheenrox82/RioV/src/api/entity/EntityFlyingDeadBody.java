@@ -7,6 +7,8 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 
 public class EntityFlyingDeadBody extends EntityFlying
 {
+	public boolean isDeadBody = false;
+
 	public EntityFlyingDeadBody(World par1World)
 	{
 		super(par1World);

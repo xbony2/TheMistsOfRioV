@@ -30,6 +30,7 @@ import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityAltruEssence extends EntityMob
@@ -118,5 +119,13 @@ public class EntityAltruEssence extends EntityMob
 	protected boolean isValidLightLevel()
 	{
 		return true;
+	}
+	
+	public boolean isDeadBody = false;
+
+	@Override
+	public void onDeath(DamageSource par1DamageSource)
+	{
+		this.isDeadBody = true;
 	}
 }

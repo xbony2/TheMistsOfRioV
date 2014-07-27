@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
+import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.lib.RioVLib;
@@ -35,14 +36,24 @@ public class RenderBossCore extends RenderLiving
 
 		if(par1Entity instanceof EntityDemonAngel)
 		{
-			this.func_147906_a((EntityLiving)par1Entity, "Demon Angel", par2, par4, par6, 64);
-			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+			EntityDemonAngel mob = (EntityDemonAngel)par1Entity;
+
+			if(!mob.isDeadBody)
+			{
+				this.func_147906_a((EntityLiving)par1Entity, "Demon Angel", par2, par4, par6, 64);
+				this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+			}
 		}
 
 		if(par1Entity instanceof EntityTerron)
 		{
-			this.func_147906_a((EntityLiving)par1Entity, "Terron", par2, par4, par6, 64);
-			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+			EntityTerron mob = (EntityTerron)par1Entity;
+
+			if(!mob.isDeadBody)
+			{
+				this.func_147906_a((EntityLiving)par1Entity, "Terron", par2, par4, par6, 64);
+				this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+			}
 		}
 
 		doRenderLiving((EntityLiving)par1Entity, par2, par4, par6, par8, par9);

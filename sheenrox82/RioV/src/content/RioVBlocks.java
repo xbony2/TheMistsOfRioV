@@ -53,38 +53,38 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RioVBlocks 
 {
-	public static Block onyxOre = new BlockCoreOne().setHardness(3.5F).setBlockName("onyxOre");
-	public static Block garnetOre = new BlockCoreOne().setHardness(2.5F).setBlockName("garnetOre");
+	public static Block onyxOre = new BlockCoreOne().setBlockName("onyxOre");
+	public static Block garnetOre = new BlockCoreOne().setBlockName("garnetOre");
 	public static Block infuser = new BlockInfuser(true).setHardness(1.0F).setBlockName("infuser");
-	public static Block slate = new BlockCoreOne().setHardness(2.5F).setBlockName("slate");
-	public static Block nironiteOre = new BlockCoreOne().setHardness(4.5F).setBlockName("nironiteOre");
-	public static Block dragonOre = new BlockCoreOne().setHardness(12.5F).setBlockName("dragonOre");
-	public static Block netherCrystal = new BlockCoreOne().setHardness(2.5F).setBlockName("netherCrystal");
+	public static Block slate = new BlockCoreOne().setBlockName("slate");
+	public static Block nironiteOre = new BlockCoreOne().setBlockName("nironiteOre");
+	public static Block dragonOre = new BlockCoreOne().setBlockName("dragonOre");
+	public static Block netherCrystal = new BlockCoreOne().setBlockName("netherCrystal");
 	public static Block bloodRock = new BlockBloodRock().setHardness(3F).setBlockName("bloodRock");
 	public static Block blackDuriiPlant = new BlockPlantCore().setHardness(0.2F).setBlockName("blackDuriiPlant");
 	public static Block tomatoPlant = new BlockPlantCore().setHardness(0.3F).setBlockName("tomatoPlant");
 	public static Block grapePlant = new BlockPlantCore().setHardness(0.3F).setBlockName("grapePlant");
-	public static Block onyxBlock = new BlockCoreOne().setHardness(3F).setBlockName("onyxBlock");
-	public static Block amethystBlock = new BlockCoreOne().setHardness(3F).setBlockName("amethystBlock");
-	public static Block garnetBlock = new BlockCoreOne().setHardness(3F).setBlockName("garnetBlock");
-	public static Block nironiteBlock = new BlockCoreOne().setHardness(3F).setBlockName("nironiteBlock");
-	public static Block dragonBlock = new BlockCoreOne().setHardness(3F).setBlockName("dragonBlock");
+	public static Block onyxBlock = new BlockCoreOne().setBlockName("onyxBlock");
+	public static Block amethystBlock = new BlockCoreOne().setBlockName("amethystBlock");
+	public static Block garnetBlock = new BlockCoreOne().setBlockName("garnetBlock");
+	public static Block nironiteBlock = new BlockCoreOne().setBlockName("nironiteBlock");
+	public static Block dragonBlock = new BlockCoreOne().setBlockName("dragonBlock");
 	public static Block plankColored = new BlockPlanks().setHardness(3F).setBlockName("plankColored");
-	public static Block glimmerwoodPlanks = new BlockCoreOne().setHardness(3F).setBlockName("glimmerwoodPlanks");
-	public static Block cherryPlanks = new BlockCoreOne().setHardness(3F).setBlockName("cherryPlanks");
-	public static Block skywoodPlanks = new BlockCoreOne().setHardness(3F).setBlockName("skywoodPlanks");
-	public static Block bloodPlanks = new BlockCoreOne().setHardness(3F).setBlockName("bloodPlanks");
+	public static Block glimmerwoodPlanks = new BlockCoreOne().setBlockName("glimmerwoodPlanks");
+	public static Block cherryPlanks = new BlockCoreOne().setBlockName("cherryPlanks");
+	public static Block skywoodPlanks = new BlockCoreOne().setBlockName("skywoodPlanks");
+	public static Block bloodPlanks = new BlockCoreOne().setBlockName("bloodPlanks");
 	public static Block pepperPlant = new BlockPlantCore().setHardness(0.2F).setBlockName("pepperPlant");
-	public static Block amethystOre = new BlockCoreOne().setHardness(2.5F).setBlockName("amethystOre");
-	public static Block lamp = new BlockCoreOne().setHardness(3F).setLightLevel(0.7F).setBlockName("lamp");
+	public static Block amethystOre = new BlockCoreOne().setBlockName("amethystOre");
+	public static Block lamp = new BlockCoreOne().setLightLevel(0.7F).setBlockName("lamp");
 	public static Block blackQuartz = new BlockBlackQuartz().setHardness(3F).setBlockName("blackQuartz");
 	public static Block blueFlower = new BlockPlantCore().setBlockName("blueFlower");
 	public static Block blindOasisPortal = new BlockBlindOasisPortal().setHardness(Float.MAX_VALUE).setBlockName("blindOasisPortal");
 	public static Block blackFire = new BlockBlackFire().setBlockName("blackFire");
-	public static Block blindoniteOre = new BlockCoreOne().setHardness(3F).setLightLevel(1.0F).setBlockName("blindoniteOre");
-	public static Block blackRock = new BlockCoreOne().setHardness(3F).setBlockName("blackRock");
-	public static Block whiteStone = new BlockCoreOne().setHardness(3F).setBlockName("whiteStone");
-	public static Block blindoniteBlock = new BlockCoreOne().setHardness(3F).setBlockName("blindoniteBlock");
+	public static Block blindoniteOre = new BlockCoreOne().setLightLevel(1.0F).setBlockName("blindoniteOre");
+	public static Block blackRock = new BlockCoreOne().setBlockName("blackRock");
+	public static Block whiteStone = new BlockCoreOne().setBlockName("whiteStone");
+	public static Block blindoniteBlock = new BlockCoreOne().setBlockName("blindoniteBlock");
 	public static Block glimmerwoodLeaf = new BlockRioVLeaf().setBlockName("glimmerwoodLeaf");
 	public static Block glimmerwoodLog = new BlockGlimmerwoodLog().setHardness(3F).setBlockName("glimmerwoodLog");
 	public static Block glimmerwoodSapling = new BlockRioVSapling().setBlockName("glimmerwoodSapling");
@@ -96,7 +96,7 @@ public class RioVBlocks
 	public static Block vraviniteOre = new BlockCoreOne().setHardness(16.5F).setBlockName("vraviniteOre");
 	public static Block glimmerwoodFence = new BlockRioVFence("glimmerwoodPlanks").setHardness(1.5F).setBlockName("glimmerwoodFence");
 	public static Block glimmerwoodFenceGate = new BlockRioVFenceGate().setHardness(1.5F).setBlockName("glimmerwoodFenceGate");
-	public static Block glimmerRock = new BlockCoreOne().setHardness(3F).setBlockName("glimmerRock");
+	public static Block glimmerRock = new BlockCoreOne().setBlockName("glimmerRock");
 	public static Block glimmerwoodDoor = new BlockRioVDoor().setHardness(3F).setBlockName("glimmerwoodDoor");
 	public static Block glimmerwoodLadder = new BlockRioVLadder().setHardness(3F).setBlockName("glimmerwoodLadder");
 	public static Block glimmerwoodTrapdoor = new BlockRioVTrapDoor().setHardness(1.5F).setBlockName("glimmerwoodTrapdoor");
@@ -106,8 +106,8 @@ public class RioVBlocks
 	public static Block flamonorRock = new BlockCoreOne().setHardness(2.5F).setBlockName("flamonorRock");
 	public static Block redFire = new BlockRedFire().setBlockName("redFire");
 	public static Block drakiuzOre = new BlockCoreOne().setHardness(20.8F).setBlockName("drakiuzOre");
-	public static Block slateCobble = new BlockCoreOne().setHardness(3F).setBlockName("slateCobble");
-	public static Block slateBricks = new BlockCoreOne().setHardness(3F).setBlockName("slateBricks");
+	public static Block slateCobble = new BlockCoreOne().setBlockName("slateCobble");
+	public static Block slateBricks = new BlockCoreOne().setBlockName("slateBricks");
 	public static Block cherryLeaf = new BlockRioVLeaf().setHardness(0.3F).setBlockName("cherryLeaf");
 	public static Block cherryLog = new BlockCherryLog().setHardness(3F).setBlockName("cherryLog");
 	public static Block cherryBlossomSapling = new BlockRioVSapling().setBlockName("cherryBlossomSapling");
@@ -126,7 +126,7 @@ public class RioVBlocks
 	public static Block sanctuatiteFire = new BlockSanctuatiteFire().setBlockName("sanctuatiteFire");
 	public static Block sanctuatiteGrass = new BlockSanctuatiteGrass().setBlockName("sanctuatiteGrass");
 	public static Block sanctuatiteDirt = new BlockDirt().setHardness(0.3f).setStepSound(Block.soundTypeGrass).setBlockName("sanctuatiteDirt");
-	public static Block sanctuaryStone = new BlockCoreOne().setHardness(1.5F).setBlockName("sanctuaryStone");
+	public static Block sanctuaryStone = new BlockCoreOne().setBlockName("sanctuaryStone");
 	public static Block skycloud = new BlockSkycloud().setBlockName("skycloud");
 	public static Block skywoodLog = new BlockSkywoodLog().setHardness(3F).setBlockName("skywoodLog");
 	public static Block skywoodSapling = new BlockRioVSapling().setBlockName("sanctuaryTreeSapling");
@@ -153,13 +153,13 @@ public class RioVBlocks
 	public static Block bush = new BlockBush().setBlockName("bush");
 	public static Block bloodBerryBush = new BlockBush().setBlockName("bloodBerryBush");
 	public static Block jaavikOre = new BlockCoreOne().setHardness(10.5F).setBlockName("jaavikOre");
-	public static Block jaavikBlock = new BlockCoreOne().setHardness(3F).setBlockName("jaavikBlock");
+	public static Block jaavikBlock = new BlockCoreOne().setBlockName("jaavikBlock");
 	public static Block steamingBloodDeposit = new BlockBloodRock().setHardness(1.5F).setBlockName("steamingBloodDeposit");
-	public static Block alerisBlock = new BlockCoreOne().setHardness(3F).setBlockName("alerisBlock");
-	public static Block drakiuzBlock = new BlockCoreOne().setHardness(3F).setBlockName("drakiuzBlock");
+	public static Block alerisBlock = new BlockCoreOne().setBlockName("alerisBlock");
+	public static Block drakiuzBlock = new BlockCoreOne().setBlockName("drakiuzBlock");
 	public static Block crackedSlateBricks = new BlockCoreOne().setHardness(1.5F).setBlockName("crackedSlateBricks");
 	public static Block bricks = new BlockBricks().setHardness(1.5F).setBlockName("bricks");
-	public static Block vraviniteBlock = new BlockCoreOne().setHardness(3F).setBlockName("vraviniteBlock");
+	public static Block vraviniteBlock = new BlockCoreOne().setBlockName("vraviniteBlock");
 	public static Block stainedGlass = new BlockStainedGlass().setHardness(3F).setBlockName("stainedGlass");
 	public static Block bloodFlower = new BlockPlantCore().setBlockName("bloodFlower");
 	public static Block paleBush = new BlockBush().setBlockName("paleBush");
@@ -167,9 +167,6 @@ public class RioVBlocks
 	public static Block glimmerTallGrass = new BlockPlantCore().setBlockName("glimmerTallGrass");
 	public static Block sanctuatiteTallGrass = new BlockPlantCore().setBlockName("sanctuatiteTallGrass");
 	public static Block bloodTallGrass = new BlockPlantCore().setBlockName("bloodTallGrass");
-
-	//v2.3.0
-	//The Flora Update
 	public static Block fakeBloodBerryBush = new BlockBush().setBlockName("fakeBloodBerryBush");
 	public static Block glimmerBush = new BlockBush().setBlockName("glimmerBush");
 	public static Block glimmerBerryBush = new BlockBush().setBlockName("glimmerBerryBush");
@@ -183,7 +180,7 @@ public class RioVBlocks
 	public static Block noFacFlag = new BlockNoFactionFlag().setHardness(3F).setBlockName("noFactionFlag");
 	public static Block raetiinFlag = new BlockRaetiinFlag().setHardness(3F).setBlockName("raetiinFlag");
 	public static Block jaerinFlag = new BlockJaerinFlag().setHardness(3F).setBlockName("jaerinFlag");
-	
+
 	public static void add()
 	{	
 		RioVAPIUtil.registerBlock(noFacFlag, "No Faction Flag");

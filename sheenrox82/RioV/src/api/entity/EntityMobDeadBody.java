@@ -12,6 +12,7 @@ public class EntityMobDeadBody extends EntityMob
 	public int countdown;
 	public boolean justJumped;
 	public static ItemStack defaultHeldItem;
+	public boolean isDeadBody = false;
 
 	public EntityMobDeadBody(World par1World)
 	{
@@ -32,7 +33,7 @@ public class EntityMobDeadBody extends EntityMob
 			++this.deathTime;
 			int i;
 			i = this.getExperiencePoints(this.attackingPlayer);
-
+			this.isDeadBody = true;
 			if (this.deathTime == 20)
 			{
 				if (!this.worldObj.isRemote && (this.recentlyHit > 0 || this.isPlayer()) && !this.isChild() && this.worldObj.getGameRules().getGameRuleBooleanValue("doMobLoot"))

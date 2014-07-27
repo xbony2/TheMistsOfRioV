@@ -45,7 +45,7 @@ import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 import sheenrox82.RioV.src.gui.hud.GuiEosBar;
-import sheenrox82.RioV.src.gui.hud.GuiReputationBar;
+import sheenrox82.RioV.src.gui.hud.GuiReputationMeter;
 import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.model.ModelDemonAngel;
 import sheenrox82.RioV.src.model.ModelDragonWings;
@@ -139,7 +139,7 @@ public class ClientProxy extends CommonProxy
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfuser.class, new RenderTileEntityInfuser());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAltru.class, new RenderAltru());
 		MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
-		MinecraftForge.EVENT_BUS.register(new GuiReputationBar(Minecraft.getMinecraft()));
+		MinecraftForge.EVENT_BUS.register(new GuiReputationMeter(Minecraft.getMinecraft()));
 		
 		RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 	}

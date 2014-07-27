@@ -81,7 +81,6 @@ public class EntityAltru extends EntityBossCore
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);

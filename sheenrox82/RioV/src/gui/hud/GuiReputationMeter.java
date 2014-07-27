@@ -18,11 +18,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class GuiReputationBar extends Gui
+public class GuiReputationMeter extends Gui
 {
 	public Minecraft mc;
 
-	public GuiReputationBar(Minecraft mc)
+	public GuiReputationMeter(Minecraft mc)
 	{
 		super();
 		this.mc = mc;

@@ -24,6 +24,7 @@ import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import sheenrox82.RioV.src.tileentity.TileEntityJaerinFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityNoFactionFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityRaetiinFlag;
+import sheenrox82.RioV.src.tileentity.TileEntityTable;
 import sheenrox82.RioV.src.world.WorldGen;
 import sheenrox82.RioV.src.world.provider.WorldProviderBlindOasis;
 import sheenrox82.RioV.src.world.provider.WorldProviderFlamonor;
@@ -83,7 +84,8 @@ public class Registry
 		GameRegistry.registerTileEntity(TileEntityNoFactionFlag.class, "No Faction Flag");
 		GameRegistry.registerTileEntity(TileEntityRaetiinFlag.class, "Raetiin Flag");
 		GameRegistry.registerTileEntity(TileEntityJaerinFlag.class, "Jaerin Flag");
-		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
+		GameRegistry.registerTileEntity(TileEntityTable.class, "Table");
+		GameRegistry.registerWorldGenerator(new WorldGen(), 5);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.vaerynID, WorldProviderVaeryn.class);
