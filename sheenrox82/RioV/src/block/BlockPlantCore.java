@@ -24,7 +24,6 @@ public class BlockPlantCore extends BlockFlower
 	public BlockPlantCore()
 	{
 		super(0);
-		this.setHardness(0.3F);
 		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(null);
 	}

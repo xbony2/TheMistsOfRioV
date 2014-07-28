@@ -159,7 +159,7 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected String getLivingSound()
@@ -168,23 +168,27 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 		{
 			return Sounds.exhale.getPrefixedName();
 		}
-		
+
 		return null;
 	}
-	
+
 	@Override
 	protected String getHurtSound()
 	{
 		return Sounds.pain.getPrefixedName();
 	}
-	
+
 	@Override
 	public boolean interact(EntityPlayer par1EntityPlayer)
-    {
-		par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
+	{
+		if(!this.isDeadBody)
+		{
+			par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
+
+			if(!this.worldObj.isRemote)
+				par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
+		}
 		
-		if(!this.worldObj.isRemote)
-			par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		return true;
-    }
+	}
 }

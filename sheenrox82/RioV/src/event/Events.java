@@ -9,6 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -228,7 +229,7 @@ public class Events
 	}
 
 	@SubscribeEvent
-	public void onBurnDamage(LivingAttackEvent event)
+	public void onPlayerDamage(LivingAttackEvent event)
 	{
 		if (event.entity instanceof EntityPlayer) 
 		{

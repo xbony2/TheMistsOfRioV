@@ -69,7 +69,7 @@ public class EntityAdv extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySoverianOfficer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPaladin.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-		
+
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEnderman.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhast.class, 0, true));
@@ -244,14 +244,20 @@ public class EntityAdv extends EntityMobDeadBody
 
 	@Override
 	public boolean interact(EntityPlayer par1EntityPlayer)
-    {
-		par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
+	{
+		if(!this.isDeadBody)
+		{
+			par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
+
+			if(!this.worldObj.isRemote)
+				par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
+			
+			return true;
+		}
 		
-		if(!this.worldObj.isRemote)
-			par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		return true;
-    }
-	
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	protected String getLivingSound()
@@ -260,7 +266,7 @@ public class EntityAdv extends EntityMobDeadBody
 		{
 			return Sounds.exhale.getPrefixedName();
 		}
-		
+
 		return null;
 	}
 }

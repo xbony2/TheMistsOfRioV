@@ -180,7 +180,6 @@ public class WorldGen implements IWorldGenerator
 		int d, y;
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		WorldGenCherryBlossomTree tree = new WorldGenCherryBlossomTree(false);
-		WorldGenGiantTree hugeTree = new WorldGenGiantTree(false, 100, 0, 0, 0);
 
 		if(world.getWorldInfo().getTerrainType() == WorldType.DEFAULT || world.getWorldInfo().getTerrainType() == WorldType.LARGE_BIOMES || world.getWorldInfo().getTerrainType() == WorldType.AMPLIFIED)
 		{
@@ -206,15 +205,15 @@ public class WorldGen implements IWorldGenerator
 				int var7 = blockZ + rand.nextInt(16);
 				int var8 = world.getHeightValue(var6, var7);
 
-				new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.tomatoPlant).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.grapePlant).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.pepperPlant).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.blueFlower).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.blueBerryBush).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.blackBerryBush).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.raspBerryBush).generate(world, rand, var6, var7, var8);
-				new WorldGenBalance(RioVBlocks.strawberryBush).generate(world, rand, var6, var7, var8);
+				new WorldGenBalance(RioVBlocks.blackDuriiPlant).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.tomatoPlant).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.grapePlant).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.pepperPlant).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.blueFlower).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.blueBerryBush).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.blackBerryBush).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.raspBerryBush).generate(world, rand, var6, var8, var7);
+				new WorldGenBalance(RioVBlocks.strawberryBush).generate(world, rand, var6, var8, var7);
 			}
 
 			if((biome instanceof BiomeGenForest)) 
@@ -236,17 +235,6 @@ public class WorldGen implements IWorldGenerator
 					int k = blockZ + rand.nextInt(16);
 					int j = world.getHeightValue(i, k);
 					tree.generate(world, rand, i, j, k);
-				}
-			}
-
-			if((biome instanceof BiomeGenCanopyOasis)) 
-			{
-				for(int x = 0; x < 2; x++)
-				{
-					int i = blockX + rand.nextInt(16);
-					int k = blockZ + rand.nextInt(16);
-					int j = world.getHeightValue(i, k);
-					hugeTree.generate(world, rand, i, j, k);
 				}
 			}
 		}
