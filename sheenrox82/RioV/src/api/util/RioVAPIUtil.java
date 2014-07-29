@@ -1,13 +1,9 @@
 package sheenrox82.RioV.src.api.util;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.UUID;
 
-import sheenrox82.RioV.src.api.base.RioVAPI;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -261,18 +257,9 @@ public class RioVAPIUtil
 			return "";
 		}
 	}
-
-	public String getRioVPlayerFaction(String faction)
+	
+	public UUID getPlayerUUID(EntityPlayer entityplayer)
 	{
-		try
-		{
-			Class riovPlayer = Class.forName("sheenrox82.RioV.src.api.util.RioVPlayer");
-			String facToGet = (String)riovPlayer.getDeclaredField(faction).get(null);
-			return facToGet;
-		}
-		catch(Exception e)
-		{
-			return "";
-		}
+		return entityplayer.getUniqueID();
 	}
 }

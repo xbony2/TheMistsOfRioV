@@ -72,9 +72,10 @@ public class RioVPlayer implements IExtendedEntityProperties
 		properties.setInteger("CurrentRep", player.getDataWatcher().getWatchableObjectInt(REP_WATCHER));
 		properties.setInteger("MinRep", minRep);
 		properties.setInteger("MaxRep", maxRep);
-
+		properties.setInteger("DefaultRep", defaultRep);
 		properties.setInteger("FactionID", factionID);
 		properties.setString("FactionName", factionName);
+		
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
 
@@ -88,7 +89,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 		player.getDataWatcher().updateObject(REP_WATCHER, properties.getInteger("CurrentRep"));
 		minRep = properties.getInteger("MinRep");
 		maxRep = properties.getInteger("MaxRep");
-
+		defaultRep = properties.getInteger("DefaultRep");
 		factionID = properties.getInteger("FactionID");
 		factionName = properties.getString("FactionName");
 	}
@@ -191,7 +192,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 
 	private static final String getSaveKey(EntityPlayer player) 
 	{
-		return player.getDisplayName() + ":" + EXT_PROP_NAME;
+		return RioVAPI.getInstance().getUtil().getPlayerUUID(player) + ":" + EXT_PROP_NAME;
 	}
 
 	public static final void saveProxyData(EntityPlayer player)
