@@ -24,7 +24,6 @@ import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import sheenrox82.RioV.src.tileentity.TileEntityJaerinFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityNoFactionFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityRaetiinFlag;
-import sheenrox82.RioV.src.tileentity.TileEntityTable;
 import sheenrox82.RioV.src.world.WorldGen;
 import sheenrox82.RioV.src.world.provider.WorldProviderBlindOasis;
 import sheenrox82.RioV.src.world.provider.WorldProviderFlamonor;
@@ -55,16 +54,9 @@ public class Registry
 		data.name = Util.MOD_NAME;
 		data.logoFile = "/assets/riov/textures/misc/RioV.png";
 		data.version = (Util.VERSION);
-		data.url = "http://www.minecraftforum.net/members/sheenrox82/";
-		data.authorList = Arrays.asList(Util.DEVELOPERS);
-		data.description = Util.MOD_NAME + " - The imagined world is called RioV, " +
-				"in the year of 1301 DoC (Death of Carigon.), the land of RioV is " +
-				"filled with Nizonians. A native creature that are basically giant beasts. " +
-				"In 1278 DoC the Natives found a new threat across the land called humans, " +
-				"another wild creature. Since then, the races have been weakened and new races have " +
-				"arrived, such as the dark elves. There is a myth that in 1610 a monster called a " +
-				"Soverian Overlord will destroy the land of RioV and leave it in ashes. " +
-				"This is The Mists of RioV.";
+		data.url = "http://www.redthirddivision.com";
+		data.authorList = Arrays.asList(Util.COMPANY);
+		data.description = Util.MOD_NAME + " - An RPG-esque mod based on a world sheenrox82 created 5+ years ago.";
 		RioVAPI.getInstance().getLogger().info("mcmod.info data initiated.");
 		Config.initialize(initEvent);
 		syncConfig();
@@ -84,7 +76,6 @@ public class Registry
 		GameRegistry.registerTileEntity(TileEntityNoFactionFlag.class, "No Faction Flag");
 		GameRegistry.registerTileEntity(TileEntityRaetiinFlag.class, "Raetiin Flag");
 		GameRegistry.registerTileEntity(TileEntityJaerinFlag.class, "Jaerin Flag");
-		GameRegistry.registerTileEntity(TileEntityTable.class, "Table");
 		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);

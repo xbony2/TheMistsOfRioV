@@ -175,7 +175,7 @@ public class Events
 		{
 			EntityPlayer entityplayer = (EntityPlayer)event.source.getEntity();
 			RioVPlayer player = RioVPlayer.get(entityplayer);
-			
+
 			if(event.entityLiving instanceof EntityAunTunMinion || event.entityLiving instanceof EntityAunTunBodyguard || event.entityLiving instanceof EntityBloodGhoul || 
 					event.entityLiving instanceof EntityDarkElf || event.entityLiving instanceof EntityHellhound || event.entityLiving instanceof EntityShadow || 
 					event.entityLiving instanceof EntitySkeletalHorse || event.entityLiving instanceof EntitySoverianOfficer || event.entityLiving instanceof EntityTefGuard || 
@@ -193,6 +193,8 @@ public class Events
 			}
 		}
 	}
+
+	public int regenTimer;
 
 	@SubscribeEvent
 	public void playerUpdate(LivingEvent.LivingUpdateEvent event)
@@ -223,6 +225,20 @@ public class Events
 			{
 				player.setFactionID(player.raetiinID);
 				player.setFactionName(player.raetiinName);
+			}
+			
+			if(!entityplayer.capabilities.isCreativeMode)
+			{
+				if(player.getCurrentEos() < player.getMaxEos())
+				{
+					++regenTimer;
+
+					if(regenTimer > 100)
+					{
+						player.consumeEos(-1);
+						regenTimer = 0;
+					}
+				}
 			}
 		}
 	}
@@ -260,7 +276,7 @@ public class Events
 		{
 			EntityPlayer player = (EntityPlayer)event.target;
 			RioVPlayer riov = RioVPlayer.get(player);
-			
+
 			if(riov.factionID == riov.raetiinID)
 			{
 				if(event.entity instanceof EntityAunTunMinion)
@@ -384,7 +400,7 @@ public class Events
 					String playerMsg = "[" + riovPlayer.getFactionName() + Color.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 					String devMsg = Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.white + " [" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 
-					if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]))
+					if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]) || player.getDisplayName().equals(Util.DEVELOPERS[2]))
 					{
 						target.addChatMessage(new ChatComponentTranslation(devMsg));
 					}
