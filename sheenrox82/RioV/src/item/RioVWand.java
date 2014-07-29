@@ -53,46 +53,49 @@ public class RioVWand extends Item
 		{
 			if(!world.isRemote)
 			{
-				if (this.firetick == this.firemax && this.firemax != 0)
+				if(player.getCurrentEos() >= 2)
 				{
-					Vec3 look = entityplayer.getLookVec();
-					EntityLargeFireball fireball2 = new EntityLargeFireball(world, entityplayer, 1, 1, 1);
-					fireball2.setPosition(
-							entityplayer.posX + look.xCoord * 5,
-							entityplayer.posY + look.yCoord * 5,
-							entityplayer.posZ + look.zCoord * 5);
-					fireball2.accelerationX = look.xCoord * 0.1;
-					fireball2.accelerationY = look.yCoord * 0.1;
-					fireball2.accelerationZ = look.zCoord * 0.1;
-					world.spawnEntityInWorld(fireball2);
-
-					if(entityplayer.capabilities.isCreativeMode == false)
+					if (this.firetick == this.firemax && this.firemax != 0)
 					{
-						player.consumeEos(2);
+						Vec3 look = entityplayer.getLookVec();
+						EntityLargeFireball fireball2 = new EntityLargeFireball(world, entityplayer, 1, 1, 1);
+						fireball2.setPosition(
+								entityplayer.posX + look.xCoord * 5,
+								entityplayer.posY + look.yCoord * 5,
+								entityplayer.posZ + look.zCoord * 5);
+						fireball2.accelerationX = look.xCoord * 0.1;
+						fireball2.accelerationY = look.yCoord * 0.1;
+						fireball2.accelerationZ = look.zCoord * 0.1;
+						world.spawnEntityInWorld(fireball2);
+
+						if(entityplayer.capabilities.isCreativeMode == false)
+						{
+							player.consumeEos(2);
+						}
+
+						itemstack.damageItem(1, entityplayer);
+						this.firetick = 0;
+					}
+					else
+					{
+						++this.firetick;
 					}
 
-					itemstack.damageItem(1, entityplayer);
-					this.firetick = 0;
-				}
-				else
-				{
-					++this.firetick;
-				}
+					if (this.firemax == 0)
+					{
+						Vec3 look = entityplayer.getLookVec();
+						EntityLargeFireball fireball2 = new EntityLargeFireball(world, entityplayer, 1, 1, 1);
+						fireball2.setPosition(
+								entityplayer.posX + look.xCoord * 5,
+								entityplayer.posY + look.yCoord * 5,
+								entityplayer.posZ + look.zCoord * 5);
+						fireball2.accelerationX = look.xCoord * 0.1;
+						fireball2.accelerationY = look.yCoord * 0.1;
+						fireball2.accelerationZ = look.zCoord * 0.1;
+						world.spawnEntityInWorld(fireball2);
 
-				if (this.firemax == 0)
-				{
-					Vec3 look = entityplayer.getLookVec();
-					EntityLargeFireball fireball2 = new EntityLargeFireball(world, entityplayer, 1, 1, 1);
-					fireball2.setPosition(
-							entityplayer.posX + look.xCoord * 5,
-							entityplayer.posY + look.yCoord * 5,
-							entityplayer.posZ + look.zCoord * 5);
-					fireball2.accelerationX = look.xCoord * 0.1;
-					fireball2.accelerationY = look.yCoord * 0.1;
-					fireball2.accelerationZ = look.zCoord * 0.1;
-					world.spawnEntityInWorld(fireball2);
-
-					itemstack.damageItem(1, entityplayer);
+						itemstack.damageItem(1, entityplayer);
+					}
 				}
 			}
 		}
@@ -101,28 +104,31 @@ public class RioVWand extends Item
 		{
 			if(!world.isRemote)
 			{
-				if (this.firetick == this.firemax && this.firemax != 0)
+				if(player.getCurrentEos() >= 2)
 				{
-					world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
-
-					if(entityplayer.capabilities.isCreativeMode == false)
+					if (this.firetick == this.firemax && this.firemax != 0)
 					{
-						player.consumeEos(2);
+						world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
+
+						if(entityplayer.capabilities.isCreativeMode == false)
+						{
+							player.consumeEos(2);
+						}
+
+						itemstack.damageItem(1, entityplayer);
+						this.firetick = 0;
+					}
+					else
+					{
+						++this.firetick;
 					}
 
-					itemstack.damageItem(1, entityplayer);
-					this.firetick = 0;
-				}
-				else
-				{
-					++this.firetick;
-				}
+					if (this.firemax == 0)
+					{
+						world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
 
-				if (this.firemax == 0)
-				{
-					world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
-
-					itemstack.damageItem(1, entityplayer);
+						itemstack.damageItem(1, entityplayer);
+					}
 				}
 			}
 		}
