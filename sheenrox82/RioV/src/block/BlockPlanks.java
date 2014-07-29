@@ -24,6 +24,8 @@ public class BlockPlanks extends Block
 	public BlockPlanks()
 	{
 		super(Material.wood);
+		this.setStepSound(this.soundTypeWood);
+		this.setHardness(1.6f);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 

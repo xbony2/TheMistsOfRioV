@@ -69,11 +69,11 @@ public class RioVBlocks
 	public static Block garnetBlock = new BlockCoreOne().setBlockName("garnetBlock");
 	public static Block nironiteBlock = new BlockCoreOne().setBlockName("nironiteBlock");
 	public static Block dragonBlock = new BlockCoreOne().setBlockName("dragonBlock");
-	public static Block plankColored = new BlockPlanks().setHardness(3F).setBlockName("plankColored");
-	public static Block glimmerwoodPlanks = new BlockCoreOne().setBlockName("glimmerwoodPlanks");
-	public static Block cherryPlanks = new BlockCoreOne().setBlockName("cherryPlanks");
-	public static Block skywoodPlanks = new BlockCoreOne().setBlockName("skywoodPlanks");
-	public static Block bloodPlanks = new BlockCoreOne().setBlockName("bloodPlanks");
+	public static Block plankColored = new BlockPlanks().setBlockName("plankColored");
+	public static Block glimmerwoodPlanks = new BlockCoreOne().setStepSound(Block.soundTypeWood).setHardness(1.6f).setBlockName("glimmerwoodPlanks");
+	public static Block cherryPlanks = new BlockCoreOne().setStepSound(Block.soundTypeWood).setHardness(1.6f).setBlockName("cherryPlanks");
+	public static Block skywoodPlanks = new BlockCoreOne().setStepSound(Block.soundTypeWood).setHardness(1.6f).setBlockName("skywoodPlanks");
+	public static Block bloodPlanks = new BlockCoreOne().setStepSound(Block.soundTypeWood).setHardness(1.6f).setBlockName("bloodPlanks");
 	public static Block pepperPlant = new BlockPlantCore().setHardness(0.2F).setBlockName("pepperPlant");
 	public static Block amethystOre = new BlockCoreOne().setBlockName("amethystOre");
 	public static Block lamp = new BlockCoreOne().setLightLevel(0.7F).setBlockName("lamp");
