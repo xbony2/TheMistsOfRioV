@@ -9,7 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.content.RioVBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -93,7 +92,7 @@ public class BlockCoreOne extends Block
 	@Override
 	public int quantityDropped(Random par1Random)
 	{
-		if(this == RioVBlocks.netherCrystal)
+		if(this == RioVAPI.getInstance().getUtil().getRioVBlock("netherCrystal"))
 		{
 			return 4;
 		}
