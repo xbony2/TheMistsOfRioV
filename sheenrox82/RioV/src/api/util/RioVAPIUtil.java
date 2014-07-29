@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -53,12 +54,7 @@ public class RioVAPIUtil
 
 	public static void sendMessageToAll(String message)
 	{
-		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(EnumChatFormatting.GOLD, message));
-	}
-
-	public static void sendMessageToAll(String message, EntityPlayer player)
-	{
-		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(EnumChatFormatting.GOLD, message + player.getDisplayName()));
+		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(addChatMessage(message));
 	}
 
 	public static void registerDimension(int id, Class worldProvider)
