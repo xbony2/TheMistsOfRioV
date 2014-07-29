@@ -180,7 +180,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 		}
 		if (var1 == 3)
 		{
-
+			this.dropItem(Items.string, 3);
 		}
 		if (var1 == 4)
 		{
