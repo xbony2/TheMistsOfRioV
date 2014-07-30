@@ -1,5 +1,6 @@
 package sheenrox82.RioV.src.entity.mob.raetiin.boss;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -87,6 +88,7 @@ public class EntityTerron extends EntityBossCore
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
+
 		if(this.worldObj.isRemote)
 		{
 			RioVAPIUtil.sendMessageToAll("Terron: *Grroowwwwwwwwwlllll*");
@@ -95,7 +97,7 @@ public class EntityTerron extends EntityBossCore
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
+	public void dropFewItems(boolean par1, int par2)
 	{
 		this.dropItem(RioVItems.agonite, 3);
 	}

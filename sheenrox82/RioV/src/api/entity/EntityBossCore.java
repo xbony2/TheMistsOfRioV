@@ -34,6 +34,7 @@ public class EntityBossCore extends EntityMob implements IBossDisplayData
 	@Override
 	public void onDeath(DamageSource par1DamageSource)
 	{
+		super.onDeath(par1DamageSource);
 		this.isDeadBody = true;
 	}
 }
