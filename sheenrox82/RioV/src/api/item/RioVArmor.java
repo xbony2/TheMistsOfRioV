@@ -150,7 +150,7 @@ public class RioVArmor extends ItemArmor
 
 		try 
 		{
-			if(RioVAPI.getInstance().getUtil().getConfigBool("dev") == false)
+			if(RioVAPI.getInstance().getUtil().getConfigBool("dev") == true)
 			{
 				Field fMaxDamageFactor = material.getClass().getDeclaredField("maxDamageFactor");
 				fMaxDamageFactor.setAccessible(true);
