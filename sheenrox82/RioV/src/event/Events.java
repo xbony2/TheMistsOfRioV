@@ -274,7 +274,7 @@ public class Events
 			EntityPlayer player = (EntityPlayer)event.target;
 			RioVPlayer riov = RioVPlayer.get(player);
 
-			if(riov.factionID == riov.raetiinID)
+			if(riov.getFactionID() == riov.raetiinID)
 			{
 				if(event.entity instanceof EntityAunTunMinion)
 				{
@@ -334,7 +334,7 @@ public class Events
 				}
 			}
 
-			if(riov.factionID == riov.jaerinID)
+			if(riov.getFactionID() == riov.jaerinID)
 			{
 				if(event.entity instanceof EntityAdv)
 				{

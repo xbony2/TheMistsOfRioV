@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import org.lwjgl.input.Keyboard;
 
 public class EntityBossCore extends EntityMob implements IBossDisplayData
-{
+{	
 	public boolean isDeadBody = false;
 	
 	public EntityBossCore(World par1World)
@@ -20,21 +20,15 @@ public class EntityBossCore extends EntityMob implements IBossDisplayData
 	}
 
 	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-	}
-	
-	@Override
 	public boolean canDespawn()
 	{
 		return false;
 	}
 	
 	@Override
-	public void onDeath(DamageSource par1DamageSource)
+	public void onDeath(DamageSource var1)
 	{
-		super.onDeath(par1DamageSource);
+		super.onDeath(var1);
 		this.isDeadBody = true;
 	}
 }

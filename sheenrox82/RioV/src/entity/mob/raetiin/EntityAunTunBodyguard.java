@@ -21,6 +21,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
@@ -72,17 +73,17 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 	}
 
 	@Override
-    protected void entityInit()
-    {
-        super.entityInit();
-        this.dataWatcher.addObject(16, new Byte((byte)0));
-    }
-    
+	protected void entityInit()
+	{
+		super.entityInit();
+		this.dataWatcher.addObject(16, new Byte((byte)0));
+	}
+
 	@Override
-    protected boolean isValidLightLevel()
-    {
-        return true;
-    }
+	protected boolean isValidLightLevel()
+	{
+		return true;
+	}
 
 	@Override
 	public void onLivingUpdate()
@@ -93,14 +94,31 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 			{
 				this.attackEntityFrom(DamageSource.drown, 1);
 			}
-
 		}
-		
+
 		super.onLivingUpdate();
 	}
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2)
+	{
+		if(par1Entity instanceof EntityPlayer)
+		{
+			EntityPlayer entityplayer = (EntityPlayer)par1Entity;
+			RioVPlayer player = RioVPlayer.get(entityplayer);
+
+			if(player.getFactionID() != player.raetiinID)
+			{
+				this.attack(par1Entity, par2);
+			}
+		}
+		else
+		{
+			this.attack(par1Entity, par2);
+		}
+	}
+
+	public void attack(Entity par1Entity, float par2)
 	{
 		if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
 		{
@@ -149,7 +167,7 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 			this.hasAttacked = true;
 		}
 	}
-
+	
 	@Override
 	protected void applyEntityAttributes()
 	{
@@ -159,7 +177,7 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-	
+
 	@Override
 	protected String getLivingSound()
 	{

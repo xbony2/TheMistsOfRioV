@@ -6,12 +6,14 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
+import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 
@@ -28,7 +30,6 @@ public class EntityDemonAngel extends EntityBossCore
 		this.isImmuneToFire = true;
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
 		this.experienceValue = 46;
 	}
 
@@ -36,6 +37,7 @@ public class EntityDemonAngel extends EntityBossCore
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);
+		
 		if(this.worldObj.isRemote)
 		{
 			RioVAPIUtil.sendMessageToAll("Demon Angel: Aarrrrrrgghhhhhhhh!");
@@ -79,14 +81,30 @@ public class EntityDemonAngel extends EntityBossCore
 		{
 			this.motionY *= 0.6D;
 		}
-		if (!this.worldObj.isRemote)
-		{
-		}
+		
 		super.onLivingUpdate();
 	}
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2)
+	{
+		if(par1Entity instanceof EntityPlayer)
+		{
+			EntityPlayer entityplayer = (EntityPlayer)par1Entity;
+			RioVPlayer player = RioVPlayer.get(entityplayer);
+
+			if(player.getFactionID() != player.raetiinID)
+			{
+				this.attack(par1Entity, par2);
+			}
+		}
+		else
+		{
+			this.attack(par1Entity, par2);
+		}
+	}
+
+	public void attack(Entity par1Entity, float par2)
 	{
 		if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
 		{
@@ -95,9 +113,9 @@ public class EntityDemonAngel extends EntityBossCore
 		}
 		else if (par2 < 30.0F)
 		{
-			double d0 = par1Entity.posX - this.posX;
-			double d1 = par1Entity.boundingBox.minY + (double)(par1Entity.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
-			double d2 = par1Entity.posZ - this.posZ;
+			double var3 = par1Entity.posX - this.posX;
+			double var5 = par1Entity.boundingBox.minY + (double)(par1Entity.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
+			double var7 = par1Entity.posZ - this.posZ;
 
 			if (this.attackTime == 0)
 			{
@@ -105,7 +123,7 @@ public class EntityDemonAngel extends EntityBossCore
 
 				if (this.field_70846_g == 1)
 				{
-					this.attackTime = 1;
+					this.attackTime = 60;
 				}
 				else if (this.field_70846_g <= 4)
 				{
@@ -113,35 +131,27 @@ public class EntityDemonAngel extends EntityBossCore
 				}
 				else
 				{
-					this.attackTime = 1;
+					this.attackTime = 100;
 					this.field_70846_g = 0;
 				}
 
 				if (this.field_70846_g > 1)
 				{
-					float f1 = MathHelper.sqrt_float(par2) * 0.5F;
+					float var9 = MathHelper.sqrt_float(par2) * 0.5F;
 					this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
 
-					for (int i = 0; i < 1; ++i)
+					for (int var10 = 0; var10 < 1; ++var10)
 					{
-						EntityLargeFireball entitysmallfireball = new EntityLargeFireball(this.worldObj, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
-						entitysmallfireball.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
-						this.worldObj.spawnEntityInWorld(entitysmallfireball);
+						EntitySmallFireball var11 = new EntitySmallFireball(this.worldObj, this, var3 + this.rand.nextGaussian() * (double)var9, var5, var7 + this.rand.nextGaussian() * (double)var9);
+						var11.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
+						this.worldObj.spawnEntityInWorld(var11);
 					}
 				}
 			}
 
-			this.rotationYaw = (float)(Math.atan2(d2, d0) * 180.0D / Math.PI) - 90.0F;
+			this.rotationYaw = (float)(Math.atan2(var7, var3) * 180.0D / Math.PI) - 90.0F;
 			this.hasAttacked = true;
 		}
-	}
-
-	@Override
-	protected void fall(float par1) {}
-
-	public boolean func_70845_n()
-	{
-		return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
 	}
 
 	@Override
@@ -157,20 +167,6 @@ public class EntityDemonAngel extends EntityBossCore
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(1200.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(17.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
-	}
-
-	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-	}
-
-	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-
 	}
 
 	@Override
