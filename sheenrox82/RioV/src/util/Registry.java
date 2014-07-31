@@ -133,6 +133,7 @@ public class Registry
 		Config.hudPosX = Config.config.getInt("HUD Position X || Max: 800", Configuration.CATEGORY_GENERAL, Config.hudPosX, 20, 800, "// Integer");
 		Config.hudPosY = Config.config.getInt("HUD Position Y || Max: 800", Configuration.CATEGORY_GENERAL, Config.hudPosY, 20, 800, "// Integer");
 		Config.dev = Config.config.getBoolean("Development only. Some things will not work.", Configuration.CATEGORY_GENERAL, Config.dev, "// Boolean");
+		Config.Helmet = Config.config.getBoolean("Use helmet blur when helmet is on?", Configuration.CATEGORY_GENERAL, Config.Helmet, "// Boolean");
 
 		if(Config.config.hasChanged())
 		{

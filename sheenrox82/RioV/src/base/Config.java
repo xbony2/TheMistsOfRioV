@@ -24,6 +24,7 @@ public class Config
 	public static int canopyOasisBiomeID;
 	
 	public static boolean EOS = true;
+	public static boolean Helmet = true;
 	public static boolean showToolInfo = true;
 	public static boolean allowBreathing = true;
 	public static boolean deadBodies = true;

@@ -42,12 +42,6 @@ public class RioVWeapon extends ItemSword
 	}
 
 	@Override
-	public boolean isFull3D()
-	{
-		return true;
-	}
-
-	@Override
 	public boolean hasEffect(ItemStack par1ItemStack)
 	{
 		if (isInfused)
@@ -61,14 +55,14 @@ public class RioVWeapon extends ItemSword
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLivingBase, EntityLivingBase par3EntityLivingBase)
 	{
-		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("axeOfAunTun")))
+		int confusion = EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("confusion").effectId, par1ItemStack);
+		int venom = EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("venom").effectId, par1ItemStack);
+		int frost = EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("frost").effectId, par1ItemStack);
+		int kanuutu = EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("kanuutu").effectId, par1ItemStack);
+		
+		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("axeOfAunTun")) || par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("swordOfFlame")))
 		{
 			par2EntityLivingBase.setFire(30);
-		}
-
-		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("swordOfFlame")))
-		{
-			par2EntityLivingBase.setFire(10);
 		}
 
 		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("daetoriSword")))
@@ -78,49 +72,29 @@ public class RioVWeapon extends ItemSword
 
 		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("alerisSword")))
 		{
-			par2EntityLivingBase.motionY = 1;
+			par2EntityLivingBase.motionY = 1.2;
 		}
 
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("kanuutu").effectId, par1ItemStack) == 2)
+		if (kanuutu > 0)
 		{
-			par2EntityLivingBase.motionY = 0.8;
+			par2EntityLivingBase.motionY = kanuutu * 0.65;
 		}
 
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("kanuutu").effectId, par1ItemStack) == 1)
+		if (frost > 0)
 		{
-			par2EntityLivingBase.motionY = 0.7;
+			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, frost * 2)); 
 		}
 
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("frost").effectId, par1ItemStack) == 2)
+		if (venom > 0)
 		{
-			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 4));
-		}
-
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("frost").effectId, par1ItemStack) == 1)
-		{
-			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100, 2)); 
-		}
-
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("venom").effectId, par1ItemStack) == 2)
-		{
-			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 4));
-		}
-
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("venom").effectId, par1ItemStack) == 1)
-		{
-			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 2)); 
-		}
-
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("confusion").effectId, par1ItemStack) == 2)
-		{
-			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.wither.id, 100, 4));
-		}
-
-		if (EnchantmentHelper.getEnchantmentLevel(RioVAPI.getInstance().getUtil().getRioVEnchantment("confusion").effectId, par1ItemStack) == 1)
-		{
-			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.wither.id, 100, 2)); 
+			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.poison.id, 100, venom * 2)); 
 		}
 		
+		if (confusion > 0)
+		{
+			par2EntityLivingBase.addPotionEffect(new PotionEffect(Potion.wither.id, 100, confusion * 2)); 
+		}
+
 		par1ItemStack.damageItem(1, par3EntityLivingBase);
 		return true;
 	}
@@ -160,6 +134,7 @@ public class RioVWeapon extends ItemSword
 			}
 			itemstack.damageItem(1, entityplayer);
 		}
+
 		entityplayer.setItemInUse(itemstack, this.getMaxItemUseDuration(itemstack));
 		return itemstack;
 	}
@@ -194,17 +169,6 @@ public class RioVWeapon extends ItemSword
 		}
 	}
 
-	@Override
-	public EnumRarity getRarity(ItemStack par1)
-	{
-		if(par1.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("axeOfAunTun")) || par1.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("ultraAxeOfAunTun")) || par1.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("daetoriSword")))
-		{
-			return EnumRarity.epic;
-		}
-
-		return EnumRarity.common;
-	}
-	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)

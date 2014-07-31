@@ -25,7 +25,7 @@ public class EntityPinkEssence extends EntityThrowable
 	@Override
 	protected void onImpact(MovingObjectPosition var1)
 	{
-		if(var1.entityHit instanceof EntityLivingBase)
+		if(!this.worldObj.isRemote && var1.entityHit != null)
 		{
 			var1.entityHit.addVelocity(0F, 1F, 0F);
 		}

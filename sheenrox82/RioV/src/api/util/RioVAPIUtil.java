@@ -213,7 +213,6 @@ public class RioVAPIUtil
 		}
 		catch(Exception e)
 		{
-			//If field is not found, the int will return 0.
 			return 0;
 		}
 	}
