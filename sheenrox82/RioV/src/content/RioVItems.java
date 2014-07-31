@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.content;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -54,6 +53,7 @@ public class RioVItems
 	static ToolMaterial Aleris = EnumHelper.addToolMaterial("Aleris", 14, 2400, 14F, 16, 21);
 	static ToolMaterial InfusedVravinite = EnumHelper.addToolMaterial("InfusedVravinite", 13, 1000, 13F, 11, 12);
 	static ToolMaterial Vravinite = EnumHelper.addToolMaterial("Vravinite", 12, 900, 13F, 10, 12);
+	static ToolMaterial InfusedAleris = EnumHelper.addToolMaterial("InfusedAleris", 15, 2600, 16F, 17, 25);
 
 	static ArmorMaterial InfusedAmethystArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDAMETHYST", 17, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial InfusedOnyxArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDONYX", 18, new int[] {5, 6, 6, 5}, 20);
@@ -73,7 +73,8 @@ public class RioVItems
 	static ArmorMaterial InfusedVraviniteArmorMaterial = EnumHelper.addArmorMaterial("VRAVINITE", 33, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial VraviniteArmorMaterial = EnumHelper.addArmorMaterial("VRAVINITE", 32, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial SupremeAunTunArmorMaterial = EnumHelper.addArmorMaterial("SUPREMEAUNTUN", 68, new int[] {7, 10, 9, 9}, 50);	
-	
+	static ArmorMaterial InfusedAlerisArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDALERIS", 49, new int[] {6, 8, 7, 6}, 25);
+
 	public static RioVArmor onyxHelmet = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 0, "onyx", false).setUnlocalizedName("onyxHelmet");
 	public static RioVArmor onyxChestplate = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 1, "onyx", false).setUnlocalizedName("onyxChestplate");
 	public static RioVArmor onyxLeggings = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 2, "onyx", false).setUnlocalizedName("onyxLeggings");
@@ -324,9 +325,25 @@ public class RioVItems
 	public static Item woodElfKingCrystal = (new RioVSummoners()).setUnlocalizedName("woodElfKingCrystal");
 	public static Item altruCrystal = (new RioVSummoners()).setUnlocalizedName("altruCrystal");
 	public static Item tiTunSummoner = (new RioVSummoners()).setUnlocalizedName("tiTunSummoner");
+	public static Item infusedAlerisHelmet = (new RioVArmor(InfusedAlerisArmorMaterial, render, 0, "aleris", true)).setUnlocalizedName("infused.alerisHelmet");
+	public static Item infusedAlerisChestplate = (new RioVArmor(InfusedAlerisArmorMaterial, render, 1, "aleris", true)).setUnlocalizedName("infused.alerisChestplate");
+	public static Item infusedAlerisLeggings = (new RioVArmor(InfusedAlerisArmorMaterial, render, 2, "aleris", true)).setUnlocalizedName("infused.alerisLeggings");
+	public static Item infusedAlerisBoots = (new RioVArmor(InfusedAlerisArmorMaterial, render, 3, "aleris", true)).setUnlocalizedName("infused.alerisBoots");
+	public static Item infusedAlerisPickaxe = (new RioVPickaxe(InfusedAleris, true)).setUnlocalizedName("infused.alerisPickaxe");
+	public static Item infusedAlerisAxe = (new RioVAxe(InfusedAleris, true)).setUnlocalizedName("infused.alerisAxe");
+	public static Item infusedAlerisShovel = (new RioVSpade(InfusedAleris, true)).setUnlocalizedName("infused.alerisShovel");
+	public static Item infusedAlerisSword = (new RioVWeapon(InfusedAleris, true)).setUnlocalizedName("infused.alerisSword");
 
 	public static void add()
 	{		
+		RioVAPIUtil.registerItem(infusedAlerisPickaxe, "Infused Aleris Pickaxe");
+		RioVAPIUtil.registerItem(infusedAlerisAxe, "Infused Aleris Axe");
+		RioVAPIUtil.registerItem(infusedAlerisShovel, "Infused Aleris Shovel");
+		RioVAPIUtil.registerItem(infusedAlerisSword, "Infused Aleris Sword");
+		RioVAPIUtil.registerItem(infusedAlerisHelmet, "Infused Aleris Helmet");
+		RioVAPIUtil.registerItem(infusedAlerisChestplate, "Infused Aleris Chestplate");
+		RioVAPIUtil.registerItem(infusedAlerisLeggings, "Infused Aleris Leggings");
+		RioVAPIUtil.registerItem(infusedAlerisBoots, "Infused Aleris Boots");
 		RioVAPIUtil.registerItem(tiTunSummoner, "Ti'Tun Summoner");
 		RioVAPIUtil.registerItem(altruCrystal, "Altru Crystal");
 		RioVAPIUtil.registerItem(woodElfKingCrystal, "Wood Elf King Crystal");

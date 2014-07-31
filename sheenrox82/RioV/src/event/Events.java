@@ -8,7 +8,6 @@ import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -48,7 +47,9 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
+import sheenrox82.RioV.src.util.Registry;
 import sheenrox82.RioV.src.util.Util;
+import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -71,7 +72,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, Color.DARK_RED + "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! " + Color.GOLD + "Version " + ModUpdateChecker.newVersionStr + " is available!" + Color.DARK_RED + " Check http://tinyurl.com/riovmod. - sheenrox82"));
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! Version " + ModUpdateChecker.newVersionStr + " is available! Check http://tinyurl.com/riovmod - sheenrox82"));
 						hasSeen = true;
 					}
 				}
@@ -443,6 +444,15 @@ public class Events
 					}
 				}
 			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) 
+	{
+		if(eventArgs.modID.equals("RioV"))
+		{
+			Registry.syncConfig();
 		}
 	}
 }
