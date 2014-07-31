@@ -67,7 +67,7 @@ public class Events
 
 			if (!p.worldObj.isRemote) 
 			{
-				if (ModUpdateChecker.isUpdateAvailable()) 
+				if (ModUpdateChecker.isUpdateAvailable() == ModUpdateChecker.newUpdate) 
 				{
 					if(!hasSeen)
 					{
@@ -76,13 +76,22 @@ public class Events
 					}
 				}
 
-				if (!ModUpdateChecker.isUpdateAvailable()) 
+				if (ModUpdateChecker.isUpdateAvailable() == ModUpdateChecker.noUpdate) 
 				{
 					if(!hasSeen)
 					{
 						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
+				}
+				
+				if (ModUpdateChecker.isUpdateAvailable() == ModUpdateChecker.offline) 
+				{
+					if(!hasSeen)
+					{
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "[" + Color.WHITE + Util.MOD_NAME + Color.GOLD + "] Cannot connect to update checking website."));
+						hasSeen = true;
+					}
 				}
 			}
 		} 

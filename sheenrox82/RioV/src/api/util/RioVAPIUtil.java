@@ -56,6 +56,11 @@ public class RioVAPIUtil
 	{
 		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(addChatMessage(message));
 	}
+	
+	public static void sendMessageToAll(EnumChatFormatting color, String message)
+	{
+		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(addChatMessage(color, message));
+	}
 
 	public static void registerDimension(int id, Class worldProvider)
 	{

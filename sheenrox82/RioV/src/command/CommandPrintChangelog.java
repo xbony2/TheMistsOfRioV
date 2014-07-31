@@ -54,24 +54,6 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 		return true;
 	}
 
-	@Override
-	public List addTabCompletionOptions(ICommandSender icommandsender, String[] astring)
-	{
-		return null;
-	}
-
-	@Override
-	public boolean isUsernameIndex(String[] astring, int i)
-	{
-		return false;
-	}
-
-	@Override
-	public int compareTo(Object o)
-	{
-		return 0;
-	}
-
 	public int getRequiredPermissionLevel()
 	{
 		return 3;

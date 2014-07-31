@@ -12,6 +12,9 @@ public class ModUpdateChecker
 	public static String urlString;
 	public static String versionString;
 	public static String newVersionStr;
+	public static int newUpdate = 2;
+	public static int noUpdate = 1;
+	public static int offline = 0;
 
 	public static void init(String url, String version)
 	{
@@ -19,7 +22,7 @@ public class ModUpdateChecker
 		versionString = version;
 	}
 
-	public static boolean isUpdateAvailable()
+	public static int isUpdateAvailable()
 	{
 		try
 		{
@@ -30,17 +33,16 @@ public class ModUpdateChecker
 
 			if (!curVersion.equals(versionString))
 			{
-				return true;
+				return newUpdate;
 			}
 			else
 			{
-				return false;
+				return noUpdate;
 			}
 		}
 		catch(Exception e)
 		{
-			//If can't connect I just return it false. just cuz
-			return false;
+			return offline;
 		}
 	}
 
@@ -53,7 +55,7 @@ public class ModUpdateChecker
 			
 			while ((changelog = changelogFile.readLine()) != null)
 			{
-				RioVAPIUtil.sendMessageToAll(EnumChatFormatting.GOLD + changelog);
+				RioVAPIUtil.sendMessageToAll(EnumChatFormatting.GOLD, changelog);
 			}
 			
 			changelogFile.close();

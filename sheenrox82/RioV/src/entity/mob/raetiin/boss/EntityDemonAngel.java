@@ -3,11 +3,8 @@ package sheenrox82.RioV.src.entity.mob.raetiin.boss;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
-import net.minecraft.entity.projectile.EntitySmallFireball;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -123,7 +120,7 @@ public class EntityDemonAngel extends EntityBossCore
 
 				if (this.field_70846_g == 1)
 				{
-					this.attackTime = 60;
+					this.attackTime = 1;
 				}
 				else if (this.field_70846_g <= 4)
 				{
@@ -131,7 +128,7 @@ public class EntityDemonAngel extends EntityBossCore
 				}
 				else
 				{
-					this.attackTime = 100;
+					this.attackTime = 1;
 					this.field_70846_g = 0;
 				}
 
@@ -142,7 +139,7 @@ public class EntityDemonAngel extends EntityBossCore
 
 					for (int var10 = 0; var10 < 1; ++var10)
 					{
-						EntitySmallFireball var11 = new EntitySmallFireball(this.worldObj, this, var3 + this.rand.nextGaussian() * (double)var9, var5, var7 + this.rand.nextGaussian() * (double)var9);
+						EntityLargeFireball var11 = new EntityLargeFireball(this.worldObj, this, var3 + this.rand.nextGaussian() * (double)var9, var5, var7 + this.rand.nextGaussian() * (double)var9);
 						var11.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
 						this.worldObj.spawnEntityInWorld(var11);
 					}
