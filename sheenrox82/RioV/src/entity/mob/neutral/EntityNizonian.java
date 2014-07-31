@@ -45,6 +45,7 @@ public class EntityNizonian extends EntityMobDeadBody
 	{
 		super(par1World);
 		isImmuneToFire = false;
+		this.setSize(1.2f, 3f);
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
 		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
