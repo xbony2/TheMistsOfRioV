@@ -74,13 +74,6 @@ public class EntityShadow extends EntityMobDeadBody
 	}
 
 	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-	}
-
-	@Override
 	protected boolean isValidLightLevel()
 	{
 		return true;
@@ -97,21 +90,9 @@ public class EntityShadow extends EntityMobDeadBody
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2)
-	{
-
-	}
-
-	@Override
 	public boolean isAIEnabled()
 	{
 		return true;
-	}
-
-	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
-
 	}
 
 	@Override

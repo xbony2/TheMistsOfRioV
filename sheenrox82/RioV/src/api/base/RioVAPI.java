@@ -2,11 +2,12 @@ package sheenrox82.RioV.src.api.base;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import sheenrox82.RioV.src.api.handler.packet.PacketPipeline;
 import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
 import sheenrox82.RioV.src.api.recipe.manager.InfuserManager;
 import sheenrox82.RioV.src.api.util.LogHelper;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 public class RioVAPI
 {
@@ -15,10 +16,10 @@ public class RioVAPI
 	private InfuserManager infuser = new InfuserManager();
 	private LogHelper logger = new LogHelper();
 	private RioVAPIUtil util = new RioVAPIUtil();
-	private PacketPipeline pipeline = new PacketPipeline();
+	private SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("RioV");
 
 	public boolean modLoaded = false;
-	
+
 	/**
 	 * These booleans are used to detect if certain mods are loaded in the ExpansionChecker class in the main source code for RioV.
 	 * Natura - continued by progwml6
@@ -75,9 +76,12 @@ public class RioVAPI
 	{
 		return util;
 	}
-
-	public PacketPipeline getPipeline() 
+	
+	/**
+	 * Get the network handler for RioV
+	 */
+	public SimpleNetworkWrapper getNetworkHandler()
 	{
-		return pipeline;
+		return network;
 	}
 }

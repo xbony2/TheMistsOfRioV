@@ -43,9 +43,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityGalokin extends EntityMobDeadBody
 {
-	public static final ItemStack defaultHeldItem;
+	public static ItemStack defaultHeldItem;
 
-	public EntityGalokin(World par1World) {
+	public EntityGalokin(World par1World)
+	{
 
 		super(par1World);
 		this.setSize(1f, 2.1f);
@@ -87,22 +88,9 @@ public class EntityGalokin extends EntityMobDeadBody
 	}
 
 	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-	}
-
-	@Override
 	protected boolean isValidLightLevel()
 	{
 		return true;
-	}
-
-	@Override
-	public void onLivingUpdate()
-	{
-		super.onLivingUpdate();
 	}
 
 	@Override
@@ -124,7 +112,14 @@ public class EntityGalokin extends EntityMobDeadBody
 	@Override
 	public ItemStack getHeldItem()
 	{
-		return defaultHeldItem;
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
 	}
 
 	static
@@ -172,7 +167,7 @@ public class EntityGalokin extends EntityMobDeadBody
 			if(!this.worldObj.isRemote)
 				par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		}
-		
+
 		return true;
 	}
 }

@@ -53,20 +53,21 @@ public class GuiReputationMeter extends Gui
 			if(props.getCurrentRep() < 0)
 			{
 				fontrenderer.drawStringWithShadow("Reputation: " + Color.DARK_RED + props.getCurrentRep(), Config.hudPosX + 11, (height - Config.hudPosY) - 20, 16777215);
+				fontrenderer.drawStringWithShadow("Faction: " + Color.DARK_RED + "Raetiin", Config.hudPosX + 11, (height - Config.hudPosY) - 10, 16777215);
 			}
 			
 			if(props.getCurrentRep() > 0)
 			{
 				fontrenderer.drawStringWithShadow("Reputation: " + Color.GREEN + props.getCurrentRep(), Config.hudPosX + 11, (height - Config.hudPosY) - 20, 16777215);
+				fontrenderer.drawStringWithShadow("Faction: " + Color.GREEN + "Jaerin", Config.hudPosX + 11, (height - Config.hudPosY) - 10, 16777215);
 			}
 			
 			if(props.getCurrentRep() == 0)
 			{
 				fontrenderer.drawStringWithShadow("Reputation: " + Color.WHITE + props.getCurrentRep(), Config.hudPosX + 11, (height - Config.hudPosY) - 20, 16777215);
+				fontrenderer.drawStringWithShadow("Faction: " + Color.WHITE + "No Faction", Config.hudPosX + 11, (height - Config.hudPosY) - 10, 16777215);
 			}
-			
-			fontrenderer.drawStringWithShadow("Faction: " + props.getFactionName(), Config.hudPosX + 11, (height - Config.hudPosY) - 10, 16777215);
-	
+				
 			GL11.glPopMatrix();
 		}
 	}

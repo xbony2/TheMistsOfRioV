@@ -1,44 +1,46 @@
 package sheenrox82.RioV.src.api.handler.packet;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import cpw.mods.fml.common.network.ByteBufUtils;
+import cpw.mods.fml.common.network.simpleimpl.IMessage;
+import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
+import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 
-public class RioVPlayerPackets extends AbstractPacket
+public class RioVPlayerPackets implements IMessage, IMessageHandler<RioVPlayerPackets, IMessage> 
 {
 	private NBTTagCompound data;
-	public RioVPlayerPackets() {}
-	
+	public EntityPlayer player;
+
+	public RioVPlayerPackets()
+	{
+
+	}
+
 	public RioVPlayerPackets(EntityPlayer player) 
 	{
 		data = new NBTTagCompound();
-		RioVPlayer.get(player).saveNBTData(data);
+		this.player = player;
+		RioVPlayer.get(this.player).saveNBTData(data);
 	}
 
 	@Override
-	public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer) 
+	public void toBytes(ByteBuf buffer) 
 	{
 		ByteBufUtils.writeTag(buffer, data);
 	}
 
 	@Override
-	public void decodeInto(ChannelHandlerContext ctx, ByteBuf buffer) 
+	public void fromBytes(ByteBuf buffer) 
 	{
 		data = ByteBufUtils.readTag(buffer);
 	}
 
 	@Override
-	public void handleClientSide(EntityPlayer player)
+	public IMessage onMessage(RioVPlayerPackets message, MessageContext ctx)
 	{
-		RioVPlayer.get(player).loadNBTData(data);
-	}
-
-	@Override
-	public void handleServerSide(EntityPlayer player) 
-	{
-		
+		return null;
 	}
 }

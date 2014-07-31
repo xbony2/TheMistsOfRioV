@@ -58,7 +58,6 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, true));
@@ -68,20 +67,12 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGiantZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
-
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.62D, true));
 		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.auntunHelmet));
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.auntunChestplate));
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.auntunLeggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.auntunBoots));
-	}
-
-	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
 	}
 
 	@Override
@@ -124,7 +115,14 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 	@Override
 	public ItemStack getHeldItem()
 	{
-		return defaultHeldItem;
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
 	}
 
 	static

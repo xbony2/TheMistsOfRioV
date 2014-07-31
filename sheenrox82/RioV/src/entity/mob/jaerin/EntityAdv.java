@@ -45,6 +45,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityAdv extends EntityMobDeadBody
 {
+	public static ItemStack defaultHeldItem;
+
 	public EntityAdv(World par1World)
 	{
 		super(par1World);
@@ -154,13 +156,6 @@ public class EntityAdv extends EntityMobDeadBody
 	}
 
 	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-	}
-
-	@Override
 	protected boolean isValidLightLevel()
 	{
 		return true;
@@ -169,18 +164,19 @@ public class EntityAdv extends EntityMobDeadBody
 	@Override
 	public ItemStack getHeldItem()
 	{
-		return defaultHeldItem;
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
 	}
 
 	static
 	{
 		defaultHeldItem = new ItemStack(RioVItems.amethystSword);
-	}
-
-	@Override
-	protected void attackEntity(Entity par1Entity, float par2)
-	{
-
 	}
 
 	@Override
@@ -202,9 +198,6 @@ public class EntityAdv extends EntityMobDeadBody
 		{
 			this.dropItem(RioVItems.amethystSword, 1);
 		}
-		if (var1 == 2)
-		{
-		}
 		if (var1 == 3)
 		{
 			this.dropItem(RioVItems.greenApple, 1);
@@ -217,19 +210,6 @@ public class EntityAdv extends EntityMobDeadBody
 		{
 			this.dropItem(RioVItems.manchet, 1);
 		}
-		if (var1 == 6)
-		{
-		}
-		if (var1 == 7)
-		{
-		}
-		if (var1 == 8)
-		{
-		}
-		if (var1 == 9)
-		{
-		}
-
 	}
 
 	@Override

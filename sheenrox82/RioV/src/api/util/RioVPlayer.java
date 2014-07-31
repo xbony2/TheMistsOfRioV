@@ -8,8 +8,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.handler.packet.RioVPlayerPackets;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class RioVPlayer implements IExtendedEntityProperties
 {
@@ -24,8 +22,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public int noFactionID = 0;
 	public int raetiinID;
 	public int jaerinID;
-	public String factionName;
-	public String noFactionName = "No Faction";
+	public String noFactionName;
 	public String raetiinName;
 	public String jaerinName;
 
@@ -45,7 +42,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 		this.factionID = noFactionID;
 		this.raetiinID = 1;
 		this.jaerinID = 2;
-		this.factionName = noFactionName;
+		this.noFactionName = "No Faction";
 		this.raetiinName = Color.DARK_RED + "Raetiin";
 		this.jaerinName = Color.GREEN + "Jaerin";
 		this.player.getDataWatcher().addObject(EOS_WATCHER, this.maxEos);
@@ -72,10 +69,8 @@ public class RioVPlayer implements IExtendedEntityProperties
 		properties.setInteger("CurrentRep", player.getDataWatcher().getWatchableObjectInt(REP_WATCHER));
 		properties.setInteger("MinRep", minRep);
 		properties.setInteger("MaxRep", maxRep);
-		properties.setInteger("DefaultRep", defaultRep);
 		properties.setInteger("FactionID", factionID);
-		properties.setString("FactionName", factionName);
-		
+
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
 
@@ -89,9 +84,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 		player.getDataWatcher().updateObject(REP_WATCHER, properties.getInteger("CurrentRep"));
 		minRep = properties.getInteger("MinRep");
 		maxRep = properties.getInteger("MaxRep");
-		defaultRep = properties.getInteger("DefaultRep");
 		factionID = properties.getInteger("FactionID");
-		factionName = properties.getString("FactionName");
 	}
 
 	@Override
@@ -127,7 +120,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public final void upgradeEos(int amount) 
 	{
 		maxEos = (amount > 0 ? amount : 0);
-		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
+		RioVAPI.getInstance().getNetworkHandler().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
 
 	public final boolean consumeRep(int amount) 
@@ -171,23 +164,12 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public final void setFactionID(int facID)
 	{
 		factionID = facID;
-		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
+		RioVAPI.getInstance().getNetworkHandler().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
 
 	public final int getFactionID()
 	{
 		return factionID;
-	}
-
-	public final void setFactionName(String facName)
-	{
-		factionName = facName;
-		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
-	}
-
-	public final String getFactionName()
-	{
-		return factionName;
 	}
 
 	private static final String getSaveKey(EntityPlayer player) 
@@ -212,6 +194,6 @@ public class RioVPlayer implements IExtendedEntityProperties
 			playerData.loadNBTData(savedData); 
 		}
 
-		RioVAPI.getInstance().getPipeline().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
+		RioVAPI.getInstance().getNetworkHandler().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
 }

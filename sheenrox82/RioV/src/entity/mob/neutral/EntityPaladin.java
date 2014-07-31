@@ -117,24 +117,6 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
     }
 	
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-	}
-	
-	@Override
-	public void onLivingUpdate()
-	{
-		super.onLivingUpdate();
-	}
-	
-	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-	}
-
-	@Override
 	public boolean isAIEnabled()
 	{
 		return true;
@@ -153,7 +135,14 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 	@Override
 	public ItemStack getHeldItem()
 	{
-		return defaultHeldItem;
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
 	}
 
 	static

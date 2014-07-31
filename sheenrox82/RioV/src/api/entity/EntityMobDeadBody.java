@@ -11,7 +11,6 @@ public class EntityMobDeadBody extends EntityMob
 	public int counter;
 	public int countdown;
 	public boolean justJumped;
-	public static ItemStack defaultHeldItem;
 	public boolean isDeadBody = false;
 
 	public EntityMobDeadBody(World par1World)

@@ -43,12 +43,6 @@ public class EntityMage extends EntityMobDeadBody
 	}
 
 	@Override
-	public void onLivingUpdate()
-	{
-		super.onLivingUpdate();
-	}
-
-	@Override
 	protected void attackEntity(Entity par1Entity, float par2)
 	{
 		if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
@@ -128,10 +122,6 @@ public class EntityMage extends EntityMobDeadBody
 		{
 			this.dropItem(RioVItems.fireballWand, 1);
 		}
-		if (var1 == 6)
-		{
-			
-		}
 		if (var1 == 7)
 		{
 			this.dropItem(RioVItems.mythrilIngot, 1);
@@ -148,12 +138,6 @@ public class EntityMage extends EntityMobDeadBody
 		{
 			this.dropItem(RioVItems.fireballWand, 1);
 		}
-		
-		if(random == 1)
-		{
-			
-		}
-		
 		if(random == 2)
 		{
 			this.dropItem(RioVItems.graviWand, 1);

@@ -76,12 +76,6 @@ public class EntityTefGuard extends EntityMobDeadBody
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.infusedOnyxBoots));
 	}
 
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-	}
-
 	protected boolean isValidLightLevel()
 	{
 		return true;
@@ -89,7 +83,14 @@ public class EntityTefGuard extends EntityMobDeadBody
 
 	public ItemStack getHeldItem()
 	{
-		return defaultHeldItem;
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
 	}
 
 	static
@@ -127,29 +128,6 @@ public class EntityTefGuard extends EntityMobDeadBody
 		{
 			this.dropItem(RioVItems.darknessArrow, 1);
 		}
-		if (var1 == 3)
-		{
-		}
-		if (var1 == 4)
-		{
-
-		}
-		if (var1 == 5)
-		{
-
-		}
-		if (var1 == 6)
-		{
-		}
-		if (var1 == 7)
-		{
-		}
-		if (var1 == 8)
-		{
-		}
-		if (var1 == 9)
-		{
-		}
 	}
 
 	public void onLivingUpdate()
@@ -159,6 +137,7 @@ public class EntityTefGuard extends EntityMobDeadBody
 			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 		}
+		
 		super.onLivingUpdate();
 	}
 }

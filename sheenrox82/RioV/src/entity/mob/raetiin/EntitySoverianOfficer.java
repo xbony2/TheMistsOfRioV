@@ -82,22 +82,22 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 	}
 
 	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-	}
-
-	@Override
 	protected boolean isValidLightLevel()
 	{
-		return true; //don't care about the light level to spawn
+		return true;
 	}
 
 	@Override
 	public ItemStack getHeldItem()
 	{
-		return defaultHeldItem;
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
 	}
 
 	static
@@ -116,38 +116,10 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 	{
 		int var1 = this.rand.nextInt(10);
 
-		if (var1 == 0)
-		{		
-		}
 		if (var1 == 1)
 		{
 			this.dropItem(RioVItems.onyxSword, 1);
 		}
-		if (var1 == 2)
-		{	
-		}
-		if (var1 == 3)
-		{			
-		}
-		if (var1 == 4)
-		{
-		}
-		if (var1 == 5)
-		{
-		}
-		if (var1 == 6)
-		{
-		}
-		if (var1 == 7)
-		{
-		}
-		if (var1 == 8)
-		{
-		}
-		if (var1 == 9)
-		{
-		}
-
 	}
 
 	@Override

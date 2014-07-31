@@ -88,13 +88,6 @@ public class EntityOrc extends EntityMobDeadBody
 	}
 
 	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-	}
-
-	@Override
 	protected boolean isValidLightLevel()
 	{
 		return true;
@@ -103,7 +96,14 @@ public class EntityOrc extends EntityMobDeadBody
 	@Override
 	public ItemStack getHeldItem()
 	{
-		return defaultHeldItem;
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
 	}
 
 	static
@@ -140,36 +140,6 @@ public class EntityOrc extends EntityMobDeadBody
 		{
 			this.dropItem(RioVItems.amethystSword, 1);
 		}
-		if (var1 == 2)
-		{
-
-		}
-		if (var1 == 3)
-		{
-
-		}
-		if (var1 == 4)
-		{
-
-		}
-		if (var1 == 5)
-		{
-
-		}
-		if (var1 == 6)
-		{
-
-		}
-		if (var1 == 7)
-		{
-		}
-		if (var1 == 8)
-		{
-		}
-		if (var1 == 9)
-		{
-		}
-
 	}
 
 	@Override

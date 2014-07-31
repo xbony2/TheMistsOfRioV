@@ -23,6 +23,7 @@ import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
@@ -53,6 +54,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 {
 	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
 	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
+	public static ItemStack defaultHeldItem;
 
 	public EntityVravinite(World par1World)
 	{
@@ -99,7 +101,6 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.vraviniteChestplate));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.vraviniteBoots));
-		this.setCurrentItemOrArmor(0, new ItemStack(RioVItems.vraviniteBow));
 		if (par1World != null && !par1World.isRemote)
 		{
 			this.setCombatTask();
@@ -129,7 +130,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-	
+
 	@Override
 	public boolean isAIEnabled()
 	{
@@ -148,7 +149,25 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 			return false;
 		}
 	}
-	
+
+	@Override
+	public ItemStack getHeldItem()
+	{
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
+	}
+
+	static
+	{
+		defaultHeldItem = new ItemStack(RioVItems.vraviniteBow);
+	}
+
 	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
@@ -166,22 +185,6 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		{
 			this.dropItem(RioVItems.vraviniteBow, 1);
 		}
-		if (var1 == 3)
-		{
-			
-		}
-		if (var1 == 4)
-		{
-			
-		}
-		if (var1 == 5)
-		{
-			
-		}
-		if (var1 == 6)
-		{
-			
-		}
 		if (var1 == 7)
 		{
 			this.dropItem(RioVItems.vraviniteArrow, 8);
@@ -190,18 +193,8 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 
 	public void setCombatTask()
 	{
-		this.tasks.removeTask(this.aiAttackOnCollide);
-		this.tasks.removeTask(this.aiArrowAttack);
-		ItemStack itemstack = this.getHeldItem();
-
-		if (itemstack != null && itemstack.getItem() == RioVItems.vraviniteBow)
-		{
-			this.tasks.addTask(4, this.aiArrowAttack);
-		}
-		else
-		{
-			this.tasks.addTask(4, this.aiAttackOnCollide);
-		}
+		this.tasks.addTask(4, this.aiArrowAttack);
+		this.tasks.addTask(4, this.aiAttackOnCollide);
 	}
 
 	@Override
@@ -226,5 +219,5 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		this.worldObj.spawnEntityInWorld(entityarrow);
 
 	}
-	
+
 }

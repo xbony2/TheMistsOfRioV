@@ -99,12 +99,6 @@ public class EntityAltru extends EntityBossCore
 	}
 
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-	}
-
-	@Override
 	public void onLivingUpdate()
 	{
 		if (this.rand.nextInt(24) == 0)
@@ -123,12 +117,6 @@ public class EntityAltru extends EntityBossCore
 			this.worldObj.spawnParticle("enchantmenttable", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 		}
 		super.onLivingUpdate();
-	}
-
-	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.readEntityFromNBT(par1NBTTagCompound);
 	}
 
 	@Override

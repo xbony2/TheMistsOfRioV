@@ -41,13 +41,6 @@ public class EntityFairy extends EntityFlyingDeadBody
 
 		super.onLivingUpdate();
 	}
-	
-	@Override
-    protected void entityInit()
-    {
-        super.entityInit();
-        this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
-    }
 
 	@Override
 	protected void applyEntityAttributes()
@@ -153,17 +146,5 @@ public class EntityFairy extends EntityFlyingDeadBody
         }
 
         return true;
-    }
-
-	@Override
-    protected float getSoundVolume()
-    {
-        return 10.0F;
-    }
-
-	@Override
-    public int getMaxSpawnedInChunk()
-    {
-        return 1;
     }
 }

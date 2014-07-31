@@ -7,6 +7,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.handler.packet.RioVPlayerPackets;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.Crafting;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
@@ -36,7 +37,9 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 public class Registry 
 {	
@@ -84,9 +87,13 @@ public class Registry
 		RioVAPI.getInstance().getUtil().registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
 		RioVAPI.getInstance().getLogger().info("Core data registered. //END PRE-INITIALIZATION");
 	}
-
+	
 	public static void init(FMLInitializationEvent init)
 	{		
+		RioVAPI.getInstance().getLogger().info("Packets registering...");
+		RioVAPI.getInstance().getNetworkHandler().registerMessage(RioVPlayerPackets.class, RioVPlayerPackets.class, 0, Side.SERVER);
+		RioVAPI.getInstance().getNetworkHandler().registerMessage(RioVPlayerPackets.class, RioVPlayerPackets.class, 0, Side.CLIENT);
+		RioVAPI.getInstance().getLogger().info("Packets registered.");
 		RioVAPI.getInstance().getLogger().info("Other shit is registering. //START INITIALIZATION");
 		TheMistsOfRioV.commonProxy.cape();
 		RioVAPI.getInstance().getLogger().info("Adding special capes. ;)");
@@ -105,17 +112,12 @@ public class Registry
 		BiomeGenBase.plains.theBiomeDecorator.treesPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.bigMushroomsPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 20;
-		RioVAPI.getInstance().getLogger().info("Packets registering...");
-		RioVAPI.getInstance().getPipeline().initialise();
-		RioVAPI.getInstance().getLogger().info("Packets registered.");
 		RioVAPI.getInstance().getLogger().info("Other shit is registered. //END INITIALIZATION");
 	}
 
 	public static void postInit(FMLPostInitializationEvent postInit)
 	{
 		RioVAPI.getInstance().getLogger().info("Almost done initializing. //START POST-INITIALIZATION");
-		RioVAPI.getInstance().getPipeline().postInitialise();
-		RioVAPI.getInstance().getLogger().info("Packets post-registered.");
 		Config.initPost();
 		RioVAPI.getInstance().getLogger().info("Mod loaded! Sup. //END POST-INITIALIZATION");
 		RioVAPI.getInstance().modLoaded = true;

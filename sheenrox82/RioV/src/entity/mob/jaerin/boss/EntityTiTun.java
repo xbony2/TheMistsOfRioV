@@ -104,12 +104,6 @@ public class EntityTiTun extends EntityBossCore
 	}
 
 	@Override
-	public void onLivingUpdate()
-	{
-		super.onLivingUpdate();
-	}
-
-	@Override
 	public boolean isAIEnabled()
 	{
 		return true;

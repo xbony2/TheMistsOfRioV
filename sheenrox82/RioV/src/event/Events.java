@@ -212,21 +212,18 @@ public class Events
 			if(player.getCurrentRep() > 0)
 			{
 				player.setFactionID(player.jaerinID);
-				player.setFactionName(player.jaerinName);
 			}
 
 			if(player.getCurrentRep() == 0)
 			{
 				player.setFactionID(player.noFactionID);
-				player.setFactionName(player.noFactionName);
 			}
 
 			if(player.getCurrentRep() < 0)
 			{
 				player.setFactionID(player.raetiinID);
-				player.setFactionName(player.raetiinName);
 			}
-			
+
 			if(!entityplayer.capabilities.isCreativeMode)
 			{
 				if(player.getCurrentEos() < player.getMaxEos())
@@ -397,16 +394,43 @@ public class Events
 				{
 					EntityPlayer target = (EntityPlayer) players.get(i);
 
-					String playerMsg = "[" + riovPlayer.getFactionName() + Color.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
-					String devMsg = Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.white + " [" + riovPlayer.getFactionName() + EnumChatFormatting.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
+					String raetiinMsg = "[" + Color.DARK_RED + "Raetiin" + Color.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
+					String jaerinMsg = "[" + Color.GREEN + "Jaerin" + Color.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
+					String noFacMsg = "[" + "No Faction" + "] <" + player.getDisplayName() + "> " + event.message;
 
 					if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]) || player.getDisplayName().equals(Util.DEVELOPERS[2]))
 					{
-						target.addChatMessage(new ChatComponentTranslation(devMsg));
+						if(riovPlayer.getFactionID() == 2)
+						{
+							target.addChatMessage(new ChatComponentTranslation(Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.WHITE + jaerinMsg));
+						}
+						
+						if(riovPlayer.getFactionID() == 0)
+						{
+							target.addChatMessage(new ChatComponentTranslation(Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.WHITE + noFacMsg));
+						}
+						
+						if(riovPlayer.getFactionID() == 1)
+						{
+							target.addChatMessage(new ChatComponentTranslation(Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.WHITE + raetiinMsg));
+						}
 					}
 					else
 					{
-						target.addChatMessage(new ChatComponentTranslation(playerMsg));
+						if(riovPlayer.getFactionID() == 2)
+						{
+							target.addChatMessage(new ChatComponentTranslation(jaerinMsg));
+						}
+						
+						if(riovPlayer.getFactionID() == 0)
+						{
+							target.addChatMessage(new ChatComponentTranslation(noFacMsg));
+						}
+						
+						if(riovPlayer.getFactionID() == 1)
+						{
+							target.addChatMessage(new ChatComponentTranslation(raetiinMsg));
+						}
 					}
 				}
 			}

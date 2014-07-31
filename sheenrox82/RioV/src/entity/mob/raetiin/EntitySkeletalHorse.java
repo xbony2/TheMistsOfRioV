@@ -27,12 +27,6 @@ public class EntitySkeletalHorse extends EntityHorse
 	}
 
 	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-	}
-
-	@Override
 	public void onLivingUpdate()
 	{
 		if (!this.worldObj.isRemote)
@@ -74,19 +68,6 @@ public class EntitySkeletalHorse extends EntityHorse
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
-	}
-
-	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-
-	}
-
-	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.readEntityFromNBT(par1NBTTagCompound);
 	}
 
 	@Override

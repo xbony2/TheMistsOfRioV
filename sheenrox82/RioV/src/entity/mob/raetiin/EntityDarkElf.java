@@ -56,6 +56,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 {
 	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
 	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
+	public static ItemStack defaultHeldItem;
 
 	public EntityDarkElf(World par1World)
 	{
@@ -182,25 +183,24 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 		{
 			this.dropItem(Items.string, 3);
 		}
-		if (var1 == 4)
-		{
-		}
-		if (var1 == 5)
-		{
-		}
-		if (var1 == 6)
-		{
-		}
-		if (var1 == 7)
-		{
-		}
 	}
 
 	@Override
-	protected void addRandomArmor()
+	public ItemStack getHeldItem()
 	{
-		super.addRandomArmor();
-		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
+		if(!this.isDeadBody)
+		{
+			return defaultHeldItem;
+		}
+		else
+		{
+			return (ItemStack)null;
+		}
+	}
+
+	static
+	{
+		defaultHeldItem = new ItemStack(Items.bow);
 	}
 
 	@Override
@@ -231,17 +231,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 	public void setCombatTask()
 	{
 		this.tasks.removeTask(this.aiAttackOnCollide);
-		this.tasks.removeTask(this.aiArrowAttack);
-		ItemStack itemstack = this.getHeldItem();
-
-		if (itemstack != null && itemstack.getItem() == Items.bow)
-		{
-			this.tasks.addTask(4, this.aiArrowAttack);
-		}
-		else
-		{
-			this.tasks.addTask(4, this.aiAttackOnCollide);
-		}
+		this.tasks.addTask(4, this.aiArrowAttack);
 	}
 
 	@Override
@@ -316,7 +306,7 @@ public class EntityDarkElf extends EntityMobDeadBody implements IRangedAttackMob
 			if(!this.worldObj.isRemote)
 				par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		}
-		
+
 		return true;
 	}
 }

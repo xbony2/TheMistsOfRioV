@@ -120,25 +120,6 @@ public class EntityWoodElfKing extends EntityBossCore implements IRangedAttackMo
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity)
-	{
-		if (super.attackEntityAsMob(par1Entity))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	@Override
-	public void onLivingUpdate()
-	{
-		super.onLivingUpdate();
-	}
-
-	@Override
 	public void onDeath(DamageSource par1DamageSource)
 	{
 		super.onDeath(par1DamageSource);

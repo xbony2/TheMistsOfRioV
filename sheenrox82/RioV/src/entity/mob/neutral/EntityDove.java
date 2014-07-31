@@ -20,19 +20,6 @@ public class EntityDove extends EntityAmbientCreatureDeadBody
 	}
 
 	@Override
-	protected void entityInit()
-	{
-		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-	}
-
-	@Override
-	public boolean canBePushed()
-	{
-		return false;
-	}
-
-	@Override
 	protected boolean isAIEnabled()
 	{
 		return true;
@@ -74,12 +61,6 @@ public class EntityDove extends EntityAmbientCreatureDeadBody
 	}
 
 	@Override
-	protected boolean canTriggerWalking()
-	{
-		return false;
-	}
-
-	@Override
 	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
 	{
 		if (this.isEntityInvulnerable())
@@ -91,20 +72,6 @@ public class EntityDove extends EntityAmbientCreatureDeadBody
 
 			return super.attackEntityFrom(par1DamageSource, par2);
 		}
-	}
-
-	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-		this.dataWatcher.updateObject(16, Byte.valueOf(par1NBTTagCompound.getByte("BatFlags")));
-	}
-
-	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setByte("BatFlags", this.dataWatcher.getWatchableObjectByte(16));
 	}
 
 	@Override

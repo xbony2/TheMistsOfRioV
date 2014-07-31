@@ -85,20 +85,6 @@ public class EntityRabbit extends EntityTameableDeadBody
 	}
 
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.writeEntityToNBT(par1NBTTagCompound);
-
-	}
-
-	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
-		super.readEntityFromNBT(par1NBTTagCompound);
-
-	}
-
-	@Override
 	protected float getSoundVolume()
 	{
 		return 0.4F;
