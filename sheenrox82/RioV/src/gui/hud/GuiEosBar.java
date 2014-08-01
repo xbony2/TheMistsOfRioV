@@ -75,7 +75,7 @@ public class GuiEosBar extends Gui
 				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				GL11.glDisable(GL11.GL_ALPHA_TEST);
-				String s = "Mana " + props.getCurrentEos() + "/" + props.getMaxEos();
+				String s = "Eos: " + props.getCurrentEos() + "/" + props.getMaxEos();
 				yPos += 10;
 				this.mc.fontRenderer.drawString(s, Config.hudPosX + 21, height - Config.hudPosY, 0);
 				this.mc.fontRenderer.drawString(s, Config.hudPosX + 19, height - Config.hudPosY, 0);
