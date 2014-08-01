@@ -1,5 +1,13 @@
 itemGroup.RioV=The Mists of RioV
 
+item.infused.alerisPickaxe.name=Infused Aleris Pickaxe
+item.infused.alerisAxe.name=Infused Aleris Axe
+item.infused.alerisShovel.name=Infused Aleris Shovel
+item.infused.alerisSword.name=Infused Aleris Sword
+item.infused.alerisHelmet.name=Infused Aleris Helmet
+item.infused.alerisChestplate.name=Infused Aleris Chestplate
+item.infused.alerisLeggings.name=Infused Aleris Leggings
+item.infused.alerisBoots.name=Infused Aleris Boots
 item.glowingSwordOfTiTun.name=Glowing Sword of Ti'Tun
 item.tiTunHelmet.name=Ti'Tun Helmet
 item.tiTunChestplate.name=Ti'Tun Chestplate
@@ -18,16 +26,6 @@ item.enderBerry.name=Enderberry
 item.cloudBerry.name=Cloudberry
 item.fireBerry.name=Fireberry
 item.sanctuatiteBerry.name=Sanctuatite Berry
-item.amethystBow.name=Amethyst Bow
-item.onyxBow.name=Onyx Bow
-item.dragonBow.name=Dragon Bow
-item.alerisBow=Aleris Bow
-item.blindoniteBow.name=Blindonite Bow
-item.amethystArrow.name=Amethyst Arrow
-item.onyxArrow.name=Onyx Arrow
-item.dragonArrow.name=Dragon Arrow
-item.alerisArrow.name=Aleris Arrow
-item.blindoniteArrow.name=Blindonite Arrow
 item.onyx.name=Onyx
 item.onyxHelmet.name=Onyx Helmet
 item.onyxChestplate.name=Onyx Chestplate
@@ -418,6 +416,20 @@ tile.fireBerryBush.name=Fireberry Bush
 tile.noFactionFlag.name=No Faction Flag
 tile.raetiinFlag.name=Raetiin Flag
 tile.jaerinFlag.name=Jaerin Flag
+
+# For RioV Expansion: Baubles
+item.amethystRing.name=Amethyst Ring
+item.infused.amethystRing.name=Infused Amethyst Ring
+item.onyxRing.name=Onyx Ring
+item.infused.onyxRing.name=Infused Onyx Ring
+item.dragonRing.name=Dragon Ring
+item.infused.dragonRing.name=Infused Dragon Ring
+item.blindoniteRing.name=Blindonite Ring
+item.infused.blindoniteRing.name=Infused Blindonite Ring
+item.vraviniteRing.name=Vravinite Ring
+item.infused.vraviniteRing.name=Infused Vravinite Ring
+item.alerisRing.name=Aleris Ring
+item.infused.alerisRing.name=Infused Aleris Ring
 
 # For RioV Expansion: Natura
 item.Natura:bloodwood_pickaxe.name=Infused Bloodwood Pickaxe

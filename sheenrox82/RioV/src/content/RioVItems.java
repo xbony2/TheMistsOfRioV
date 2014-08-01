@@ -688,18 +688,18 @@ public class RioVItems
 	{
 		if(RioVAPI.getInstance().baubles)
 		{
-			amethystRing = (new RioVRing(1, false)).setUnlocalizedName("amethystRing");
-			onyxRing = (new RioVRing(1, false)).setUnlocalizedName("onyxRing");
-			infusedAmethystRing = (new RioVRing(1, true)).setUnlocalizedName("infused.amethystRing");
-			infusedOnyxRing = (new RioVRing(1, true)).setUnlocalizedName("infused.onyxRing");
-			dragonRing = (new RioVRing(2, false)).setUnlocalizedName("dragonRing");
-			blindoniteRing = (new RioVRing(1, false)).setUnlocalizedName("blindoniteRing");
-			infusedDragonRing = (new RioVRing(3, true)).setUnlocalizedName("infused.dragonRing");
-			infusedBlindoniteRing = (new RioVRing(2, true)).setUnlocalizedName("infused.blindoniteRing");
-			vraviniteRing = (new RioVRing(2, false)).setUnlocalizedName("vraviniteRing");
-			infusedVraviniteRing = (new RioVRing(3, false)).setUnlocalizedName("infused.vraviniteRing");
-			alerisRing = (new RioVRing(4, false)).setUnlocalizedName("alerisRing");
-			infusedAlerisRing = (new RioVRing(5, false)).setUnlocalizedName("infused.alerisRing");
+			amethystRing = (new RioVRing((int)1.3, false)).setUnlocalizedName("amethystRing");
+			onyxRing = (new RioVRing((int)1.3, false)).setUnlocalizedName("onyxRing");
+			infusedAmethystRing = (new RioVRing((int)1.3, true)).setUnlocalizedName("infused.amethystRing");
+			infusedOnyxRing = (new RioVRing((int)1.4, true)).setUnlocalizedName("infused.onyxRing");
+			dragonRing = (new RioVRing((int)2.4, false)).setUnlocalizedName("dragonRing");
+			blindoniteRing = (new RioVRing((int)1.5, false)).setUnlocalizedName("blindoniteRing");
+			infusedDragonRing = (new RioVRing((int)2.6, true)).setUnlocalizedName("infused.dragonRing");
+			infusedBlindoniteRing = (new RioVRing((int)1.8, true)).setUnlocalizedName("infused.blindoniteRing");
+			vraviniteRing = (new RioVRing((int)2.7, false)).setUnlocalizedName("vraviniteRing");
+			infusedVraviniteRing = (new RioVRing((int)3.1, true)).setUnlocalizedName("infused.vraviniteRing");
+			alerisRing = (new RioVRing((int)3.5, false)).setUnlocalizedName("alerisRing");
+			infusedAlerisRing = (new RioVRing((int)3.9, true)).setUnlocalizedName("infused.alerisRing");
 
 			RioVAPIUtil.registerItem(amethystRing, "Amethyst Ring");
 			RioVAPIUtil.registerItem(onyxRing, "Onyx Ring");
