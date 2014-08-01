@@ -125,14 +125,14 @@ public class EntityLoader
 		BiomeGenBase[] beach = BiomeDictionary.getBiomesForType(Type.BEACH);
 		BiomeGenBase[] wasteland = BiomeDictionary.getBiomesForType(Type.WASTELAND);
 
-		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 30, 4, 9);
-		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 30, 5, 8);
-		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 30, 5, 9);
-		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 30, 4, 8);
-		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 30, 5, 7);
-		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 30, 3, 7);
-		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 30, 4, 7);
-		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 30, 5, 8);
+		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 15, 4, 9);
+		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 16, 5, 8);
+		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 17, 5, 9);
+		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 18, 4, 8);
+		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 19, 5, 7);
+		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 20, 3, 7);
+		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 21, 4, 7);
+		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 22, 5, 8);
 
 		for(int i = 0; i < plains.length; i++)
 		{
@@ -289,11 +289,11 @@ public class EntityLoader
 	{
 		BiomeGenBase[] nether = BiomeDictionary.getBiomesForType(Type.NETHER);
 
-		SpawnListEntry skeleHorseSpawn = new SpawnListEntry(EntitySkeletalHorse.class, 34, 5, 7);
-		SpawnListEntry minionSpawn = new SpawnListEntry(EntityAunTunMinion.class, 29, 4, 8);
-		SpawnListEntry bodyguardSpawn = new SpawnListEntry(EntityAunTunBodyguard.class, 25, 4, 8);
-		SpawnListEntry hellhoundSpawn = new SpawnListEntry(EntityHellhound.class, 35, 4, 8);
-		SpawnListEntry soverianSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 30, 4, 8);
+		SpawnListEntry skeleHorseSpawn = new SpawnListEntry(EntitySkeletalHorse.class, 15, 5, 7);
+		SpawnListEntry minionSpawn = new SpawnListEntry(EntityAunTunMinion.class, 16, 4, 8);
+		SpawnListEntry bodyguardSpawn = new SpawnListEntry(EntityAunTunBodyguard.class, 17, 4, 8);
+		SpawnListEntry hellhoundSpawn = new SpawnListEntry(EntityHellhound.class, 18, 4, 8);
+		SpawnListEntry soverianSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 19, 4, 8);
 
 		for(int i = 0; i < nether.length; i++)
 		{
@@ -314,8 +314,8 @@ public class EntityLoader
 	{
 		BiomeGenBase[] end = BiomeDictionary.getBiomesForType(Type.END);
 
-		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 30, 3, 5);
-		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 30, 3, 5);
+		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 15, 3, 5);
+		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 16, 3, 5);
 
 		for(int i = 0; i < end.length; i++)
 		{
@@ -328,21 +328,21 @@ public class EntityLoader
 
 	public static void addDimensionSpawning()
 	{
-		EntityRegistry.addSpawn(EntityShadow.class, 1, 3, 6, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
-		EntityRegistry.addSpawn(EntityShadow.class, 1, 3, 6, EnumCreatureType.monster, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
-		EntityRegistry.addSpawn(EntityWoodElf.class, 1, 3, 4, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
-		EntityRegistry.addSpawn(EntityWoodElf.class, 1, 3, 4, EnumCreatureType.monster, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
-		EntityRegistry.addSpawn(EntityVravinite.class, 1, 3, 6, EnumCreatureType.creature, Biomes.glimmerwood);
-		EntityRegistry.addSpawn(EntityVravinite.class, 1, 3, 6, EnumCreatureType.monster, Biomes.glimmerwood);
-		EntityRegistry.addSpawn(EntityBloodGhoul.class, 1, 3, 6, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
-		EntityRegistry.addSpawn(EntityBloodGhoul.class, 1, 3, 6, EnumCreatureType.monster, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
-		EntityRegistry.addSpawn(EntityDove.class, 1, 2, 3, EnumCreatureType.creature, Biomes.sanctuatite);
-		EntityRegistry.addSpawn(EntityDove.class, 1, 2, 3, EnumCreatureType.monster, Biomes.sanctuatite);
-		EntityRegistry.addSpawn(EntityAngel.class, 1, 2, 3, EnumCreatureType.creature, Biomes.sanctuatite);
-		EntityRegistry.addSpawn(EntityAngel.class, 1, 2, 3, EnumCreatureType.monster, Biomes.sanctuatite);
-		EntityRegistry.addSpawn(EntityRabbit.class, 1, 2, 3, EnumCreatureType.creature, Biomes.sanctuatite);
-		EntityRegistry.addSpawn(EntityRabbit.class, 1, 2, 3, EnumCreatureType.monster, Biomes.sanctuatite);
-		EntityRegistry.addSpawn(EntitySoverianOfficer.class, 1, 2, 3, EnumCreatureType.creature, Biomes.blindOasis);
-		EntityRegistry.addSpawn(EntitySoverianOfficer.class, 1, 2, 3, EnumCreatureType.monster, Biomes.blindOasis);
+		EntityRegistry.addSpawn(EntityShadow.class, 2, 3, 6, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
+		EntityRegistry.addSpawn(EntityShadow.class, 2, 3, 6, EnumCreatureType.monster, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
+		EntityRegistry.addSpawn(EntityWoodElf.class, 2, 3, 4, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
+		EntityRegistry.addSpawn(EntityWoodElf.class, 2, 3, 4, EnumCreatureType.monster, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
+		EntityRegistry.addSpawn(EntityVravinite.class, 2, 3, 6, EnumCreatureType.creature, Biomes.glimmerwood);
+		EntityRegistry.addSpawn(EntityVravinite.class, 2, 3, 6, EnumCreatureType.monster, Biomes.glimmerwood);
+		EntityRegistry.addSpawn(EntityBloodGhoul.class, 2, 3, 6, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
+		EntityRegistry.addSpawn(EntityBloodGhoul.class, 2, 3, 6, EnumCreatureType.monster, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
+		EntityRegistry.addSpawn(EntityDove.class, 2, 2, 3, EnumCreatureType.creature, Biomes.sanctuatite);
+		EntityRegistry.addSpawn(EntityDove.class, 2, 2, 3, EnumCreatureType.monster, Biomes.sanctuatite);
+		EntityRegistry.addSpawn(EntityAngel.class, 2, 2, 3, EnumCreatureType.creature, Biomes.sanctuatite);
+		EntityRegistry.addSpawn(EntityAngel.class, 2, 2, 3, EnumCreatureType.monster, Biomes.sanctuatite);
+		EntityRegistry.addSpawn(EntityRabbit.class, 2, 2, 3, EnumCreatureType.creature, Biomes.sanctuatite);
+		EntityRegistry.addSpawn(EntityRabbit.class, 2, 2, 3, EnumCreatureType.monster, Biomes.sanctuatite);
+		EntityRegistry.addSpawn(EntitySoverianOfficer.class, 2, 2, 3, EnumCreatureType.creature, Biomes.blindOasis);
+		EntityRegistry.addSpawn(EntitySoverianOfficer.class, 2, 2, 3, EnumCreatureType.monster, Biomes.blindOasis);
 	}
 }
