@@ -5,6 +5,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.item.RioVArmor;
@@ -683,6 +684,7 @@ public class RioVItems
 	public static Item infusedVraviniteRing;
 	public static Item alerisRing;
 	public static Item infusedAlerisRing;
+	public static String[] ring = new String[] {" X ", "X X", " X "};
 
 	public static void addBaubles()
 	{
@@ -713,6 +715,19 @@ public class RioVItems
 			RioVAPIUtil.registerItem(infusedVraviniteRing, "Infused Vravinite Ring");
 			RioVAPIUtil.registerItem(alerisRing, "Aleris Ring");
 			RioVAPIUtil.registerItem(infusedAlerisRing, "Infused Aleris Ring");
+			
+			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystRing, 1), ring, Character.valueOf('X'), RioVItems.amethyst);
+			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxRing, 1), ring, Character.valueOf('X'), RioVItems.onyx);
+			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonRing, 1), ring, Character.valueOf('X'), RioVItems.dragonSoul);
+			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteRing, 1), ring, Character.valueOf('X'), RioVItems.blindonite);
+			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteRing, 1), ring, Character.valueOf('X'), RioVItems.vravinite);
+			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisRing, 1), ring, Character.valueOf('X'), RioVItems.aleris);
+			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystRing, new ItemStack(RioVItems.infusedAmethystRing, 1));
+			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxRing, new ItemStack(RioVItems.infusedOnyxRing, 1));
+			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteRing, new ItemStack(RioVItems.infusedBlindoniteRing, 1));
+			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonRing, new ItemStack(RioVItems.infusedDragonRing, 1));
+			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteRing, new ItemStack(RioVItems.infusedVraviniteRing, 1));
+			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.alerisRing, new ItemStack(RioVItems.infusedAlerisRing, 1));
 		}
 	}
 }
