@@ -36,19 +36,19 @@ public class ExpansionChecker
 			RioVAPI.getInstance().natura = false;
 		}
 
-		if(Loader.isModLoaded("Botania"))
+		if(Loader.isModLoaded("Baubles"))
 		{
-			FMLLog.info("Botania detected! You get the Botania Expansion for RioV! :)");
-			RioVAPI.getInstance().botania = true;
-			if(RioVAPI.getInstance().botania)
+			FMLLog.info("Baubles detected! You get the Baubles Expansion for RioV! :)");
+			RioVAPI.getInstance().baubles = true;
+			if(RioVAPI.getInstance().baubles)
 			{
-				RioVItems.addBotania();
+				RioVItems.addBaubles();
 			}
 		}
 		else
 		{
-			FMLLog.info("Botania wasn't detected... No Botania Expansion for you. :(");
-			RioVAPI.getInstance().botania = false;
+			FMLLog.info("Baubles wasn't detected... No Baubles Expansion for you. :(");
+			RioVAPI.getInstance().baubles = false;
 		}
 	}
 }

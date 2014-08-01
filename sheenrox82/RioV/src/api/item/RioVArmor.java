@@ -123,14 +123,6 @@ public class RioVArmor extends ItemArmor
 	public void registerIcons(IIconRegister par1IconRegister)
 	{		
 		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
-
-		if (RioVAPI.getInstance().botania)
-		{
-			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelHelm"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelHelm");
-			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelChest"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelChest");
-			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelLegs"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelLegs");
-			if (this == RioVAPI.getInstance().getUtil().getRioVItem("infusedManasteelBoots"))this.itemIcon = par1IconRegister.registerIcon("Botania:manasteelBoots");
-		}
 	}
 
 	@Override

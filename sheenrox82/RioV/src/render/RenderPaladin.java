@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.util.ResourceLocation;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityPaladin;
+import sheenrox82.RioV.src.gui.hud.GuiHelmetOverlay;
 import sheenrox82.RioV.src.util.Util;
 
 
@@ -37,7 +38,9 @@ public class RenderPaladin extends RenderBiped
 	public void func_82418_a(EntityPaladin par1, double par2, double par4, double par6, float par8, float par9)
 	{
 		super.doRender(par1, par2, par4, par6, par8, par9);
-		BossStatus.setBossStatus(par1, true);
+
+		if(!par1.isDeadBody)
+			BossStatus.setBossStatus(par1, true);
 	}
 
 	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)

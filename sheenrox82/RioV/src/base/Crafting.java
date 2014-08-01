@@ -403,16 +403,16 @@ public class Crafting
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteShovel, new ItemStack(RioVItems.infusedVraviniteShovel, 1));
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteSword, new ItemStack(RioVItems.infusedVraviniteSword, 1));
 
-		if(RioVAPI.getInstance().botania)
+		if(RioVAPI.getInstance().baubles)
 		{
 			try 
 			{
-				Class botaniaItems = Class.forName("vazkii.botania.common.item.ModItems");
+				//Class botaniaItems = Class.forName("vazkii.botania.common.item.ModItems");
 
-				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelHelm").get(null)), new ItemStack(RioVItems.infusedManasteelHelm, 1));
-				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelChest").get(null)), new ItemStack(RioVItems.infusedManasteelChest, 1));
-				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelLegs").get(null)), new ItemStack(RioVItems.infusedManasteelLegs, 1));
-				RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelBoots").get(null)), new ItemStack(RioVItems.infusedManasteelBoots, 1));
+				//RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelHelm").get(null)), new ItemStack(RioVItems.infusedManasteelHelm, 1));
+				//RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelChest").get(null)), new ItemStack(RioVItems.infusedManasteelChest, 1));
+				//RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelLegs").get(null)), new ItemStack(RioVItems.infusedManasteelLegs, 1));
+				//RioVAPI.getInstance().getInfuser().addInfusion(((Item)botaniaItems.getDeclaredField("manasteelBoots").get(null)), new ItemStack(RioVItems.infusedManasteelBoots, 1));
 			} 
 			catch(Exception e)
 			{

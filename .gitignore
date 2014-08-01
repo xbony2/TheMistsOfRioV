@@ -17,6 +17,7 @@
 /thaumcraft
 /assets/forge
 /com
+/baubles
 /paulscode
 *.cfg
 fmlversion.properties

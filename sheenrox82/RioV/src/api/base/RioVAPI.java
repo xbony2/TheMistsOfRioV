@@ -28,7 +28,7 @@ public class RioVAPI
 	 * NEI - by CodeChicken
 	 */
 	public boolean natura;
-	public boolean botania;
+	public boolean baubles;
 	public boolean optifine;
 	public boolean nei;
 

@@ -14,6 +14,7 @@ import sheenrox82.RioV.src.api.item.RioVPickaxe;
 import sheenrox82.RioV.src.api.item.RioVSpade;
 import sheenrox82.RioV.src.api.item.RioVWeapon;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.baubles.RioVRing;
 import sheenrox82.RioV.src.item.ItemEnforcedBowOfWurTun;
 import sheenrox82.RioV.src.item.RioVActivators;
 import sheenrox82.RioV.src.item.RioVBag;
@@ -670,26 +671,48 @@ public class RioVItems
 	}
 
 
-	public static Item infusedManasteelHelm;
-	public static Item infusedManasteelChest;
-	public static Item infusedManasteelLegs;
-	public static Item infusedManasteelBoots;
+	public static Item amethystRing;
+	public static Item onyxRing;
+	public static Item infusedAmethystRing;
+	public static Item infusedOnyxRing;
+	public static Item dragonRing;
+	public static Item infusedDragonRing;
+	public static Item blindoniteRing;
+	public static Item infusedBlindoniteRing;
+	public static Item vraviniteRing;
+	public static Item infusedVraviniteRing;
+	public static Item alerisRing;
+	public static Item infusedAlerisRing;
 
-	public static void addBotania()
+	public static void addBaubles()
 	{
-		if(RioVAPI.getInstance().botania)
+		if(RioVAPI.getInstance().baubles)
 		{
-			ArmorMaterial InfusedManasteelArmor = EnumHelper.addArmorMaterial("InfusedManasteelArmor", 19, new int[] { 3, 6, 6, 3 }, 22);
+			amethystRing = (new RioVRing(1, false)).setUnlocalizedName("amethystRing");
+			onyxRing = (new RioVRing(1, false)).setUnlocalizedName("onyxRing");
+			infusedAmethystRing = (new RioVRing(1, true)).setUnlocalizedName("infused.amethystRing");
+			infusedOnyxRing = (new RioVRing(1, true)).setUnlocalizedName("infused.onyxRing");
+			dragonRing = (new RioVRing(2, false)).setUnlocalizedName("dragonRing");
+			blindoniteRing = (new RioVRing(1, false)).setUnlocalizedName("blindoniteRing");
+			infusedDragonRing = (new RioVRing(3, true)).setUnlocalizedName("infused.dragonRing");
+			infusedBlindoniteRing = (new RioVRing(2, true)).setUnlocalizedName("infused.blindoniteRing");
+			vraviniteRing = (new RioVRing(2, false)).setUnlocalizedName("vraviniteRing");
+			infusedVraviniteRing = (new RioVRing(3, false)).setUnlocalizedName("infused.vraviniteRing");
+			alerisRing = (new RioVRing(4, false)).setUnlocalizedName("alerisRing");
+			infusedAlerisRing = (new RioVRing(5, false)).setUnlocalizedName("infused.alerisRing");
 
-			infusedManasteelHelm = (new RioVArmor(InfusedManasteelArmor, render, 0, "manasteel", true)).setUnlocalizedName("infusedManasteelHelm");
-			infusedManasteelChest = (new RioVArmor(InfusedManasteelArmor, render, 1, "manasteel", true)).setUnlocalizedName("infusedManasteelChest");
-			infusedManasteelLegs = (new RioVArmor(InfusedManasteelArmor, render, 2, "manasteel", true)).setUnlocalizedName("infusedManasteelLegs");
-			infusedManasteelBoots = (new RioVArmor(InfusedManasteelArmor, render, 3, "manasteel", true)).setUnlocalizedName("infusedManasteelBoots");
-			
-			RioVAPIUtil.registerItem(infusedManasteelHelm, "Infused Manasteel Helmet");
-			RioVAPIUtil.registerItem(infusedManasteelChest, "Infused Manasteel Chestplate");
-			RioVAPIUtil.registerItem(infusedManasteelLegs, "Infused Manasteel Leggings");
-			RioVAPIUtil.registerItem(infusedManasteelBoots, "Infused Manasteel Boots");
+			RioVAPIUtil.registerItem(amethystRing, "Amethyst Ring");
+			RioVAPIUtil.registerItem(onyxRing, "Onyx Ring");
+			RioVAPIUtil.registerItem(infusedAmethystRing, "Infused Amethyst Ring");
+			RioVAPIUtil.registerItem(infusedOnyxRing, "Infused Onyx Ring");
+			RioVAPIUtil.registerItem(dragonRing, "Dragon Ring");
+			RioVAPIUtil.registerItem(blindoniteRing, "Blindonite Ring");
+			RioVAPIUtil.registerItem(infusedDragonRing, "Infused Dragon Ring");
+			RioVAPIUtil.registerItem(infusedBlindoniteRing, "Infused Blindonite Ring");
+			RioVAPIUtil.registerItem(vraviniteRing, "Vravinite Ring");
+			RioVAPIUtil.registerItem(infusedVraviniteRing, "Infused Vravinite Ring");
+			RioVAPIUtil.registerItem(alerisRing, "Aleris Ring");
+			RioVAPIUtil.registerItem(infusedAlerisRing, "Infused Aleris Ring");
 		}
 	}
 }

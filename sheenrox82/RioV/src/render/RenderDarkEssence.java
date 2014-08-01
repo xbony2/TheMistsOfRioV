@@ -13,6 +13,7 @@ import org.lwjgl.opengl.GL11;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
+import sheenrox82.RioV.src.gui.hud.GuiHelmetOverlay;
 import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
