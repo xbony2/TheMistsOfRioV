@@ -19,6 +19,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 @Mod(modid = Util.MOD_ID, name = Util.MOD_NAME, version = Util.VERSION, guiFactory = "sheenrox82.RioV.src.gui.RioVGuiFactory")
 public class TheMistsOfRioV
 {
+	
 	@Instance(Util.MOD_ID)
 	private static TheMistsOfRioV instance;
 
@@ -55,4 +56,5 @@ public class TheMistsOfRioV
 	{
 		Registry.serverLoad(event);
 	}
+	
 }
