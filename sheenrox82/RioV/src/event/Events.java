@@ -447,13 +447,4 @@ public class Events
 			}
 		}
 	}
-
-	@SubscribeEvent
-	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) 
-	{
-		if(eventArgs.modID.equals("RioV"))
-		{
-			Registry.syncConfig();
-		}
-	}
 }

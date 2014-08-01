@@ -23,15 +23,15 @@ public class Config
 	public static int sanctuatiteBiomeID;
 	public static int canopyOasisBiomeID;
 	
-	public static boolean EOS = true;
-	public static boolean Helmet = true;
-	public static boolean showToolInfo = true;
-	public static boolean allowBreathing = true;
-	public static boolean deadBodies = true;
-	public static boolean runCapes = true;
-	public static boolean dev = false;
-	public static int hudPosX = 20;
-	public static int hudPosY = 20;
+	public static boolean EOS;
+	public static boolean Helmet;
+	public static boolean showToolInfo;
+	public static boolean allowBreathing;
+	public static boolean deadBodies;
+	public static boolean runCapes;
+	public static boolean dev;
+	public static int hudPosX;
+	public static int hudPosY;
 	
 	public static void initialize(FMLPreInitializationEvent event)
 	{

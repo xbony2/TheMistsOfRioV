@@ -62,12 +62,12 @@ public class GuiEosBar extends Gui
 			}
 		}
 
-		if(!RioVAPI.getInstance().getUtil().getConfigBool("EOS"))
+		if(RioVAPI.getInstance().getUtil().getConfigBool("EOS") == false)
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
-				int height = event.resolution.getScaledHeight();
 				GL11.glPushMatrix();
+				int height = event.resolution.getScaledHeight();
 				fontrenderer.drawStringWithShadow(Color.LIGHT_PURPLE + "Eos: " + props.getCurrentEos() + "/" + props.getMaxEos(), Config.hudPosX + 11, (height - Config.hudPosY) + 4, 16777215);
 				GL11.glPopMatrix();
 			}
