@@ -357,6 +357,7 @@ public class Crafting
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vravinite, 5), "*", Character.valueOf('*'), RioVItems.vraviniteHelmet);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vravinite, 4), "*", Character.valueOf('*'), RioVItems.vraviniteBoots);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vravinite, 7), "*", Character.valueOf('*'), RioVItems.vraviniteLeggings);
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteIngot, 7), "XXX", "XOX", "XOX", "XXX", Character.valueOf('X'), RioVItems.darkMatter, Character.valueOf('O'), RioVItems.onyx);
 
 		//INFUSER CRAFTING
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystSword, new ItemStack(RioVItems.infusedAmethystSword, 1));

@@ -12,6 +12,7 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
@@ -109,6 +110,39 @@ public class RioVWand extends Item
 					if (this.firetick == this.firemax && this.firemax != 0)
 					{
 						world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
+
+						if(entityplayer.capabilities.isCreativeMode == false)
+						{
+							player.consumeEos(2);
+						}
+
+						itemstack.damageItem(1, entityplayer);
+						this.firetick = 0;
+					}
+					else
+					{
+						++this.firetick;
+					}
+
+					if (this.firemax == 0)
+					{
+						world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
+
+						itemstack.damageItem(1, entityplayer);
+					}
+				}
+			}
+		}
+		
+		if(itemstack.getItem().equals(RioVItems.shadowniteWand))
+		{
+			if(!world.isRemote)
+			{
+				if(player.getCurrentEos() >= 2)
+				{
+					if (this.firetick == this.firemax && this.firemax != 0)
+					{
+						world.spawnEntityInWorld(new EntityDarkMatter(world, entityplayer));
 
 						if(entityplayer.capabilities.isCreativeMode == false)
 						{

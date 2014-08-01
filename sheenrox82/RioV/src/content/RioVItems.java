@@ -335,9 +335,13 @@ public class RioVItems
 	public static Item infusedAlerisAxe = (new RioVAxe(InfusedAleris, true)).setUnlocalizedName("infused.alerisAxe");
 	public static Item infusedAlerisShovel = (new RioVSpade(InfusedAleris, true)).setUnlocalizedName("infused.alerisShovel");
 	public static Item infusedAlerisSword = (new RioVWeapon(InfusedAleris, true)).setUnlocalizedName("infused.alerisSword");
+	public static Item shadowniteIngot = (new RioVItem()).setUnlocalizedName("shadowniteIngot");
+	public static Item shadowniteWand = (new RioVWand(0, 1, 3)).setUnlocalizedName("shadowniteWand");
 
 	public static void add()
 	{		
+		RioVAPIUtil.registerItem(shadowniteWand, "Shadownite Wand");
+		RioVAPIUtil.registerItem(shadowniteIngot, "Shadownite Ingot");
 		RioVAPIUtil.registerItem(infusedAlerisPickaxe, "Infused Aleris Pickaxe");
 		RioVAPIUtil.registerItem(infusedAlerisPickaxe, "Infused Aleris Pickaxe");
 		RioVAPIUtil.registerItem(infusedAlerisAxe, "Infused Aleris Axe");

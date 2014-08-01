@@ -27,6 +27,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.EntityBloodGhoul;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadow;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadowWizard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySoverianOfficer;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
@@ -80,6 +81,7 @@ public class EntityLoader
 		MethodUtil.registerEntity(EntityTiTun.class, "Ti'Tun");
 		MethodUtil.registerEntity(EntityWoodElfKing.class, "Wood Elf King");
 		MethodUtil.registerEntity(EntityAltru.class, "Altru");
+		MethodUtil.registerEntity(EntityShadowWizard.class, "Shadownite Wizard");
 
 		MethodUtil.registerEgg(EntityAdv.class);
 		MethodUtil.registerEgg(EntityMage.class);
@@ -111,6 +113,7 @@ public class EntityLoader
 		MethodUtil.registerEgg(EntityWoodElfKing.class);
 		MethodUtil.registerEgg(EntityAltru.class);
 		MethodUtil.registerEgg(EntityPaladin.class);
+		MethodUtil.registerEgg(EntityShadowWizard.class);
 	}
 
 	public static void addOverworldSpawning()

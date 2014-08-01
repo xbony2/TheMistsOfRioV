@@ -32,6 +32,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.EntityBloodGhoul;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadow;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadowWizard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySoverianOfficer;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
@@ -133,6 +134,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(RioVLib.vravinite_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElfKing.class, new RenderWoodElfKing());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTiTun.class, new RenderTiTun());
+		RenderingRegistry.registerEntityRenderingHandler(EntityShadowWizard.class, new RenderBipedCore(RioVLib.essence, "Shadownite Wizard", Color.DARK_RED + "Raetiin"));
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());
