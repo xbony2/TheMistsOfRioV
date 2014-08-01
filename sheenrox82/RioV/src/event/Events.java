@@ -18,6 +18,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import sheenrox82.Core.src.base.ModUpdateChecker;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
@@ -85,7 +86,7 @@ public class Events
 						hasSeen = true;
 					}	
 				}
-				
+
 				if (ModUpdateChecker.isUpdateAvailable() == ModUpdateChecker.offline) 
 				{
 					if(!hasSeen)
@@ -414,12 +415,12 @@ public class Events
 						{
 							target.addChatMessage(new ChatComponentTranslation(Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.WHITE + jaerinMsg));
 						}
-						
+
 						if(riovPlayer.getFactionID() == 0)
 						{
 							target.addChatMessage(new ChatComponentTranslation(Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.WHITE + noFacMsg));
 						}
-						
+
 						if(riovPlayer.getFactionID() == 1)
 						{
 							target.addChatMessage(new ChatComponentTranslation(Color.DARK_AQUA + "[" + Color.DARK_GRAY + "RioV" + Color.DARK_AQUA + "]" + Color.WHITE + raetiinMsg));
@@ -431,12 +432,12 @@ public class Events
 						{
 							target.addChatMessage(new ChatComponentTranslation(jaerinMsg));
 						}
-						
+
 						if(riovPlayer.getFactionID() == 0)
 						{
 							target.addChatMessage(new ChatComponentTranslation(noFacMsg));
 						}
-						
+
 						if(riovPlayer.getFactionID() == 1)
 						{
 							target.addChatMessage(new ChatComponentTranslation(raetiinMsg));
@@ -446,7 +447,7 @@ public class Events
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) 
 	{

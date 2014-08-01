@@ -11,7 +11,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.util.RioVPlayer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -63,7 +65,7 @@ public class RioVItem extends Item
 
 				player.inventory.consumeInventoryItem(RioVAPI.getInstance().getUtil().getRioVItem("heart"));
 			}
-			
+
 			if(player.getHealth() >= 20 && player.getMaxHealth() < 60)
 			{
 				double amount = 2D;
@@ -80,7 +82,7 @@ public class RioVItem extends Item
 				attributeInstance.applyModifier(moreHealth);
 			}
 		}
-
+	
 		return par1ItemStack;
 	}
 }

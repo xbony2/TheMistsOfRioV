@@ -119,8 +119,13 @@ public class RioVPlayer implements IExtendedEntityProperties
 
 	public final void upgradeEos(int amount) 
 	{
-		maxEos = (amount > 0 ? amount : 0);
+		maxEos = amount;
 		RioVAPI.getInstance().getNetworkHandler().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
+	}
+	
+	public final void regenEos() 
+	{
+		consumeEos(-1);
 	}
 
 	public final boolean consumeRep(int amount) 

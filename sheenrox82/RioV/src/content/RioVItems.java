@@ -339,6 +339,7 @@ public class RioVItems
 	public static void add()
 	{		
 		RioVAPIUtil.registerItem(infusedAlerisPickaxe, "Infused Aleris Pickaxe");
+		RioVAPIUtil.registerItem(infusedAlerisPickaxe, "Infused Aleris Pickaxe");
 		RioVAPIUtil.registerItem(infusedAlerisAxe, "Infused Aleris Axe");
 		RioVAPIUtil.registerItem(infusedAlerisShovel, "Infused Aleris Shovel");
 		RioVAPIUtil.registerItem(infusedAlerisSword, "Infused Aleris Sword");
