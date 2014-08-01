@@ -66,10 +66,26 @@ public class GuiEosBar extends Gui
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
-				GL11.glPushMatrix();
+				int xPos = 2;
+				int yPos = 2;
+				GL11.glEnable(GL11.GL_BLEND);
 				int height = event.resolution.getScaledHeight();
-				fontrenderer.drawStringWithShadow(Color.LIGHT_PURPLE + "Eos: " + props.getCurrentEos() + "/" + props.getMaxEos(), Config.hudPosX + 11, (height - Config.hudPosY) + 4, 16777215);
-				GL11.glPopMatrix();
+				GL11.glDisable(GL11.GL_DEPTH_TEST);
+				GL11.glDepthMask(false);
+				GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+				GL11.glDisable(GL11.GL_ALPHA_TEST);
+				String s = "Mana " + props.getCurrentEos() + "/" + props.getMaxEos();
+				yPos += 10;
+				this.mc.fontRenderer.drawString(s, Config.hudPosX + 21, height - Config.hudPosY, 0);
+				this.mc.fontRenderer.drawString(s, Config.hudPosX + 19, height - Config.hudPosY, 0);
+				this.mc.fontRenderer.drawString(s, Config.hudPosX + 20, height - Config.hudPosY + 1, 0);
+				this.mc.fontRenderer.drawString(s, Config.hudPosX + 20, height - Config.hudPosY - 1, 0);
+				this.mc.fontRenderer.drawString(Color.LIGHT_PURPLE + s, Config.hudPosX + 20, height - Config.hudPosY, 8453920);
+
+				GL11.glDisable(GL11.GL_BLEND);
+				GL11.glEnable(GL11.GL_DEPTH_TEST);
+				GL11.glDepthMask(true);
 			}
 		}
 	}
