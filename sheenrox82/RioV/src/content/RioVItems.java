@@ -283,7 +283,7 @@ public class RioVItems
 	public static Item infusedVraviniteShovel = (new RioVSpade(InfusedVravinite, true)).setUnlocalizedName("infused.vraviniteShovel");
 	public static Item infusedVraviniteSword = (new RioVWeapon(InfusedVravinite, true)).setUnlocalizedName("infused.vraviniteSword");
 	public static Item voidHolder = (new RioVVoidHolder(Blocks.air)).setUnlocalizedName("voidHolder");
-	public static Item voidHolderFilled = (new RioVVoidHolder(RioVBlocks.voidMoving)).setUnlocalizedName("voidHolder");
+	public static Item voidHolderFilled = (new RioVVoidHolder(RioVBlocks.voidMoving)).setUnlocalizedName("voidHolderFilled");
 	public static Item berry = (new RioVConsumable(4, 2, false)).setUnlocalizedName("berry");
 	public static Item blackBerry = (new RioVConsumable(4, 2, false)).setUnlocalizedName("blackBerry");
 	public static Item jaavik = (new RioVItem()).setUnlocalizedName("jaavik");

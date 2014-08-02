@@ -155,6 +155,7 @@ item.strawBerry.name=Strawberry
 item.jaavik.name=Jaavik
 item.berry.name=Blueberry
 item.voidHolder.name=Void Holder
+item.voidHolderFilled.name=Filled Void Holder
 item.infused.vraviniteHelmet.name=Infused Vravinite Helmet
 item.infused.vraviniteChestplate.name=Infused Vravinite Chestplate
 item.infused.vraviniteLeggings.name=Infused Vravinite Leggings
