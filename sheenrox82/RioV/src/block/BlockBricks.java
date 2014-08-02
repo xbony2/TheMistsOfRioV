@@ -16,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBricks extends Block
 {
-	public static final String[] brickList = new String[] {"amethyst", "onyx", "blindonite", "dragon", "vravinite", "aleris", "jaavik", "nironite", "garnet", "drakiuz"};
+	public static final String[] brickList = new String[] {"amethyst", "onyx", "blindonite", "dragon", "vravinite", "aleris", "jaavik", "nironite", "drakiuz"};
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;

@@ -56,6 +56,8 @@ public class RioVItems
 	static ToolMaterial InfusedVravinite = EnumHelper.addToolMaterial("InfusedVravinite", 13, 1000, 13F, 11, 12);
 	static ToolMaterial Vravinite = EnumHelper.addToolMaterial("Vravinite", 12, 900, 13F, 10, 12);
 	static ToolMaterial InfusedAleris = EnumHelper.addToolMaterial("InfusedAleris", 15, 2600, 16F, 17, 25);
+	static ToolMaterial Shadownite = EnumHelper.addToolMaterial("Shadownite", 11, 2100, 11F, 12, 16);
+	static ToolMaterial InfusedShadownite = EnumHelper.addToolMaterial("Shadownite", 13, 2300, 12F, 15, 25);
 
 	static ArmorMaterial InfusedAmethystArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDAMETHYST", 17, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial InfusedOnyxArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDONYX", 18, new int[] {5, 6, 6, 5}, 20);
@@ -63,7 +65,6 @@ public class RioVItems
 	static ArmorMaterial InfusedDragonArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDDRAGON", 39, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial DragonArmorMaterial = EnumHelper.addArmorMaterial("DRAGON", 37, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial AunTunArmorMaterial = EnumHelper.addArmorMaterial("AUNTUN", 40, new int[] {3, 8, 6, 3}, 20);
-	static ArmorMaterial GarnetArmorMaterial = EnumHelper.addArmorMaterial("GARNET", 22, new int[] {4, 5, 6, 4}, 20);
 	static ArmorMaterial AmethystArmorMaterial = EnumHelper.addArmorMaterial("AMETHYST", 15, new int[] {3, 5, 6, 3}, 20);
 	static ArmorMaterial OnyxArmorMaterial = EnumHelper.addArmorMaterial("ONYX", 16, new int[] {4, 5, 6, 4}, 20);
 	static ArmorMaterial MythrilArmorMaterial = EnumHelper.addArmorMaterial("MYTHRIL", 36, new int[] {4, 8, 6, 4}, 20);
@@ -76,6 +77,8 @@ public class RioVItems
 	static ArmorMaterial VraviniteArmorMaterial = EnumHelper.addArmorMaterial("VRAVINITE", 32, new int[] {4, 6, 6, 4}, 20);
 	static ArmorMaterial SupremeAunTunArmorMaterial = EnumHelper.addArmorMaterial("SUPREMEAUNTUN", 68, new int[] {7, 10, 9, 9}, 50);	
 	static ArmorMaterial InfusedAlerisArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDALERIS", 49, new int[] {6, 8, 7, 6}, 25);
+	static ArmorMaterial ShadowniteArmorMaterial = EnumHelper.addArmorMaterial("SHADOWNITE", 46, new int[] {4, 6, 5, 4}, 15);
+	static ArmorMaterial InfusedShadowniteArmorMaterial = EnumHelper.addArmorMaterial("INFUSEDSHADOWNITE", 47, new int[] {5, 7, 6, 5}, 30);
 
 	public static RioVArmor onyxHelmet = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 0, "onyx", false).setUnlocalizedName("onyxHelmet");
 	public static RioVArmor onyxChestplate = (RioVArmor)new RioVArmor(OnyxArmorMaterial, render, 1, "onyx", false).setUnlocalizedName("onyxChestplate");
@@ -97,10 +100,6 @@ public class RioVItems
 	public static RioVArmor auntunChestplate = (RioVArmor)new RioVArmor(AunTunArmorMaterial, render, 1, "auntunminion", false).setUnlocalizedName("auntunMinionChestplate");
 	public static RioVArmor auntunLeggings = (RioVArmor)new RioVArmor(AunTunArmorMaterial, render, 2, "auntunminion", false).setUnlocalizedName("auntunMinionLeggings");
 	public static RioVArmor auntunBoots = (RioVArmor)new RioVArmor(AunTunArmorMaterial, render, 3, "auntunminion", false).setUnlocalizedName("auntunMinionBoots");
-	public static RioVArmor garnetHelmet = (RioVArmor)new RioVArmor(GarnetArmorMaterial, render, 0, "garnet", false).setUnlocalizedName("garnetHelmet");
-	public static RioVArmor garnetChestplate = (RioVArmor)new RioVArmor(GarnetArmorMaterial, render, 1, "garnet", false).setUnlocalizedName("garnetChestplate");
-	public static RioVArmor garnetLeggings = (RioVArmor)new RioVArmor(GarnetArmorMaterial, render, 2, "garnet", false).setUnlocalizedName("garnetLeggings");
-	public static RioVArmor garnetBoots = (RioVArmor)new RioVArmor(GarnetArmorMaterial, render, 3, "garnet", false).setUnlocalizedName("garnetBoots");
 	public static RioVArmor mythrilHelmet = (RioVArmor)new RioVArmor(MythrilArmorMaterial, render, 0, "mythril", false).setUnlocalizedName("mythrilHelmet");
 	public static RioVArmor mythrilChestplate = (RioVArmor)new RioVArmor(MythrilArmorMaterial, render, 1, "mythril", false).setUnlocalizedName("mythrilChestplate");
 	public static RioVArmor mythrilLeggings = (RioVArmor)new RioVArmor(MythrilArmorMaterial, render, 2, "mythril", false).setUnlocalizedName("mythrilLeggings");
@@ -138,7 +137,6 @@ public class RioVItems
 	public static Item blackBone = new RioVItem().setUnlocalizedName("blackBone");
 	public static Item orb = new RioVItem().setUnlocalizedName("orb");
 	public static Item slateFragment = new RioVItem().setUnlocalizedName("slateFragment");
-	public static Item garnet = new RioVItem().setUnlocalizedName("garnet");
 	public static Item agonite = new RioVItem().setUnlocalizedName("agonite");
 	public static Item darkMatter = new RioVExplosives().setUnlocalizedName("darkMatter");
 	public static Item mythrilIngot = new RioVItem().setUnlocalizedName("mythrilIngot");
@@ -337,12 +335,43 @@ public class RioVItems
 	public static Item infusedAlerisSword = (new RioVWeapon(InfusedAleris, true)).setUnlocalizedName("infused.alerisSword");
 	public static Item shadowniteIngot = (new RioVItem()).setUnlocalizedName("shadowniteIngot");
 	public static Item shadowniteWand = (new RioVWand(0, 1, 3)).setUnlocalizedName("shadowniteWand");
-
+	public static Item shadowniteHelmet = (new RioVArmor(ShadowniteArmorMaterial, render, 0, "shadownite", false)).setUnlocalizedName("shadowniteHelmet");
+	public static Item shadowniteChestplate = (new RioVArmor(ShadowniteArmorMaterial, render, 1, "shadownite", false)).setUnlocalizedName("shadowniteChestplate");
+	public static Item shadowniteLeggings = (new RioVArmor(ShadowniteArmorMaterial, render, 2, "shadownite", false)).setUnlocalizedName("shadowniteLeggings");
+	public static Item shadowniteBoots = (new RioVArmor(ShadowniteArmorMaterial, render, 3, "shadownite", false)).setUnlocalizedName("shadowniteBoots");
+	public static Item shadownitePickaxe = (new RioVPickaxe(Shadownite, false)).setUnlocalizedName("shadownitePickaxe");
+	public static Item shadowniteAxe = (new RioVAxe(Shadownite, false)).setUnlocalizedName("shadowniteAxe");
+	public static Item shadowniteShovel = (new RioVSpade(Shadownite, false)).setUnlocalizedName("shadowniteShovel");
+	public static Item shadowniteSword = (new RioVWeapon(Shadownite, false)).setUnlocalizedName("shadowniteSword");
+	public static Item infusedShadowniteHelmet = (new RioVArmor(InfusedShadowniteArmorMaterial, render, 0, "shadownite", true)).setUnlocalizedName("infused.shadowniteHelmet");
+	public static Item infusedShadowniteChestplate = (new RioVArmor(InfusedShadowniteArmorMaterial, render, 1, "shadownite", true)).setUnlocalizedName("infused.shadowniteChestplate");
+	public static Item infusedShadowniteLeggings = (new RioVArmor(InfusedShadowniteArmorMaterial, render, 2, "shadownite", true)).setUnlocalizedName("infused.shadowniteLeggings");
+	public static Item infusedShadowniteBoots = (new RioVArmor(InfusedShadowniteArmorMaterial, render, 3, "shadownite", true)).setUnlocalizedName("infused.shadowniteBoots");
+	public static Item infusedShadownitePickaxe = (new RioVPickaxe(InfusedShadownite, true)).setUnlocalizedName("infused.shadownitePickaxe");
+	public static Item infusedShadowniteAxe = (new RioVAxe(InfusedShadownite, true)).setUnlocalizedName("infused.shadowniteAxe");
+	public static Item infusedShadowniteShovel = (new RioVSpade(InfusedShadownite, true)).setUnlocalizedName("infused.shadowniteShovel");
+	public static Item infusedShadowniteSword = (new RioVWeapon(InfusedShadownite, true)).setUnlocalizedName("infused.shadowniteSword");
+	
 	public static void add()
 	{		
+		RioVAPIUtil.registerItem(infusedShadownitePickaxe, "Infused Shadownite Pickaxe");
+		RioVAPIUtil.registerItem(infusedShadowniteAxe, "Infused Shadownite Axe");
+		RioVAPIUtil.registerItem(infusedShadowniteShovel, "Infused Shadownite Shovel");
+		RioVAPIUtil.registerItem(infusedShadowniteSword, "Infused Shadownite Sword");
+		RioVAPIUtil.registerItem(infusedShadowniteHelmet, "Infused Shadownite Helmet");
+		RioVAPIUtil.registerItem(infusedShadowniteChestplate, "Infused Shadownite Chestplate");
+		RioVAPIUtil.registerItem(infusedShadowniteLeggings, "Infused Shadownite Leggings");
+		RioVAPIUtil.registerItem(infusedShadowniteBoots, "Infused Shadownite Boots");
+		RioVAPIUtil.registerItem(shadownitePickaxe, "Shadownite Pickaxe");
+		RioVAPIUtil.registerItem(shadowniteAxe, "Shadownite Axe");
+		RioVAPIUtil.registerItem(shadowniteShovel, "Shadownite Shovel");
+		RioVAPIUtil.registerItem(shadowniteSword, "Shadownite Sword");
+		RioVAPIUtil.registerItem(shadowniteHelmet, "Shadownite Helmet");
+		RioVAPIUtil.registerItem(shadowniteChestplate, "Shadownite Chestplate");
+		RioVAPIUtil.registerItem(shadowniteLeggings, "Shadownite Leggings");
+		RioVAPIUtil.registerItem(shadowniteBoots, "Shadownite Boots");
 		RioVAPIUtil.registerItem(shadowniteWand, "Shadownite Wand");
 		RioVAPIUtil.registerItem(shadowniteIngot, "Shadownite Ingot");
-		RioVAPIUtil.registerItem(infusedAlerisPickaxe, "Infused Aleris Pickaxe");
 		RioVAPIUtil.registerItem(infusedAlerisPickaxe, "Infused Aleris Pickaxe");
 		RioVAPIUtil.registerItem(infusedAlerisAxe, "Infused Aleris Axe");
 		RioVAPIUtil.registerItem(infusedAlerisShovel, "Infused Aleris Shovel");
@@ -533,7 +562,6 @@ public class RioVItems
 		RioVAPIUtil.registerItem(agonite, "Agonite");
 		RioVAPIUtil.registerItem(terronCrystal, "Terron Crystal");
 		RioVAPIUtil.registerItem(baseCrystal, "Base Crystal");
-		RioVAPIUtil.registerItem(garnet, "Garnet");
 		RioVAPIUtil.registerItem(infusedAmethystShovel, "Infused Amethyst Shovel");
 		RioVAPIUtil.registerItem(infusedAmethystPickaxe, "Infused Amethyst Pickaxe");
 		RioVAPIUtil.registerItem(infusedAmethystAxe, "Infused Amethyst Axe");
@@ -571,10 +599,6 @@ public class RioVItems
 		RioVAPIUtil.registerItem(agonitePickaxe, "Agonite Pickaxe");
 		RioVAPIUtil.registerItem(onyxAxe, "Onyx Axe");
 		RioVAPIUtil.registerItem(onyxShovel, "Onyx Shovel");
-		RioVAPIUtil.registerItem(garnetHelmet, "Garnet Helmet");
-		RioVAPIUtil.registerItem(garnetChestplate, "Garnet Chestplate");
-		RioVAPIUtil.registerItem(garnetLeggings, "Garnet Leggings");
-		RioVAPIUtil.registerItem(garnetBoots, "Garnet Boots");
 		RioVAPIUtil.registerItem(mythrilHelmet, "Mythril Helmet");
 		RioVAPIUtil.registerItem(mythrilChestplate, "Mythril Chestplate");
 		RioVAPIUtil.registerItem(mythrilLeggings, "Mythril Leggings");

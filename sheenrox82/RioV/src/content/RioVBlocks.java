@@ -55,7 +55,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class RioVBlocks 
 {
 	public static Block onyxOre = new BlockCoreOne().setBlockName("onyxOre");
-	public static Block garnetOre = new BlockCoreOne().setBlockName("garnetOre");
 	public static Block infuser = new BlockInfuser(true).setHardness(1.0F).setBlockName("infuser");
 	public static Block slate = new BlockCoreOne().setBlockName("slate");
 	public static Block nironiteOre = new BlockCoreOne().setBlockName("nironiteOre");
@@ -67,7 +66,6 @@ public class RioVBlocks
 	public static Block grapePlant = new BlockPlantCore().setHardness(0.3F).setBlockName("grapePlant");
 	public static Block onyxBlock = new BlockCoreOne().setBlockName("onyxBlock");
 	public static Block amethystBlock = new BlockCoreOne().setBlockName("amethystBlock");
-	public static Block garnetBlock = new BlockCoreOne().setBlockName("garnetBlock");
 	public static Block nironiteBlock = new BlockCoreOne().setBlockName("nironiteBlock");
 	public static Block dragonBlock = new BlockCoreOne().setBlockName("dragonBlock");
 	public static Block plankColored = new BlockPlanks().setBlockName("plankColored");
@@ -299,7 +297,6 @@ public class RioVBlocks
 		RioVAPIUtil.registerBlock(tomatoPlant, "Tomato Plant");
 		RioVAPIUtil.registerBlock(onyxOre, "Onyx Ore");
 		RioVAPIUtil.registerBlock(blackDuriiPlant, "Black Durii Plant");
-		RioVAPIUtil.registerBlock(garnetOre, "Garnet Ore");
 		RioVAPIUtil.registerBlock(slate, "Slate");
 		RioVAPIUtil.registerBlock(nironiteOre, "Nironite Ore");
 		RioVAPIUtil.registerBlock(dragonOre, "Dragon Ore");
@@ -308,7 +305,6 @@ public class RioVBlocks
 		RioVAPIUtil.registerBlock(bloodRock, "Blood Rock");
 		RioVAPIUtil.registerBlock(onyxBlock, "Onyx Block");
 		RioVAPIUtil.registerBlock(amethystBlock, "Amethyst Block");
-		RioVAPIUtil.registerBlock(garnetBlock, "Garnet Block");
 		RioVAPIUtil.registerBlock(nironiteBlock, "Nironite Block");
 		RioVAPIUtil.registerBlock(dragonBlock, "Dragon Soul Block");
 	}

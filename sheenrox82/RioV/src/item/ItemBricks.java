@@ -51,10 +51,6 @@ public class ItemBricks extends ItemBlock
 		}
 		case 8:
 		{
-			name = "garnet"; break;
-		}
-		case 9:
-		{
 			name = "drakiuz"; break;
 		}
 		default: name = "broken";

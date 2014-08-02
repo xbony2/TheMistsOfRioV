@@ -54,7 +54,6 @@ public class Crafting
 		GameRegistry.addShapelessRecipe(new ItemStack(RioVBlocks.plankColored, 1, 14), new Object[] {Blocks.planks,  new ItemStack(Items.dye, 1, 1)});
 		GameRegistry.addShapelessRecipe(new ItemStack(RioVBlocks.plankColored, 1, 15), new Object[] {Blocks.planks,  new ItemStack(Items.dye, 1, 0)});
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.blackQuartz, 1, 1), "XXX", "XXX", "XXX", Character.valueOf('X'), RioVItems.burnedQuartz);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.garnetBlock, 1), "XXX", "XXX", "XXX", Character.valueOf('X'), RioVItems.garnet);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.nironiteBlock, 1), "XXX", "XXX", "XXX", Character.valueOf('X'), RioVItems.nironite);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.dragonBlock, 1), "XXX", "XXX", "XXX", Character.valueOf('X'), RioVItems.dragonSoul);
 		GameRegistry.addSmelting(RioVItems.horseMeat, new ItemStack(RioVItems.cookedHorseMeat, 1), 1F);
@@ -66,7 +65,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVItems.onyx, 9), "X", Character.valueOf('X'), RioVBlocks.onyxBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.amethyst, 9), "X", Character.valueOf('X'), RioVBlocks.amethystBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.burnedQuartz, 9), "X", Character.valueOf('X'), new ItemStack(RioVBlocks.blackQuartz, 1, 1));
-		GameRegistry.addRecipe(new ItemStack(RioVItems.garnet, 9), "X", Character.valueOf('X'), RioVBlocks.garnetBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.nironite, 9), "X", Character.valueOf('X'), RioVBlocks.nironiteBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.dragonSoul, 9), "X", Character.valueOf('X'), RioVBlocks.dragonBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.theDarknessCrystal, 1), "XZX", "ZAZ", "XZX", Character.valueOf('X'), RioVItems.onyx, Character.valueOf('A'), RioVItems.baseCrystal, Character.valueOf('Z'), RioVItems.vulron);
@@ -134,7 +132,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 7), bricks, Character.valueOf('X'), RioVBlocks.alerisBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 8), bricks, Character.valueOf('X'), RioVBlocks.jaavikBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 9), bricks, Character.valueOf('X'), RioVBlocks.nironiteBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 10), bricks, Character.valueOf('X'), RioVBlocks.garnetBlock);
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 11), bricks, Character.valueOf('X'), RioVBlocks.drakiuzBlock);
 		GameRegistry.addShapelessRecipe(new ItemStack(RioVBlocks.stainedGlass, 1, 0), new Object[] {new ItemStack(Items.dye, 1, 6), new ItemStack(Items.dye, 1, 10), new ItemStack(Items.dye, 1, 11), Blocks.glass});
 		GameRegistry.addShapelessRecipe(new ItemStack(RioVBlocks.stainedGlass, 1, 1), new Object[] {new ItemStack(Items.dye, 1, 1), new ItemStack(Items.dye, 1, 5), new ItemStack(Items.dye, 1, 12),  new ItemStack(Items.dye, 1, 10), Blocks.glass});
@@ -183,10 +180,6 @@ public class Crafting
 		GameRegistry.addRecipe(new ItemStack(RioVItems.dragonSoul, 5), "*", Character.valueOf('*'), RioVItems.dragonHelmet);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.dragonSoul, 4), "*", Character.valueOf('*'), RioVItems.dragonBoots);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.dragonSoul, 7), "*", Character.valueOf('*'), RioVItems.dragonLeggings);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.garnet, 8), "*", Character.valueOf('*'), RioVItems.garnetChestplate);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.garnet, 5), "*", Character.valueOf('*'), RioVItems.garnetHelmet);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.garnet, 4), "*", Character.valueOf('*'), RioVItems.garnetBoots);
-		GameRegistry.addRecipe(new ItemStack(RioVItems.garnet, 7), "*", Character.valueOf('*'), RioVItems.garnetLeggings);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.galokinCrystal, 8), "*", Character.valueOf('*'), RioVItems.galokinChestplate);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.galokinCrystal, 5), "*", Character.valueOf('*'), RioVItems.galokinHelmet);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.galokinCrystal, 4), "*", Character.valueOf('*'), RioVItems.galokinBoots);
@@ -266,10 +259,6 @@ public class Crafting
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.amethyst});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.amethyst});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.amethyst});
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.garnet});
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.garnet});
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.garnet});
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnetBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.garnet});
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.mythrilHelmet, 1), "XAX", "X*X", Character.valueOf('X'), RioVItems.mythrilIngot, Character.valueOf('A'), Items.iron_ingot, Character.valueOf('*'), RioVItems.darkMatter);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.mythrilChestplate, 1), "X X", "XAX", "X*X", Character.valueOf('X'), RioVItems.mythrilIngot, Character.valueOf('A'), Items.iron_ingot, Character.valueOf('*'), RioVItems.darkMatter);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.mythrilLeggings, 1), "X*X", "A A", "X X", Character.valueOf('X'), RioVItems.mythrilIngot, Character.valueOf('A'), Items.iron_ingot, Character.valueOf('*'), RioVItems.darkMatter);
@@ -333,10 +322,6 @@ public class Crafting
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonSoul, 5), "*", Character.valueOf('*'), RioVItems.dragonHelmet);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonSoul, 4), "*", Character.valueOf('*'), RioVItems.dragonBoots);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.dragonSoul, 7), "*", Character.valueOf('*'), RioVItems.dragonLeggings);
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnet, 8), "*", Character.valueOf('*'), RioVItems.garnetChestplate);
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnet, 5), "*", Character.valueOf('*'), RioVItems.garnetHelmet);
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnet, 4), "*", Character.valueOf('*'), RioVItems.garnetBoots);
-		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.garnet, 7), "*", Character.valueOf('*'), RioVItems.garnetLeggings);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinCrystal, 8), "*", Character.valueOf('*'), RioVItems.galokinChestplate);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinCrystal, 5), "*", Character.valueOf('*'), RioVItems.galokinHelmet);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.galokinCrystal, 4), "*", Character.valueOf('*'), RioVItems.galokinBoots);

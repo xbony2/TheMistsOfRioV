@@ -55,7 +55,7 @@ public class GuiHelmetOverlay extends Gui
 				{
 					this.renderHelmOverlay(k, l, new ResourceLocation(Util.MOD_ID + ":" + "textures/misc/helm1.png"));
 				}
-				if(itemstack.getItem() == RioVItems.amethystHelmet || itemstack.getItem() == RioVItems.infusedAmethystHelmet || itemstack.getItem() == RioVItems.onyxHelmet || itemstack.getItem() == RioVItems.infusedOnyxHelmet || itemstack.getItem() == RioVItems.garnetHelmet || itemstack.getItem() == RioVItems.helmetOfFlame || itemstack.getItem() == RioVItems.auntunHelmet || itemstack.getItem() == RioVItems.supremeAunTunHelmet)
+				if(itemstack.getItem() == RioVItems.amethystHelmet || itemstack.getItem() == RioVItems.infusedAmethystHelmet || itemstack.getItem() == RioVItems.onyxHelmet || itemstack.getItem() == RioVItems.infusedOnyxHelmet || itemstack.getItem() == RioVItems.helmetOfFlame || itemstack.getItem() == RioVItems.auntunHelmet || itemstack.getItem() == RioVItems.supremeAunTunHelmet)
 				{
 					this.renderHelmOverlay(k, l, new ResourceLocation(Util.MOD_ID + ":" + "textures/misc/helm2.png"));
 				}

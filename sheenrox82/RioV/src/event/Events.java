@@ -6,6 +6,7 @@ import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraftforge.event.ServerChatEvent;
@@ -258,6 +259,10 @@ public class Events
 		{
 			EntityPlayer player = (EntityPlayer)event.entity;
 			RioVPlayer riovPlayer = RioVPlayer.get(player);
+			ItemStack currentHelmet = player.getCurrentArmor(3);
+			ItemStack currentChestplate = player.getCurrentArmor(2);
+			ItemStack currentLeggings = player.getCurrentArmor(1);
+			ItemStack currentBoots = player.getCurrentArmor(0);
 
 			if(event.source.getDamageType().equals("onFire") || event.source.getDamageType().equals("inFire") || event.source.getDamageType().equals("lava"))
 			{

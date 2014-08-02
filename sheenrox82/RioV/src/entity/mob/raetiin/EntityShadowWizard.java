@@ -20,6 +20,7 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -102,6 +103,21 @@ public class EntityShadowWizard extends EntityMobDeadBody implements IRangedAtta
 		return true;
 	}
 
+	@Override
+	protected void dropFewItems(boolean par1, int par2)
+	{
+		int var1 = this.rand.nextInt(10);
+
+		if (var1 == 3)
+		{
+			this.dropItem(RioVItems.shadowniteWand, 3);
+		}
+		if (var1 == 4)
+		{
+			this.dropItem(RioVItems.shadowniteIngot, 3);
+		}
+	}
+	
 	@Override
 	public void onLivingUpdate()
 	{

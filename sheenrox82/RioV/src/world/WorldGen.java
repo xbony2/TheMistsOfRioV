@@ -193,7 +193,6 @@ public class WorldGen implements IWorldGenerator
 				int YcoordSurface5 = rand.nextInt(10);
 				int Zcoord = blockZ + rand.nextInt(16);
 				(new WorldGenMinable(RioVBlocks.onyxOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
-				(new WorldGenMinable(RioVBlocks.garnetOre, 3)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
 				(new WorldGenMinable(RioVBlocks.nironiteOre, 3)).generate(world, rand, Xcoord, YcoordSurface4, Zcoord);
 				(new WorldGenMinable(RioVBlocks.amethystOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
 				(new WorldGenMinable(RioVBlocks.slate, 8)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);

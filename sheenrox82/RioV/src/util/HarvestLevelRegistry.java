@@ -49,7 +49,6 @@ public class HarvestLevelRegistry
 		RioVItems.infusedAmethystPickaxe.setHarvestLevel("pickaxe", 3);
 		RioVItems.infusedAmethystAxe.setHarvestLevel("axe", 3);
 		RioVItems.infusedAmethystShovel.setHarvestLevel("shovel", 3);
-		RioVBlocks.garnetOre.setHarvestLevel("pickaxe", 3);
 		RioVBlocks.bloodRock.setHarvestLevel("pickaxe", 3);
 		RioVBlocks.blackRock.setHarvestLevel("pickaxe", 3);
 		//3's
