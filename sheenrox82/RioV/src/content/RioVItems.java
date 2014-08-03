@@ -713,6 +713,8 @@ public class RioVItems
 	public static Item infusedVraviniteRing;
 	public static Item alerisRing;
 	public static Item infusedAlerisRing;
+	public static Item shadowniteRing;
+	public static Item infusedShadowniteRing;
 	public static String[] ring = new String[] {" X ", "X X", " X "};
 
 	public static void addBaubles()
@@ -731,7 +733,9 @@ public class RioVItems
 			infusedVraviniteRing = (new RioVRing((int)3.1, true)).setUnlocalizedName("infused.vraviniteRing");
 			alerisRing = (new RioVRing((int)3.5, false)).setUnlocalizedName("alerisRing");
 			infusedAlerisRing = (new RioVRing((int)3.9, true)).setUnlocalizedName("infused.alerisRing");
-
+			shadowniteRing = (new RioVRing((int)3.5, false)).setUnlocalizedName("shadowniteRing");
+			infusedShadowniteRing = (new RioVRing((int)3.9, true)).setUnlocalizedName("infused.shadowniteRing");
+			
 			RioVAPIUtil.registerItem(amethystRing, "Amethyst Ring");
 			RioVAPIUtil.registerItem(onyxRing, "Onyx Ring");
 			RioVAPIUtil.registerItem(infusedAmethystRing, "Infused Amethyst Ring");
@@ -744,6 +748,8 @@ public class RioVItems
 			RioVAPIUtil.registerItem(infusedVraviniteRing, "Infused Vravinite Ring");
 			RioVAPIUtil.registerItem(alerisRing, "Aleris Ring");
 			RioVAPIUtil.registerItem(infusedAlerisRing, "Infused Aleris Ring");
+			RioVAPIUtil.registerItem(shadowniteRing, "Shadownite Ring");
+			RioVAPIUtil.registerItem(infusedShadowniteRing, "Infused Shadownite Ring");
 			
 			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.amethystRing, 1), ring, Character.valueOf('X'), RioVItems.amethyst);
 			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.onyxRing, 1), ring, Character.valueOf('X'), RioVItems.onyx);
@@ -751,12 +757,14 @@ public class RioVItems
 			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.blindoniteRing, 1), ring, Character.valueOf('X'), RioVItems.blindonite);
 			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vraviniteRing, 1), ring, Character.valueOf('X'), RioVItems.vravinite);
 			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.alerisRing, 1), ring, Character.valueOf('X'), RioVItems.aleris);
+			RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteRing, 1), ring, Character.valueOf('X'), RioVItems.shadowniteIngot);
 			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystRing, new ItemStack(RioVItems.infusedAmethystRing, 1));
 			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxRing, new ItemStack(RioVItems.infusedOnyxRing, 1));
 			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.blindoniteRing, new ItemStack(RioVItems.infusedBlindoniteRing, 1));
 			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.dragonRing, new ItemStack(RioVItems.infusedDragonRing, 1));
 			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.vraviniteRing, new ItemStack(RioVItems.infusedVraviniteRing, 1));
 			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.alerisRing, new ItemStack(RioVItems.infusedAlerisRing, 1));
+			RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteRing, new ItemStack(RioVItems.infusedShadowniteRing, 1));
 		}
 	}
 }

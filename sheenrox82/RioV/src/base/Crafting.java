@@ -343,7 +343,15 @@ public class Crafting
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vravinite, 4), "*", Character.valueOf('*'), RioVItems.vraviniteBoots);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.vravinite, 7), "*", Character.valueOf('*'), RioVItems.vraviniteLeggings);
 		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteIngot, 7), "XXX", "XOX", "XOX", "XXX", Character.valueOf('X'), RioVItems.darkMatter, Character.valueOf('O'), RioVItems.onyx);
-
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteHelmet, 1), new Object[] { riovhelmet, Character.valueOf('X'), RioVItems.shadowniteIngot});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteChestplate, 1), new Object[] { riovchestplate, Character.valueOf('X'), RioVItems.shadowniteIngot});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteLeggings, 1), new Object[] { riovleggings, Character.valueOf('X'), RioVItems.shadowniteIngot});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteBoots, 1), new Object[] { riovboots, Character.valueOf('X'), RioVItems.shadowniteIngot});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadownitePickaxe, 1), new Object[] { pickaxe, Character.valueOf('X'), RioVItems.shadowniteIngot, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteSword, 1), new Object[] { sword, Character.valueOf('X'), RioVItems.shadowniteIngot, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteShovel, 1), new Object[] { shovel, Character.valueOf('X'), RioVItems.shadowniteIngot, Character.valueOf('!'), RioVItems.blackBone});
+		RioVAPI.getInstance().getCraftingManager().addRecipe(new ItemStack(RioVItems.shadowniteAxe, 1), new Object[] { axe, Character.valueOf('X'), RioVItems.shadowniteIngot, Character.valueOf('!'), RioVItems.blackBone});
+		
 		//INFUSER CRAFTING
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.amethystSword, new ItemStack(RioVItems.infusedAmethystSword, 1));
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.onyxSword, new ItemStack(RioVItems.infusedOnyxSword, 1));
@@ -396,7 +404,15 @@ public class Crafting
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.alerisAxe, new ItemStack(RioVItems.infusedAlerisAxe, 1));
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.alerisShovel, new ItemStack(RioVItems.infusedAlerisShovel, 1));
 		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.alerisSword, new ItemStack(RioVItems.infusedAlerisSword, 1));
-
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteHelmet, new ItemStack(RioVItems.infusedShadowniteHelmet, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteChestplate, new ItemStack(RioVItems.infusedShadowniteChestplate, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteLeggings, new ItemStack(RioVItems.infusedShadowniteLeggings, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteBoots, new ItemStack(RioVItems.infusedShadowniteBoots, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadownitePickaxe, new ItemStack(RioVItems.infusedShadownitePickaxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteAxe, new ItemStack(RioVItems.infusedShadowniteAxe, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteShovel, new ItemStack(RioVItems.infusedShadowniteShovel, 1));
+		RioVAPI.getInstance().getInfuser().addInfusion(RioVItems.shadowniteSword, new ItemStack(RioVItems.infusedShadowniteSword, 1));
+		
 		if(RioVAPI.getInstance().natura)
 		{
 			try 

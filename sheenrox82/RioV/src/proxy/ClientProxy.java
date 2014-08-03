@@ -44,6 +44,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
+import sheenrox82.RioV.src.entity.projectile.EntityRawDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 import sheenrox82.RioV.src.gui.hud.GuiEosBar;
 import sheenrox82.RioV.src.gui.hud.GuiHelmetOverlay;
@@ -135,6 +136,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElfKing.class, new RenderWoodElfKing());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTiTun.class, new RenderTiTun());
 		RenderingRegistry.registerEntityRenderingHandler(EntityShadowWizard.class, new RenderBipedCore(RioVLib.essence, "Shadownite Wizard", Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityRawDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":" + "darkMatter.png")));
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());

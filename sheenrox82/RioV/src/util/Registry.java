@@ -78,7 +78,7 @@ public class Registry
 		GameRegistry.registerTileEntity(TileEntityNoFactionFlag.class, "No Faction Flag");
 		GameRegistry.registerTileEntity(TileEntityRaetiinFlag.class, "Raetiin Flag");
 		GameRegistry.registerTileEntity(TileEntityJaerinFlag.class, "Jaerin Flag");
-		GameRegistry.registerWorldGenerator(new WorldGen(), 3);
+		GameRegistry.registerWorldGenerator(new WorldGen(), 100);
 		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.vaerynID, WorldProviderVaeryn.class);

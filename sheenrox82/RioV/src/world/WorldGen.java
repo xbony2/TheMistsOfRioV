@@ -11,13 +11,11 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.biome.BiomeGenCanopyOasis;
 import sheenrox82.RioV.src.world.biome.BiomeGenFlamonor;
 import sheenrox82.RioV.src.world.biome.BiomeGenGlimmerwood;
 import sheenrox82.RioV.src.world.biome.BiomeGenSanctuatite;
 import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenCherryBlossomTree;
-import sheenrox82.RioV.src.world.feature.WorldGenGiantTree;
 import sheenrox82.RioV.src.world.feature.WorldGenGlimmerWoodTree;
 import sheenrox82.RioV.src.world.feature.WorldGenSanctuatiteTree;
 import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
@@ -163,7 +161,7 @@ public class WorldGen implements IWorldGenerator
 			int Xcoord = blockX + rand.nextInt(16);
 			int YcoordEnd = rand.nextInt(56);
 			int Zcoord = blockZ + rand.nextInt(16);
-			(new WorldGenEndMineable(RioVBlocks.dragonOre, 3)).generate(world, rand, Xcoord, YcoordEnd, Zcoord);
+			(new WorldGenEndMineable(RioVBlocks.dragonOre, 8)).generate(world, rand, Xcoord, YcoordEnd, Zcoord);
 		}
 		
 		for(int var5 = 0; var5 < 1; ++var5)
@@ -177,7 +175,6 @@ public class WorldGen implements IWorldGenerator
 
 	private void generateSurface(World world, Random rand, int blockX, int blockZ) 
 	{
-		int d, y;
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		WorldGenCherryBlossomTree tree = new WorldGenCherryBlossomTree(false);
 
@@ -192,10 +189,10 @@ public class WorldGen implements IWorldGenerator
 				int YcoordSurface4 = rand.nextInt(20);
 				int YcoordSurface5 = rand.nextInt(10);
 				int Zcoord = blockZ + rand.nextInt(16);
-				(new WorldGenMinable(RioVBlocks.onyxOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
-				(new WorldGenMinable(RioVBlocks.nironiteOre, 3)).generate(world, rand, Xcoord, YcoordSurface4, Zcoord);
-				(new WorldGenMinable(RioVBlocks.amethystOre, 4)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
-				(new WorldGenMinable(RioVBlocks.slate, 8)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
+				(new WorldGenMinable(RioVBlocks.onyxOre, 12)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
+				(new WorldGenMinable(RioVBlocks.nironiteOre, 12)).generate(world, rand, Xcoord, YcoordSurface4, Zcoord);
+				(new WorldGenMinable(RioVBlocks.amethystOre, 12)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
+				(new WorldGenMinable(RioVBlocks.slate, 20)).generate(world, rand, Xcoord, YcoordSurface3, Zcoord);
 			}
 
 			for(int var5 = 0; var5 < 1; ++var5)

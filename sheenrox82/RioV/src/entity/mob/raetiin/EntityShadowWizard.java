@@ -20,7 +20,6 @@ import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -36,7 +35,7 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
-import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
+import sheenrox82.RioV.src.entity.projectile.EntityRawDarkMatter;
 
 public class EntityShadowWizard extends EntityMobDeadBody implements IRangedAttackMob
 {
@@ -73,10 +72,10 @@ public class EntityShadowWizard extends EntityMobDeadBody implements IRangedAtta
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.isImmuneToFire = true;
-		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.infusedOnyxHelmet));
-		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.infusedOnyxChestplate));
-		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.infusedOnyxLeggings));
-		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.infusedOnyxBoots));
+		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.infusedShadowniteHelmet));
+		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.infusedShadowniteChestplate));
+		//this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.infusedShadowniteLeggings));
+		//this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.infusedShadowniteBoots));
 		if (par1World != null && !par1World.isRemote)
 		{
 			this.setCombatTask();
@@ -149,6 +148,8 @@ public class EntityShadowWizard extends EntityMobDeadBody implements IRangedAtta
 		{
 			this.worldObj.spawnParticle("smoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 			this.worldObj.spawnParticle("smoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+			this.worldObj.spawnParticle("smoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+			this.worldObj.spawnParticle("smoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
 		}
 		
 		super.onLivingUpdate();
@@ -181,7 +182,7 @@ public class EntityShadowWizard extends EntityMobDeadBody implements IRangedAtta
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2)
 	{
-		EntityDarkMatter entityarrow = new EntityDarkMatter(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
+		EntityRawDarkMatter entityarrow = new EntityRawDarkMatter(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
 		this.worldObj.spawnEntityInWorld(entityarrow);
 	}
 
@@ -189,7 +190,7 @@ public class EntityShadowWizard extends EntityMobDeadBody implements IRangedAtta
 	protected void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(200.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(12.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);

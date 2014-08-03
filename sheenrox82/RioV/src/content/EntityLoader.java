@@ -39,6 +39,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
+import sheenrox82.RioV.src.entity.projectile.EntityRawDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 import sheenrox82.RioV.src.util.MethodUtil;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -82,6 +83,7 @@ public class EntityLoader
 		MethodUtil.registerEntity(EntityWoodElfKing.class, "Wood Elf King");
 		MethodUtil.registerEntity(EntityAltru.class, "Altru");
 		MethodUtil.registerEntity(EntityShadowWizard.class, "Shadownite Wizard");
+		MethodUtil.registerEntity(EntityRawDarkMatter.class, "Raw Dark Matter");
 
 		MethodUtil.registerEgg(EntityAdv.class);
 		MethodUtil.registerEgg(EntityMage.class);

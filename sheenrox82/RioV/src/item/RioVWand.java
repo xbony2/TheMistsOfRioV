@@ -14,6 +14,7 @@ import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
+import sheenrox82.RioV.src.entity.projectile.EntityRawDarkMatter;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -142,7 +143,7 @@ public class RioVWand extends Item
 				{
 					if (this.firetick == this.firemax && this.firemax != 0)
 					{
-						world.spawnEntityInWorld(new EntityDarkMatter(world, entityplayer));
+						world.spawnEntityInWorld(new EntityRawDarkMatter(world, entityplayer));
 
 						if(entityplayer.capabilities.isCreativeMode == false)
 						{
@@ -159,7 +160,7 @@ public class RioVWand extends Item
 
 					if (this.firemax == 0)
 					{
-						world.spawnEntityInWorld(new EntityPinkEssence(world, entityplayer));
+						world.spawnEntityInWorld(new EntityRawDarkMatter(world, entityplayer));
 
 						itemstack.damageItem(1, entityplayer);
 					}

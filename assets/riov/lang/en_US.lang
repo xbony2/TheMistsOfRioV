@@ -1,5 +1,21 @@
 itemGroup.RioV=The Mists of RioV
 
+item.shadowniteHelmet.name=Shadownite Ingot
+item.shadowniteChestplate.name=Shadownite Ingot
+item.shadowniteLeggings.name=Shadownite Ingot
+item.shadowniteBoots.name=Shadownite Ingot
+item.shadownitePickaxe.name=Shadownite Ingot
+item.shadowniteAxe.name=Shadownite Ingot
+item.shadowniteShovel.name=Shadownite Ingot
+item.shadowniteSword.name=Shadownite Ingot
+item.infused.shadowniteHelmet.name=Infused Shadownite Ingot
+item.infused.shadowniteChestplate.name=Infused Shadownite Ingot
+item.infused.shadowniteLeggings.name=Infused Shadownite Ingot
+item.infused.shadowniteBoots.name=Infused Shadownite Ingot
+item.infused.shadownitePickaxe.name=Infused Shadownite Ingot
+item.infused.shadowniteAxe.name=Infused Shadownite Ingot
+item.infused.shadowniteShovel.name=Infused Shadownite Ingot
+item.infused.shadowniteSword.name=Infused Shadownite Ingot
 item.shadowniteIngot.name=Shadownite Ingot
 item.shadowniteWand.name=Shadownite Wand
 item.infused.alerisPickaxe.name=Infused Aleris Pickaxe
@@ -425,6 +441,8 @@ item.vraviniteRing.name=Vravinite Ring
 item.infused.vraviniteRing.name=Infused Vravinite Ring
 item.alerisRing.name=Aleris Ring
 item.infused.alerisRing.name=Infused Aleris Ring
+item.shadowniteRing.name=Shadownite Ring
+item.infused.shadowniteRing.name=Infused Shadownite Ring
 
 # For RioV Expansion: Natura
 item.Natura:bloodwood_pickaxe.name=Infused Bloodwood Pickaxe
