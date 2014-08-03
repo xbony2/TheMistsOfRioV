@@ -66,8 +66,6 @@ public class GuiEosBar extends Gui
 		{
 			if(!mc.thePlayer.capabilities.isCreativeMode)
 			{
-				int xPos = 2;
-				int yPos = 2;
 				GL11.glEnable(GL11.GL_BLEND);
 				int height = event.resolution.getScaledHeight();
 				GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -76,7 +74,6 @@ public class GuiEosBar extends Gui
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				GL11.glDisable(GL11.GL_ALPHA_TEST);
 				String s = "Eos: " + props.getCurrentEos() + "/" + props.getMaxEos();
-				yPos += 10;
 				this.mc.fontRenderer.drawString(s, Config.hudPosX + 21, height - Config.hudPosY, 0);
 				this.mc.fontRenderer.drawString(s, Config.hudPosX + 19, height - Config.hudPosY, 0);
 				this.mc.fontRenderer.drawString(s, Config.hudPosX + 20, height - Config.hudPosY + 1, 0);

@@ -51,7 +51,7 @@ public class GuiHelmetOverlay extends Gui
 		{
 			if(this.mc.gameSettings.thirdPersonView == 0 && itemstack != null)
 			{
-				if(itemstack.getItem() == RioVItems.alerisHelmet || itemstack.getItem() == RioVItems.tiTunHelmet || itemstack.getItem() == RioVItems.infusedBlindoniteHelmet || itemstack.getItem() == RioVItems.blindoniteHelmet || itemstack.getItem() == RioVItems.vraviniteHelmet || itemstack.getItem() == RioVItems.infusedVraviniteHelmet)
+				if(itemstack.getItem() == RioVItems.alerisHelmet || itemstack.getItem() == RioVItems.infusedAlerisHelmet || itemstack.getItem() == RioVItems.tiTunHelmet || itemstack.getItem() == RioVItems.infusedBlindoniteHelmet || itemstack.getItem() == RioVItems.blindoniteHelmet || itemstack.getItem() == RioVItems.vraviniteHelmet || itemstack.getItem() == RioVItems.infusedVraviniteHelmet)
 				{
 					this.renderHelmOverlay(k, l, new ResourceLocation(Util.MOD_ID + ":" + "textures/misc/helm1.png"));
 				}
