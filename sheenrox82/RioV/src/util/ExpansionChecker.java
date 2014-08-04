@@ -63,6 +63,7 @@ public class ExpansionChecker
 			if(RioVAPI.getInstance().nei == true)
 			{
 				API.registerRecipeHandler(new AnvilNEI());
+				API.registerUsageHandler(new AnvilNEI());
 			}
 		}
 		catch (Throwable var11)
