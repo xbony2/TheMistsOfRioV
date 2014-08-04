@@ -81,6 +81,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
+						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "I have a Patreon! http://www.patreon.com/sheenrox82"));
 						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
