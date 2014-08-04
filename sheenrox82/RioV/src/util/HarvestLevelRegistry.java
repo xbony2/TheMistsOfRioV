@@ -77,6 +77,9 @@ public class HarvestLevelRegistry
 		RioVItems.infusedDragonPickaxe.setHarvestLevel("pickaxe", 11);
 		RioVItems.infusedDragonAxe.setHarvestLevel("axe", 11);
 		RioVItems.infusedDragonShovel.setHarvestLevel("shovel", 11);
+		RioVItems.shadownitePickaxe.setHarvestLevel("pickaxe", 11);
+		RioVItems.shadowniteAxe.setHarvestLevel("axe", 11);
+		RioVItems.shadowniteShovel.setHarvestLevel("shovel", 11);
 		//11's
 
 		//12's
@@ -91,6 +94,9 @@ public class HarvestLevelRegistry
 		RioVItems.infusedVraviniteShovel.setHarvestLevel("shovel", 13);
 		RioVBlocks.drakiuzOre.setHarvestLevel("pickaxe", 13);
 		RioVBlocks.jaavikOre.setHarvestLevel("pickaxe", 13);
+		RioVItems.infusedShadownitePickaxe.setHarvestLevel("pickaxe", 13);
+		RioVItems.infusedShadowniteAxe.setHarvestLevel("axe", 13);
+		RioVItems.infusedShadowniteShovel.setHarvestLevel("shovel", 13);
 		//13's
 
 		//14's
@@ -99,5 +105,11 @@ public class HarvestLevelRegistry
 		RioVItems.alerisShovel.setHarvestLevel("shovel", 14);
 		RioVBlocks.alerisOre.setHarvestLevel("pickaxe", 13);
 		//14's
+		
+		//15's
+		RioVItems.infusedAlerisPickaxe.setHarvestLevel("pickaxe", 15);
+		RioVItems.infusedAlerisAxe.setHarvestLevel("axe", 15);
+		RioVItems.infusedAlerisShovel.setHarvestLevel("shovel", 15);
+		//15's
 	}
 }
