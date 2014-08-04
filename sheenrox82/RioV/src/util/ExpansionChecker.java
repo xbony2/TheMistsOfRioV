@@ -2,6 +2,8 @@ package sheenrox82.RioV.src.util;
 
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.nei.AnvilNEI;
+import codechicken.nei.api.API;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 
@@ -49,6 +51,25 @@ public class ExpansionChecker
 		{
 			FMLLog.info("Baubles wasn't detected... No Baubles Expansion for you. :(");
 			RioVAPI.getInstance().baubles = false;
+		}
+
+		try
+		{
+			Class.forName("codechicken.nei.NEICompatibility");
+			FMLLog.info("NEI detected! RioV NEI integration is being added!");
+			RioVAPI.getInstance().getLogger().info("NEI detected! RioV NEI integration is being added!");
+			RioVAPI.getInstance().nei = true;
+			
+			if(RioVAPI.getInstance().nei == true)
+			{
+				API.registerRecipeHandler(new AnvilNEI());
+			}
+		}
+		catch (Throwable var11)
+		{
+			FMLLog.info("NEI was not detected, no RioV NEI integration for you. :(");
+			RioVAPI.getInstance().getLogger().info("NEI was not detected, no RioV NEI integration for you. :(");
+			RioVAPI.getInstance().nei = false;
 		}
 	}
 }

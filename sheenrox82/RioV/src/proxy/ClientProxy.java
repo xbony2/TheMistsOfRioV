@@ -137,7 +137,6 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityTiTun.class, new RenderTiTun());
 		RenderingRegistry.registerEntityRenderingHandler(EntityShadowWizard.class, new RenderBipedCore(RioVLib.essence, "Shadownite Wizard", Color.DARK_RED + "Raetiin"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityRawDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":" + "darkMatter.png")));
-
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJaerinFlag.class, new RenderTileEntityJaerinFlag());
