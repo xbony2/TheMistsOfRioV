@@ -57,17 +57,8 @@ public class HarvestLevelRegistry
 		RioVItems.infusedOnyxPickaxe.setHarvestLevel("pickaxe", 4);
 		RioVItems.infusedOnyxAxe.setHarvestLevel("axe", 4);
 		RioVItems.infusedOnyxShovel.setHarvestLevel("shovel", 4);
-		RioVItems.blindonitePickaxe.setHarvestLevel("pickaxe", 4);
-		RioVItems.blindoniteAxe.setHarvestLevel("axe", 4);
-		RioVItems.blindoniteShovel.setHarvestLevel("shovel", 4);
 		RioVBlocks.blindoniteOre.setHarvestLevel("pickaxe", 4);
 		//4's
-
-		//5's
-		RioVItems.infusedBlindonitePickaxe.setHarvestLevel("pickaxe", 5);
-		RioVItems.infusedBlindoniteAxe.setHarvestLevel("axe", 5);
-		RioVItems.infusedBlindoniteShovel.setHarvestLevel("shovel", 5);
-		//5's
 
 		//8's
 		RioVItems.agonitePickaxe.setHarvestLevel("pickaxe", 8);

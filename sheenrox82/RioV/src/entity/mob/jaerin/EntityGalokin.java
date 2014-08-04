@@ -30,6 +30,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadowWizard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySoverianOfficer;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
@@ -69,6 +70,7 @@ public class EntityGalokin extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVravinite.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySoverianOfficer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPaladin.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityShadowWizard.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
@@ -81,10 +83,10 @@ public class EntityGalokin extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		this.fallDistance = 0.0f;
 		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
-		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.galokinHelmet));
-		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.galokinChestplate));
-		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.galokinLeggings));
-		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.galokinBoots));
+		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.infusedAmethystHelmet));
+		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.infusedAmethystChestplate));
+		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.infusedAmethystLeggings));
+		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.infusedAmethystBoots));
 	}
 
 	@Override
@@ -124,19 +126,7 @@ public class EntityGalokin extends EntityMobDeadBody
 
 	static
 	{
-		defaultHeldItem = new ItemStack(RioVItems.galokinSword);
-	}
-
-	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
-		int var3 = this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
-		int var4;
-
-		for (var4 = 0; var4 < var3; ++var4)
-		{
-			this.dropItem(RioVItems.galokinCrystal, 1);
-		}
+		defaultHeldItem = new ItemStack(RioVItems.infusedAmethystSword);
 	}
 
 	@Override

@@ -39,6 +39,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunBodyguard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityAunTunMinion;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityDarkElf;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityHellhound;
+import sheenrox82.RioV.src.entity.mob.raetiin.EntityShadowWizard;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySkeletalHorse;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntitySoverianOfficer;
 import sheenrox82.RioV.src.entity.mob.raetiin.EntityTefGuard;
@@ -74,6 +75,7 @@ public class EntityWoodElfKing extends EntityBossCore implements IRangedAttackMo
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityVravinite.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySoverianOfficer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPaladin.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityShadowWizard.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
@@ -88,10 +90,10 @@ public class EntityWoodElfKing extends EntityBossCore implements IRangedAttackMo
 		this.tasks.addTask(6, new EntityAILookIdle(this));
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.fallDistance = 0.0f;
-		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.blindoniteHelmet));
-		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.blindoniteChestplate));
-		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.blindoniteLeggings));
-		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.blindoniteBoots));
+		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.infusedAmethystHelmet));
+		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.infusedAmethystChestplate));
+		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.infusedAmethystLeggings));
+		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.infusedAmethystBoots));
 		this.setCurrentItemOrArmor(0, new ItemStack(Items.bow));
 		if (par1World != null && !par1World.isRemote)
 		{
