@@ -15,6 +15,8 @@ public class RioVPlayer implements IExtendedEntityProperties
 
 	private final EntityPlayer player;
 
+	public boolean hasReceivedBook;
+	
 	public int maxEos;
 	public static final int EOS_WATCHER = 20;
 
@@ -35,6 +37,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public RioVPlayer(EntityPlayer player) 
 	{
 		this.player = player;
+		this.hasReceivedBook = false;
 		this.maxEos = 50;
 		this.defaultRep = 0;
 		this.maxRep = 100;
@@ -70,7 +73,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 		properties.setInteger("MinRep", minRep);
 		properties.setInteger("MaxRep", maxRep);
 		properties.setInteger("FactionID", factionID);
-
+		properties.setBoolean("Book", hasReceivedBook);
 		compound.setTag(EXT_PROP_NAME, properties);
 	}
 
@@ -85,6 +88,7 @@ public class RioVPlayer implements IExtendedEntityProperties
 		minRep = properties.getInteger("MinRep");
 		maxRep = properties.getInteger("MaxRep");
 		factionID = properties.getInteger("FactionID");
+		hasReceivedBook = properties.getBoolean("Book");
 	}
 
 	@Override
@@ -169,6 +173,17 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public final void setFactionID(int facID)
 	{
 		factionID = facID;
+		RioVAPI.getInstance().getNetworkHandler().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
+	}
+	
+	public final boolean getReceivedBook()
+	{
+		return hasReceivedBook;
+	}
+	
+	public final void setReceivedBook(boolean status)
+	{
+		hasReceivedBook = status;
 		RioVAPI.getInstance().getNetworkHandler().sendTo(new RioVPlayerPackets(player), (EntityPlayerMP) player);
 	}
 

@@ -166,6 +166,12 @@ public class Events
 				RioVPlayer playerRioV = RioVPlayer.get(player);
 
 				playerRioV.loadProxyData(player);
+				
+				if(playerRioV.getReceivedBook() == false)
+				{
+					player.inventory.addItemStackToInventory(new ItemStack(RioVItems.guideBook));
+					playerRioV.setReceivedBook(true);
+				}
 			}
 		}
 	}

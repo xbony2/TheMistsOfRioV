@@ -1,12 +1,10 @@
-package sheenrox82.RioV.src.base;
+package sheenrox82.RioV.src.content;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.content.RioVItems;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 
