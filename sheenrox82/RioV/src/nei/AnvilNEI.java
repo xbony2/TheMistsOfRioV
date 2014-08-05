@@ -17,9 +17,9 @@ import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
 import sheenrox82.RioV.src.gui.GuiAnvil;
 import sheenrox82.RioV.src.util.Util;
 import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.ShapedRecipeHandler;
+import codechicken.nei.recipe.TemplateRecipeHandler;
 
-public class AnvilNEI extends ShapedRecipeHandler
+public class AnvilNEI extends TemplateRecipeHandler
 {
 
 	@Override
@@ -113,7 +113,7 @@ public class AnvilNEI extends ShapedRecipeHandler
 		}
 	}
 
-	public class CachedAnvilNEI extends ShapedRecipeHandler.CachedRecipe
+	public class CachedAnvilNEI extends TemplateRecipeHandler.CachedRecipe
 	{
 		public ArrayList<PositionedStack> ingredients;
 		public PositionedStack result;

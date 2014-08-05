@@ -56,8 +56,8 @@ public class GuiEosBar extends Gui
 				int height = event.resolution.getScaledHeight();
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 				int eos = (int)(((float) props.getCurrentEos() / props.getMaxEos()) * 80);
-				this.drawTexturedModalRect(Config.hudPosX, height - Config.hudPosY, 0, 49, 102, 14);
-				this.drawTexturedModalRect(Config.hudPosX + 11, (height - Config.hudPosY) + 4, 11, 64, eos, 6);
+				this.drawTexturedModalRect(Config.hudPosX + 15, height - Config.hudPosY, 0, 49, 102, 14);
+				this.drawTexturedModalRect(Config.hudPosX + 26, (height - Config.hudPosY) + 4, 11, 64, eos, 6);
 				GL11.glPopMatrix();
 			}
 		}

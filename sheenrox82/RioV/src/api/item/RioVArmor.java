@@ -136,7 +136,7 @@ public class RioVArmor extends ItemArmor
 		}
 	}
 
-	public final int getMaxDamageFactor(ArmorMaterial material)
+	public final static int getMaxDamageFactor(ArmorMaterial material)
 	{
 		int maxDamageFactor = 0;
 

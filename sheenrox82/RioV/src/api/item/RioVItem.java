@@ -2,6 +2,8 @@ package sheenrox82.RioV.src.api.item;
 
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -48,10 +50,23 @@ public class RioVItem extends Item
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	{
-		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("amethyst")))par3List.add("A gem to show wealth and power");
-		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("onyx")))par3List.add("A dark mass");
-		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("vravinite")))par3List.add("A crystal to show confidence");
-		if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("aleris")))par3List.add("A gem to show defence and strategies");
+		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+		{
+			if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("amethyst")))par3List.add("A gem to show wealth and power");
+			if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("onyx")))par3List.add("A dark mass");
+			if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("vravinite")))par3List.add("A crystal to show confidence");
+			if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("aleris")))par3List.add("A gem to show defence and strategies");
+		}
+		else
+		{
+			if(par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("amethyst")) ||
+					par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("onyx")) ||
+					par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("vravinite")) ||
+					par1ItemStack.getItem().equals(RioVAPI.getInstance().getUtil().getRioVItem("aleris")))
+			{
+				par3List.add("[SHIFT]");
+			}
+		}
 	}
 
 	@Override
@@ -82,7 +97,7 @@ public class RioVItem extends Item
 				attributeInstance.applyModifier(moreHealth);
 			}
 		}
-	
+
 		return par1ItemStack;
 	}
 }

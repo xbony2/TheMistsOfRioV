@@ -1,5 +1,7 @@
 package sheenrox82.RioV.src.item;
 
+import java.util.List;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -8,6 +10,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import sheenrox82.RioV.src.api.base.RioVAPI;
+import sheenrox82.RioV.src.api.item.RioVArmor;
+import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
@@ -102,14 +106,14 @@ public class ItemDragonChestplate extends ItemArmor
 		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "dragonChestplate");
 	}
 
-	/**@Override
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
-		if(Config.showToolInfo)
+		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
-			var3.add(Color.GOLD + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
-			var3.add(Color.DARK_PURPLE + "Protection: " + material.maxDamageFactor);
+			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
+			var3.add(Color.dark_purple + "Protection: " + RioVArmor.getMaxDamageFactor(material));
 		}
-	}**/
+	}
 }
