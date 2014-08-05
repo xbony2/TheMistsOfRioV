@@ -37,9 +37,11 @@ public class RioVLib
 	public static int mediumBagID = 4;
 	public static int largeBagID = 5;
 	public static int sheensBagID = 6;
+	public static int guideID = 7;
 
 	public static final ResourceLocation infuser = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "infuser.png");
 	public static final ResourceLocation workbench = new ResourceLocation("textures/gui/container/crafting_table.png");
 	public static final ResourceLocation inventory = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "inventory.png");
 	public static final ResourceLocation anvil = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "anvil.png");
+	public static final ResourceLocation guide = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "guide.png");
 }

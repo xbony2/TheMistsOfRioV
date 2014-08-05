@@ -3,6 +3,7 @@ package sheenrox82.RioV.src.handler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.container.ContainerAnvil;
 import sheenrox82.RioV.src.container.ContainerBagLarge;
 import sheenrox82.RioV.src.container.ContainerBagMedium;
@@ -11,6 +12,7 @@ import sheenrox82.RioV.src.container.ContainerBagSmall;
 import sheenrox82.RioV.src.container.ContainerInfuser;
 import sheenrox82.RioV.src.container.ContainerRioVWorkbench;
 import sheenrox82.RioV.src.gui.GuiAnvil;
+import sheenrox82.RioV.src.gui.GuiGuide;
 import sheenrox82.RioV.src.gui.GuiInfuser;
 import sheenrox82.RioV.src.gui.GuiLargeBag;
 import sheenrox82.RioV.src.gui.GuiMediumBag;
@@ -116,6 +118,12 @@ public class GuiHandler implements IGuiHandler
 				return new GuiSheenBag((ContainerBagSheen) new ContainerBagSheen(player, player.inventory, new InventoryBagSheen(player.getHeldItem())));
 			}
 		}
+		
+		if(id == RioVLib.guideID)
+		{
+			return new GuiGuide(player.getDisplayName(), "");
+		}
+
 	
 		return null;
 	}

@@ -9,8 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
-import sheenrox82.RioV.src.gui.GuiManual;
-import cpw.mods.fml.client.FMLClientHandler;
+import sheenrox82.RioV.src.guide.GuideHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -40,8 +39,7 @@ public class ItemGuideBook extends Item
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player)
 	{
-		FMLClientHandler.instance().displayGuiScreen(player, new GuiManual());
-	
+		GuideHelper.openJournal(player, "");
 		return par1ItemStack;
 	}
 }
