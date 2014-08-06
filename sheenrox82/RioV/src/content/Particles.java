@@ -2,7 +2,6 @@ package sheenrox82.RioV.src.content;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.entity.particle.EntityGlimmerParticleFX;
 
@@ -10,7 +9,6 @@ public class Particles
 {
 	private static Minecraft mc = Minecraft.getMinecraft();
 	private static World theWorld = mc.theWorld;
-	private static TextureManager renderEngine = mc.renderEngine;
 
 	public static EntityFX spawnParticle(String particleName, double par2, double par4, double par6, double par8, double par10, double par12)
 	{

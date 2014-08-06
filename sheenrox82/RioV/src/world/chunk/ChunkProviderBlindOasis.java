@@ -153,10 +153,6 @@ public class ChunkProviderBlindOasis implements IChunkProvider
 
     public void generateTerrain(int par1, int par2, Block[] par3BlockArray)
     {
-        ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, par1, par2, par3BlockArray, null);
-        MinecraftForge.EVENT_BUS.post(event);
-        if (event.getResult() == Result.DENY) return;
-
         byte b0 = 64;
         double d0 = 0.03125D;
         this.slowsandNoise = this.slowsandGravelNoiseGen.generateNoiseOctaves(this.slowsandNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d0, d0, 1.0D);
@@ -483,7 +479,7 @@ public class ChunkProviderBlindOasis implements IChunkProvider
     }
 
     @Override
-	public List getPossibleCreatures(EnumCreatureType enumcreaturetype, int i, int j, int k)
+	public List<?> getPossibleCreatures(EnumCreatureType enumcreaturetype, int i, int j, int k)
 	{
 		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(i, k);
 		return var5 == null ? null : var5.getSpawnableList(enumcreaturetype);

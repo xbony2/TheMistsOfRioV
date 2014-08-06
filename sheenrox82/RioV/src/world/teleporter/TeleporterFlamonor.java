@@ -22,7 +22,7 @@ public class TeleporterFlamonor extends Teleporter
     private final WorldServer worldServerInstance;
     private final Random random;
     private final LongHashMap destinationCoordinateCache = new LongHashMap();
-    private final List destinationCoordinateKeys = new ArrayList();
+    private final List<Long> destinationCoordinateKeys = new ArrayList<Long>();
 
     public TeleporterFlamonor(WorldServer p_i1963_1_)
     {
@@ -479,7 +479,7 @@ public class TeleporterFlamonor extends Teleporter
     {
         if (p_85189_1_ % 100L == 0L)
         {
-            Iterator iterator = this.destinationCoordinateKeys.iterator();
+            Iterator<Long> iterator = this.destinationCoordinateKeys.iterator();
             long j = p_85189_1_ - 600L;
 
             while (iterator.hasNext())
@@ -499,7 +499,6 @@ public class TeleporterFlamonor extends Teleporter
     public class PortalPosition extends ChunkCoordinates
     {
         public long lastUpdateTime;
-        private static final String __OBFID = "CL_00000154";
 
         public PortalPosition(int p_i1962_2_, int p_i1962_3_, int p_i1962_4_, long p_i1962_5_)
         {

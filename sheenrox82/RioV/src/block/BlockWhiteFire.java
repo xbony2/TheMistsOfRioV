@@ -46,29 +46,29 @@ public class BlockWhiteFire extends BlockFire
 
 	public static void func_149843_e()
 	{
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.planks), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.double_wooden_slab), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.wooden_slab), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.fence), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.oak_stairs), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.birch_stairs), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.spruce_stairs), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.jungle_stairs), 5, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.log), 5, 5);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.log2), 5, 5);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.leaves), 30, 60);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.leaves2), 30, 60);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.bookshelf), 30, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.tnt), 15, 100);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.tallgrass), 60, 100);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.double_plant), 60, 100);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.yellow_flower), 60, 100);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.red_flower), 60, 100);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.wool), 30, 60);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.vine), 15, 100);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.coal_block), 5, 5);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.hay_block), 60, 20);
-		Blocks.fire.func_149842_a(getIdFromBlock(Blocks.carpet), 60, 20);
+		Blocks.fire.setFireInfo(Blocks.planks, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.double_wooden_slab, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.wooden_slab, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.fence, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.oak_stairs, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.birch_stairs, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.spruce_stairs, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.jungle_stairs, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.log, 5, 5);
+		Blocks.fire.setFireInfo(Blocks.log2, 5, 5);
+		Blocks.fire.setFireInfo(Blocks.leaves, 30, 60);
+		Blocks.fire.setFireInfo(Blocks.leaves2, 30, 60);
+		Blocks.fire.setFireInfo(Blocks.bookshelf, 30, 20);
+		Blocks.fire.setFireInfo(Blocks.tnt, 15, 100);
+		Blocks.fire.setFireInfo(Blocks.tallgrass, 60, 100);
+		Blocks.fire.setFireInfo(Blocks.double_plant, 60, 100);
+		Blocks.fire.setFireInfo(Blocks.yellow_flower, 60, 100);
+		Blocks.fire.setFireInfo(Blocks.red_flower, 60, 100);
+		Blocks.fire.setFireInfo(Blocks.wool, 30, 60);
+		Blocks.fire.setFireInfo(Blocks.vine, 15, 100);
+		Blocks.fire.setFireInfo(Blocks.coal_block, 5, 5);
+		Blocks.fire.setFireInfo(Blocks.hay_block, 60, 20);
+		Blocks.fire.setFireInfo(Blocks.carpet, 60, 20);
 	}
 
 	@Deprecated // Use setFireInfo
@@ -234,15 +234,6 @@ public class BlockWhiteFire extends BlockFire
 	public boolean func_149698_L()
 	{
 		return false;
-	}
-
-	/**
-	 * Tries to set block on fire. Deprecated in favour of side-sensitive version.
-	 */
-	@Deprecated
-	private void tryCatchFire(World p_149841_1_, int p_149841_2_, int p_149841_3_, int p_149841_4_, int p_149841_5_, Random p_149841_6_, int p_149841_7_)
-	{
-		this.tryCatchFire(p_149841_1_, p_149841_2_, p_149841_3_, p_149841_4_, p_149841_5_, p_149841_6_, p_149841_7_, UP);
 	}
 
 	private void tryCatchFire(World p_149841_1_, int p_149841_2_, int p_149841_3_, int p_149841_4_, int p_149841_5_, Random p_149841_6_, int p_149841_7_, ForgeDirection face)

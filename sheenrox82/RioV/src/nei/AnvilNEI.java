@@ -6,6 +6,8 @@ import static codechicken.lib.gui.GuiDraw.drawTexturedModalRect;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 
@@ -48,7 +50,7 @@ public class AnvilNEI extends TemplateRecipeHandler
 	}
 
 	@Override
-	public Class getGuiClass()
+	public Class<? extends GuiContainer> getGuiClass()
 	{
 		return GuiAnvil.class;
 	}
@@ -95,7 +97,7 @@ public class AnvilNEI extends TemplateRecipeHandler
 	@Override
 	public void loadUsageRecipes(ItemStack ingredient)
 	{
-		List<IRecipe> allrecipes = AnvilCraftingManager.instance.getRecipeList();
+		List<IRecipe> allrecipes = RioVAPI.getInstance().getCraftingManager().getRecipeList();
 
 		for(IRecipe irecipe : allrecipes)
 		{

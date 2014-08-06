@@ -15,11 +15,8 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.world.mineable.WorldGenFlamonorMineable;
-import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderFlamonor implements IChunkProvider
 {
@@ -146,10 +143,6 @@ public class ChunkProviderFlamonor implements IChunkProvider
 		byte var5 = 63;
 		double var6 = 0.03125D;
 		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, var1 * 16, var2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
-
-		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, var1, var2, var3, var4);
-        MinecraftForge.EVENT_BUS.post(event);
-        if (event.getResult() == Result.DENY) return;
 
 		for (int var8 = 0; var8 < 16; ++var8) 
 		{
@@ -394,7 +387,7 @@ public class ChunkProviderFlamonor implements IChunkProvider
 	}
 
 	@Override
-	public List getPossibleCreatures(EnumCreatureType enumcreaturetype, int i, int j, int k)
+	public List<?> getPossibleCreatures(EnumCreatureType enumcreaturetype, int i, int j, int k)
 	{
 		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(i, k);
 		return var5 == null ? null : var5.getSpawnableList(enumcreaturetype);

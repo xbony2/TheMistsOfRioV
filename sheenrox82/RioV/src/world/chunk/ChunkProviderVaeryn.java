@@ -453,7 +453,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
 	}
 
 	@Override
-	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4) 
+	public List<?> getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4) 
 	{
 		BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(par2, par4);
 		return biomegenbase.getSpawnableList(par1EnumCreatureType);
