@@ -178,7 +178,7 @@ public class ClientProxy extends CommonProxy
 	{
 		return RenderingRegistry.addNewArmourRendererPrefix(armorName);
 	}
-
+	
 	@Override
 	public ModelBiped getArmorModel(int id)
 	{

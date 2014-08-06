@@ -27,10 +27,10 @@ public class RioVAPI
 	 * Optifine - by sp614x
 	 * NEI - by CodeChicken
 	 */
-	public boolean natura;
-	public boolean baubles;
-	public boolean optifine;
-	public boolean nei;
+	public boolean natura = false;
+	public boolean baubles = false;
+	public boolean optifine = false;
+	public boolean nei = false;
 
 	/**
 	 * RioV tab.

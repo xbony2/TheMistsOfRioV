@@ -1,12 +1,8 @@
 package sheenrox82.RioV.src.nei;
 
-import static codechicken.lib.gui.GuiDraw.changeTexture;
-import static codechicken.lib.gui.GuiDraw.drawTexturedModalRect;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -15,15 +11,14 @@ import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.recipe.AnvilShapedRecipes;
-import sheenrox82.RioV.src.api.recipe.manager.AnvilCraftingManager;
 import sheenrox82.RioV.src.gui.GuiAnvil;
 import sheenrox82.RioV.src.util.Util;
+import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 
 public class AnvilNEI extends TemplateRecipeHandler
 {
-
 	@Override
 	public String getRecipeName() 
 	{
@@ -39,8 +34,8 @@ public class AnvilNEI extends TemplateRecipeHandler
 	public void drawBackground(int recipe)
 	{
 		GL11.glColor4f(1, 1, 1, 1);
-		changeTexture(getGuiTexture());
-		drawTexturedModalRect(0, 0, 5, 7, 166, 75);
+		GuiDraw.changeTexture(getGuiTexture());
+		GuiDraw.drawTexturedModalRect(0, 0, 5, 7, 166, 75);
 	}
 
 	@Override
