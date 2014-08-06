@@ -20,7 +20,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
@@ -155,7 +154,7 @@ public class EntityGalokin extends EntityMobDeadBody
 			par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
 
 			if(!this.worldObj.isRemote)
-				par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
+				par1EntityPlayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		}
 
 		return true;

@@ -6,7 +6,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.util.Util;
 
@@ -36,6 +35,6 @@ public class RioVExplosives extends Item
 
 	public void registerIcons(IIconRegister i)
 	{
-		this.itemIcon = i.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = i.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 }

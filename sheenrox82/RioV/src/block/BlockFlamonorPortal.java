@@ -13,7 +13,7 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.Sounds;
@@ -123,7 +123,6 @@ public class BlockFlamonorPortal extends BlockPortal
 		private ChunkCoordinates field_150861_f;
 		private int field_150862_g;
 		private int field_150868_h;
-		private static final String __OBFID = "CL_00000285";
 
 		public Size(World p_i45415_1_, int p_i45415_2_, int p_i45415_3_, int p_i45415_4_, int p_i45415_5_)
 		{
@@ -295,6 +294,6 @@ public class BlockFlamonorPortal extends BlockPortal
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	} 
 }

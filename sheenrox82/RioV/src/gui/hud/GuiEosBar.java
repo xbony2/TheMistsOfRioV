@@ -1,7 +1,6 @@
 package sheenrox82.RioV.src.gui.hud;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -13,7 +12,6 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.base.Config;
-import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -40,7 +38,6 @@ public class GuiEosBar extends Gui
 
 		ResourceLocation icons = new ResourceLocation("riov", "textures/gui/eos_bar.png");
 		RioVPlayer props = RioVPlayer.get(mc.thePlayer);
-		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
 
 		if (props == null || props.getMaxEos() == 0)
 		{

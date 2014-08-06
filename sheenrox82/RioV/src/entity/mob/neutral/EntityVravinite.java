@@ -23,7 +23,6 @@ import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;

@@ -11,7 +11,6 @@ import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
@@ -45,7 +44,6 @@ public class EntityDarknessArrow extends Entity implements IProjectile
     public double damage = 2.4D;
     /** The amount of knockback an arrow applies when it hits a mob. */
     private int knockbackStrength;
-    private static final String __OBFID = "CL_00001715";
 
     public EntityDarknessArrow(World p_i1753_1_)
     {

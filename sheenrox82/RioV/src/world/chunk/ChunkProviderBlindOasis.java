@@ -1,19 +1,10 @@
 package sheenrox82.RioV.src.world.chunk;
 
-import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SHROOM;
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.NETHER_BRIDGE;
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.NETHER_CAVE;
-import static net.minecraftforge.event.terraingen.OreGenEvent.GenerateMinable.EventType.QUARTZ;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.FIRE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.GLOWSTONE;
-import static net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.NETHER_LAVA;
 
 import java.util.List;
 import java.util.Random;
 
-import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.mineable.WorldGenBlindOasisMineable;
-import sheenrox82.RioV.src.world.mineable.WorldGenFlamonorMineable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -29,18 +20,12 @@ import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCavesHell;
 import net.minecraft.world.gen.NoiseGenerator;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenFire;
-import net.minecraft.world.gen.feature.WorldGenFlowers;
-import net.minecraft.world.gen.feature.WorldGenGlowStone1;
-import net.minecraft.world.gen.feature.WorldGenGlowStone2;
-import net.minecraft.world.gen.feature.WorldGenHellLava;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.structure.MapGenNetherBridge;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import sheenrox82.RioV.src.content.RioVBlocks;
+import sheenrox82.RioV.src.world.mineable.WorldGenBlindOasisMineable;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderBlindOasis implements IChunkProvider
@@ -64,7 +49,6 @@ public class ChunkProviderBlindOasis implements IChunkProvider
     double[] noiseData3;
     double[] noiseData4;
     double[] noiseData5;
-    private static final String __OBFID = "CL_00000392";
 
     {
         netherCaveGenerator = TerrainGen.getModdedMapGen(netherCaveGenerator, NETHER_CAVE);
@@ -484,16 +468,6 @@ public class ChunkProviderBlindOasis implements IChunkProvider
         return "BlindOasisSource";
     }
 
-    public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
-    {
-        if (par1EnumCreatureType == EnumCreatureType.monster)
-        {
-        }
-
-        BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(par2, par4);
-        return biomegenbase.getSpawnableList(par1EnumCreatureType);
-    }
-
     public ChunkPosition func_147416_a(World p_147416_1_, String p_147416_2_, int p_147416_3_, int p_147416_4_, int p_147416_5_)
     {
         return null;
@@ -507,4 +481,11 @@ public class ChunkProviderBlindOasis implements IChunkProvider
     public void recreateStructures(int par1, int par2)
     {
     }
+
+    @Override
+	public List getPossibleCreatures(EnumCreatureType enumcreaturetype, int i, int j, int k)
+	{
+		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(i, k);
+		return var5 == null ? null : var5.getSpawnableList(enumcreaturetype);
+	}
 }

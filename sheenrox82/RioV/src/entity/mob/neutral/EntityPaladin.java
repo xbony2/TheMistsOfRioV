@@ -1,7 +1,5 @@
 package sheenrox82.RioV.src.entity.mob.neutral;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -17,14 +15,11 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.base.Config;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
@@ -47,6 +42,8 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData

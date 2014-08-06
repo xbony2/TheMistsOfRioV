@@ -6,26 +6,21 @@ import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.monster.EntityCaveSpider;
-import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGiantZombie;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySilverfish;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityPaladin;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityVravinite;
@@ -100,8 +95,8 @@ public class EntityTiTun extends EntityBossCore
 		
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("Ti'Tun: *Rupture*");
-			RioVAPIUtil.sendMessageToAll("Ti'Tun was destroyed!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Ti'Tun: *Rupture*");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Ti'Tun was destroyed!");
 		}
 	}
 

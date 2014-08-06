@@ -33,7 +33,6 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
-import sheenrox82.RioV.src.entity.mob.neutral.EntityNizonian;
 
 public class EntityAunTunBodyguard extends EntityMobDeadBody
 {

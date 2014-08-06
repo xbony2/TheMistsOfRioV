@@ -1,12 +1,7 @@
 package sheenrox82.RioV.src.entity.projectile;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import java.util.List;
 
-import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.util.MethodUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -16,8 +11,6 @@ import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
@@ -27,6 +20,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.MethodUtil;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityVraviniteArrow extends Entity implements IProjectile
 {
@@ -47,7 +44,6 @@ public class EntityVraviniteArrow extends Entity implements IProjectile
     public double damage = 2.9D;
     /** The amount of knockback an arrow applies when it hits a mob. */
     private int knockbackStrength;
-    private static final String __OBFID = "CL_00001715";
 
     public EntityVraviniteArrow(World p_i1753_1_)
     {

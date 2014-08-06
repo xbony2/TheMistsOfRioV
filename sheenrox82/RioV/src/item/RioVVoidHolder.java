@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.util.Util;
@@ -214,6 +213,6 @@ public class RioVVoidHolder extends ItemBucket
 	@Override
 	public void registerIcons(IIconRegister i)
 	{
-		this.itemIcon = i.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = i.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 }

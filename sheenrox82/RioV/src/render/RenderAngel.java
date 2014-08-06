@@ -10,7 +10,6 @@ import org.lwjgl.opengl.GL11;
 
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAngel;
-import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.model.ModelDemonAngel;
 import cpw.mods.fml.relauncher.Side;

@@ -10,7 +10,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,7 +23,7 @@ public class BlockBloodRock extends Block
 	public BlockBloodRock()
 	{
 		super(Material.rock);
-		this.setStepSound(this.soundTypeStone);
+		this.setStepSound(Block.soundTypeStone);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
@@ -63,6 +62,6 @@ public class BlockBloodRock extends Block
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	} 
 }

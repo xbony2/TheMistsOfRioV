@@ -1,16 +1,13 @@
 package sheenrox82.RioV.src.gui.hud;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.base.Config;
@@ -39,7 +36,6 @@ public class GuiReputationMeter extends Gui
 		}
 
 		RioVPlayer props = RioVPlayer.get(mc.thePlayer);
-		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
 
 		if (props == null || props.maxEos == 0)
 		{
@@ -48,7 +44,6 @@ public class GuiReputationMeter extends Gui
 
 		if(!mc.thePlayer.capabilities.isCreativeMode)
 		{
-			int height = event.resolution.getScaledHeight();
 			GL11.glPushMatrix();
 			
 			if(props.getCurrentRep() < 0)

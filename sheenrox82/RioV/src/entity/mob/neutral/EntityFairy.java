@@ -2,12 +2,10 @@ package sheenrox82.RioV.src.entity.mob.neutral;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityFlyingDeadBody;
-import sheenrox82.RioV.src.content.RioVItems;
 
 public class EntityFairy extends EntityFlyingDeadBody
 {

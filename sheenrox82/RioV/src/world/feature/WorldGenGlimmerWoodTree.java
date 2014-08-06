@@ -16,9 +16,6 @@ public class WorldGenGlimmerWoodTree extends WorldGenAbstractTree
     private final int minTreeHeight;
     /** True if this tree should grow Vines. */
 
-    private final boolean vinesGrow;
-    /** The metadata value of the wood to use in tree generation. */
-
     private final int metaWood;
     /** The metadata value of the leaves to use in tree generation. */
 
@@ -26,16 +23,15 @@ public class WorldGenGlimmerWoodTree extends WorldGenAbstractTree
 
     public WorldGenGlimmerWoodTree(boolean par1)
     {
-        this(par1, 4, 0, 0, false);
+        this(par1, 4, 0, 0);
     }
 
-    public WorldGenGlimmerWoodTree(boolean par1, int par2, int par3, int par4, boolean par5)
+    public WorldGenGlimmerWoodTree(boolean par1, int par2, int par3, int par4)
     {
         super(par1);
         this.minTreeHeight = par2;
         this.metaWood = par3;
         this.metaLeaves = par4;
-        this.vinesGrow = par5;
     }
 
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)

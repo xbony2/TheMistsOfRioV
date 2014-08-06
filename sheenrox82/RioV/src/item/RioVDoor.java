@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.util.Util;
@@ -128,6 +127,6 @@ public class RioVDoor extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 }

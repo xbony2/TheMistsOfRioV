@@ -1,7 +1,6 @@
 package sheenrox82.RioV.src.gui.hud;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -41,7 +40,6 @@ public class GuiHelmetOverlay extends Gui
 			return;
 		}
 
-		FontRenderer fontrenderer = Minecraft.getMinecraft().fontRenderer;
 		ItemStack itemstack = this.mc.thePlayer.inventory.armorItemInSlot(3);
 		ScaledResolution scaledresolution = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
 		int k = scaledresolution.getScaledWidth();

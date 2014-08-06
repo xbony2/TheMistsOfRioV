@@ -10,8 +10,7 @@ public class WorldGenBalance extends WorldGenFlowers
 {
     private Block field_150552_a;
     private int field_150551_b;
-    private static final String __OBFID = "CL_00000410";
-
+    
     public WorldGenBalance(Block block)
     {
     	super(block);

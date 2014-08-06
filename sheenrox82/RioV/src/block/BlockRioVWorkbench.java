@@ -1,8 +1,5 @@
 package sheenrox82.RioV.src.block;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWorkbench;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -25,7 +22,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 	public IIcon workbenchIconFront;
 	@SideOnly(Side.CLIENT)
 	public IIcon bottom;
-	public static List containerList = new ArrayList();
+	//public static List containerList = new ArrayList();
 	private static BlockRioVWorkbench workbench = new BlockRioVWorkbench();
 
 	public static BlockRioVWorkbench getInstance()

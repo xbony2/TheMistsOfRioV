@@ -16,19 +16,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.MapGenBase;
-import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.MapGenScatteredFeature;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
-import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
-import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.world.mineable.WorldGenFlamonorMineable;
-import sheenrox82.RioV.src.world.mineable.WorldGenSanctuatiteMineable;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderSanctuatite implements IChunkProvider
@@ -37,7 +31,6 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 	private NoiseGeneratorOctaves noiseGen1;
 	private NoiseGeneratorOctaves noiseGen2;
 	private NoiseGeneratorOctaves noiseGen3;
-	private NoiseGeneratorOctaves field_909_n;
 	private NoiseGeneratorOctaves noiseGen4;
 	public NoiseGeneratorOctaves noiseGen5;
 	public NoiseGeneratorOctaves noiseGen6;
@@ -45,7 +38,6 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 	private World worldObj;
 	private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
-	private MapGenBase caveGenerator = new MapGenCaves();
 	private BiomeGenBase[] biomesForGeneration;
 	double[] noise3;
 	double[] noise1;
@@ -53,7 +45,6 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 	double[] noise5;
 	double[] noise6;
 	int[][] field_914_i = new int[32][32];
-	private double[] generatedTemperatures;
 	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 
 	{
@@ -67,7 +58,6 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
 		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
-		this.field_909_n = new NoiseGeneratorOctaves(this.rand, 4);
 		this.noiseGen4 = new NoiseGeneratorOctaves(this.rand, 4);
 		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
 		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
@@ -183,7 +173,6 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 			for (int var9 = 0; var9 < 16; ++var9) 
 			{
 				BiomeGenBase var10 = var4[var9 + var8 * 16];
-				float var11 = var10.getFloatTemperature(var9, var9, var9);
 				int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
 				Block var14 = var10.topBlock;
@@ -281,15 +270,11 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 		this.noise2 = this.noiseGen2.generateNoiseOctaves(this.noise2, var2, var3, var4, var5, var6, var7, var8, var10, var8);
 		int var12 = 0;
 		int var13 = 0;
-		int var14 = 16 / var5;
 
 		for (int var15 = 0; var15 < var5; ++var15)
 		{
-			int var16 = var15 * var14 + var14 / 2;
-
 			for (int var17 = 0; var17 < var7; ++var17) 
 			{
-				int var18 = var17 * var14 + var14 / 2;
 				double var19 = (this.noise5[var13] + 256.0D) / 512.0D;
 				double var21 = this.noise6[var13] / 8000.0D;
 
@@ -382,12 +367,9 @@ public class ChunkProviderSanctuatite implements IChunkProvider
 		long i1 = this.rand.nextLong() / 2L * 2L + 1L;
 		long j1 = this.rand.nextLong() / 2L * 2L + 1L;
 		this.rand.setSeed((long)par2 * i1 + (long)par3 * j1 ^ this.worldObj.getSeed());
-		boolean flag = false;
-		int var13;
 		int var14;
 		int var15;
 		int var16;
-		int d, y;
 
 		for(int x =0; x < 8; x++)
 		{

@@ -15,11 +15,10 @@ import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityPaladin;
@@ -37,8 +36,6 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class EntityAltru extends EntityBossCore
 {
@@ -88,8 +85,8 @@ public class EntityAltru extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("Altru: *Poof*");
-			RioVAPIUtil.sendMessageToAll("Altru has vanished!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Altru: *Poof*");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Altru has vanished!");
 		}
 	}
 

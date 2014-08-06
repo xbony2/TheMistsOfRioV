@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -18,7 +17,7 @@ public class BlockPlanks2 extends Block
 	{
 		super(Material.wood);
 		this.setHardness(1.6F);
-		this.setStepSound(this.soundTypeWood);
+		this.setStepSound(Block.soundTypeWood);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 	
@@ -38,7 +37,7 @@ public class BlockPlanks2 extends Block
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		blockIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		blockIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	} 
 
 	@Override

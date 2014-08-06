@@ -8,7 +8,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityFairy;
 import sheenrox82.RioV.src.lib.RioVLib;
 import sheenrox82.RioV.src.model.ModelFairy;

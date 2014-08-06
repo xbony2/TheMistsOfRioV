@@ -1,14 +1,9 @@
 package sheenrox82.RioV.src.api.entity;
 
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
 
 public class EntityBossCore extends EntityMob implements IBossDisplayData
 {	

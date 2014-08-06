@@ -7,7 +7,6 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
@@ -20,7 +19,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -173,12 +171,12 @@ public class RioVWeapon extends ItemSword
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 
 		if(RioVAPI.getInstance().natura)
 		{
 			if(this == RioVAPI.getInstance().getUtil().getRioVItem("infusedBloodwoodSword") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedGhostwoodSword") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedDarkwoodSword") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedFusewoodSword") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedNetherquartzSword"))
-				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
+				this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 		}
 	}
 }

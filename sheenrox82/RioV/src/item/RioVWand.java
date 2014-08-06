@@ -9,10 +9,8 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.entity.projectile.EntityDarkMatter;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityRawDarkMatter;
 import sheenrox82.RioV.src.util.Util;
@@ -43,7 +41,7 @@ public class RioVWand extends Item
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 
 	@Override
@@ -171,13 +169,13 @@ public class RioVWand extends Item
 		if(player.getCurrentEos() == 0)
 		{
 			if(!world.isRemote)
-				entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+				entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
 		}
 
 		if(player.getCurrentEos() < 0)
 		{
 			if(!world.isRemote)
-				entityplayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+				entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
 		}
 
 		return itemstack;

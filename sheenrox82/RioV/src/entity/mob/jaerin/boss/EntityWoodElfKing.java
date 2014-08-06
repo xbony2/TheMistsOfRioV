@@ -2,7 +2,6 @@ package sheenrox82.RioV.src.entity.mob.jaerin.boss;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -28,8 +27,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
@@ -128,8 +127,8 @@ public class EntityWoodElfKing extends EntityBossCore implements IRangedAttackMo
 	
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("Wood Elf King: *Scream*");
-			RioVAPIUtil.sendMessageToAll("Wood Elf King was killed!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Wood Elf King: *Scream*");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Wood Elf King was killed!");
 		}
 	}
 

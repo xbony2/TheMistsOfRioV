@@ -9,7 +9,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
 import sheenrox82.RioV.src.lib.RioVLib;

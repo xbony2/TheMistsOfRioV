@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.base;
 
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 

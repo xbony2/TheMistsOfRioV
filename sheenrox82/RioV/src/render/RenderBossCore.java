@@ -13,7 +13,6 @@ import org.lwjgl.opengl.GL11;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityAunTun;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.lib.RioVLib;

@@ -1,7 +1,5 @@
 package sheenrox82.RioV.src.world.chunk;
 
-import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CAVE;
-
 import java.util.List;
 import java.util.Random;
 
@@ -18,18 +16,12 @@ import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.MapGenBase;
-import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.NoiseGenerator;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import sheenrox82.RioV.src.content.RioVBlocks;
-import sheenrox82.RioV.src.world.mineable.WorldGenBalance;
 import sheenrox82.RioV.src.world.mineable.WorldGenVaerynMineable;
-import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class ChunkProviderVaeryn implements IChunkProvider
 {
@@ -43,7 +35,6 @@ public class ChunkProviderVaeryn implements IChunkProvider
 	private double[] stoneNoise = new double[256];
 	private BiomeGenBase[] biomesForGeneration;
 	private double[] gen1, gen2, gen3, gen4;
-	private int[][] ia = new int[32][32];
 
 	public ChunkProviderVaeryn(World par1World, long par2) 
 	{
@@ -175,7 +166,6 @@ public class ChunkProviderVaeryn implements IChunkProvider
 
 	public final void genBiomeTerrain(World w, Random rand, Block[] blocks, byte[] bytes, int i, int j, double d, BiomeGenBase b) 
 	{
-		boolean flag = true;
 		Block block = b.topBlock;
 		byte b0 = (byte)(b.field_150604_aj & 255);
 		Block block1 = b.fillerBlock;
@@ -297,19 +287,12 @@ public class ChunkProviderVaeryn implements IChunkProvider
 
 	private void generate(int x, int y, int z) 
 	{
-		double d0 = 684.412D;
-		double d1 = 684.412D;
-		double d2 = 512.0D;
-		double d3 = 512.0D;
 		this.gen4 = this.noiseGen6.generateNoiseOctaves(this.gen4, x, z, 5, 5, 200.0D, 200.0D, 0.5D);
 		this.gen1 = this.noiseGen3.generateNoiseOctaves(this.gen1, x, y, z, 5, 33, 5, 8.555150000000001D, 4.277575000000001D, 8.555150000000001D);
 		this.gen2 = this.noiseGen1.generateNoiseOctaves(this.gen2, x, y, z, 5, 33, 5, 684.412D, 684.412D, 684.412D);
 		this.gen3 = this.noiseGen2.generateNoiseOctaves(this.gen3, x, y, z, 5, 33, 5, 684.412D, 684.412D, 684.412D);
-		boolean flag1 = false;
-		boolean flag = false;
 		int l = 0;
 		int i1 = 0;
-		double d4 = 8.5D;
 
 		for(int j1 = 0; j1 < 5; ++j1) 
 		{
@@ -424,12 +407,10 @@ public class ChunkProviderVaeryn implements IChunkProvider
 		BlockSand.fallInstantly = true;
 		int var4 = i * 16;
 		int var5 = j * 16;
-		BiomeGenBase var6 = this.worldObj.getWorldChunkManager().getBiomeGenAt(var4 + 16, var5 + 16);
 		this.rand.setSeed(this.worldObj.getSeed());
 		long var7 = this.rand.nextLong() / 2L * 2L + 1L;
 		long var9 = this.rand.nextLong() / 2L * 2L + 1L;
 		this.rand.setSeed(i * var7 + j * var9 ^ this.worldObj.getSeed());
-		double var11 = 0.25D;
 		int var13;
 		int var14;
 		int var15;

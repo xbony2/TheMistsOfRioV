@@ -1,12 +1,8 @@
 package sheenrox82.RioV.src.item;
 
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemStainedGlass extends ItemBlock
 {

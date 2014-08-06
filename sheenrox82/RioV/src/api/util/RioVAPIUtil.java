@@ -13,9 +13,9 @@ import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RioVAPIUtil 
@@ -34,35 +34,35 @@ public class RioVAPIUtil
 		GameRegistry.registerBlock(block, string);
 	}
 
-	public static String getName(String unlocalizedName) 
+	public String getName(String unlocalizedName) 
 	{
 		return unlocalizedName.substring(unlocalizedName.lastIndexOf(".") + 1);
 	}
 
-	public static ChatComponentTranslation addChatMessage(EnumChatFormatting color, String str, Object... args)
+	public ChatComponentTranslation addChatMessage(EnumChatFormatting color, String str, Object... args)
 	{
 		ChatComponentTranslation ret = new ChatComponentTranslation(str, args);
 		ret.getChatStyle().setColor(color);
 		return ret;
 	}
 
-	public static ChatComponentTranslation addChatMessage(String str, Object... args)
+	public ChatComponentTranslation addChatMessage(String str, Object... args)
 	{
 		ChatComponentTranslation ret = new ChatComponentTranslation(str, args);
 		return ret;
 	}
 
-	public static void sendMessageToAll(String message)
+	public void sendMessageToAll(String message)
 	{
 		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(addChatMessage(message));
 	}
 	
-	public static void sendMessageToAll(EnumChatFormatting color, String message)
+	public void sendMessageToAll(EnumChatFormatting color, String message)
 	{
 		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(addChatMessage(color, message));
 	}
 
-	public static void registerDimension(int id, Class worldProvider)
+	public void registerDimension(int id, Class<? extends WorldProvider> worldProvider)
 	{
 		DimensionManager.registerProviderType(id, worldProvider, true);
 		DimensionManager.registerDimension(id, id);

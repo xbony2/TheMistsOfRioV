@@ -9,10 +9,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EntityGlimmerParticleFX extends EntityFX
 {
-	private float field_70565_a;
-	private double field_70568_aq;
-	private double field_70567_ar;
-	private double field_70566_as;
 	float reddustParticleScale;
 
 	public EntityGlimmerParticleFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10)
@@ -32,7 +28,6 @@ public class EntityGlimmerParticleFX extends EntityFX
 			par9 = 1.0F;
 		}
 
-		float var12 = (float)Math.random() * 0.4F + 0.6F;
 		this.particleRed = 10;
 		this.particleGreen = 10;
 		this.particleBlue = 10;

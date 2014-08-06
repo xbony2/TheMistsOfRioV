@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.entity.mob.raetiin;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -10,10 +9,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGiantZombie;
-import net.minecraft.entity.monster.EntityMagmaCube;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
@@ -32,10 +28,6 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
-import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 
 public class EntityShadow extends EntityMobDeadBody
 {

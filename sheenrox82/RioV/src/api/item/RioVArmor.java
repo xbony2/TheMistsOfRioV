@@ -13,7 +13,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -122,7 +121,7 @@ public class RioVArmor extends ItemArmor
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{		
-		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 
 	@Override

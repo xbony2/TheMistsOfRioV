@@ -11,8 +11,8 @@ import net.minecraft.item.ItemStack;
 public class InfuserManager
 {
 	private static InfuserManager infuserBase = new InfuserManager();
-	private Map infuserList;
-    private Map infuserExp;
+	public Map infuserList;
+	public Map infuserExp;
 
 	public static InfuserManager getInfuser()
 	{

@@ -16,7 +16,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.Util;
 import sheenrox82.RioV.src.world.feature.WorldGenBloodTree;
@@ -65,7 +64,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
     	if(this == RioVBlocks.glimmerwoodSapling)
 		{
 			int l = par1World.getBlockMetadata(par2, par2, par3);
-			/** change this block to your custom grass block **/
 			if ((l & 8) == 0)
 			{
 				par1World.setBlockMetadataWithNotify(par2, par2, par3, l | 8, 4);
@@ -79,7 +77,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 		if(this == RioVBlocks.cherryBlossomSapling)
 		{
 			int l = par1World.getBlockMetadata(par2, par3, par4);
-			/** change this block to your custom grass block **/
 			if ((l & 8) == 0)
 			{
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
@@ -93,7 +90,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 		if(this == RioVBlocks.bloodSapling)
 		{
 			int l = par1World.getBlockMetadata(par2, par3, par4);
-			/** change this block to your custom grass block **/
 			if ((l & 8) == 0)
 			{
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
@@ -107,7 +103,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 		if(this == RioVBlocks.skywoodSapling)
 		{
 			int l = par1World.getBlockMetadata(par2, par3, par4);
-			/** change this block to your custom grass block **/
 			if ((l & 8) == 0)
 			{
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, l | 8, 4);
@@ -137,7 +132,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 					{
 						if (this.func_149880_a(par1World, par2 + i1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1, par3, par4 + j1 + 1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1 + 1, 3))
 						{
-							/** Change this to your WorldGenNAMETree **/
 							object = new WorldGenGlimmerWoodTree(false);
 							flag = true;
 							break;
@@ -158,7 +152,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 			}
 			else
 			{
-				object = new WorldGenGlimmerWoodTree(false); // Changed //
+				object = new WorldGenGlimmerWoodTree(false);
 
 			}
 
@@ -207,7 +201,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 					{
 						if (this.func_149880_a(par1World, par2 + i1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1, par3, par4 + j1 + 1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1 + 1, 3))
 						{
-							/** Change this to your WorldGenNAMETree **/
 							object = new WorldGenCherryBlossomTree(false);
 							flag = true;
 							break;
@@ -228,7 +221,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 			}
 			else
 			{
-				object = new WorldGenCherryBlossomTree(false); // Changed //
+				object = new WorldGenCherryBlossomTree(false);
 
 			}
 
@@ -277,7 +270,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 					{
 						if (this.func_149880_a(par1World, par2 + i1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1, par3, par4 + j1 + 1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1 + 1, 3))
 						{
-							/** Change this to your WorldGenNAMETree **/
 							object = new WorldGenBloodTree(false);
 							flag = true;
 							break;
@@ -298,7 +290,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 			}
 			else
 			{
-				object = new WorldGenBloodTree(false); // Changed //
+				object = new WorldGenBloodTree(false);
 
 			}
 
@@ -347,7 +339,6 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 					{
 						if (this.func_149880_a(par1World, par2 + i1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1, 3) && this.func_149880_a(par1World, par2 + i1, par3, par4 + j1 + 1, 3) && this.func_149880_a(par1World, par2 + i1 + 1, par3, par4 + j1 + 1, 3))
 						{
-							/** Change this to your WorldGenNAMETree **/
 							object = new WorldGenSanctuatiteTree(false);
 							flag = true;
 							break;
@@ -368,7 +359,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 			}
 			else
 			{
-				object = new WorldGenSanctuatiteTree(false); // Changed //
+				object = new WorldGenSanctuatiteTree(false);
 
 			}
 
@@ -411,7 +402,7 @@ public class BlockRioVSapling extends BlockSapling implements IPlantable
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister p_149651_1_)
 	{
-		blockIcon = p_149651_1_.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		blockIcon = p_149651_1_.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 
 	protected boolean canPlaceBlockOn(Block block)

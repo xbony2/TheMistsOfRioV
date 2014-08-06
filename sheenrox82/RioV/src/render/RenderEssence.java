@@ -7,7 +7,6 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
-import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.lib.RioVLib;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

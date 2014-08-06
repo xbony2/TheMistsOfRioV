@@ -17,7 +17,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.Particles;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.Util;
@@ -47,8 +46,8 @@ public class BlockRioVLeaf extends BlockLeavesBase
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
-		this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
-		this.opaqueIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()) + "_fast");
+		this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
+		this.opaqueIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()) + "_fast");
 	}
 
 	@SideOnly(Side.CLIENT)

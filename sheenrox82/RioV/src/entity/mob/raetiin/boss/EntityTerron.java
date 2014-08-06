@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.entity.mob.raetiin.boss;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -10,22 +9,18 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGiantZombie;
-import net.minecraft.entity.monster.EntityMagmaCube;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
@@ -37,7 +32,6 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
-import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 
 public class EntityTerron extends EntityBossCore
 {
@@ -91,8 +85,8 @@ public class EntityTerron extends EntityBossCore
 
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("Terron: *Grroowwwwwwwwwlllll*");
-			RioVAPIUtil.sendMessageToAll("Terron was killed!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Terron: *Grroowwwwwwwwwlllll*");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Terron was killed!");
 		}
 	}
 

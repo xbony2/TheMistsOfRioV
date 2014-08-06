@@ -11,7 +11,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
@@ -101,7 +100,7 @@ public class RioVConsumable extends ItemFood
 		}
 		else
 		{
-			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+			this.itemIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 		}
 	}
 }

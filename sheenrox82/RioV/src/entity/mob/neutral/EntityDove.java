@@ -2,7 +2,6 @@ package sheenrox82.RioV.src.entity.mob.neutral;
 
 import java.util.Calendar;
 
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;

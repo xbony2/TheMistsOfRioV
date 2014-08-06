@@ -19,8 +19,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
@@ -31,7 +31,6 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
-import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -84,8 +83,8 @@ public class EntityAunTun extends EntityBossCore
 		
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("Aun'Tun: *Rupture*");
-			RioVAPIUtil.sendMessageToAll("Aun'Tun was destroyed!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun: *Rupture*");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun was destroyed!");
 		}
 	}
 

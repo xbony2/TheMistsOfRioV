@@ -19,8 +19,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
@@ -78,8 +78,8 @@ public class EntityDarkEssence extends EntityBossCore
 		super.onDeath(par1DamageSource);
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("The Darkness: *Screeeech*");
-			RioVAPIUtil.sendMessageToAll("The Darkness has vanished!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("The Darkness: *Screeeech*");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("The Darkness has vanished!");
 		}
 	}
 

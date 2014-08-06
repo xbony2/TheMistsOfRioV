@@ -16,8 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderDarknessArrow extends Render
 {
-    private static ResourceLocation arrowTextures;
-    private static final String __OBFID = "CL_00000978";
+    public ResourceLocation arrowTextures;
 
     public RenderDarknessArrow(ResourceLocation rec)
     {

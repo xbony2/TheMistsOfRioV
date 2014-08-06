@@ -8,8 +8,8 @@ import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
@@ -37,8 +37,8 @@ public class EntityDemonAngel extends EntityBossCore
 		
 		if(this.worldObj.isRemote)
 		{
-			RioVAPIUtil.sendMessageToAll("Demon Angel: Aarrrrrrgghhhhhhhh!");
-			RioVAPIUtil.sendMessageToAll("Demon Angel was killed!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Demon Angel: Aarrrrrrgghhhhhhhh!");
+			RioVAPI.getInstance().getUtil().sendMessageToAll("Demon Angel was killed!");
 		}
 	}
 

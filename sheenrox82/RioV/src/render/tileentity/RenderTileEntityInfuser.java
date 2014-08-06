@@ -5,17 +5,12 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import sheenrox82.RioV.src.content.RioVItems;
-import sheenrox82.RioV.src.model.ModelFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
-import sheenrox82.RioV.src.util.Util;
 
 public class RenderTileEntityInfuser extends TileEntitySpecialRenderer
 {

@@ -183,11 +183,9 @@ public class WorldGen implements IWorldGenerator
 			for (int i = 0; i < 8; i++) 
 			{
 				int Xcoord = blockX + rand.nextInt(16);
-				int YcoordSurface1 = rand.nextInt(50);
 				int YcoordSurface2 = rand.nextInt(40);
 				int YcoordSurface3 = rand.nextInt(30);
 				int YcoordSurface4 = rand.nextInt(20);
-				int YcoordSurface5 = rand.nextInt(10);
 				int Zcoord = blockZ + rand.nextInt(16);
 				(new WorldGenMinable(RioVBlocks.onyxOre, 12)).generate(world, rand, Xcoord, YcoordSurface2, Zcoord);
 				(new WorldGenMinable(RioVBlocks.nironiteOre, 12)).generate(world, rand, Xcoord, YcoordSurface4, Zcoord);
@@ -238,8 +236,6 @@ public class WorldGen implements IWorldGenerator
 
 	private void generateNether(World world, Random rand, int blockX, int blockZ) 
 	{
-		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
-
 		for (int i = 0; i < 8; i++) 
 		{
 			int Xcoord = blockX + rand.nextInt(16);

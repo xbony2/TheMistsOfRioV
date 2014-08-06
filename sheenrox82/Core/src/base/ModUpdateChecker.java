@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 import net.minecraft.util.EnumChatFormatting;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 
 public class ModUpdateChecker 
 {
@@ -55,7 +55,7 @@ public class ModUpdateChecker
 			
 			while ((changelog = changelogFile.readLine()) != null)
 			{
-				RioVAPIUtil.sendMessageToAll(EnumChatFormatting.GOLD, changelog);
+				RioVAPI.getInstance().getUtil().sendMessageToAll(EnumChatFormatting.GOLD, changelog);
 			}
 			
 			changelogFile.close();

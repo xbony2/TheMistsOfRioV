@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.util;
 
-import net.minecraftforge.common.MinecraftForge;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
 

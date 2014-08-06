@@ -22,7 +22,7 @@ public class BlockGlimmerwoodLog extends Block
 	{
 		super(Material.wood);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
-		this.setStepSound(this.soundTypeWood);
+		this.setStepSound(Block.soundTypeWood);
 	}
 
 	@Override

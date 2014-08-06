@@ -32,7 +32,7 @@ public class BlockRioVTrapDoor extends Block
         float f1 = 1.0F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
         this.setCreativeTab(RioVAPI.getInstance().tab);
-        this.setStepSound(this.soundTypeWood);
+        this.setStepSound(Block.soundTypeWood);
     }
 
     public boolean isOpaqueCube()

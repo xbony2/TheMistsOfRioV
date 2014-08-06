@@ -18,13 +18,13 @@ public class MethodUtil
 		return (new EntityDamageSourceIndirect("arrow", entityRioVArrow, par1Entity)).setProjectile();
 	}
 
-	public static void registerEntity(Class entityClass, String entityName)
+	public static void registerEntity(Class<? extends Entity> entityClass, String entityName)
 	{
 		int entityID = Config.addEntity(entityName);
 		EntityRegistry.registerModEntity(entityClass, entityName, entityID, TheMistsOfRioV.getInstance(), 128, 1, true);
 	}
 
-	public static void registerEgg(Class entityClass)
+	public static void registerEgg(Class<? extends Entity> entityClass)
 	{
 		int ID = uniqueEggID();
 		EntityList.IDtoClassMapping.put(ID, entityClass);

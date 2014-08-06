@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.world.provider;
 
-import net.minecraft.world.World;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;

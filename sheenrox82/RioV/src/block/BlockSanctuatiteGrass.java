@@ -10,7 +10,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
@@ -92,7 +91,7 @@ public class BlockSanctuatiteGrass extends Block
 	@Override
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()) + "Side");
+		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()) + "Side");
 		this.iconGrassTop = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "sanctuatiteGrassTop");
 	}
 }

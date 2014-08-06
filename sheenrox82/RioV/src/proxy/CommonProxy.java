@@ -1,9 +1,6 @@
 package sheenrox82.RioV.src.proxy;
 
 import net.minecraft.client.model.ModelBiped;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import sheenrox82.RioV.src.api.util.RioVPlayer;
 
 public class CommonProxy
 {	

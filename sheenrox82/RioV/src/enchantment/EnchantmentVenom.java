@@ -1,17 +1,11 @@
 package sheenrox82.RioV.src.enchantment;
 
-import sheenrox82.RioV.src.content.Enchantments;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
 public class EnchantmentVenom extends Enchantment
 {
-	
-	private ItemStack par1ItemStack;
-
 	public EnchantmentVenom(int par1, int par2)
 	{
 		super(par1, par2, EnumEnchantmentType.weapon);

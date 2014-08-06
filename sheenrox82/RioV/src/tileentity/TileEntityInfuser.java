@@ -206,7 +206,6 @@ public class TileEntityInfuser extends TileEntity implements IInventory
 
     public void updateEntity()
     {
-    	boolean var1 = this.altarBurnTime > 0;
         boolean var2 = false;
 
         if (this.altarBurnTime > 0)

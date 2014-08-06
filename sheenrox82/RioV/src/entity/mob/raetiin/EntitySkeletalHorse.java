@@ -7,7 +7,6 @@ import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.init.Items;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.content.RioVItems;

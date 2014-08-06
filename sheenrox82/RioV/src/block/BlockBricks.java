@@ -24,7 +24,7 @@ public class BlockBricks extends Block
 	public BlockBricks()
 	{
 		super(Material.rock);
-		this.setStepSound(this.soundTypeStone);
+		this.setStepSound(Block.soundTypeStone);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 

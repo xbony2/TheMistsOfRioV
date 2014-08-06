@@ -9,10 +9,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntityGhast;
 import net.minecraft.entity.monster.EntityGiantZombie;
-import net.minecraft.entity.monster.EntityMagmaCube;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySilverfish;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
@@ -24,7 +21,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
@@ -36,7 +32,6 @@ import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
-import sheenrox82.RioV.src.entity.mob.neutral.EntityMage;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -158,7 +153,7 @@ public class EntitySoverianOfficer extends EntityMobDeadBody
 			par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
 
 			if(!this.worldObj.isRemote)
-				par1EntityPlayer.addChatMessage(RioVAPIUtil.addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
+				par1EntityPlayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "Hello to you too, " + par1EntityPlayer.getDisplayName() + "!"));
 		}
 		
 		return true;

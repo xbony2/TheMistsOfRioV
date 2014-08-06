@@ -25,7 +25,7 @@ public class BlockAnvil extends Block
 	public BlockAnvil()
 	{
 		super(Material.anvil);
-		this.setStepSound(this.soundTypeAnvil);
+		this.setStepSound(Block.soundTypeAnvil);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.80F, 1.0F);
 	}

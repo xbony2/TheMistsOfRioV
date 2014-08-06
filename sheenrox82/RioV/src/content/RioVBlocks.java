@@ -1,6 +1,7 @@
 package sheenrox82.RioV.src.content;
 
 import net.minecraft.block.Block;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.block.BlockCoreOne;
 import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.block.BlockAnvil;
@@ -199,9 +200,9 @@ public class RioVBlocks
 		RioVAPIUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
 		RioVAPIUtil.registerBlock(bloodTallGrass, "Blood Tall Grass");
 		RioVAPIUtil.registerBlock(blackQuartz, "Black Quartz Block");
-		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, RioVAPIUtil.getName(stainedGlass.getUnlocalizedName()));	
-		GameRegistry.registerBlock(bricks, ItemBricks.class, RioVAPIUtil.getName(bricks.getUnlocalizedName()));		
-		GameRegistry.registerBlock(plankColored, ItemPlanksColored.class, RioVAPIUtil.getName(plankColored.getUnlocalizedName()));		
+		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, RioVAPI.getInstance().getUtil().getName(stainedGlass.getUnlocalizedName()));	
+		GameRegistry.registerBlock(bricks, ItemBricks.class, RioVAPI.getInstance().getUtil().getName(bricks.getUnlocalizedName()));		
+		GameRegistry.registerBlock(plankColored, ItemPlanksColored.class, RioVAPI.getInstance().getUtil().getName(plankColored.getUnlocalizedName()));		
 		RioVAPIUtil.registerBlock(steamingBloodDeposit, "Steaming Blood Deposit");
 		RioVAPIUtil.registerBlock(bloodBerryBush, "Blood Berry Bush");
 		RioVAPIUtil.registerBlock(bloodFlower, "Blood Flower");

@@ -3,7 +3,6 @@ package sheenrox82.RioV.src.world.feature;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -32,8 +31,6 @@ public class WorldGenSanctuatiteTree extends WorldGenAbstractTree
 
             for (int l1 = p_76484_4_; l1 <= p_76484_4_ + 1 + l && flag; ++l1)
             {
-                boolean flag1 = true;
-
                 if (l1 - p_76484_4_ < i1)
                 {
                     l3 = 0;

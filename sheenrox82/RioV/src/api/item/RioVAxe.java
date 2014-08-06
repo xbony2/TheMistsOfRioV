@@ -8,7 +8,6 @@ import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -38,12 +37,12 @@ public class RioVAxe extends ItemAxe
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPIUtil.getName(this.getUnlocalizedName()));
+		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 
 		if(RioVAPI.getInstance().natura)
 		{
 			if(this == RioVAPI.getInstance().getUtil().getRioVItem("infusedBloodwoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedGhostwoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedDarkwoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedFusewoodAxe") || this == RioVAPI.getInstance().getUtil().getRioVItem("infusedNetherquartzAxe"))
-				this.itemIcon = par1IconRegister.registerIcon(RioVAPIUtil.getName(this.getUnlocalizedName()));
+				this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 		}
 	}
 

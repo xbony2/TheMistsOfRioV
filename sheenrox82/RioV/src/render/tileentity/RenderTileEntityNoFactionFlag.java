@@ -1,11 +1,8 @@
 package sheenrox82.RioV.src.render.tileentity;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
@@ -21,14 +18,6 @@ public class RenderTileEntityNoFactionFlag extends TileEntitySpecialRenderer
 		this.model = new ModelFlag();
 	}
 
-	private void adjustRotatePivotViaMeta(World world, int x, int y, int z) 
-	{
-		int meta = world.getBlockMetadata(x, y, z);
-		GL11.glPushMatrix();
-		GL11.glRotatef(meta * (-90), 0.0F, 0.0F, 1.0F);
-		GL11.glPopMatrix();
-	}
-	
 	@Override
 	public void renderTileEntityAt(TileEntity tileentity, double x, double y, double z, float par8) 
 	{

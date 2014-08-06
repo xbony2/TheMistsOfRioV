@@ -18,10 +18,9 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import sheenrox82.Core.src.base.ModUpdateChecker;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
-import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.block.BlockRioVSapling;
 import sheenrox82.RioV.src.content.RioVBlocks;
@@ -72,7 +71,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! Version " + ModUpdateChecker.newVersionStr + " is available! Check http://tinyurl.com/riovmod - sheenrox82"));
+						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.DARK_RED, "[" + Color.WHITE + Util.MOD_NAME + Color.DARK_RED + "] Hey, " + p.getDisplayName() + "! Version " + ModUpdateChecker.newVersionStr + " is available! Check http://tinyurl.com/riovmod - sheenrox82"));
 						hasSeen = true;
 					}
 				}
@@ -81,8 +80,8 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "I have a Patreon! http://www.patreon.com/sheenrox82"));
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
+						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.GOLD, "I have a Patreon! http://www.patreon.com/sheenrox82"));
+						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
 				}
@@ -91,7 +90,7 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPIUtil.addChatMessage(Color.GOLD, "[" + Color.WHITE + Util.MOD_NAME + Color.GOLD + "] Cannot connect to update checking website."));
+						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.GOLD, "[" + Color.WHITE + Util.MOD_NAME + Color.GOLD + "] Cannot connect to update checking website."));
 						hasSeen = true;
 					}
 				}
@@ -182,9 +181,12 @@ public class Events
 	{
 		if (!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
 		{
-			if (RioVPlayer.get((EntityPlayer) event.entity) != null)
+			EntityPlayer entityPlayer = (EntityPlayer)event.entity;
+			RioVPlayer player = RioVPlayer.get(entityPlayer);
+			
+			if (player != null)
 			{
-				RioVPlayer.saveProxyData((EntityPlayer) event.entity);
+				player.saveProxyData(entityPlayer);
 			}
 		}
 
@@ -223,7 +225,7 @@ public class Events
 
 			if (RioVPlayer.get(entityplayer) != null)
 			{
-				RioVPlayer.saveProxyData(entityplayer);
+				player.saveProxyData(entityplayer);
 			}
 
 			if(player.getCurrentRep() > 0)
@@ -264,10 +266,6 @@ public class Events
 		{
 			EntityPlayer player = (EntityPlayer)event.entity;
 			RioVPlayer riovPlayer = RioVPlayer.get(player);
-			ItemStack currentHelmet = player.getCurrentArmor(3);
-			ItemStack currentChestplate = player.getCurrentArmor(2);
-			ItemStack currentLeggings = player.getCurrentArmor(1);
-			ItemStack currentBoots = player.getCurrentArmor(0);
 
 			if(event.source.getDamageType().equals("onFire") || event.source.getDamageType().equals("inFire") || event.source.getDamageType().equals("lava"))
 			{

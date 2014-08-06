@@ -7,7 +7,6 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.util.ResourceLocation;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityPaladin;
-import sheenrox82.RioV.src.gui.hud.GuiHelmetOverlay;
 import sheenrox82.RioV.src.util.Util;
 
 

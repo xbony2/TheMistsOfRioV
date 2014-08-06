@@ -17,7 +17,6 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAdv;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAltruEssence;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityAngel;

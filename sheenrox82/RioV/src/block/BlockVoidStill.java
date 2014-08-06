@@ -1,7 +1,5 @@
 package sheenrox82.RioV.src.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockStaticLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,8 +9,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.util.Util;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockVoidStill extends BlockStaticLiquid
 {
