@@ -1,14 +1,14 @@
 itemGroup.RioV=The Mists of RioV
 
 item.guideBook.name=The Mists of RioV Guide
-item.shadowniteHelmet.name=Shadownite Ingot
-item.shadowniteChestplate.name=Shadownite Ingot
-item.shadowniteLeggings.name=Shadownite Ingot
-item.shadowniteBoots.name=Shadownite Ingot
-item.shadownitePickaxe.name=Shadownite Ingot
-item.shadowniteAxe.name=Shadownite Ingot
-item.shadowniteShovel.name=Shadownite Ingot
-item.shadowniteSword.name=Shadownite Ingot
+item.shadowniteHelmet.name=Shadownite Helmet
+item.shadowniteChestplate.name=Shadownite Chestplate
+item.shadowniteLeggings.name=Shadownite Leggings
+item.shadowniteBoots.name=Shadownite Boots
+item.shadownitePickaxe.name=Shadownite Pickaxe
+item.shadowniteAxe.name=Shadownite Axe
+item.shadowniteShovel.name=Shadownite Shovel
+item.shadowniteSword.name=Shadownite Sword
 item.infused.shadowniteHelmet.name=Infused Shadownite Ingot
 item.infused.shadowniteChestplate.name=Infused Shadownite Ingot
 item.infused.shadowniteLeggings.name=Infused Shadownite Ingot
