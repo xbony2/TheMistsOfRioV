@@ -90,9 +90,7 @@ public class BlockRioVFence extends BlockFence
         this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
     }
 
-    /**
-     * Updates the blocks bounds based on its current state. Args: world, x, y, z
-     */
+    @Override
     public void setBlockBoundsBasedOnState(IBlockAccess p_149719_1_, int p_149719_2_, int p_149719_3_, int p_149719_4_)
     {
         boolean flag = this.canConnectFenceTo(p_149719_1_, p_149719_2_, p_149719_3_, p_149719_4_ - 1);
@@ -127,53 +125,30 @@ public class BlockRioVFence extends BlockFence
         this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
     }
 
-    /**
-     * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
-     * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
-     */
+    @Override
     public boolean isOpaqueCube()
     {
         return false;
     }
 
-    /**
-     * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
-     */
+    @Override
     public boolean renderAsNormalBlock()
     {
         return false;
     }
 
+    @Override
     public boolean getBlocksMovement(IBlockAccess p_149655_1_, int p_149655_2_, int p_149655_3_, int p_149655_4_)
     {
         return false;
     }
 
-    /**
-     * The type of render function that is called for this block
-     */
+    @Override
     public int getRenderType()
     {
         return 11;
     }
     
-    public boolean func_149826_e(IBlockAccess p_149826_1_, int p_149826_2_, int p_149826_3_, int p_149826_4_)
-    {
-        Block block = p_149826_1_.getBlock(p_149826_2_, p_149826_3_, p_149826_4_);
-        return block != this && block != Blocks.fence_gate ? (this.blockMaterial.isOpaque() && block.renderAsNormalBlock() ? this.blockMaterial != Material.gourd : false) : true;
-    }
-
-    public static boolean func_149825_a(Block p_149825_0_)
-    {
-        return p_149825_0_ == Blocks.fence || p_149825_0_ == Blocks.nether_brick_fence || p_149825_0_ == RioVBlocks.glimmerwoodFence || p_149825_0_ == RioVBlocks.cherryBlossomFence || p_149825_0_ == RioVBlocks.bloodFence || p_149825_0_ == RioVBlocks.skywoodFence;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public boolean func_149646_a(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_)
-    {
-        return true;
-    }
-
     public IIcon blockIcon;
     
 	@Override

@@ -54,11 +54,13 @@ public class BlockRaetiinFlag extends BlockContainer
 		return this.blockIcon;
 	}
 	
+	@Override
 	public void registerBlockIcons(IIconRegister icon) 
 	{
 		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 
+	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
 	{
 		int l = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;

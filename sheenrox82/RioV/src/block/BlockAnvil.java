@@ -15,11 +15,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAnvil extends Block
 {
-	@SideOnly(Side.CLIENT)
 	private IIcon field_94461_a;
-	@SideOnly(Side.CLIENT)
 	private IIcon field_94460_b;
-	@SideOnly(Side.CLIENT)
 	private IIcon anvilSide;
 	
 	public BlockAnvil()

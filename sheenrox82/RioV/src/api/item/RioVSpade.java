@@ -22,6 +22,7 @@ public class RioVSpade extends ItemSpade
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
+	@Override
 	public boolean hasEffect(ItemStack par1ItemStack)
 	{
 		if (isInfused)
@@ -33,6 +34,7 @@ public class RioVSpade extends ItemSpade
 	}
 	
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void registerIcons(IIconRegister par1IconRegister)
 	{
 		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
@@ -45,6 +47,7 @@ public class RioVSpade extends ItemSpade
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)

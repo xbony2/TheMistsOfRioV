@@ -42,16 +42,6 @@ public class BlockPlanks extends Block
 		return p_149692_1_;
 	}
 
-	public static int func_150032_b(int p_150032_0_)
-	{
-		return func_150031_c(p_150032_0_);
-	}
-
-	public static int func_150031_c(int p_150031_0_)
-	{
-		return ~p_150031_0_ & 15;
-	}
-
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)

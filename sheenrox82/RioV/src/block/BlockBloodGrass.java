@@ -17,9 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBloodGrass extends Block
 {
-	@SideOnly(Side.CLIENT)
 	private IIcon iconGrassTop;
-	@SideOnly(Side.CLIENT)
 	private IIcon blockIcon;
 	
 	public BlockBloodGrass()
@@ -30,12 +28,14 @@ public class BlockBloodGrass extends Block
         this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
 
+	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int par1, int par2)
 	{
 		return par1 == 1 ? this.iconGrassTop : (par1 == 0 ? RioVBlocks.bloodDirt.getBlockTextureFromSide(par1) : this.blockIcon);
 	}
 
+	@Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
         if (!p_149674_1_.isRemote)

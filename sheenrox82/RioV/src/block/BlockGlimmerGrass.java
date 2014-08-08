@@ -33,11 +33,13 @@ public class BlockGlimmerGrass extends Block
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public IIcon getIcon(int par1, int par2)
 	{
 		return par1 == 1 ? this.iconGrassTop : (par1 == 0 ? RioVBlocks.glimmerDirt.getBlockTextureFromSide(par1) : this.blockIcon);
 	}
 
+	@Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
         if (!p_149674_1_.isRemote)
@@ -96,6 +98,7 @@ public class BlockGlimmerGrass extends Block
 		this.iconGrassTop = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "glimmerGrassTop");
 	}
 	
+	@Override
 	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plantable)
     {
 		return true;

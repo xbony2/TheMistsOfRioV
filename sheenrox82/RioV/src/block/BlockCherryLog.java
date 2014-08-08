@@ -13,9 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockCherryLog extends Block
 {
-	@SideOnly(Side.CLIENT)
 	public IIcon iconLogTop;
-	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
 	
 	public BlockCherryLog()

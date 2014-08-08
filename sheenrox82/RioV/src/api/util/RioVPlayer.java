@@ -27,8 +27,6 @@ public class RioVPlayer implements IExtendedEntityProperties
 	public String noFactionName;
 	public String raetiinName;
 	public String jaerinName;
-
-	//NEW FACTION SYSTEM FIELDS
 	public int defaultRep;
 	public int maxRep;
 	public int minRep;

@@ -62,6 +62,7 @@ public class BlockBlindOasisPortal extends BlockPortal
 		
 	}
 
+	@Override
     public boolean func_150000_e(World p_150000_1_, int p_150000_2_, int p_150000_3_, int p_150000_4_)
     {
     	BlockBlindOasisPortal.Size size = new BlockBlindOasisPortal.Size(p_150000_1_, p_150000_2_, p_150000_3_, p_150000_4_, 1);
@@ -83,6 +84,7 @@ public class BlockBlindOasisPortal extends BlockPortal
         }
     }
 
+	@Override
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
     {
         int l = func_149999_b(p_149695_1_.getBlockMetadata(p_149695_2_, p_149695_3_, p_149695_4_));
@@ -103,6 +105,7 @@ public class BlockBlindOasisPortal extends BlockPortal
         }
     }
     
+	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
 	{

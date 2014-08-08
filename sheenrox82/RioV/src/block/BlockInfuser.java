@@ -95,46 +95,6 @@ public class BlockInfuser extends BlockContainer
 		}
 	}
 
-	public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
-	{
-		super.onBlockAdded(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-		this.func_149930_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
-	}
-
-	private void func_149930_e(World p_149930_1_, int p_149930_2_, int p_149930_3_, int p_149930_4_)
-	{
-		if (!p_149930_1_.isRemote)
-		{
-			Block block = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ - 1);
-			Block block1 = p_149930_1_.getBlock(p_149930_2_, p_149930_3_, p_149930_4_ + 1);
-			Block block2 = p_149930_1_.getBlock(p_149930_2_ - 1, p_149930_3_, p_149930_4_);
-			Block block3 = p_149930_1_.getBlock(p_149930_2_ + 1, p_149930_3_, p_149930_4_);
-			byte b0 = 3;
-
-			if (block.func_149730_j() && !block1.func_149730_j())
-			{
-				b0 = 3;
-			}
-
-			if (block1.func_149730_j() && !block.func_149730_j())
-			{
-				b0 = 2;
-			}
-
-			if (block2.func_149730_j() && !block3.func_149730_j())
-			{
-				b0 = 5;
-			}
-
-			if (block3.func_149730_j() && !block2.func_149730_j())
-			{
-				b0 = 4;
-			}
-
-			p_149930_1_.setBlockMetadataWithNotify(p_149930_2_, p_149930_3_, p_149930_4_, b0, 2);
-		}
-	}
-
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 
@@ -154,7 +114,6 @@ public class BlockInfuser extends BlockContainer
 		return true;
 
 	}
-
 
 	@Override
 	public TileEntity createNewTileEntity(World par1World, int var1)

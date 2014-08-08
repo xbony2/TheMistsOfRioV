@@ -31,11 +31,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBlackFire extends BlockFire
 {
-    @Deprecated
     private int[] field_149849_a = new int[4096];
-    @Deprecated
     private int[] field_149848_b = new int[4096];
-    @SideOnly(Side.CLIENT)
     private IIcon[] field_149850_M;
 
     public BlockBlackFire()
@@ -71,65 +68,43 @@ public class BlockBlackFire extends BlockFire
 		Blocks.fire.setFireInfo(Blocks.carpet, 60, 20);
     }
 
-    @Deprecated // Use setFireInfo
-    public void func_149842_a(int p_149842_1_, int p_149842_2_, int p_149842_3_)
-    {
-        this.setFireInfo((Block)Block.blockRegistry.getObjectById(p_149842_1_), p_149842_2_, p_149842_3_);
-    }
-
-    /**
-     * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
-     * cleared to be reused)
-     */
+    @Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
     {
         return null;
     }
 
-    /**
-     * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
-     * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
-     */
+    @Override
     public boolean isOpaqueCube()
     {
         return false;
     }
 
-    /**
-     * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
-     */
+    @Override
     public boolean renderAsNormalBlock()
     {
         return false;
     }
 
-    /**
-     * The type of render function that is called for this block
-     */
+    @Override
     public int getRenderType()
     {
         return 3;
     }
 
-    /**
-     * Returns the quantity of items to drop on block destruction.
-     */
+    @Override
     public int quantityDropped(Random p_149745_1_)
     {
         return 0;
     }
 
-    /**
-     * How many world ticks before ticking
-     */
+    @Override
     public int tickRate(World p_149738_1_)
     {
         return 30;
     }
 
-    /**
-     * Ticks the block if it's been scheduled
-     */
+    @Override
     public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
         if (p_149674_1_.getGameRules().getGameRuleBooleanValue("doFireTick"))
@@ -231,6 +206,7 @@ public class BlockBlackFire extends BlockFire
         }
     }
 
+    @Override
     public boolean func_149698_L()
     {
         return false;
@@ -267,9 +243,6 @@ public class BlockBlackFire extends BlockFire
         }
     }
 
-    /**
-     * Returns true if at least one block next to this one can burn.
-     */
     private boolean canNeighborBurn(World p_149847_1_, int p_149847_2_, int p_149847_3_, int p_149847_4_)
     {
         return this.canCatchFire(p_149847_1_, p_149847_2_ + 1, p_149847_3_, p_149847_4_, WEST ) ||
@@ -280,9 +253,6 @@ public class BlockBlackFire extends BlockFire
                this.canCatchFire(p_149847_1_, p_149847_2_, p_149847_3_, p_149847_4_ + 1, NORTH);
     }
 
-    /**
-     * Gets the highest chance of a neighbor block encouraging this block to catch fire
-     */
     private int getChanceOfNeighborsEncouragingFire(World p_149845_1_, int p_149845_2_, int p_149845_3_, int p_149845_4_)
     {
         byte b0 = 0;
@@ -304,41 +274,33 @@ public class BlockBlackFire extends BlockFire
         }
     }
 
-    /**
-     * Returns if this block is collidable (only used by Fire). Args: x, y, z
-     */
+    @Override
     public boolean isCollidable()
     {
         return false;
     }
 
-    /**
-     * Checks the specified block coordinate to see if it can catch fire.  Args: blockAccess, x, y, z
-     */
+    @Override
     @Deprecated
     public boolean canBlockCatchFire(IBlockAccess p_149844_1_, int p_149844_2_, int p_149844_3_, int p_149844_4_)
     {
         return canCatchFire(p_149844_1_, p_149844_2_, p_149844_3_, p_149844_4_, UP);
     }
 
+    @Override
     @Deprecated
     public int func_149846_a(World p_149846_1_, int p_149846_2_, int p_149846_3_, int p_149846_4_, int p_149846_5_)
     {
         return getChanceToEncourageFire(p_149846_1_, p_149846_2_, p_149846_3_, p_149846_4_, p_149846_5_, UP);
     }
 
-    /**
-     * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
-     */
+    @Override
     public boolean canPlaceBlockAt(World p_149742_1_, int p_149742_2_, int p_149742_3_, int p_149742_4_)
     {
         return World.doesBlockHaveSolidTopSurface(p_149742_1_, p_149742_2_, p_149742_3_ - 1, p_149742_4_) || this.canNeighborBurn(p_149742_1_, p_149742_2_, p_149742_3_, p_149742_4_);
     }
 
-    /**
-     * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
-     * their own) Args: x, y, z, neighbor Block
-     */
+    @Override
     public void onNeighborBlockChange(World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
     {
         if (!World.doesBlockHaveSolidTopSurface(p_149695_1_, p_149695_2_, p_149695_3_ - 1, p_149695_4_) && !this.canNeighborBurn(p_149695_1_, p_149695_2_, p_149695_3_, p_149695_4_))
@@ -347,9 +309,7 @@ public class BlockBlackFire extends BlockFire
         }
     }
 
-    /**
-     * Called whenever the block is added into the world. Args: world, x, y, z
-     */
+    @Override
     public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
     {
         if (p_149726_1_.provider.dimensionId > 0 || !((BlockBlindOasisPortal) RioVBlocks.blindOasisPortal).func_150000_e(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_))
@@ -365,9 +325,7 @@ public class BlockBlackFire extends BlockFire
         }
     }
 
-    /**
-     * A randomly called display update to be able to add particles or other items for display
-     */
+    @Override
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World p_149734_1_, int p_149734_2_, int p_149734_3_, int p_149734_4_, Random p_149734_5_)
     {
@@ -450,27 +408,28 @@ public class BlockBlackFire extends BlockFire
         }
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
     	this.field_149850_M = new IIcon[] {p_149651_1_.registerIcon(Util.MOD_ID + ":" + "blackFire_layer_0"), p_149651_1_.registerIcon(Util.MOD_ID + ":" + "blackFire_layer_1")};
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public IIcon getFireIcon(int p_149840_1_)
     {
         return this.field_149850_M[p_149840_1_];
     }
 
-    /**
-     * Gets the block's texture. Args: side, meta
-     */
+    @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int p_149691_1_, int p_149691_2_)
     {
         return this.field_149850_M[0];
     }
 
+    @Override
     public MapColor getMapColor(int p_149728_1_)
     {
         return MapColor.tntColor;
@@ -484,6 +443,7 @@ public class BlockBlackFire extends BlockFire
     }
     private IdentityHashMap<Block, FireInfo> blockInfo = Maps.newIdentityHashMap();
 
+    @Override
     public void setFireInfo(Block block, int encouragement, int flammibility)
     {
         if (block == Blocks.air) throw new IllegalArgumentException("Tried to set air on fire... This is bad.");
@@ -507,6 +467,7 @@ public class BlockBlackFire extends BlockFire
         return ret;
     }
 
+    @Override
     public void rebuildFireInfo()
     {
         for (int x = 0; x < 4096; x++)
@@ -528,44 +489,27 @@ public class BlockBlackFire extends BlockFire
         }
     }
 
+    @Override
     public int getFlammability(Block block)
     {
         int id = Block.getIdFromBlock(block);
         return id >= 0 && id < 4096 ? field_149848_b[id] : 0;
     }
 
+    @Override
     public int getEncouragement(Block block)
     {
         int id = Block.getIdFromBlock(block);
         return id >= 0 && id < 4096 ? field_149849_a[id] : 0;
     }
 
-    /**
-     * Side sensitive version that calls the block function.
-     * 
-     * @param world The current world
-     * @param x X Position
-     * @param y Y Position
-     * @param z Z Position
-     * @param face The side the fire is coming from
-     * @return True if the face can catch fire.
-     */
+    @Override
     public boolean canCatchFire(IBlockAccess world, int x, int y, int z, ForgeDirection face)
     {
         return world.getBlock(x, y, z).isFlammable(world, x, y, z, face);
     }
 
-    /**
-     * Side sensitive version that calls the block function.
-     * 
-     * @param world The current world
-     * @param x X Position
-     * @param y Y Position
-     * @param z Z Position
-     * @param oldChance The previous maximum chance.
-     * @param face The side the fire is coming from
-     * @return The chance of the block catching fire, or oldChance if it is higher
-     */
+    @Override
     public int getChanceToEncourageFire(IBlockAccess world, int x, int y, int z, int oldChance, ForgeDirection face)
     {
         int newChance = world.getBlock(x, y, z).getFireSpreadSpeed(world, x, y, z, face);

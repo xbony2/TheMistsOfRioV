@@ -17,8 +17,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockBricks extends Block
 {
 	public static final String[] brickList = new String[] {"amethyst", "onyx", "blindonite", "dragon", "vravinite", "aleris", "jaavik", "nironite", "drakiuz"};
-
-	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
 
 	public BlockBricks()
@@ -39,16 +37,6 @@ public class BlockBricks extends Block
 	public int damageDropped(int p_149692_1_)
 	{
 		return p_149692_1_;
-	}
-
-	public static int func_150032_b(int p_150032_0_)
-	{
-		return func_150031_c(p_150032_0_);
-	}
-
-	public static int func_150031_c(int p_150031_0_)
-	{
-		return ~p_150031_0_ & 15;
 	}
 	
 	@SideOnly(Side.CLIENT)

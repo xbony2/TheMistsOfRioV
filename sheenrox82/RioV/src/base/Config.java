@@ -5,7 +5,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class Config
 {
-
 	public static Configuration config;
 	public static int enchantmentID = 80;
 	public static int entityID = 8200;

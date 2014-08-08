@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Level;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import cpw.mods.fml.common.FMLLog;
 
-public class LogHelper {
-
+public class LogHelper 
+{
 	private static BufferedWriter writer;
 
 	static

@@ -202,9 +202,6 @@ public class AnvilCraftingManager
 		}
 	}
 
-	/**
-	 * returns the List<> of all recipes
-	 */
 	public List getRecipeList()
 	{
 		return this.recipes;

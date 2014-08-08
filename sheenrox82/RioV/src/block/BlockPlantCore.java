@@ -68,7 +68,6 @@ public class BlockPlantCore extends BlockFlower
 		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
 	}
 
-	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
 
 	@Override
@@ -78,11 +77,13 @@ public class BlockPlantCore extends BlockFlower
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
 	{
 		return blockIcon;
 	}
 
+	@Override
 	protected boolean canPlaceBlockOn(Block par1)
 	{		
 		if(this == RioVBlocks.bloodFlower ||this == RioVBlocks.bloodTallGrass)
