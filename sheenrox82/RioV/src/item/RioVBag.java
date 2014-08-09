@@ -22,8 +22,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class RioVBag extends Item
 {
-
-
 	public RioVBag()
 	{
 		super();
