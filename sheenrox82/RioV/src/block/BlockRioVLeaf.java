@@ -44,6 +44,7 @@ public class BlockRioVLeaf extends BlockLeavesBase
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
@@ -51,6 +52,7 @@ public class BlockRioVLeaf extends BlockLeavesBase
 	}
 
 	@SideOnly(Side.CLIENT)
+	@Override
 	public IIcon getIcon(int par1, int par2)
 	{
 		if(Minecraft.getMinecraft().gameSettings.fancyGraphics)
@@ -63,27 +65,26 @@ public class BlockRioVLeaf extends BlockLeavesBase
 		}
 	}
 
-	public boolean func_149662_c()
-	{
-		return false;
-	}
-
 	@SideOnly(Side.CLIENT)
+	@Override
 	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
 	{
 		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
 	}
 
+	@Override
     public int getRenderColor(int i)
 	{
 		return 16777215;
 	}
 
+	@Override
 	public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
         return 16777215;
     }
 
+	@Override
 	public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
     {
         byte b0 = 1;
@@ -108,6 +109,7 @@ public class BlockRioVLeaf extends BlockLeavesBase
         }
     }
 
+	@Override
 	public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
     {
         if (!p_149674_1_.isRemote)
@@ -221,9 +223,7 @@ public class BlockRioVLeaf extends BlockLeavesBase
         }
     }
 
-    /**
-     * A randomly called display update to be able to add particles or other items for display
-     */
+	@Override
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
@@ -277,11 +277,13 @@ public class BlockRioVLeaf extends BlockLeavesBase
         p_150126_1_.setBlockToAir(p_150126_2_, p_150126_3_, p_150126_4_);
     }
 
+    @Override
     public int quantityDropped(Random p_149745_1_)
     {
         return p_149745_1_.nextInt(20) == 0 ? 1 : 0;
     }
 
+    @Override
     public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
     	if(this == RioVBlocks.glimmerwoodLeaf)
@@ -300,6 +302,7 @@ public class BlockRioVLeaf extends BlockLeavesBase
         return Item.getItemFromBlock(Blocks.sapling);
     }
 
+    @Override
     public void dropBlockAsItemWithChance(World p_149690_1_, int p_149690_2_, int p_149690_3_, int p_149690_4_, int p_149690_5_, float p_149690_6_, int p_149690_7_)
     {
         if (!p_149690_1_.isRemote)
@@ -345,6 +348,7 @@ public class BlockRioVLeaf extends BlockLeavesBase
         return 20;
     }
 
+    @Override
     public void harvestBlock(World p_149636_1_, EntityPlayer p_149636_2_, int p_149636_3_, int p_149636_4_, int p_149636_5_, int p_149636_6_)
     {
         {
@@ -352,18 +356,13 @@ public class BlockRioVLeaf extends BlockLeavesBase
         }
     }
 
+    @Override
     public int damageDropped(int p_149692_1_)
     {
         return p_149692_1_ & 3;
     }
-    
-    @SideOnly(Side.CLIENT)
-    public void func_150122_b(boolean p_150122_1_)
-    {
-        this.field_150121_P = p_150122_1_;
-        this.field_150127_b = p_150122_1_ ? 0 : 1;
-    }
 
+    @Override
     protected ItemStack createStackedBlock(int p_149644_1_)
     {
         return new ItemStack(Item.getItemFromBlock(this), 1, p_149644_1_ & 3);

@@ -97,12 +97,14 @@ public class EntityRawDarkMatter extends EntityThrowable
 		this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 10.0F, true);
 	}
 
+	@Override
 	public void writeEntityToNBT(NBTTagCompound var1)
 	{
 		super.writeEntityToNBT(var1);
 		var1.setByte("Fuse", (byte)this.fuse);
 	}
 
+	@Override
 	public void readEntityFromNBT(NBTTagCompound var1)
 	{
 		super.readEntityFromNBT(var1);

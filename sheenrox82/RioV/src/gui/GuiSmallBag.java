@@ -29,6 +29,7 @@ public class GuiSmallBag extends GuiContainer
 		this.inventory = containerItem.inventory;
 	}
 
+	@Override
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		super.drawScreen(par1, par2, par3);
@@ -36,6 +37,7 @@ public class GuiSmallBag extends GuiContainer
 		this.ySize_lo = (float)par2;
 	}
 
+	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

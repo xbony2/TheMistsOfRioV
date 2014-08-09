@@ -31,7 +31,8 @@ public class EntityDarkMatterFX extends EntityFX
     }
 
     @Override
-    public void renderParticle(Tessellator var1, float var2, float var3, float var4, float var5, float var6, float var7) {
+    public void renderParticle(Tessellator var1, float var2, float var3, float var4, float var5, float var6, float var7)
+    {
         float var8 = (this.particleAge + var2) / this.particleMaxAge;
         var8 = 1.0F - var8;
         var8 *= var8;
@@ -41,7 +42,8 @@ public class EntityDarkMatterFX extends EntityFX
     }
 
     @Override
-    public int getBrightnessForRender(float var1) {
+    public int getBrightnessForRender(float var1) 
+    {
         int var2 = super.getBrightnessForRender(var1);
         float var3 = (float)this.particleAge / (float)this.particleMaxAge;
         var3 *= var3;
@@ -55,7 +57,8 @@ public class EntityDarkMatterFX extends EntityFX
     }
 
     @Override
-    public float getBrightness(float var1) {
+    public float getBrightness(float var1) 
+    {
         float var2 = super.getBrightness(var1);
         float var3 = (float)this.particleAge / (float)this.particleMaxAge;
         var3 = var3 * var3 * var3 * var3;
@@ -63,7 +66,8 @@ public class EntityDarkMatterFX extends EntityFX
     }
 
     @Override
-    public void onUpdate() {
+    public void onUpdate() 
+    {
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;

@@ -115,14 +115,13 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         this.setThrowableHeading(this.motionX, this.motionY, this.motionZ, p_i1756_3_ * 1.5F, 1.0F);
     }
 
+    @Override
     protected void entityInit()
     {
         this.dataWatcher.addObject(16, Byte.valueOf((byte)0));
     }
 
-    /**
-     * Similar to setArrowHeading, it's point the throwable entity to a x, y, z direction.
-     */
+    @Override
     public void setThrowableHeading(double p_70186_1_, double p_70186_3_, double p_70186_5_, float p_70186_7_, float p_70186_8_)
     {
         float f2 = MathHelper.sqrt_double(p_70186_1_ * p_70186_1_ + p_70186_3_ * p_70186_3_ + p_70186_5_ * p_70186_5_);
@@ -144,10 +143,7 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         this.ticksInGround = 0;
     }
 
-    /**
-     * Sets the position and rotation. Only difference from the other one is no bounding on the rotation. Args: posX,
-     * posY, posZ, yaw, pitch
-     */
+    @Override
     @SideOnly(Side.CLIENT)
     public void setPositionAndRotation2(double p_70056_1_, double p_70056_3_, double p_70056_5_, float p_70056_7_, float p_70056_8_, int p_70056_9_)
     {
@@ -155,9 +151,7 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         this.setRotation(p_70056_7_, p_70056_8_);
     }
 
-    /**
-     * Sets the velocity to the args. Args: x, y, z
-     */
+    @Override
     @SideOnly(Side.CLIENT)
     public void setVelocity(double p_70016_1_, double p_70016_3_, double p_70016_5_)
     {
@@ -177,9 +171,7 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         }
     }
 
-    /**
-     * Called to update the entity's position/logic.
-     */
+    @Override
     public void onUpdate()
     {
         super.onUpdate();
@@ -461,9 +453,7 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         }
     }
 
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
+    @Override
     public void writeEntityToNBT(NBTTagCompound p_70014_1_)
     {
         p_70014_1_.setShort("xTile", (short)this.field_145791_d);
@@ -478,9 +468,7 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         p_70014_1_.setDouble("damage", this.damage);
     }
 
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
+    @Override
     public void readEntityFromNBT(NBTTagCompound p_70037_1_)
     {
         this.field_145791_d = p_70037_1_.getShort("xTile");
@@ -507,9 +495,7 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         }
     }
 
-    /**
-     * Called by a player entity when they collide with an entity
-     */
+    @Override
     public void onCollideWithPlayer(EntityPlayer p_70100_1_)
     {
         if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0)
@@ -530,50 +516,40 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         }
     }
 
-    /**
-     * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
-     * prevent them from trampling crops
-     */
+    @Override
     protected boolean canTriggerWalking()
     {
         return false;
     }
 
+    @Override
     @SideOnly(Side.CLIENT)
     public float getShadowSize()
     {
         return 0.0F;
+    }
+    
+    @Override
+    public boolean canAttackWithItem()
+    {
+        return false;
     }
 
     public void setDamage(double p_70239_1_)
     {
         this.damage = p_70239_1_;
     }
-
+    
     public double getDamage()
     {
         return this.damage;
     }
 
-    /**
-     * Sets the amount of knockback the arrow applies when it hits a mob.
-     */
     public void setKnockbackStrength(int p_70240_1_)
     {
         this.knockbackStrength = p_70240_1_;
     }
 
-    /**
-     * If returns false, the item will not inflict any damage against entities.
-     */
-    public boolean canAttackWithItem()
-    {
-        return false;
-    }
-
-    /**
-     * Whether the arrow has a stream of critical hit particles flying behind it.
-     */
     public void setIsCritical(boolean p_70243_1_)
     {
         byte b0 = this.dataWatcher.getWatchableObjectByte(16);
@@ -588,9 +564,6 @@ public class EntityDarknessArrow extends Entity implements IProjectile
         }
     }
 
-    /**
-     * Whether the arrow has a stream of critical hit particles flying behind it.
-     */
     public boolean getIsCritical()
     {
         byte b0 = this.dataWatcher.getWatchableObjectByte(16);
