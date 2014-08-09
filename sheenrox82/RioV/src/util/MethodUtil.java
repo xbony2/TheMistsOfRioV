@@ -21,7 +21,7 @@ public class MethodUtil
 	public static void registerEntity(Class<? extends Entity> entityClass, String entityName)
 	{
 		int entityID = Config.addEntity(entityName);
-		EntityRegistry.registerModEntity(entityClass, entityName, entityID, TheMistsOfRioV.getInstance(), 128, 1, true);
+		EntityRegistry.registerModEntity(entityClass, entityName, entityID, TheMistsOfRioV.INSTANCE, 128, 1, true);
 	}
 
 	public static void registerEgg(Class<? extends Entity> entityClass)

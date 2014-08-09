@@ -378,7 +378,7 @@ public class Crafting
 		{
 			try 
 			{
-				Class natura = Class.forName("mods.natura.common.NContent");
+				Class<?> natura = Class.forName("mods.natura.common.NContent");
 
 				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("bloodwoodPickaxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodPickaxe, 1));
 				RioVAPI.getInstance().getInfuser().addInfusion(((Item)natura.getDeclaredField("bloodwoodAxe").get(null)), new ItemStack(RioVItems.infusedBloodwoodAxe, 1));

@@ -1,4 +1,4 @@
-package sheenrox82.RioV.src.api.handler.packet;
+package sheenrox82.RioV.src.api.network;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;

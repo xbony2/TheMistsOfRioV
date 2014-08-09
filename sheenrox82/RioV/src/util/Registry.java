@@ -7,7 +7,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import sheenrox82.Core.src.base.ModUpdateChecker;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.handler.packet.RioVPlayerPackets;
+import sheenrox82.RioV.src.api.network.RioVPlayerPackets;
 import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.command.CommandPrintChangelog;
@@ -79,21 +79,21 @@ public class Registry
 		GameRegistry.registerTileEntity(TileEntityRaetiinFlag.class, "Raetiin Flag");
 		GameRegistry.registerTileEntity(TileEntityJaerinFlag.class, "Jaerin Flag");
 		GameRegistry.registerWorldGenerator(new WorldGen(), 100);
-		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.getInstance(), TheMistsOfRioV.getInstance().guiHandler);
+		NetworkRegistry.INSTANCE.registerGuiHandler(TheMistsOfRioV.INSTANCE, TheMistsOfRioV.commonProxy);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.blindOasisID, WorldProviderBlindOasis.class);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.vaerynID, WorldProviderVaeryn.class);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.flamonorID, WorldProviderFlamonor.class);
 		RioVAPI.getInstance().getUtil().registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
 		RioVAPI.getInstance().getLogger().info("Core data registered. //END PRE-INITIALIZATION");
 	}
-	
+
 	public static void init(FMLInitializationEvent init)
 	{		
+		RioVAPI.getInstance().getLogger().info("Beginning initialization. //START INITIALIZATION");
 		RioVAPI.getInstance().getLogger().info("Packets registering...");
 		RioVAPI.getInstance().getNetworkHandler().registerMessage(RioVPlayerPackets.class, RioVPlayerPackets.class, 0, Side.SERVER);
 		RioVAPI.getInstance().getNetworkHandler().registerMessage(RioVPlayerPackets.class, RioVPlayerPackets.class, 0, Side.CLIENT);
 		RioVAPI.getInstance().getLogger().info("Packets registered.");
-		RioVAPI.getInstance().getLogger().info("Other shit is registering. //START INITIALIZATION");
 		TheMistsOfRioV.commonProxy.cape();
 		RioVAPI.getInstance().getLogger().info("Adding special capes. ;)");
 		TheMistsOfRioV.commonProxy.registerItemRenderers();
@@ -105,8 +105,9 @@ public class Registry
 		EntityLoader.addEndSpawning();
 		EntityLoader.addDimensionSpawning();
 		RioVAPI.getInstance().getLogger().info("Entity data registered.");
-		ExpansionChecker.check();
 		RioVAPI.getInstance().getLogger().info("Checking for expansions...");
+		ExpansionChecker.check();
+		RioVAPI.getInstance().getLogger().info("Expansions checked.");
 		BiomeGenBase.extremeHills.theBiomeDecorator.treesPerChunk = 15;
 		BiomeGenBase.plains.theBiomeDecorator.treesPerChunk = 1;
 		BiomeGenBase.plains.theBiomeDecorator.bigMushroomsPerChunk = 1;
@@ -120,6 +121,12 @@ public class Registry
 		Config.initPost();
 		RioVAPI.getInstance().getLogger().info("Mod loaded! Sup. //END POST-INITIALIZATION");
 		RioVAPI.getInstance().modLoaded = true;
+	}
+	
+	public static void serverLoad(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommandRageQuit());
+		event.registerServerCommand(new CommandPrintChangelog());
 	}
 
 	public static void syncConfig() 
@@ -138,11 +145,5 @@ public class Registry
 		{
 			Config.config.save();
 		}
-	}
-
-	public static void serverLoad(FMLServerStartingEvent event)
-	{
-		event.registerServerCommand(new CommandRageQuit());
-		event.registerServerCommand(new CommandPrintChangelog());
 	}
 }

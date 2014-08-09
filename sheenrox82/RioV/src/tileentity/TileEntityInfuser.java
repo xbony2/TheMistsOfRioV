@@ -24,26 +24,17 @@ public class TileEntityInfuser extends TileEntity implements IInventory
     public int altarCookTime = 0;
     private String field_145958_o;
 
-    /**
-     * Returns the number of slots in the inventory.
-     */
     public int getSizeInventory()
     {
         return this.infuserStacks.length;
     }
 
-    /**
-     * Returns the stack in slot i
-     */
+
     public ItemStack getStackInSlot(int par1)
     {
         return this.infuserStacks[par1];
     }
 
-    /**
-     * Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a
-     * new stack.
-     */
     public ItemStack decrStackSize(int par1, int par2)
     {
         if (this.infuserStacks[par1] != null)
@@ -74,10 +65,6 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
     }
 
-    /**
-     * When some containers are closed they call this on each slot, then drop whatever it returns as an EntityItem -
-     * like when you close a workbench GUI.
-     */
     public ItemStack getStackInSlotOnClosing(int par1)
     {
         if (this.infuserStacks[par1] != null)
@@ -92,9 +79,6 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
     }
 
-    /**
-     * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
-     */
     public void setInventorySlotContents(int par1, ItemStack par2ItemStack)
     {
         this.infuserStacks[par1] = par2ItemStack;
@@ -173,10 +157,6 @@ public class TileEntityInfuser extends TileEntity implements IInventory
         }
     }
 
-    /**
-     * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended. *Isn't
-     * this more of a set than a get?*
-     */
     public int getInventoryStackLimit()
     {
         return 64;

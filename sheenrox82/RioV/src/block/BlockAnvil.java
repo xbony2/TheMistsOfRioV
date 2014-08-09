@@ -59,7 +59,7 @@ public class BlockAnvil extends Block
 	{
 		if(!par5EntityPlayer.isSneaking())
 		{
-			par5EntityPlayer.openGui(TheMistsOfRioV.getInstance(), RioVLib.anvilID, par1World, par2, par3, par4);
+			par5EntityPlayer.openGui(TheMistsOfRioV.INSTANCE, RioVLib.anvilID, par1World, par2, par3, par4);
 			return true;
 		}
 		else

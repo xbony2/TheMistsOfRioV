@@ -49,7 +49,7 @@ public class GuideHelper
 	public static void openJournal(EntityPlayer player, String info) 
 	{
 		openingJournalInfo = info;
-		player.openGui(TheMistsOfRioV.getInstance(), RioVLib.guideID, player.worldObj, 0, 0, 0);
+		player.openGui(TheMistsOfRioV.INSTANCE, RioVLib.guideID, player.worldObj, 0, 0, 0);
 	}
 
 	public static List<GuideCategory> getCategories() 

@@ -77,7 +77,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class riovItems = Class.forName("sheenrox82.RioV.src.content.RioVItems");
+			Class<?> riovItems = Class.forName("sheenrox82.RioV.src.content.RioVItems");
 			Item itemToGet = (Item)riovItems.getDeclaredField(itemName).get(null);
 			return itemToGet;
 		}
@@ -99,7 +99,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class riovBlocks = Class.forName("sheenrox82.RioV.src.content.RioVBlocks");
+			Class<?> riovBlocks = Class.forName("sheenrox82.RioV.src.content.RioVBlocks");
 			Block blockToGet = (Block)riovBlocks.getDeclaredField(blockName).get(null);
 			return blockToGet;
 		}
@@ -121,7 +121,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class riovEnchants = Class.forName("sheenrox82.RioV.src.content.Enchantments");
+			Class<?> riovEnchants = Class.forName("sheenrox82.RioV.src.content.Enchantments");
 			Enchantment enchantToGet = (Enchantment)riovEnchants.getDeclaredField(enchantmentName).get(null);
 			return enchantToGet;
 		}
@@ -143,7 +143,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class riovBiomes = Class.forName("sheenrox82.RioV.src.content.Biomes");
+			Class<?> riovBiomes = Class.forName("sheenrox82.RioV.src.content.Biomes");
 			BiomeGenBase biomeToGet = (BiomeGenBase)riovBiomes.getDeclaredField(biomeName).get(null);
 			return biomeToGet;
 		}
@@ -165,7 +165,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class riovSounds = Class.forName("sheenrox82.RioV.src.content.Sounds");
+			Class<?> riovSounds = Class.forName("sheenrox82.RioV.src.content.Sounds");
 			Sound soundToGet = (Sound)riovSounds.getDeclaredField(soundName).get(null);
 			return soundToGet.getPrefixedName();
 		}
@@ -187,7 +187,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class configFile = Class.forName("sheenrox82.RioV.src.base.Config");
+			Class<?> configFile = Class.forName("sheenrox82.RioV.src.base.Config");
 			boolean boolToGet = (Boolean)configFile.getDeclaredField(field).get(null);
 			return boolToGet;
 		}
@@ -207,7 +207,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class configFile = Class.forName("sheenrox82.RioV.src.base.Config");
+			Class<?> configFile = Class.forName("sheenrox82.RioV.src.base.Config");
 			int intToGet = (Integer)configFile.getDeclaredField(field).get(null);
 			return intToGet;
 		}
@@ -220,7 +220,7 @@ public class RioVAPIUtil
 	/**
 	 * Replace a field in a class.
 	 */
-	public void replaceField(String fieldName, Class clazz, Object value, Object instance)
+	public void replaceField(String fieldName, Class<?> clazz, Object value, Object instance)
 	{
 		try
 		{
@@ -248,7 +248,7 @@ public class RioVAPIUtil
 	{
 		try
 		{
-			Class util = Class.forName("sheenrox82.RioV.src.util.Util");
+			Class<?> util = Class.forName("sheenrox82.RioV.src.util.Util");
 			String strToGet = (String)util.getDeclaredField(utilString).get(null);
 			return strToGet;
 		}

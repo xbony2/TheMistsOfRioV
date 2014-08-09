@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import sheenrox82.RioV.src.api.base.RioVAPI;
-import sheenrox82.RioV.src.api.handler.packet.RioVPlayerPackets;
+import sheenrox82.RioV.src.api.network.RioVPlayerPackets;
 
 public class RioVPlayer implements IExtendedEntityProperties
 {

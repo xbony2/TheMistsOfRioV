@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.base;
 
-import sheenrox82.RioV.src.handler.GuiHandler;
 import sheenrox82.RioV.src.proxy.CommonProxy;
 import sheenrox82.RioV.src.util.Registry;
 import sheenrox82.RioV.src.util.Util;
@@ -13,22 +12,14 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Util.MOD_ID, name = Util.MOD_NAME, version = Util.VERSION, guiFactory = "sheenrox82.RioV.src.gui.RioVGuiFactory")
+@Mod(modid = Util.MOD_ID, name = Util.MOD_NAME, version = Util.VERSION, guiFactory = Util.GUI_FACTORY)
 public class TheMistsOfRioV
 {
-	
 	@Instance(Util.MOD_ID)
-	private static TheMistsOfRioV instance;
+	public static TheMistsOfRioV INSTANCE;
 
-	@SidedProxy(clientSide="sheenrox82.RioV.src.proxy.ClientProxy", serverSide="sheenrox82.RioV.src.proxy.CommonProxy")
+	@SidedProxy(clientSide = Util.CLIENT, serverSide = Util.COMMON)
 	public static CommonProxy commonProxy;
-
-	public GuiHandler guiHandler = new GuiHandler();
-
-	public static TheMistsOfRioV getInstance()
-	{
-		return instance;
-	}
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent initEvent)
@@ -53,5 +44,4 @@ public class TheMistsOfRioV
 	{
 		Registry.serverLoad(event);
 	}
-	
 }

@@ -114,7 +114,7 @@ public class BlockRioVWorkbench extends BlockWorkbench
 			return true;
 		}
 
-		player.openGui(TheMistsOfRioV.getInstance(), RioVLib.riovWorkbenchID, var1, var2, var3, var4);
+		player.openGui(TheMistsOfRioV.INSTANCE, RioVLib.riovWorkbenchID, var1, var2, var3, var4);
 		return true;
 	}
 }

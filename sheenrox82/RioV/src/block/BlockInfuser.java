@@ -107,7 +107,7 @@ public class BlockInfuser extends BlockContainer
 			}
 			else if (tileEntityInfusionAltar != null)
 			{
-				player.openGui(TheMistsOfRioV.getInstance(), 2, world, x, y, z);
+				player.openGui(TheMistsOfRioV.INSTANCE, 2, world, x, y, z);
 			}
 		}
 
