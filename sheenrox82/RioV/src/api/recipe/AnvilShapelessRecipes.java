@@ -29,7 +29,7 @@ public class AnvilShapelessRecipes implements IRecipe
 	@Override
 	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World)
 	{
-		ArrayList arraylist = new ArrayList(this.recipeItems);
+		ArrayList<?> arraylist = new ArrayList(this.recipeItems);
 
 		for (int i = 0; i < 5; ++i)
 		{

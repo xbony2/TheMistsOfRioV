@@ -19,13 +19,13 @@ public class AnvilCraftingManager
 {
 	public static final int WILDCARD_VALUE = Short.MAX_VALUE;
 	public static AnvilCraftingManager instance = new AnvilCraftingManager();
-	public static List recipes = new ArrayList();
+	public static ArrayList<IRecipe> recipes = new ArrayList<IRecipe>();
 
 	public AnvilCraftingManager()
 	{
-		recipes = new ArrayList();
+		recipes = new ArrayList<IRecipe>();
 		
-		Collections.sort(this.recipes, new Comparator()
+		Collections.sort(AnvilCraftingManager.recipes, new Comparator<Object>()
 		{
 			public int compare(IRecipe par1IRecipe, IRecipe par2IRecipe)
 			{
@@ -68,9 +68,9 @@ public class AnvilCraftingManager
 			}
 		}
 
-		HashMap hashmap;
+		HashMap<Character, ItemStack> hashmap;
 
-		for (hashmap = new HashMap(); i < par2ArrayOfObj.length; i += 2)
+		for (hashmap = new HashMap<Character, ItemStack>(); i < par2ArrayOfObj.length; i += 2)
 		{
 			Character character = (Character)par2ArrayOfObj[i];
 			ItemStack itemstack1 = null;
@@ -108,13 +108,13 @@ public class AnvilCraftingManager
 		}
 
 		AnvilShapedRecipes shapedrecipes = new AnvilShapedRecipes(j, k, aitemstack, par1ItemStack);
-		this.recipes.add(shapedrecipes);
+		AnvilCraftingManager.recipes.add(shapedrecipes);
 		return shapedrecipes;
 	}
 
 	public void addShapelessRecipe(ItemStack par1ItemStack, Object ... par2ArrayOfObj)
 	{
-		ArrayList arraylist = new ArrayList();
+		ArrayList<ItemStack> arraylist = new ArrayList<ItemStack>();
 		Object[] aobject = par2ArrayOfObj;
 		int i = par2ArrayOfObj.length;
 
@@ -141,7 +141,7 @@ public class AnvilCraftingManager
 			}
 		}
 
-		this.recipes.add(new AnvilShapelessRecipes(par1ItemStack, arraylist));
+		AnvilCraftingManager.recipes.add(new AnvilShapelessRecipes(par1ItemStack, arraylist));
 	}
 
 	public ItemStack findMatchingRecipe(InventoryCrafting par1InventoryCrafting, World par2World)
@@ -188,9 +188,9 @@ public class AnvilCraftingManager
 		}
 		else
 		{
-			for (j = 0; j < this.recipes.size(); ++j)
+			for (j = 0; j < AnvilCraftingManager.recipes.size(); ++j)
 			{
-				IRecipe irecipe = (IRecipe)this.recipes.get(j);
+				IRecipe irecipe = (IRecipe)AnvilCraftingManager.recipes.get(j);
 
 				if (irecipe.matches(par1InventoryCrafting, par2World))
 				{
@@ -202,8 +202,8 @@ public class AnvilCraftingManager
 		}
 	}
 
-	public List getRecipeList()
+	public List<IRecipe> getRecipeList()
 	{
-		return this.recipes;
+		return AnvilCraftingManager.recipes;
 	}
 }

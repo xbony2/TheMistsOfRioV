@@ -11,8 +11,8 @@ import net.minecraft.item.ItemStack;
 public class InfuserManager
 {
 	private static InfuserManager infuserBase = new InfuserManager();
-	public Map infuserList;
-	public Map infuserExp;
+	public Map<ItemStack, ItemStack> infuserList;
+	public Map<Object, Object> infuserExp;
 
 	public static InfuserManager getInfuser()
 	{
@@ -21,8 +21,8 @@ public class InfuserManager
 
 	public InfuserManager()
 	{
-		infuserList = new HashMap();
-		infuserExp = new HashMap();
+		infuserList = new HashMap<ItemStack, ItemStack>();
+		infuserExp = new HashMap<Object, Object>();
 	}
 	
     public void addInfusion(Item p_151396_1_, ItemStack p_151396_2_)
@@ -37,8 +37,8 @@ public class InfuserManager
 
     public ItemStack getResult(ItemStack p_151395_1_)
     {
-        Iterator iterator = this.infuserList.entrySet().iterator();
-        Entry entry;
+        Iterator<?> iterator = this.infuserList.entrySet().iterator();
+        Entry<?, ?> entry;
 
         do
         {
@@ -47,7 +47,7 @@ public class InfuserManager
                 return null;
             }
 
-            entry = (Entry)iterator.next();
+            entry = (Entry<?, ?>)iterator.next();
         }
         while (!this.func_151397_a(p_151395_1_, (ItemStack)entry.getKey()));
 
@@ -59,7 +59,7 @@ public class InfuserManager
         return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
     }
 
-    public Map getSmeltingList()
+    public Map<ItemStack, ItemStack> getSmeltingList()
     {
         return this.infuserList;
     }
