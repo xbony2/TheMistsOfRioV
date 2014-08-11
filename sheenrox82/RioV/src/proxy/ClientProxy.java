@@ -159,6 +159,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(RioVItems.bowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.enforcedBowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.vraviniteBow, new ItemRenderLongbow());
+		RioVAPI.getInstance().getLogger().info("Item renderers registered.");
 	}
 
 	@Override
@@ -167,10 +168,11 @@ public class ClientProxy extends CommonProxy
 		if(RioVAPI.getInstance().getUtil().getConfigBool("runCapes") == true)
 		{
 			DevCapes.getInstance().registerConfig("https://dl.dropbox.com/u/126631367/RioVCapes.json");
+			RioVAPI.getInstance().getLogger().info("Cape .json file registered.");
 		}
 		else
 		{
-
+			RioVAPI.getInstance().getLogger().info("Cape .json file not registered.");
 		}
 	}
 
