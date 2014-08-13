@@ -422,6 +422,7 @@ public class ChunkProviderVaeryn implements IChunkProvider
 			var15 = this.rand.nextInt(128);
 			var16 = var5 + this.rand.nextInt(16);
 			(new WorldGenVaerynMineable(RioVBlocks.vraviniteOre, 9, RioVBlocks.glimmerRock)).generate(this.worldObj, this.rand, var14, var15, var16);
+			(new WorldGenVaerynMineable(RioVBlocks.jaavikOre, 9, RioVBlocks.glimmerRock)).generate(this.worldObj, this.rand, var14, var15, var16);
 		}
 
 		BlockSand.fallInstantly = false;
