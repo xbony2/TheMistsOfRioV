@@ -407,7 +407,7 @@ public class Events
 			{
 				event.setCanceled(true);
 
-				List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
+				List<?> players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
 
 				for (int i = 0; i < + players.size(); i++) 
 				{

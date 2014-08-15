@@ -24,6 +24,7 @@ public class MethodUtil
 		EntityRegistry.registerModEntity(entityClass, entityName, entityID, TheMistsOfRioV.INSTANCE, 128, 1, true);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void registerEgg(Class<? extends Entity> entityClass)
 	{
 		int ID = uniqueEggID();

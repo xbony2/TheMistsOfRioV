@@ -9,8 +9,8 @@ import cpw.mods.fml.client.config.GuiConfig;
  
 public class GuiRioVConfig extends GuiConfig 
 {
-    public GuiRioVConfig(GuiScreen parent) 
+	public GuiRioVConfig(GuiScreen parent) 
     {
-        super(parent, new ConfigElement(Config.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Util.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath("The Mists of RioV Config"));
+        super(parent, new ConfigElement<Object>(Config.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Util.MOD_ID, false, false, GuiConfig.getAbridgedConfigPath("The Mists of RioV Config"));
     }
 }
