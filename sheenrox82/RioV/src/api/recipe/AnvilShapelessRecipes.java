@@ -12,8 +12,10 @@ import net.minecraft.world.World;
 public class AnvilShapelessRecipes implements IRecipe
 {
 	private final ItemStack recipeOutput;
+	@SuppressWarnings("rawtypes")
 	public final List recipeItems;
 
+	@SuppressWarnings("rawtypes")
 	public AnvilShapelessRecipes(ItemStack par1ItemStack, List par2List)
 	{
 		this.recipeOutput = par1ItemStack;
@@ -26,6 +28,7 @@ public class AnvilShapelessRecipes implements IRecipe
 		return this.recipeOutput;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World)
 	{

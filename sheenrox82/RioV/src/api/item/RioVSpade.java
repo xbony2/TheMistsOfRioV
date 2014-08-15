@@ -46,6 +46,7 @@ public class RioVSpade extends ItemSpade
 		}
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
