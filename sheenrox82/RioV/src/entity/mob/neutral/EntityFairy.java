@@ -113,17 +113,6 @@ public class EntityFairy extends EntityFlyingDeadBody
                 --this.attackCounter;
             }
         }
-
-        if (!this.worldObj.isRemote)
-        {
-            byte b0 = this.dataWatcher.getWatchableObjectByte(16);
-            byte b1 = (byte)(this.attackCounter > 10 ? 1 : 0);
-
-            if (b0 != b1)
-            {
-                this.dataWatcher.updateObject(16, Byte.valueOf(b1));
-            }
-        }
     }
 
     private boolean isCourseTraversable(double par1, double par3, double par5, double par7)
