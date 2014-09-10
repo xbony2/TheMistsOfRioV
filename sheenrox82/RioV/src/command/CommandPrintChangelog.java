@@ -12,7 +12,9 @@ import sheenrox82.RioV.src.api.util.Color;
 
 public class CommandPrintChangelog extends CommandBase implements ICommand
 {
+	@SuppressWarnings("rawtypes")
 	private List aliases;
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CommandPrintChangelog()
 	{
 		this.aliases = new ArrayList();
@@ -33,6 +35,7 @@ public class CommandPrintChangelog extends CommandBase implements ICommand
 		return Color.GOLD + "/printChangelog - Prints changelog for new update.";
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List getCommandAliases()
 	{

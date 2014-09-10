@@ -66,6 +66,7 @@ public class BlockRioVLeaf extends BlockLeavesBase
 	}
 
 	@SideOnly(Side.CLIENT)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
 	{

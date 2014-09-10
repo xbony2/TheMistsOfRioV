@@ -147,6 +147,7 @@ public class RioVBag extends Item
 		return itemstack;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	{
 		if(par1ItemStack.getItem().equals(RioVItems.sheenBag))

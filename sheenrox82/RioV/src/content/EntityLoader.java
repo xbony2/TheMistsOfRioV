@@ -118,6 +118,7 @@ public class EntityLoader
 		MethodUtil.registerEgg(EntityShadowWizard.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void addOverworldSpawning()
 	{
 		BiomeGenBase[] plains = BiomeDictionary.getBiomesForType(Type.PLAINS);
@@ -290,6 +291,7 @@ public class EntityLoader
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void addNetherSpawning()
 	{
 		BiomeGenBase[] nether = BiomeDictionary.getBiomesForType(Type.NETHER);
@@ -315,6 +317,7 @@ public class EntityLoader
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void addEndSpawning()
 	{
 		BiomeGenBase[] end = BiomeDictionary.getBiomesForType(Type.END);

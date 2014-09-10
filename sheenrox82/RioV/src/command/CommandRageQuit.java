@@ -15,7 +15,9 @@ import sheenrox82.RioV.src.api.util.Color;
 
 public class CommandRageQuit extends CommandBase implements ICommand
 {
+	@SuppressWarnings("rawtypes")
 	private List aliases;
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public CommandRageQuit()
 	{
 		this.aliases = new ArrayList();
@@ -37,6 +39,7 @@ public class CommandRageQuit extends CommandBase implements ICommand
 	}
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List getCommandAliases()
 	{
 		return this.aliases;
@@ -63,6 +66,7 @@ public class CommandRageQuit extends CommandBase implements ICommand
 		return true;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List addTabCompletionOptions(ICommandSender icommandsender,
 			String[] astring)

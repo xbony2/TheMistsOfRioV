@@ -292,6 +292,7 @@ public class RioVBow extends ItemBow
 		return this.iconArray[par1];
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{

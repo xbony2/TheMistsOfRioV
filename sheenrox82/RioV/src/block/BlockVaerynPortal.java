@@ -120,7 +120,6 @@ public class BlockVaerynPortal extends BlockPortal
 		private ChunkCoordinates field_150861_f;
 		private int field_150862_g;
 		private int field_150868_h;
-		private static final String __OBFID = "CL_00000285";
 
 		public Size(World p_i45415_1_, int p_i45415_2_, int p_i45415_3_, int p_i45415_4_, int p_i45415_5_)
 		{

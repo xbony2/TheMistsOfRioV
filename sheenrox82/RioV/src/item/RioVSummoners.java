@@ -344,6 +344,7 @@ public class RioVSummoners extends Item
 	}
 
 	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4)
 	{
 		if (var1.getItem().equals(RioVItems.tefCrystal))
