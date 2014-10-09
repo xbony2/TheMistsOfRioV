@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.lib.RioVLib;
@@ -29,8 +30,11 @@ public class RenderTiTun extends RenderBiped
 
 		if(!mob.isDeadBody)
 		{
-			func_147906_a((EntityLiving)par1Entity, "Ti'Tun", par2, par4, par6, 64);
-			func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.GREEN + "Jaerin", par2, par4, par6, 64);
+			if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+			{
+				func_147906_a((EntityLiving)par1Entity, "Ti'Tun", par2, par4, par6, 64);
+				func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.GREEN + "Jaerin", par2, par4, par6, 64);
+			}
 		}
 	}
 

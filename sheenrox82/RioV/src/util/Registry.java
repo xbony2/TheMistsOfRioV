@@ -140,7 +140,8 @@ public class Registry
 		Config.hudPosY = Config.config.getInt("HUD Position Y || Max: 800", Configuration.CATEGORY_GENERAL, 20, 20, 800, "// Integer");
 		Config.dev = Config.config.getBoolean("Development only. Some things will not work.", Configuration.CATEGORY_GENERAL, false, "// Boolean");
 		Config.Helmet = Config.config.getBoolean("Use helmet blur when helmet is on?", Configuration.CATEGORY_GENERAL, true, "// Boolean");
-
+		Config.mobNametags = Config.config.getBoolean("Have mob nameplates?", Configuration.CATEGORY_GENERAL, true, "// Boolean");
+		
 		if(Config.config.hasChanged())
 		{
 			Config.config.save();

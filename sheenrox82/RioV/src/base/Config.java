@@ -27,6 +27,7 @@ public class Config
 	public static boolean allowBreathing;
 	public static boolean deadBodies;
 	public static boolean runCapes;
+	public static boolean mobNametags;
 	public static boolean dev;
 	public static int hudPosX;
 	public static int hudPosY;

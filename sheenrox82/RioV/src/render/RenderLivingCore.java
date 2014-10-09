@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityMobDeadBody;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityWoodElf;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityNizonian;
@@ -48,8 +49,11 @@ public class RenderLivingCore extends RenderLiving
 
 		if(!mob.isDeadBody)
 		{
-			this.func_147906_a((EntityLiving)par1Entity, renderName1, par2, par4, par6, 64);
-			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + renderName2, par2, par4 - 0.25d, par6, 64);
+			if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+			{
+				this.func_147906_a((EntityLiving)par1Entity, renderName1, par2, par4, par6, 64);
+				this.func_147906_a((EntityLiving)par1Entity, "Faction: " + renderName2, par2, par4 - 0.25d, par6, 64);
+			}
 		}
 	}
 

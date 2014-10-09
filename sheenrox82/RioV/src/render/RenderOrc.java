@@ -9,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.EntityOrc;
 import sheenrox82.RioV.src.lib.RioVLib;
@@ -36,8 +37,11 @@ public class RenderOrc extends RenderBiped
 
 		if(!mob.isDeadBody)
 		{
-			this.func_147906_a((EntityLiving)var1, "Orc", var2, var4, var6, 64);
-			this.func_147906_a((EntityLiving)var1, "Faction: " + Color.GREEN + "Jaerin", var2, var4 - 0.25d, var6, 64);
+			if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+			{
+				this.func_147906_a((EntityLiving)var1, "Orc", var2, var4, var6, 64);
+				this.func_147906_a((EntityLiving)var1, "Faction: " + Color.GREEN + "Jaerin", var2, var4 - 0.25d, var6, 64);
+			}
 		}
 	}
 

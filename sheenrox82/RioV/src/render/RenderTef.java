@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.util.ResourceLocation;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.lib.RioVLib;
@@ -34,8 +35,11 @@ public class RenderTef extends RenderBiped
 
 		if(!mob.isDeadBody)
 		{
-			func_147906_a((EntityLiving)par1Entity, "Tef", par2, par4, par6, 64);
-			func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4, par6, 64);
+			if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+			{
+				func_147906_a((EntityLiving)par1Entity, "Tef", par2, par4, par6, 64);
+				func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4, par6, 64);
+			}
 		}
 	}
 

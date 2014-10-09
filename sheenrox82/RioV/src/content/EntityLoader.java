@@ -131,14 +131,14 @@ public class EntityLoader
 		BiomeGenBase[] beach = BiomeDictionary.getBiomesForType(Type.BEACH);
 		BiomeGenBase[] wasteland = BiomeDictionary.getBiomesForType(Type.WASTELAND);
 
-		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 15, 4, 9);
-		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 16, 5, 8);
-		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 17, 5, 9);
-		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 18, 4, 8);
-		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 19, 5, 7);
-		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 20, 3, 7);
-		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 21, 4, 7);
-		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 22, 5, 8);
+		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 10, 4, 9);
+		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 10, 5, 8);
+		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 10, 5, 9);
+		SpawnListEntry darkElfSpawn = new SpawnListEntry(EntityDarkElf.class, 10, 4, 8);
+		SpawnListEntry galokinSpawn = new SpawnListEntry(EntityGalokin.class, 10, 5, 7);
+		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 10, 3, 7);
+		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 10, 4, 7);
+		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 10, 5, 8);
 
 		for(int i = 0; i < plains.length; i++)
 		{
@@ -296,11 +296,11 @@ public class EntityLoader
 	{
 		BiomeGenBase[] nether = BiomeDictionary.getBiomesForType(Type.NETHER);
 
-		SpawnListEntry skeleHorseSpawn = new SpawnListEntry(EntitySkeletalHorse.class, 15, 5, 7);
-		SpawnListEntry minionSpawn = new SpawnListEntry(EntityAunTunMinion.class, 16, 4, 8);
-		SpawnListEntry bodyguardSpawn = new SpawnListEntry(EntityAunTunBodyguard.class, 17, 4, 8);
-		SpawnListEntry hellhoundSpawn = new SpawnListEntry(EntityHellhound.class, 18, 4, 8);
-		SpawnListEntry soverianSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 19, 4, 8);
+		SpawnListEntry skeleHorseSpawn = new SpawnListEntry(EntitySkeletalHorse.class, 10, 5, 7);
+		SpawnListEntry minionSpawn = new SpawnListEntry(EntityAunTunMinion.class, 10, 4, 8);
+		SpawnListEntry bodyguardSpawn = new SpawnListEntry(EntityAunTunBodyguard.class, 10, 4, 8);
+		SpawnListEntry hellhoundSpawn = new SpawnListEntry(EntityHellhound.class, 10, 4, 8);
+		SpawnListEntry soverianSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 10, 4, 8);
 
 		for(int i = 0; i < nether.length; i++)
 		{
@@ -322,8 +322,8 @@ public class EntityLoader
 	{
 		BiomeGenBase[] end = BiomeDictionary.getBiomesForType(Type.END);
 
-		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 15, 3, 5);
-		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 16, 3, 5);
+		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 10, 3, 5);
+		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 10, 3, 5);
 
 		for(int i = 0; i < end.length; i++)
 		{

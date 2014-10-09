@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.util.ResourceLocation;
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.entity.mob.neutral.EntityPaladin;
 import sheenrox82.RioV.src.util.Util;
 
@@ -27,8 +28,11 @@ public class RenderPaladin extends RenderBiped
 
 		if(!mob.isDeadBody)
 		{
-			func_147906_a((EntityLiving)par1Entity, "Paladin", par2, par4, par6, 64);
-			func_147906_a((EntityLiving)par1Entity, "Faction: No Faction", par2, par4 - 0.25d, par6, 64);
+			if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+			{
+				func_147906_a((EntityLiving)par1Entity, "Paladin", par2, par4, par6, 64);
+				func_147906_a((EntityLiving)par1Entity, "Faction: No Faction", par2, par4 - 0.25d, par6, 64);
+			}
 		}
 		doRenderLiving((EntityLiving)par1Entity, par2, par4, par6, par8, par9);
 	}

@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.entity.EntityBossCore;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
@@ -39,8 +40,11 @@ public class RenderBossCore extends RenderLiving
 
 			if(!mob.isDeadBody)
 			{
-				this.func_147906_a((EntityLiving)par1Entity, "Demon Angel", par2, par4, par6, 64);
-				this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+				if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+				{
+					this.func_147906_a((EntityLiving)par1Entity, "Demon Angel", par2, par4, par6, 64);
+					this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+				}
 			}
 		}
 
@@ -50,8 +54,11 @@ public class RenderBossCore extends RenderLiving
 
 			if(!mob.isDeadBody)
 			{
-				this.func_147906_a((EntityLiving)par1Entity, "Terron", par2, par4, par6, 64);
-				this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+				if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+				{
+					this.func_147906_a((EntityLiving)par1Entity, "Terron", par2, par4, par6, 64);
+					this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+				}
 			}
 		}
 

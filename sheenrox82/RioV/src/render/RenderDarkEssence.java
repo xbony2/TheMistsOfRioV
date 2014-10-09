@@ -10,6 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.lib.RioVLib;
@@ -33,8 +34,11 @@ public class RenderDarkEssence extends RenderBiped
 
 		if(!mob.isDeadBody)
 		{
-			this.func_147906_a((EntityLiving)par1Entity, "The Darkness", par2, par4, par6, 64);
-			this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+			if(RioVAPI.getInstance().getUtil().getConfigBool("mobNametags"))
+			{
+				this.func_147906_a((EntityLiving)par1Entity, "The Darkness", par2, par4, par6, 64);
+				this.func_147906_a((EntityLiving)par1Entity, "Faction: " + Color.DARK_RED + "Raetiin", par2, par4 - 0.25d, par6, 64);
+			}
 		}
 	}
 
