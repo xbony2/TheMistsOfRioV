@@ -180,7 +180,16 @@ public class RioVBlocks
 	public static Block noFacFlag = new BlockNoFactionFlag().setHardness(3F).setBlockName("noFactionFlag");
 	public static Block raetiinFlag = new BlockRaetiinFlag().setHardness(3F).setBlockName("raetiinFlag");
 	public static Block jaerinFlag = new BlockJaerinFlag().setHardness(3F).setBlockName("jaerinFlag");
-
+	public static Block __0;
+	public static Block __1;
+	public static Block __2;
+	public static Block __3;
+	public static Block __4;
+	public static Block __5;
+	public static Block __6;
+	public static Block __7;
+	public static Block __8;
+	
 	public static void add()
 	{	
 		RioVAPIUtil.registerBlock(noFacFlag, "No Faction Flag");

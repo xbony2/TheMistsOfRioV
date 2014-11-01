@@ -12,7 +12,6 @@ import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
 import sheenrox82.RioV.src.command.CommandPrintChangelog;
 import sheenrox82.RioV.src.command.CommandRageQuit;
-import sheenrox82.RioV.src.content.Biomes;
 import sheenrox82.RioV.src.content.Crafting;
 import sheenrox82.RioV.src.content.Enchantments;
 import sheenrox82.RioV.src.content.EntityLoader;
@@ -68,7 +67,6 @@ public class Registry
 		RioVItems.add();
 		RioVBlocks.add();
 		Crafting.add();
-		Biomes.add();
 		Enchantments.add();
 		RioVAPI.getInstance().getLogger().info("Content added.");
 		HarvestLevelRegistry.addHarvestLevels();
