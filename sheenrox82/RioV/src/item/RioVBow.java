@@ -20,6 +20,7 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.content.Sounds;
 import sheenrox82.RioV.src.entity.projectile.EntityDarknessArrow;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
+import sheenrox82.RioV.src.util.LangHelper;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -298,17 +299,17 @@ public class RioVBow extends ItemBow
 	{
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
-			var3.add(var1.getMaxDamage() - var1.getItemDamage() + " Uses");
+			var3.add(var1.getMaxDamage() - var1.getItemDamage() + LangHelper.translate("msg.riov.Uses"));
 			
 			if(this == RioVItems.vraviniteBow)
 			{
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.vicious.effectId, var1) > 0)
 				{
-					var3.add("Damage: " + vraviniteArrow.damage * 1.4);
+					var3.add(LangHelper.translate("msg.riov.Damage") + vraviniteArrow.damage * 1.4);
 				}
 				else
 				{
-					var3.add("Damage: " + vraviniteArrow.damage);
+					var3.add(LangHelper.translate("msg.riov.Damage") + vraviniteArrow.damage);
 				}
 			}
 			
@@ -316,11 +317,11 @@ public class RioVBow extends ItemBow
 			{
 				if (EnchantmentHelper.getEnchantmentLevel(Enchantments.vicious.effectId, var1) > 0)
 				{
-					var3.add("Damage: " + darknessArrow.damage * 1.4);
+					var3.add(LangHelper.translate("msg.riov.Damage") + darknessArrow.damage * 1.4);
 				}
 				else
 				{
-					var3.add("Damage: " + darknessArrow.damage);
+					var3.add(LangHelper.translate("msg.riov.Damage") + darknessArrow.damage);
 				}
 			}
 		}

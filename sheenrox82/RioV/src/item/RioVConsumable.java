@@ -12,6 +12,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.LangHelper;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -76,7 +77,7 @@ public class RioVConsumable extends ItemFood
 	{
 		if (var1.getItem().equals(RioVItems.manchet))
 		{
-			var3.add(StatCollector.translateToLocal("A fine, white bread"));
+			var3.add(LangHelper.translate("msg.riov.FineBread"));
 		}
 	}
 

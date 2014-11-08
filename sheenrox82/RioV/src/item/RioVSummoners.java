@@ -21,6 +21,7 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDarkEssence;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
+import sheenrox82.RioV.src.util.LangHelper;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -59,7 +60,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(3);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Terron has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.TerronSummon"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -68,13 +69,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 3)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -95,7 +96,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(4);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Tef has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.TefSummon"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -104,13 +105,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 4)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -130,7 +131,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(18);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("The Darkness has arrived!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.DarknessHere"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -139,13 +140,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 18)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -168,7 +169,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(12);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Demon Angel has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.DemonAngerlSummon"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -177,13 +178,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 12)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -204,7 +205,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(34);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun has been summoned! Good luck, this'll be a LONG fight.");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.AunTunSummon"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -213,13 +214,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 34)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -245,7 +246,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(3);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Wood Elf King has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.WolfElfSummon"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -254,13 +255,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 3)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -281,7 +282,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(10);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Altru has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.AltruSummon"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -290,13 +291,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 10)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -317,7 +318,7 @@ public class RioVSummoners extends Item
 								world.spawnEntityInWorld(var5);
 								player.consumeEos(17);
 								++var4;
-								RioVAPI.getInstance().getUtil().sendMessageToAll("Ti'Tun has been summoned!");
+								RioVAPI.getInstance().getUtil().sendMessageToAll(LangHelper.translate("msg.riov.TiTunSummon"));
 								par1ItemStack.damageItem(2, entityplayer);
 							}
 						}
@@ -326,13 +327,13 @@ public class RioVSummoners extends Item
 							if(player.getCurrentEos() < 17)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 							}
 
 							if(player.getCurrentEos() < 0)
 							{
 								if(!world.isRemote)
-									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+									entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 							}
 						}
 					}
@@ -349,23 +350,23 @@ public class RioVSummoners extends Item
 	{
 		if (var1.getItem().equals(RioVItems.tefCrystal))
 		{
-			var3.add(StatCollector.translateToLocal("A side challenge, given by The Darkness."));
-			var3.add(StatCollector.translateToLocal("Spawned in: Blind Oasis Dimension"));
+			var3.add(LangHelper.translate("msg.riov.tefCrystal1"));
+			var3.add(LangHelper.translate("msg.riov.tefCrystal2"));
 		}
 
 		if (var1.getItem().equals(RioVItems.terronCrystal) || var1.getItem().equals(RioVItems.theDarknessCrystal))
 		{
-			var3.add(StatCollector.translateToLocal("Spawned in: Blind Oasis Dimension"));
+			var3.add(LangHelper.translate("msg.riov.TerronCrystal"));
 		}
 
 		if (var1.getItem().equals(RioVItems.demonAngelCrystal) || var1.getItem().equals(RioVItems.auntunSummoner))
 		{
-			var3.add(StatCollector.translateToLocal("Spawned in: Flamonor Dimension"));
+			var3.add(LangHelper.translate("msg.riov.DemonAngalCrystal"));
 		}
 
 		if (var1.getItem().equals(RioVItems.woodElfKingCrystal) || var1.getItem().equals(RioVItems.altruCrystal) || var1.getItem().equals(RioVItems.tiTunSummoner))
 		{
-			var3.add(StatCollector.translateToLocal("Spawned in: Overworld Dimension"));
+			var3.add(LangHelper.translate("msg.riov.WoodElfCrystal"));
 		}
 	}
 

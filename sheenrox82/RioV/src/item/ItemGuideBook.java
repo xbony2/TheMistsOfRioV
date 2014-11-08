@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.guide.GuideHelper;
+import sheenrox82.RioV.src.util.LangHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -33,7 +34,7 @@ public class ItemGuideBook extends Item
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	{
-		par3List.add("In-Game RioV Documentation");
+		par3List.add(LangHelper.translate("msg.riov.Book"));
 	}
 
 	@Override

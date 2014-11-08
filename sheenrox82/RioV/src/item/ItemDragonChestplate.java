@@ -13,6 +13,7 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.item.RioVArmor;
 import sheenrox82.RioV.src.api.util.Color;
 import sheenrox82.RioV.src.base.TheMistsOfRioV;
+import sheenrox82.RioV.src.util.LangHelper;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -114,7 +115,7 @@ public class ItemDragonChestplate extends ItemArmor
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true)
 		{
 			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
-			var3.add(Color.dark_purple + "Protection: " + RioVArmor.getMaxDamageFactor(material));
+			var3.add(Color.dark_purple + LangHelper.translate("msg.riov.Protection") + RioVArmor.getMaxDamageFactor(material));
 		}
 	}
 }
