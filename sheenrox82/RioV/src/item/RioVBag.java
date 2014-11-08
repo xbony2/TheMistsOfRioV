@@ -16,6 +16,7 @@ import sheenrox82.RioV.src.container.ContainerBagSheen;
 import sheenrox82.RioV.src.container.ContainerBagSmall;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.lib.RioVLib;
+import sheenrox82.RioV.src.util.LangHelper;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -152,9 +153,9 @@ public class RioVBag extends Item
 	{
 		if(par1ItemStack.getItem().equals(RioVItems.sheenBag))
 		{
-			par3List.add("If you're not Sheen and you made this,");
-			par3List.add("you're an idiot.");
-			par3List.add("This is only usable by Sheen");
+			par3List.add(LangHelper.translate("msg.riov.Idiot1"));
+			par3List.add(LangHelper.translate("msg.riov.Idiot2"));
+			par3List.add(LangHelper.translate("msg.riov.Idiot3"));
 		}
 	}
 

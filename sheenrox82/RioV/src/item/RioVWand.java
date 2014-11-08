@@ -13,6 +13,7 @@ import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.entity.projectile.EntityPinkEssence;
 import sheenrox82.RioV.src.entity.projectile.EntityRawDarkMatter;
+import sheenrox82.RioV.src.util.LangHelper;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -169,13 +170,13 @@ public class RioVWand extends Item
 		if(player.getCurrentEos() == 0)
 		{
 			if(!world.isRemote)
-				entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough Eos!"));
+				entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.notEnoughEos")));
 		}
 
 		if(player.getCurrentEos() < 0)
 		{
 			if(!world.isRemote)
-				entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "You do not have enough- ... wait, how is it below 0?"));
+				entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, LangHelper.translate("msg.riov.Error2001")));
 		}
 
 		return itemstack;

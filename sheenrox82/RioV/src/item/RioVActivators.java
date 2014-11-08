@@ -9,6 +9,7 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.api.util.RioVPlayer;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import sheenrox82.RioV.src.content.RioVItems;
+import sheenrox82.RioV.src.util.LangHelper;
 import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -88,8 +89,8 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
-						}	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(LangHelper.translate("msg.riov.notEnoughEos")));	
+						}
 						return true;
 					}
 				}
@@ -156,7 +157,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(LangHelper.translate("msg.riov.notEnoughEos")));	
 						}	
 						return true;
 					}
@@ -224,7 +225,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(LangHelper.translate("msg.riov.notEnoughEos")));	
 						}	
 
 						return true;
@@ -293,7 +294,7 @@ public class RioVActivators extends Item
 					{
 						if(!world.isRemote)
 						{
-							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage("You do not have enough Eos!"));	
+							entityplayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(LangHelper.translate("msg.riov.notEnoughEos")));	
 						}	
 						return true;
 					}
