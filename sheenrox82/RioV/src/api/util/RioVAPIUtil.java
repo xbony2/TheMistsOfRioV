@@ -10,12 +10,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.DimensionManager;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class RioVAPIUtil 
@@ -52,14 +52,15 @@ public class RioVAPIUtil
 		return ret;
 	}
 
+	
 	public void sendMessageToAll(String message)
 	{
-		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(addChatMessage(message));
+		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(message));
 	}
 	
 	public void sendMessageToAll(EnumChatFormatting color, String message)
 	{
-		MinecraftServer.getServer().getConfigurationManager().sendChatMsg(addChatMessage(color, message));
+		FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(addChatMessage(color, message));
 	}
 
 	public void registerDimension(int id, Class<? extends WorldProvider> worldProvider)
