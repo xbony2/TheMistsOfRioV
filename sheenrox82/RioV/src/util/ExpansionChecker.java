@@ -5,6 +5,8 @@ import sheenrox82.RioV.src.content.RioVItems;
 import sheenrox82.RioV.src.nei.RioVNEI;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ExpansionChecker 
 {
@@ -53,7 +55,11 @@ public class ExpansionChecker
 			RioVAPI.getInstance().baubles = false;
 			RioVAPI.getInstance().getLogger().info("Baubles wasn't detected... No Baubles Expansion for you. :(");
 		}
-
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void checkNEI()
+	{
 		if (Loader.isModLoaded("NotEnoughItems"))
 		{
 			RioVAPI.getInstance().nei = true;

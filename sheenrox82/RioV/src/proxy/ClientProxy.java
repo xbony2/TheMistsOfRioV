@@ -88,6 +88,7 @@ import sheenrox82.RioV.src.tileentity.TileEntityInfuser;
 import sheenrox82.RioV.src.tileentity.TileEntityJaerinFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityNoFactionFlag;
 import sheenrox82.RioV.src.tileentity.TileEntityRaetiinFlag;
+import sheenrox82.RioV.src.util.ExpansionChecker;
 import sheenrox82.RioV.src.util.Util;
 
 import com.jadarstudios.developercapes.DevCapes;
@@ -150,7 +151,7 @@ public class ClientProxy extends CommonProxy
 	}
 
 	@Override
-	public void registerItemRenderers()
+	public void registerStuff()
 	{
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.noFacFlag), new ItemRenderNoFactionFlag());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.raetiinFlag), new ItemRenderRaetiinFlag());
@@ -160,6 +161,7 @@ public class ClientProxy extends CommonProxy
 		MinecraftForgeClient.registerItemRenderer(RioVItems.enforcedBowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.vraviniteBow, new ItemRenderLongbow());
 		RioVAPI.getInstance().getLogger().info("Item renderers registered.");
+		ExpansionChecker.checkNEI();
 	}
 
 	@Override

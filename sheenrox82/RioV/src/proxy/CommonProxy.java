@@ -45,7 +45,7 @@ public class CommonProxy implements IGuiHandler
 
 	}
 
-	public void registerItemRenderers()
+	public void registerStuff()
 	{
 
 	}
@@ -90,7 +90,7 @@ public class CommonProxy implements IGuiHandler
 			return new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem()));
 		}
 
-		if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]) || player.getDisplayName().equals(Util.DEVELOPERS[2]))
+		if(player.getDisplayName().equals(Util.DEVELOPERS[0]))
 		{
 			if(id == RioVLib.sheensBagID)
 			{
@@ -136,7 +136,7 @@ public class CommonProxy implements IGuiHandler
 			return new GuiLargeBag((ContainerBagLarge) new ContainerBagLarge(player, player.inventory, new InventoryBagLarge(player.getHeldItem())));
 		}
 
-		if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]) || player.getDisplayName().equals(Util.DEVELOPERS[2]))
+		if(player.getDisplayName().equals(Util.DEVELOPERS[0]))
 		{
 			if(id == RioVLib.sheensBagID)
 			{

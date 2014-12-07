@@ -80,7 +80,6 @@ public class Events
 				{
 					if(!hasSeen)
 					{
-						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.GOLD, "I have a Patreon! http://www.patreon.com/sheenrox82"));
 						p.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(Color.GREEN, "[" + Color.WHITE + Util.MOD_NAME + Color.GREEN + "] Hey, " + p.getDisplayName() + "! Thank you for downloading " + Util.MOD_NAME + "! You are up-to-date! - sheenrox82"));
 						hasSeen = true;
 					}	
@@ -417,7 +416,7 @@ public class Events
 					String jaerinMsg = "[" + Color.GREEN + "Jaerin" + Color.WHITE + "] <" + player.getDisplayName() + "> " + event.message;
 					String noFacMsg = "[" + "No Faction" + "] <" + player.getDisplayName() + "> " + event.message;
 
-					if(player.getDisplayName().equals(Util.DEVELOPERS[0]) || player.getDisplayName().equals(Util.DEVELOPERS[1]) || player.getDisplayName().equals(Util.DEVELOPERS[2]))
+					if(player.getDisplayName().equals(Util.DEVELOPERS[0]))
 					{
 						if(riovPlayer.getFactionID() == 2)
 						{

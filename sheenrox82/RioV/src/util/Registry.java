@@ -94,7 +94,7 @@ public class Registry
 		RioVAPI.getInstance().getLogger().info("Packets registered.");
 		TheMistsOfRioV.commonProxy.cape();
 		RioVAPI.getInstance().getLogger().info("Adding special capes. ;)");
-		TheMistsOfRioV.commonProxy.registerItemRenderers();
+		TheMistsOfRioV.commonProxy.registerStuff();
 		RioVAPI.getInstance().getLogger().info("Item renderers registered.");
 		EntityLoader.add();
 		RioVAPI.getInstance().getLogger().info("Entity data registering...");
