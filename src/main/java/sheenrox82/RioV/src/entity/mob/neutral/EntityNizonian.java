@@ -38,16 +38,14 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 
-public class EntityNizonian extends EntityMobDeadBody
-{
-	public EntityNizonian(World par1World)
-	{
+public class EntityNizonian extends EntityMobDeadBody{
+	public EntityNizonian(World par1World){
 		super(par1World);
 		isImmuneToFire = false;
 		this.setSize(1.2f, 3f);
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunBodyguard.class, 0, true));
@@ -73,7 +71,7 @@ public class EntityNizonian extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEnderman.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhast.class, 0, true));
@@ -83,29 +81,26 @@ public class EntityNizonian extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
-
+		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
+		
 	}
-
+	
 	@Override
-	protected boolean isValidLightLevel()
-	{
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(60.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(7.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
 }

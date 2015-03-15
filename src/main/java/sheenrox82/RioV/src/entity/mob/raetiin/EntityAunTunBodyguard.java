@@ -34,12 +34,10 @@ import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 
-public class EntityAunTunBodyguard extends EntityMobDeadBody
-{
+public class EntityAunTunBodyguard extends EntityMobDeadBody{
 	private int field_70846_g;
-
-	public EntityAunTunBodyguard(World par1World)
-	{
+	
+	public EntityAunTunBodyguard(World par1World){
 		super(par1World);
 		this.isImmuneToFire = true;
 		this.setSize(1f, 2.1f);
@@ -55,7 +53,7 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, true));
@@ -70,116 +68,94 @@ public class EntityAunTunBodyguard extends EntityMobDeadBody
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.auntunLeggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.auntunBoots));
 	}
-
+	
 	@Override
-	protected void entityInit()
-	{
+	protected void entityInit(){
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
+		this.dataWatcher.addObject(16, new Byte((byte) 0));
 	}
-
+	
 	@Override
-	protected boolean isValidLightLevel()
-	{
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
+	
 	@Override
-	public void onLivingUpdate()
-	{
-		if (!this.worldObj.isRemote)
-		{
-			if (this.isWet())
-			{
+	public void onLivingUpdate(){
+		if(!this.worldObj.isRemote){
+			if(this.isWet()){
 				this.attackEntityFrom(DamageSource.drown, 1);
 			}
 		}
-
+		
 		super.onLivingUpdate();
 	}
-
+	
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2)
-	{
-		if(par1Entity instanceof EntityPlayer)
-		{
-			EntityPlayer entityplayer = (EntityPlayer)par1Entity;
+	protected void attackEntity(Entity par1Entity, float par2){
+		if(par1Entity instanceof EntityPlayer){
+			EntityPlayer entityplayer = (EntityPlayer) par1Entity;
 			RioVPlayer player = RioVPlayer.get(entityplayer);
-
-			if(player.getFactionID() != player.raetiinID)
-			{
+			
+			if(player.getFactionID() != player.raetiinID){
 				this.attack(par1Entity, par2);
 			}
-		}
-		else
-		{
+		}else{
 			this.attack(par1Entity, par2);
 		}
 	}
-
-	public void attack(Entity par1Entity, float par2)
-	{
-		if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
-		{
+	
+	public void attack(Entity par1Entity, float par2){
+		if(this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY
+				&& par1Entity.boundingBox.minY < this.boundingBox.maxY){
 			this.attackTime = 20;
 			this.attackEntityAsMob(par1Entity);
-		}
-		else if (par2 < 30.0F)
-		{
+		}else if(par2 < 30.0F){
 			double var3 = par1Entity.posX - this.posX;
-			double var5 = par1Entity.boundingBox.minY + (double)(par1Entity.height / 2.0F) - (this.posY + (double)(this.height / 2.0F));
+			double var5 = par1Entity.boundingBox.minY + (double) (par1Entity.height / 2.0F) - (this.posY + (double) (this.height / 2.0F));
 			double var7 = par1Entity.posZ - this.posZ;
-
-			if (this.attackTime == 0)
-			{
+			
+			if(this.attackTime == 0){
 				++this.field_70846_g;
-
-				if (this.field_70846_g == 1)
-				{
+				
+				if(this.field_70846_g == 1){
 					this.attackTime = 60;
-				}
-				else if (this.field_70846_g <= 4)
-				{
+				}else if(this.field_70846_g <= 4){
 					this.attackTime = 6;
-				}
-				else
-				{
+				}else{
 					this.attackTime = 100;
 					this.field_70846_g = 0;
 				}
-
-				if (this.field_70846_g > 1)
-				{
+				
+				if(this.field_70846_g > 1){
 					float var9 = MathHelper.sqrt_float(par2) * 0.5F;
-					this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)this.posX, (int)this.posY, (int)this.posZ, 0);
-
-					for (int var10 = 0; var10 < 1; ++var10)
-					{
-						EntitySmallFireball var11 = new EntitySmallFireball(this.worldObj, this, var3 + this.rand.nextGaussian() * (double)var9, var5, var7 + this.rand.nextGaussian() * (double)var9);
-						var11.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
+					this.worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1009, (int) this.posX, (int) this.posY, (int) this.posZ, 0);
+					
+					for(int var10 = 0; var10 < 1; ++var10){
+						EntitySmallFireball var11 = new EntitySmallFireball(this.worldObj, this, var3 + this.rand.nextGaussian() * (double) var9,
+								var5, var7 + this.rand.nextGaussian() * (double) var9);
+						var11.posY = this.posY + (double) (this.height / 2.0F) + 0.5D;
 						this.worldObj.spawnEntityInWorld(var11);
 					}
 				}
 			}
-
-			this.rotationYaw = (float)(Math.atan2(var7, var3) * 180.0D / Math.PI) - 90.0F;
+			
+			this.rotationYaw = (float) (Math.atan2(var7, var3) * 180.0D / Math.PI) - 90.0F;
 			this.hasAttacked = true;
 		}
 	}
 	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(70.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	protected String getLivingSound()
-	{
+	protected String getLivingSound(){
 		return Sounds.auntun.getPrefixedName();
 	}
 }

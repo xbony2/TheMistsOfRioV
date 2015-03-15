@@ -4,25 +4,18 @@
 // Keep in mind that you still need to fill in some blanks
 // - ZeuX
 
-
-
-
-
-
 package sheenrox82.RioV.src.model;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelDragonWings extends ModelBiped
-{
+public class ModelDragonWings extends ModelBiped{
 	ModelRenderer Shape1;
 	ModelRenderer Shape2;
-
-	public ModelDragonWings(float f)
-	{
-		super(f, 0, 64,64);
+	
+	public ModelDragonWings(float f){
+		super(f, 0, 64, 64);
 		
 		textureWidth = 64;
 		textureHeight = 64;
@@ -43,15 +36,13 @@ public class ModelDragonWings extends ModelBiped
 		this.bipedBody.addChild(Shape1);
 		this.bipedBody.addChild(Shape2);
 	}
-
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5){
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
-
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	
+	private void setRotation(ModelRenderer model, float x, float y, float z){
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

@@ -5,9 +5,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelTerron extends ModelBase
-{
-	//fields
+public class ModelTerron extends ModelBase{
+	// fields
 	ModelRenderer head;
 	ModelRenderer body;
 	ModelRenderer leg1;
@@ -19,12 +18,11 @@ public class ModelTerron extends ModelBase
 	ModelRenderer bottomarm1;
 	ModelRenderer bottomarm2;
 	ModelRenderer bodytop;
-
-	public ModelTerron()
-	{
+	
+	public ModelTerron(){
 		textureWidth = 64;
 		textureHeight = 64;
-
+		
 		head = new ModelRenderer(this, 30, 13);
 		head.addBox(-4F, -4F, -6F, 8, 8, 9);
 		head.setRotationPoint(0F, -3F, -2F);
@@ -92,9 +90,8 @@ public class ModelTerron extends ModelBase
 		bodytop.mirror = true;
 		setRotation(bodytop, 0.3490659F, 0F, 0F);
 	}
-
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5){
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5);
 		head.render(f5);
@@ -109,22 +106,21 @@ public class ModelTerron extends ModelBase
 		bottomarm2.render(f5);
 		bodytop.render(f5);
 	}
-
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	
+	private void setRotation(ModelRenderer model, float x, float y, float z){
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5){
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, null);
 		bottomleg1.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.0F * f1;
-		bottomleg2.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.0F * f1;
-
+		bottomleg2.rotateAngleX = MathHelper.cos(f * 0.6662F + (float) Math.PI) * 1.0F * f1;
+		
 	}
-	public void renderAll(float f1)
-	{
+	
+	public void renderAll(float f1){
 		head.render(f1);
 		body.render(f1);
 		leg1.render(f1);

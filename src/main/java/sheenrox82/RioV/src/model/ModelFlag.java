@@ -4,20 +4,18 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelFlag extends ModelBase
-{
-	//fields
+public class ModelFlag extends ModelBase{
+	// fields
 	ModelRenderer pole;
 	ModelRenderer flaghanger;
 	ModelRenderer base1;
 	ModelRenderer base2;
 	ModelRenderer flag;
-
-	public ModelFlag()
-	{
+	
+	public ModelFlag(){
 		textureWidth = 64;
 		textureHeight = 64;
-
+		
 		pole = new ModelRenderer(this, 0, 0);
 		pole.addBox(0F, 0F, 0F, 1, 27, 1);
 		pole.setRotationPoint(0F, -3F, 0F);
@@ -49,32 +47,28 @@ public class ModelFlag extends ModelBase
 		flag.mirror = true;
 		setRotation(flag, 0F, 0F, 0F);
 	}
-
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5){
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
-
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	
+	private void setRotation(ModelRenderer model, float x, float y, float z){
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-
-	public void renderAll()
-	{
+	
+	public void renderAll(){
 		this.pole.render(0.0625F);
 		this.flaghanger.render(0.0625F);
 		this.base1.render(0.0625F);
 		this.base2.render(0.0625F);
 		this.flag.render(0.0625F);
 	}
-
-	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
-	{
+	
+	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity){
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
-
+	
 }

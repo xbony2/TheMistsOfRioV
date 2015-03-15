@@ -5,9 +5,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelHellhound extends ModelBase
-{
-	//fields
+public class ModelHellhound extends ModelBase{
+	// fields
 	ModelRenderer WolfHead;
 	ModelRenderer Body;
 	ModelRenderer Mane;
@@ -19,12 +18,11 @@ public class ModelHellhound extends ModelBase
 	ModelRenderer Ear1;
 	ModelRenderer Ear2;
 	ModelRenderer Nose;
-
-	public ModelHellhound()
-	{
+	
+	public ModelHellhound(){
 		textureWidth = 64;
 		textureHeight = 32;
-
+		
 		WolfHead = new ModelRenderer(this, 0, 0);
 		WolfHead.addBox(-3F, -3F, -2F, 6, 6, 4);
 		WolfHead.setRotationPoint(-1F, 13.5F, -7F);
@@ -92,9 +90,8 @@ public class ModelHellhound extends ModelBase
 		Nose.mirror = true;
 		setRotation(Nose, 0F, 0F, 0F);
 	}
-
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5){
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		WolfHead.render(f5);
@@ -109,20 +106,18 @@ public class ModelHellhound extends ModelBase
 		Ear2.render(f5);
 		Nose.render(f5);
 	}
-
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	
+	private void setRotation(ModelRenderer model, float x, float y, float z){
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
-	{
+	
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity){
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		Leg1.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 1.0F * par2;
-		Leg3.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 1.0F * par2;
-		Leg2.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 1.0F * par2;
+		Leg3.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 1.0F * par2;
+		Leg2.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 1.0F * par2;
 		Leg4.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 1.0F * par2;
 	}
 }

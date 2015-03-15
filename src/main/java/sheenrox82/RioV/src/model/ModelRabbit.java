@@ -5,9 +5,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelRabbit extends ModelBase
-{
-	//fields
+public class ModelRabbit extends ModelBase{
+	// fields
 	ModelRenderer body;
 	ModelRenderer paw1;
 	ModelRenderer paw3;
@@ -15,12 +14,11 @@ public class ModelRabbit extends ModelBase
 	ModelRenderer paw4;
 	ModelRenderer tail;
 	ModelRenderer head;
-
-	public ModelRabbit()
-	{
+	
+	public ModelRabbit(){
 		textureWidth = 64;
 		textureHeight = 64;
-
+		
 		body = new ModelRenderer(this, 0, 7);
 		body.addBox(0F, 0F, 0F, 6, 4, 8);
 		body.setRotationPoint(-3F, 19F, -3F);
@@ -64,9 +62,8 @@ public class ModelRabbit extends ModelBase
 		head.mirror = true;
 		setRotation(head, 0F, 0F, 0F);
 	}
-
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-	{
+	
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5){
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		body.render(f5);
@@ -77,21 +74,19 @@ public class ModelRabbit extends ModelBase
 		tail.render(f5);
 		head.render(f5);
 	}
-
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	
+	private void setRotation(ModelRenderer model, float x, float y, float z){
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
-	{
+	
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity){
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		paw1.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 1.0F * par2;
-		paw2.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 1.0F * par2;
-		paw3.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float)Math.PI) * 1.0F * par2;
+		paw2.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 1.0F * par2;
+		paw3.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 1.0F * par2;
 		paw4.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 1.0F * par2;
 	}
-
+	
 }

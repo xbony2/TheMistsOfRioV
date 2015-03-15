@@ -94,48 +94,61 @@ import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
-public class ClientProxy extends CommonProxy 
-{	
+public class ClientProxy extends CommonProxy{
 	private static final ModelDragonWings dragonWings = new ModelDragonWings(1.0F);
-
+	
 	@Override
-	public void init() 
-	{
+	public void init(){
 		RenderingRegistry.registerEntityRenderingHandler(EntityMage.class, new RenderBipedCore(RioVLib.mage, "Mage", "No Faction"));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySkeletalHorse.class, new RenderSkeletalHorse());
-		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunBodyguard.class, new RenderBipedCore(RioVLib.auntun, "Aun'Tun Bodyguard", Color.DARK_RED + "Raetiin"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityAdv.class, new RenderBipedCore(RioVLib.adventurer, "Adventurer", Color.GREEN + "Jaerin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunBodyguard.class, new RenderBipedCore(RioVLib.auntun, "Aun'Tun Bodyguard",
+				Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAdv.class, new RenderBipedCore(RioVLib.adventurer, "Adventurer", Color.GREEN
+				+ "Jaerin"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTerron.class, new RenderBossCore(new ModelTerron(), 0.5F, 1.8F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDemonAngel.class, new RenderBossCore(new ModelDemonAngel(), 0.5F, 2F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDarkElf.class, new RenderBipedCore(RioVLib.dark_elf, "Dark Elf", Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDarkElf.class, new RenderBipedCore(RioVLib.dark_elf, "Dark Elf", Color.DARK_RED
+				+ "Raetiin"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAunTun.class, new RenderAunTun());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAltruEssence.class, new RenderEssence());
-		RenderingRegistry.registerEntityRenderingHandler(EntityNizonian.class, new RenderLivingCore(new ModelTerron(), 0.5F, 1.5F, 1.5F, 1.5F, "Nizonian", "No Faction"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGalokin.class, new RenderBipedCore(RioVLib.galokin, "Galokin", Color.GREEN + "Jaerin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityNizonian.class, new RenderLivingCore(new ModelTerron(), 0.5F, 1.5F, 1.5F, 1.5F,
+				"Nizonian", "No Faction"));
+		RenderingRegistry
+				.registerEntityRenderingHandler(EntityGalokin.class, new RenderBipedCore(RioVLib.galokin, "Galokin", Color.GREEN + "Jaerin"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityOrc.class, new RenderOrc());
 		RenderingRegistry.registerEntityRenderingHandler(EntityFairy.class, new RenderFairy());
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarkEssence.class, new RenderDarkEssence());
-		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, new RenderLivingCore(new ModelHellhound(), 0.6F, 1.5F, 1.5F, 1.5F, "Hellhound", Color.DARK_RED + "Raetiin"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElf.class, new RenderBipedCore(RioVLib.wood_elf, "Wood Elf", Color.GREEN + "Jaerin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityHellhound.class, new RenderLivingCore(new ModelHellhound(), 0.6F, 1.5F, 1.5F, 1.5F,
+				"Hellhound", Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElf.class, new RenderBipedCore(RioVLib.wood_elf, "Wood Elf", Color.GREEN
+				+ "Jaerin"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTef.class, new RenderTef());
-		RenderingRegistry.registerEntityRenderingHandler(EntityTefGuard.class, new RenderBipedCore(RioVLib.essence, "Tef Guard", Color.DARK_RED + "Raetiin"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityShadow.class, new RenderBipedCore(RioVLib.shadow, (String)null, (String)null));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTefGuard.class, new RenderBipedCore(RioVLib.essence, "Tef Guard", Color.DARK_RED
+				+ "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityShadow.class, new RenderBipedCore(RioVLib.shadow, (String) null, (String) null));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVravinite.class, new RenderBipedCore(RioVLib.vravinite, "Vravinite", "No Faction"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDove.class, new RenderDove());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAngel.class, new RenderAngel());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRabbit.class, new RenderRabbit());
-		RenderingRegistry.registerEntityRenderingHandler(EntitySoverianOfficer.class, new RenderBipedCore(RioVLib.officer, "Soverian Officer", Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySoverianOfficer.class, new RenderBipedCore(RioVLib.officer, "Soverian Officer",
+				Color.DARK_RED + "Raetiin"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityPaladin.class, new RenderPaladin());
-		RenderingRegistry.registerEntityRenderingHandler(EntityPinkEssence.class, new RenderPinkEssence(new ResourceLocation(Util.MOD_ID + ":" + "pinkEssence.png")));
-		RenderingRegistry.registerEntityRenderingHandler(EntityDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":" + "darkMatter.png")));
-		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunMinion.class, new RenderBipedCore(RioVLib.auntun, "Aun'Tun Minion", Color.DARK_RED + "Raetiin"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(RioVLib.blood_ghoul, "Blood Ghoul", Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityPinkEssence.class, new RenderPinkEssence(new ResourceLocation(Util.MOD_ID + ":"
+				+ "pinkEssence.png")));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":"
+				+ "darkMatter.png")));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAunTunMinion.class, new RenderBipedCore(RioVLib.auntun, "Aun'Tun Minion",
+				Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBloodGhoul.class, new RenderBipedCore(RioVLib.blood_ghoul, "Blood Ghoul",
+				Color.DARK_RED + "Raetiin"));
 		RenderingRegistry.registerEntityRenderingHandler(EntityDarknessArrow.class, new RenderDarknessArrow(RioVLib.darkness_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVraviniteArrow.class, new RenderVraviniteArrow(RioVLib.vravinite_arrow));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWoodElfKing.class, new RenderWoodElfKing());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTiTun.class, new RenderTiTun());
-		RenderingRegistry.registerEntityRenderingHandler(EntityShadowWizard.class, new RenderBipedCore(RioVLib.essence, "Shadownite Wizard", Color.DARK_RED + "Raetiin"));
-		RenderingRegistry.registerEntityRenderingHandler(EntityRawDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":" + "darkMatter.png")));
+		RenderingRegistry.registerEntityRenderingHandler(EntityShadowWizard.class, new RenderBipedCore(RioVLib.essence, "Shadownite Wizard",
+				Color.DARK_RED + "Raetiin"));
+		RenderingRegistry.registerEntityRenderingHandler(EntityRawDarkMatter.class, new RenderDarkMatter(new ResourceLocation(Util.MOD_ID + ":"
+				+ "darkMatter.png")));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoFactionFlag.class, new RenderTileEntityNoFactionFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityRaetiinFlag.class, new RenderTileEntityRaetiinFlag());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJaerinFlag.class, new RenderTileEntityJaerinFlag());
@@ -144,33 +157,30 @@ public class ClientProxy extends CommonProxy
 		MinecraftForge.EVENT_BUS.register(new GuiHelmetOverlay(Minecraft.getMinecraft()));
 		MinecraftForge.EVENT_BUS.register(new GuiEosBar(Minecraft.getMinecraft()));
 		MinecraftForge.EVENT_BUS.register(new GuiReputationMeter(Minecraft.getMinecraft()));
-
+		
 		RioVAPI.getInstance().getLogger().info("HUD elements registered.");
 	}
-
+	
 	@Override
-	public void registerStuff()
-	{
+	public void registerStuff(){
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.noFacFlag), new ItemRenderNoFactionFlag());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.raetiinFlag), new ItemRenderRaetiinFlag());
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RioVBlocks.jaerinFlag), new ItemRenderJaerinFlag());
-
+		
 		MinecraftForgeClient.registerItemRenderer(RioVItems.bowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.enforcedBowOfWurTun, new ItemRenderBow());
 		MinecraftForgeClient.registerItemRenderer(RioVItems.vraviniteBow, new ItemRenderLongbow());
 		RioVAPI.getInstance().getLogger().info("Item renderers registered.");
 		ExpansionChecker.checkNEI();
 	}
-
-	public static int addArmor(String armorName)
-	{
+	
+	public static int addArmor(String armorName){
 		return RenderingRegistry.addNewArmourRendererPrefix(armorName);
 	}
 	
 	@Override
-	public ModelBiped getArmorModel(int id)
-	{
-		switch (id) {
+	public ModelBiped getArmorModel(int id){
+		switch(id){
 		case 0:
 			return dragonWings;
 		default:

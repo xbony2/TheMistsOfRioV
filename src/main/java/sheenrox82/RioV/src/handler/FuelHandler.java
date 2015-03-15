@@ -5,19 +5,14 @@ import net.minecraft.item.ItemStack;
 import sheenrox82.RioV.src.content.RioVBlocks;
 import cpw.mods.fml.common.IFuelHandler;
 
-public class FuelHandler implements IFuelHandler
-{
+public class FuelHandler implements IFuelHandler{
 	@Override
-	public int getBurnTime(ItemStack fuel) 
-	{
+	public int getBurnTime(ItemStack fuel){
 		Item var1 = fuel.getItem();
 		
-		if(var1 == Item.getItemFromBlock(RioVBlocks.steamingBloodDeposit))
-		{
+		if(var1 == Item.getItemFromBlock(RioVBlocks.steamingBloodDeposit)){
 			return 6400;
-		}
-		else
-		{
+		}else{
 			return 0;
 		}
 	}

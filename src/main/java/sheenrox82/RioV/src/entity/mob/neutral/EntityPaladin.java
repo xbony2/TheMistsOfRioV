@@ -45,13 +45,10 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-
-public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
-{
+public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData{
 	public static final ItemStack defaultHeldItem;
-
-	public EntityPaladin(World par1World)
-	{
+	
+	public EntityPaladin(World par1World){
 		super(par1World);
 		this.experienceValue = 50;
 		this.setSize(1f, 2.1f);
@@ -83,7 +80,7 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEnderman.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhast.class, 0, true));
@@ -101,27 +98,23 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 	}
 	
 	@Override
-	protected void entityInit()
-	{
+	protected void entityInit(){
 		super.entityInit();
 		this.dataWatcher.addObject(16, new Integer(100));
 	}
 	
 	@Override
-	protected boolean isValidLightLevel()
-    {
-        return true;
-    }
-	
-	@Override
-	public boolean isAIEnabled()
-	{
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	public boolean isAIEnabled(){
+		return true;
+	}
+	
+	@Override
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.56D);
@@ -130,35 +123,27 @@ public class EntityPaladin extends EntityMobDeadBody implements IBossDisplayData
 	}
 	
 	@Override
-	public ItemStack getHeldItem()
-	{
-		if(!this.isDeadBody)
-		{
+	public ItemStack getHeldItem(){
+		if(!this.isDeadBody){
 			return defaultHeldItem;
-		}
-		else
-		{
-			return (ItemStack)null;
+		}else{
+			return (ItemStack) null;
 		}
 	}
-
-	static
-	{
+	
+	static{
 		defaultHeldItem = new ItemStack(RioVItems.paladinLongsword);
 	}
-
+	
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2){
 		this.dropItem(RioVItems.paladinLongsword, 1);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	protected String getLivingSound()
-	{
-		if(Config.allowBreathing)
-		{
+	protected String getLivingSound(){
+		if(Config.allowBreathing){
 			return Sounds.exhale.getPrefixedName();
 		}
 		

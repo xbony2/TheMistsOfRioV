@@ -9,19 +9,16 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-public class RenderPinkEssence extends Render
-{
+public class RenderPinkEssence extends Render{
 	ResourceLocation texture;
-
-	public RenderPinkEssence(ResourceLocation textureLoc)
-	{
+	
+	public RenderPinkEssence(ResourceLocation textureLoc){
 		this.texture = textureLoc;
 	}
-
-	public void doRenderProjectile(EntityThrowable proj, double var2, double var4, double var6, float var8, float var9)
-	{
+	
+	public void doRenderProjectile(EntityThrowable proj, double var2, double var4, double var6, float var8, float var9){
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)var2, (float)var4, (float)var6);
+		GL11.glTranslatef((float) var2, (float) var4, (float) var6);
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		this.renderManager.renderEngine.bindTexture(getEntityTexture(proj));
 		Tessellator var12 = Tessellator.instance;
@@ -44,17 +41,14 @@ public class RenderPinkEssence extends Render
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
 		GL11.glPopMatrix();
 	}
-
+	
 	@Override
-	public void doRender(Entity var1, double var2, double var4, double var6, float var8, float var9) 
-	{
+	public void doRender(Entity var1, double var2, double var4, double var6, float var8, float var9){
 		doRenderProjectile((EntityThrowable) var1, var2, var4, var6, var8, var9);
 	}
-
-
+	
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) 
-	{
+	protected ResourceLocation getEntityTexture(Entity entity){
 		return texture;
 	}
 }

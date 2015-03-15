@@ -9,74 +9,63 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class AnvilShapelessRecipes implements IRecipe
-{
+public class AnvilShapelessRecipes implements IRecipe{
 	private final ItemStack recipeOutput;
 	@SuppressWarnings("rawtypes")
 	public final List recipeItems;
-
+	
 	@SuppressWarnings("rawtypes")
-	public AnvilShapelessRecipes(ItemStack par1ItemStack, List par2List)
-	{
+	public AnvilShapelessRecipes(ItemStack par1ItemStack, List par2List){
 		this.recipeOutput = par1ItemStack;
 		this.recipeItems = par2List;
 	}
-
+	
 	@Override
-	public ItemStack getRecipeOutput()
-	{
+	public ItemStack getRecipeOutput(){
 		return this.recipeOutput;
 	}
-
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@Override
-	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World)
-	{
+	public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World){
 		ArrayList<?> arraylist = new ArrayList(this.recipeItems);
-
-		for (int i = 0; i < 5; ++i)
-		{
-			for (int j = 0; j < 5; ++j)
-			{
+		
+		for(int i = 0; i < 5; ++i){
+			for(int j = 0; j < 5; ++j){
 				ItemStack itemstack = par1InventoryCrafting.getStackInRowAndColumn(j, i);
-
-				if (itemstack != null)
-				{
+				
+				if(itemstack != null){
 					boolean flag = false;
 					Iterator iterator = arraylist.iterator();
-
-					while (iterator.hasNext())
-					{
-						ItemStack itemstack1 = (ItemStack)iterator.next();
-
-						if (itemstack.getItem() == itemstack1.getItem() && (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage()))
-						{
+					
+					while(iterator.hasNext()){
+						ItemStack itemstack1 = (ItemStack) iterator.next();
+						
+						if(itemstack.getItem() == itemstack1.getItem()
+								&& (itemstack1.getItemDamage() == 32767 || itemstack.getItemDamage() == itemstack1.getItemDamage())){
 							flag = true;
 							arraylist.remove(itemstack1);
 							break;
 						}
 					}
-
-					if (!flag)
-					{
+					
+					if(!flag){
 						return false;
 					}
 				}
 			}
 		}
-
+		
 		return arraylist.isEmpty();
 	}
-
+	
 	@Override
-	public ItemStack getCraftingResult(InventoryCrafting par1InventoryCrafting)
-	{
+	public ItemStack getCraftingResult(InventoryCrafting par1InventoryCrafting){
 		return this.recipeOutput.copy();
 	}
-
+	
 	@Override
-	public int getRecipeSize()
-	{
+	public int getRecipeSize(){
 		return this.recipeItems.size();
 	}
 }

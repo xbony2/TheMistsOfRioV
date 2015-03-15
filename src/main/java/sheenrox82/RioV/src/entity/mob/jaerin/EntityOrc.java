@@ -42,18 +42,16 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityOrc extends EntityMobDeadBody
-{
+public class EntityOrc extends EntityMobDeadBody{
 	private static ItemStack defaultHeldItem;
-
-	public EntityOrc(World par1World)
-	{
+	
+	public EntityOrc(World par1World){
 		super(par1World);
 		this.fallDistance = 0.0f;
-		//this.setSize(1f, 2.1f);
+		// this.setSize(1f, 2.1f);
 		this.getNavigator().setCanSwim(true);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunBodyguard.class, 0, true));
@@ -71,7 +69,7 @@ public class EntityOrc extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPaladin.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityShadowWizard.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEnderman.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhast.class, 0, true));
@@ -81,95 +79,80 @@ public class EntityOrc extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
+		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
 		this.setCurrentItemOrArmor(4, new ItemStack(Items.iron_helmet));
 		this.setCurrentItemOrArmor(3, new ItemStack(Items.iron_chestplate));
 		this.setCurrentItemOrArmor(2, new ItemStack(Items.iron_leggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(Items.iron_boots));
 	}
-
+	
 	@Override
-	protected boolean isValidLightLevel()
-	{
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
+	
 	@Override
-	public ItemStack getHeldItem()
-	{
-		if(!this.isDeadBody)
-		{
+	public ItemStack getHeldItem(){
+		if(!this.isDeadBody){
 			return defaultHeldItem;
-		}
-		else
-		{
-			return (ItemStack)null;
+		}else{
+			return (ItemStack) null;
 		}
 	}
-
-	static
-	{
+	
+	static{
 		defaultHeldItem = new ItemStack(RioVItems.amethystSword);
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(40.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(10.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
-
+	
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2){
 		int var1 = this.rand.nextInt(10);
-
-		if (var1 == 0)
-		{
+		
+		if(var1 == 0){
 			this.dropItem(RioVItems.ambrosia, 1);
 		}
-		if (var1 == 1)
-		{
+		if(var1 == 1){
 			this.dropItem(RioVItems.amethystSword, 1);
 		}
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	protected String getLivingSound()
-	{
-		if(RioVAPI.getInstance().getUtil().getConfigBool("allowBreathing") == true)
-		{
+	protected String getLivingSound(){
+		if(RioVAPI.getInstance().getUtil().getConfigBool("allowBreathing") == true){
 			return Sounds.exhale.getPrefixedName();
 		}
-
+		
 		return null;
 	}
-
+	
 	@Override
-	protected String getHurtSound()
-	{
+	protected String getHurtSound(){
 		return Sounds.pain.getPrefixedName();
 	}
-
+	
 	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer)
-	{
-		if(!this.isDeadBody)
-		{
+	public boolean interact(EntityPlayer par1EntityPlayer){
+		if(!this.isDeadBody){
 			par1EntityPlayer.playSound(Sounds.hello.getPrefixedName(), 1, 1);
-
+			
 			if(!this.worldObj.isRemote)
-				par1EntityPlayer.addChatMessage(RioVAPI.getInstance().getUtil().addChatMessage(EnumChatFormatting.WHITE, "Rohhu nu 'u nuu, " + par1EntityPlayer.getDisplayName() + "!"));
+				par1EntityPlayer.addChatMessage(RioVAPI.getInstance().getUtil()
+						.addChatMessage(EnumChatFormatting.WHITE, "Rohhu nu 'u nuu, " + par1EntityPlayer.getDisplayName() + "!"));
 		}
 		
 		return true;

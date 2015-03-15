@@ -14,54 +14,47 @@ import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockBloodRock extends Block
-{
+public class BlockBloodRock extends Block{
 	public Random rand = new Random();
 	@SideOnly(Side.CLIENT)
 	public IIcon blockIcon;
-
-	public BlockBloodRock()
-	{
+	
+	public BlockBloodRock(){
 		super(Material.rock);
 		this.setStepSound(Block.soundTypeStone);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
-
+	
 	@Override
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
-	{
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
 		par5Entity.setFire(2);
 	}
-
+	
 	@Override
-	public boolean isOpaqueCube()
-	{
+	public boolean isOpaqueCube(){
 		return false;
 	}
-
+	
 	@Override
-	public boolean renderAsNormalBlock()
-	{
+	public boolean renderAsNormalBlock(){
 		return true;
 	}
-
+	
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
-	{
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4){
 		float f = 0.0625F;
-		return AxisAlignedBB.getBoundingBox((double)((float)par2 + f), (double)par3, (double)((float)par4 + f), (double)((float)(par2 + 1) - f), (double)((float)(par3 + 1) - f), (double)((float)(par4 + 1) - f));
+		return AxisAlignedBB.getBoundingBox((double) ((float) par2 + f), (double) par3, (double) ((float) par4 + f),
+				(double) ((float) (par2 + 1) - f), (double) ((float) (par3 + 1) - f), (double) ((float) (par4 + 1) - f));
 	}
-
+	
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-	{
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_){
 		return blockIcon;
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
+	public void registerBlockIcons(IIconRegister par1IconRegister){
 		blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
-	} 
+	}
 }

@@ -14,74 +14,61 @@ import sheenrox82.RioV.src.api.base.RioVAPI;
 import sheenrox82.RioV.src.tileentity.TileEntityRaetiinFlag;
 import sheenrox82.RioV.src.util.Util;
 
-public class BlockRaetiinFlag extends BlockContainer 
-{	
-	public BlockRaetiinFlag() 
-	{
+public class BlockRaetiinFlag extends BlockContainer{
+	public BlockRaetiinFlag(){
 		super(Material.wood);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.3F, 0.0F, 0.3F, 0.6F, 3.0F, 0.6F);
 		this.setStepSound(Block.soundTypeWood);
 	}
-
+	
 	@Override
-	public TileEntity createNewTileEntity(World par1World, int var1)
-	{
+	public TileEntity createNewTileEntity(World par1World, int var1){
 		return new TileEntityRaetiinFlag();
 	}
-
+	
 	@Override
-	public int getRenderType()
-	{
+	public int getRenderType(){
 		return 72;
 	}
 	
 	@Override
-	public boolean isOpaqueCube()
-	{
+	public boolean isOpaqueCube(){
 		return false;
 	}
-
+	
 	@Override
-	public boolean renderAsNormalBlock()
-	{
+	public boolean renderAsNormalBlock(){
 		return false;
 	}
-
+	
 	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
+	public IIcon getIcon(int par1, int par2){
 		return this.blockIcon;
 	}
 	
 	@Override
-	public void registerBlockIcons(IIconRegister icon) 
-	{
+	public void registerBlockIcons(IIconRegister icon){
 		this.blockIcon = icon.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
-
+	
 	@Override
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
-	{
-		int l = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack){
+		int l = MathHelper.floor_double((double) (par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 		++l;
 		l %= 4;
-
-		if (l == 0)
-		{
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 2, 2); //2
+		
+		if(l == 0){
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 2, 2); // 2
 		}
-		if (l == 1)
-		{
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 3, 2); //3
+		if(l == 1){
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 3, 2); // 3
 		}
-		if (l == 2)
-		{
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2); //0
+		if(l == 2){
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2); // 0
 		}
-		if (l == 3)
-		{
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2); //1
+		if(l == 3){
+			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2); // 1
 		}
 	}
 }

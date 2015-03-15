@@ -1,6 +1,5 @@
 package sheenrox82.RioV.src.block;
 
-public class BlockAlchemyTable 
-{
-
+public class BlockAlchemyTable{
+	
 }

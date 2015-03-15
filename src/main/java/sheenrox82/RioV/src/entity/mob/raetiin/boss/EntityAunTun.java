@@ -34,12 +34,10 @@ import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityAunTun extends EntityBossCore
-{
+public class EntityAunTun extends EntityBossCore{
 	public static final ItemStack defaultHeldItem;
-
-	public EntityAunTun(World par1World)
-	{
+	
+	public EntityAunTun(World par1World){
 		super(par1World);
 		this.setSize(12F, 30);
 		this.experienceValue = 170;
@@ -55,7 +53,7 @@ public class EntityAunTun extends EntityBossCore
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, true));
@@ -74,65 +72,56 @@ public class EntityAunTun extends EntityBossCore
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.supremeAunTunBoots));
 		isImmuneToFire = true;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onDeath(DamageSource par1DamageSource)
-	{
+	public void onDeath(DamageSource par1DamageSource){
 		super.onDeath(par1DamageSource);
 		
-		if(this.worldObj.isRemote)
-		{
+		if(this.worldObj.isRemote){
 			RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun: *Rupture*");
 			RioVAPI.getInstance().getUtil().sendMessageToAll("Aun'Tun was destroyed!");
 		}
 	}
-
+	
 	@Override
-	public void onLivingUpdate()
-	{
-		if (!this.worldObj.isRemote)
-		{
-			if (this.isWet())
-			{
+	public void onLivingUpdate(){
+		if(!this.worldObj.isRemote){
+			if(this.isWet()){
 				this.attackEntityFrom(DamageSource.drown, 1);
 			}
 		}
-
-		if (this.rand.nextInt(24) == 0)
-		{
-			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F);
+		
+		if(this.rand.nextInt(24) == 0){
+			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(),
+					this.rand.nextFloat() * 0.7F + 0.3F);
 		}
-
-
-		for (int i = 0; i < 145; ++i)
-		{
-			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+		
+		for(int i = 0; i < 145; ++i){
+			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					0.0D, 0.0D, 0.0D);
 		}
-
+		
 		super.onLivingUpdate();
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
-
+	
 	@Override
-	public ItemStack getHeldItem()
-	{
+	public ItemStack getHeldItem(){
 		return defaultHeldItem;
 	}
-
-	static
-	{
+	
+	static{
 		defaultHeldItem = new ItemStack(RioVItems.ultraAxeOfAunTun);
 	}
-
+	
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2){
 		this.dropItem(RioVItems.aleris, 64);
 		this.dropItem(RioVItems.darkMatter, 64);
 		this.dropItem(RioVItems.dragonSoul, 64);
@@ -143,10 +132,9 @@ public class EntityAunTun extends EntityBossCore
 		this.dropItem(RioVItems.supremeAunTunBoots, 1);
 		this.dropItem(RioVItems.ultraAxeOfAunTun, 1);
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2400.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);

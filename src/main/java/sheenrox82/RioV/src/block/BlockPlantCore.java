@@ -18,95 +18,77 @@ import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockPlantCore extends BlockFlower
-{
-	public BlockPlantCore()
-	{
+public class BlockPlantCore extends BlockFlower{
+	public BlockPlantCore(){
 		super(0);
 		this.setStepSound(Block.soundTypeGrass);
 		this.setCreativeTab(null);
 	}
-
+	
 	@Override
-	public Item getItemDropped(int par1, Random par2Random, int par3)
-	{
-		if(this == RioVBlocks.blackDuriiPlant)
-		{
+	public Item getItemDropped(int par1, Random par2Random, int par3){
+		if(this == RioVBlocks.blackDuriiPlant){
 			return RioVItems.blackDurii;
 		}
-		if(this == RioVBlocks.tomatoPlant)
-		{
+		if(this == RioVBlocks.tomatoPlant){
 			return RioVItems.tomato;
 		}
-		if(this == RioVBlocks.grapePlant)
-		{
+		if(this == RioVBlocks.grapePlant){
 			return RioVItems.grapes;
 		}
-		if(this == RioVBlocks.pepperPlant)
-		{
+		if(this == RioVBlocks.pepperPlant){
 			return RioVItems.pepper;
 		}
-		if(this == RioVBlocks.bloodFlower)
-		{
+		if(this == RioVBlocks.bloodFlower){
 			return RioVItems.heart;
 		}
-		if(this == RioVBlocks.elderBerryPlant)
-		{
+		if(this == RioVBlocks.elderBerryPlant){
 			return RioVItems.elderBerry;
 		}
-		if(this == RioVBlocks.enderBerryPlant)
-		{
+		if(this == RioVBlocks.enderBerryPlant){
 			return RioVItems.enderBerry;
 		}
-
+		
 		return Item.getItemFromBlock(null);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_)
-	{
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	public void getSubBlocks(Item p_149666_1_, CreativeTabs p_149666_2_, List p_149666_3_){
 		p_149666_3_.add(new ItemStack(p_149666_1_, 1, 0));
 	}
-
+	
 	public IIcon blockIcon;
-
+	
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
+	public void registerBlockIcons(IIconRegister par1IconRegister){
 		this.blockIcon = par1IconRegister.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
-
+	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-	{
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_){
 		return blockIcon;
 	}
-
+	
 	@Override
-	protected boolean canPlaceBlockOn(Block par1)
-	{		
-		if(this == RioVBlocks.bloodFlower ||this == RioVBlocks.bloodTallGrass)
-		{
+	protected boolean canPlaceBlockOn(Block par1){
+		if(this == RioVBlocks.bloodFlower || this == RioVBlocks.bloodTallGrass){
 			return par1 == RioVBlocks.bloodGrass;
 		}
-
-		if(this == RioVBlocks.glimmerTallGrass || this == RioVBlocks.elderBerryPlant)
-		{
+		
+		if(this == RioVBlocks.glimmerTallGrass || this == RioVBlocks.elderBerryPlant){
 			return par1 == RioVBlocks.glimmerGrass;
 		}
-
-		if(this == RioVBlocks.sanctuatiteTallGrass)
-		{
+		
+		if(this == RioVBlocks.sanctuatiteTallGrass){
 			return par1 == RioVBlocks.sanctuatiteGrass;
 		}
 		
-		if(this == RioVBlocks.enderBerryPlant)
-		{
+		if(this == RioVBlocks.enderBerryPlant){
 			return par1 == Blocks.end_stone;
 		}
-
+		
 		return par1 == Blocks.grass || par1 == Blocks.dirt || par1 == Blocks.farmland;
 	}
 }

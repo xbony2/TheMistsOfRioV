@@ -7,8 +7,7 @@ import sheenrox82.RioV.src.world.biome.BiomeGenFlamonor;
 import sheenrox82.RioV.src.world.biome.BiomeGenGlimmerwood;
 import sheenrox82.RioV.src.world.biome.BiomeGenSanctuatite;
 
-public class Biomes 
-{
+public class Biomes{
 	public static BiomeGenBase blindOasis = new BiomeGenBlindOasis(Config.blindOasisBiomeID);
 	public static BiomeGenBase glimmerwood = new BiomeGenGlimmerwood(Config.glimmerwoodBiomeID);
 	public static BiomeGenBase flamonor = new BiomeGenFlamonor(Config.flamonorBiomeID);

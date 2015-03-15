@@ -13,57 +13,48 @@ import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockAnvil extends Block
-{
+public class BlockAnvil extends Block{
 	private IIcon field_94461_a;
 	private IIcon field_94460_b;
 	private IIcon anvilSide;
 	
-	public BlockAnvil()
-	{
+	public BlockAnvil(){
 		super(Material.anvil);
 		this.setStepSound(Block.soundTypeAnvil);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.80F, 1.0F);
 	}
-
+	
 	@Override
-	public boolean isOpaqueCube()
-	{
+	public boolean isOpaqueCube(){
 		return false;
 	}
-
+	
 	@Override
-	public boolean renderAsNormalBlock()
-	{
+	public boolean renderAsNormalBlock(){
 		return false;
 	}
-
+	
 	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
+	public IIcon getIcon(int par1, int par2){
 		return par1 == 0 ? this.field_94460_b : (par1 == 1 ? this.field_94461_a : this.anvilSide);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister par1IconRegister)
-	{
+	public void registerBlockIcons(IIconRegister par1IconRegister){
 		this.anvilSide = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "anvil_side");
 		this.field_94461_a = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "anvil_top");
 		this.field_94460_b = par1IconRegister.registerIcon(Util.MOD_ID + ":" + "anvil_bottom");
 	}
-
+	
 	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
-	{
-		if(!par5EntityPlayer.isSneaking())
-		{
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8,
+			float par9){
+		if(!par5EntityPlayer.isSneaking()){
 			par5EntityPlayer.openGui(TheMistsOfRioV.INSTANCE, RioVLib.anvilID, par1World, par2, par3, par4);
 			return true;
-		}
-		else
-		{
+		}else{
 			return false;
 		}
 	}

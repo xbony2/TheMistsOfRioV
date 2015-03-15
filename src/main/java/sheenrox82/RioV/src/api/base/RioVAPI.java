@@ -9,79 +9,75 @@ import sheenrox82.RioV.src.api.util.RioVAPIUtil;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
-public class RioVAPI
-{
+public class RioVAPI{
 	private static RioVAPI api = new RioVAPI();
 	private AnvilCraftingManager crafter = new AnvilCraftingManager();
 	private InfuserManager infuser = new InfuserManager();
 	private LogHelper logger = new LogHelper();
 	private RioVAPIUtil util = new RioVAPIUtil();
 	private SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("RioV");
-
+	
 	public boolean modLoaded = false;
-
+	
 	/**
-	 * These booleans are used to detect if certain mods are loaded in the ExpansionChecker class in the main source code for RioV.
-	 * Natura - continued by progwml6
-	 * Botania - by Vazkii
-	 * Optifine - by sp614x
-	 * NEI - by CodeChicken
+	 * These booleans are used to detect if certain mods are loaded in the
+	 * ExpansionChecker class in the main source code for RioV. Natura -
+	 * continued by progwml6 Botania - by Vazkii Optifine - by sp614x NEI - by
+	 * CodeChicken
 	 */
 	public boolean natura = false;
 	public boolean baubles = false;
 	public boolean optifine = false;
 	public boolean nei = false;
-
+	
 	/**
 	 * RioV tab.
 	 */
-	public CreativeTabs tab = new CreativeTabs("RioV") {public Item getTabIconItem() {return Item.getItemFromBlock(getUtil().getRioVBlock("infuser"));}};
-
+	public CreativeTabs tab = new CreativeTabs("RioV"){
+		public Item getTabIconItem(){
+			return Item.getItemFromBlock(getUtil().getRioVBlock("infuser"));
+		}
+	};
+	
 	/**
 	 * The API instance.
 	 */
-	public static RioVAPI getInstance()
-	{
+	public static RioVAPI getInstance(){
 		return api;
 	}
-
+	
 	/**
 	 * The crafting manager for the Anvil in RioV
 	 */
-	public AnvilCraftingManager getCraftingManager()
-	{
+	public AnvilCraftingManager getCraftingManager(){
 		return crafter;
 	}
-
+	
 	/**
 	 * Writes to ./TheMistsOfRioV/debug.log
 	 */
-	public LogHelper getLogger()
-	{
+	public LogHelper getLogger(){
 		return logger;
 	}
-
+	
 	/**
 	 * Gets infuser crafting from RioV
 	 */
-	public InfuserManager getInfuser()
-	{
+	public InfuserManager getInfuser(){
 		return infuser;
 	}
-
+	
 	/**
 	 * Get RioVAPIUtil.java
 	 */
-	public RioVAPIUtil getUtil()
-	{
+	public RioVAPIUtil getUtil(){
 		return util;
 	}
 	
 	/**
 	 * Get the network handler for RioV
 	 */
-	public SimpleNetworkWrapper getNetworkHandler()
-	{
+	public SimpleNetworkWrapper getNetworkHandler(){
 		return network;
 	}
 }

@@ -15,43 +15,39 @@ import sheenrox82.RioV.src.container.ContainerBagSheen;
 import sheenrox82.RioV.src.inventory.InventoryBagSheen;
 import sheenrox82.RioV.src.util.Util;
 
-public class GuiSheenBag extends GuiContainer
-{
+public class GuiSheenBag extends GuiContainer{
 	private float xSize_lo;
 	private float ySize_lo;
 	
 	private static final ResourceLocation iconLocation = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "sheen'sBag.png");
 	public InventoryBagSheen inventory;
 	
-	public GuiSheenBag(ContainerBagSheen containerItem)
-	{
+	public GuiSheenBag(ContainerBagSheen containerItem){
 		super(containerItem);
 		this.inventory = containerItem.inventory;
 	}
 	
-	public void drawScreen(int par1, int par2, float par3)
-	{
+	public void drawScreen(int par1, int par2, float par3){
 		super.drawScreen(par1, par2, par3);
-		this.xSize_lo = (float)par1;
-		this.ySize_lo = (float)par2;
+		this.xSize_lo = (float) par1;
+		this.ySize_lo = (float) par2;
 	}
 	
-	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
-	{
+	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3){
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		Minecraft.getMinecraft().renderEngine.bindTexture(iconLocation);
-        int k = (this.width - this.xSize) / 2;
-        int l = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);
-		drawPlayerModel(k + 51, l + 75, 30, (float)(k + 51) - this.xSize_lo, (float)(l + 75 - 50) - this.ySize_lo, Minecraft.getMinecraft().thePlayer);
+		int k = (this.width - this.xSize) / 2;
+		int l = (this.height - this.ySize) / 2;
+		this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize + 120);
+		drawPlayerModel(k + 51, l + 75, 30, (float) (k + 51) - this.xSize_lo, (float) (l + 75 - 50) - this.ySize_lo,
+				Minecraft.getMinecraft().thePlayer);
 	}
-
-	public static void drawPlayerModel(int par0, int par1, int par2, float par3, float par4, EntityLivingBase par5EntityLivingBase)
-	{
+	
+	public static void drawPlayerModel(int par0, int par1, int par2, float par3, float par4, EntityLivingBase par5EntityLivingBase){
 		GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float)par0, (float)par1, 50.0F);
-		GL11.glScalef((float)(-par2), (float)par2, (float)par2);
+		GL11.glTranslatef((float) par0, (float) par1, 50.0F);
+		GL11.glScalef((float) (-par2), (float) par2, (float) par2);
 		GL11.glRotatef(180.0F, 0.0F, 0.0F, 1.0F);
 		float f2 = par5EntityLivingBase.renderYawOffset;
 		float f3 = par5EntityLivingBase.rotationYaw;
@@ -61,10 +57,10 @@ public class GuiSheenBag extends GuiContainer
 		GL11.glRotatef(135.0F, 0.0F, 1.0F, 0.0F);
 		RenderHelper.enableStandardItemLighting();
 		GL11.glRotatef(-135.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(-((float)Math.atan((double)(par4 / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
-		par5EntityLivingBase.renderYawOffset = (float)Math.atan((double)(par3 / 40.0F)) * 20.0F;
-		par5EntityLivingBase.rotationYaw = (float)Math.atan((double)(par3 / 40.0F)) * 40.0F;
-		par5EntityLivingBase.rotationPitch = -((float)Math.atan((double)(par4 / 40.0F))) * 20.0F;
+		GL11.glRotatef(-((float) Math.atan((double) (par4 / 40.0F))) * 20.0F, 1.0F, 0.0F, 0.0F);
+		par5EntityLivingBase.renderYawOffset = (float) Math.atan((double) (par3 / 40.0F)) * 20.0F;
+		par5EntityLivingBase.rotationYaw = (float) Math.atan((double) (par3 / 40.0F)) * 40.0F;
+		par5EntityLivingBase.rotationPitch = -((float) Math.atan((double) (par4 / 40.0F))) * 20.0F;
 		par5EntityLivingBase.rotationYawHead = par5EntityLivingBase.rotationYaw;
 		par5EntityLivingBase.prevRotationYawHead = par5EntityLivingBase.rotationYaw;
 		GL11.glTranslatef(0.0F, par5EntityLivingBase.yOffset, 0.0F);

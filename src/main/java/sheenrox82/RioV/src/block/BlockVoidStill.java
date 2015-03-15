@@ -13,33 +13,27 @@ import sheenrox82.RioV.src.util.Util;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockVoidStill extends BlockStaticLiquid
-{
+public class BlockVoidStill extends BlockStaticLiquid{
 	public IIcon blockIcon;
 	
-	public BlockVoidStill() 
-	{
+	public BlockVoidStill(){
 		super(Material.water);
 		this.setCreativeTab(null);
 	}
-
+	
 	@SideOnly(Side.CLIENT)
-    public IIcon getIcon(int p_149691_1_, int p_149691_2_)
-    {
-        return blockIcon;
-    }
+	public IIcon getIcon(int p_149691_1_, int p_149691_2_){
+		return blockIcon;
+	}
 	
 	@Override
-	public void registerBlockIcons(IIconRegister i)
-	{
+	public void registerBlockIcons(IIconRegister i){
 		this.blockIcon = i.registerIcon(Util.MOD_ID + ":" + "voidStill");
 	}
-    
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
-	{
-    	if (par5Entity instanceof EntityLivingBase)
-    	{
-    		((EntityLivingBase)par5Entity).addPotionEffect(new PotionEffect(Potion.wither.getId(), 50, 2));
-    	}
+	
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
+		if(par5Entity instanceof EntityLivingBase){
+			((EntityLivingBase) par5Entity).addPotionEffect(new PotionEffect(Potion.wither.getId(), 50, 2));
+		}
 	}
 }

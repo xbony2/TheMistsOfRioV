@@ -40,12 +40,10 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class EntityTiTun extends EntityBossCore
-{
+public class EntityTiTun extends EntityBossCore{
 	public static final ItemStack defaultHeldItem;
-
-	public EntityTiTun(World par1World)
-	{
+	
+	public EntityTiTun(World par1World){
 		super(par1World);
 		this.setSize(12F, 30);
 		this.experienceValue = 170;
@@ -86,40 +84,34 @@ public class EntityTiTun extends EntityBossCore
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.tiTunBoots));
 		this.fallDistance = 0.0f;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onDeath(DamageSource par1DamageSource)
-	{
+	public void onDeath(DamageSource par1DamageSource){
 		super.onDeath(par1DamageSource);
 		
-		if(this.worldObj.isRemote)
-		{
+		if(this.worldObj.isRemote){
 			RioVAPI.getInstance().getUtil().sendMessageToAll("Ti'Tun: *Rupture*");
 			RioVAPI.getInstance().getUtil().sendMessageToAll("Ti'Tun was destroyed!");
 		}
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
-
+	
 	@Override
-	public ItemStack getHeldItem()
-	{
+	public ItemStack getHeldItem(){
 		return defaultHeldItem;
 	}
-
-	static
-	{
+	
+	static{
 		defaultHeldItem = new ItemStack(RioVItems.glowingSwordOfTiTun);
 	}
-
+	
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2){
 		this.dropItem(RioVItems.aleris, 64);
 		this.dropItem(RioVItems.orb, 64);
 		this.dropItem(RioVItems.tiTunHelmet, 1);
@@ -128,10 +120,9 @@ public class EntityTiTun extends EntityBossCore
 		this.dropItem(RioVItems.tiTunBoots, 1);
 		this.dropItem(RioVItems.glowingSwordOfTiTun, 1);
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(2400.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);

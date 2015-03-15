@@ -36,12 +36,10 @@ import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 
-public class EntityAunTunMinion extends EntityMobDeadBody
-{
+public class EntityAunTunMinion extends EntityMobDeadBody{
 	public static final ItemStack defaultHeldItem;
-
-	public EntityAunTunMinion(World par1World) 
-	{
+	
+	public EntityAunTunMinion(World par1World){
 		super(par1World);
 		this.isImmuneToFire = true;
 		this.setSize(1f, 2.1f);
@@ -74,96 +72,82 @@ public class EntityAunTunMinion extends EntityMobDeadBody
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.auntunLeggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.auntunBoots));
 	}
-
+	
 	@Override
-	protected boolean isValidLightLevel()
-	{
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
+	
 	@Override
-	public void onLivingUpdate()
-	{
-		if (!this.worldObj.isRemote)
-		{
-			if (this.isWet())
-			{
+	public void onLivingUpdate(){
+		if(!this.worldObj.isRemote){
+			if(this.isWet()){
 				this.attackEntityFrom(DamageSource.drown, 1);
 			}
-
+			
 		}
-
-		if (this.rand.nextInt(24) == 0)
-		{
-			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F);
+		
+		if(this.rand.nextInt(24) == 0){
+			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(),
+					this.rand.nextFloat() * 0.7F + 0.3F);
 		}
-
-		for (int i = 0; i < 2; ++i)
-		{
-			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+		
+		for(int i = 0; i < 2; ++i){
+			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					0.0D, 0.0D, 0.0D);
 		}
-
+		
 		super.onLivingUpdate();
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
-
+	
 	@Override
-	public ItemStack getHeldItem()
-	{
-		if(!this.isDeadBody)
-		{
+	public ItemStack getHeldItem(){
+		if(!this.isDeadBody){
 			return defaultHeldItem;
-		}
-		else
-		{
-			return (ItemStack)null;
+		}else{
+			return (ItemStack) null;
 		}
 	}
-
-	static
-	{
+	
+	static{
 		defaultHeldItem = new ItemStack(RioVItems.daetoriSword);
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(70.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2){
 		int var3 = this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
 		int var4;
-
-		for (var4 = 0; var4 < var3; ++var4)
-		{
+		
+		for(var4 = 0; var4 < var3; ++var4){
 			this.dropItem(RioVItems.onyx, 1);
 			this.dropItem(RioVItems.ingotOfFlame, 1);
 		}
 	}
-
+	
 	@Override
-	protected String getLivingSound()
-	{
+	protected String getLivingSound(){
 		return Sounds.auntun.getPrefixedName();
 	}
-
+	
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity)
-	{
+	public boolean attackEntityAsMob(Entity par1Entity){
 		super.attackEntityAsMob(par1Entity);
-		((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.wither.id, 70, 1));
+		((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.wither.id, 70, 1));
 		return true;
 	}
 }

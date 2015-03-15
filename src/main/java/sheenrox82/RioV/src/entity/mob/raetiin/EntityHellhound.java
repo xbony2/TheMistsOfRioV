@@ -33,16 +33,14 @@ import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 
-public class EntityHellhound extends EntityMobDeadBody
-{
-
-	public EntityHellhound(World par1World)
-	{
+public class EntityHellhound extends EntityMobDeadBody{
+	
+	public EntityHellhound(World par1World){
 		super(par1World);
 		this.getNavigator().setCanSwim(true);
 		this.setSize(1.5f, 1.7f);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltruEssence.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAdv.class, 0, true));
@@ -53,7 +51,7 @@ public class EntityHellhound extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, true));
@@ -64,65 +62,52 @@ public class EntityHellhound extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
+		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
 		this.isImmuneToFire = true;
-
+		
 	}
 	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity)
-	{
-		if (super.attackEntityAsMob(par1Entity))
-        {
-            if (par1Entity instanceof EntityLivingBase)
-            {
-                byte b0 = 0;
-
-                if (this.worldObj.difficultySetting.getDifficultyId() > 1)
-                {
-                    if (this.worldObj.difficultySetting.getDifficultyId() == 2)
-                    {
-                        b0 = 7;
-                    }
-                    else if (this.worldObj.difficultySetting.getDifficultyId() == 3)
-                    {
-                        b0 = 15;
-                    }
-                }
-
-                if (b0 > 0)
-                {
-                    ((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.blindness.id, 100, 5));
-                }
-            }
-
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+	public boolean attackEntityAsMob(Entity par1Entity){
+		if(super.attackEntityAsMob(par1Entity)){
+			if(par1Entity instanceof EntityLivingBase){
+				byte b0 = 0;
+				
+				if(this.worldObj.difficultySetting.getDifficultyId() > 1){
+					if(this.worldObj.difficultySetting.getDifficultyId() == 2){
+						b0 = 7;
+					}else if(this.worldObj.difficultySetting.getDifficultyId() == 3){
+						b0 = 15;
+					}
+				}
+				
+				if(b0 > 0){
+					((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.blindness.id, 100, 5));
+				}
+			}
+			
+			return true;
+		}else{
+			return false;
+		}
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
-
+	
 	@Override
-	protected String getLivingSound()
-	{
+	protected String getLivingSound(){
 		return Sounds.hellhound.getPrefixedName();
 	}
 	

@@ -2,8 +2,7 @@ package sheenrox82.RioV.src.api.util;
 
 import net.minecraft.util.EnumChatFormatting;
 
-public class Color
-{
+public class Color{
 	public static EnumChatFormatting BLACK = EnumChatFormatting.BLACK;
 	public static EnumChatFormatting DARK_BLUE = EnumChatFormatting.DARK_BLUE;
 	public static EnumChatFormatting DARK_GREEN = EnumChatFormatting.DARK_GREEN;

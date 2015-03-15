@@ -49,18 +49,16 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 
-public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackMob
-{
+public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackMob{
 	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
 	private EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.31F, false);
 	public static ItemStack defaultHeldItem;
-
-	public EntityVravinite(World par1World)
-	{
+	
+	public EntityVravinite(World par1World){
 		super(par1World);
 		this.setSize(1f, 2.1f);
 		this.tasks.addTask(1, new EntityAISwimming(this));
-		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityHellhound.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAunTunBodyguard.class, 0, true));
@@ -86,7 +84,7 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityEnderman.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGhast.class, 0, true));
@@ -100,123 +98,101 @@ public class EntityVravinite extends EntityMobDeadBody implements IRangedAttackM
 		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.vraviniteChestplate));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.vraviniteBoots));
-		if (par1World != null && !par1World.isRemote)
-		{
+		if(par1World != null && !par1World.isRemote){
 			this.setCombatTask();
 		}
 	}
-
+	
 	@Override
-	protected void entityInit()
-	{
+	protected void entityInit(){
 		super.entityInit();
-		this.dataWatcher.addObject(16, new Byte((byte)0));
-		this.dataWatcher.addObject(13, new Byte((byte)0));
+		this.dataWatcher.addObject(16, new Byte((byte) 0));
+		this.dataWatcher.addObject(13, new Byte((byte) 0));
 	}
-
+	
 	@Override
-	protected boolean isValidLightLevel()
-	{
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
-
+	
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity)
-	{
-		if (super.attackEntityAsMob(par1Entity))
-		{
+	public boolean attackEntityAsMob(Entity par1Entity){
+		if(super.attackEntityAsMob(par1Entity)){
 			return true;
-		}
-		else
-		{
+		}else{
 			return false;
 		}
 	}
-
+	
 	@Override
-	public ItemStack getHeldItem()
-	{
-		if(!this.isDeadBody)
-		{
+	public ItemStack getHeldItem(){
+		if(!this.isDeadBody){
 			return defaultHeldItem;
-		}
-		else
-		{
-			return (ItemStack)null;
+		}else{
+			return (ItemStack) null;
 		}
 	}
-
-	static
-	{
+	
+	static{
 		defaultHeldItem = new ItemStack(RioVItems.vraviniteBow);
 	}
-
+	
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2){
 		int var1 = this.rand.nextInt(8);
-
-		if (var1 == 0)
-		{	
+		
+		if(var1 == 0){
 			this.dropItem(RioVItems.vraviniteArrow, 7);
 		}
-		if (var1 == 1)
-		{
+		if(var1 == 1){
 			this.dropItem(RioVItems.blueMagicApple, 1);
 		}
-		if (var1 == 2)
-		{
+		if(var1 == 2){
 			this.dropItem(RioVItems.vraviniteBow, 1);
 		}
-		if (var1 == 7)
-		{
+		if(var1 == 7){
 			this.dropItem(RioVItems.vraviniteArrow, 8);
 		}
 	}
-
-	public void setCombatTask()
-	{
+	
+	public void setCombatTask(){
 		this.tasks.addTask(4, this.aiArrowAttack);
 		this.tasks.addTask(4, this.aiAttackOnCollide);
 	}
-
+	
 	@Override
-	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2) 
-	{
-		EntityVraviniteArrow entityarrow = new EntityVraviniteArrow(this.worldObj, this, entitylivingbase, 1.6F, (float)(14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
+	public void attackEntityWithRangedAttack(EntityLivingBase entitylivingbase, float par2){
+		EntityVraviniteArrow entityarrow = new EntityVraviniteArrow(this.worldObj, this, entitylivingbase, 1.6F,
+				(float) (14 - this.worldObj.difficultySetting.getDifficultyId() * 4));
 		int i = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, this.getHeldItem());
 		int j = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, this.getHeldItem());
 		entityarrow.setDamage(3F);
-
-		if (i > 0)
-		{
-			entityarrow.setDamage(entityarrow.getDamage() + (double)i * 0.5D + 0.5D);
+		
+		if(i > 0){
+			entityarrow.setDamage(entityarrow.getDamage() + (double) i * 0.5D + 0.5D);
 		}
-
-		if (j > 0)
-		{
+		
+		if(j > 0){
 			entityarrow.setKnockbackStrength(j);
 		}
-
+		
 		this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
 		this.worldObj.spawnEntityInWorld(entityarrow);
-
+		
 	}
-
+	
 }

@@ -4,7 +4,6 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import sheenrox82.RioV.src.material.MaterialCustom;
 
-public class Materials 
-{
+public class Materials{
 	public static Material customMaterial = new MaterialCustom(MapColor.iceColor);
 }

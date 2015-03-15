@@ -37,10 +37,8 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-public class Registry 
-{	
-	public static void preInit(FMLPreInitializationEvent initEvent)
-	{		
+public class Registry{
+	public static void preInit(FMLPreInitializationEvent initEvent){
 		RioVAPI.getInstance().modLoaded = false;
 		RioVAPI.getInstance().getLogger().info("Starting... //START PRE-INITIALIZATION");
 		RioVAPI.getInstance().getLogger().info("Sounds loaded.");
@@ -81,9 +79,8 @@ public class Registry
 		RioVAPI.getInstance().getUtil().registerDimension(Config.sanctuatiteID, WorldProviderSanctuatite.class);
 		RioVAPI.getInstance().getLogger().info("Core data registered. //END PRE-INITIALIZATION");
 	}
-
-	public static void init(FMLInitializationEvent init)
-	{		
+	
+	public static void init(FMLInitializationEvent init){
 		RioVAPI.getInstance().getLogger().info("Beginning initialization. //START INITIALIZATION");
 		RioVAPI.getInstance().getLogger().info("Packets registering...");
 		RioVAPI.getInstance().getNetworkHandler().registerMessage(RioVPlayerPackets.class, RioVPlayerPackets.class, 0, Side.SERVER);
@@ -109,25 +106,23 @@ public class Registry
 		BiomeGenBase.plains.theBiomeDecorator.flowersPerChunk = 20;
 		RioVAPI.getInstance().getLogger().info("Other shit is registered. //END INITIALIZATION");
 	}
-
-	public static void postInit(FMLPostInitializationEvent postInit)
-	{
+	
+	public static void postInit(FMLPostInitializationEvent postInit){
 		RioVAPI.getInstance().getLogger().info("Almost done initializing. //START POST-INITIALIZATION");
 		Config.initPost();
 		RioVAPI.getInstance().getLogger().info("Mod loaded! Sup. //END POST-INITIALIZATION");
 		RioVAPI.getInstance().modLoaded = true;
 	}
 	
-	public static void serverLoad(FMLServerStartingEvent event)
-	{
+	public static void serverLoad(FMLServerStartingEvent event){
 		event.registerServerCommand(new CommandRageQuit());
 	}
-
-	public static void syncConfig() 
-	{
+	
+	public static void syncConfig(){
 		Config.EOS = Config.config.getBoolean("Use the purple Eos bar instead of text?", Configuration.CATEGORY_GENERAL, true, "// Boolean");
 		Config.showToolInfo = Config.config.getBoolean("Show Tool Info?", Configuration.CATEGORY_GENERAL, true, "// Boolean");
-		Config.allowBreathing = Config.config.getBoolean("Allow Mob Breathing Sounds? (CLIENT SIDE)", Configuration.CATEGORY_GENERAL, true, "// Boolean");
+		Config.allowBreathing = Config.config.getBoolean("Allow Mob Breathing Sounds? (CLIENT SIDE)", Configuration.CATEGORY_GENERAL, true,
+				"// Boolean");
 		Config.deadBodies = Config.config.getBoolean("Allow Dead Bodies for mobs?", Configuration.CATEGORY_GENERAL, true, "// Boolean");
 		Config.hudPosX = Config.config.getInt("HUD Position X || Max: 800", Configuration.CATEGORY_GENERAL, 20, 20, 800, "// Integer");
 		Config.hudPosY = Config.config.getInt("HUD Position Y || Max: 800", Configuration.CATEGORY_GENERAL, 20, 20, 800, "// Integer");
@@ -135,8 +130,7 @@ public class Registry
 		Config.Helmet = Config.config.getBoolean("Use helmet blur when helmet is on?", Configuration.CATEGORY_GENERAL, true, "// Boolean");
 		Config.mobNametags = Config.config.getBoolean("Have mob nameplates?", Configuration.CATEGORY_GENERAL, true, "// Boolean");
 		
-		if(Config.config.hasChanged())
-		{
+		if(Config.config.hasChanged()){
 			Config.config.save();
 		}
 	}

@@ -10,23 +10,19 @@ import org.lwjgl.opengl.GL11;
 import sheenrox82.RioV.src.model.ModelFlag;
 import sheenrox82.RioV.src.util.Util;
 
-public class ItemRenderRaetiinFlag implements IItemRenderer
-{
+public class ItemRenderRaetiinFlag implements IItemRenderer{
 	@Override
-	public boolean handleRenderType(ItemStack item, ItemRenderType type) 
-	{
+	public boolean handleRenderType(ItemStack item, ItemRenderType type){
 		return true;
 	}
-
+	
 	@Override
-	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) 
-	{
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper){
 		return true;
 	}
-
+	
 	@Override
-	public void renderItem(ItemRenderType type, ItemStack item, Object... data) 
-	{
+	public void renderItem(ItemRenderType type, ItemStack item, Object... data){
 		GL11.glPushMatrix();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Util.MOD_ID + ":" + "textures/blocks/RaetiinFlag.png"));
 		switch(type){
@@ -50,10 +46,10 @@ public class ItemRenderRaetiinFlag implements IItemRenderer
 			GL11.glScalef(0.9F, 0.9F, 0.9F);
 			GL11.glRotatef(180, 180.0F, 0.0F, 0.0F);
 			break;
-		default: 
+		default:
 			break;
 		}
-
+		
 		new ModelFlag().renderAll();
 		GL11.glPopMatrix();
 	}

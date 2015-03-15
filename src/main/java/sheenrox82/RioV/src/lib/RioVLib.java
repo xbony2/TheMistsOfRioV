@@ -3,8 +3,7 @@ package sheenrox82.RioV.src.lib;
 import net.minecraft.util.ResourceLocation;
 import sheenrox82.RioV.src.util.Util;
 
-public class RioVLib
-{
+public class RioVLib{
 	public static String entityString = "textures/entity/";
 	public static final ResourceLocation adventurer = new ResourceLocation(Util.MOD_ID + ":" + entityString + "Villager.png");
 	public static final ResourceLocation essence = new ResourceLocation(Util.MOD_ID + ":" + entityString + "Essence.png");
@@ -38,7 +37,7 @@ public class RioVLib
 	public static int largeBagID = 5;
 	public static int sheensBagID = 6;
 	public static int guideID = 7;
-
+	
 	public static final ResourceLocation infuser = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "infuser.png");
 	public static final ResourceLocation workbench = new ResourceLocation("textures/gui/container/crafting_table.png");
 	public static final ResourceLocation inventory = new ResourceLocation(Util.MOD_ID + ":" + "textures/gui/" + "inventory.png");

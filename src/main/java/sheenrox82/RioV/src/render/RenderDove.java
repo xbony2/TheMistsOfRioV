@@ -11,31 +11,25 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderDove extends RenderLiving
-{
-	public RenderDove()
-	{
+public class RenderDove extends RenderLiving{
+	public RenderDove(){
 		super(new ModelDove(), 0.5F);
 	}
-
-	public void renderAdv(EntityDove var1, double var2, double var4, double var6, float var8, float var9)
-	{
+	
+	public void renderAdv(EntityDove var1, double var2, double var4, double var6, float var8, float var9){
 		super.doRender(var1, var2, var4, var6, var8, var9);
 	}
-
-	public void doRender(EntityLiving var1, double var2, double var4, double var6, float var8, float var9)
-	{
-		renderAdv((EntityDove)var1, var2, var4, var6, var8, var9);
+	
+	public void doRender(EntityLiving var1, double var2, double var4, double var6, float var8, float var9){
+		renderAdv((EntityDove) var1, var2, var4, var6, var8, var9);
 	}
-
-	public void doRenderLiving(Entity var1, double var2, double var4, double var6, float var8, float var9)
-	{
-		renderAdv((EntityDove)var1, var2, var4, var6, var8, var9);
+	
+	public void doRenderLiving(Entity var1, double var2, double var4, double var6, float var8, float var9){
+		renderAdv((EntityDove) var1, var2, var4, var6, var8, var9);
 	}
-
+	
 	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) 
-	{
+	protected ResourceLocation getEntityTexture(Entity entity){
 		return RioVLib.dove;
 	}
 }

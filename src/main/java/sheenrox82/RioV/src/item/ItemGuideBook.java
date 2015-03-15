@@ -13,33 +13,29 @@ import sheenrox82.RioV.src.util.LangHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemGuideBook extends Item
-{
-	public ItemGuideBook()
-	{
+public class ItemGuideBook extends Item{
+	public ItemGuideBook(){
 		super();
 		this.setMaxDamage(0);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister)
-	{
-		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
+	public void registerIcons(IIconRegister par1IconRegister){
+		this.itemIcon = par1IconRegister.registerIcon(RioVAPI.getInstance().getUtil().mod_id + ":"
+				+ RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
-
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+	
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
-	{
+	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4){
 		par3List.add(LangHelper.translate("msg.riov.Book"));
 	}
-
+	
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player)
-	{
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer player){
 		GuideHelper.openJournal(player, "");
 		return par1ItemStack;
 	}

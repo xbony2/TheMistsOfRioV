@@ -15,74 +15,65 @@ import sheenrox82.RioV.src.base.Config;
 import sheenrox82.RioV.src.content.Materials;
 import sheenrox82.RioV.src.util.Util;
 
-public class BlockSkycloud extends Block
-{
+public class BlockSkycloud extends Block{
 	public IIcon blockIcon;
 	
-	public BlockSkycloud()
-	{
+	public BlockSkycloud(){
 		super(Materials.customMaterial);
 		this.setStepSound(Block.soundTypeCloth);
 		this.setCreativeTab(RioVAPI.getInstance().tab);
 	}
-
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4)
-	{
-		return AxisAlignedBB.getBoundingBox((double)var2, (double)var3, (double)var4, (double)(var2 + 1), (double)var3, (double)(var4 + 1));
+	
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World var1, int var2, int var3, int var4){
+		return AxisAlignedBB.getBoundingBox((double) var2, (double) var3, (double) var4, (double) (var2 + 1), (double) var3, (double) (var4 + 1));
 	}
-
+	
 	/**
-	 * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
+	 * Returns which pass should this block be rendered on. 0 for solids and 1
+	 * for alpha
 	 */
-	public int getRenderBlockPass()
-	{
+	public int getRenderBlockPass(){
 		return 1;
 	}
-
+	
 	/**
-	 * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
-	 * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
+	 * Is this block (a) opaque and (b) a full 1m cube? This determines whether
+	 * or not to render the shared face of two adjacent blocks and also whether
+	 * the player can attach torches, redstone wire, etc to this block.
 	 */
-	public boolean isOpaqueCube()
-	{
+	public boolean isOpaqueCube(){
 		return false;
 	}
-
+	
 	/**
-	 * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
+	 * Triggered whenever an entity collides with this block (enters into the
+	 * block). Args: world, x, y, z, entity
 	 */
-	public void onEntityCollidedWithBlock(World var1, int var2, int var3, int var4, Entity var5)
-	{
+	public void onEntityCollidedWithBlock(World var1, int var2, int var3, int var4, Entity var5){
 		var5.fallDistance = 0.0F;
-
-		if (var5.motionY < 0.0D)
-		{
+		
+		if(var5.motionY < 0.0D){
 			var5.motionY *= 0.005D;
 		}
-
-		if (!(var5 instanceof EntityPlayer))
-		{
+		
+		if(!(var5 instanceof EntityPlayer)){
 			var5.fallDistance = -20.0F;
 		}
-
-		if(var1.provider.dimensionId == Config.sanctuatiteID)
-		{
-			if (var5 instanceof EntityLivingBase)
-			{
-				((EntityLivingBase)var5).addPotionEffect(new PotionEffect(Potion.invisibility.getId(), 200, 3));
+		
+		if(var1.provider.dimensionId == Config.sanctuatiteID){
+			if(var5 instanceof EntityLivingBase){
+				((EntityLivingBase) var5).addPotionEffect(new PotionEffect(Potion.invisibility.getId(), 200, 3));
 			}
 		}
 	}
-
+	
 	@Override
-	public IIcon getIcon(int par1, int par2)
-	{
+	public IIcon getIcon(int par1, int par2){
 		return this.blockIcon;
 	}
 	
 	@Override
-	public void registerBlockIcons(IIconRegister var1)
-	{
+	public void registerBlockIcons(IIconRegister var1){
 		this.blockIcon = var1.registerIcon(Util.MOD_ID + ":" + RioVAPI.getInstance().getUtil().getName(this.getUnlocalizedName()));
 	}
 }

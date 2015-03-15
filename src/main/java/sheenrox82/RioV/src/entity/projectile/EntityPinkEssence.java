@@ -5,28 +5,22 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class EntityPinkEssence extends EntityThrowable
-{
-	public EntityPinkEssence(World var1)
-	{
+public class EntityPinkEssence extends EntityThrowable{
+	public EntityPinkEssence(World var1){
 		super(var1);
 	}
-
-	public EntityPinkEssence(World var1, EntityLivingBase var2)
-	{
+	
+	public EntityPinkEssence(World var1, EntityLivingBase var2){
 		super(var1, var2);
 	}
-
-	public EntityPinkEssence(World var1, double var2, double var4, double var6)
-	{
+	
+	public EntityPinkEssence(World var1, double var2, double var4, double var6){
 		super(var1, var2, var4, var6);
 	}
-
+	
 	@Override
-	protected void onImpact(MovingObjectPosition var1)
-	{
-		if(!this.worldObj.isRemote && var1.entityHit != null)
-		{
+	protected void onImpact(MovingObjectPosition var1){
+		if(!this.worldObj.isRemote && var1.entityHit != null){
 			var1.entityHit.addVelocity(0F, 1F, 0F);
 		}
 	}

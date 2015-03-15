@@ -33,10 +33,8 @@ import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 
-public class EntityTerron extends EntityBossCore
-{
-	public EntityTerron(World par1World)
-	{
+public class EntityTerron extends EntityBossCore{
+	public EntityTerron(World par1World){
 		super(par1World);
 		this.setSize(1F, 3.8F);
 		this.experienceValue = 70;
@@ -54,7 +52,7 @@ public class EntityTerron extends EntityBossCore
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, true));
@@ -67,56 +65,48 @@ public class EntityTerron extends EntityBossCore
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
 	}
-
+	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(900.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(14.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	public void onDeath(DamageSource par1DamageSource)
-	{
+	public void onDeath(DamageSource par1DamageSource){
 		super.onDeath(par1DamageSource);
-
-		if(this.worldObj.isRemote)
-		{
+		
+		if(this.worldObj.isRemote){
 			RioVAPI.getInstance().getUtil().sendMessageToAll("Terron: *Grroowwwwwwwwwlllll*");
 			RioVAPI.getInstance().getUtil().sendMessageToAll("Terron was killed!");
 		}
 	}
-
+	
 	@Override
-	public void dropFewItems(boolean par1, int par2)
-	{
+	public void dropFewItems(boolean par1, int par2){
 		this.dropItem(RioVItems.agonite, 3);
 	}
-
+	
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-	{
+	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound){
 		super.writeEntityToNBT(par1NBTTagCompound);
 	}
-
+	
 	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound)
-	{
+	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound){
 		super.readEntityFromNBT(par1NBTTagCompound);
 	}
-
+	
 	@Override
-	protected boolean isAIEnabled()
-	{
+	protected boolean isAIEnabled(){
 		return true;
 	}
-
+	
 	@Override
-	protected String getLivingSound()
-	{
+	protected String getLivingSound(){
 		return Sounds.growl.getPrefixedName();
 	}
 }

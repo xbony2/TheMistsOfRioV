@@ -30,12 +30,10 @@ import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityAltru;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityTiTun;
 import sheenrox82.RioV.src.entity.mob.jaerin.boss.EntityWoodElfKing;
 
-public class EntityTefGuard extends EntityMobDeadBody
-{
+public class EntityTefGuard extends EntityMobDeadBody{
 	private static ItemStack defaultHeldItem;
-
-	public EntityTefGuard(World par1World)
-	{
+	
+	public EntityTefGuard(World par1World){
 		super(par1World);
 		this.isImmuneToFire = true;
 		this.setSize(1f, 2.1f);
@@ -51,7 +49,7 @@ public class EntityTefGuard extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityAltru.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityTiTun.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWoodElfKing.class, 0, true));
-
+		
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityCreeper.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySkeleton.class, 0, true));
@@ -61,40 +59,33 @@ public class EntityTefGuard extends EntityMobDeadBody
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityGiantZombie.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntitySilverfish.class, 0, true));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityWitch.class, 0, true));
-		this.tasks.addTask(5, new EntityAIWander(this,  0.56D));
+		this.tasks.addTask(5, new EntityAIWander(this, 0.56D));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-		tasks.addTask(4, new EntityAIAttackOnCollide(this,  0.56D, true));
-
+		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
+		
 		this.setCurrentItemOrArmor(4, new ItemStack(RioVItems.infusedOnyxHelmet));
 		this.setCurrentItemOrArmor(3, new ItemStack(RioVItems.infusedOnyxChestplate));
 		this.setCurrentItemOrArmor(2, new ItemStack(RioVItems.infusedOnyxLeggings));
 		this.setCurrentItemOrArmor(1, new ItemStack(RioVItems.infusedOnyxBoots));
 	}
-
-	protected boolean isValidLightLevel()
-	{
+	
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
-	public ItemStack getHeldItem()
-	{
-		if(!this.isDeadBody)
-		{
+	
+	public ItemStack getHeldItem(){
+		if(!this.isDeadBody){
 			return defaultHeldItem;
-		}
-		else
-		{
-			return (ItemStack)null;
+		}else{
+			return (ItemStack) null;
 		}
 	}
-
-	static
-	{
+	
+	static{
 		defaultHeldItem = new ItemStack(RioVItems.onyxSword);
 	}
 	
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(100.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
@@ -102,35 +93,32 @@ public class EntityTefGuard extends EntityMobDeadBody
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
 	
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
-
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	
+	protected void dropFewItems(boolean par1, int par2){
 		int var1 = this.rand.nextInt(10);
-
-		if (var1 == 0)
-		{
+		
+		if(var1 == 0){
 			this.dropItem(RioVItems.darkMatter, 2);
 		}
-		if (var1 == 1)
-		{
+		if(var1 == 1){
 			this.dropItem(RioVItems.onyxSword, 1);
 		}
-		if (var1 == 2)
-		{
+		if(var1 == 2){
 			this.dropItem(RioVItems.darknessArrow, 1);
 		}
 	}
-
-	public void onLivingUpdate()
-	{
-		for (int var1 = 0; var1 < 2; ++var1)
-		{
-			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
-			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+	
+	public void onLivingUpdate(){
+		for(int var1 = 0; var1 < 2; ++var1){
+			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					0.0D, 0.0D, 0.0D);
+			this.worldObj.spawnParticle("largesmoke", this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					0.0D, 0.0D, 0.0D);
 		}
 		
 		super.onLivingUpdate();

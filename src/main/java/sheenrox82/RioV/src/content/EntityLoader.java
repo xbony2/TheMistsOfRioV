@@ -44,10 +44,8 @@ import sheenrox82.RioV.src.entity.projectile.EntityVraviniteArrow;
 import sheenrox82.RioV.src.util.MethodUtil;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
-public class EntityLoader 
-{
-	public static void add()
-	{
+public class EntityLoader{
+	public static void add(){
 		MethodUtil.registerEntity(EntityAdv.class, "Adventurer");
 		MethodUtil.registerEntity(EntityAltruEssence.class, "Altru Essence");
 		MethodUtil.registerEntity(EntityAunTun.class, "Aun'Tun");
@@ -84,7 +82,7 @@ public class EntityLoader
 		MethodUtil.registerEntity(EntityAltru.class, "Altru");
 		MethodUtil.registerEntity(EntityShadowWizard.class, "Shadownite Wizard");
 		MethodUtil.registerEntity(EntityRawDarkMatter.class, "Raw Dark Matter");
-
+		
 		MethodUtil.registerEgg(EntityAdv.class);
 		MethodUtil.registerEgg(EntityMage.class);
 		MethodUtil.registerEgg(EntityAltruEssence.class);
@@ -117,10 +115,9 @@ public class EntityLoader
 		MethodUtil.registerEgg(EntityPaladin.class);
 		MethodUtil.registerEgg(EntityShadowWizard.class);
 	}
-
+	
 	@SuppressWarnings("unchecked")
-	public static void addOverworldSpawning()
-	{
+	public static void addOverworldSpawning(){
 		BiomeGenBase[] plains = BiomeDictionary.getBiomesForType(Type.PLAINS);
 		BiomeGenBase[] desert = BiomeDictionary.getBiomesForType(Type.SANDY);
 		BiomeGenBase[] mountain = BiomeDictionary.getBiomesForType(Type.MOUNTAIN);
@@ -130,7 +127,7 @@ public class EntityLoader
 		BiomeGenBase[] swamp = BiomeDictionary.getBiomesForType(Type.SWAMP);
 		BiomeGenBase[] beach = BiomeDictionary.getBiomesForType(Type.BEACH);
 		BiomeGenBase[] wasteland = BiomeDictionary.getBiomesForType(Type.WASTELAND);
-
+		
 		SpawnListEntry advSpawn = new SpawnListEntry(EntityAdv.class, 10, 4, 9);
 		SpawnListEntry nizonianSpawn = new SpawnListEntry(EntityNizonian.class, 10, 5, 8);
 		SpawnListEntry mageSpawn = new SpawnListEntry(EntityMage.class, 10, 5, 9);
@@ -139,9 +136,8 @@ public class EntityLoader
 		SpawnListEntry orcSpawn = new SpawnListEntry(EntityOrc.class, 10, 3, 7);
 		SpawnListEntry sovSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 10, 4, 7);
 		SpawnListEntry paladinSpawn = new SpawnListEntry(EntityPaladin.class, 10, 5, 8);
-
-		for(int i = 0; i < plains.length; i++)
-		{
+		
+		for(int i = 0; i < plains.length; i++){
 			plains[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			plains[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			plains[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -155,9 +151,8 @@ public class EntityLoader
 			plains[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
 			plains[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
-
-		for(int i = 0; i < mountain.length; i++)
-		{
+		
+		for(int i = 0; i < mountain.length; i++){
 			mountain[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			mountain[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			mountain[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -173,9 +168,8 @@ public class EntityLoader
 			mountain[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 			mountain[i].getSpawnableList(EnumCreatureType.monster).add(paladinSpawn);
 		}
-
-		for(int i = 0; i < frozen.length; i++)
-		{
+		
+		for(int i = 0; i < frozen.length; i++){
 			frozen[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			frozen[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			frozen[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -189,9 +183,8 @@ public class EntityLoader
 			frozen[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
 			frozen[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
-
-		for(int i = 0; i < jungle.length; i++)
-		{
+		
+		for(int i = 0; i < jungle.length; i++){
 			jungle[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			jungle[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			jungle[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -205,9 +198,8 @@ public class EntityLoader
 			jungle[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
 			jungle[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
-
-		for(int i = 0; i < forest.length; i++)
-		{
+		
+		for(int i = 0; i < forest.length; i++){
 			forest[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			forest[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			forest[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -221,9 +213,8 @@ public class EntityLoader
 			forest[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
 			forest[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
-
-		for(int i = 0; i < desert.length; i++)
-		{
+		
+		for(int i = 0; i < desert.length; i++){
 			desert[i].getSpawnableList(EnumCreatureType.creature).add(nizonianSpawn);
 			desert[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			desert[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
@@ -240,8 +231,7 @@ public class EntityLoader
 			desert[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
 		
-		for(int i = 0; i < swamp.length; i++)
-		{
+		for(int i = 0; i < swamp.length; i++){
 			swamp[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			swamp[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			swamp[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -255,9 +245,8 @@ public class EntityLoader
 			swamp[i].getSpawnableList(EnumCreatureType.monster).add(orcSpawn);
 			swamp[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
-
-		for(int i = 0; i < beach.length; i++)
-		{
+		
+		for(int i = 0; i < beach.length; i++){
 			beach[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			beach[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			beach[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -273,9 +262,8 @@ public class EntityLoader
 			beach[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 			beach[i].getSpawnableList(EnumCreatureType.monster).add(paladinSpawn);
 		}
-
-		for(int i = 0; i < wasteland.length; i++)
-		{
+		
+		for(int i = 0; i < wasteland.length; i++){
 			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(advSpawn);
 			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(mageSpawn);
 			wasteland[i].getSpawnableList(EnumCreatureType.creature).add(darkElfSpawn);
@@ -290,20 +278,18 @@ public class EntityLoader
 			wasteland[i].getSpawnableList(EnumCreatureType.monster).add(sovSpawn);
 		}
 	}
-
+	
 	@SuppressWarnings("unchecked")
-	public static void addNetherSpawning()
-	{
+	public static void addNetherSpawning(){
 		BiomeGenBase[] nether = BiomeDictionary.getBiomesForType(Type.NETHER);
-
+		
 		SpawnListEntry skeleHorseSpawn = new SpawnListEntry(EntitySkeletalHorse.class, 10, 5, 7);
 		SpawnListEntry minionSpawn = new SpawnListEntry(EntityAunTunMinion.class, 10, 4, 8);
 		SpawnListEntry bodyguardSpawn = new SpawnListEntry(EntityAunTunBodyguard.class, 10, 4, 8);
 		SpawnListEntry hellhoundSpawn = new SpawnListEntry(EntityHellhound.class, 10, 4, 8);
 		SpawnListEntry soverianSpawn = new SpawnListEntry(EntitySoverianOfficer.class, 10, 4, 8);
-
-		for(int i = 0; i < nether.length; i++)
-		{
+		
+		for(int i = 0; i < nether.length; i++){
 			nether[i].getSpawnableList(EnumCreatureType.creature).add(skeleHorseSpawn);
 			nether[i].getSpawnableList(EnumCreatureType.creature).add(minionSpawn);
 			nether[i].getSpawnableList(EnumCreatureType.creature).add(bodyguardSpawn);
@@ -316,26 +302,23 @@ public class EntityLoader
 			nether[i].getSpawnableList(EnumCreatureType.monster).add(soverianSpawn);
 		}
 	}
-
+	
 	@SuppressWarnings("unchecked")
-	public static void addEndSpawning()
-	{
+	public static void addEndSpawning(){
 		BiomeGenBase[] end = BiomeDictionary.getBiomesForType(Type.END);
-
+		
 		SpawnListEntry fairySpawn = new SpawnListEntry(EntityFairy.class, 10, 3, 5);
 		SpawnListEntry essenceSpawn = new SpawnListEntry(EntityAltruEssence.class, 10, 3, 5);
-
-		for(int i = 0; i < end.length; i++)
-		{
+		
+		for(int i = 0; i < end.length; i++){
 			end[i].getSpawnableList(EnumCreatureType.creature).add(fairySpawn);
 			end[i].getSpawnableList(EnumCreatureType.creature).add(essenceSpawn);
 			end[i].getSpawnableList(EnumCreatureType.monster).add(fairySpawn);
 			end[i].getSpawnableList(EnumCreatureType.monster).add(essenceSpawn);
 		}
 	}
-
-	public static void addDimensionSpawning()
-	{
+	
+	public static void addDimensionSpawning(){
 		EntityRegistry.addSpawn(EntityShadow.class, 2, 3, 6, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
 		EntityRegistry.addSpawn(EntityShadow.class, 2, 3, 6, EnumCreatureType.monster, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});
 		EntityRegistry.addSpawn(EntityWoodElf.class, 2, 3, 4, EnumCreatureType.creature, new BiomeGenBase[] {Biomes.blindOasis, Biomes.flamonor});

@@ -8,18 +8,17 @@ import sheenrox82.RioV.src.guide.pages.PageGettingStarted;
 import sheenrox82.RioV.src.guide.pages.PageInfuser;
 import sheenrox82.RioV.src.guide.pages.PageTools;
 
-
-public class CategoryTableOfContents implements GuideCategory {
-	public String getTitle() {
+public class CategoryTableOfContents implements GuideCategory{
+	public String getTitle(){
 		return "Table of Contents";
 	}
 	
-	public boolean hasOverride() {
+	public boolean hasOverride(){
 		return true;
 	}
 	
-	public GuidePage[] getPages()
-	{
-		return new GuidePage[] { new PageGettingStarted(), new PageTools(), new PageInfuser(), new PageDimensions(), new PageBosses(), new PageEosMagic(), new PageFactions() };
+	public GuidePage[] getPages(){
+		return new GuidePage[] {new PageGettingStarted(), new PageTools(), new PageInfuser(), new PageDimensions(), new PageBosses(),
+				new PageEosMagic(), new PageFactions()};
 	}
 }

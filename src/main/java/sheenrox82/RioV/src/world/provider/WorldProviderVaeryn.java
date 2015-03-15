@@ -9,38 +9,31 @@ import sheenrox82.RioV.src.world.chunk.ChunkProviderVaeryn;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class WorldProviderVaeryn extends WorldProvider
-{
-
-	public void registerWorldChunkManager()
-	{
+public class WorldProviderVaeryn extends WorldProvider{
+	
+	public void registerWorldChunkManager(){
 		this.worldChunkMgr = new WorldChunkManagerHell(Biomes.glimmerwood, 1F);
 		this.dimensionId = Config.vaerynID;
 	}
-
-	public IChunkProvider createChunkGenerator()
-	{
+	
+	public IChunkProvider createChunkGenerator(){
 		return new ChunkProviderVaeryn(this.worldObj, this.worldObj.getSeed());
 	}
 	
-    public String getDimensionName()
-    {
-        return "Vaeryn";
-    }
-
+	public String getDimensionName(){
+		return "Vaeryn";
+	}
+	
 	@SideOnly(Side.CLIENT)
-	public String getWelcomeMessage()
-	{
+	public String getWelcomeMessage(){
 		return "Entering Vaeryn";
 	}
 	
-	public boolean canRespawnHere()
-    {
-        return false;
-    }
+	public boolean canRespawnHere(){
+		return false;
+	}
 	
-    public String getSaveFolder()
-    {
-        return "VaerynDim";
-    }
+	public String getSaveFolder(){
+		return "VaerynDim";
+	}
 }

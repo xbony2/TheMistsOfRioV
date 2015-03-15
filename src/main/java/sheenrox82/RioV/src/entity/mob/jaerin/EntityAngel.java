@@ -36,11 +36,9 @@ import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityDemonAngel;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTef;
 import sheenrox82.RioV.src.entity.mob.raetiin.boss.EntityTerron;
 
-public class EntityAngel extends EntityMobDeadBody
-{
-	public EntityAngel(World par1World) 
-	{
-
+public class EntityAngel extends EntityMobDeadBody{
+	public EntityAngel(World par1World){
+		
 		super(par1World);
 		this.getNavigator().setCanSwim(true);
 		this.fallDistance = 0.0f;
@@ -75,61 +73,53 @@ public class EntityAngel extends EntityMobDeadBody
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
 		tasks.addTask(4, new EntityAIAttackOnCollide(this, 0.56D, true));
 	}
-
+	
 	@Override
-	protected boolean isValidLightLevel()
-	{
+	protected boolean isValidLightLevel(){
 		return true;
 	}
-
 	
-	public void onLivingUpdate()
-	{
-		if (this.rand.nextInt(24) == 0)
-		{
-			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(), this.rand.nextFloat() * 0.7F + 0.3F);
+	public void onLivingUpdate(){
+		if(this.rand.nextInt(24) == 0){
+			this.worldObj.playSoundEffect(this.posX + 0.5D, this.posY + 0.5D, this.posZ + 0.5D, "fire.fire", 1.0F + this.rand.nextFloat(),
+					this.rand.nextFloat() * 0.7F + 0.3F);
 		}
-
-
-		for (int i = 0; i < 2; ++i)
-		{
-			this.worldObj.spawnParticle("enchantmenttable", this.posX + (this.rand.nextDouble() - 0.5D) * (double)this.width, this.posY + this.rand.nextDouble() * (double)this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double)this.width, 0.0D, 0.0D, 0.0D);
+		
+		for(int i = 0; i < 2; ++i){
+			this.worldObj.spawnParticle("enchantmenttable", this.posX + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					this.posY + this.rand.nextDouble() * (double) this.height, this.posZ + (this.rand.nextDouble() - 0.5D) * (double) this.width,
+					0.0D, 0.0D, 0.0D);
 		}
-
+		
 		super.onLivingUpdate();
 	}
-
+	
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled(){
 		return true;
 	}
 	
 	@Override
-	protected void applyEntityAttributes()
-	{
+	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
 		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.62D);
 		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
 		this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(50.0D);
 	}
-
+	
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2){
 		int var3 = this.rand.nextInt(3) + this.rand.nextInt(1 + par2);
 		int var4;
-
-		for (var4 = 0; var4 < var3; ++var4)
-		{
+		
+		for(var4 = 0; var4 < var3; ++var4){
 			this.dropItem(Items.feather, 1);
 		}
 	}
 	
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity)
-	{
+	public boolean attackEntityAsMob(Entity par1Entity){
 		return true;
 	}
 }

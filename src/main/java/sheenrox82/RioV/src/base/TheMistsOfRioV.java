@@ -13,35 +13,30 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
 @Mod(modid = Util.MOD_ID, name = Util.MOD_NAME, version = Util.VERSION, guiFactory = Util.GUI_FACTORY)
-public class TheMistsOfRioV
-{
+public class TheMistsOfRioV{
 	@Instance(Util.MOD_ID)
 	public static TheMistsOfRioV INSTANCE;
-
+	
 	@SidedProxy(clientSide = Util.CLIENT, serverSide = Util.COMMON)
 	public static CommonProxy commonProxy;
-
+	
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent initEvent)
-	{
+	public void preInit(FMLPreInitializationEvent initEvent){
 		Registry.preInit(initEvent);
 	}
-
+	
 	@EventHandler
-	public void init(FMLInitializationEvent initEvent)
-	{
+	public void init(FMLInitializationEvent initEvent){
 		Registry.init(initEvent);
 	}
-
+	
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent initEvent)
-	{
+	public void postInit(FMLPostInitializationEvent initEvent){
 		Registry.postInit(initEvent);
 	}
 	
 	@EventHandler
-	public void serverLoad(FMLServerStartingEvent event)
-	{
+	public void serverLoad(FMLServerStartingEvent event){
 		Registry.serverLoad(event);
 	}
 }

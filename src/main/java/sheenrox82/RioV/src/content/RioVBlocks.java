@@ -53,8 +53,7 @@ import sheenrox82.RioV.src.item.ItemPlanksColored;
 import sheenrox82.RioV.src.item.ItemStainedGlass;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-public class RioVBlocks 
-{
+public class RioVBlocks{
 	public static Block onyxOre = new BlockCoreOne().setBlockName("onyxOre");
 	public static Block infuser = new BlockInfuser(true).setHardness(1.0F).setBlockName("infuser");
 	public static Block slate = new BlockCoreOne().setBlockName("slate");
@@ -190,8 +189,7 @@ public class RioVBlocks
 	public static Block __7;
 	public static Block __8;
 	
-	public static void add()
-	{	
+	public static void add(){
 		RioVAPIUtil.registerBlock(noFacFlag, "No Faction Flag");
 		RioVAPIUtil.registerBlock(raetiinFlag, "Raetiin Flag");
 		RioVAPIUtil.registerBlock(jaerinFlag, "Jaerin Flag");
@@ -209,9 +207,9 @@ public class RioVBlocks
 		RioVAPIUtil.registerBlock(sanctuatiteTallGrass, "Sanctuatite Tall Grass");
 		RioVAPIUtil.registerBlock(bloodTallGrass, "Blood Tall Grass");
 		RioVAPIUtil.registerBlock(blackQuartz, "Black Quartz Block");
-		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, RioVAPI.getInstance().getUtil().getName(stainedGlass.getUnlocalizedName()));	
-		GameRegistry.registerBlock(bricks, ItemBricks.class, RioVAPI.getInstance().getUtil().getName(bricks.getUnlocalizedName()));		
-		GameRegistry.registerBlock(plankColored, ItemPlanksColored.class, RioVAPI.getInstance().getUtil().getName(plankColored.getUnlocalizedName()));		
+		GameRegistry.registerBlock(stainedGlass, ItemStainedGlass.class, RioVAPI.getInstance().getUtil().getName(stainedGlass.getUnlocalizedName()));
+		GameRegistry.registerBlock(bricks, ItemBricks.class, RioVAPI.getInstance().getUtil().getName(bricks.getUnlocalizedName()));
+		GameRegistry.registerBlock(plankColored, ItemPlanksColored.class, RioVAPI.getInstance().getUtil().getName(plankColored.getUnlocalizedName()));
 		RioVAPIUtil.registerBlock(steamingBloodDeposit, "Steaming Blood Deposit");
 		RioVAPIUtil.registerBlock(bloodBerryBush, "Blood Berry Bush");
 		RioVAPIUtil.registerBlock(bloodFlower, "Blood Flower");
