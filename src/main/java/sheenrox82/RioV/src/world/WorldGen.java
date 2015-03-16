@@ -153,8 +153,7 @@ public class WorldGen implements IWorldGenerator{
 		BiomeGenBase biome = world.getWorldChunkManager().getBiomeGenAt(blockX, blockZ);
 		WorldGenCherryBlossomTree tree = new WorldGenCherryBlossomTree(false);
 		
-		if(world.getWorldInfo().getTerrainType() == WorldType.DEFAULT || world.getWorldInfo().getTerrainType() == WorldType.LARGE_BIOMES
-				|| world.getWorldInfo().getTerrainType() == WorldType.AMPLIFIED){
+		if(world.getWorldInfo().getTerrainType() != WorldType.FLAT){
 			for(int i = 0; i < 8; i++){
 				int Xcoord = blockX + rand.nextInt(16);
 				int YcoordSurface2 = rand.nextInt(40);
