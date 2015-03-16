@@ -15,7 +15,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockBricks extends Block{
-	public static final String[] brickList = new String[] {"amethyst", "onyx", "blindonite", "dragon", "vravinite", "aleris", "jaavik", "nironite",
+	public static final String[] BRICK_LIST = new String[] {"amethyst", "onyx", "blindonite", "dragon", "vravinite", "aleris", "jaavik", "nironite",
 			"drakiuz"};
 	private IIcon[] iconArray;
 	
@@ -27,31 +27,30 @@ public class BlockBricks extends Block{
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public IIcon getIcon(int par1, int par2){
-		return this.iconArray[par2];
+	public IIcon getIcon(int side, int meta){
+		return this.iconArray[meta];
 	}
 	
 	@Override
-	public int damageDropped(int p_149692_1_){
-		return p_149692_1_;
+	public int damageDropped(int meta){
+		return meta;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	@Override
-	public void getSubBlocks(Item par1, CreativeTabs par2CreativeTabs, List par3List){
-		for(int i = 0; i < brickList.length; ++i){
-			par3List.add(new ItemStack(par1, 1, i));
+	public void getSubBlocks(Item item, CreativeTabs creativetabs, List list){
+		for(int i = 0; i < BRICK_LIST.length; ++i){
+			list.add(new ItemStack(item, 1, i));
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister){
-		this.iconArray = new IIcon[brickList.length];
+	public void registerBlockIcons(IIconRegister register){
+		this.iconArray = new IIcon[BRICK_LIST.length];
 		
-		for(int i = 0; i < this.iconArray.length; ++i){
-			this.iconArray[i] = par1IconRegister.registerIcon(Util.MOD_ID + ":" + brickList[i] + "Bricks");
-		}
+		for(int i = 0; i < this.iconArray.length; ++i)
+			this.iconArray[i] = register.registerIcon(Util.MOD_ID + ":" + BRICK_LIST[i] + "Bricks");
 	}
 }

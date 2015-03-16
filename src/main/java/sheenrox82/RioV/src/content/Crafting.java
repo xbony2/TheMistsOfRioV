@@ -129,15 +129,15 @@ public class Crafting{
 		GameRegistry.addRecipe(new ItemStack(Items.chainmail_boots, 1), new Object[] {boots, 'X', RioVItems.chain});
 		GameRegistry.addRecipe(new ItemStack(RioVBlocks.alerisBlock, 1), "XXX", "XXX", "XXX", 'X', RioVItems.aleris);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.aleris, 9), "X", 'X', RioVBlocks.alerisBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 2), bricks, 'X', RioVBlocks.amethystBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 3), bricks, 'X', RioVBlocks.onyxBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 4), bricks, 'X', RioVBlocks.blindoniteBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 5), bricks, 'X', RioVBlocks.dragonBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 6), bricks, 'X', RioVBlocks.vraviniteBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 7), bricks, 'X', RioVBlocks.alerisBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 8), bricks, 'X', RioVBlocks.jaavikBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 9), bricks, 'X', RioVBlocks.nironiteBlock);
-		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 11), bricks, 'X', RioVBlocks.drakiuzBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 0), bricks, 'X', RioVBlocks.amethystBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 1), bricks, 'X', RioVBlocks.onyxBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 2), bricks, 'X', RioVBlocks.blindoniteBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 3), bricks, 'X', RioVBlocks.dragonBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 4), bricks, 'X', RioVBlocks.vraviniteBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 5), bricks, 'X', RioVBlocks.alerisBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 6), bricks, 'X', RioVBlocks.jaavikBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 7), bricks, 'X', RioVBlocks.nironiteBlock);
+		GameRegistry.addRecipe(new ItemStack(RioVBlocks.bricks, 2, 8), bricks, 'X', RioVBlocks.drakiuzBlock);
 		GameRegistry.addShapelessRecipe(new ItemStack(RioVBlocks.stainedGlass, 1, 0), new Object[] {new ItemStack(Items.dye, 1, 6),
 				new ItemStack(Items.dye, 1, 10), new ItemStack(Items.dye, 1, 11), Blocks.glass});
 		GameRegistry.addShapelessRecipe(new ItemStack(RioVBlocks.stainedGlass, 1, 1), new Object[] {new ItemStack(Items.dye, 1, 1),
