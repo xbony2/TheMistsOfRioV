@@ -196,6 +196,7 @@ public class RioVItems{
 	public static Item ingotOfFlame = new RioVItem().setUnlocalizedName("ingotOfFlame");
 	public static Item swordOfFlame = new RioVWeapon(Flame, false).setUnlocalizedName("swordOfFlame");
 	public static Item purpleFeather = new RioVItem().setUnlocalizedName("purpleFeather");
+	public static Item bonyiumIngot = new RioVItem().setUnlocalizedName("bonyiumIngot");
 	public static RioVArmor helmetOfFlame = (RioVArmor) new RioVArmor(FlameArmorMaterial, render, 0, "flame", false)
 			.setUnlocalizedName("helmetOfFlame");
 	public static RioVArmor chestplateOfFlame = (RioVArmor) new RioVArmor(FlameArmorMaterial, render, 1, "flame", false)
@@ -631,6 +632,7 @@ public class RioVItems{
 		RioVAPIUtil.registerItem(infusedDragonAxe, "Infused Dragon Axe");
 		RioVAPIUtil.registerItem(infusedDragonShovel, "Infused Dragon Shovel");
 		RioVAPIUtil.registerItem(infusedDragonSword, "Infused Dragon Sword");
+		RioVAPIUtil.registerItem(bonyiumIngot, "Bonyium Ingot");
 	}
 	
 	public static Item infusedBloodwoodPickaxe;

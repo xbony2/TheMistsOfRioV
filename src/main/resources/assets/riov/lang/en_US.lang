@@ -286,6 +286,8 @@ item.dragonAxe.name=Dragon Axe
 item.dragonSword.name=Dragon Sword
 item.infused.dragonPickaxe.name=Infused Dragon Pickaxe
 item.dragonSoul.name=Dragon Soul Gem
+item.bonyiumIngot.name=Bonyium Ingot
+
 tile.blackQuartz.name=Black Quartz Block
 tile.stainedGlass.pattern1.name=A Field of Colorful Flowers
 tile.stainedGlass.pattern2.name=A Relaxing Melody
