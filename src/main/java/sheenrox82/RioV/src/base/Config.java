@@ -37,19 +37,13 @@ public class Config{
 		vaerynID = config.get("Dimension IDs", "Vaeryn Dimension ID", 12).getInt();
 		flamonorID = config.get("Dimension IDs", "Flamonor Dimension ID", 13).getInt();
 		sanctuatiteID = config.get("Dimension IDs", "Sanctuatite Dimension ID", 14).getInt();
-		blindOasisBiomeID = config.get("Biome IDs", "Blind Oasis Biome ID (Blind Oasis Dimension)", 40).getInt(
-				blindOasisBiomeID);
-		glimmerwoodBiomeID = config.get("Biome IDs", "Glimmerwood Biome ID (Vaeryn Dimension)", 41).getInt(
-				glimmerwoodBiomeID);
-		snowyMountainsBiomeID = config.get("Biome IDs", "Snowy Mountains Biome ID (Overworld Dimension)", 42).getInt(
-				snowyMountainsBiomeID);
-		savannahBiomeID = config.get("Biome IDs", "Savannah Biome ID (Overworld Dimension)", 43)
-				.getInt(savannahBiomeID);
+		blindOasisBiomeID = config.get("Biome IDs", "Blind Oasis Biome ID (Blind Oasis Dimension)", 40).getInt(blindOasisBiomeID);
+		glimmerwoodBiomeID = config.get("Biome IDs", "Glimmerwood Biome ID (Vaeryn Dimension)", 41).getInt(glimmerwoodBiomeID);
+		snowyMountainsBiomeID = config.get("Biome IDs", "Snowy Mountains Biome ID (Overworld Dimension)", 42).getInt(snowyMountainsBiomeID);
+		savannahBiomeID = config.get("Biome IDs", "Savannah Biome ID (Overworld Dimension)", 43).getInt(savannahBiomeID);
 		flamonorBiomeID = config.get("Biome IDs", "Flamonor Biome ID (Flamonor Dimension)", 44).getInt(flamonorBiomeID);
-		sanctuatiteBiomeID = config.get("Biome IDs", "Sanctuatite Biome ID (Sanctuatite Dimension)", 45).getInt(
-				sanctuatiteBiomeID);
-		canopyOasisBiomeID = config.get("Biome IDs", "Canopy Oasis Biome ID (Overworld Dimension)", 46).getInt(
-				canopyOasisBiomeID);
+		sanctuatiteBiomeID = config.get("Biome IDs", "Sanctuatite Biome ID (Sanctuatite Dimension)", 45).getInt(sanctuatiteBiomeID);
+		canopyOasisBiomeID = config.get("Biome IDs", "Canopy Oasis Biome ID (Overworld Dimension)", 46).getInt(canopyOasisBiomeID);
 		
 		config.load();
 	}

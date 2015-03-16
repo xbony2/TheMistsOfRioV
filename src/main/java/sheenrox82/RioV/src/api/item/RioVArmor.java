@@ -123,7 +123,7 @@ public class RioVArmor extends ItemArmor{
 				fMaxDamageFactor.setAccessible(true);
 				maxDamageFactor = fMaxDamageFactor.getInt(material);
 			}else{
-				Field fMaxDamageFactor = material.getClass().getDeclaredField("field_78048_f");
+				Field fMaxDamageFactor = material.getClass().getDeclaredField("maxDamageFactor");
 				fMaxDamageFactor.setAccessible(true);
 				maxDamageFactor = fMaxDamageFactor.getInt(material);
 			}

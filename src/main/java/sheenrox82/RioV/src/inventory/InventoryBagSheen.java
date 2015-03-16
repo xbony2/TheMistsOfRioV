@@ -8,7 +8,6 @@ import net.minecraft.nbt.NBTTagList;
 import sheenrox82.RioV.src.item.RioVBag;
 
 public class InventoryBagSheen implements IInventory{
-	private String name = "Inventory Item";
 	
 	public static final int INV_SIZE = 20;
 	
@@ -122,23 +121,17 @@ public class InventoryBagSheen implements IInventory{
 	
 	@Override
 	public String getInventoryName(){
-		// TODO Auto-generated method stub
-		return name;
+		return "Inventory Item";
 	}
 	
 	@Override
 	public boolean hasCustomInventoryName(){
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
 	@Override
-	public void openInventory(){
-		
-	}
+	public void openInventory(){}
 	
 	@Override
-	public void closeInventory(){
-		
-	}
+	public void closeInventory(){}
 }
