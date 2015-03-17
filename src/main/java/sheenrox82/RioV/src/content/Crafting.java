@@ -207,6 +207,7 @@ public class Crafting{
 		GameRegistry.addRecipe(new ItemStack(RioVItems.vravinite, 4), "*", '*', RioVItems.vraviniteBoots);
 		GameRegistry.addRecipe(new ItemStack(RioVItems.vravinite, 7), "*", '*', RioVItems.vraviniteLeggings);
 		GameRegistry.addShapelessRecipe(new ItemStack(RioVItems.guideBook), new Object[] {Items.book, RioVItems.berry, RioVItems.amethyst});
+		GameRegistry.addShapelessRecipe(new ItemStack(RioVItems.bonyiumIngot), new Object[] {RioVItems.blackBone, Items.iron_ingot});
 		
 		// ANVIL CRAFTING
 		RioVAPI.getInstance()
