@@ -19,7 +19,7 @@ apply plugin: 'forge'
 
 version = newRioVVersion
 group= "sheenrox82.RioV"
-archivesBaseName = "RioV"
+archivesBaseName = "TheMistsOfRioV"
 minecraft {
     version = forgeVersion
 	runDir = "eclipse"
