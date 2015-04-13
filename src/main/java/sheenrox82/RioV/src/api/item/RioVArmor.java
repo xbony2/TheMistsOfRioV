@@ -1,5 +1,7 @@
 package sheenrox82.RioV.src.api.item;
 
+import sheenrox82.RioV.src.util.LangHelper;
+
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -110,7 +112,7 @@ public class RioVArmor extends ItemArmor{
 	public void addInformation(ItemStack var1, EntityPlayer var2, List var3, boolean var4){
 		if(RioVAPI.getInstance().getUtil().getConfigBool("showToolInfo") == true){
 			var3.add(Color.gold + (var1.getMaxDamage() - var1.getItemDamage()) + " Uses");
-			var3.add(Color.dark_purple + "Protection: " + getMaxDamageFactor(material));
+			var3.add(Color.dark_purple + LangHelper.translate("msg.riov.Protection") + getMaxDamageFactor(material));
 		}
 	}
 	

@@ -30,6 +30,9 @@ public class Config{
 	public static int hudPosX;
 	public static int hudPosY;
 	
+	public static int eosWatcher;
+	public static int repWatcher;
+	
 	public static void initialize(FMLPreInitializationEvent event){
 		config = new Configuration(event.getSuggestedConfigurationFile());
 		
@@ -44,6 +47,8 @@ public class Config{
 		flamonorBiomeID = config.get("Biome IDs", "Flamonor Biome ID (Flamonor Dimension)", 44).getInt(flamonorBiomeID);
 		sanctuatiteBiomeID = config.get("Biome IDs", "Sanctuatite Biome ID (Sanctuatite Dimension)", 45).getInt(sanctuatiteBiomeID);
 		canopyOasisBiomeID = config.get("Biome IDs", "Canopy Oasis Biome ID (Overworld Dimension)", 46).getInt(canopyOasisBiomeID);
+		eosWatcher = config.get("Misc IDs", "EOS Watcher ID", 20).getInt(eosWatcher);
+		repWatcher = config.get("Misc IDs", "REP Watcher ID", 20).getInt(repWatcher);
 		
 		config.load();
 	}

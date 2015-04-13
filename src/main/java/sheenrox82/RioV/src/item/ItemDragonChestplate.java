@@ -23,13 +23,13 @@ public class ItemDragonChestplate extends ItemArmor{
 	public ArmorMaterial material;
 	public boolean isInfused;
 	
-	public ItemDragonChestplate(ArmorMaterial par2EnumArmorMaterial, int par3, int par4, String armornamePrefix, boolean par5){
-		super(par2EnumArmorMaterial, par3, par4);
-		this.material = par2EnumArmorMaterial;
-		this.setMaxDamage(par2EnumArmorMaterial.getDurability(par4));
+	public ItemDragonChestplate(ArmorMaterial material, int par2, int par3, String prefix, boolean isInfused){
+		super(material, par2, par3);
+		this.material = material;
+		this.setMaxDamage(material.getDurability(par3));
 		this.setCreativeTab(RioVAPI.getInstance().tab);
-		armorNamePrefix = armornamePrefix;
-		this.isInfused = par5;
+		armorNamePrefix = prefix;
+		this.isInfused = isInfused;
 	}
 	
 	@Override

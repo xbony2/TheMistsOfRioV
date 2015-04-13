@@ -1,5 +1,7 @@
 package sheenrox82.RioV.src.api.util;
 
+import sheenrox82.RioV.src.base.Config;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -17,7 +19,7 @@ public class RioVPlayer implements IExtendedEntityProperties{
 	public boolean hasReceivedBook;
 	
 	public int maxEos;
-	public static final int EOS_WATCHER = 20;
+	public static final int EOS_WATCHER = Config.eosWatcher;
 	
 	public int factionID;
 	public int noFactionID = 0;
@@ -29,7 +31,7 @@ public class RioVPlayer implements IExtendedEntityProperties{
 	public int defaultRep;
 	public int maxRep;
 	public int minRep;
-	public static final int REP_WATCHER = 21;
+	public static final int REP_WATCHER = Config.repWatcher;
 	
 	public RioVPlayer(EntityPlayer player){
 		this.player = player;
